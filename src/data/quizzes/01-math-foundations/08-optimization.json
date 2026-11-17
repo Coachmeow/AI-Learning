@@ -1,0 +1,308 @@
+{
+  "lesson": "01-math-foundations/08-optimization",
+  "source_hash": "37a97829f21025866d4bd4349478fcd6572dcc734154b836ce3e69f4813cb278",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What does 'optimization' mean in the context of training a neural network?",
+        "th": "ในบริบทของการฝึกโครงข่ายประสาทเทียม \"การหาค่าเหมาะที่สุด (optimization)\" หมายถึงอะไร"
+      },
+      "options": [
+        { "en": "Finding the model weights that minimize the loss function", "th": "การหาค่าน้ำหนักของโมเดลที่ทำให้ฟังก์ชัน loss มีค่าน้อยที่สุด" },
+        { "en": "Making the code run faster", "th": "การทำให้โค้ดทำงานเร็วขึ้น" },
+        { "en": "Reducing the number of parameters in the model", "th": "การลดจำนวนพารามิเตอร์ของโมเดล" },
+        { "en": "Choosing the best hardware for training", "th": "การเลือกฮาร์ดแวร์ที่ดีที่สุดสำหรับการฝึก" }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Training a neural network IS optimization. The loss function measures how wrong the model is, and optimization finds the weight values that make it as small as possible.",
+        "th": "การฝึกโครงข่ายประสาทเทียมก็คือการหาค่าเหมาะที่สุด ฟังก์ชัน loss วัดว่าโมเดลผิดมากแค่ไหน และการหาค่าเหมาะที่สุดคือการหาค่าน้ำหนักที่ทำให้ loss เล็กที่สุดเท่าที่ทำได้"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What happens if the learning rate is too large during gradient descent?",
+        "th": "จะเกิดอะไรขึ้นถ้า learning rate ใหญ่เกินไประหว่างทำ gradient descent"
+      },
+      "options": [
+        { "en": "Training converges faster to the global minimum", "th": "การฝึกลู่เข้าหาจุดต่ำสุดสัมบูรณ์ได้เร็วขึ้น" },
+        { "en": "The optimizer overshoots the minimum and the loss diverges (bounces or increases)", "th": "optimizer ก้าวเลยจุดต่ำสุด และ loss ลู่ออก (เด้งไปมาหรือเพิ่มขึ้น)" },
+        { "en": "The model automatically reduces the learning rate", "th": "โมเดลลด learning rate ลงเองโดยอัตโนมัติ" },
+        { "en": "The gradients become zero", "th": "เกรเดียนต์กลายเป็นศูนย์" }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "A learning rate that is too large causes each step to overshoot the valley, potentially bouncing between walls or diverging entirely. The loss increases instead of decreasing.",
+        "th": "learning rate ที่ใหญ่เกินไปทำให้แต่ละก้าวกระโดดข้ามหุบเขา อาจเด้งไปมาระหว่างผนังหุบเขาหรือลู่ออกไปเลย loss จึงเพิ่มขึ้นแทนที่จะลดลง"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "In momentum, what does beta (typically 0.9) control?",
+        "th": "ในโมเมนตัม ค่า beta (ปกติคือ 0.9) ควบคุมอะไร"
+      },
+      "options": [
+        { "en": "How much of the past gradient history the velocity keeps", "th": "ปริมาณประวัติเกรเดียนต์ในอดีตที่ความเร็ว (velocity) เก็บไว้" },
+        { "en": "How many training samples are in each mini-batch", "th": "จำนวนตัวอย่างข้อมูลในแต่ละ mini-batch" },
+        { "en": "The maximum number of optimization steps", "th": "จำนวนก้าวสูงสุดของการหาค่าเหมาะที่สุด" },
+        { "en": "How much the learning rate shrinks each epoch", "th": "ปริมาณที่ learning rate ลดลงในแต่ละ epoch" }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "beta multiplies the old velocity before the new gradient is added. A higher beta keeps more history: smoother paths, but a slower reaction when the direction changes.",
+        "th": "beta คูณกับความเร็วเดิมก่อนบวกเกรเดียนต์ใหม่เข้าไป beta ยิ่งสูงยิ่งเก็บประวัติไว้มาก เส้นทางจึงราบรื่นขึ้น แต่ตอบสนองช้าลงเมื่อทิศทางเปลี่ยน"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Which gradient descent variant do most people actually use in practice?",
+        "th": "ในทางปฏิบัติ คนส่วนใหญ่ใช้ gradient descent แบบไหน"
+      },
+      "options": [
+        { "en": "Mini-batch gradient descent (e.g. 32–256 samples per step)", "th": "Mini-batch gradient descent (เช่น 32–256 ตัวอย่างต่อก้าว)" },
+        { "en": "Batch gradient descent over the entire dataset", "th": "Batch gradient descent ที่ใช้ข้อมูลทั้งหมดต่อก้าว" },
+        { "en": "Pure SGD with exactly one sample per step", "th": "SGD แท้ๆ ที่ใช้ตัวอย่างเดียวต่อก้าว" },
+        { "en": "No gradients at all: random search", "th": "ไม่ใช้เกรเดียนต์เลย แต่สุ่มค้นหาแทน" }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Mini-batch balances speed per step with a good estimate of the gradient. In practice, \"SGD\" almost always means mini-batch SGD.",
+        "th": "Mini-batch สมดุลระหว่างความเร็วต่อก้าวกับการประมาณเกรเดียนต์ที่ดี ในทางปฏิบัติคำว่า \"SGD\" แทบทุกครั้งหมายถึง mini-batch SGD"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "What is a saddle point?",
+        "th": "จุดอานม้า (saddle point) คืออะไร"
+      },
+      "options": [
+        { "en": "A point where the gradient is zero, but it is a minimum in some directions and a maximum in others", "th": "จุดที่เกรเดียนต์เป็นศูนย์ แต่เป็นจุดต่ำสุดในบางทิศและเป็นจุดสูงสุดในอีกทิศ" },
+        { "en": "The global minimum of a convex function", "th": "จุดต่ำสุดสัมบูรณ์ของฟังก์ชันนูน" },
+        { "en": "A point where the learning rate becomes zero", "th": "จุดที่ learning rate กลายเป็นศูนย์" },
+        { "en": "The starting point of training", "th": "จุดเริ่มต้นของการฝึก" }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "At a saddle point the gradient vanishes, so plain gradient descent can stall there even though it is not a minimum. Saddle points are common in high dimensions.",
+        "th": "ที่จุดอานม้าเกรเดียนต์เป็นศูนย์ gradient descent แบบพื้นฐานจึงอาจหยุดนิ่งตรงนั้นได้ทั้งที่ไม่ใช่จุดต่ำสุด และจุดแบบนี้พบบ่อยในปริภูมิหลายมิติ"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "How does Adam differ from vanilla gradient descent?",
+        "th": "Adam ต่างจาก gradient descent แบบพื้นฐานอย่างไร"
+      },
+      "options": [
+        { "en": "Adam computes exact second derivatives while GD uses first derivatives", "th": "Adam คำนวณอนุพันธ์อันดับสองแบบแม่นยำ ส่วน GD ใช้อนุพันธ์อันดับหนึ่ง" },
+        { "en": "Adam uses a fixed learning rate while GD uses adaptive rates", "th": "Adam ใช้ learning rate คงที่ ส่วน GD ใช้ learning rate ที่ปรับตัวเองได้" },
+        { "en": "Adam processes the full dataset per step while GD uses mini-batches", "th": "Adam ใช้ข้อมูลทั้งหมดต่อก้าว ส่วน GD ใช้ mini-batch" },
+        { "en": "Adam tracks running averages of gradients and squared gradients to give each weight its own adaptive learning rate", "th": "Adam ติดตามค่าเฉลี่ยสะสมของเกรเดียนต์และเกรเดียนต์ยกกำลังสอง เพื่อให้น้ำหนักแต่ละตัวมี learning rate ที่ปรับตัวเองได้เป็นของตัวเอง" }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Adam maintains per-weight first moment (gradient direction) and second moment (gradient magnitude) estimates. Dividing by sqrt(second moment) gives small steps for weights with large gradients and large steps for weights with small gradients.",
+        "th": "Adam เก็บค่าประมาณโมเมนต์ที่หนึ่ง (ทิศของเกรเดียนต์) และโมเมนต์ที่สอง (ขนาดของเกรเดียนต์) ของน้ำหนักแต่ละตัว การหารด้วยรากที่สองของโมเมนต์ที่สองทำให้น้ำหนักที่มีเกรเดียนต์ใหญ่ก้าวสั้น และน้ำหนักที่มีเกรเดียนต์เล็กก้าวยาว"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "Why is the noise in mini-batch SGD considered beneficial rather than just a nuisance?",
+        "th": "ทำไมสัญญาณรบกวนใน mini-batch SGD จึงถือว่ามีประโยชน์ ไม่ใช่แค่สิ่งกวนใจ"
+      },
+      "options": [
+        { "en": "Noise makes the loss function convex", "th": "สัญญาณรบกวนทำให้ฟังก์ชัน loss กลายเป็นฟังก์ชันนูน" },
+        { "en": "Noise helps the optimizer escape shallow local minima and saddle points that a noiseless optimizer would get stuck in", "th": "สัญญาณรบกวนช่วยให้ optimizer หลุดออกจากจุดต่ำสุดเฉพาะที่ที่ตื้นและจุดอานม้า ซึ่ง optimizer ที่ไม่มีสัญญาณรบกวนจะติดอยู่" },
+        { "en": "Noise is not beneficial; it always slows convergence", "th": "สัญญาณรบกวนไม่มีประโยชน์ มันทำให้ลู่เข้าช้าลงเสมอ" },
+        { "en": "Noise reduces memory usage during training", "th": "สัญญาณรบกวนช่วยลดการใช้หน่วยความจำระหว่างการฝึก" }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The stochastic noise from random mini-batches provides random perturbations that can push the optimizer out of shallow local minima and saddle points, leading to better generalization.",
+        "th": "สัญญาณรบกวนจาก mini-batch ที่สุ่มมาเป็นแรงผลักแบบสุ่ม ที่ช่วยดัน optimizer ออกจากจุดต่ำสุดเฉพาะที่ที่ตื้นและจุดอานม้า ส่งผลให้โมเดลใช้กับข้อมูลใหม่ได้ดีขึ้น"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "What does a cosine annealing learning rate schedule do?",
+        "th": "ตารางปรับ learning rate แบบ cosine annealing ทำอะไร"
+      },
+      "options": [
+        { "en": "Increases the learning rate throughout training following a cosine curve", "th": "เพิ่ม learning rate ไปตลอดการฝึกตามเส้นโค้งโคไซน์" },
+        { "en": "Starts with a high learning rate and smoothly decreases it following a cosine curve, with optional warmup", "th": "เริ่มจาก learning rate สูงแล้วค่อยๆ ลดลงอย่างนุ่มนวลตามเส้นโค้งโคไซน์ โดยอาจมีช่วง warmup" },
+        { "en": "Alternates the learning rate between two fixed values", "th": "สลับ learning rate ไปมาระหว่างสองค่าคงที่" },
+        { "en": "Sets the learning rate to the cosine of the current epoch number", "th": "ตั้ง learning rate เป็นค่าโคไซน์ของหมายเลข epoch ปัจจุบัน" }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Cosine annealing smoothly reduces the learning rate from lr_max to lr_min following a half-cosine curve. This provides large steps early for fast progress and small steps late for fine convergence.",
+        "th": "Cosine annealing ลด learning rate จาก lr_max ไปยัง lr_min อย่างนุ่มนวลตามครึ่งเส้นโค้งโคไซน์ ได้ก้าวยาวในช่วงต้นเพื่อไปได้เร็ว และก้าวสั้นในช่วงท้ายเพื่อลู่เข้าอย่างละเอียด"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "Using the GradientDescent class from this lesson, what does this code print?",
+        "th": "ถ้าใช้คลาส GradientDescent จากบทนี้ โค้ดนี้จะพิมพ์อะไรออกมา"
+      },
+      "code": "opt = GradientDescent(lr=0.1)\nprint(opt.step([2.0, -1.0], [4.0, -2.0]))",
+      "options": [
+        { "en": "[1.6, -0.8]", "th": "[1.6, -0.8]" },
+        { "en": "[2.4, -1.2]", "th": "[2.4, -1.2]" },
+        { "en": "[1.6, -1.2]", "th": "[1.6, -1.2]" },
+        { "en": "[-2.0, 1.0]", "th": "[-2.0, 1.0]" }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Each parameter moves against its own gradient: 2.0 − 0.1 × 4.0 = 1.6 and −1.0 − 0.1 × (−2.0) = −0.8. A negative gradient pushes the parameter up.",
+        "th": "พารามิเตอร์แต่ละตัวขยับสวนทางกับเกรเดียนต์ของมันเอง: 2.0 − 0.1 × 4.0 = 1.6 และ −1.0 − 0.1 × (−2.0) = −0.8 เกรเดียนต์ที่เป็นลบจะดันพารามิเตอร์ให้เพิ่มขึ้น"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "Why does Adam need bias correction?",
+        "th": "ทำไม Adam ต้องมี bias correction (การแก้ความเอนเอียง)"
+      },
+      "options": [
+        { "en": "m and v start at zero, so in early steps their running averages are biased toward zero", "th": "m และ v เริ่มจากศูนย์ ค่าเฉลี่ยสะสมในช่วงก้าวแรกๆ จึงเอนเอียงเข้าหาศูนย์" },
+        { "en": "To stop the learning rate from growing over time", "th": "เพื่อกันไม่ให้ learning rate โตขึ้นเรื่อยๆ ตามเวลา" },
+        { "en": "To remove the noise from mini-batch gradients", "th": "เพื่อกำจัดสัญญาณรบกวนออกจากเกรเดียนต์ของ mini-batch" },
+        { "en": "Because the loss function might not be convex", "th": "เพราะฟังก์ชัน loss อาจไม่ใช่ฟังก์ชันนูน" }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "With m = v = 0 at the start, the first averages are much smaller than the true values. Dividing by (1 − βᵗ) scales them back up, and the correction fades as t grows.",
+        "th": "เมื่อ m = v = 0 ตอนเริ่ม ค่าเฉลี่ยในช่วงแรกจะเล็กกว่าค่าจริงมาก การหารด้วย (1 − βᵗ) ช่วยขยายกลับขึ้นมา และผลของการแก้นี้จะหายไปเองเมื่อ t โตขึ้น"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "For f(x) = x², gradient descent updates x ← x − lr · 2x = (1 − 2·lr) · x. For which learning rates does x converge to 0 (starting from x ≠ 0)?",
+        "th": "สำหรับ f(x) = x² gradient descent ปรับค่า x ← x − lr · 2x = (1 − 2·lr) · x ค่า learning rate ช่วงใดที่ทำให้ x ลู่เข้าหา 0 (เมื่อเริ่มจาก x ≠ 0)"
+      },
+      "options": [
+        { "en": "0 < lr < 1", "th": "0 < lr < 1" },
+        { "en": "0 < lr < 0.5 only", "th": "เฉพาะ 0 < lr < 0.5" },
+        { "en": "Any lr > 0", "th": "lr > 0 ทุกค่า" },
+        { "en": "0 < lr ≤ 1", "th": "0 < lr ≤ 1" }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "x converges when |1 − 2·lr| < 1, that is 0 < lr < 1. Between 0.5 and 1 the factor is negative, so x flips sign every step but still shrinks. At lr = 1 it bounces between x and −x forever, and above 1 it diverges. Try it in the figure above.",
+        "th": "x ลู่เข้าเมื่อ |1 − 2·lr| < 1 หรือ 0 < lr < 1 ช่วง 0.5 ถึง 1 ตัวคูณเป็นลบ x จึงสลับเครื่องหมายทุกก้าวแต่ยังเล็กลง ที่ lr = 1 x จะเด้งไปมาระหว่าง x กับ −x ไม่สิ้นสุด และเมื่อเกิน 1 จะลู่ออก ลองดูได้ในแผนภาพด้านบน"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "On Adam's very first step (t = 1, ignore epsilon), one weight has gradient 1000 and another has gradient 0.001. With lr = 0.001, roughly how far does each weight move?",
+        "th": "ในก้าวแรกสุดของ Adam (t = 1 และไม่คิด epsilon) น้ำหนักตัวหนึ่งมีเกรเดียนต์ 1000 อีกตัวมีเกรเดียนต์ 0.001 ถ้า lr = 0.001 น้ำหนักแต่ละตัวจะขยับไปประมาณเท่าไร"
+      },
+      "options": [
+        { "en": "Both move by about 0.001", "th": "ทั้งสองตัวขยับประมาณ 0.001 เท่ากัน" },
+        { "en": "The first moves 1000× farther than the second", "th": "ตัวแรกขยับไกลกว่าตัวที่สอง 1000 เท่า" },
+        { "en": "The second moves 1000× farther than the first", "th": "ตัวที่สองขยับไกลกว่าตัวแรก 1000 เท่า" },
+        { "en": "Neither moves, because m and v start at zero", "th": "ไม่ขยับเลยทั้งคู่ เพราะ m และ v เริ่มจากศูนย์" }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "At t = 1, m̂ = g and v̂ = g², so the step is lr · g / |g| = lr · sign(g). Both weights move by about lr = 0.001, whatever the size of their gradient. This is Adam's per-weight scaling at work.",
+        "th": "ที่ t = 1 จะได้ m̂ = g และ v̂ = g² ก้าวจึงเท่ากับ lr · g / |g| = lr · sign(g) น้ำหนักทั้งสองตัวขยับประมาณ lr = 0.001 ไม่ว่าเกรเดียนต์จะใหญ่หรือเล็ก นี่คือการปรับขนาดก้าวแยกรายน้ำหนักของ Adam"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "This SGDMomentum has a bug. How does it behave?",
+        "th": "SGDMomentum ตัวนี้มีบั๊ก มันจะทำงานอย่างไร"
+      },
+      "code": "class SGDMomentum:\n    def __init__(self, lr=0.001, momentum=0.9):\n        self.lr = lr\n        self.momentum = momentum\n\n    def step(self, params, grads):\n        self.velocity = [0.0] * len(params)\n        self.velocity = [\n            self.momentum * v + g\n            for v, g in zip(self.velocity, grads)\n        ]\n        return [p - self.lr * v for p, v in zip(params, self.velocity)]",
+      "options": [
+        { "en": "Exactly like vanilla gradient descent with the same lr: the momentum has no effect", "th": "ทำงานเหมือน gradient descent แบบพื้นฐานที่ใช้ lr เดียวกันทุกประการ โมเมนตัมไม่มีผลเลย" },
+        { "en": "It diverges because the velocity grows without limit", "th": "ลู่ออก เพราะความเร็วโตขึ้นไม่มีขีดจำกัด" },
+        { "en": "It raises an AttributeError on the first step", "th": "เกิด AttributeError ตั้งแต่ก้าวแรก" },
+        { "en": "It moves 10× faster than intended", "th": "ขยับเร็วกว่าที่ตั้งใจ 10 เท่า" }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The velocity is reset to zeros at the start of every step, so v = momentum · 0 + g = g. The update becomes p − lr · g, which is plain gradient descent. The fix is to create the velocity only once, when it is None.",
+        "th": "ความเร็วถูกรีเซ็ตเป็นศูนย์ทุกครั้งที่เริ่มก้าว จึงได้ v = momentum · 0 + g = g การปรับค่ากลายเป็น p − lr · g ซึ่งก็คือ gradient descent ธรรมดา วิธีแก้คือสร้างความเร็วแค่ครั้งเดียวตอนที่ยังเป็น None"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "According to the lesson, why can SGD with momentum beat Adam on final test accuracy?",
+        "th": "ตามเนื้อหาในบทนี้ ทำไม SGD แบบมีโมเมนตัมจึงอาจได้ความแม่นยำบนชุดทดสอบสุดท้ายดีกว่า Adam"
+      },
+      "options": [
+        { "en": "Its gradient noise keeps it from settling into sharp minima, and flatter minima generalize better", "th": "สัญญาณรบกวนของเกรเดียนต์กันไม่ให้มันไปจมในจุดต่ำสุดที่แหลมคม และจุดต่ำสุดที่ราบกว้างใช้กับข้อมูลใหม่ได้ดีกว่า" },
+        { "en": "It converges faster than Adam on every problem", "th": "มันลู่เข้าเร็วกว่า Adam ในทุกปัญหา" },
+        { "en": "It uses a separate learning rate for every weight", "th": "มันใช้ learning rate แยกให้น้ำหนักแต่ละตัว" },
+        { "en": "It finds the global minimum of non-convex losses", "th": "มันหาจุดต่ำสุดสัมบูรณ์ของ loss ที่ไม่นูนได้" }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Sharp minima tend to generalize poorly and flat ones generalize well. SGD's noise makes it harder to settle into a sharp minimum, even if Adam reaches a low training loss sooner.",
+        "th": "จุดต่ำสุดที่แหลมคมมักใช้กับข้อมูลใหม่ได้ไม่ดี ส่วนจุดที่ราบกว้างใช้ได้ดี สัญญาณรบกวนของ SGD ทำให้มันจมอยู่ในจุดต่ำสุดที่แหลมคมได้ยากกว่า แม้ Adam อาจทำ loss ของข้อมูลฝึกให้ต่ำได้เร็วกว่า"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Gradient descent with lr = 0.1 on f(x, y) = x² − y², starting at (0.01, 0.01). What happens?",
+        "th": "ทำ gradient descent ด้วย lr = 0.1 บน f(x, y) = x² − y² โดยเริ่มที่ (0.01, 0.01) จะเกิดอะไรขึ้น"
+      },
+      "options": [
+        { "en": "x shrinks toward 0 while |y| grows by 1.2× each step: it slides off the saddle along y", "th": "x หดเข้าหา 0 ขณะที่ |y| โตขึ้น 1.2 เท่าทุกก้าว: มันไถลออกจากจุดอานม้าไปตามแกน y" },
+        { "en": "Both x and y converge to 0, the saddle point", "th": "ทั้ง x และ y ลู่เข้าหา 0 ซึ่งเป็นจุดอานม้า" },
+        { "en": "Both x and y grow, so the loss goes to +∞", "th": "ทั้ง x และ y โตขึ้น loss จึงพุ่งไปที่ +∞" },
+        { "en": "Nothing happens: the gradient is exactly zero at the start", "th": "ไม่เกิดอะไรเลย เพราะเกรเดียนต์เป็นศูนย์พอดีตั้งแต่จุดเริ่ม" }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The gradient is (2x, −2y). So x ← x − 0.1 · 2x = 0.8x shrinks, and y ← y + 0.1 · 2y = 1.2y grows. Because it started slightly off y = 0, it escapes the saddle and the loss heads toward −∞.",
+        "th": "เกรเดียนต์คือ (2x, −2y) ดังนั้น x ← x − 0.1 · 2x = 0.8x หดลง และ y ← y + 0.1 · 2y = 1.2y โตขึ้น เพราะเริ่มห่างจาก y = 0 เล็กน้อย มันจึงหนีออกจากจุดอานม้าได้ และ loss มุ่งไปที่ −∞"
+      }
+    }
+  ]
+}

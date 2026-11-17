@@ -50,33 +50,49 @@
 | เก็บความคืบหน้า | localStorage ในเบราว์เซอร์ของผู้เรียน ส่งออกและนำเข้าเป็นไฟล์ JSON ได้ |
 | เผยแพร่ | GitHub Pages (ฟรี) และไฟล์ zip ใน GitHub Releases สำหรับคนที่อยากเรียน offline |
 
+**เวอร์ชันที่ใช้จริง (รอบนำร่อง):** Astro 7.4 + Starlight 0.43, Pyodide 314.0 (ชื่อเวอร์ชันใหม่ตาม CPython 3.14), KaTeX 0.19, Mermaid 12, CodeMirror 6 ทุกแพ็กเกจปักเวอร์ชันแบบตรงตัวใน `package.json`
+
+**สิ่งที่ต่างจากความรู้เดิมของเวอร์ชันก่อนๆ (ใช้อ้างอิงตอนแก้โค้ด):**
+- Astro 7 ใช้ตัวประมวลผล Markdown ชื่อ Sätteri เป็นค่าเริ่มต้น เราสลับไปใช้ `unified()` จาก `@astrojs/markdown-remark` เพื่อใช้ปลั๊กอิน remark ได้ (`astro.config.mjs`)
+- Starlight 0.39 ขึ้นไป กลุ่มเมนูต้องเขียนเป็น `{ label, items: [{ autogenerate: { directory } }] }`
+- Pyodide รุ่นนี้รันได้เฉพาะใน module worker (`new Worker(url, { type: 'module' })` แล้ว `import()` ไฟล์ `pyodide.mjs`)
+
 **เหตุผลที่ไม่ fork เว็บต้นฉบับทั้งก้อน:** repo ต้นฉบับมีขนาดประมาณ 250 MB และเว็บผูกกับแบรนด์ของเขา (มีไฟล์ใน `site/` 242 ไฟล์)
 เราจึงทำเว็บใหม่ที่เบากว่า แล้วดึงมาเฉพาะเนื้อหากับชิ้นส่วนที่ใช้ซ้ำได้ ส่วนที่ใช้ซ้ำคือแผนภาพ interactive กับโจทย์ practice
 
 ## 4. โครงสร้างโฟลเดอร์
 
+โครงสร้างจริงหลังรอบนำร่อง:
+
 ```text
 AI-Learning/
 ├─ docs/DESIGN.md                 ← เอกสารนี้
-├─ upstream.lock.json             ← commit ของต้นฉบับที่นำเข้ามาล่าสุด
+├─ astro.config.mjs               ← ตั้งค่าเว็บ ภาษา เมนู (สร้างกลุ่มเมนูจาก phase ที่มีบทเรียนแล้ว)
+├─ upstream.lock.json             ← commit ของต้นฉบับ และ source_hash ของทุกบทที่นำเข้า
 ├─ scripts/
 │  ├─ sync-upstream.mjs           ← ดึงต้นฉบับแบบ sparse และ shallow มาไว้ที่ .upstream/ (ไม่ commit)
-│  ├─ import-content.mjs          ← แปลงบทเรียน โค้ด quiz รูป และแผนภาพ เข้า src/content
-│  └─ check-translations.mjs      ← หาคำแปลที่ล้าสมัย (ต้นฉบับเปลี่ยนแต่คำแปลยังไม่ได้แก้)
+│  ├─ import-content.mjs          ← นำเข้าบท (--lesson / --phase / --all): en.md, quiz เดิม, ไฟล์โค้ด, แผนภาพ
+│  ├─ copy-vendor.mjs             ← คัดลอก Pyodide เข้า public/vendor/pyodide (รันอัตโนมัติตอน build)
+│  └─ check-exercises.py          ← ตรวจว่าเฉลยผ่าน, starter ไม่ผ่าน, คำตอบผิดแบบจงใจ (mutants) ถูกจับได้
 ├─ src/
 │  ├─ content/docs/en/<phase>/<lesson>.md   ← อังกฤษ: นำเข้าอัตโนมัติ ห้ามแก้ด้วยมือ
 │  ├─ content/docs/th/<phase>/<lesson>.md   ← ไทย: คำแปล มี source_hash ใน frontmatter
-│  ├─ content/quizzes/<phase>/<lesson>.json ← แบบทดสอบสองภาษา แบ่งระดับ
-│  ├─ content/exercises/<phase>/<lesson>/{easy,medium,hard}/
-│  ├─ content/practice/<id>/      ← โจทย์ฝึก 51 ข้อจากต้นฉบับ (+ คำแปลไทย)
-│  ├─ components/                 ← Quiz, Exercise, CodeRunner, Figure, Progress, LangToggle
-│  └─ styles/                     ← โทนสี ฟอนต์ ธีมสว่าง/มืด
+│  ├─ data/quizzes/<phase>/<lesson>.json    ← แบบทดสอบสองภาษา แบ่งระดับ (ทำแล้ว)
+│  ├─ data/upstream-quiz/<phase>/<lesson>.json ← quiz เดิมของต้นฉบับ ใช้แสดงในบทที่ยังไม่ได้ทำชุดใหม่
+│  ├─ data/exercises/<phase>/<lesson>/{easy,medium,hard}/  ← meta.json, starter.py, solution.py, tests.py, mutants/
+│  ├─ data/figure-i18n.th.json    ← คำแปลข้อความในแผนภาพ interactive
+│  ├─ data/phases.json, ui.ts     ← ชื่อ phase สองภาษา และข้อความปุ่ม/เมนูของส่วนเสริม
+│  ├─ components/                 ← MarkdownContent.astro (แถบแจ้งการแปล + ส่วนทดสอบ), LessonAssessment.astro
+│  ├─ plugins/remark-lesson.mjs   ← แปลง ```math / ```figure / ```mermaid และสูตร $...$
+│  ├─ scripts/                    ← lesson-page.ts (ปุ่มรัน, แผนภาพ, Mermaid), assessment.ts, editor.ts, py-runner.ts
+│  └─ styles/                     ← theme.css (สี ฟอนต์), lesson.css (ส่วนเสริมในบทเรียน)
 ├─ public/
-│  ├─ code/<phase>/<lesson>/      ← ไฟล์โค้ดบทเรียน (เปิดดู ดาวน์โหลด หรือรันได้)
-│  ├─ figures/                    ← สคริปต์แผนภาพ interactive จากต้นฉบับ
-│  └─ vendor/pyodide/             ← Python สำหรับเบราว์เซอร์ (core + numpy)
+│  ├─ lesson-files/<phase>/<lesson>/ ← code/ และ outputs/ ของบทเรียน
+│  ├─ vendor/figures/             ← lesson-figures.js จากต้นฉบับ
+│  ├─ vendor/pyodide/             ← Python สำหรับเบราว์เซอร์ (ไม่ commit, สร้างตอน build)
+│  ├─ py-worker.js, py/harness.py ← ตัวรัน Python ใน Web Worker และตัวตรวจโจทย์ (ใช้ร่วมกับ check-exercises.py)
 ├─ glossary/th.json               ← คำศัพท์ อังกฤษ → ไทย ใช้ร่วมกันทุกบท
-├─ start.sh / start.bat           ← เปิดเว็บ offline ด้วยดับเบิลคลิก
+├─ start.sh / start.bat           ← เปิดเว็บ offline
 └─ NOTICE-UPSTREAM.md
 ```
 
@@ -261,7 +277,8 @@ exercises/<phase>/<lesson>/medium/
 
 | รอบ | งาน | ผลที่ได้ | สถานะ |
 |---|---|---|---|
-| 0 | สำรวจต้นฉบับ + เอกสารออกแบบนี้ | `docs/DESIGN.md` | ✅ |
+| 0 | สำรวจต้นฉบับ + เอกสารออกแบบนี้ + mockup | `docs/DESIGN.md` | ✅ |
+| นำร่อง | ทำ 1 บทครบชุด (01/08 Optimization): โครงเว็บ Astro/Starlight, ธีม, ฟอนต์ไทย, สองภาษา, สคริปต์นำเข้า, แผนภาพ interactive + แปลป้าย, สูตรคณิต, Mermaid, ปุ่มรัน Python offline, quiz 15 ข้อ 3 ระดับ, โจทย์ลงมือทำ 3 ระดับ, เก็บคะแนนในเบราว์เซอร์, start.sh/start.bat | เปิดเว็บ offline ได้ ทดสอบแล้วโดยตัดอินเทอร์เน็ตทั้งหมด | ✅ |
 | 1 | วางโครง Astro/Starlight, ธีม, ฟอนต์ไทย, i18n, สคริปต์นำเข้า, นำเข้าบทเรียนอังกฤษ 542 บท, ค้นหา, สคริปต์ start แบบ offline, แปลบทตัวอย่าง 1 บท | เปิดเว็บบนเครื่องได้ อ่านได้ครบทุกบท (อังกฤษ) เมนูเป็นไทย | ⬜ |
 | 2 | interactive: แผนภาพ 553 จุด, ปุ่มรัน Python (Pyodide offline), สูตรคณิต, Mermaid, ระบบความคืบหน้า + แดชบอร์ด | บทเรียนกดเล่นและรันโค้ดได้ | ⬜ |
 | 3 | ระบบแบบทดสอบเลือกตอบ (3 ระดับ) + ระบบโจทย์ลงมือทำ + นำเข้า quiz เดิม 392 บทและ practice 51 ข้อ | ทำแบบทดสอบได้ (ยังเป็นอังกฤษ) | ⬜ |
@@ -274,7 +291,7 @@ exercises/<phase>/<lesson>/medium/
 | Phase | บท | แปล | Quiz 3 ระดับ | โจทย์ 3 ระดับ |
 |---|---|---|---|---|
 | 00 setup-and-tooling | 13 | 0 | 0 | 0 |
-| 01 math-foundations | 22 | 0 | 0 | 0 |
+| 01 math-foundations | 22 | 1 | 1 | 1 |
 | 02 ml-fundamentals | 21 | 0 | 0 | 0 |
 | 03 deep-learning-core | 13 | 0 | 0 | 0 |
 | 04 computer-vision | 28 | 0 | 0 | 0 |
@@ -293,7 +310,22 @@ exercises/<phase>/<lesson>/medium/
 | 17 infrastructure-and-production | 29 | 0 | 0 | 0 |
 | 18 ethics-safety-alignment | 30 | 0 | 0 | 0 |
 | 19 capstone-projects | 85 | 0 | 0 | 0 |
-| **รวม** | **542** | **0** | **0** | **0** |
+| **รวม** | **542** | **1** | **1** | **1** |
+
+### งานที่ยังค้างจากรอบนำร่อง (ทำในรอบ 1–3)
+- รอบ 1 เหลือ: นำเข้าบทอังกฤษที่เหลือ (`import-content.mjs --all`), หน้าแรกตาม mockup, ทดสอบการค้นหาภาษาไทยของ Pagefind
+- แผนภาพของ phase อื่นอยู่ในไฟล์ `site/figures-*.js` ของต้นฉบับ ต้องเพิ่มการคัดลอกใน `import-content.mjs` และบอกตำแหน่งไฟล์ให้ `lesson-figures.js` โหลด
+- รูปภาพในโฟลเดอร์ `assets/` ของบทเรียน ยังไม่ได้คัดลอกและยังไม่ได้แก้ลิงก์ (บท 01/08 ไม่มีรูป)
+- ยังไม่มีปุ่มส่งออก/นำเข้าความคืบหน้า และหน้าแดชบอร์ด
+- บทที่ยังไม่มี quiz ชุดใหม่ จะใช้ quiz เดิมของต้นฉบับ (ภาษาอังกฤษ, ข้อ pre เป็นระดับง่าย, ข้อ post เป็นระดับกลาง)
+
+### ขั้นตอนทำเนื้อหาไทยต่อบท (ใช้บท 01/08 เป็นแบบอย่าง)
+1. `node scripts/import-content.mjs --lesson <phase>/<lesson>` (ถ้ายังไม่ได้นำเข้า)
+2. แปลเต็มบทไปที่ `src/content/docs/th/<phase>/<lesson>.md` คัดลอก frontmatter `upstream_*` และ `source_hash` จากฉบับอังกฤษ ห้ามแก้โค้ด สูตร และบล็อก figure (แปลได้เฉพาะป้ายใน Mermaid) แล้วตรวจด้วยการเทียบบล็อกโค้ดสองไฟล์
+3. ทำ `src/data/quizzes/<phase>/<lesson>.json` ระดับละ 5 ข้อ ใช้คำถามเดิมของต้นฉบับแบบไม่แก้ (`origin: upstream`) แล้วแต่งเพิ่ม (`origin: new`) และรันโค้ดตรวจคำตอบข้อที่คำนวณได้
+4. ทำโจทย์ 3 ระดับใน `src/data/exercises/<phase>/<lesson>/` พร้อม mutants แล้วรัน `npm run test:exercises`
+5. ถ้าบทมีแผนภาพ เพิ่มคำแปลข้อความใน `src/data/figure-i18n.th.json`
+6. เพิ่มคำศัพท์ใหม่ลง `glossary/th.json` แล้ว `npm run build`
 
 ## 13. ความเสี่ยงและวิธีรับมือ
 

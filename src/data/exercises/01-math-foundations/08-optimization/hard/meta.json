@@ -1,0 +1,25 @@
+{
+  "minutes": 25,
+  "title": {
+    "th": "เขียน Adam พร้อม bias correction",
+    "en": "Write Adam with bias correction"
+  },
+  "prompt": {
+    "th": "เขียนคลาส `Adam` ให้ครบ: เก็บ `m` และ `v` ของพารามิเตอร์แต่ละตัว และตัวนับก้าว `t` อัปเดตตามสูตรในบทเรียน ใช้ bias correction แล้วคืน list พารามิเตอร์ใหม่ ตัวตรวจจะเช็กขนาดของก้าวแรก การทำงานเมื่อเกรเดียนต์เป็นศูนย์ และมี test ซ่อนที่รันบนฟังก์ชัน Rosenbrock",
+    "en": "Complete the `Adam` class: keep `m` and `v` for every parameter plus a step counter `t`, update them with the formulas from the lesson, apply bias correction and return a new list of parameters. The checks look at the size of the first step and at zero gradients, and hidden tests run on the Rosenbrock function."
+  },
+  "hints": [
+    {
+      "th": "ก้าวแรกที่ถูกต้องจะขยับพารามิเตอร์ราว `lr` ไม่ว่าเกรเดียนต์จะใหญ่แค่ไหน ถ้าได้ราว `3.16 × lr` แปลว่ายังไม่ได้ทำ bias correction",
+      "en": "A correct first step moves each parameter by about `lr`, whatever the gradient size. Getting about `3.16 × lr` means bias correction is missing."
+    },
+    {
+      "th": "เพิ่ม `self.t += 1` ก่อน แล้วจึงคำนวณ `m_hat = m / (1 - beta1 ** t)` และ `v_hat = v / (1 - beta2 ** t)`",
+      "en": "Increment `self.t` first, then compute `m_hat = m / (1 - beta1 ** t)` and `v_hat = v / (1 - beta2 ** t)`."
+    },
+    {
+      "th": "ตัวหารคือ `sqrt(v_hat) + epsilon` บวก epsilon หลังถอดราก เพื่อไม่ให้หารด้วยศูนย์เมื่อเกรเดียนต์เป็นศูนย์",
+      "en": "The divisor is `sqrt(v_hat) + epsilon`. Add epsilon after the square root so a zero gradient never divides by zero."
+    }
+  ]
+}

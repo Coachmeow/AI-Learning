@@ -1,0 +1,9 @@
+{
+  "lessons": {
+    "01-math-foundations/08-optimization": {
+      "source_hash": "37a97829f21025866d4bd4349478fcd6572dcc734154b836ce3e69f4813cb278"
+    }
+  },
+  "repo": "https://github.com/rohitg00/ai-engineering-from-scratch",
+  "commit": "6a63ddb066207fca854ece311da0289295c2a313"
+}
