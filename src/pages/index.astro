@@ -1,0 +1,23 @@
+---
+// Root: send readers to their saved language, Thai by default.
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI-Learning</title>
+    <meta http-equiv="refresh" content={`0; url=${base}th/`} />
+    <script is:inline define:vars={{ base }}>
+      var lang = 'th';
+      try {
+        if (localStorage.getItem('ail-lang') === 'en') lang = 'en';
+      } catch (e) {}
+      location.replace(base + lang + '/');
+    </script>
+  </head>
+  <body>
+    <a href={`${base}th/`}>ภาษาไทย</a> · <a href={`${base}en/`}>English</a>
+  </body>
+</html>

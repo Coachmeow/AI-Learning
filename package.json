@@ -1,0 +1,36 @@
+{
+  "name": "ai-learning",
+  "private": true,
+  "type": "module",
+  "description": "Bilingual (Thai/English) AI engineering course site that works offline.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "vendor": "node scripts/copy-vendor.mjs",
+    "import": "node scripts/import-content.mjs",
+    "dev": "npm run vendor && astro dev",
+    "build": "npm run vendor && astro build",
+    "preview": "astro preview",
+    "test:exercises": "python3 scripts/check-exercises.py"
+  },
+  "dependencies": {
+    "@astrojs/markdown-remark": "7.3.9",
+    "@astrojs/starlight": "0.43.1",
+    "@codemirror/commands": "6.11.1",
+    "@codemirror/lang-python": "6.2.1",
+    "@codemirror/language": "6.13.1",
+    "@codemirror/theme-one-dark": "6.1.3",
+    "@codemirror/view": "6.43.15",
+    "@fontsource/ibm-plex-sans-thai": "5.3.0",
+    "@fontsource/jetbrains-mono": "5.3.0",
+    "astro": "7.4.12",
+    "codemirror": "6.0.2",
+    "katex": "0.19.1",
+    "mermaid": "12.3.0",
+    "pyodide": "314.0.8",
+    "remark-math": "6.0.0",
+    "unist-util-visit": "5.2.0"
+  }
+}

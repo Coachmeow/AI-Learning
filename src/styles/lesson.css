@@ -1,0 +1,490 @@
+/* Lesson add-ons: math, figures, Mermaid, run buttons, quiz and hands-on exercises. */
+
+/* ── Math ─────────────────────────────────────────────── */
+.math-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0;
+}
+.katex {
+  font-size: 1.08em;
+}
+
+/* ── Interactive figures from the upstream course (lesson-figures.js) ── */
+.lesson-figure {
+  --blueprint: var(--sl-color-text-accent);
+  --bg: var(--ail-surface);
+  --rule-soft: var(--ail-line);
+  --ink: var(--sl-color-white);
+  --ink-soft: var(--sl-color-gray-2);
+  --ink-mute: var(--sl-color-gray-3);
+  --font-mono: var(--sl-font-mono);
+  --font-body: var(--sl-font);
+  --warn: var(--ail-warn);
+}
+.lesson-figure .lf {
+  border-radius: 14px;
+  overflow: hidden;
+}
+.lesson-figure .lf-head {
+  letter-spacing: 0.06em;
+}
+:root[lang='th'] .lesson-figure .lf-head,
+:root[lang='th'] .lesson-figure .lf-ctrl label {
+  text-transform: none;
+}
+
+/* ── Mermaid ──────────────────────────────────────────── */
+.mermaid-wrap {
+  margin-top: 1.25rem;
+  padding: 1rem;
+  border: 1px solid var(--ail-line);
+  border-radius: 14px;
+  background: var(--ail-surface);
+  overflow-x: auto;
+}
+.mermaid-wrap pre.mermaid {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: center;
+  font-family: var(--sl-font);
+  white-space: pre;
+}
+.mermaid-wrap pre.mermaid:not([data-processed]) {
+  color: var(--sl-color-gray-3);
+  font-size: 0.8rem;
+  text-align: left;
+}
+.mermaid-wrap svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ── Shared buttons ───────────────────────────────────── */
+.ail-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0 1.1rem;
+  border-radius: 10px;
+  border: 1px solid var(--ail-line);
+  background: var(--ail-surface);
+  color: var(--sl-color-white);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.ail-btn:hover:not(:disabled) {
+  border-color: var(--ail-accent);
+}
+.ail-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.ail-btn.primary {
+  background: var(--ail-accent);
+  border-color: var(--ail-accent);
+  color: var(--ail-on-accent);
+}
+.ail-btn.small {
+  min-height: 2.25rem;
+  padding: 0 0.8rem;
+  font-size: 0.875rem;
+  border-radius: 8px;
+}
+.ail-btn svg {
+  flex: none;
+}
+
+/* ── Run buttons under lesson code ────────────────────── */
+.ail-run {
+  margin-top: 0.5rem !important;
+  border: 1px solid var(--ail-line);
+  border-radius: 12px;
+  background: var(--ail-surface);
+  overflow: hidden;
+}
+.ail-run-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  padding: 0.5rem 0.75rem;
+}
+.ail-run-note {
+  color: var(--sl-color-gray-3);
+  font-size: 0.85rem;
+}
+.ail-run-out {
+  margin: 0 !important;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--ail-line);
+  background: #0b0d12;
+  color: #e6e8ee;
+  font-family: var(--sl-font-mono);
+  font-size: 0.85rem;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 22rem;
+  overflow: auto;
+}
+.ail-run-out.err {
+  color: #ffb4a8;
+}
+
+/* ── Lesson banner (translation status) ───────────────── */
+.ail-banner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  align-items: baseline;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  background: var(--ail-surface-2);
+  font-size: 0.9rem;
+  color: var(--sl-color-gray-2);
+}
+.ail-banner strong {
+  color: var(--sl-color-white);
+}
+.ail-banner a {
+  color: var(--sl-color-text-accent);
+}
+.ail-banner.stale {
+  background: var(--ail-warn-soft);
+}
+
+/* ── Assessment (quiz + exercises) ────────────────────── */
+.ail-assess {
+  margin-top: 3rem !important;
+  padding: 1.75rem;
+  border-radius: 20px;
+  border: 1px solid var(--ail-line);
+  background: var(--ail-surface);
+}
+.ail-assess > h2 {
+  margin-top: 0 !important;
+}
+.ail-sub {
+  color: var(--sl-color-gray-3);
+  margin-top: 0.25rem !important;
+}
+.ail-tabs {
+  display: flex;
+  gap: 0.25rem;
+  margin-top: 1.25rem !important;
+  border-bottom: 1px solid var(--ail-line);
+}
+.ail-tab {
+  min-height: 2.75rem;
+  padding: 0 1.25rem;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--sl-color-gray-3);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.ail-tab[aria-selected='true'] {
+  color: var(--sl-color-text-accent);
+  border-bottom-color: var(--sl-color-text-accent);
+}
+.ail-levels {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem !important;
+}
+.ail-levels-label {
+  font-weight: 600;
+  color: var(--sl-color-gray-3);
+  margin-right: 0.25rem;
+}
+.ail-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 2.5rem;
+  padding: 0 1.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--ail-line);
+  background: var(--ail-surface);
+  color: var(--sl-color-white);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+.ail-pill:hover {
+  border-color: var(--ail-accent);
+}
+.ail-pill[aria-pressed='true'] {
+  background: var(--ail-accent);
+  border-color: var(--ail-accent);
+  color: var(--ail-on-accent);
+}
+.ail-pill .ail-badge {
+  font-size: 0.75rem;
+}
+.ail-panel {
+  margin-top: 1.25rem !important;
+}
+.ail-panel[hidden] {
+  display: none;
+}
+.ail-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  font-size: 0.9rem;
+}
+.ail-counter {
+  font-weight: 600;
+  color: var(--sl-color-text-accent);
+}
+.ail-muted {
+  color: var(--sl-color-gray-3);
+}
+.ail-progress {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--ail-surface-2);
+  overflow: hidden;
+  margin-top: 0.5rem !important;
+}
+.ail-progress > i {
+  display: block;
+  height: 100%;
+  background: var(--ail-accent);
+  transition: width 200ms ease;
+}
+.ail-question {
+  margin: 1.1rem 0 0.9rem !important;
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--sl-color-white);
+}
+.ail-code {
+  margin: 0 0 1rem !important;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  background: #11141a;
+  color: #e6e8ee;
+  font-family: var(--sl-font-mono);
+  font-size: 0.875rem;
+  line-height: 1.65;
+  white-space: pre;
+  overflow-x: auto;
+}
+.ail-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.ail-opt {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  width: 100%;
+  min-height: 3.25rem;
+  margin: 0 !important;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--ail-line);
+  background: var(--ail-surface);
+  color: var(--sl-color-white);
+  font: inherit;
+  line-height: 1.6;
+  text-align: left;
+  cursor: pointer;
+}
+.ail-opt:hover:not(:disabled) {
+  border-color: var(--ail-accent);
+}
+.ail-opt:disabled {
+  cursor: default;
+}
+.ail-opt .ail-letter {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 8px;
+  background: var(--ail-surface-2);
+  color: var(--sl-color-gray-3);
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+.ail-opt.correct {
+  border-color: var(--ail-ok);
+  background: var(--ail-ok-soft);
+}
+.ail-opt.correct .ail-letter {
+  background: var(--ail-ok);
+  color: var(--ail-surface);
+}
+.ail-opt.wrong {
+  border-color: var(--ail-warn);
+  background: var(--ail-warn-soft);
+}
+.ail-opt.wrong .ail-letter {
+  background: var(--ail-warn);
+  color: var(--ail-surface);
+}
+.ail-opt.dim {
+  opacity: 0.55;
+}
+.ail-feedback {
+  margin-top: 1rem !important;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  background: var(--ail-surface-2);
+  line-height: 1.75;
+}
+.ail-ok {
+  color: var(--ail-ok);
+  font-weight: 700;
+}
+.ail-warn {
+  color: var(--ail-warn);
+  font-weight: 700;
+}
+.ail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem !important;
+}
+.ail-origin {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0 0.5rem;
+  border-radius: 6px;
+  border: 1px solid var(--ail-line);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--sl-color-gray-3);
+  vertical-align: middle;
+}
+.ail-score {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--sl-color-white);
+}
+
+/* Exercises */
+.ail-ex-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.75rem;
+}
+.ail-ex-head h3 {
+  margin: 0 !important;
+  font-size: 1.2rem;
+}
+.ail-ex-prompt {
+  margin-top: 0.5rem !important;
+}
+.ail-editor {
+  margin-top: 1rem !important;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #232833;
+  background: #282c34;
+}
+.ail-editor-bar {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.45rem 1rem;
+  border-bottom: 1px solid #343a47;
+  background: #21252b;
+  color: #9aa1ad;
+  font-family: var(--sl-font-mono);
+  font-size: 0.8rem;
+}
+.ail-editor .cm-editor {
+  font-size: 0.875rem;
+  max-height: 32rem;
+}
+.ail-editor .cm-scroller {
+  font-family: var(--sl-font-mono);
+  line-height: 1.65;
+}
+.ail-hint {
+  margin-top: 1rem !important;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  background: var(--sl-color-accent-low);
+  line-height: 1.75;
+}
+.ail-hint b {
+  color: var(--sl-color-text-accent);
+}
+.ail-results {
+  margin-top: 1rem !important;
+  padding: 0.25rem 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--ail-line);
+}
+.ail-results > div {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  padding: 0.6rem 0;
+  border-top: 1px solid var(--ail-line);
+  line-height: 1.6;
+  margin: 0 !important;
+}
+.ail-results > div:first-child {
+  border-top: 0;
+}
+.ail-results svg {
+  flex: none;
+  margin-top: 0.2rem;
+}
+.ail-solution {
+  margin-top: 1rem !important;
+}
+.ail-solution summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.ail-spin {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  animation: ail-spin 0.8s linear infinite;
+}
+@keyframes ail-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ail-spin {
+    animation-duration: 2.4s;
+  }
+}
+@media (max-width: 40rem) {
+  .ail-assess {
+    padding: 1.1rem;
+    border-radius: 14px;
+  }
+}
+.ail-warn-text {
+  color: var(--ail-warn);
+}

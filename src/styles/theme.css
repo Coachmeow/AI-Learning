@@ -1,0 +1,70 @@
+/* Site theme: Starlight color tokens, fonts and Thai-friendly reading rhythm. */
+
+:root {
+  --sl-font: 'IBM Plex Sans Thai', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --sl-font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --sl-line-height: 1.75;
+  --sl-content-width: 46rem;
+
+  /* Dark mode (Starlight's default block) */
+  --sl-color-accent-low: #1f2547;
+  --sl-color-accent: #6f7dff;
+  --sl-color-accent-high: #b9c0ff;
+  --sl-color-white: #f2f4f7;
+  --sl-color-gray-1: #e7e9ee;
+  --sl-color-gray-2: #c3c8d1;
+  --sl-color-gray-3: #a4aab5;
+  --sl-color-gray-4: #6b7280;
+  --sl-color-gray-5: #2a2f39;
+  --sl-color-gray-6: #161920;
+  --sl-color-black: #0e1014;
+
+  --ail-surface: #161920;
+  --ail-surface-2: #1d2129;
+  --ail-line: #2a2f39;
+  --ail-ok: #5fd39a;
+  --ail-ok-soft: #14301f;
+  --ail-warn: #f2a35e;
+  --ail-warn-soft: #38230f;
+  --ail-on-accent: #0e1014;
+  --ail-accent: #8c98ff;
+}
+
+:root[data-theme='light'] {
+  --sl-color-accent-low: #e9ecff;
+  --sl-color-accent: #3445d9;
+  --sl-color-accent-high: #1f2a99;
+  --sl-color-white: #14161a;
+  --sl-color-gray-1: #22252b;
+  --sl-color-gray-2: #3b404a;
+  --sl-color-gray-3: #5a606b;
+  --sl-color-gray-4: #8a909b;
+  --sl-color-gray-5: #c9cdd4;
+  --sl-color-gray-6: #e2e5ea;
+  --sl-color-gray-7: #f3f4f6;
+  --sl-color-black: #ffffff;
+
+  --ail-surface: #ffffff;
+  --ail-surface-2: #f0f2f5;
+  --ail-line: #e2e5ea;
+  --ail-ok: #1e7a4c;
+  --ail-ok-soft: #e5f4ec;
+  --ail-warn: #a44a08;
+  --ail-warn-soft: #fdf0e4;
+  --ail-on-accent: #ffffff;
+  --ail-accent: #3445d9;
+}
+
+/* Thai text needs more room between lines for vowels and tone marks above and below. */
+:root[lang='th'] {
+  --sl-line-height: 1.85;
+}
+:root[lang='th'] .sl-markdown-content {
+  line-height: 1.85;
+}
+.sl-markdown-content :is(h1, h2, h3, h4) {
+  line-height: 1.4;
+}
+.sl-markdown-content table {
+  font-size: 0.94rem;
+}

@@ -1,0 +1,19 @@
+{
+  "_comment": "Thai labels for the upstream interactive figures. 'exact' matches a whole text node or aria-label; 'patterns' are [regex, replacement] for text with numbers.",
+  "exact": {
+    "Expand": "ขยาย",
+    "Close": "ปิด",
+    "Open the figure in full screen": "เปิดแผนภาพเต็มจอ",
+    "drag the learning rate": "ลองเลื่อน learning rate",
+    "steps": "จำนวนก้าว",
+    "start x": "x เริ่มต้น",
+    "diverged": "ลู่ออก",
+    "converged": "ลู่เข้าแล้ว",
+    "lr too large: each step overshoots the minimum and the loss explodes": "lr ใหญ่เกินไป: ทุกก้าวกระโดดข้ามจุดต่ำสุด และ loss พุ่งขึ้นไม่หยุด",
+    "x ← x − lr · 2x   (loss f(x) = x²,  diverges when lr > 1)": "x ← x − lr · 2x   (loss f(x) = x²,  ลู่ออกเมื่อ lr > 1)",
+    "Each step moves downhill by the gradient times the learning rate. Too small and it crawls; too large and it overshoots and diverges. Training is the search for the rate in between.": "แต่ละก้าวเดินลงเขาเป็นระยะเท่ากับเกรเดียนต์คูณ learning rate ถ้าเล็กเกินไปจะคืบคลานช้า ถ้าใหญ่เกินไปจะกระโดดข้ามจุดต่ำสุดจนลู่ออก การฝึกโมเดลก็คือการหาค่าที่อยู่ตรงกลางนี้"
+  },
+  "patterns": [
+    ["^final loss f\\(x\\) = ([-\\d.e+]+)  ·  (\\d+) steps$", "loss สุดท้าย f(x) = $1  ·  $2 ก้าว"]
+  ]
+}
