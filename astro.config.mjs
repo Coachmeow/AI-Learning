@@ -27,7 +27,7 @@ export default defineConfig({
   trailingSlash: 'always',
   markdown: {
     processor: unified({
-      remarkPlugins: [remarkMath, remarkLesson],
+      remarkPlugins: [remarkMath, [remarkLesson, { base: process.env.SITE_BASE || '/' }]],
     }),
   },
   integrations: [
@@ -59,6 +59,7 @@ export default defineConfig({
         './src/styles/theme.css',
         './src/styles/lesson.css',
       ],
+      routeMiddleware: './src/routeData.ts',
       components: {
         MarkdownContent: './src/components/MarkdownContent.astro',
       },
