@@ -68,3 +68,11 @@
 .sl-markdown-content table {
   font-size: 0.94rem;
 }
+
+/* Home page draws its own heading, so hide Starlight's title panel there. */
+:root:has(.ail-home) main > .content-panel:first-of-type {
+  display: none;
+}
+:root:has(.ail-home) main > .content-panel {
+  border-top: 0;
+}

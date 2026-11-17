@@ -44,6 +44,20 @@ self.onmessage = async (e) => {
     return;
   }
   const out = [];
+  try {
+    // Load bundled packages (numpy) that this code imports, from the local copy.
+    const source = msg.type === 'run' ? msg.code : `${msg.user}\n${msg.tests}`;
+    if (/^\s*(?:import|from)\s+numpy\b/m.test(source)) {
+      try {
+        await py.loadPackagesFromImports(source, { messageCallback: () => {} });
+      } catch (err) {
+        throw new Error('numpy is not bundled with this copy of the site. Run "npm run build" once while online, then try again.');
+      }
+    }
+  } catch (err) {
+    self.postMessage({ id: msg.id, ok: false, error: String(err.message || err) });
+    return;
+  }
   py.setStdout({ batched: (s) => out.push(s) });
   py.setStderr({ batched: (s) => out.push(s) });
   try {

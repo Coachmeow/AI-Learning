@@ -15,7 +15,7 @@ const git = (...a) => execFileSync('git', a, { stdio: 'inherit' });
 if (!fs.existsSync(path.join(dir, '.git'))) {
   fs.mkdirSync(path.dirname(dir), { recursive: true });
   git('clone', '--filter=blob:none', '--sparse', '--depth', '1', repo, dir);
-  git('-C', dir, 'sparse-checkout', 'set', 'phases', 'practice', 'glossary', 'site/lesson-figures.js');
+  git('-C', dir, 'sparse-checkout', 'set', '--no-cone', '/phases/', '/practice/', '/glossary/', '/LICENSE', '/site/build.js', '/site/lesson-figures.js', '/site/figures*.js');
 }
 const ref = process.argv[2] || 'main';
 git('-C', dir, 'fetch', '--depth', '1', 'origin', ref);

@@ -2,7 +2,7 @@
 // Wraps Starlight's Markdown content: adds a translation/source banner above lessons
 // and the "check your understanding" section (quiz + hands-on) below them.
 import Default from '@astrojs/starlight/components/MarkdownContent.astro';
-import { getEntry } from 'astro:content';
+import { docsIndex } from '../lib/docs-index';
 import LessonAssessment from './LessonAssessment.astro';
 import { ui, type Lang } from '../data/ui';
 
@@ -15,8 +15,9 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
 let banner: { kind: 'current' | 'stale' | 'source'; other?: string; source?: string } | null = null;
 if (isLesson) {
-  const en = await getEntry('docs', `en/${lessonKey}`);
-  const th = await getEntry('docs', `th/${lessonKey}`);
+  const docs = await docsIndex();
+  const en = docs.get(`en/${lessonKey}`);
+  const th = docs.get(`th/${lessonKey}`);
   const source = en?.data.upstream_path ? `https://github.com/rohitg00/ai-engineering-from-scratch/tree/${en.data.upstream_commit ?? 'main'}/${en.data.upstream_path}` : undefined;
   if (lang === 'th' && !route.isFallback && th) {
     banner = { kind: th.data.source_hash === en?.data.source_hash ? 'current' : 'stale', other: `${base}en/${lessonKey}/`, source };
@@ -29,7 +30,7 @@ if (isLesson) {
 <Default>
   {
     banner && (
-      <div class:list={['ail-banner', 'not-content', { stale: banner.kind === 'stale' }]}>
+      <div class:list={['ail-banner', 'not-content', { stale: banner.kind === 'stale' }]} data-pagefind-ignore="all">
         <span>
           <strong>{t.bannerTranslated}</strong> · {banner.kind === 'stale' ? t.bannerStale : t.bannerCurrent}
         </span>
@@ -47,6 +48,7 @@ if (isLesson) {
     <>
       <script is:inline id="ail-ui" type="application/json" set:html={JSON.stringify(t)} />
       <script is:inline src={`${base}vendor/figures/lesson-figures.js`} />
+      <script is:inline src={`${base}vendor/figures/figure-manifest.js`} />
       <script>
         import '../scripts/lesson-page.ts';
       </script>
