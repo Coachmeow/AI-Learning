@@ -1,0 +1,25 @@
+{
+  "minutes": 30,
+  "title": {
+    "th": "หาโฟลเดอร์ที่กินพื้นที่ดิสก์มากที่สุด",
+    "en": "Find the biggest space hogs"
+  },
+  "prompt": {
+    "th": "เขียนเวอร์ชัน Python ของ `du -h --max-depth=N | sort -hr | head`: `space_hogs(files, max_depth, top)` รับ `files` เป็น dict ของ path ไฟล์ (สัมพัทธ์ คั่นด้วย `/` เช่น `data/imdb/train.parquet`) กับขนาดเป็น byte\n\n1. ขนาดของโฟลเดอร์คือผลรวมของทุกไฟล์ข้างใน รวมโฟลเดอร์ย่อย โฟลเดอร์รากเขียนว่า `.` และรวมทุกไฟล์\n2. ความลึกของ `.` คือ 0 ของ `data` คือ 1 ของ `data/imdb` คือ 2 ให้นับเฉพาะโฟลเดอร์ที่ลึกไม่เกิน `max_depth`\n3. เรียงจากใหญ่ไปเล็ก ถ้าขนาดเท่ากันเรียงตาม path แล้วคืน `top` รายการแรกเป็น list ของ `(human, path)`\n4. `human` คือขนาดแบบอ่านง่าย ฐาน 1024: น้อยกว่า 1024 เขียนเป็น `\"512B\"` นอกนั้นใช้หน่วย K, M, G, T ที่ใหญ่ที่สุดที่ทำให้ค่า ≥ 1 ถ้าค่าน้อยกว่า 10 ให้มีทศนิยม 1 ตำแหน่ง (เช่น `\"1.5G\"`) ถ้าไม่ใช่ให้ปัดเป็นจำนวนเต็ม (เช่น `\"14G\"`) โดยปัดแบบ `round` ของ Python\n\nมี test ซ่อนอยู่บางส่วน",
+    "en": "Write a Python version of `du -h --max-depth=N | sort -hr | head`: `space_hogs(files, max_depth, top)` takes `files`, a dict of relative file paths (joined with `/`, e.g. `data/imdb/train.parquet`) to sizes in bytes.\n\n1. A folder's size is the sum of every file inside it, subfolders included. The root is written `.` and contains every file.\n2. The depth of `.` is 0, `data` is 1 and `data/imdb` is 2; only count folders no deeper than `max_depth`.\n3. Sort from largest to smallest, breaking ties by path, and return the first `top` entries as a list of `(human, path)`.\n4. `human` is a readable size in base 1024: below 1024 write `\"512B\"`; otherwise use the largest of K, M, G, T that keeps the value ≥ 1. Below 10, show one decimal (such as `\"1.5G\"`); otherwise round to a whole number (such as `\"14G\"`), using Python's `round`.\n\nSome tests are hidden."
+  },
+  "hints": [
+    {
+      "th": "สำหรับไฟล์ `a/b/c.bin` ให้บวกขนาดเข้า `.`, `a` และ `a/b` (ทุกโฟลเดอร์แม่ แต่ไม่ใช่ตัวไฟล์เอง) ใช้ `collections.defaultdict(int)` สะดวก",
+      "en": "For a file `a/b/c.bin`, add its size to `.`, `a` and `a/b` (every parent folder, not the file itself). `collections.defaultdict(int)` helps."
+    },
+    {
+      "th": "ความลึกของ path คือ `0 if p == \".\" else p.count(\"/\") + 1`",
+      "en": "A path's depth is `0 if p == \".\" else p.count(\"/\") + 1`."
+    },
+    {
+      "th": "เรียงด้วย `sorted(items, key=lambda kv: (-kv[1], kv[0]))` เรียงตามจำนวน byte จริง ไม่ใช่สตริงที่แปลงแล้ว เพราะ `\"9.0G\"` > `\"14G\"` เมื่อเทียบเป็นข้อความ",
+      "en": "Sort with `sorted(items, key=lambda kv: (-kv[1], kv[0]))` on the real byte counts, not the formatted strings: as text, `\"9.0G\"` > `\"14G\"`."
+    }
+  ]
+}

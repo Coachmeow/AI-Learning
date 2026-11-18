@@ -1,0 +1,25 @@
+{
+  "minutes": 18,
+  "title": {
+    "th": "เขียน chmod แบบย่อ",
+    "en": "Write a small chmod"
+  },
+  "prompt": {
+    "th": "เขียน `apply_chmod(perms, spec)` ที่รับสิทธิ์ปัจจุบันแบบ 9 ตัวอักษร (เช่น `rw-r--r--`) กับคำสั่งของ chmod แล้วคืนสิทธิ์ใหม่แบบ 9 ตัวอักษร รองรับ\n\n- เลขฐานแปด 3 หลัก เช่น `755` แทนที่สิทธิ์ทั้งหมด\n- แบบสัญลักษณ์ `[ugoa]*[+-=][rwx]*` เช่น `+x`, `u+x`, `go-w`, `a=r` โดย `u` = เจ้าของ, `g` = กลุ่ม, `o` = คนอื่น, `a` = ทั้งหมด ถ้าไม่ระบุว่าใครให้ถือเป็น `a` และ `+` เพิ่ม, `-` เอาออก, `=` ตั้งให้มี**เฉพาะ**สิทธิ์ที่ระบุ\n- หลายข้อคั่นด้วยจุลภาค เช่น `u+x,go-w` ทำตามลำดับ\n\nรูปแบบอื่นให้ `raise ValueError`",
+    "en": "Write `apply_chmod(perms, spec)` that takes the current 9-letter permissions (such as `rw-r--r--`) and a chmod argument, and returns the new 9-letter permissions. Support:\n\n- 3-digit octal such as `755`, which replaces everything.\n- Symbolic `[ugoa]*[+-=][rwx]*` such as `+x`, `u+x`, `go-w`, `a=r`, where `u` = owner, `g` = group, `o` = others, `a` = all; no letters means `a`. `+` adds, `-` removes, `=` sets **exactly** the listed permissions.\n- Several clauses separated by commas, such as `u+x,go-w`, applied in order.\n\nRaise `ValueError` for anything else."
+  },
+  "hints": [
+    {
+      "th": "เก็บสิทธิ์เป็น list ของเซต: `[set(\"rw\"), set(\"r\"), set(\"r\")]` แก้ทีละกลุ่มได้ง่ายกว่าแก้สตริง แล้วค่อยแปลงกลับตอนท้าย",
+      "en": "Hold the permissions as a list of sets, such as `[set(\"rw\"), set(\"r\"), set(\"r\")]`. Editing a group is easier than editing the string; convert back at the end."
+    },
+    {
+      "th": "แยกแต่ละข้อด้วย `re.fullmatch(r\"([ugoa]*)([+=-])([rwx]*)\", clause)` ใครที่ว่างให้ใช้ `\"ugo\"` และ `a` ก็คือ `ugo`",
+      "en": "Parse each clause with `re.fullmatch(r\"([ugoa]*)([+=-])([rwx]*)\", clause)`. Empty who means `\"ugo\"`, and so does `a`."
+    },
+    {
+      "th": "`+` คือ `group |= perms`, `-` คือ `group -= perms`, `=` คือ `group = set(perms)` แล้วแปลงกลับด้วย `\"\".join(ch if ch in g else \"-\" for ch in \"rwx\")`",
+      "en": "`+` is `group |= perms`, `-` is `group -= perms`, `=` is `group = set(perms)`; convert back with `\"\".join(ch if ch in g else \"-\" for ch in \"rwx\")`."
+    }
+  ]
+}

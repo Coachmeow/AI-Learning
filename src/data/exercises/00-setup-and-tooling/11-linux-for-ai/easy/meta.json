@@ -1,0 +1,25 @@
+{
+  "minutes": 6,
+  "title": {
+    "th": "เติมโค้ด: แปลง rwxr-xr-- เป็นเลขฐานแปด",
+    "en": "Fill in: turn rwxr-xr-- into octal"
+  },
+  "prompt": {
+    "th": "`ls -l` แสดงสิทธิ์เป็นตัวอักษร 9 ตัว เช่น `rwxr-xr--` (เจ้าของ กลุ่ม คนอื่น กลุ่มละ 3 ตัว) ส่วน `chmod` ใช้เลขฐานแปด เช่น `754` เติมฟังก์ชัน `to_octal(perms)` ให้คืนสตริงเลข 3 หลัก โดยแต่ละกลุ่มคิด `r` = 4, `w` = 2, `x` = 1 และ `-` = 0",
+    "en": "`ls -l` shows permissions as 9 letters such as `rwxr-xr--` (owner, group, others, 3 letters each), while `chmod` uses octal such as `754`. Complete `to_octal(perms)` so it returns a 3-digit string, scoring each group as `r` = 4, `w` = 2, `x` = 1 and `-` = 0."
+  },
+  "hints": [
+    {
+      "th": "แต่ละกลุ่มคือ `perms[i:i + 3]` สำหรับ `i` เป็น 0, 3 และ 6",
+      "en": "Each group is `perms[i:i + 3]` for `i` in 0, 3 and 6."
+    },
+    {
+      "th": "ตำแหน่งในกลุ่มบอกค่าอยู่แล้ว: ตัวแรกมีค่า 4 ตัวที่สอง 2 ตัวที่สาม 1 นับเฉพาะตำแหน่งที่ไม่ใช่ `-`",
+      "en": "The position in the group gives the value: first 4, second 2, third 1; count only positions that are not `-`."
+    },
+    {
+      "th": "`value = sum(w for ch, w in zip(group, (4, 2, 1)) if ch != \"-\")`",
+      "en": "`value = sum(w for ch, w in zip(group, (4, 2, 1)) if ch != \"-\")`"
+    }
+  ]
+}

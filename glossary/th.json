@@ -735,6 +735,60 @@
     {
       "en": "buffering",
       "th": "การพักข้อมูลใน buffer"
+    },
+    {
+      "en": "file system",
+      "th": "ระบบไฟล์",
+      "first": "ระบบไฟล์ (file system)"
+    },
+    {
+      "en": "home directory",
+      "th": "โฟลเดอร์ home"
+    },
+    {
+      "en": "root (user / directory)",
+      "th": "root"
+    },
+    {
+      "en": "permissions / permission bits",
+      "th": "สิทธิ์ / บิตกำหนดสิทธิ์",
+      "first": "สิทธิ์ (permissions)"
+    },
+    {
+      "en": "owner / group / others",
+      "th": "เจ้าของ / กลุ่ม / คนอื่น"
+    },
+    {
+      "en": "octal",
+      "th": "เลขฐานแปด"
+    },
+    {
+      "en": "package (system)",
+      "th": "แพ็กเกจ"
+    },
+    {
+      "en": "service / daemon",
+      "th": "บริการ / daemon"
+    },
+    {
+      "en": "disk space",
+      "th": "พื้นที่ดิสก์"
+    },
+    {
+      "en": "case-sensitive",
+      "th": "สนตัวพิมพ์เล็กใหญ่"
+    },
+    {
+      "en": "line endings (CRLF / LF)",
+      "th": "การขึ้นบรรทัดใหม่ (CRLF / LF)"
+    },
+    {
+      "en": "instance (cloud)",
+      "th": "instance"
+    },
+    {
+      "en": "WSL2",
+      "th": "WSL2"
     }
   ]
 }
