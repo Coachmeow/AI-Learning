@@ -503,6 +503,67 @@
       "en": "backtracking",
       "th": "การย้อนกลับไปลองทางอื่น",
       "first": "การย้อนกลับ (backtracking)"
+    },
+    {
+      "en": "container",
+      "th": "container"
+    },
+    {
+      "en": "image (Docker)",
+      "th": "image"
+    },
+    {
+      "en": "Dockerfile",
+      "th": "Dockerfile"
+    },
+    {
+      "en": "layer (image)",
+      "th": "layer"
+    },
+    {
+      "en": "volume / mount",
+      "th": "volume / mount"
+    },
+    {
+      "en": "base image",
+      "th": "base image"
+    },
+    {
+      "en": "host (machine)",
+      "th": "เครื่องหลัก",
+      "first": "เครื่องหลัก (host)"
+    },
+    {
+      "en": "virtual machine",
+      "th": "เครื่องเสมือน",
+      "first": "เครื่องเสมือน (virtual machine)"
+    },
+    {
+      "en": "orchestrate (services)",
+      "th": "ประสานหลายบริการ"
+    },
+    {
+      "en": "inference",
+      "th": "การรันโมเดล",
+      "first": "การรันโมเดล (inference)",
+      "note": "ในบริบทของเซิร์ฟเวอร์ใช้ \"ให้บริการโมเดล\""
+    },
+    {
+      "en": "vector database",
+      "th": "vector database"
+    },
+    {
+      "en": "build context",
+      "th": "build context"
+    },
+    {
+      "en": "emulation",
+      "th": "การจำลอง",
+      "first": "การจำลอง (emulation)"
+    },
+    {
+      "en": "port mapping",
+      "th": "การ map พอร์ต"
     }
   ]
 }

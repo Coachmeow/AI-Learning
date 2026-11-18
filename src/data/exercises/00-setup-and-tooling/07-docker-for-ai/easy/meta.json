@@ -1,0 +1,25 @@
+{
+  "minutes": 6,
+  "title": {
+    "th": "เติมโค้ด: ประกอบคำสั่ง docker run",
+    "en": "Fill in: assemble a docker run command"
+  },
+  "prompt": {
+    "th": "เติมฟังก์ชัน `run_args(image, volumes, ports, gpus=True)` ให้คืน list ของอาร์กิวเมนต์สำหรับคำสั่ง `docker run` ตามลำดับนี้: `docker`, `run`, `--rm`, ตามด้วย `--gpus`, `all` (เฉพาะเมื่อ `gpus` เป็นจริง), แล้ว `-v`, `<host>:<container>` สำหรับแต่ละ volume, แล้ว `-p`, `<host>:<container>` สำหรับแต่ละพอร์ต และปิดท้ายด้วย `image` โดย `volumes` และ `ports` เป็น dict ที่จับคู่ฝั่งเครื่องหลักกับฝั่ง container ส่วนที่ต้องเติมคือ volume และพอร์ต",
+    "en": "Complete `run_args(image, volumes, ports, gpus=True)` so it returns the argument list of a `docker run` command in this order: `docker`, `run`, `--rm`, then `--gpus`, `all` (only when `gpus` is true), then `-v`, `<host>:<container>` for each volume, then `-p`, `<host>:<container>` for each port, and finally `image`. `volumes` and `ports` are dicts mapping the host side to the container side. The parts to fill in are the volumes and ports."
+  },
+  "hints": [
+    {
+      "th": "วน `for host, inside in volumes.items():` แล้ว `args += [\"-v\", f\"{host}:{inside}\"]`",
+      "en": "Loop `for host, inside in volumes.items():` and do `args += [\"-v\", f\"{host}:{inside}\"]`."
+    },
+    {
+      "th": "ฝั่งเครื่องหลักอยู่ซ้ายของ `:` เสมอ ทั้ง `-v` และ `-p` เช่น `-v ~/models:/models` และ `-p 8888:8888`",
+      "en": "The host side is always left of the `:`, for both `-v` and `-p`, as in `-v ~/models:/models` and `-p 8888:8888`."
+    },
+    {
+      "th": "ทำแบบเดียวกันกับ `ports` โดยใช้ `\"-p\"` แทน `\"-v\"`",
+      "en": "Do the same for `ports`, with `\"-p\"` instead of `\"-v\"`."
+    }
+  ]
+}

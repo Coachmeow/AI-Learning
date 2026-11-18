@@ -1,0 +1,25 @@
+{
+  "minutes": 15,
+  "title": {
+    "th": "อ่าน Dockerfile เป็นรายการคำสั่ง",
+    "en": "Read a Dockerfile into instructions"
+  },
+  "prompt": {
+    "th": "เขียน `parse_dockerfile(text)` ที่คืน list ของ tuple `(INSTRUCTION, argument)` ตามลำดับ\n\n1. ข้ามบรรทัดว่างและบรรทัดคอมเมนต์ที่ขึ้นต้นด้วย `#` (หลังตัดช่องว่างนำหน้า)\n2. บรรทัดที่ลงท้ายด้วย `\\` ต่อกับบรรทัดถัดไป ให้รวมเป็นคำสั่งเดียว โดยตัด `\\` และช่องว่างรอบรอยต่อออก แล้วคั่นด้วยช่องว่างหนึ่งตัว บรรทัดคอมเมนต์ที่อยู่ระหว่างการต่อบรรทัดให้ข้ามไป\n3. คำแรกคือชื่อคำสั่ง ให้แปลงเป็นตัวพิมพ์ใหญ่ ส่วนที่เหลือ (ตัดช่องว่างหัวท้าย) คืออาร์กิวเมนต์\n\nเช่น `RUN apt-get update && \\` ต่อด้วย `    apt-get install -y git` ได้ `(\"RUN\", \"apt-get update && apt-get install -y git\")`",
+    "en": "Write `parse_dockerfile(text)` that returns a list of `(INSTRUCTION, argument)` tuples in order.\n\n1. Skip blank lines and comment lines starting with `#` (after leading spaces).\n2. A line ending in `\\` continues on the next line: join them into one instruction, dropping the `\\` and the spaces around the join, separated by a single space. Comment lines inside a continuation are skipped.\n3. The first word is the instruction, uppercased; the rest (stripped) is the argument.\n\nFor example `RUN apt-get update && \\` followed by `    apt-get install -y git` gives `(\"RUN\", \"apt-get update && apt-get install -y git\")`."
+  },
+  "hints": [
+    {
+      "th": "เก็บส่วนที่ยังต่อไม่เสร็จไว้ใน list `pending` เมื่อเจอบรรทัดที่ไม่ลงท้ายด้วย `\\` ค่อยรวม `\" \".join(pending)` เป็นคำสั่งหนึ่งคำสั่ง",
+      "en": "Keep the unfinished pieces in a list `pending`. When a line does not end in `\\`, join them with `\" \".join(pending)` into one instruction."
+    },
+    {
+      "th": "สำหรับแต่ละบรรทัด: `line = raw.strip()` ถ้าลงท้ายด้วย `\\` ให้ใช้ `line[:-1].rstrip()` แล้วเก็บไว้ต่อ",
+      "en": "For each line: `line = raw.strip()`; if it ends in `\\`, keep `line[:-1].rstrip()` and carry on."
+    },
+    {
+      "th": "แยกคำสั่งกับอาร์กิวเมนต์ด้วย `full.split(None, 1)` (คำสั่งที่ไม่มีอาร์กิวเมนต์จะได้ list ยาว 1)",
+      "en": "Split the instruction from its argument with `full.split(None, 1)` (an instruction with no argument gives a list of length 1)."
+    }
+  ]
+}
