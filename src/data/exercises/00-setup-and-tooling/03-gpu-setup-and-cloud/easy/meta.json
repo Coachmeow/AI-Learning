@@ -1,0 +1,25 @@
+{
+  "minutes": 5,
+  "title": {
+    "th": "เติมโค้ด: น้ำหนักของโมเดลใช้หน่วยความจำเท่าไร",
+    "en": "Fill in: how much memory do the weights need?"
+  },
+  "prompt": {
+    "th": "เติมฟังก์ชัน `weights_gb(params, dtype)` ให้คืนขนาดหน่วยความจำของน้ำหนักโมเดลเป็น GB (1 GB = 10⁹ byte ตามที่บทใช้) จากจำนวนพารามิเตอร์และชนิดตัวเลข โดยใช้ตาราง `BYTES_PER_PARAM` ที่ให้มา เช่น โมเดล 7 พันล้านพารามิเตอร์แบบ fp16 ใช้ 14.0 GB",
+    "en": "Complete `weights_gb(params, dtype)` so it returns how many GB the model's weights take (1 GB = 10⁹ bytes, as in the lesson), from the parameter count and the number type, using the `BYTES_PER_PARAM` table. For example, a 7-billion-parameter model in fp16 needs 14.0 GB."
+  },
+  "hints": [
+    {
+      "th": "จำนวน byte ทั้งหมด = จำนวนพารามิเตอร์ × จำนวน byte ต่อพารามิเตอร์ของ dtype นั้น",
+      "en": "Total bytes = number of parameters × bytes per parameter for that dtype."
+    },
+    {
+      "th": "หาร byte ด้วย `1e9` (ไม่ใช่ `1024 ** 3`) เพื่อให้ตรงกับหลักคร่าวๆ ในบทเรียน",
+      "en": "Divide the bytes by `1e9` (not `1024 ** 3`) to match the lesson's rule of thumb."
+    },
+    {
+      "th": "`return params * BYTES_PER_PARAM[dtype] / 1e9`",
+      "en": "`return params * BYTES_PER_PARAM[dtype] / 1e9`"
+    }
+  ]
+}

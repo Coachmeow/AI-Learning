@@ -5,7 +5,9 @@ Lessons (src/content/docs/th/<phase>/<lesson>.md):
   - the English lesson exists and the upstream_* fields and source_hash match it
     (a different source_hash means the translation is stale: reported, not an error)
   - fenced blocks appear in the same order with the same language; every block except
-    mermaid (whose labels are translated) is byte-identical to the English one
+    mermaid (whose labels are translated) and plain blocks with no language (often prose
+    laid out as a diagram, which may be translated; listed as a note) is byte-identical
+    to the English one
   - the same number of display-math blocks ($$ ... $$)
 
 Quizzes (src/data/quizzes/<phase>/<lesson>.json):
@@ -72,7 +74,9 @@ for th_file in sorted((DOCS / "th").glob("*/*.md")):
         problems.append(f"{rel}: fenced blocks differ in number or language: th {[b[0] for b in tb]} vs en {[b[0] for b in eb]}")
     else:
         for i, ((lang, t), (_, e)) in enumerate(zip(tb, eb)):
-            if lang != "mermaid" and t != e:
+            if lang == "" and t != e:
+                notes.append(f"{rel}: plain block {i + 1} is translated (check it is prose, not program output)")
+            elif lang != "mermaid" and t != e:
                 problems.append(f"{rel}: block {i + 1} ({lang or 'plain'}) is not identical to the English one")
     tm = outside_fences(th_body).count("$$")
     em = outside_fences(en_body).count("$$")

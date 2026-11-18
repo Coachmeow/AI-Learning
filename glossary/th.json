@@ -258,6 +258,63 @@
     {
       "en": "maintainer",
       "th": "ผู้ดูแล"
+    },
+    {
+      "en": "GPU",
+      "th": "GPU"
+    },
+    {
+      "en": "CUDA",
+      "th": "CUDA"
+    },
+    {
+      "en": "VRAM",
+      "th": "VRAM",
+      "note": "หน่วยความจำบน GPU แยกจาก RAM ของระบบ"
+    },
+    {
+      "en": "fp16 / fp32 / bf16 / int8",
+      "th": "fp16 / fp32 / bf16 / int8",
+      "note": "ชนิดตัวเลขที่ใช้เก็บน้ำหนัก (ใช้ 2 / 4 / 2 / 1 byte ต่อพารามิเตอร์)"
+    },
+    {
+      "en": "half precision",
+      "th": "half precision"
+    },
+    {
+      "en": "Tensor Core",
+      "th": "Tensor Core"
+    },
+    {
+      "en": "benchmark",
+      "th": "การเทียบความเร็ว",
+      "first": "การเทียบความเร็ว (benchmark)"
+    },
+    {
+      "en": "speedup",
+      "th": "เร็วขึ้นกี่เท่า (speedup)"
+    },
+    {
+      "en": "asynchronous",
+      "th": "ทำงานแบบไม่รอกัน",
+      "first": "ทำงานแบบไม่รอกัน (asynchronous)"
+    },
+    {
+      "en": "activation",
+      "th": "activation"
+    },
+    {
+      "en": "tensor",
+      "th": "tensor"
+    },
+    {
+      "en": "cloud GPU",
+      "th": "GPU บนคลาวด์"
+    },
+    {
+      "en": "median",
+      "th": "ค่ามัธยฐาน",
+      "first": "ค่ามัธยฐาน (median)"
     }
   ]
 }

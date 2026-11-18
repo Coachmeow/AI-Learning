@@ -1,0 +1,25 @@
+{
+  "minutes": 12,
+  "title": {
+    "th": "เลือกชนิดตัวเลขที่ใส่ GPU ได้",
+    "en": "Pick a number type that fits the GPU"
+  },
+  "prompt": {
+    "th": "เขียน `best_dtype(params, vram_gb, margin=0.2)` ให้คืนชนิดตัวเลขที่ละเอียดที่สุดใน `PREFERENCE` (เรียงจากละเอียดมากไปน้อย) ที่น้ำหนักของโมเดลใส่ได้ใน VRAM โดยเผื่อที่ไว้ตามสัดส่วน `margin` สำหรับ activation และ CUDA context กล่าวคือ น้ำหนัก (GB) ต้องไม่เกิน `vram_gb * (1 - margin)` (เท่ากันพอดีถือว่าใส่ได้) ถ้าไม่มีชนิดไหนใส่ได้ให้คืน `None` และถ้า `margin` ไม่อยู่ในช่วง 0 ถึงน้อยกว่า 1 ให้ `raise ValueError`",
+    "en": "Write `best_dtype(params, vram_gb, margin=0.2)` that returns the most precise number type in `PREFERENCE` (ordered from most to least precise) whose weights fit in VRAM while keeping a `margin` fraction free for activations and the CUDA context. That is, the weights in GB must be at most `vram_gb * (1 - margin)` (exactly equal fits). Return `None` if nothing fits, and `raise ValueError` if `margin` is not at least 0 and below 1."
+  },
+  "hints": [
+    {
+      "th": "งบหน่วยความจำที่ใช้ได้คือ `budget = vram_gb * (1 - margin)` คำนวณครั้งเดียวก่อนวนลูป",
+      "en": "The usable budget is `budget = vram_gb * (1 - margin)`. Compute it once before the loop."
+    },
+    {
+      "th": "วน `for dtype in PREFERENCE:` ตามลำดับ แล้ว `return dtype` ทันทีที่ `params * BYTES_PER_PARAM[dtype] / 1e9 <= budget` ตัวแรกที่ใส่ได้คือตัวที่ละเอียดที่สุด",
+      "en": "Loop `for dtype in PREFERENCE:` in order and `return dtype` as soon as `params * BYTES_PER_PARAM[dtype] / 1e9 <= budget`; the first that fits is the most precise."
+    },
+    {
+      "th": "ตรวจ `margin` ก่อนเริ่ม: `if not 0 <= margin < 1: raise ValueError(...)` และถ้าวนครบแล้วไม่เจอ ให้ `return None`",
+      "en": "Check `margin` first: `if not 0 <= margin < 1: raise ValueError(...)`, and `return None` after the loop if nothing fit."
+    }
+  ]
+}
