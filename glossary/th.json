@@ -789,6 +789,67 @@
     {
       "en": "WSL2",
       "th": "WSL2"
+    },
+    {
+      "en": "debugging / debugger",
+      "th": "การไล่บั๊ก / debugger",
+      "first": "การไล่บั๊ก (debugging)"
+    },
+    {
+      "en": "profiling / profiler",
+      "th": "การวัดประสิทธิภาพ / profiler",
+      "first": "การวัดประสิทธิภาพ (profiling)"
+    },
+    {
+      "en": "bottleneck",
+      "th": "คอขวด",
+      "first": "คอขวด (bottleneck)"
+    },
+    {
+      "en": "breakpoint",
+      "th": "breakpoint"
+    },
+    {
+      "en": "logging / log level",
+      "th": "logging / ระดับความรุนแรง"
+    },
+    {
+      "en": "shape / dtype / device (tensor)",
+      "th": "shape / dtype / อุปกรณ์"
+    },
+    {
+      "en": "NaN / Inf",
+      "th": "NaN / Inf"
+    },
+    {
+      "en": "forward pass / backward pass",
+      "th": "forward pass / backward pass"
+    },
+    {
+      "en": "exploding / vanishing gradients",
+      "th": "เกรเดียนต์ระเบิด / เกรเดียนต์หายไป"
+    },
+    {
+      "en": "gradient clipping",
+      "th": "gradient clipping"
+    },
+    {
+      "en": "mixed precision",
+      "th": "mixed precision"
+    },
+    {
+      "en": "temporal leakage",
+      "th": "การรั่วตามเวลา",
+      "first": "การรั่วตามเวลา (temporal leakage)"
+    },
+    {
+      "en": "tottime / cumtime",
+      "th": "tottime / cumtime",
+      "note": "เวลาในฟังก์ชันเอง / เวลารวมฟังก์ชันที่ถูกเรียก"
+    },
+    {
+      "en": "stack trace",
+      "th": "stack trace"
     }
   ]
 }

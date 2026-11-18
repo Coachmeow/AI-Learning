@@ -1,0 +1,25 @@
+{
+  "minutes": 35,
+  "title": {
+    "th": "เขียน profiler ย่อแบบ cProfile",
+    "en": "Write a tiny cProfile"
+  },
+  "prompt": {
+    "th": "เขียน `profile_report(events)` ที่สรุปผลแบบ `cProfile -s cumtime` จาก `events` ซึ่งเป็น list ของ `(kind, func, t)` เรียงตามเวลา โดย `kind` เป็น `\"call\"` หรือ `\"return\"` และ call/return ซ้อนกันอย่างถูกต้อง\n\nคืน list ของ dict `{\"func\", \"ncalls\", \"tottime\", \"cumtime\"}` หนึ่งรายการต่อฟังก์ชัน เรียงตาม `cumtime` จากมากไปน้อย ถ้าเท่ากันเรียงตามชื่อ\n\n- `ncalls` คือจำนวนครั้งที่ถูกเรียก\n- `tottime` คือเวลาในฟังก์ชันเอง**ไม่รวม**เวลาในฟังก์ชันที่มันเรียก\n- `cumtime` คือเวลาตั้งแต่เรียกจนคืนค่า รวมฟังก์ชันที่มันเรียก แต่ถ้าฟังก์ชันเรียกตัวเองซ้อนกัน (recursion) ให้นับเฉพาะการเรียกชั้นนอกสุดที่กำลังทำงานอยู่ เพื่อไม่ให้นับเวลาซ้ำ\n\nถ้า `return` ไม่ตรงกับฟังก์ชันที่อยู่บนสุดของ stack ให้ `raise ValueError` มี test ซ่อนอยู่บางส่วน",
+    "en": "Write `profile_report(events)` that summarises like `cProfile -s cumtime`. `events` is a time-ordered list of `(kind, func, t)` where `kind` is `\"call\"` or `\"return\"`, properly nested.\n\nReturn a list of dicts `{\"func\", \"ncalls\", \"tottime\", \"cumtime\"}`, one per function, sorted by `cumtime` descending, ties by name.\n\n- `ncalls` is how many times it was called.\n- `tottime` is time in the function itself, **excluding** the functions it calls.\n- `cumtime` is the time from call to return including callees; for recursive calls only the outermost active call counts, so time is never counted twice.\n\nIf a `return` does not match the function on top of the stack, `raise ValueError`. Some tests are hidden."
+  },
+  "hints": [
+    {
+      "th": "ใช้ stack ของเฟรม `[func, start, child_time]` ตอน call ให้ push ตอน return ให้ pop แล้วคำนวณ `duration = t - start`",
+      "en": "Keep a stack of frames `[func, start, child_time]`: push on call, pop on return, and compute `duration = t - start`."
+    },
+    {
+      "th": "หลัง pop: `tottime += duration - child_time` และบวก `duration` เข้า `child_time` ของเฟรมที่อยู่ใต้ (ฟังก์ชันที่เรียกมัน) เท่านั้น ไม่ใช่ทุกชั้น",
+      "en": "After the pop: `tottime += duration - child_time`, and add `duration` to the `child_time` of the frame below (its caller) only, not every frame."
+    },
+    {
+      "th": "เรื่อง recursion: บวก `duration` เข้า `cumtime` เฉพาะเมื่อไม่มีเฟรมอื่นของฟังก์ชันเดียวกันเหลืออยู่ใน stack (`all(f[0] != func for f in stack)`)",
+      "en": "For recursion: add `duration` to `cumtime` only when no other frame of the same function is left on the stack (`all(f[0] != func for f in stack)`)."
+    }
+  ]
+}

@@ -1,0 +1,486 @@
+{
+  "lesson": "00-setup-and-tooling/12-debugging-and-profiling",
+  "source_hash": "2c8060d42a1115002a602a1db7241eb5338a7169661c238163c16c5653136513",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What makes debugging AI/ML code fundamentally different from debugging a typical web application?",
+        "th": "อะไรทำให้การไล่บั๊กโค้ด AI/ML ต่างจากการไล่บั๊กเว็บแอปทั่วไปอย่างสิ้นเชิง"
+      },
+      "options": [
+        {
+          "en": "AI code always requires a GPU to debug",
+          "th": "โค้ด AI ต้องใช้ GPU ทุกครั้งที่ไล่บั๊ก"
+        },
+        {
+          "en": "AI code uses different programming languages",
+          "th": "โค้ด AI ใช้ภาษาโปรแกรมต่างออกไป"
+        },
+        {
+          "en": "AI bugs often don't crash -- they silently produce incorrect results with no error messages",
+          "th": "บั๊กของ AI มักไม่ทำให้โปรแกรมพัง แต่ให้ผลลัพธ์ผิดไปเงียบๆ โดยไม่มีข้อความ error"
+        },
+        {
+          "en": "AI code cannot be debugged with standard tools like print statements",
+          "th": "ใช้เครื่องมือมาตรฐานอย่าง print ไล่บั๊กโค้ด AI ไม่ได้"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "The worst AI bugs produce valid-looking output. A misconfigured training loop might run for hours without errors while the model learns nothing useful, unlike web apps that crash with stack traces.",
+        "th": "บั๊กของ AI ที่ร้ายที่สุดให้ผลลัพธ์ที่ดูถูกต้อง ลูปการฝึกที่ตั้งค่าผิดอาจรันอยู่หลายชั่วโมงโดยไม่มี error ขณะที่โมเดลไม่ได้เรียนรู้อะไรที่มีประโยชน์เลย ต่างจากเว็บแอปที่พังพร้อม stack trace"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What does a profiler measure?",
+        "th": "profiler วัดอะไร"
+      },
+      "options": [
+        {
+          "en": "How much time and memory each part of the code consumes",
+          "th": "เวลาและหน่วยความจำที่แต่ละส่วนของโค้ดใช้"
+        },
+        {
+          "en": "How many bugs exist in the codebase",
+          "th": "จำนวนบั๊กในโค้ด"
+        },
+        {
+          "en": "Whether the code produces correct output",
+          "th": "โค้ดให้ผลลัพธ์ถูกต้องหรือไม่"
+        },
+        {
+          "en": "The code coverage of unit tests",
+          "th": "สัดส่วนของโค้ดที่ unit test ครอบคลุม"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Profilers measure resource consumption -- execution time per function, memory allocation, and GPU utilization -- helping you find bottlenecks and optimize performance.",
+        "th": "profiler วัดการใช้ทรัพยากร คือเวลาที่แต่ละฟังก์ชันใช้ การจองหน่วยความจำ และการใช้งาน GPU ช่วยให้หาคอขวดและปรับให้เร็วขึ้นได้"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "At the `(Pdb)` prompt, which command continues running until the next breakpoint?",
+        "th": "ที่ prompt `(Pdb)` คำสั่งใดให้โปรแกรมทำงานต่อจนถึง breakpoint ถัดไป"
+      },
+      "options": [
+        {
+          "en": "`p`",
+          "th": "`p`"
+        },
+        {
+          "en": "`c`",
+          "th": "`c`"
+        },
+        {
+          "en": "`q`",
+          "th": "`q`"
+        },
+        {
+          "en": "`breakpoint()`",
+          "th": "`breakpoint()`"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "`c` continues, `q` quits and `p <expr>` prints a value such as `p outputs.shape`.",
+        "th": "`c` ทำงานต่อ, `q` ออก และ `p <นิพจน์>` พิมพ์ค่า เช่น `p outputs.shape`"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Training stops with an out-of-memory (OOM) error. What should you try first?",
+        "th": "การฝึกหยุดด้วย error หน่วยความจำไม่พอ (OOM) ควรลองอะไรก่อน"
+      },
+      "options": [
+        {
+          "en": "Reduce the batch size",
+          "th": "ลดขนาด batch"
+        },
+        {
+          "en": "Add more layers",
+          "th": "เพิ่มจำนวนชั้นของโมเดล"
+        },
+        {
+          "en": "Raise the learning rate",
+          "th": "เพิ่ม learning rate"
+        },
+        {
+          "en": "Turn off logging",
+          "th": "ปิด logging"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The lesson's list starts with a smaller batch, then freeing cached memory, mixed precision and gradient checkpointing.",
+        "th": "รายการในบทเรียนเริ่มจากลดขนาด batch แล้วจึงคืนหน่วยความจำที่แคชไว้ ใช้ mixed precision และ gradient checkpointing"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Why switch from `print` to `logging` for long training runs?",
+        "th": "ทำไมควรเปลี่ยนจาก `print` มาใช้ `logging` เมื่อฝึกนานๆ"
+      },
+      "options": [
+        {
+          "en": "logging makes training faster",
+          "th": "logging ทำให้ฝึกเร็วขึ้น"
+        },
+        {
+          "en": "You get timestamps, severity levels and a log file that survives after the screen scrolls away",
+          "th": "ได้เวลา ระดับความรุนแรง และไฟล์ log ที่ยังอยู่หลังหน้าจอเลื่อนหายไป"
+        },
+        {
+          "en": "print does not work inside loops",
+          "th": "print ใช้ในลูปไม่ได้"
+        },
+        {
+          "en": "logging fixes bugs automatically",
+          "th": "logging แก้บั๊กให้อัตโนมัติ"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "When a run fails at 3 AM you want `training.log` with timestamps and levels, not terminal output that is long gone.",
+        "th": "เมื่อการฝึกพังตอนตีสาม คุณต้องการ `training.log` ที่มีเวลาและระดับความรุนแรง ไม่ใช่ผลลัพธ์ใน terminal ที่หายไปนานแล้ว"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "Your model achieves 99% accuracy on the test set. What AI-specific bug should you suspect first?",
+        "th": "โมเดลได้ความแม่นยำ 99% บนชุด test บั๊กเฉพาะของงาน AI ข้อใดที่ควรสงสัยก่อน"
+      },
+      "options": [
+        {
+          "en": "The batch size is too large",
+          "th": "ขนาด batch ใหญ่เกินไป"
+        },
+        {
+          "en": "Data leakage -- test samples may have leaked into the training set",
+          "th": "ข้อมูลรั่ว: ตัวอย่างในชุด test อาจรั่วเข้าไปอยู่ในชุด train"
+        },
+        {
+          "en": "The learning rate is too high",
+          "th": "learning rate สูงเกินไป"
+        },
+        {
+          "en": "The model has too many parameters",
+          "th": "โมเดลมีพารามิเตอร์มากเกินไป"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Suspiciously high accuracy often indicates data leakage -- overlap between training and test data, or features that contain the target label. Always check for train/test overlap.",
+        "th": "ความแม่นยำที่สูงจนน่าสงสัยมักบอกว่ามีข้อมูลรั่ว คือข้อมูล train กับ test ทับกัน หรือมี feature ที่บรรจุคำตอบไว้ ให้ตรวจการทับกันของ train/test ทุกครั้ง"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "What is the most common finding when profiling a training loop's time breakdown?",
+        "th": "เมื่อวัดว่าเวลาในลูปการฝึกหมดไปกับอะไร สิ่งที่พบบ่อยที่สุดคือข้อใด"
+      },
+      "options": [
+        {
+          "en": "GPU memory allocation is the bottleneck",
+          "th": "การจองหน่วยความจำ GPU เป็นคอขวด"
+        },
+        {
+          "en": "The backward pass takes 90% of the time",
+          "th": "backward pass ใช้เวลา 90%"
+        },
+        {
+          "en": "Data loading takes more time than the forward and backward passes combined",
+          "th": "การโหลดข้อมูลใช้เวลามากกว่า forward pass กับ backward pass รวมกัน"
+        },
+        {
+          "en": "Writing logs takes the most time",
+          "th": "การเขียน log ใช้เวลามากที่สุด"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Data loading often takes 60%+ of training time when num_workers=0 in the DataLoader. The fix is setting num_workers > 0 to load data in parallel with GPU computation.",
+        "th": "การโหลดข้อมูลมักกินเวลาเกิน 60% ของการฝึกเมื่อ DataLoader ตั้ง num_workers=0 วิธีแก้คือตั้ง num_workers > 0 ให้โหลดข้อมูลขนานไปกับการคำนวณบน GPU"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "You see NaN loss at step 500. Which approach will help you find the root cause?",
+        "th": "loss กลายเป็น NaN ที่ก้าวที่ 500 วิธีใดช่วยหาต้นเหตุได้"
+      },
+      "options": [
+        {
+          "en": "Switch from Adam to SGD optimizer",
+          "th": "เปลี่ยน optimizer จาก Adam เป็น SGD"
+        },
+        {
+          "en": "Restart training from scratch with a different random seed",
+          "th": "เริ่มฝึกใหม่ตั้งแต่ต้นด้วย random seed อื่น"
+        },
+        {
+          "en": "Increase the batch size to stabilize gradients",
+          "th": "เพิ่มขนาด batch เพื่อให้เกรเดียนต์เสถียร"
+        },
+        {
+          "en": "Use detect_nan to check for NaN/Inf in gradients and add breakpoint() at the failure point",
+          "th": "ใช้ detect_nan ตรวจ NaN/Inf ในเกรเดียนต์ และใส่ breakpoint() ตรงจุดที่พัง"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "First identify WHERE the NaN originates by checking gradients for each parameter. A conditional breakpoint at the NaN step lets you inspect tensor values interactively. Common causes: learning rate too high, log(0), or division by zero.",
+        "th": "ขั้นแรกต้องหาว่า NaN เริ่มที่ไหน ด้วยการตรวจเกรเดียนต์ของพารามิเตอร์แต่ละตัว breakpoint แบบมีเงื่อนไขที่ก้าวที่เกิด NaN ให้ตรวจค่าใน tensor แบบโต้ตอบได้ สาเหตุที่พบบ่อย: learning rate สูงเกินไป, log(0) หรือหารด้วยศูนย์"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "In TensorBoard the training loss keeps falling while the validation loss starts rising. What is happening?",
+        "th": "ใน TensorBoard loss ของ train ลดลงเรื่อยๆ แต่ loss ของ validation เริ่มเพิ่มขึ้น เกิดอะไรขึ้น"
+      },
+      "options": [
+        {
+          "en": "The learning rate is too low",
+          "th": "learning rate ต่ำเกินไป"
+        },
+        {
+          "en": "Overfitting",
+          "th": "overfitting"
+        },
+        {
+          "en": "Vanishing gradients",
+          "th": "เกรเดียนต์หายไป"
+        },
+        {
+          "en": "The GPU is too slow",
+          "th": "GPU ช้าเกินไป"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The model is memorising the training set instead of learning patterns that generalise, so it gets worse on data it has not seen.",
+        "th": "โมเดลกำลังจำชุด train แทนที่จะเรียนรู้รูปแบบที่ใช้กับข้อมูลใหม่ได้ จึงแย่ลงกับข้อมูลที่ไม่เคยเห็น"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "What is the difference between `torch.cuda.memory_allocated()` and `torch.cuda.memory_reserved()`?",
+        "th": "`torch.cuda.memory_allocated()` กับ `torch.cuda.memory_reserved()` ต่างกันอย่างไร"
+      },
+      "options": [
+        {
+          "en": "They are the same number",
+          "th": "เป็นตัวเลขเดียวกัน"
+        },
+        {
+          "en": "Allocated is memory used by tensors now; reserved is what PyTorch's cache holds, which is at least as large",
+          "th": "allocated คือหน่วยความจำที่ tensor ใช้อยู่ตอนนี้ ส่วน reserved คือที่แคชของ PyTorch จองไว้ ซึ่งมากกว่าหรือเท่ากับ allocated"
+        },
+        {
+          "en": "Reserved is system RAM, allocated is VRAM",
+          "th": "reserved คือ RAM ของระบบ ส่วน allocated คือ VRAM"
+        },
+        {
+          "en": "Allocated includes other processes",
+          "th": "allocated นับรวมโปรเซสอื่นด้วย"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "PyTorch keeps freed blocks in a cache to reuse them, so reserved (printed as \"Cached\" in the lesson) stays high after tensors are deleted.",
+        "th": "PyTorch เก็บหน่วยความจำที่ปล่อยแล้วไว้ในแคชเพื่อใช้ซ้ำ ค่า reserved (บทเรียนพิมพ์ว่า \"Cached\") จึงยังสูงอยู่หลังลบ tensor ไปแล้ว"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "A model predicting tomorrow's demand scores well on a random test split but fails in production. Which leak is most likely, and what fixes it?",
+        "th": "โมเดลทำนายยอดขายของวันพรุ่งนี้ได้คะแนนดีกับชุด test ที่แบ่งแบบสุ่ม แต่ใช้งานจริงแล้วล้มเหลว การรั่วแบบไหนน่าจะเป็นที่สุด และแก้อย่างไร"
+      },
+      "options": [
+        {
+          "en": "Wrong device; move tensors to the GPU",
+          "th": "อยู่ผิดอุปกรณ์ ย้าย tensor ไป GPU"
+        },
+        {
+          "en": "Temporal leakage: training saw days after the test days; sort by time and test only on later data",
+          "th": "การรั่วตามเวลา: ตอนฝึกเห็นวันที่อยู่หลังวันในชุด test ให้เรียงตามเวลาแล้วทดสอบด้วยข้อมูลช่วงหลังเท่านั้น"
+        },
+        {
+          "en": "The batch size is too small",
+          "th": "ขนาด batch เล็กเกินไป"
+        },
+        {
+          "en": "The loss became NaN",
+          "th": "loss กลายเป็น NaN"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "A random split mixes future rows into training, so the model effectively peeks ahead. Production has no future data, which exposes the leak.",
+        "th": "การแบ่งแบบสุ่มผสมแถวในอนาคตเข้าไปในชุดฝึก โมเดลจึงแอบดูอนาคตได้ แต่การใช้งานจริงไม่มีข้อมูลอนาคต การรั่วจึงเผยตัวออกมา"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "In an RNN the gradient histograms grow by orders of magnitude, then the loss turns NaN. Which fix targets this directly?",
+        "th": "ใน RNN histogram ของเกรเดียนต์โตขึ้นหลายเท่าตัวแล้ว loss ก็กลายเป็น NaN วิธีใดแก้ตรงจุดที่สุด"
+      },
+      "options": [
+        {
+          "en": "Increase the learning rate",
+          "th": "เพิ่ม learning rate"
+        },
+        {
+          "en": "Gradient clipping (and often a lower learning rate)",
+          "th": "gradient clipping (และมักลด learning rate ด้วย)"
+        },
+        {
+          "en": "Add more TensorBoard histograms",
+          "th": "เพิ่ม histogram ใน TensorBoard"
+        },
+        {
+          "en": "Use a bigger batch only",
+          "th": "เพิ่มขนาด batch อย่างเดียว"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Exploding gradients are a known RNN failure and a common NaN cause. Clipping caps the gradient norm before each update.",
+        "th": "เกรเดียนต์ระเบิดเป็นปัญหาที่รู้กันใน RNN และเป็นสาเหตุที่พบบ่อยของ NaN การ clip จำกัดขนาดของเกรเดียนต์ก่อนอัปเดตแต่ละครั้ง"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "In `python -m cProfile -s cumtime train.py`, `main()` sits at the top with almost all the time. Is it the slow function?",
+        "th": "ในผลของ `python -m cProfile -s cumtime train.py` ฟังก์ชัน `main()` อยู่บนสุดและใช้เวลาเกือบทั้งหมด มันคือฟังก์ชันที่ช้าใช่หรือไม่"
+      },
+      "options": [
+        {
+          "en": "Yes: optimise `main()`",
+          "th": "ใช่ ให้ปรับ `main()`"
+        },
+        {
+          "en": "Not necessarily: cumtime includes everything it calls; look further down for your own function with a large cumtime and tottime",
+          "th": "ไม่แน่ cumtime รวมทุกอย่างที่มันเรียก ให้ดูลงไปหาฟังก์ชันของคุณเองที่มี cumtime และ tottime สูง"
+        },
+        {
+          "en": "cProfile is wrong for training code",
+          "th": "cProfile ใช้กับโค้ดฝึกโมเดลไม่ได้"
+        },
+        {
+          "en": "Sort by name instead",
+          "th": "ให้เรียงตามชื่อแทน"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "cumtime is time spent in a function plus its callees; tottime excludes callees. A wrapper like `main()` always has a huge cumtime but little tottime.",
+        "th": "cumtime คือเวลาในฟังก์ชันรวมกับฟังก์ชันที่มันเรียก ส่วน tottime ไม่นับฟังก์ชันที่ถูกเรียก ฟังก์ชันห่ออย่าง `main()` จึงมี cumtime มากเสมอแต่ tottime น้อย"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "After `del big_tensor`, `nvidia-smi` still shows the memory in use by your process. Why?",
+        "th": "หลัง `del big_tensor` แล้ว `nvidia-smi` ยังแสดงว่าโปรเซสของคุณใช้หน่วยความจำอยู่ เพราะอะไร"
+      },
+      "options": [
+        {
+          "en": "`del` does nothing in Python",
+          "th": "`del` ไม่มีผลอะไรใน Python"
+        },
+        {
+          "en": "PyTorch keeps the freed block in its cache for reuse; `torch.cuda.empty_cache()` hands it back",
+          "th": "PyTorch เก็บหน่วยความจำที่ปล่อยแล้วไว้ในแคชเพื่อใช้ซ้ำ `torch.cuda.empty_cache()` จะคืนให้ระบบ"
+        },
+        {
+          "en": "nvidia-smi only updates once an hour",
+          "th": "nvidia-smi อัปเดตชั่วโมงละครั้ง"
+        },
+        {
+          "en": "The tensor was copied to the CPU",
+          "th": "tensor ถูกคัดลอกไปที่ CPU"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The memory is free for PyTorch to reuse but still reserved from the driver's view. That is why the lesson pairs `del tensor` with `torch.cuda.empty_cache()`.",
+        "th": "หน่วยความจำนั้นว่างให้ PyTorch ใช้ซ้ำได้ แต่ในมุมของไดรเวอร์ยังถูกจองอยู่ บทเรียนจึงใช้ `del tensor` คู่กับ `torch.cuda.empty_cache()`"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "`check_data_leakage` finds no shared ids, yet test accuracy is still 99%. What else could leak?",
+        "th": "`check_data_leakage` ไม่พบ id ที่ซ้ำกัน แต่ความแม่นยำบนชุด test ยังเป็น 99% อะไรอีกที่อาจรั่ว"
+      },
+      "options": [
+        {
+          "en": "Nothing: no shared ids means no leak",
+          "th": "ไม่มี เพราะไม่มี id ซ้ำแปลว่าไม่รั่ว"
+        },
+        {
+          "en": "A feature derived from the label, or the same example stored under different ids",
+          "th": "feature ที่สร้างมาจาก label หรือตัวอย่างเดียวกันที่ถูกเก็บด้วย id ต่างกัน"
+        },
+        {
+          "en": "The batch size",
+          "th": "ขนาด batch"
+        },
+        {
+          "en": "Using TensorBoard",
+          "th": "การใช้ TensorBoard"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "An id check only catches one kind of overlap. Labels hidden in features and duplicated content under new ids leak just as badly; a normalised duplicate check (as in lesson 09's hard exercise) catches the second case.",
+        "th": "การตรวจ id จับได้แค่การทับกันแบบเดียว label ที่ซ่อนอยู่ใน feature และเนื้อหาซ้ำที่มี id ใหม่ ก็รั่วได้ไม่แพ้กัน การตรวจข้อมูลซ้ำแบบ normalize (แบบโจทย์ระดับยากของบทที่ 09) ช่วยจับกรณีหลังได้"
+      }
+    }
+  ]
+}
