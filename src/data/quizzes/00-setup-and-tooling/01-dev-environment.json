@@ -1,0 +1,487 @@
+{
+  "lesson": "00-setup-and-tooling/01-dev-environment",
+  "source_hash": "85bc7f1f0682cf607f287710b25f2dd3cde1475feaca985a89bf2cefb1e2cf52",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "Why do AI projects need a separate virtual environment?",
+        "th": "ทำไมโปรเจกต์ AI จึงต้องมี virtual environment แยกของตัวเอง"
+      },
+      "options": [
+        {
+          "en": "Python requires virtual environments to import packages",
+          "th": "Python ต้องมี virtual environment จึงจะ import แพ็กเกจได้"
+        },
+        {
+          "en": "They isolate dependencies so different projects don't conflict",
+          "th": "เพื่อแยก dependency ของแต่ละโปรเจกต์ไม่ให้ชนกัน"
+        },
+        {
+          "en": "Virtual environments make code run faster",
+          "th": "virtual environment ทำให้โค้ดรันเร็วขึ้น"
+        },
+        {
+          "en": "Virtual environments provide GPU access",
+          "th": "virtual environment ทำให้เข้าถึง GPU ได้"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Virtual environments isolate package versions per project. Without them, upgrading PyTorch for one project can break another that depends on an older version.",
+        "th": "virtual environment แยกเวอร์ชันของแพ็กเกจไว้ต่อโปรเจกต์ ถ้าไม่มี การอัปเกรด PyTorch ให้โปรเจกต์หนึ่งอาจทำให้อีกโปรเจกต์ที่ต้องใช้เวอร์ชันเก่าพังได้"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What does CUDA provide for AI workloads?",
+        "th": "CUDA ให้อะไรกับงาน AI"
+      },
+      "options": [
+        {
+          "en": "Parallel computing on NVIDIA GPUs for matrix operations",
+          "th": "การคำนวณแบบขนานบน GPU ของ NVIDIA สำหรับการดำเนินการกับเมทริกซ์"
+        },
+        {
+          "en": "A Python package manager for ML libraries",
+          "th": "ตัวจัดการแพ็กเกจ Python สำหรับไลบรารี ML"
+        },
+        {
+          "en": "A web framework for deploying models",
+          "th": "เว็บเฟรมเวิร์กสำหรับนำโมเดลขึ้นใช้งาน"
+        },
+        {
+          "en": "A container runtime for model serving",
+          "th": "container runtime สำหรับให้บริการโมเดล"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "CUDA is NVIDIA's parallel computing platform that lets you run matrix operations on thousands of GPU cores simultaneously. PyTorch and TensorFlow use it under the hood.",
+        "th": "CUDA คือแพลตฟอร์มคำนวณแบบขนานของ NVIDIA ที่ให้รันการคำนวณเมทริกซ์บนคอร์ GPU หลายพันคอร์พร้อมกัน PyTorch และ TensorFlow ใช้ CUDA อยู่เบื้องหลัง"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "On an Apple Silicon Mac, `torch.cuda.is_available()` prints `False`. What does that mean?",
+        "th": "บน Mac ที่ใช้ชิป Apple Silicon คำสั่ง `torch.cuda.is_available()` พิมพ์ `False` หมายความว่าอะไร"
+      },
+      "options": [
+        {
+          "en": "PyTorch is broken and must be reinstalled",
+          "th": "PyTorch เสีย ต้องติดตั้งใหม่"
+        },
+        {
+          "en": "Nothing is wrong: Macs have no CUDA and use the MPS backend instead",
+          "th": "ไม่มีอะไรผิด: Mac ไม่มี CUDA และใช้ backend แบบ MPS แทน"
+        },
+        {
+          "en": "The GPU driver is missing and must be installed from NVIDIA",
+          "th": "ไม่มีไดรเวอร์ GPU ต้องไปติดตั้งจาก NVIDIA"
+        },
+        {
+          "en": "You must reinstall PyTorch with `--index-url .../cu124`",
+          "th": "ต้องติดตั้ง PyTorch ใหม่ด้วย `--index-url .../cu124`"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "CUDA is NVIDIA-only, so `False` is expected on a Mac. Check `torch.backends.mps.is_available()` instead: it is `True` on Apple Silicon.",
+        "th": "CUDA มีเฉพาะบน GPU ของ NVIDIA บน Mac จึงได้ `False` เป็นปกติ ให้ตรวจ `torch.backends.mps.is_available()` แทน ซึ่งจะได้ `True` บน Apple Silicon"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "From which directory should you run the lesson's commands, such as `verify.py`?",
+        "th": "ควรรันคำสั่งในบทนี้ เช่น `verify.py` จากโฟลเดอร์ไหน"
+      },
+      "options": [
+        {
+          "en": "Your home directory",
+          "th": "โฟลเดอร์ home ของคุณ"
+        },
+        {
+          "en": "The lesson's own `code/` folder",
+          "th": "โฟลเดอร์ `code/` ของบทเรียนนั้น"
+        },
+        {
+          "en": "The repository root, which contains `README.md` and `phases/`",
+          "th": "โฟลเดอร์รากของ repository ซึ่งมี `README.md` และ `phases/` อยู่"
+        },
+        {
+          "en": "Any directory, paths are resolved automatically",
+          "th": "โฟลเดอร์ไหนก็ได้ เพราะ path ถูกหาให้อัตโนมัติ"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Every command uses paths that start at the repository root (`phases/00-setup-and-tooling/...`), so run them from the folder that holds `README.md` and `phases/`.",
+        "th": "ทุกคำสั่งใช้ path ที่เริ่มจากโฟลเดอร์รากของ repository (`phases/00-setup-and-tooling/...`) จึงต้องรันจากโฟลเดอร์ที่มี `README.md` และ `phases/`"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Which package manager does the course use for its TypeScript lessons?",
+        "th": "หลักสูตรนี้ใช้ตัวจัดการแพ็กเกจตัวไหนกับบทที่เป็น TypeScript"
+      },
+      "options": [
+        {
+          "en": "pnpm",
+          "th": "pnpm"
+        },
+        {
+          "en": "uv",
+          "th": "uv"
+        },
+        {
+          "en": "cargo",
+          "th": "cargo"
+        },
+        {
+          "en": "Pkg",
+          "th": "Pkg"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The table in Use It lists pnpm for TypeScript (Phases 13-17), uv for Python, cargo for Rust and Pkg for Julia.",
+        "th": "ตารางในหัวข้อนำไปใช้ระบุว่า TypeScript (Phase 13-17) ใช้ pnpm, Python ใช้ uv, Rust ใช้ cargo และ Julia ใช้ Pkg"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "In the four-layer environment stack, which layer must be installed first?",
+        "th": "ในโครงสร้างสภาพแวดล้อม 4 ชั้น ต้องติดตั้งชั้นไหนก่อน"
+      },
+      "options": [
+        {
+          "en": "Language Runtimes (Python, Node.js)",
+          "th": "Runtime ของภาษา (Python, Node.js)"
+        },
+        {
+          "en": "System Foundation (OS, shell, GPU drivers)",
+          "th": "ฐานของระบบ (OS, shell, ไดรเวอร์ GPU)"
+        },
+        {
+          "en": "Package Managers (pip, npm, cargo)",
+          "th": "ตัวจัดการแพ็กเกจ (pip, npm, cargo)"
+        },
+        {
+          "en": "AI/ML Libraries (PyTorch, JAX)",
+          "th": "ไลบรารี AI/ML (PyTorch, JAX)"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "You install bottom-up: system foundation first (OS, drivers), then package managers, then language runtimes, then AI libraries. Each layer depends on the one below.",
+        "th": "ติดตั้งจากล่างขึ้นบน: ฐานของระบบก่อน (OS, ไดรเวอร์) แล้วจึงตัวจัดการแพ็กเกจ runtime ของภาษา และไลบรารี AI ตามลำดับ แต่ละชั้นพึ่งชั้นที่อยู่ใต้มัน"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "What is the purpose of uv in a Python AI project?",
+        "th": "uv มีไว้ทำอะไรในโปรเจกต์ AI ที่เขียนด้วย Python"
+      },
+      "options": [
+        {
+          "en": "A GPU monitoring tool",
+          "th": "เครื่องมือเฝ้าดู GPU"
+        },
+        {
+          "en": "A neural network visualization library",
+          "th": "ไลบรารีแสดงภาพโครงข่ายประสาทเทียม"
+        },
+        {
+          "en": "An ultra-fast Python package installer and resolver",
+          "th": "ตัวติดตั้งและแก้ dependency ของแพ็กเกจ Python ที่เร็วมาก"
+        },
+        {
+          "en": "A CUDA compiler for custom kernels",
+          "th": "คอมไพเลอร์ CUDA สำหรับ kernel ที่เขียนเอง"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "uv is a fast Python package installer written in Rust. It replaces pip with much faster dependency resolution and installation, often 10-100x faster.",
+        "th": "uv คือตัวติดตั้งแพ็กเกจ Python ที่เขียนด้วย Rust ใช้แทน pip ได้ และแก้ dependency กับติดตั้งได้เร็วกว่ามาก มักเร็วกว่า 10-100 เท่า"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "How do you verify that PyTorch can access your GPU?",
+        "th": "จะตรวจอย่างไรว่า PyTorch เข้าถึง GPU ได้"
+      },
+      "options": [
+        {
+          "en": "python -c 'import gpu'",
+          "th": "python -c 'import gpu'"
+        },
+        {
+          "en": "import torch; print(torch.cuda.is_available())",
+          "th": "import torch; print(torch.cuda.is_available())"
+        },
+        {
+          "en": "import torch; print(torch.__version__)",
+          "th": "import torch; print(torch.__version__)"
+        },
+        {
+          "en": "nvidia-smi --query",
+          "th": "nvidia-smi --query"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "torch.cuda.is_available() returns True if PyTorch can access CUDA GPUs. On Apple Silicon, use torch.backends.mps.is_available() for Metal Performance Shaders.",
+        "th": "torch.cuda.is_available() คืนค่า True ถ้า PyTorch เข้าถึง GPU ผ่าน CUDA ได้ ส่วนบน Apple Silicon ให้ใช้ torch.backends.mps.is_available() เพื่อตรวจ Metal Performance Shaders"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "On Ubuntu, the fnm installer stops with `Not installing fnm due to missing dependencies.` What is the fix?",
+        "th": "บน Ubuntu ตัวติดตั้ง fnm หยุดพร้อมข้อความ `Not installing fnm due to missing dependencies.` ต้องแก้อย่างไร"
+      },
+      "options": [
+        {
+          "en": "Install Homebrew first",
+          "th": "ติดตั้ง Homebrew ก่อน"
+        },
+        {
+          "en": "Run the installer with `sudo`",
+          "th": "รันตัวติดตั้งด้วย `sudo`"
+        },
+        {
+          "en": "Install Node.js 22 with apt before fnm",
+          "th": "ติดตั้ง Node.js 22 ด้วย apt ก่อน fnm"
+        },
+        {
+          "en": "Install `unzip` with `sudo apt install -y unzip`, then rerun the installer",
+          "th": "ติดตั้ง `unzip` ด้วย `sudo apt install -y unzip` แล้วรันตัวติดตั้งใหม่"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "On Linux fnm unpacks a zip archive, so the installer checks for `unzip` first. The Step 1 apt line installs it; if you skipped that step, install it on its own.",
+        "th": "บน Linux fnm ต้องแตกไฟล์ zip ตัวติดตั้งจึงตรวจหา `unzip` ก่อน คำสั่ง apt ในขั้นที่ 1 ติดตั้งให้แล้ว ถ้าข้ามขั้นนั้นไปก็ติดตั้งแยกได้"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "What does this verification snippet print on its last line?",
+        "th": "โค้ดตรวจสอบนี้พิมพ์อะไรออกมาในบรรทัดสุดท้าย"
+      },
+      "code": "import numpy as np\na = np.array([1, 2, 3])\nprint(f\"Vector: {a}, dot product with itself: {np.dot(a, a)}\")",
+      "options": [
+        {
+          "en": "Vector: [1 2 3], dot product with itself: 14",
+          "th": "Vector: [1 2 3], dot product with itself: 14"
+        },
+        {
+          "en": "Vector: [1 2 3], dot product with itself: [1 4 9]",
+          "th": "Vector: [1 2 3], dot product with itself: [1 4 9]"
+        },
+        {
+          "en": "Vector: [1, 2, 3], dot product with itself: 6",
+          "th": "Vector: [1, 2, 3], dot product with itself: 6"
+        },
+        {
+          "en": "Vector: [1 2 3], dot product with itself: 36",
+          "th": "Vector: [1 2 3], dot product with itself: 36"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The dot product multiplies matching elements and adds them: 1×1 + 2×2 + 3×3 = 14. NumPy prints arrays without commas, as `[1 2 3]`.",
+        "th": "dot product คูณสมาชิกที่ตรงกันแล้วบวกรวม: 1×1 + 2×2 + 3×3 = 14 และ NumPy พิมพ์ array โดยไม่มีจุลภาค เป็น `[1 2 3]`"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "On an M2 MacBook, `uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124` fails. What is the right fix?",
+        "th": "บน MacBook M2 คำสั่ง `uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124` ล้มเหลว ควรแก้อย่างไร"
+      },
+      "options": [
+        {
+          "en": "Install the CUDA toolkit for macOS, then retry",
+          "th": "ติดตั้ง CUDA toolkit สำหรับ macOS แล้วลองใหม่"
+        },
+        {
+          "en": "Switch to `cu118`, which supports older hardware",
+          "th": "เปลี่ยนเป็น `cu118` ซึ่งรองรับฮาร์ดแวร์รุ่นเก่ากว่า"
+        },
+        {
+          "en": "Drop `--index-url`: the cuXXX wheels are Linux/Windows only, and the plain build includes MPS",
+          "th": "ตัด `--index-url` ออก: wheel แบบ cuXXX มีเฉพาะ Linux/Windows และแบบธรรมดามี MPS มาให้แล้ว"
+        },
+        {
+          "en": "Run the command under Rosetta 2 so it installs the x86 CUDA build",
+          "th": "รันคำสั่งผ่าน Rosetta 2 เพื่อให้ติดตั้ง CUDA แบบ x86"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "There is no CUDA on a Mac and the CUDA wheels are only built for Linux and Windows, so the install fails. `uv pip install torch torchvision torchaudio` installs the build with Apple's MPS (Metal) backend.",
+        "th": "Mac ไม่มี CUDA และ wheel แบบ CUDA สร้างไว้สำหรับ Linux กับ Windows เท่านั้น การติดตั้งจึงล้มเหลว คำสั่ง `uv pip install torch torchvision torchaudio` จะติดตั้งแบบที่มี backend MPS (Metal) ของ Apple"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "`brew install fnm` stops with `Cannot install under Rosetta 2 in ARM default prefix (/opt/homebrew)`, and `arch` prints `i386`. What is going on, and what fixes it?",
+        "th": "`brew install fnm` หยุดพร้อมข้อความ `Cannot install under Rosetta 2 in ARM default prefix (/opt/homebrew)` และ `arch` พิมพ์ `i386` เกิดอะไรขึ้น และแก้อย่างไร"
+      },
+      "options": [
+        {
+          "en": "Homebrew is broken; reinstall it from scratch",
+          "th": "Homebrew เสีย ต้องติดตั้งใหม่ทั้งหมด"
+        },
+        {
+          "en": "The terminal runs under Rosetta 2 while Homebrew is arm64; run `arch -arm64 brew install fnm` and add fnm to the shell",
+          "th": "terminal รันผ่าน Rosetta 2 ขณะที่ Homebrew เป็น arm64 ให้รัน `arch -arm64 brew install fnm` แล้วผูก fnm เข้ากับ shell"
+        },
+        {
+          "en": "fnm does not support Apple Silicon; use nvm instead",
+          "th": "fnm ไม่รองรับ Apple Silicon ให้ใช้ nvm แทน"
+        },
+        {
+          "en": "`/opt/homebrew` is read-only; run brew with `sudo`",
+          "th": "`/opt/homebrew` เขียนไม่ได้ ให้รัน brew ด้วย `sudo`"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "`i386` means the shell is running as x86 under Rosetta 2, but the Homebrew in `/opt/homebrew` is a native arm64 build. Forcing arm64 with `arch -arm64` installs fnm, then `eval \"$(fnm env --use-on-cd)\"` in `~/.zshrc` wires it into the shell.",
+        "th": "`i386` แปลว่า shell รันเป็น x86 ผ่าน Rosetta 2 แต่ Homebrew ใน `/opt/homebrew` เป็น arm64 การบังคับเป็น arm64 ด้วย `arch -arm64` จะติดตั้ง fnm ได้ แล้วเพิ่ม `eval \"$(fnm env --use-on-cd)\"` ลงใน `~/.zshrc` เพื่อผูกเข้ากับ shell"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "The beginner preflight passes, yet Rust is not installed and a later lesson needs it. Why didn't the preflight fail?",
+        "th": "การตรวจก่อนเริ่มของเส้นทางผู้เริ่มต้นผ่าน ทั้งที่ยังไม่ได้ติดตั้ง Rust ซึ่งบทหลังๆ ต้องใช้ ทำไมการตรวจจึงไม่ล้มเหลว"
+      },
+      "options": [
+        {
+          "en": "The script has a bug and skips Rust by mistake",
+          "th": "สคริปต์มีบั๊กทำให้ข้าม Rust ไปโดยไม่ตั้งใจ"
+        },
+        {
+          "en": "Rust is bundled with Python 3.12, so it counts as installed",
+          "th": "Rust มาพร้อม Python 3.12 จึงนับว่าติดตั้งแล้ว"
+        },
+        {
+          "en": "It only checks what the selected route needs; later tools are skipped unless you add `--show-later`, and they never block the route",
+          "th": "สคริปต์ตรวจเฉพาะสิ่งที่เส้นทางที่เลือกต้องใช้ เครื่องมือของบทหลังจะถูกข้ามถ้าไม่ใส่ `--show-later` และไม่ขวางเส้นทางที่เลือก"
+        },
+        {
+          "en": "Preflight checks only run on Linux",
+          "th": "การตรวจก่อนเริ่มทำงานเฉพาะบน Linux"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "The preflight is scoped on purpose so a new learner sees one clear answer. `--show-later` inspects optional tools for later lessons, and a missing later tool never blocks the selected route; install it when a lesson asks for it.",
+        "th": "การตรวจก่อนเริ่มจำกัดขอบเขตโดยตั้งใจ เพื่อให้ผู้เรียนใหม่เห็นคำตอบที่ชัดเจนข้อเดียว `--show-later` จะตรวจเครื่องมือเสริมของบทหลังๆ ด้วย และเครื่องมือของบทหลังที่ยังไม่มีจะไม่ขวางเส้นทางที่เลือก ค่อยติดตั้งเมื่อบทนั้นขอ"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "For Exercise 3, `node hello.ts` fails on a TypeScript file. What is the most likely cause?",
+        "th": "ในแบบฝึกหัดที่ 3 คำสั่ง `node hello.ts` รันไฟล์ TypeScript ไม่ผ่าน สาเหตุที่น่าจะเป็นที่สุดคือข้อใด"
+      },
+      "options": [
+        {
+          "en": "Node.js cannot run a `.ts` file directly; run it with `npx tsx hello.ts`",
+          "th": "Node.js รันไฟล์ `.ts` ตรงๆ ไม่ได้ ให้รันด้วย `npx tsx hello.ts`"
+        },
+        {
+          "en": "Node.js 22 is too old for TypeScript",
+          "th": "Node.js 22 เก่าเกินไปสำหรับ TypeScript"
+        },
+        {
+          "en": "pnpm must be installed globally before any `.ts` file can run",
+          "th": "ต้องติดตั้ง pnpm แบบ global ก่อน ไฟล์ `.ts` จึงจะรันได้"
+        },
+        {
+          "en": "The file must be compiled with `cargo build` first",
+          "th": "ต้องคอมไพล์ไฟล์ด้วย `cargo build` ก่อน"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The lesson's hint says it directly: Node.js cannot run a `.ts` file on its own. `npx tsx` compiles and runs TypeScript in one step.",
+        "th": "คำใบ้ของบทบอกไว้ตรงๆ ว่า Node.js รันไฟล์ `.ts` เองไม่ได้ `npx tsx` จะแปลง TypeScript แล้วรันให้ในขั้นตอนเดียว"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "A teammate clones your project and gets different package versions, so results don't match. What best gives everyone the same environment?",
+        "th": "เพื่อนร่วมทีม clone โปรเจกต์ของคุณไปแล้วได้แพ็กเกจคนละเวอร์ชัน ผลลัพธ์จึงไม่ตรงกัน วิธีใดทำให้ทุกคนได้สภาพแวดล้อมเดียวกันได้ดีที่สุด"
+      },
+      "options": [
+        {
+          "en": "Ask everyone to run `pip install --upgrade` on every package",
+          "th": "ให้ทุกคนรัน `pip install --upgrade` กับทุกแพ็กเกจ"
+        },
+        {
+          "en": "Install every package into the system Python so there is only one copy",
+          "th": "ติดตั้งทุกแพ็กเกจลง Python ของระบบ จะได้มีชุดเดียว"
+        },
+        {
+          "en": "Use a GPU so the numbers come out the same",
+          "th": "ใช้ GPU เพื่อให้ตัวเลขออกมาเท่ากัน"
+        },
+        {
+          "en": "Pin exact versions in a lock file (for example `uv.lock`) and install from it inside a project virtual environment",
+          "th": "ล็อกเวอร์ชันไว้ในไฟล์ lock (เช่น `uv.lock`) แล้วติดตั้งจากไฟล์นั้นใน virtual environment ของโปรเจกต์"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Reproducible builds need the exact same versions everywhere. A lock file records them and a per-project virtual environment keeps them apart from other projects; upgrading everything does the opposite.",
+        "th": "การ build ให้ได้ผลเหมือนเดิมต้องใช้เวอร์ชันเดียวกันทุกเครื่อง ไฟล์ lock บันทึกเวอร์ชันเหล่านั้นไว้ และ virtual environment ต่อโปรเจกต์ช่วยแยกออกจากโปรเจกต์อื่น ส่วนการอัปเกรดทุกอย่างให้ผลตรงกันข้าม"
+      }
+    }
+  ]
+}

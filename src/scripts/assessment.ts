@@ -61,7 +61,7 @@ function h(tag: string, attrs: Record<string, any> = {}, kids: (Node | string | 
   return el;
 }
 
-// Light inline formatting for prompts and hints: `code` and **bold**.
+// Light inline formatting for quiz text, prompts and hints: `code` and **bold**.
 const escapeHtml = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const inline = (s: string) =>
   escapeHtml(s)
@@ -166,7 +166,7 @@ function setup(root: HTMLElement) {
       if (answered) cls += orig === q.answer ? ' correct' : pos === run!.picked ? ' wrong' : ' dim';
       return h('button', { type: 'button', class: cls, disabled: answered, onclick: () => pick(pos) }, [
         h('span', { class: 'ail-letter' }, [t.letters[pos]]),
-        h('span', {}, [q.options[orig]]),
+        h('span', { html: inline(q.options[orig]) }),
       ]);
     });
     const ok = answered && run.picked === correctPos;
@@ -177,7 +177,7 @@ function setup(root: HTMLElement) {
       ]),
       h('div', { class: 'ail-progress' }, [h('i', { style: `width:${((run.idx + (answered ? 1 : 0)) / n) * 100}%` })]),
       h('p', { class: 'ail-question' }, [
-        q.question,
+        h('span', { html: inline(q.question) }),
         q.origin === 'upstream' ? h('span', { class: 'ail-origin', title: t.fromUpstream }, [t.fromUpstream]) : null,
       ]),
       q.code ? h('pre', { class: 'ail-code' }, [q.code]) : null,
@@ -185,7 +185,7 @@ function setup(root: HTMLElement) {
       answered
         ? h('div', { class: 'ail-feedback', role: 'status' }, [
             h('div', { class: ok ? 'ail-ok' : 'ail-warn' }, [ok ? t.correct : t.wrong]),
-            h('div', {}, [q.explanation]),
+            h('div', { html: inline(q.explanation) }),
           ])
         : null,
       answered

@@ -38,6 +38,9 @@ jobs:
       - name: Check internal links and images
         run: python3 scripts/check-links.py dist "/${{ github.event.repository.name }}/"
 
+      - name: Check Thai lessons and quizzes against the English sources
+        run: python3 scripts/check-thai.py
+
       - name: Check the hands-on exercises
         run: python3 scripts/check-exercises.py
 

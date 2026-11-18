@@ -16,7 +16,8 @@
     "clean": "node -e \"for (const d of ['.astro', 'node_modules/.astro', 'dist']) require('fs').rmSync(d, { recursive: true, force: true })\"",
     "rebuild": "npm run clean && npm run build",
     "test:exercises": "python3 scripts/check-exercises.py",
-    "test:links": "python3 scripts/check-links.py dist"
+    "test:links": "python3 scripts/check-links.py dist",
+    "test:thai": "python3 scripts/check-thai.py"
   },
   "dependencies": {
     "@astrojs/markdown-remark": "7.3.9",

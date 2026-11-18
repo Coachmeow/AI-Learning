@@ -1,0 +1,25 @@
+{
+  "minutes": 12,
+  "title": {
+    "th": "อ่านเลขเวอร์ชันจากผลลัพธ์ของคำสั่ง",
+    "en": "Read the version from a tool's output"
+  },
+  "prompt": {
+    "th": "สคริปต์ตรวจสภาพแวดล้อมต้องอ่านเลขเวอร์ชันจากสิ่งที่แต่ละคำสั่งพิมพ์ออกมา ซึ่งหน้าตาไม่เหมือนกันเลย เช่น `Python 3.12.4`, `v22.11.0`, `rustc 1.82.0 (f6e511eec 2024-10-15)` เขียนฟังก์ชัน `parse_version(output)` ให้คืน tuple ของ int จากเลขเวอร์ชันชุดแรกในข้อความ (ตัวเลขอย่างน้อย 2 ส่วนคั่นด้วยจุด) เช่น `(3, 12, 4)` และถ้าไม่พบเลขเวอร์ชันเลยให้ `raise ValueError`",
+    "en": "An environment check has to read the version out of whatever each command prints, and every tool prints it differently: `Python 3.12.4`, `v22.11.0`, `rustc 1.82.0 (f6e511eec 2024-10-15)`. Write `parse_version(output)` that returns a tuple of ints for the first version number in the text (at least two dot-separated numbers), such as `(3, 12, 4)`. If there is no version number, `raise ValueError`."
+  },
+  "hints": [
+    {
+      "th": "ใช้ regular expression จาก `import re` รูปแบบ `\\d+(?:\\.\\d+)+` จับตัวเลขที่มีจุดคั่นอย่างน้อยหนึ่งจุด และไม่จับวันที่ที่คั่นด้วย `-`",
+      "en": "Use a regular expression from `import re`. The pattern `\\d+(?:\\.\\d+)+` matches numbers joined by at least one dot and skips dates joined with `-`."
+    },
+    {
+      "th": "`re.search` คืนผลแรกที่เจอ (หรือ `None`) ส่วน `re.findall(...)[-1]` จะได้ชุดสุดท้าย ซึ่งอาจเป็นเวอร์ชันของคอมไพเลอร์ที่ต่อท้ายมา",
+      "en": "`re.search` returns the first match (or `None`). `re.findall(...)[-1]` would take the last one, which may be the version of the compiler printed after it."
+    },
+    {
+      "th": "ได้ match แล้วใช้ `tuple(int(p) for p in m.group(0).split(\".\"))` ถ้า `m` เป็น `None` ให้ `raise ValueError(...)`",
+      "en": "Once you have a match, use `tuple(int(p) for p in m.group(0).split(\".\"))`. If `m` is `None`, `raise ValueError(...)`."
+    }
+  ]
+}
