@@ -1,0 +1,25 @@
+{
+  "minutes": 15,
+  "title": {
+    "th": "เขียนตัวตรวจ .gitignore แบบย่อ",
+    "en": "Write a small .gitignore matcher"
+  },
+  "prompt": {
+    "th": "เขียน `is_ignored(path, patterns)` ให้คืน `True` ถ้าไฟล์ `path` (path จากรากของ repo คั่นด้วย `/` เช่น `runs/3/best.pt`) ถูกกันออกโดยบรรทัดใดบรรทัดหนึ่งใน `patterns` ใช้กฎย่อของ git ดังนี้\n\n1. บรรทัดว่างและบรรทัดที่ขึ้นต้นด้วย `#` เป็นคอมเมนต์ ให้ข้ามไป\n2. รูปแบบที่ลงท้ายด้วย `/` เช่น `checkpoints/` เทียบกับชื่อโฟลเดอร์ที่อยู่ใน path ระดับไหนก็ได้ แต่ไม่เทียบกับชื่อไฟล์\n3. รูปแบบที่ขึ้นต้นด้วย `/` เช่น `/data.csv` เทียบกับ path เต็มจากราก ทีละส่วนที่คั่นด้วย `/` (จำนวนส่วนต้องเท่ากัน)\n4. รูปแบบอื่น เช่น `*.pt` เทียบกับชื่อไฟล์ (ส่วนสุดท้ายของ path)\n\nใช้ `fnmatch.fnmatchcase` เทียบชื่อกับรูปแบบที่มี `*` และ `?`",
+    "en": "Write `is_ignored(path, patterns)` that returns `True` when the file `path` (relative to the repo root, joined with `/`, e.g. `runs/3/best.pt`) is excluded by any line of `patterns`. Use this subset of git's rules:\n\n1. Blank lines and lines starting with `#` are comments; skip them.\n2. A pattern ending in `/`, such as `checkpoints/`, matches a directory name anywhere in the path, but never the file name.\n3. A pattern starting with `/`, such as `/data.csv`, matches the full path from the root, part by part between the `/` separators (same number of parts).\n4. Any other pattern, such as `*.pt`, matches the file name (the last part of the path).\n\nUse `fnmatch.fnmatchcase` to match names against patterns with `*` and `?`."
+  },
+  "hints": [
+    {
+      "th": "แยก path ด้วย `parts = path.split(\"/\")` แล้ว `dirs = parts[:-1]` คือโฟลเดอร์ และ `name = parts[-1]` คือชื่อไฟล์",
+      "en": "Split with `parts = path.split(\"/\")`; then `dirs = parts[:-1]` are the folders and `name = parts[-1]` is the file name."
+    },
+    {
+      "th": "อย่าเอา `fnmatch` ไปเทียบกับ path ทั้งเส้น เพราะ `*` ใน fnmatch ข้าม `/` ได้ ทำให้ `/*.pt` ไปกัน `runs/best.pt` ด้วย ซึ่ง git ไม่ทำ",
+      "en": "Don't run `fnmatch` on the whole path: its `*` also matches `/`, so `/*.pt` would exclude `runs/best.pt`, which git does not."
+    },
+    {
+      "th": "กฎข้อ 3: ตัด `/` ตัวแรกออกแล้วแยกรูปแบบเป็นส่วนๆ แล้วตรวจว่าจำนวนส่วนเท่ากับ `parts` และทุกคู่ผ่าน `fnmatchcase`",
+      "en": "Rule 3: strip the leading `/`, split the pattern into parts, then check it has as many parts as `parts` and every pair passes `fnmatchcase`."
+    }
+  ]
+}

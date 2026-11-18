@@ -1,0 +1,486 @@
+{
+  "lesson": "00-setup-and-tooling/02-git-and-collaboration",
+  "source_hash": "5bcc9ca73bdf9f2a3a647d167ed00ff223a81a9a36f996ce148aa1312d545f08",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What does 'version control' primarily help you do?",
+        "th": "การควบคุมเวอร์ชัน (version control) ช่วยให้คุณทำอะไรเป็นหลัก"
+      },
+      "options": [
+        {
+          "en": "Automatically fix bugs in your code",
+          "th": "แก้บั๊กในโค้ดให้อัตโนมัติ"
+        },
+        {
+          "en": "Speed up code execution",
+          "th": "ทำให้โค้ดรันเร็วขึ้น"
+        },
+        {
+          "en": "Track changes to files over time and collaborate with others",
+          "th": "ติดตามการเปลี่ยนแปลงของไฟล์ตลอดเวลา และทำงานร่วมกับคนอื่น"
+        },
+        {
+          "en": "Compress files to save disk space",
+          "th": "บีบอัดไฟล์เพื่อประหยัดพื้นที่ดิสก์"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Version control systems like git track every change made to files, allowing you to revert to previous states and collaborate with others on the same codebase.",
+        "th": "ระบบควบคุมเวอร์ชันอย่าง git บันทึกทุกการเปลี่ยนแปลงของไฟล์ ทำให้ย้อนกลับไปสถานะก่อนหน้าได้ และหลายคนทำงานบนโค้ดชุดเดียวกันได้"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What is a 'repository' in the context of software development?",
+        "th": "ในงานพัฒนาซอฟต์แวร์ \"repository\" หมายถึงอะไร"
+      },
+      "options": [
+        {
+          "en": "A package manager for installing libraries",
+          "th": "ตัวจัดการแพ็กเกจสำหรับติดตั้งไลบรารี"
+        },
+        {
+          "en": "A collection of files and their complete change history managed by version control",
+          "th": "ชุดไฟล์พร้อมประวัติการเปลี่ยนแปลงทั้งหมด ที่ระบบควบคุมเวอร์ชันดูแลอยู่"
+        },
+        {
+          "en": "A database for storing user data",
+          "th": "ฐานข้อมูลสำหรับเก็บข้อมูลผู้ใช้"
+        },
+        {
+          "en": "A cloud storage service like Google Drive",
+          "th": "บริการเก็บไฟล์บนคลาวด์อย่าง Google Drive"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "A repository (repo) is a directory tracked by git that contains all project files along with the full history of changes made to those files.",
+        "th": "repository (repo) คือโฟลเดอร์ที่ git ติดตามอยู่ มีไฟล์ทั้งหมดของโปรเจกต์พร้อมประวัติการเปลี่ยนแปลงทั้งหมดของไฟล์เหล่านั้น"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "In git, what is a branch?",
+        "th": "ใน git branch คืออะไร"
+      },
+      "options": [
+        {
+          "en": "A full copy of every file in the project",
+          "th": "สำเนาไฟล์ทุกไฟล์ในโปรเจกต์แบบเต็มชุด"
+        },
+        {
+          "en": "A pointer to a commit that moves forward as you work",
+          "th": "ตัวชี้ไปยัง commit ที่ขยับไปข้างหน้าเมื่อคุณทำงานต่อ"
+        },
+        {
+          "en": "A backup stored on GitHub",
+          "th": "ข้อมูลสำรองที่เก็บไว้บน GitHub"
+        },
+        {
+          "en": "A folder that git ignores",
+          "th": "โฟลเดอร์ที่ git ไม่สนใจ"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "People call a branch \"a copy\", but it is only a pointer to a commit. Each new commit on the branch moves the pointer forward.",
+        "th": "คนมักเรียก branch ว่า \"สำเนา\" แต่จริงๆ แล้วเป็นแค่ตัวชี้ไปยัง commit หนึ่ง ทุกครั้งที่ commit ใหม่บน branch นั้น ตัวชี้จะขยับไปข้างหน้า"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Why do you fork the course repo on GitHub before cloning it?",
+        "th": "ทำไมต้อง fork repo ของหลักสูตรบน GitHub ก่อนจะ clone"
+      },
+      "options": [
+        {
+          "en": "Cloning is only allowed from a fork",
+          "th": "clone ได้เฉพาะจาก fork เท่านั้น"
+        },
+        {
+          "en": "A fork downloads faster",
+          "th": "fork ดาวน์โหลดได้เร็วกว่า"
+        },
+        {
+          "en": "Only maintainers can push to the course repo; a fork is your own copy you can push to",
+          "th": "มีแค่ผู้ดูแลที่ push เข้า repo ของหลักสูตรได้ fork คือสำเนาของคุณเองที่ push ได้"
+        },
+        {
+          "en": "A fork hides your work from other people",
+          "th": "fork ซ่อนงานของคุณไม่ให้คนอื่นเห็น"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "You have no write access to the course repo. Forking makes a copy under your account, so `origin` points at a repo you are allowed to push to.",
+        "th": "คุณไม่มีสิทธิ์เขียน repo ของหลักสูตร การ fork จะสร้างสำเนาไว้ใต้บัญชีของคุณ `origin` จึงชี้ไปที่ repo ที่คุณ push ได้"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Which command lists the commits so far, one line each?",
+        "th": "คำสั่งใดแสดงรายการ commit ที่ผ่านมา บรรทัดละหนึ่ง commit"
+      },
+      "options": [
+        {
+          "en": "`git log --oneline`",
+          "th": "`git log --oneline`"
+        },
+        {
+          "en": "`git status`",
+          "th": "`git status`"
+        },
+        {
+          "en": "`git diff`",
+          "th": "`git diff`"
+        },
+        {
+          "en": "`git push`",
+          "th": "`git push`"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "`git log --oneline` prints each commit's short hash and message on one line. `git status` shows the current state of your files, not the history.",
+        "th": "`git log --oneline` พิมพ์ hash แบบสั้นและข้อความของแต่ละ commit ไว้ในบรรทัดเดียว ส่วน `git status` แสดงสถานะปัจจุบันของไฟล์ ไม่ใช่ประวัติ"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "What is the correct sequence for saving and backing up your work in git?",
+        "th": "ลำดับที่ถูกต้องในการบันทึกและสำรองงานใน git คือข้อใด"
+      },
+      "options": [
+        {
+          "en": "git push, git add, git commit",
+          "th": "git push, git add, git commit"
+        },
+        {
+          "en": "git clone, git add, git push",
+          "th": "git clone, git add, git push"
+        },
+        {
+          "en": "git add, git commit, git push",
+          "th": "git add, git commit, git push"
+        },
+        {
+          "en": "git commit, git add, git push",
+          "th": "git commit, git add, git push"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "First you stage changes with 'git add', then save a snapshot with 'git commit', then upload to the remote with 'git push'. This is the daily workflow.",
+        "th": "เริ่มจากนำการเปลี่ยนแปลงเข้าพื้นที่พักไฟล์ด้วย 'git add' แล้วบันทึก snapshot ด้วย 'git commit' จากนั้นอัปโหลดขึ้น remote ด้วย 'git push' นี่คือขั้นตอนประจำวัน"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "What does 'git checkout -b experiment/new-optimizer' do?",
+        "th": "คำสั่ง 'git checkout -b experiment/new-optimizer' ทำอะไร"
+      },
+      "options": [
+        {
+          "en": "Creates a new branch named experiment/new-optimizer and switches to it",
+          "th": "สร้าง branch ใหม่ชื่อ experiment/new-optimizer แล้วสลับไปใช้ branch นั้น"
+        },
+        {
+          "en": "Deletes the branch experiment/new-optimizer",
+          "th": "ลบ branch experiment/new-optimizer"
+        },
+        {
+          "en": "Downloads a branch from GitHub called experiment/new-optimizer",
+          "th": "ดาวน์โหลด branch ชื่อ experiment/new-optimizer จาก GitHub"
+        },
+        {
+          "en": "Reverts all files to match the experiment/new-optimizer branch",
+          "th": "ย้อนไฟล์ทั้งหมดให้ตรงกับ branch experiment/new-optimizer"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The '-b' flag creates a new branch with the given name and immediately switches to it, allowing you to experiment without affecting the main branch.",
+        "th": "ตัวเลือก '-b' สร้าง branch ใหม่ตามชื่อที่ให้ แล้วสลับไปที่ branch นั้นทันที คุณจึงทดลองได้โดยไม่กระทบ branch main"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "Why should you add '.pt', '.pth', and '.safetensors' to your .gitignore?",
+        "th": "ทำไมต้องใส่ '.pt', '.pth' และ '.safetensors' ไว้ใน .gitignore"
+      },
+      "options": [
+        {
+          "en": "They are model checkpoint files that are too large for git and can be re-generated",
+          "th": "เป็นไฟล์ checkpoint ของโมเดลที่ใหญ่เกินกว่าจะเก็บใน git และสร้างใหม่ได้"
+        },
+        {
+          "en": "Git cannot track binary files of any kind",
+          "th": "git ติดตามไฟล์ไบนารีไม่ได้เลยทุกชนิด"
+        },
+        {
+          "en": "They are Python test files that should not be committed",
+          "th": "เป็นไฟล์ทดสอบของ Python ที่ไม่ควร commit"
+        },
+        {
+          "en": "They contain sensitive API keys",
+          "th": "มี API key ที่เป็นความลับอยู่ข้างใน"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Model checkpoint files (.pt, .pth, .safetensors) are often gigabytes in size. Git is not designed for large binary files, so these should be excluded and re-generated or stored separately.",
+        "th": "ไฟล์ checkpoint ของโมเดล (.pt, .pth, .safetensors) มักใหญ่หลาย GB และ git ไม่ได้ออกแบบมาสำหรับไฟล์ไบนารีขนาดใหญ่ จึงควรกันออกไป แล้วสร้างใหม่หรือเก็บไว้ที่อื่นแทน"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "You ran `git add model.py` but not `git commit` yet. Where is the change now?",
+        "th": "คุณรัน `git add model.py` แล้ว แต่ยังไม่ได้ `git commit` ตอนนี้การเปลี่ยนแปลงอยู่ที่ไหน"
+      },
+      "options": [
+        {
+          "en": "In the staging area, waiting to go into the next commit",
+          "th": "อยู่ในพื้นที่พักไฟล์ (staging area) รอเข้า commit ถัดไป"
+        },
+        {
+          "en": "Already in the local repo's history",
+          "th": "อยู่ในประวัติของ repo ในเครื่องแล้ว"
+        },
+        {
+          "en": "On GitHub",
+          "th": "อยู่บน GitHub แล้ว"
+        },
+        {
+          "en": "Nowhere: `git add` only checks the file for errors",
+          "th": "ไม่ได้อยู่ที่ไหน `git add` แค่ตรวจหา error ในไฟล์"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "`git add` moves a change from the working directory to the staging area. Only `git commit` writes it into the local repo, and only `git push` sends it to the remote.",
+        "th": "`git add` ย้ายการเปลี่ยนแปลงจากไดเรกทอรีทำงานเข้าพื้นที่พักไฟล์ ต้อง `git commit` จึงจะเข้าไปอยู่ใน repo ในเครื่อง และต้อง `git push` จึงจะขึ้นไปที่ remote"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "You committed your work, but a teammate cannot see it on GitHub. What is the most likely reason?",
+        "th": "คุณ commit งานไปแล้ว แต่เพื่อนร่วมทีมมองไม่เห็นบน GitHub สาเหตุที่น่าจะเป็นที่สุดคือข้อใด"
+      },
+      "options": [
+        {
+          "en": "GitHub takes a day to show new commits",
+          "th": "GitHub ใช้เวลาหนึ่งวันกว่าจะแสดง commit ใหม่"
+        },
+        {
+          "en": "The commit only exists in your local repo until you `git push`",
+          "th": "commit นั้นยังอยู่แค่ใน repo ในเครื่อง จนกว่าคุณจะ `git push`"
+        },
+        {
+          "en": "Your teammate needs to run `git add`",
+          "th": "เพื่อนร่วมทีมต้องรัน `git add` ก่อน"
+        },
+        {
+          "en": "Commits are private unless you merge them",
+          "th": "commit เป็นของส่วนตัว จนกว่าจะ merge"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "A commit is a snapshot in your local repo. `git push` uploads it to the remote; after that your teammate can `git fetch` or `git pull` it.",
+        "th": "commit คือ snapshot ใน repo ในเครื่องของคุณ ต้อง `git push` จึงจะขึ้นไปที่ remote หลังจากนั้นเพื่อนร่วมทีมจึง `git fetch` หรือ `git pull` ไปได้"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Which `.gitignore` line ignores every `.pt` file in every folder of the project?",
+        "th": "บรรทัดใดใน `.gitignore` ที่กันไฟล์ `.pt` ทุกไฟล์ในทุกโฟลเดอร์ของโปรเจกต์"
+      },
+      "options": [
+        {
+          "en": "`/*.pt`",
+          "th": "`/*.pt`"
+        },
+        {
+          "en": "`*.pt/`",
+          "th": "`*.pt/`"
+        },
+        {
+          "en": "`*.pt`",
+          "th": "`*.pt`"
+        },
+        {
+          "en": "`.pt`",
+          "th": "`.pt`"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "A pattern without a slash matches the file name at any depth, so `*.pt` covers `model.pt` and `runs/3/best.pt`. A leading `/` anchors it to the root only, a trailing `/` matches only directories, and `.pt` matches only a file literally named `.pt`.",
+        "th": "รูปแบบที่ไม่มีเครื่องหมาย `/` จะเทียบกับชื่อไฟล์ทุกระดับความลึก `*.pt` จึงครอบคลุมทั้ง `model.pt` และ `runs/3/best.pt` ถ้ามี `/` นำหน้าจะเจาะจงแค่ที่รากของโปรเจกต์ ถ้ามี `/` ต่อท้ายจะเทียบเฉพาะโฟลเดอร์ ส่วน `.pt` เทียบได้แค่ไฟล์ที่ชื่อ `.pt` ตรงตัว"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "You add `*.pt` to `.gitignore`, but `git status` still lists `model.pt` as modified. Why?",
+        "th": "คุณเพิ่ม `*.pt` ลง `.gitignore` แล้ว แต่ `git status` ยังแสดงว่า `model.pt` ถูกแก้ไข เพราะอะไร"
+      },
+      "options": [
+        {
+          "en": "`.gitignore` only takes effect after `git push`",
+          "th": "`.gitignore` มีผลหลังจาก `git push` เท่านั้น"
+        },
+        {
+          "en": "The pattern needs to be `**/*.pt`",
+          "th": "ต้องเขียนรูปแบบเป็น `**/*.pt`"
+        },
+        {
+          "en": "Git ignores `.gitignore` for binary files",
+          "th": "git ไม่สนใจ `.gitignore` สำหรับไฟล์ไบนารี"
+        },
+        {
+          "en": "`model.pt` was committed earlier, and `.gitignore` only affects untracked files; untrack it with `git rm --cached model.pt`",
+          "th": "`model.pt` ถูก commit ไปก่อนแล้ว และ `.gitignore` มีผลเฉพาะไฟล์ที่ยังไม่ถูกติดตาม ให้เลิกติดตามด้วย `git rm --cached model.pt`"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Once a file is tracked, git keeps tracking it whatever `.gitignore` says. `git rm --cached` removes it from the index while leaving the file on disk; after that commit, the ignore rule applies.",
+        "th": "เมื่อไฟล์ถูกติดตามแล้ว git จะติดตามต่อไม่ว่า `.gitignore` จะเขียนว่าอะไร `git rm --cached` เอาไฟล์ออกจาก index โดยไฟล์ยังอยู่บนดิสก์ หลังจาก commit นั้น กฎ ignore จึงจะมีผล"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "An experiment on `experiment/new-optimizer` failed and you want to throw it away. Which keeps `main` untouched?",
+        "th": "การทดลองบน `experiment/new-optimizer` ไม่ได้ผล และคุณอยากทิ้งไป วิธีใดที่ไม่แตะ `main` เลย"
+      },
+      "options": [
+        {
+          "en": "Merge it into `main`, then revert the merge",
+          "th": "merge เข้า `main` แล้ว revert การ merge นั้น"
+        },
+        {
+          "en": "`git checkout main`, then delete the branch with `git branch -D experiment/new-optimizer`",
+          "th": "`git checkout main` แล้วลบ branch ด้วย `git branch -D experiment/new-optimizer`"
+        },
+        {
+          "en": "Run `git reset --hard` on `main`",
+          "th": "รัน `git reset --hard` บน `main`"
+        },
+        {
+          "en": "Force-push the experiment branch over `main`",
+          "th": "force-push branch ทดลองทับ `main`"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The experiment's commits only exist on its branch. Switching back to `main` and deleting the branch drops them without ever changing `main`. The other options all rewrite or add to `main`.",
+        "th": "commit ของการทดลองอยู่แค่บน branch ของมัน การสลับกลับไป `main` แล้วลบ branch ทิ้งก็ทิ้ง commit เหล่านั้นไปโดยไม่เคยเปลี่ยน `main` ส่วนตัวเลือกอื่นล้วนแก้หรือเพิ่มของลงใน `main`"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "You cloned the course repo directly (not a fork). `git push origin my-progress` is rejected with \"Permission denied\" (403). What is the fix?",
+        "th": "คุณ clone repo ของหลักสูตรมาตรงๆ (ไม่ได้ fork) แล้ว `git push origin my-progress` ถูกปฏิเสธด้วย \"Permission denied\" (403) ต้องแก้อย่างไร"
+      },
+      "options": [
+        {
+          "en": "Rename the branch to `main` and push again",
+          "th": "เปลี่ยนชื่อ branch เป็น `main` แล้ว push ใหม่"
+        },
+        {
+          "en": "Run `git config --global user.email` with your GitHub email",
+          "th": "รัน `git config --global user.email` ด้วยอีเมล GitHub ของคุณ"
+        },
+        {
+          "en": "Fork the repo, point `origin` at your fork (`git remote set-url origin <fork-url>`), then push",
+          "th": "fork repo แล้วชี้ `origin` ไปที่ fork ของคุณ (`git remote set-url origin <fork-url>`) แล้วค่อย push"
+        },
+        {
+          "en": "Use `git push --force`",
+          "th": "ใช้ `git push --force`"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "The push fails because only maintainers can write to the course repo, whatever the branch or email. Your own fork accepts pushes, so `origin` has to point there.",
+        "th": "push ล้มเหลวเพราะมีแค่ผู้ดูแลที่เขียน repo ของหลักสูตรได้ ไม่ว่าจะใช้ branch หรืออีเมลอะไร fork ของคุณเองรับการ push ได้ `origin` จึงต้องชี้ไปที่นั่น"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "`main` and `experiment` both point at commit C. You check out `experiment` and make a new commit D. What happens to the pointers?",
+        "th": "`main` และ `experiment` ชี้ไปที่ commit C ทั้งคู่ คุณ checkout `experiment` แล้วสร้าง commit ใหม่ D ตัวชี้ทั้งสองเปลี่ยนไปอย่างไร"
+      },
+      "options": [
+        {
+          "en": "Both move to D",
+          "th": "ทั้งคู่ขยับไปที่ D"
+        },
+        {
+          "en": "`experiment` moves to D and `main` stays at C",
+          "th": "`experiment` ขยับไปที่ D ส่วน `main` ยังอยู่ที่ C"
+        },
+        {
+          "en": "`main` moves to D and `experiment` stays at C",
+          "th": "`main` ขยับไปที่ D ส่วน `experiment` ยังอยู่ที่ C"
+        },
+        {
+          "en": "Neither moves until you merge",
+          "th": "ไม่มีตัวไหนขยับจนกว่าจะ merge"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Only the checked-out branch moves forward with a new commit. D's parent is C, so `main` still points at C, and merging `experiment` later can simply fast-forward `main` to D.",
+        "th": "เฉพาะ branch ที่ checkout อยู่เท่านั้นที่ขยับตาม commit ใหม่ D มี parent เป็น C ดังนั้น `main` ยังชี้ที่ C และเมื่อ merge `experiment` ในภายหลัง git ก็แค่เลื่อน `main` ไปที่ D (fast-forward)"
+      }
+    }
+  ]
+}

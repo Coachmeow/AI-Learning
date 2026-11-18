@@ -205,6 +205,59 @@
     {
       "en": "verify",
       "th": "ตรวจสอบ"
+    },
+    {
+      "en": "version control",
+      "th": "การควบคุมเวอร์ชัน",
+      "first": "การควบคุมเวอร์ชัน (version control)"
+    },
+    {
+      "en": "repository / repo",
+      "th": "repository / repo"
+    },
+    {
+      "en": "commit",
+      "th": "commit"
+    },
+    {
+      "en": "branch",
+      "th": "branch"
+    },
+    {
+      "en": "merge",
+      "th": "merge"
+    },
+    {
+      "en": "remote",
+      "th": "remote"
+    },
+    {
+      "en": "fork",
+      "th": "fork"
+    },
+    {
+      "en": "working directory",
+      "th": "ไดเรกทอรีทำงาน",
+      "first": "ไดเรกทอรีทำงาน (working directory)"
+    },
+    {
+      "en": "staging area",
+      "th": "พื้นที่พักไฟล์",
+      "first": "พื้นที่พักไฟล์ (staging area)"
+    },
+    {
+      "en": "checkpoint (model file)",
+      "th": "checkpoint",
+      "note": "ไฟล์น้ำหนักโมเดลที่บันทึกไว้ระหว่าง/หลังฝึก"
+    },
+    {
+      "en": "untracked file",
+      "th": "ไฟล์ที่ยังไม่ถูกติดตาม",
+      "first": "ไฟล์ที่ยังไม่ถูกติดตาม (untracked)"
+    },
+    {
+      "en": "maintainer",
+      "th": "ผู้ดูแล"
     }
   ]
 }
