@@ -1,0 +1,25 @@
+{
+  "minutes": 12,
+  "title": {
+    "th": "เลือกเวอร์ชันที่ใหม่ที่สุดที่ตรงเงื่อนไข",
+    "en": "Pick the newest version that fits"
+  },
+  "prompt": {
+    "th": "ตัวแก้ dependency ต้องเลือกเวอร์ชันของแพ็กเกจจากรายการที่มีให้ เขียน `pick_version(available, spec)` ให้คืนเวอร์ชันที่ใหม่ที่สุดใน `available` ที่ตรงกับทุกเงื่อนไขใน `spec` ซึ่งเป็นเงื่อนไขหลายข้อคั่นด้วยจุลภาค เช่น `\">=1.26, <2\"` (ช่องว่างรอบเงื่อนไขไม่มีผล) ถ้า `spec` ว่างให้ถือว่าทุกเวอร์ชันใช้ได้ และถ้าไม่มีเวอร์ชันไหนตรงเลยให้คืน `None` ใช้ `satisfies` และ `compare` ที่ให้มาได้ และอย่าลืมว่าต้องเทียบเวอร์ชันเป็นตัวเลข",
+    "en": "A dependency resolver has to pick a package version from those available. Write `pick_version(available, spec)` that returns the newest version in `available` meeting every clause of `spec`, a comma-separated list such as `\">=1.26, <2\"` (spaces around clauses don't matter). An empty `spec` allows every version, and if nothing matches return `None`. You may use the given `satisfies` and `compare`; remember that versions compare as numbers."
+  },
+  "hints": [
+    {
+      "th": "แยกเงื่อนไขด้วย `[c.strip() for c in spec.split(\",\") if c.strip()]` สตริงว่างจะได้ list ว่าง",
+      "en": "Split clauses with `[c.strip() for c in spec.split(\",\") if c.strip()]`; an empty string gives an empty list."
+    },
+    {
+      "th": "เวอร์ชันที่ใช้ได้คือตัวที่ `all(satisfies(v, c) for c in clauses)` (ถ้า clauses ว่าง `all` ได้ `True`)",
+      "en": "A version is allowed when `all(satisfies(v, c) for c in clauses)` (with no clauses, `all` is `True`)."
+    },
+    {
+      "th": "หาตัวที่ใหม่ที่สุดด้วย `max(ok, key=parse)` ห้ามใช้ `max(ok)` ตรงๆ เพราะเทียบเป็นสตริงแล้ว `\"1.9\"` จะชนะ `\"1.10\"`",
+      "en": "Take the newest with `max(ok, key=parse)`. Plain `max(ok)` compares strings, so `\"1.9\"` would beat `\"1.10\"`."
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "minutes": 6,
+  "title": {
+    "th": "เติมโค้ด: เวอร์ชันนี้ตรงเงื่อนไขไหม",
+    "en": "Fill in: does this version meet the clause?"
+  },
+  "prompt": {
+    "th": "ใน `pyproject.toml` เงื่อนไขอย่าง `numpy>=1.26` บอกว่าเวอร์ชันไหนใช้ได้ ฟังก์ชัน `compare(a, b)` ที่ให้มาคืน -1, 0 หรือ 1 โดยเทียบเวอร์ชันเป็นตัวเลข เติม `satisfies(version, clause)` ให้คืน `True` เมื่อ `version` ตรงกับเงื่อนไขเดียว `clause` ซึ่งขึ้นต้นด้วย `>=`, `<=`, `==`, `!=`, `>` หรือ `<`",
+    "en": "In `pyproject.toml`, a clause like `numpy>=1.26` says which versions are allowed. The given `compare(a, b)` returns -1, 0 or 1, comparing versions as numbers. Complete `satisfies(version, clause)` so it returns `True` when `version` meets the single `clause`, which starts with `>=`, `<=`, `==`, `!=`, `>` or `<`."
+  },
+  "hints": [
+    {
+      "th": "`c = compare(version, target)` ได้ 1 ถ้า version ใหม่กว่า, 0 ถ้าเท่ากัน, -1 ถ้าเก่ากว่า",
+      "en": "`c = compare(version, target)` is 1 when version is newer, 0 when equal and -1 when older."
+    },
+    {
+      "th": "แต่ละตัวดำเนินการแปลงเป็นการเทียบ `c` กับ 0 เช่น `>=` คือ `c >= 0` และ `!=` คือ `c != 0`",
+      "en": "Each operator becomes a comparison of `c` with 0: `>=` is `c >= 0` and `!=` is `c != 0`."
+    },
+    {
+      "th": "อย่าใช้ `version == target` แบบสตริง เพราะ `\"2.0\"` กับ `\"2.0.0\"` คือเวอร์ชันเดียวกัน",
+      "en": "Don't use string equality `version == target`: `\"2.0\"` and `\"2.0.0\"` are the same version."
+    }
+  ]
+}

@@ -448,6 +448,61 @@
     {
       "en": "namespace",
       "th": "namespace"
+    },
+    {
+      "en": "dependency hell",
+      "th": "นรกของ dependency",
+      "first": "นรกของ dependency (dependency hell)"
+    },
+    {
+      "en": "lockfile",
+      "th": "ไฟล์ lock",
+      "first": "ไฟล์ lock (lockfile)"
+    },
+    {
+      "en": "transitive dependency",
+      "th": "dependency ทางอ้อม",
+      "first": "dependency ทางอ้อม (transitive dependency)"
+    },
+    {
+      "en": "optional dependencies / extras",
+      "th": "dependency แบบเลือกติดตั้ง"
+    },
+    {
+      "en": "resolver (dependency)",
+      "th": "ตัวแก้ dependency",
+      "first": "ตัวแก้ dependency (resolver)"
+    },
+    {
+      "en": "pin (a version)",
+      "th": "ล็อกเวอร์ชัน"
+    },
+    {
+      "en": "activate / deactivate",
+      "th": "activate / deactivate"
+    },
+    {
+      "en": "global install",
+      "th": "ติดตั้งลงระบบ (global)"
+    },
+    {
+      "en": "interpreter",
+      "th": "ตัวแปลภาษา",
+      "first": "ตัวแปลภาษา (interpreter)"
+    },
+    {
+      "en": "CUDA mismatch",
+      "th": "เวอร์ชัน CUDA ไม่ตรงกัน"
+    },
+    {
+      "en": "version specifier",
+      "th": "เงื่อนไขเวอร์ชัน",
+      "first": "เงื่อนไขเวอร์ชัน (version specifier)"
+    },
+    {
+      "en": "backtracking",
+      "th": "การย้อนกลับไปลองทางอื่น",
+      "first": "การย้อนกลับ (backtracking)"
     }
   ]
 }
