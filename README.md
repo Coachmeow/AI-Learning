@@ -26,6 +26,16 @@ npm run build      # สร้างเว็บไว้ในโฟลเด�
 
 > เปิดไฟล์ `dist/index.html` ตรงๆ ไม่ได้ เพราะเบราว์เซอร์ไม่ยอมรัน Python (WebAssembly) จากไฟล์ในเครื่อง ต้องเปิดผ่าน `start.sh` / `start.bat` / `npm run preview`
 
+## เว็บออนไลน์ (GitHub Pages)
+
+ลิงก์: https://coachmeow.github.io/AI-Learning/
+
+ทุกครั้งที่ push ขึ้น `main` หรือ branch ที่ขึ้นต้นด้วย `claude/` GitHub Actions จะ build เว็บ ตรวจลิงก์ ตรวจโจทย์ แล้ววางเว็บที่ได้ไว้ที่ branch `gh-pages` (ดู `.github/workflows/deploy-pages.yml`) ใช้เวลาราว 3–5 นาที
+
+ตั้งค่าครั้งแรกครั้งเดียว: **Settings → Pages → Build and deployment → Source: Deploy from a branch → Branch: `gh-pages` / `(root)` → Save**
+
+> repo แบบ private ใช้ GitHub Pages ได้เฉพาะบัญชี GitHub Pro ขึ้นไป ถ้าเป็นบัญชีฟรีต้องเปลี่ยน repo เป็น public ก่อน (Settings → General → Danger Zone → Change visibility) และไม่ว่าแบบไหน ตัวเว็บที่เผยแพร่จะเปิดได้ทุกคนที่มีลิงก์
+
 ## โครงสร้าง
 
 ```text

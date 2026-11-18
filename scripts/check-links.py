@@ -26,7 +26,8 @@ class Refs(html.parser.HTMLParser):
 def exists(url):
     path = urllib.parse.unquote(urllib.parse.urlsplit(url).path)
     if not path.startswith(base):
-        return True
+        # Built for a sub-path (GitHub Pages): a root link that skips the base is broken.
+        return base == "/"
     rel = path[len(base):]
     target = dist / rel
     return target.is_file() or (target / "index.html").is_file()
@@ -40,7 +41,7 @@ for page in pages:
     for ref in parser.refs:
         if ref.startswith(("http:", "https:", "mailto:", "#", "data:", "javascript:")):
             continue
-        url = ref if ref.startswith("/") else urllib.parse.urljoin("/" + str(page.relative_to(dist).as_posix()), ref)
+        url = ref if ref.startswith("/") else urllib.parse.urljoin(base + page.relative_to(dist).as_posix(), ref)
         if not exists(url):
             broken.setdefault(url, set()).add(str(page.relative_to(dist)))
 

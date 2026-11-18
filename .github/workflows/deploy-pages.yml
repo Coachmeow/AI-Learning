@@ -1,0 +1,55 @@
+# Builds the site and publishes it to the gh-pages branch, which GitHub Pages serves at
+# https://<owner>.github.io/<repo>/ once Settings → Pages → Source is set to "Deploy from a branch: gh-pages".
+name: Deploy site to GitHub Pages
+
+on:
+  push:
+    branches: [main, 'claude/**']
+    # Changes to notes alone don't change the site.
+    paths-ignore: ['docs/**', 'README.md']
+  workflow_dispatch:
+
+permissions:
+  contents: write # push the built site to gh-pages
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build
+        run: npm run build
+        env:
+          SITE_BASE: /${{ github.event.repository.name }}/
+
+      - name: Check internal links and images
+        run: python3 scripts/check-links.py dist "/${{ github.event.repository.name }}/"
+
+      - name: Check the hands-on exercises
+        run: python3 scripts/check-exercises.py
+
+      - name: Publish to the gh-pages branch
+        env:
+          TOKEN: ${{ github.token }}
+        run: |
+          cd dist
+          touch .nojekyll # keep the _astro/ folder: Jekyll would drop folders starting with "_"
+          git init -q -b gh-pages
+          git add -A
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -q -m "Deploy ${GITHUB_SHA::7} from ${GITHUB_REF_NAME}"
+          # One commit only (force push), so old builds don't pile up in the repository.
+          git push -f -q "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" gh-pages
