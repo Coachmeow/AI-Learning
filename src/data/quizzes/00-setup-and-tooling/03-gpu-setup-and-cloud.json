@@ -1,0 +1,487 @@
+{
+  "lesson": "00-setup-and-tooling/03-gpu-setup-and-cloud",
+  "source_hash": "913b61e496cff6bba6c95c5121a4fa389793f5ce98ae9b7745c491158428e25a",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "Why is a GPU faster than a CPU for training neural networks?",
+        "th": "ทำไม GPU จึงฝึกโครงข่ายประสาทเทียมได้เร็วกว่า CPU"
+      },
+      "options": [
+        {
+          "en": "GPUs have higher clock speeds than CPUs",
+          "th": "GPU มีความถี่สัญญาณนาฬิกาสูงกว่า CPU"
+        },
+        {
+          "en": "GPUs can perform thousands of parallel matrix operations simultaneously",
+          "th": "GPU คำนวณเมทริกซ์แบบขนานได้หลายพันชุดพร้อมกัน"
+        },
+        {
+          "en": "GPUs use a more efficient programming language",
+          "th": "GPU ใช้ภาษาโปรแกรมที่มีประสิทธิภาพกว่า"
+        },
+        {
+          "en": "GPUs have more RAM than CPUs",
+          "th": "GPU มี RAM มากกว่า CPU"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "GPUs have thousands of cores optimized for parallel computation, making them ideal for the matrix multiplications that dominate neural network training.",
+        "th": "GPU มีคอร์หลายพันคอร์ที่ออกแบบมาสำหรับการคำนวณแบบขนาน จึงเหมาะกับการคูณเมทริกซ์ ซึ่งเป็นงานหลักของการฝึกโครงข่ายประสาทเทียม"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What does VRAM refer to?",
+        "th": "VRAM หมายถึงอะไร"
+      },
+      "options": [
+        {
+          "en": "The total RAM available across all devices",
+          "th": "RAM ทั้งหมดที่มีในทุกอุปกรณ์รวมกัน"
+        },
+        {
+          "en": "A type of CPU cache memory",
+          "th": "หน่วยความจำแคชชนิดหนึ่งของ CPU"
+        },
+        {
+          "en": "Video RAM on the GPU, separate from system RAM",
+          "th": "Video RAM บน GPU แยกจาก RAM ของระบบ"
+        },
+        {
+          "en": "Virtual RAM used by the operating system for swap space",
+          "th": "RAM เสมือนที่ระบบปฏิบัติการใช้เป็นพื้นที่ swap"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "VRAM (Video RAM) is the dedicated memory on a GPU. It limits the size of models and batch sizes you can use during training, separate from your system's main RAM.",
+        "th": "VRAM (Video RAM) คือหน่วยความจำเฉพาะของ GPU เป็นตัวจำกัดขนาดโมเดลและขนาด batch ที่ใช้ฝึกได้ และแยกจาก RAM หลักของระบบ"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Which line uses the GPU when there is one and falls back to the CPU otherwise?",
+        "th": "บรรทัดใดใช้ GPU เมื่อมี และกลับไปใช้ CPU เมื่อไม่มี"
+      },
+      "options": [
+        {
+          "en": "`device = torch.device(\"cuda\")`",
+          "th": "`device = torch.device(\"cuda\")`"
+        },
+        {
+          "en": "`device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")`",
+          "th": "`device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")`"
+        },
+        {
+          "en": "`device = torch.device(\"cpu\" if torch.cuda.is_available() else \"cuda\")`",
+          "th": "`device = torch.device(\"cpu\" if torch.cuda.is_available() else \"cuda\")`"
+        },
+        {
+          "en": "`device = torch.cuda.get_device_name(0)`",
+          "th": "`device = torch.cuda.get_device_name(0)`"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The lesson's fallback line checks `torch.cuda.is_available()` and picks `\"cuda\"` only when it is `True`. Hard-coding `\"cuda\"` crashes on a machine without a GPU.",
+        "th": "บรรทัดสำรองของบทนี้ตรวจ `torch.cuda.is_available()` แล้วเลือก `\"cuda\"` เฉพาะเมื่อได้ `True` ถ้าเขียน `\"cuda\"` ตายตัว โค้ดจะพังบนเครื่องที่ไม่มี GPU"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "How do you get a free GPU in Google Colab?",
+        "th": "จะได้ GPU ฟรีใน Google Colab ได้อย่างไร"
+      },
+      "options": [
+        {
+          "en": "Install CUDA in a notebook cell",
+          "th": "ติดตั้ง CUDA ใน cell ของ notebook"
+        },
+        {
+          "en": "Runtime > Change runtime type > T4 GPU",
+          "th": "Runtime > Change runtime type > T4 GPU"
+        },
+        {
+          "en": "SSH into the Colab machine",
+          "th": "SSH เข้าไปที่เครื่องของ Colab"
+        },
+        {
+          "en": "Upgrade to a paid plan; the free tier has no GPU",
+          "th": "อัปเกรดเป็นแผนเสียเงิน เพราะรุ่นฟรีไม่มี GPU"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Colab's free tier offers a T4 GPU. Pick it under Runtime > Change runtime type, then run `!nvidia-smi` to confirm it is attached.",
+        "th": "Colab รุ่นฟรีมี GPU รุ่น T4 ให้ใช้ เลือกได้ที่ Runtime > Change runtime type แล้วรัน `!nvidia-smi` เพื่อยืนยันว่าได้ GPU แล้ว"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "How many bytes does one parameter take in fp16?",
+        "th": "พารามิเตอร์หนึ่งตัวใน fp16 ใช้กี่ byte"
+      },
+      "options": [
+        {
+          "en": "1",
+          "th": "1"
+        },
+        {
+          "en": "2",
+          "th": "2"
+        },
+        {
+          "en": "4",
+          "th": "4"
+        },
+        {
+          "en": "16",
+          "th": "16"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "fp16 is a 16-bit float: 16 bits = 2 bytes. fp32 uses 4 bytes, so fp16 halves the memory.",
+        "th": "fp16 คือทศนิยม 16 บิต: 16 บิต = 2 byte ส่วน fp32 ใช้ 4 byte fp16 จึงใช้หน่วยความจำแค่ครึ่งเดียว"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "What command verifies that your NVIDIA GPU is detected and shows its current status?",
+        "th": "คำสั่งใดใช้ตรวจว่าระบบมองเห็น GPU ของ NVIDIA และแสดงสถานะปัจจุบันของมัน"
+      },
+      "options": [
+        {
+          "en": "torch.cuda.list_devices()",
+          "th": "torch.cuda.list_devices()"
+        },
+        {
+          "en": "nvidia-smi",
+          "th": "nvidia-smi"
+        },
+        {
+          "en": "lspci | grep gpu",
+          "th": "lspci | grep gpu"
+        },
+        {
+          "en": "gpu --status",
+          "th": "gpu --status"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "nvidia-smi (NVIDIA System Management Interface) displays GPU utilization, memory usage, temperature, and running processes. It is the standard tool for verifying GPU availability.",
+        "th": "nvidia-smi (NVIDIA System Management Interface) แสดงการใช้งาน GPU, หน่วยความจำที่ใช้, อุณหภูมิ และโปรเซสที่กำลังรัน เป็นเครื่องมือมาตรฐานสำหรับตรวจว่ามี GPU ใช้"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "When benchmarking GPU vs CPU matrix multiplication, why must you call torch.cuda.synchronize() before measuring GPU time?",
+        "th": "เวลาเทียบความเร็วการคูณเมทริกซ์บน GPU กับ CPU ทำไมต้องเรียก torch.cuda.synchronize() ก่อนจับเวลาฝั่ง GPU"
+      },
+      "options": [
+        {
+          "en": "To transfer data from CPU to GPU memory",
+          "th": "เพื่อย้ายข้อมูลจากหน่วยความจำ CPU ไป GPU"
+        },
+        {
+          "en": "To ensure all GPU operations have completed before stopping the timer",
+          "th": "เพื่อให้แน่ใจว่างานบน GPU เสร็จหมดแล้วก่อนหยุดจับเวลา"
+        },
+        {
+          "en": "To free unused GPU memory",
+          "th": "เพื่อคืนหน่วยความจำ GPU ที่ไม่ได้ใช้"
+        },
+        {
+          "en": "To reset the GPU clock speed to its base frequency",
+          "th": "เพื่อรีเซ็ตความเร็วสัญญาณนาฬิกาของ GPU กลับไปค่าพื้นฐาน"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "GPU operations are asynchronous -- Python returns immediately while the GPU is still computing. synchronize() blocks until all GPU operations finish, giving accurate timing.",
+        "th": "งานบน GPU ทำงานแบบไม่รอกัน (asynchronous) Python ทำบรรทัดถัดไปทันทีทั้งที่ GPU ยังคำนวณอยู่ synchronize() จะรอจนงานบน GPU เสร็จหมด เวลาที่วัดได้จึงถูกต้อง"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "Using the fp16 rule of thumb, approximately how many parameters can fit in 24 GB of VRAM?",
+        "th": "ตามหลักคร่าวๆ ของ fp16 VRAM 24 GB ใส่พารามิเตอร์ได้ประมาณกี่ตัว"
+      },
+      "options": [
+        {
+          "en": "6 billion parameters",
+          "th": "6 พันล้านพารามิเตอร์"
+        },
+        {
+          "en": "24 billion parameters",
+          "th": "24 พันล้านพารามิเตอร์"
+        },
+        {
+          "en": "12 billion parameters",
+          "th": "12 พันล้านพารามิเตอร์"
+        },
+        {
+          "en": "48 billion parameters",
+          "th": "48 พันล้านพารามิเตอร์"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "In fp16, each parameter uses 2 bytes. 24 GB / 2 bytes = 12 billion parameters. This is a rough estimate; actual usage includes activations, gradients, and optimizer states.",
+        "th": "ใน fp16 พารามิเตอร์แต่ละตัวใช้ 2 byte: 24 GB / 2 byte = 12 พันล้านพารามิเตอร์ นี่เป็นค่าประมาณคร่าวๆ การใช้งานจริงยังมี activation, เกรเดียนต์ และสถานะของ optimizer ด้วย"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "About how many parameters fit in 16 GB of VRAM if you keep them in fp32?",
+        "th": "ถ้าเก็บพารามิเตอร์แบบ fp32 VRAM 16 GB ใส่ได้ประมาณกี่ตัว"
+      },
+      "options": [
+        {
+          "en": "4 billion",
+          "th": "4 พันล้าน"
+        },
+        {
+          "en": "8 billion",
+          "th": "8 พันล้าน"
+        },
+        {
+          "en": "16 billion",
+          "th": "16 พันล้าน"
+        },
+        {
+          "en": "2 billion",
+          "th": "2 พันล้าน"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "fp32 uses 4 bytes per parameter: 16 GB / 4 bytes = 4 billion. The same card holds about 8 billion in fp16.",
+        "th": "fp32 ใช้ 4 byte ต่อพารามิเตอร์: 16 GB / 4 byte = 4 พันล้าน การ์ดใบเดียวกันใส่ได้ราว 8 พันล้านถ้าเป็น fp16"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "Why should you run the benchmark a second time and compare those numbers?",
+        "th": "ทำไมควรรันโค้ดเทียบความเร็วซ้ำอีกรอบ แล้วใช้ตัวเลขรอบหลังในการเทียบ"
+      },
+      "options": [
+        {
+          "en": "The GPU heats up and gets faster",
+          "th": "GPU ร้อนขึ้นแล้วจะเร็วขึ้น"
+        },
+        {
+          "en": "The first GPU run includes start-up cost, so it overstates the GPU time",
+          "th": "การรันบน GPU ครั้งแรกรวมเวลาเตรียมระบบไว้ด้วย เวลาของ GPU จึงดูนานเกินจริง"
+        },
+        {
+          "en": "The first run is always on the CPU",
+          "th": "การรันครั้งแรกจะใช้ CPU เสมอ"
+        },
+        {
+          "en": "Python caches the result, so the second run is free",
+          "th": "Python จำผลลัพธ์ไว้ รอบที่สองจึงไม่เสียเวลา"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The first CUDA call sets up the context and loads kernels. That one-time cost is not part of the matrix multiply, so the second run shows the real speed.",
+        "th": "การเรียก CUDA ครั้งแรกต้องเตรียม context และโหลด kernel ค่าใช้จ่ายครั้งเดียวนี้ไม่ใช่เวลาคูณเมทริกซ์จริง รอบที่สองจึงสะท้อนความเร็วจริง"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "A 7-billion-parameter model in fp16 needs about how much memory for its weights alone, and why might it still not run on a 16 GB GPU?",
+        "th": "โมเดลขนาด 7 พันล้านพารามิเตอร์แบบ fp16 ใช้หน่วยความจำเฉพาะน้ำหนักราวเท่าไร และทำไมอาจยังรันบน GPU 16 GB ไม่ได้"
+      },
+      "options": [
+        {
+          "en": "7 GB; GPUs can only use half their memory",
+          "th": "7 GB เพราะ GPU ใช้หน่วยความจำได้แค่ครึ่งเดียว"
+        },
+        {
+          "en": "28 GB; fp16 uses 4 bytes per parameter",
+          "th": "28 GB เพราะ fp16 ใช้ 4 byte ต่อพารามิเตอร์"
+        },
+        {
+          "en": "14 GB; activations and the CUDA context also need memory, leaving little or no room",
+          "th": "14 GB เพราะ activation และ CUDA context ก็ต้องใช้หน่วยความจำด้วย จึงเหลือที่น้อยมากหรือไม่พอ"
+        },
+        {
+          "en": "14 GB; it always fits because 14 < 16",
+          "th": "14 GB และใส่ได้แน่นอนเพราะ 14 < 16"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "7 billion × 2 bytes = 14 GB for the weights. The rule of thumb counts weights only; the lesson says to keep a margin because activations and the CUDA context use memory too.",
+        "th": "7 พันล้าน × 2 byte = 14 GB สำหรับน้ำหนัก หลักคร่าวๆ นับแค่น้ำหนัก บทเรียนจึงบอกให้เผื่อที่ไว้ เพราะ activation และ CUDA context ก็ใช้หน่วยความจำด้วย"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "This code fails with \"Expected all tensors to be on the same device\". What is the fix?",
+        "th": "โค้ดนี้ error ว่า \"Expected all tensors to be on the same device\" ต้องแก้อย่างไร"
+      },
+      "code": "a_gpu = a_cpu.to(\"cuda\")\nc = a_gpu @ b_cpu",
+      "options": [
+        {
+          "en": "Call `torch.cuda.synchronize()` before the multiply",
+          "th": "เรียก `torch.cuda.synchronize()` ก่อนคูณ"
+        },
+        {
+          "en": "Move the other tensor too: `b_gpu = b_cpu.to(\"cuda\")`, then `a_gpu @ b_gpu`",
+          "th": "ย้ายอีก tensor ไปด้วย: `b_gpu = b_cpu.to(\"cuda\")` แล้วใช้ `a_gpu @ b_gpu`"
+        },
+        {
+          "en": "Use `*` instead of `@`",
+          "th": "ใช้ `*` แทน `@`"
+        },
+        {
+          "en": "Reinstall PyTorch with CUDA support",
+          "th": "ติดตั้ง PyTorch ที่รองรับ CUDA ใหม่"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Both operands of an operation must live on the same device. The benchmark moves both `a` and `b` to `\"cuda\"` before multiplying for exactly this reason.",
+        "th": "ตัวตั้งทั้งสองของการคำนวณต้องอยู่บนอุปกรณ์เดียวกัน โค้ดเทียบความเร็วในบทจึงย้ายทั้ง `a` และ `b` ไปที่ `\"cuda\"` ก่อนคูณ"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "On Colab the benchmark prints only the CPU line, and `!nvidia-smi` fails. What is wrong?",
+        "th": "บน Colab โค้ดเทียบความเร็วพิมพ์ออกมาแค่บรรทัดของ CPU และ `!nvidia-smi` ล้มเหลว เกิดอะไรขึ้น"
+      },
+      "options": [
+        {
+          "en": "The runtime type is still CPU; switch it to a GPU under Runtime > Change runtime type",
+          "th": "ชนิดของ runtime ยังเป็น CPU อยู่ ให้เปลี่ยนเป็น GPU ที่ Runtime > Change runtime type"
+        },
+        {
+          "en": "`torch.cuda.synchronize()` is missing",
+          "th": "ขาด `torch.cuda.synchronize()`"
+        },
+        {
+          "en": "The matrices are too small to use a GPU",
+          "th": "เมทริกซ์เล็กเกินกว่าจะใช้ GPU"
+        },
+        {
+          "en": "Colab needs CUDA installed by hand with pip",
+          "th": "Colab ต้องติดตั้ง CUDA เองด้วย pip"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The GPU branch only runs when `torch.cuda.is_available()` is `True`, and `nvidia-smi` failing means no GPU is attached. The lesson's hint: confirm a GPU name in `!nvidia-smi` before trusting the benchmark.",
+        "th": "ส่วนที่ใช้ GPU จะทำงานเฉพาะเมื่อ `torch.cuda.is_available()` เป็น `True` และการที่ `nvidia-smi` ล้มเหลวแปลว่ายังไม่มี GPU ต่ออยู่ คำใบ้ของบทบอกว่าให้เห็นชื่อ GPU ใน `!nvidia-smi` ก่อนจะเชื่อผลการเทียบ"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "You need 10 training runs. GPU A costs $2.00/hr and takes 1 hour per run; GPU B costs $0.50/hr and takes 3 hours per run. Which is true?",
+        "th": "คุณต้องฝึกโมเดล 10 รอบ GPU A ราคา $2.00/ชม. ใช้เวลารอบละ 1 ชม. ส่วน GPU B ราคา $0.50/ชม. ใช้เวลารอบละ 3 ชม. ข้อใดถูก"
+      },
+      "options": [
+        {
+          "en": "A is cheaper: it finishes three times faster",
+          "th": "A ถูกกว่า เพราะเสร็จเร็วกว่าสามเท่า"
+        },
+        {
+          "en": "They cost the same",
+          "th": "ค่าใช้จ่ายเท่ากัน"
+        },
+        {
+          "en": "B costs $15 against A's $20, but takes 30 hours instead of 10",
+          "th": "B เสีย $15 ส่วน A เสีย $20 แต่ B ใช้เวลา 30 ชม. แทนที่จะเป็น 10 ชม."
+        },
+        {
+          "en": "B costs $5 against A's $20",
+          "th": "B เสีย $5 ส่วน A เสีย $20"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "A: 10 runs × 1 h × $2.00 = $20. B: 10 × 3 h × $0.50 = $15. B is cheaper but three times slower, so the choice depends on whether money or waiting time matters more.",
+        "th": "A: 10 รอบ × 1 ชม. × $2.00 = $20 ส่วน B: 10 × 3 ชม. × $0.50 = $15 B ถูกกว่าแต่ช้ากว่าสามเท่า จะเลือกตัวไหนขึ้นกับว่าเงินหรือเวลารอสำคัญกว่า"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "With 10×10 matrices instead of 5000×5000, the CPU beats the GPU. Why?",
+        "th": "ถ้าใช้เมทริกซ์ขนาด 10×10 แทน 5000×5000 CPU กลับชนะ GPU เพราะอะไร"
+      },
+      "options": [
+        {
+          "en": "Small matrices make the GPU fall back to CPU code",
+          "th": "เมทริกซ์เล็กทำให้ GPU หันไปใช้โค้ดของ CPU"
+        },
+        {
+          "en": "The tiny job can't keep thousands of cores busy, so launch and transfer overhead dominate",
+          "th": "งานเล็กเกินกว่าจะให้คอร์นับพันทำงานเต็มที่ เวลาสั่งงานและย้ายข้อมูลจึงกินเวลาส่วนใหญ่"
+        },
+        {
+          "en": "fp16 is not used for small matrices",
+          "th": "เมทริกซ์เล็กไม่ได้ใช้ fp16"
+        },
+        {
+          "en": "The CPU caches the answer",
+          "th": "CPU จำคำตอบไว้"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "A GPU wins through parallelism. A 10×10 multiply is only 1,000 multiply-adds, so the fixed cost of launching the kernel and moving data outweighs the work itself.",
+        "th": "GPU ชนะได้เพราะทำงานขนานกันได้มาก การคูณ 10×10 มีแค่ 1,000 ครั้ง ค่าใช้จ่ายคงที่ในการสั่ง kernel และย้ายข้อมูลจึงมากกว่างานจริง"
+      }
+    }
+  ]
+}

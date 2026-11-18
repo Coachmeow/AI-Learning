@@ -1,0 +1,486 @@
+{
+  "lesson": "00-setup-and-tooling/06-python-environments",
+  "source_hash": "d83b1b070403cd41624ec9d40c890f74b237a94c922bcd8d2f3758a757bcc719",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What problem do virtual environments solve?",
+        "th": "virtual environment แก้ปัญหาอะไร"
+      },
+      "options": [
+        {
+          "en": "They provide a graphical interface for managing Python scripts",
+          "th": "ให้หน้าจอแบบกราฟิกสำหรับจัดการสคริปต์ Python"
+        },
+        {
+          "en": "They isolate project dependencies so different projects can use different package versions",
+          "th": "แยก dependency ของแต่ละโปรเจกต์ ให้แต่ละโปรเจกต์ใช้แพ็กเกจคนละเวอร์ชันได้"
+        },
+        {
+          "en": "They automatically update packages to the latest versions",
+          "th": "อัปเดตแพ็กเกจเป็นเวอร์ชันล่าสุดให้อัตโนมัติ"
+        },
+        {
+          "en": "They make Python code run faster by optimizing the interpreter",
+          "th": "ทำให้โค้ด Python รันเร็วขึ้นด้วยการปรับแต่งตัวแปลภาษา"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Virtual environments give each project its own isolated set of packages. Without them, installing PyTorch 2.4 for one project would overwrite PyTorch 2.1 needed by another.",
+        "th": "virtual environment ให้แต่ละโปรเจกต์มีชุดแพ็กเกจแยกเป็นของตัวเอง ถ้าไม่มี การติดตั้ง PyTorch 2.4 ให้โปรเจกต์หนึ่งจะเขียนทับ PyTorch 2.1 ที่อีกโปรเจกต์ต้องใช้"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What is a lockfile in the context of Python dependency management?",
+        "th": "ในการจัดการ dependency ของ Python ไฟล์ lock คืออะไร"
+      },
+      "options": [
+        {
+          "en": "A file that locks the Python interpreter version",
+          "th": "ไฟล์ที่ล็อกเวอร์ชันของตัวแปลภาษา Python"
+        },
+        {
+          "en": "A file that encrypts your project dependencies",
+          "th": "ไฟล์ที่เข้ารหัส dependency ของโปรเจกต์"
+        },
+        {
+          "en": "A file that prevents other users from editing your code",
+          "th": "ไฟล์ที่กันไม่ให้ผู้ใช้อื่นแก้โค้ดของคุณ"
+        },
+        {
+          "en": "A file that pins every package to an exact version for reproducible installs",
+          "th": "ไฟล์ที่ล็อกทุกแพ็กเกจไว้ที่เวอร์ชันแน่นอน เพื่อให้ติดตั้งซ้ำได้ผลเหมือนเดิม"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "A lockfile records the exact version of every package (including transitive dependencies) so anyone installing from it gets identical packages, ensuring reproducibility.",
+        "th": "ไฟล์ lock บันทึกเวอร์ชันที่แน่นอนของทุกแพ็กเกจ (รวมถึง dependency ทางอ้อม) ใครติดตั้งจากไฟล์นี้ก็ได้แพ็กเกจชุดเดียวกัน จึงทำซ้ำได้ผลเหมือนเดิม"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Which command activates a virtual environment in `.venv` on Linux or macOS?",
+        "th": "คำสั่งใดใช้ activate virtual environment ใน `.venv` บน Linux หรือ macOS"
+      },
+      "options": [
+        {
+          "en": "`source .venv/bin/activate`",
+          "th": "`source .venv/bin/activate`"
+        },
+        {
+          "en": "`python .venv`",
+          "th": "`python .venv`"
+        },
+        {
+          "en": "`uv activate`",
+          "th": "`uv activate`"
+        },
+        {
+          "en": "`cd .venv`",
+          "th": "`cd .venv`"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "`source .venv/bin/activate` puts the environment's `python` and `pip` first on your PATH; the prompt then shows `(.venv)`. On Windows it is `.venv\\Scripts\\activate`.",
+        "th": "`source .venv/bin/activate` ทำให้ `python` และ `pip` ของสภาพแวดล้อมนั้นถูกเลือกใช้ก่อน แล้ว prompt จะขึ้น `(.venv)` ส่วนบน Windows ใช้ `.venv\\Scripts\\activate`"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Which tool can also install non-Python dependencies such as a CUDA toolkit or cuDNN into an environment?",
+        "th": "เครื่องมือใดติดตั้ง dependency ที่ไม่ใช่ Python เช่น CUDA toolkit หรือ cuDNN ลงในสภาพแวดล้อมได้ด้วย"
+      },
+      "options": [
+        {
+          "en": "venv",
+          "th": "venv"
+        },
+        {
+          "en": "conda",
+          "th": "conda"
+        },
+        {
+          "en": "pip",
+          "th": "pip"
+        },
+        {
+          "en": "git",
+          "th": "git"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "conda manages non-Python packages too, which is why the lesson suggests it when you need a specific CUDA toolkit without installing it system-wide.",
+        "th": "conda จัดการแพ็กเกจที่ไม่ใช่ Python ได้ด้วย บทเรียนจึงแนะนำให้ใช้เมื่อต้องการ CUDA toolkit เวอร์ชันเฉพาะโดยไม่ติดตั้งลงทั้งระบบ"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Should you commit the `.venv/` folder to git?",
+        "th": "ควร commit โฟลเดอร์ `.venv/` เข้า git หรือไม่"
+      },
+      "options": [
+        {
+          "en": "Yes, so teammates get the same packages",
+          "th": "ควร เพื่อให้เพื่อนร่วมทีมได้แพ็กเกจชุดเดียวกัน"
+        },
+        {
+          "en": "No: add it to `.gitignore` and commit `pyproject.toml` and the lockfile instead",
+          "th": "ไม่ควร ให้ใส่ไว้ใน `.gitignore` แล้ว commit `pyproject.toml` กับไฟล์ lock แทน"
+        },
+        {
+          "en": "Only if it is smaller than 100 MB",
+          "th": "ควร ถ้ามีขนาดเล็กกว่า 100 MB"
+        },
+        {
+          "en": "Only the `bin/` folder inside it",
+          "th": "ควร commit เฉพาะโฟลเดอร์ `bin/` ข้างใน"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "A virtual environment is 200 MB-2 GB and tied to one machine. `pyproject.toml` plus the lockfile let anyone rebuild the same environment.",
+        "th": "virtual environment มีขนาด 200 MB-2 GB และผูกกับเครื่องเดียว `pyproject.toml` กับไฟล์ lock ทำให้ใครก็สร้างสภาพแวดล้อมเดียวกันขึ้นใหม่ได้"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "How can you verify that your pip and python commands are using the virtual environment and not the system Python?",
+        "th": "จะตรวจอย่างไรว่าคำสั่ง pip และ python กำลังใช้ virtual environment ไม่ใช่ Python ของระบบ"
+      },
+      "options": [
+        {
+          "en": "Run 'python --check-env' to verify",
+          "th": "รัน 'python --check-env' เพื่อตรวจ"
+        },
+        {
+          "en": "Run 'pip --version' and check the version number",
+          "th": "รัน 'pip --version' แล้วดูเลขเวอร์ชัน"
+        },
+        {
+          "en": "Run 'which python' and confirm it shows .venv/bin/python, not /usr/bin/python",
+          "th": "รัน 'which python' แล้วยืนยันว่าแสดง .venv/bin/python ไม่ใช่ /usr/bin/python"
+        },
+        {
+          "en": "Check if the terminal background color has changed",
+          "th": "ดูว่าสีพื้นหลังของ terminal เปลี่ยนไปหรือไม่"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "'which python' (or 'where python' on Windows) shows the full path to the interpreter. If it points to .venv/bin/python, you are in the virtual environment.",
+        "th": "'which python' (หรือ 'where python' บน Windows) แสดง path เต็มของตัวแปลภาษา ถ้าชี้ไปที่ .venv/bin/python แปลว่าคุณอยู่ใน virtual environment"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "Why is mixing pip and conda in the same environment problematic?",
+        "th": "ทำไมการใช้ pip ปนกับ conda ในสภาพแวดล้อมเดียวกันจึงเป็นปัญหา"
+      },
+      "options": [
+        {
+          "en": "Pip packages are incompatible with conda's Python interpreter",
+          "th": "แพ็กเกจจาก pip ใช้กับตัวแปลภาษา Python ของ conda ไม่ได้"
+        },
+        {
+          "en": "Pip installs can break conda's dependency tracking, causing hard-to-debug conflicts",
+          "th": "การติดตั้งด้วย pip อาจทำให้การติดตามดูแล dependency ของ conda พัง จนเกิดปัญหาขัดกันที่ไล่แก้ยาก"
+        },
+        {
+          "en": "It doubles the disk space used by every package",
+          "th": "ทำให้ทุกแพ็กเกจใช้พื้นที่ดิสก์เป็นสองเท่า"
+        },
+        {
+          "en": "Conda cannot install packages that pip has already installed",
+          "th": "conda ติดตั้งแพ็กเกจที่ pip ติดตั้งไปแล้วไม่ได้"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Conda maintains its own dependency solver. Pip installs bypass it, so conda no longer knows the true state of the environment. This leads to dependency conflicts that are painful to resolve.",
+        "th": "conda มีตัวแก้ dependency ของตัวเอง การติดตั้งด้วย pip ข้ามตัวนี้ไป conda จึงไม่รู้สถานะจริงของสภาพแวดล้อมอีกต่อไป ทำให้ dependency ขัดกันจนแก้ยากมาก"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "Your PyTorch code reports 'CUDA not available' despite having an NVIDIA GPU. What is the most likely cause?",
+        "th": "โค้ด PyTorch รายงานว่า 'CUDA not available' ทั้งที่มี GPU ของ NVIDIA สาเหตุที่น่าจะเป็นที่สุดคือข้อใด"
+      },
+      "options": [
+        {
+          "en": "PyTorch was installed with a CUDA version incompatible with your GPU driver",
+          "th": "PyTorch ที่ติดตั้งใช้ CUDA เวอร์ชันที่เข้ากับไดรเวอร์ GPU ไม่ได้"
+        },
+        {
+          "en": "Your GPU does not support CUDA",
+          "th": "GPU ของคุณไม่รองรับ CUDA"
+        },
+        {
+          "en": "You forgot to import the torch.cuda module",
+          "th": "ลืม import โมดูล torch.cuda"
+        },
+        {
+          "en": "Virtual environments cannot access GPU hardware",
+          "th": "virtual environment เข้าถึงฮาร์ดแวร์ GPU ไม่ได้"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "PyTorch ships CUDA bindings compiled for specific CUDA versions. If the PyTorch CUDA version exceeds your driver's CUDA version, CUDA will not be available. Check with nvidia-smi and torch.version.cuda.",
+        "th": "PyTorch มาพร้อมตัวเชื่อม CUDA ที่คอมไพล์ไว้สำหรับ CUDA เวอร์ชันเฉพาะ ถ้า CUDA ของ PyTorch ใหม่กว่า CUDA ที่ไดรเวอร์รองรับ ก็จะใช้ CUDA ไม่ได้ ตรวจได้ด้วย nvidia-smi และ torch.version.cuda"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "With the lesson's `pyproject.toml`, what does `uv pip install -e \".[torch]\"` install?",
+        "th": "เมื่อใช้ `pyproject.toml` ของบทเรียน คำสั่ง `uv pip install -e \".[torch]\"` ติดตั้งอะไร"
+      },
+      "options": [
+        {
+          "en": "Only torch and torchvision",
+          "th": "แค่ torch กับ torchvision"
+        },
+        {
+          "en": "The base `dependencies` plus the `torch` group (torch, torchvision)",
+          "th": "dependency พื้นฐานใน `dependencies` บวกกลุ่ม `torch` (torch, torchvision)"
+        },
+        {
+          "en": "Everything, including the `llm` group",
+          "th": "ทุกอย่าง รวมถึงกลุ่ม `llm`"
+        },
+        {
+          "en": "Nothing until you run `uv lock`",
+          "th": "ยังไม่ติดตั้งอะไรจนกว่าจะรัน `uv lock`"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "`[torch]` selects one optional group on top of the base list. `\".[torch,llm]\"` would add both groups.",
+        "th": "`[torch]` เลือกกลุ่มเสริมหนึ่งกลุ่มเพิ่มจากรายการพื้นฐาน ถ้าใช้ `\".[torch,llm]\"` จะได้ทั้งสองกลุ่ม"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "`nvidia-smi` shows CUDA 12.4 for your driver. Which PyTorch CUDA build will work?",
+        "th": "`nvidia-smi` แสดงว่าไดรเวอร์รองรับ CUDA 12.4 PyTorch ที่ build สำหรับ CUDA เวอร์ชันใดใช้ได้"
+      },
+      "options": [
+        {
+          "en": "CUDA 12.1",
+          "th": "CUDA 12.1"
+        },
+        {
+          "en": "CUDA 12.6",
+          "th": "CUDA 12.6"
+        },
+        {
+          "en": "CUDA 12.8",
+          "th": "CUDA 12.8"
+        },
+        {
+          "en": "Any version, the driver adapts",
+          "th": "เวอร์ชันไหนก็ได้ ไดรเวอร์ปรับตัวเอง"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The PyTorch CUDA version must be less than or equal to the driver's CUDA version. 12.1 ≤ 12.4 works; 12.6 and 12.8 need a newer driver.",
+        "th": "CUDA ของ PyTorch ต้องไม่ใหม่กว่า CUDA ที่ไดรเวอร์รองรับ 12.1 ≤ 12.4 จึงใช้ได้ ส่วน 12.6 และ 12.8 ต้องอัปเดตไดรเวอร์ก่อน"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "`python train.py` fails with `ModuleNotFoundError: torch`, yet `pip install torch` says \"Requirement already satisfied\". What is the most likely cause?",
+        "th": "`python train.py` error ว่า `ModuleNotFoundError: torch` แต่ `pip install torch` บอกว่า \"Requirement already satisfied\" สาเหตุที่น่าจะเป็นที่สุดคือข้อใด"
+      },
+      "options": [
+        {
+          "en": "torch is installed but corrupted",
+          "th": "ติดตั้ง torch แล้วแต่ไฟล์เสีย"
+        },
+        {
+          "en": "`pip` and `python` belong to different environments; compare `which python` with `which pip`, and use `python -m pip install`",
+          "th": "`pip` กับ `python` เป็นของคนละสภาพแวดล้อม ให้เทียบ `which python` กับ `which pip` และใช้ `python -m pip install`"
+        },
+        {
+          "en": "`train.py` must be inside `.venv/`",
+          "th": "`train.py` ต้องอยู่ใน `.venv/`"
+        },
+        {
+          "en": "torch needs a GPU to import",
+          "th": "torch ต้องมี GPU จึงจะ import ได้"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "pip installed into one environment while python runs from another. `python -m pip` always installs into the interpreter you are running, which rules this mismatch out.",
+        "th": "pip ติดตั้งลงสภาพแวดล้อมหนึ่ง แต่ python ที่รันมาจากอีกที่หนึ่ง `python -m pip` จะติดตั้งลงตัวแปลภาษาที่กำลังรันเสมอ จึงตัดปัญหานี้ทิ้งได้"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Your `pyproject.toml` says `numpy>=1.26`. You have numpy 1.26.4, a new teammate got 2.1.0 and results differ. What prevents this?",
+        "th": "`pyproject.toml` ระบุ `numpy>=1.26` เครื่องคุณได้ numpy 1.26.4 แต่เพื่อนที่เพิ่งเข้าทีมได้ 2.1.0 และผลลัพธ์ต่างกัน วิธีใดป้องกันปัญหานี้"
+      },
+      "options": [
+        {
+          "en": "Change `>=` to `>` in pyproject.toml",
+          "th": "เปลี่ยน `>=` เป็น `>` ใน pyproject.toml"
+        },
+        {
+          "en": "Ask the teammate to downgrade by hand",
+          "th": "ให้เพื่อนดาวน์เกรดเอง"
+        },
+        {
+          "en": "Commit a lockfile (such as `uv.lock`) and have everyone install from it",
+          "th": "commit ไฟล์ lock (เช่น `uv.lock`) แล้วให้ทุกคนติดตั้งจากไฟล์นั้น"
+        },
+        {
+          "en": "Delete pyproject.toml and use `pip freeze` once",
+          "th": "ลบ pyproject.toml แล้วใช้ `pip freeze` ครั้งเดียว"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "`>=1.26` is a range, so the resolver picks whatever is newest on the day you install. A lockfile records exact versions, including transitive ones, so every install matches.",
+        "th": "`>=1.26` เป็นช่วง ตัวแก้ dependency จึงเลือกเวอร์ชันใหม่ล่าสุดในวันที่ติดตั้ง ไฟล์ lock บันทึกเวอร์ชันที่แน่นอนรวมถึง dependency ทางอ้อม ทุกการติดตั้งจึงตรงกัน"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "In a conda environment you need one package that exists only on pip. What is the safest order?",
+        "th": "ใน conda environment คุณต้องใช้แพ็กเกจหนึ่งที่มีแค่บน pip ลำดับใดปลอดภัยที่สุด"
+      },
+      "options": [
+        {
+          "en": "pip first, then conda packages",
+          "th": "ติดตั้งด้วย pip ก่อน แล้วค่อยติดตั้งแพ็กเกจของ conda"
+        },
+        {
+          "en": "All conda packages first, the pip package last",
+          "th": "ติดตั้งแพ็กเกจของ conda ให้ครบก่อน แล้วติดตั้งแพ็กเกจของ pip เป็นอย่างสุดท้าย"
+        },
+        {
+          "en": "Alternate between conda and pip",
+          "th": "สลับติดตั้ง conda กับ pip ไปเรื่อยๆ"
+        },
+        {
+          "en": "Install it with pip into the base environment",
+          "th": "ติดตั้งด้วย pip ลงใน base environment"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "pip bypasses conda's solver. Doing all conda installs first and pip last limits how much conda's picture of the environment can be wrong.",
+        "th": "pip ข้ามตัวแก้ dependency ของ conda การติดตั้งด้วย conda ให้เสร็จก่อนแล้วใช้ pip เป็นอย่างสุดท้าย ช่วยจำกัดไม่ให้ conda เข้าใจสถานะของสภาพแวดล้อมผิดไปมาก"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Your project needs `torch>=2.3`, and a library you add requires `torch<2.2`. What happens when you install both into one environment?",
+        "th": "โปรเจกต์ของคุณต้องการ `torch>=2.3` และไลบรารีที่เพิ่มเข้ามาต้องการ `torch<2.2` จะเกิดอะไรขึ้นเมื่อติดตั้งทั้งคู่ลงสภาพแวดล้อมเดียว"
+      },
+      "options": [
+        {
+          "en": "Both versions get installed side by side",
+          "th": "ติดตั้งได้ทั้งสองเวอร์ชันคู่กัน"
+        },
+        {
+          "en": "The resolver picks 2.2 as a compromise",
+          "th": "ตัวแก้ dependency เลือก 2.2 เป็นจุดกึ่งกลาง"
+        },
+        {
+          "en": "No version satisfies both, so the resolver reports a conflict; you need separate environments or other versions",
+          "th": "ไม่มีเวอร์ชันไหนตรงทั้งสองเงื่อนไข ตัวแก้ dependency จึงรายงานว่าขัดกัน ต้องแยกสภาพแวดล้อมหรือเลือกเวอร์ชันอื่น"
+        },
+        {
+          "en": "The newer requirement silently wins",
+          "th": "เงื่อนไขที่ใหม่กว่าชนะไปเงียบๆ"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "One environment holds one torch. `>=2.3` and `<2.2` have no overlap, which is exactly the case the lesson's per-phase environments are for.",
+        "th": "สภาพแวดล้อมหนึ่งมี torch ได้ตัวเดียว `>=2.3` กับ `<2.2` ไม่มีช่วงที่ทับกันเลย ซึ่งคือกรณีที่กลยุทธ์แยกสภาพแวดล้อมตาม phase ในบทนี้มีไว้แก้"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "You add only `transformers` to a project, yet the lockfile lists dozens of packages. Why?",
+        "th": "คุณเพิ่มแค่ `transformers` เข้าโปรเจกต์ แต่ไฟล์ lock มีแพ็กเกจหลายสิบตัว เพราะอะไร"
+      },
+      "options": [
+        {
+          "en": "uv adds popular packages by default",
+          "th": "uv เพิ่มแพ็กเกจยอดนิยมให้โดยอัตโนมัติ"
+        },
+        {
+          "en": "The lockfile also pins transitive dependencies: everything transformers needs, and what those need",
+          "th": "ไฟล์ lock ล็อก dependency ทางอ้อมด้วย คือทุกอย่างที่ transformers ต้องใช้ และที่ตัวเหล่านั้นต้องใช้ต่อ"
+        },
+        {
+          "en": "The lockfile keeps old versions of every package",
+          "th": "ไฟล์ lock เก็บเวอร์ชันเก่าของทุกแพ็กเกจไว้"
+        },
+        {
+          "en": "It is a bug; the lockfile should list one package",
+          "th": "เป็นบั๊ก ไฟล์ lock ควรมีแค่แพ็กเกจเดียว"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "If A depends on B and B on C, C is a transitive dependency of A. Pinning only the top level would let those inner versions drift, so the lockfile pins them all.",
+        "th": "ถ้า A ต้องใช้ B และ B ต้องใช้ C แล้ว C คือ dependency ทางอ้อมของ A ถ้าล็อกแค่ชั้นบนสุด เวอร์ชันชั้นในจะเปลี่ยนไปเรื่อยๆ ไฟล์ lock จึงล็อกไว้ทั้งหมด"
+      }
+    }
+  ]
+}

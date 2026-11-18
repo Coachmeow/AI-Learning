@@ -1,0 +1,25 @@
+{
+  "minutes": 15,
+  "title": {
+    "th": "debug_print ที่ไม่หลงกับ NaN",
+    "en": "A debug_print that NaN can't fool"
+  },
+  "prompt": {
+    "th": "เขียน `value_stats(values)` แบบ `debug_print` ในบทเรียน แต่ใช้กับ list ของ float คืน dict ที่มี `count` (จำนวนทั้งหมด), `has_nan`, `has_inf` และ `min`, `max`, `mean` ที่คิดจาก**ค่าที่เป็นตัวเลขจำกัดเท่านั้น** (ไม่นับ NaN และ ±inf) ถ้าไม่มีค่าที่จำกัดเลยให้ทั้งสามเป็น `None`\n\nระวัง: `float(\"nan\") == float(\"nan\")` เป็น `False` และ `min([1.0, nan, 0.5])` ของ Python ให้ผลที่ขึ้นกับลำดับ เพราะการเทียบกับ NaN เป็นเท็จเสมอ",
+    "en": "Write `value_stats(values)`, like the lesson's `debug_print` but for a list of floats. Return a dict with `count` (all values), `has_nan`, `has_inf`, and `min`, `max`, `mean` computed from **finite values only** (no NaN, no ±inf). If there are no finite values, those three are `None`.\n\nCareful: `float(\"nan\") == float(\"nan\")` is `False`, and Python's `min([1.0, nan, 0.5])` depends on the order, because every comparison with NaN is false."
+  },
+  "hints": [
+    {
+      "th": "ใช้ `math.isnan(x)` และ `math.isinf(x)` ตรวจ ห้ามใช้ `x == float(\"nan\")`",
+      "en": "Use `math.isnan(x)` and `math.isinf(x)`; never `x == float(\"nan\")`."
+    },
+    {
+      "th": "กรองก่อน: `finite = [x for x in values if math.isfinite(x)]` แล้วค่อยหา min, max และค่าเฉลี่ยจาก `finite`",
+      "en": "Filter first: `finite = [x for x in values if math.isfinite(x)]`, then take min, max and the mean of `finite`."
+    },
+    {
+      "th": "ค่าเฉลี่ยคือ `sum(finite) / len(finite)` ถ้า `finite` ว่างให้ใส่ `None` แทนการหารด้วยศูนย์",
+      "en": "The mean is `sum(finite) / len(finite)`; when `finite` is empty, use `None` instead of dividing by zero."
+    }
+  ]
+}

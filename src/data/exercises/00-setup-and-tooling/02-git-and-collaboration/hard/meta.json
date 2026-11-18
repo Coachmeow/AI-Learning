@@ -1,0 +1,25 @@
+{
+  "minutes": 30,
+  "title": {
+    "th": "หา merge base ของสอง branch",
+    "en": "Find the merge base of two branches"
+  },
+  "prompt": {
+    "th": "ก่อน merge git ต้องหา commit ที่ทั้งสอง branch แยกออกมา (merge base) เขียน `merge_base(parents, a, b)` โดย `parents` เป็น dict ที่จับคู่ hash ของ commit กับ list ของ parent (commit แรกมี `[]` ส่วน merge commit มี parent 2 ตัว)\n\nบรรพบุรุษร่วม (common ancestor) คือ commit ที่ไปถึงได้ทั้งจาก `a` และ `b` โดยเดินตาม parent (commit นับเป็นบรรพบุรุษของตัวเองด้วย) ให้คืน list ที่เรียงแล้วของบรรพบุรุษร่วมที่ดีที่สุด คือตัวที่ไม่ได้เป็นบรรพบุรุษของบรรพบุรุษร่วมตัวอื่น ส่วนใหญ่จะมีตัวเดียว แต่ประวัติแบบไขว้ (criss-cross) มีได้หลายตัว ถ้าไม่มีบรรพบุรุษร่วมเลยให้คืน `[]` และถ้า `a` หรือ `b` ไม่อยู่ใน `parents` ให้ `raise ValueError`\n\nประวัติอาจยาวหลายพัน commit จึงควรเดินแบบวนลูป ไม่ใช้ recursion มี test ซ่อนอยู่บางส่วน",
+    "en": "Before a merge, git looks for the commit where the two branches split (the merge base). Write `merge_base(parents, a, b)` where `parents` maps each commit hash to its list of parents (the first commit has `[]`, a merge commit has two).\n\nA common ancestor is a commit reachable from both `a` and `b` by following parents (a commit counts as its own ancestor). Return a sorted list of the best common ancestors: those that are not an ancestor of another common ancestor. Usually there is one, but criss-cross histories can have several. Return `[]` when there is no common ancestor, and `raise ValueError` if `a` or `b` is not in `parents`.\n\nHistories can be thousands of commits long, so walk them with a loop rather than recursion. Some tests are hidden."
+  },
+  "hints": [
+    {
+      "th": "เขียนฟังก์ชันหาบรรพบุรุษทั้งหมดของ commit หนึ่งด้วย stack: `seen = set(); stack = [start]` แล้ววน pop ใส่ seen และ push parent ทุกตัว (ไม่ใช่แค่ตัวแรก) บรรพบุรุษร่วมคือ `anc(a) & anc(b)`",
+      "en": "Write an ancestors function with a stack: `seen = set(); stack = [start]`, then pop, add to `seen` and push every parent (not just the first). The common ancestors are `anc(a) & anc(b)`."
+    },
+    {
+      "th": "ตัวที่ \"ไม่ดีที่สุด\" คือตัวที่เป็นบรรพบุรุษแท้ (ไม่นับตัวเอง) ของบรรพบุรุษร่วมตัวอื่น เดินครั้งเดียวโดยเริ่มจาก parent ของบรรพบุรุษร่วมทุกตัว จะได้เซตของตัวที่ต้องตัดทิ้ง",
+      "en": "The ones that are not best are proper ancestors (not counting themselves) of another common ancestor. One walk that starts from the parents of every common ancestor gives the set to drop."
+    },
+    {
+      "th": "คำตอบคือ `sorted(common - below)` ลองกับประวัติแบบไขว้: M1 = merge(X, Y) และ M2 = merge(Y, X) แล้ว merge_base(M1, M2) ต้องได้ทั้ง X และ Y",
+      "en": "The answer is `sorted(common - below)`. Try a criss-cross history: with M1 = merge(X, Y) and M2 = merge(Y, X), merge_base(M1, M2) must return both X and Y."
+    }
+  ]
+}

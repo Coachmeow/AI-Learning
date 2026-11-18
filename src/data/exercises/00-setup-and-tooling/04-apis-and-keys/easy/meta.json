@@ -1,0 +1,25 @@
+{
+  "minutes": 5,
+  "title": {
+    "th": "เติมโค้ด: ซ่อน API key ก่อนพิมพ์ลง log",
+    "en": "Fill in: mask an API key before logging it"
+  },
+  "prompt": {
+    "th": "เวลาไล่หาปัญหา เรามักอยากรู้ว่าโปรแกรมใช้ key อันไหน แต่ห้ามพิมพ์ key เต็มๆ ลง log เติมฟังก์ชัน `mask_key(key)` ให้คืน 7 ตัวแรก ตามด้วย `...` และ 4 ตัวสุดท้าย เช่น `sk-ant-api03-Xy7Qa9Lm2Pz8Rt4W` ได้ `sk-ant-...Rt4W` แต่ถ้า key ยาวไม่เกิน 12 ตัว ให้คืน `***` ทั้งหมด เพราะเหลือส่วนที่ซ่อนน้อยเกินไป",
+    "en": "When debugging you often want to know which key a program uses, but a full key must never go into a log. Complete `mask_key(key)` so it returns the first 7 characters, then `...`, then the last 4, e.g. `sk-ant-api03-Xy7Qa9Lm2Pz8Rt4W` becomes `sk-ant-...Rt4W`. If the key is 12 characters or shorter, return `***` instead, because too little would stay hidden."
+  },
+  "hints": [
+    {
+      "th": "ตัดส่วนหน้าด้วย `key[:7]` และส่วนท้ายด้วย `key[-4:]`",
+      "en": "Take the front with `key[:7]` and the end with `key[-4:]`."
+    },
+    {
+      "th": "ตรวจความยาวก่อน: `if len(key) <= 12: return \"***\"`",
+      "en": "Check the length first: `if len(key) <= 12: return \"***\"`."
+    },
+    {
+      "th": "`return key[:7] + \"...\" + key[-4:]`",
+      "en": "`return key[:7] + \"...\" + key[-4:]`"
+    }
+  ]
+}

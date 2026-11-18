@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.astro/
+.upstream/
+public/vendor/pyodide/
+__pycache__/
+*.pyc
+.DS_Store

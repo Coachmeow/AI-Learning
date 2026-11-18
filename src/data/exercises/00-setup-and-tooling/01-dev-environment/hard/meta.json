@@ -1,0 +1,25 @@
+{
+  "minutes": 25,
+  "title": {
+    "th": "เขียนตัวตรวจก่อนเริ่ม (preflight) ตามเส้นทาง",
+    "en": "Write a route preflight"
+  },
+  "prompt": {
+    "th": "เขียน `preflight(route, outputs)` แบบย่อของ `verify.py` ในบทนี้ `ROUTES` (มีให้ใน starter) บอกว่าแต่ละเส้นทางต้องใช้เครื่องมืออะไร เวอร์ชันขั้นต่ำเท่าไร ส่วน `outputs` คือ dict ที่จับคู่ชื่อเครื่องมือกับข้อความที่คำสั่ง `--version` พิมพ์ออกมา หรือ `None` ถ้าไม่ได้ติดตั้ง\n\nให้คืน dict `{\"ready\": bool, \"problems\": [...]}` โดย `problems` เป็น list ของ tuple `(tool, reason)` เรียงตามชื่อเครื่องมือ และ `reason` เป็นหนึ่งใน `\"missing\"` (ไม่มีใน outputs หรือเป็น `None`), `\"unreadable\"` (อ่านเลขเวอร์ชันไม่ได้) หรือ `\"too old\"` (เก่ากว่าขั้นต่ำ) `ready` เป็น `True` เมื่อไม่มีปัญหาเลย\n\nเครื่องมือที่เส้นทางนั้นไม่ได้ใช้ต้องไม่ถูกรายงาน แม้จะไม่ได้ติดตั้ง (เครื่องมือของบทหลังไม่ขวางเส้นทางที่เลือก) และชื่อเส้นทางที่ไม่มีใน `ROUTES` ให้ `raise ValueError` มี test ซ่อนอยู่บางส่วน",
+    "en": "Write `preflight(route, outputs)`, a small version of this lesson's `verify.py`. `ROUTES` (given in the starter) lists the tools each route needs and their minimum versions. `outputs` maps a tool name to the text its `--version` command printed, or `None` when it is not installed.\n\nReturn `{\"ready\": bool, \"problems\": [...]}` where `problems` is a list of `(tool, reason)` tuples sorted by tool name, and `reason` is one of `\"missing\"` (absent from outputs or `None`), `\"unreadable\"` (no version number in the text) or `\"too old\"` (below the minimum). `ready` is `True` when there are no problems.\n\nTools the route does not use must never be reported, even when they are not installed (later tools never block the selected route). An unknown route name raises `ValueError`. Some tests are hidden."
+  },
+  "hints": [
+    {
+      "th": "เริ่มจาก `need = ROUTES.get(route)` ถ้าได้ `None` ให้ `raise ValueError` แล้ววนเฉพาะ `sorted(need.items())` ไม่ต้องวน `outputs` เลย เครื่องมือที่ไม่เกี่ยวจะถูกข้ามไปเอง",
+      "en": "Start with `need = ROUTES.get(route)` and `raise ValueError` if it is `None`. Then loop over `sorted(need.items())` only, never over `outputs`, so unrelated tools are skipped for free."
+    },
+    {
+      "th": "อ่านเลขเวอร์ชันแบบโจทย์ระดับกลาง: `re.search(r\"\\d+(?:\\.\\d+)+\", text)` ไม่พบให้นับเป็น `\"unreadable\"` พบแล้วแปลงเป็น tuple ของ int",
+      "en": "Read the version as in the medium exercise: `re.search(r\"\\d+(?:\\.\\d+)+\", text)`. No match means `\"unreadable\"`; otherwise turn it into a tuple of ints."
+    },
+    {
+      "th": "ขั้นต่ำใน `ROUTES` เป็น tuple เช่น `(20,)` เติม 0 ให้ยาวเท่ากันก่อนเทียบ เพื่อให้ `(3, 11)` เท่ากับ `(3, 11, 0)` และเวอร์ชันเท่ากับขั้นต่ำพอดีถือว่าผ่าน",
+      "en": "Minimums in `ROUTES` are tuples such as `(20,)`. Pad with zeros to the same length before comparing, so `(3, 11)` equals `(3, 11, 0)`, and a version exactly at the minimum passes."
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "minutes": 25,
+  "title": {
+    "th": "เขียนตัวจับเวลาที่ไม่โกหกเรื่อง GPU",
+    "en": "Write a timer that doesn't lie about the GPU"
+  },
+  "prompt": {
+    "th": "งานบน GPU ทำงานแบบไม่รอกัน ถ้าจับเวลาไม่ถูกจะได้ตัวเลขที่ดูเร็วเกินจริง เขียน `benchmark(fn, repeats=5, warmup=1, sync=None, clock=time.perf_counter)` ที่\n\n1. เรียก `fn()` จำนวน `warmup` ครั้งก่อน โดยไม่จับเวลา\n2. จับเวลา `fn()` อีก `repeats` ครั้ง แต่ละครั้งให้ทำตามลำดับ: `sync()` → `t0 = clock()` → `fn()` → `sync()` → `t1 = clock()` (ถ้า `sync` เป็น `None` ให้ข้ามการเรียก sync)\n3. คืนค่ามัธยฐาน (median) ของเวลาทุกครั้งเป็น float (จำนวนครั้งเป็นเลขคู่ให้ใช้ค่าเฉลี่ยของสองตัวตรงกลาง)\n\nถ้า `repeats` น้อยกว่า 1 ให้ `raise ValueError` ตัวตรวจจะส่ง `clock` และ `sync` ปลอมเข้ามาเพื่อจำลอง GPU มี test ซ่อนอยู่บางส่วน",
+    "en": "GPU work runs asynchronously, so a careless timer reports numbers that look too fast. Write `benchmark(fn, repeats=5, warmup=1, sync=None, clock=time.perf_counter)` that:\n\n1. Calls `fn()` `warmup` times first, without timing.\n2. Times `fn()` `repeats` more times, each in this order: `sync()` → `t0 = clock()` → `fn()` → `sync()` → `t1 = clock()` (skip the sync calls when `sync` is `None`).\n3. Returns the median of the timings as a float (for an even count, the mean of the two middle values).\n\nRaise `ValueError` if `repeats` is below 1. The checks pass in a fake `clock` and `sync` that simulate a GPU. Some tests are hidden."
+  },
+  "hints": [
+    {
+      "th": "`sync()` ก่อนหยุดเวลา คือ `torch.cuda.synchronize()` ในบทเรียน ถ้าไม่เรียก จะได้แค่เวลาสั่งงาน ไม่ใช่เวลาที่ GPU ทำงานเสร็จ",
+      "en": "`sync()` before stopping the timer is the lesson's `torch.cuda.synchronize()`. Without it you only measure how long it took to queue the work, not to finish it."
+    },
+    {
+      "th": "`sync()` ก่อนเริ่มเวลาก็สำคัญ: งานของรอบ warmup อาจยังค้างอยู่บน GPU แล้วจะไปนับรวมในรอบแรกที่จับเวลา",
+      "en": "`sync()` before starting matters too: work from the warmup can still be queued on the GPU and would be counted in the first timed run."
+    },
+    {
+      "th": "ใช้ `statistics.median(times)` ได้เลย มันจัดการกรณีจำนวนเป็นเลขคู่ให้แล้ว ค่ามัธยฐานไม่ถูกดึงด้วยครั้งที่ช้าผิดปกติเหมือนค่าเฉลี่ย",
+      "en": "`statistics.median(times)` handles the even case for you, and unlike the mean it is not dragged by one unusually slow run."
+    }
+  ]
+}

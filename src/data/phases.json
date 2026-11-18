@@ -1,0 +1,22 @@
+[
+  { "id": "00-setup-and-tooling", "en": "Setup & Tooling", "th": "การเตรียมเครื่องมือ" },
+  { "id": "01-math-foundations", "en": "Math Foundations", "th": "คณิตศาสตร์พื้นฐาน" },
+  { "id": "02-ml-fundamentals", "en": "ML Fundamentals", "th": "พื้นฐาน Machine Learning" },
+  { "id": "03-deep-learning-core", "en": "Deep Learning Core", "th": "แกนหลักของ Deep Learning" },
+  { "id": "04-computer-vision", "en": "Computer Vision", "th": "คอมพิวเตอร์วิทัศน์" },
+  { "id": "05-nlp-foundations-to-advanced", "en": "NLP: Foundations to Advanced", "th": "การประมวลผลภาษาธรรมชาติ" },
+  { "id": "06-speech-and-audio", "en": "Speech & Audio", "th": "เสียงพูดและเสียง" },
+  { "id": "07-transformers-deep-dive", "en": "Transformers Deep Dive", "th": "เจาะลึก Transformer" },
+  { "id": "08-generative-ai", "en": "Generative AI", "th": "Generative AI" },
+  { "id": "09-reinforcement-learning", "en": "Reinforcement Learning", "th": "การเรียนรู้แบบเสริมกำลัง" },
+  { "id": "10-llms-from-scratch", "en": "LLMs from Scratch", "th": "สร้าง LLM ตั้งแต่ศูนย์" },
+  { "id": "11-llm-engineering", "en": "LLM Engineering", "th": "วิศวกรรม LLM" },
+  { "id": "12-multimodal-ai", "en": "Multimodal AI", "th": "AI หลายรูปแบบข้อมูล" },
+  { "id": "13-tools-and-protocols", "en": "Tools & Protocols", "th": "เครื่องมือและโปรโตคอล" },
+  { "id": "14-agent-engineering", "en": "Agent Engineering", "th": "วิศวกรรมเอเจนต์" },
+  { "id": "15-autonomous-systems", "en": "Autonomous Systems", "th": "ระบบอัตโนมัติ" },
+  { "id": "16-multi-agent-and-swarms", "en": "Multi-Agent & Swarms", "th": "หลายเอเจนต์และฝูงเอเจนต์" },
+  { "id": "17-infrastructure-and-production", "en": "Infrastructure & Production", "th": "โครงสร้างพื้นฐานและ production" },
+  { "id": "18-ethics-safety-alignment", "en": "Ethics, Safety & Alignment", "th": "จริยธรรม ความปลอดภัย และ alignment" },
+  { "id": "19-capstone-projects", "en": "Capstone Projects", "th": "โปรเจกต์ปิดท้าย" }
+]

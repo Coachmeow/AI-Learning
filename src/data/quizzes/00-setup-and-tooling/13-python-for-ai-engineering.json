@@ -1,0 +1,487 @@
+{
+  "lesson": "00-setup-and-tooling/13-python-for-ai-engineering",
+  "source_hash": "ae258f2f5ac9b2bfd395d285699082537b53e9796368719c3d614e6954bca009",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "You run one training script two times and get a different test score each time. Which change makes the train and test split the same in every run?",
+        "th": "คุณรันสคริปต์ฝึกตัวเดียวกันสองครั้ง แล้วได้คะแนน test ต่างกันทุกครั้ง การเปลี่ยนแปลงใดทำให้การแบ่ง train กับ test เหมือนกันทุกครั้งที่รัน"
+      },
+      "options": [
+        {
+          "en": "Use a larger test fraction for the split",
+          "th": "ใช้สัดส่วน test ที่ใหญ่ขึ้นในการแบ่ง"
+        },
+        {
+          "en": "Shuffle the indexes with random.Random(42)",
+          "th": "สลับลำดับ index ด้วย random.Random(42)"
+        },
+        {
+          "en": "Call random.shuffle two times instead of once",
+          "th": "เรียก random.shuffle สองครั้งแทนครั้งเดียว"
+        },
+        {
+          "en": "Convert the dataset list to a tuple first",
+          "th": "แปลง list ของชุดข้อมูลเป็น tuple ก่อน"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "A generator with a fixed seed gives the same sequence in every run. The shuffled order and the split then stay the same. The other changes leave the shuffle random or have no effect on the order.",
+        "th": "ตัวสุ่มที่กำหนด seed ตายตัวให้ลำดับตัวเลขเดียวกันทุกครั้งที่รัน ลำดับที่สลับแล้วและการแบ่งชุดจึงเหมือนเดิม ส่วนการเปลี่ยนแปลงอื่นยังสลับแบบสุ่มอยู่ หรือไม่มีผลกับลำดับเลย"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What does a call to a generator function return?",
+        "th": "การเรียก generator function คืนค่าอะไรออกมา"
+      },
+      "options": [
+        {
+          "en": "A generator object that runs the body on each next() call",
+          "th": "object ของ generator ที่รันตัวฟังก์ชันทุกครั้งที่เรียก next()"
+        },
+        {
+          "en": "A list that holds every value that the function yields",
+          "th": "list ที่เก็บทุกค่าที่ฟังก์ชัน yield ออกมา"
+        },
+        {
+          "en": "The first value that the function yields, and then it stops",
+          "th": "ค่าแรกที่ฟังก์ชัน yield ออกมา แล้วหยุด"
+        },
+        {
+          "en": "None, because the function body has no return statement",
+          "th": "None เพราะตัวฟังก์ชันไม่มีคำสั่ง return"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The call runs none of the body. It returns a generator object. Each next() call runs the body to the next yield and pauses there.",
+        "th": "การเรียกยังไม่รันตัวฟังก์ชันเลย แต่คืน object ของ generator ออกมา ทุกครั้งที่เรียก next() ตัวฟังก์ชันจะรันไปจนถึง yield ถัดไปแล้วหยุดรอ"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "With `batch_size = 32`, what does `print(f\"{batch_size=}\")` print?",
+        "th": "ถ้า `batch_size = 32` คำสั่ง `print(f\"{batch_size=}\")` พิมพ์อะไร"
+      },
+      "options": [
+        {
+          "en": "`32`",
+          "th": "`32`"
+        },
+        {
+          "en": "`batch_size=32`",
+          "th": "`batch_size=32`"
+        },
+        {
+          "en": "`{batch_size=}`",
+          "th": "`{batch_size=}`"
+        },
+        {
+          "en": "`batch_size`",
+          "th": "`batch_size`"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The `=` form prints the expression and its value, which is handy when you debug.",
+        "th": "รูปแบบที่มี `=` พิมพ์ทั้งนิพจน์และค่าของมัน สะดวกมากเวลาไล่บั๊ก"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Which built-in collection is best for a vocabulary of unique tokens with fast `in` checks?",
+        "th": "คอลเลกชันในตัวแบบใดเหมาะที่สุดกับคลังคำศัพท์ที่เป็น token ไม่ซ้ำกันและต้องเช็ก `in` ได้เร็ว"
+      },
+      "options": [
+        {
+          "en": "`list`",
+          "th": "`list`"
+        },
+        {
+          "en": "`tuple`",
+          "th": "`tuple`"
+        },
+        {
+          "en": "`set`",
+          "th": "`set`"
+        },
+        {
+          "en": "`str`",
+          "th": "`str`"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "A set keeps each item once, and `in` takes about the same time whatever its size. A list check scans every item.",
+        "th": "set เก็บสมาชิกแต่ละตัวครั้งเดียว และ `in` ใช้เวลาพอๆ กันไม่ว่าจะใหญ่แค่ไหน ส่วนการเช็กใน list ต้องไล่ดูทุกตัว"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "What does `if __name__ == \"__main__\":` do?",
+        "th": "`if __name__ == \"__main__\":` ทำอะไร"
+      },
+      "options": [
+        {
+          "en": "Makes the file run faster",
+          "th": "ทำให้ไฟล์รันเร็วขึ้น"
+        },
+        {
+          "en": "Runs the block only when the file is run directly, not when it is imported",
+          "th": "รันบล็อกนั้นเฉพาะเมื่อรันไฟล์โดยตรง ไม่ใช่เมื่อถูก import"
+        },
+        {
+          "en": "Marks the main class of the module",
+          "th": "ระบุคลาสหลักของโมดูล"
+        },
+        {
+          "en": "Is required by Python 3.11",
+          "th": "Python 3.11 บังคับให้มี"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Run as a script, the module's `__name__` is `\"__main__\"`; imported, it is the module name. That lets tests import `main.py` without starting the demo.",
+        "th": "เมื่อรันเป็นสคริปต์ `__name__` ของโมดูลคือ `\"__main__\"` แต่เมื่อถูก import จะเป็นชื่อโมดูล test จึง import `main.py` ได้โดยไม่ทำให้เดโมเริ่มรัน"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "The call batches(range(10), 4) uses the default drop_last=False. Which batch sizes does it give?",
+        "th": "การเรียก batches(range(10), 4) ใช้ค่า default drop_last=False จะได้ batch ขนาดเท่าไรบ้าง"
+      },
+      "options": [
+        {
+          "en": "2, 4, 4",
+          "th": "2, 4, 4"
+        },
+        {
+          "en": "4, 4, 2",
+          "th": "4, 4, 2"
+        },
+        {
+          "en": "4, 4, 4",
+          "th": "4, 4, 4"
+        },
+        {
+          "en": "4, 4",
+          "th": "4, 4"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "islice takes up to four items at a time. Ten items give two full batches and a last batch of two items. With drop_last=True, the generator removes the last batch.",
+        "th": "islice หยิบได้ทีละไม่เกินสี่ตัว ข้อมูลสิบตัวจึงได้ batch เต็มสองชุดและ batch สุดท้ายที่มีสองตัว ถ้า drop_last=True generator จะทิ้ง batch สุดท้ายนั้น"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "Why is a pure-Python dot product over a million floats much slower than the NumPy dot product?",
+        "th": "ทำไม dot product ด้วย Python ล้วนกับ float หนึ่งล้านตัวจึงช้ากว่า dot product ของ NumPy มาก"
+      },
+      "options": [
+        {
+          "en": "Python floats have less precision than the NumPy float64 values",
+          "th": "float ของ Python ละเอียดน้อยกว่าค่า float64 ของ NumPy"
+        },
+        {
+          "en": "The for loop makes a full copy of the list on every single pass",
+          "th": "ลูป for คัดลอก list ทั้งหมดทุกรอบ"
+        },
+        {
+          "en": "The interpreter does type checks and makes objects per element",
+          "th": "ตัวแปลภาษาต้องตรวจชนิดและสร้าง object ทุกครั้งต่อสมาชิกหนึ่งตัว"
+        },
+        {
+          "en": "The zip() function sorts both input lists before it pairs the items",
+          "th": "ฟังก์ชัน zip() เรียงลำดับ list ทั้งสองก่อนจับคู่"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Both versions do the same arithmetic on 64-bit floats. The Python loop runs about ten bytecode instructions for each element and makes a float object for each result. NumPy runs one compiled loop over raw 8-byte values.",
+        "th": "ทั้งสองแบบคำนวณเลขชุดเดียวกันกับ float 64 บิต ลูปของ Python รัน bytecode ราวสิบคำสั่งต่อสมาชิกหนึ่งตัว และสร้าง object float ให้ทุกผลลัพธ์ ส่วน NumPy รันลูปที่คอมไพล์แล้วครั้งเดียวกับค่าดิบขนาด 8 byte"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "The function def add(item, bucket=[]) appends item to bucket and returns bucket. You call add(1) and then add(2). What does the second call return?",
+        "th": "ฟังก์ชัน def add(item, bucket=[]) ต่อ item ท้าย bucket แล้วคืน bucket คุณเรียก add(1) แล้ว add(2) การเรียกครั้งที่สองคืนค่าอะไร"
+      },
+      "options": [
+        {
+          "en": "[1]",
+          "th": "[1]"
+        },
+        {
+          "en": "[2, 1]",
+          "th": "[2, 1]"
+        },
+        {
+          "en": "[2]",
+          "th": "[2]"
+        },
+        {
+          "en": "[1, 2]",
+          "th": "[1, 2]"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Python evaluates the default list once, when it runs the def statement. Both calls append to that one list. Use None as the default and create the list inside the function.",
+        "th": "Python ประเมิน list ที่เป็นค่า default ครั้งเดียว ตอนรันคำสั่ง def การเรียกทั้งสองครั้งจึงต่อท้าย list ตัวเดียวกัน ให้ใช้ None เป็นค่า default แล้วสร้าง list ภายในฟังก์ชัน"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "You standardize the features before you train a model. Where must the means and standard deviations come from?",
+        "th": "คุณปรับมาตรฐาน feature ก่อนฝึกโมเดล ค่าเฉลี่ยและส่วนเบี่ยงเบนมาตรฐานต้องมาจากไหน"
+      },
+      "options": [
+        {
+          "en": "The training split only",
+          "th": "ชุด train เท่านั้น"
+        },
+        {
+          "en": "The test split only",
+          "th": "ชุด test เท่านั้น"
+        },
+        {
+          "en": "Each mini-batch on its own",
+          "th": "แต่ละ mini-batch แยกกัน"
+        },
+        {
+          "en": "The training and test splits together",
+          "th": "ชุด train และ test รวมกัน"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Statistics from the test split put test information into training, and the test score is then too high. Compute them on the training split, and apply the same values to the test split.",
+        "th": "ค่าสถิติจากชุด test ทำให้ข้อมูลของ test เข้าไปอยู่ในการฝึก คะแนน test จึงสูงเกินจริง ให้คำนวณจากชุด train แล้วใช้ค่าเดียวกันกับชุด test"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "What does this print?",
+        "th": "โค้ดนี้พิมพ์อะไร"
+      },
+      "code": "grid = [[0] * 3] * 2\ngrid[0][0] = 1\nprint(grid)",
+      "options": [
+        {
+          "en": "`[[1, 0, 0], [0, 0, 0]]`",
+          "th": "`[[1, 0, 0], [0, 0, 0]]`"
+        },
+        {
+          "en": "`[[1, 0, 0], [1, 0, 0]]`",
+          "th": "`[[1, 0, 0], [1, 0, 0]]`"
+        },
+        {
+          "en": "`[[1, 1, 1], [0, 0, 0]]`",
+          "th": "`[[1, 1, 1], [0, 0, 0]]`"
+        },
+        {
+          "en": "It raises `TypeError`",
+          "th": "เกิด `TypeError`"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "`* 2` repeats a reference to one inner list, so both rows are the same object. Build rows with `[[0] * 3 for _ in range(2)]`.",
+        "th": "`* 2` ทำซ้ำตัวอ้างถึง list ชั้นในตัวเดียว ทั้งสองแถวจึงเป็น object เดียวกัน ให้สร้างแถวด้วย `[[0] * 3 for _ in range(2)]`"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "`train_batches = batches(data, 32)` is created once before `for epoch in range(3):`. The loss changes in epoch 0 and then stays flat. Why?",
+        "th": "`train_batches = batches(data, 32)` ถูกสร้างครั้งเดียวก่อน `for epoch in range(3):` loss เปลี่ยนใน epoch 0 แล้วนิ่งตลอด เพราะอะไร"
+      },
+      "options": [
+        {
+          "en": "The learning rate is too low",
+          "th": "learning rate ต่ำเกินไป"
+        },
+        {
+          "en": "The generator was used up in epoch 0, so later epochs get no batches; create it inside the epoch loop",
+          "th": "generator ถูกใช้หมดใน epoch 0 epoch ถัดไปจึงไม่ได้ batch เลย ให้สร้างมันภายในลูป epoch"
+        },
+        {
+          "en": "islice drops the data after one pass on purpose",
+          "th": "islice ทิ้งข้อมูลหลังวนหนึ่งรอบโดยตั้งใจ"
+        },
+        {
+          "en": "`batches` needs `drop_last=True`",
+          "th": "`batches` ต้องใส่ `drop_last=True`"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "A generator gives its items only once. With no error and no batches, the later epochs train on nothing, which is one of the lesson's silent failures.",
+        "th": "generator ให้สมาชิกได้แค่ครั้งเดียว epoch หลังๆ จึงไม่ได้ฝึกกับอะไรเลยโดยไม่มี error ซึ่งเป็นความล้มเหลวแบบเงียบที่บทนี้เตือนไว้"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "`a` has 1,000 values and `b` has 999. What does `sum(x * y for x, y in zip(a, b))` do, and how do you catch it?",
+        "th": "`a` มี 1,000 ค่าและ `b` มี 999 ค่า `sum(x * y for x, y in zip(a, b))` ทำอะไร และจะจับปัญหานี้ได้อย่างไร"
+      },
+      "options": [
+        {
+          "en": "It raises `IndexError`",
+          "th": "เกิด `IndexError`"
+        },
+        {
+          "en": "It silently drops the last value of `a`; `zip(a, b, strict=True)` raises `ValueError` instead",
+          "th": "ทิ้งค่าสุดท้ายของ `a` ไปเงียบๆ ถ้าใช้ `zip(a, b, strict=True)` จะเกิด `ValueError` แทน"
+        },
+        {
+          "en": "It pads `b` with a zero",
+          "th": "เติมศูนย์ให้ `b`"
+        },
+        {
+          "en": "It returns `None`",
+          "th": "คืน `None`"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Plain `zip` stops at the shorter input and gives a wrong answer with no error. `strict=True` (Python 3.10+) turns the length mismatch into an error.",
+        "th": "`zip` ธรรมดาหยุดเมื่อตัวที่สั้นกว่าหมด แล้วให้คำตอบผิดโดยไม่มี error `strict=True` (Python 3.10 ขึ้นไป) เปลี่ยนความยาวที่ไม่เท่ากันให้เป็น error"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "`X` has shape `(3, 2)`. Why does `X / np.sqrt((X ** 2).sum(axis=1))` fail, and what fixes it?",
+        "th": "`X` มี shape `(3, 2)` ทำไม `X / np.sqrt((X ** 2).sum(axis=1))` จึง error และแก้อย่างไร"
+      },
+      "options": [
+        {
+          "en": "NumPy cannot divide arrays",
+          "th": "NumPy หาร array ไม่ได้"
+        },
+        {
+          "en": "The norms have shape `(3,)`; aligned from the last dimension, 2 and 3 clash. Use `keepdims=True` to get `(3, 1)`",
+          "th": "norm ได้ shape `(3,)` เมื่อเทียบจากมิติสุดท้าย 2 กับ 3 ไม่เข้ากัน ให้ใช้ `keepdims=True` จะได้ `(3, 1)`"
+        },
+        {
+          "en": "The square root must come after the division",
+          "th": "ต้องถอดรากหลังการหาร"
+        },
+        {
+          "en": "`axis=1` should be `axis=0`",
+          "th": "`axis=1` ควรเป็น `axis=0`"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Broadcasting compares shapes from the right: `(3, 2)` with `(3,)` pairs 2 with 3, and neither is 1. `(3, 1)` pairs 2 with 1, which broadcasts.",
+        "th": "broadcasting เทียบ shape จากขวา: `(3, 2)` กับ `(3,)` จับคู่ 2 กับ 3 และไม่มีตัวไหนเป็น 1 ส่วน `(3, 1)` จับคู่ 2 กับ 1 จึง broadcast ได้"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "You call `random.seed(0)` at the top of your script, but the split still changes after you add an import. What is the likely cause?",
+        "th": "คุณเรียก `random.seed(0)` ที่บรรทัดบนสุดของสคริปต์ แต่การแบ่งชุดยังเปลี่ยนหลังเพิ่ม import ตัวหนึ่ง สาเหตุที่น่าจะเป็นคืออะไร"
+      },
+      "options": [
+        {
+          "en": "Seeds only work with NumPy",
+          "th": "seed ใช้ได้แค่กับ NumPy"
+        },
+        {
+          "en": "The imported library also draws from the shared global generator; use your own `random.Random(seed)`",
+          "th": "ไลบรารีที่ import มาก็ดึงตัวเลขจากตัวสุ่มส่วนกลางที่ใช้ร่วมกันด้วย ให้ใช้ `random.Random(seed)` ของคุณเอง"
+        },
+        {
+          "en": "`random.seed` must be called twice",
+          "th": "ต้องเรียก `random.seed` สองครั้ง"
+        },
+        {
+          "en": "Imports reset the clock",
+          "th": "การ import รีเซ็ตนาฬิกา"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "`random.seed` resets the one generator every module shares, so any extra draw shifts your sequence. A private `random.Random(seed)` is unaffected by other code.",
+        "th": "`random.seed` รีเซ็ตตัวสุ่มตัวเดียวที่ทุกโมดูลใช้ร่วมกัน การดึงตัวเลขเพิ่มจากที่อื่นจึงทำให้ลำดับของคุณเลื่อนไป ตัวสุ่มส่วนตัว `random.Random(seed)` ไม่ได้รับผลจากโค้ดอื่น"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Why does the lesson split `batches` into a normal outer function and an inner generator?",
+        "th": "ทำไมบทเรียนจึงแยก `batches` เป็นฟังก์ชันธรรมดาชั้นนอกกับ generator ชั้นใน"
+      },
+      "options": [
+        {
+          "en": "Generators cannot take arguments",
+          "th": "generator รับอาร์กิวเมนต์ไม่ได้"
+        },
+        {
+          "en": "A generator body runs only at the first `next()`, so a bad `batch_size` would fail late; the outer function checks it at once",
+          "th": "ตัว generator จะรันก็ต่อเมื่อเรียก `next()` ครั้งแรก `batch_size` ที่ผิดจะไป error ทีหลัง ฟังก์ชันชั้นนอกจึงตรวจให้ทันที"
+        },
+        {
+          "en": "It makes the batches smaller",
+          "th": "ทำให้ batch เล็กลง"
+        },
+        {
+          "en": "`islice` only works inside a nested function",
+          "th": "`islice` ใช้ได้แค่ในฟังก์ชันซ้อน"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "With the check inside the generator, `batches(data, 0)` would return without complaint and fail deep inside the training loop. Validating in a plain function reports the mistake where it was made.",
+        "th": "ถ้าตรวจไว้ใน generator `batches(data, 0)` จะคืนค่ามาเฉยๆ แล้วไปพังลึกในลูปการฝึก การตรวจในฟังก์ชันธรรมดารายงานข้อผิดพลาดตรงจุดที่เกิด"
+      }
+    }
+  ]
+}

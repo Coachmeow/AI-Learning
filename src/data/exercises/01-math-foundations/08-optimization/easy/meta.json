@@ -1,0 +1,25 @@
+{
+  "minutes": 5,
+  "title": {
+    "th": "เติมโค้ด: ก้าวหนึ่งของ gradient descent",
+    "en": "Fill in: one gradient descent step"
+  },
+  "prompt": {
+    "th": "เขียนเมธอด `step` ของคลาส `GradientDescent` ให้คืน list ใหม่ ที่พารามิเตอร์แต่ละตัวขยับสวนทางกับเกรเดียนต์ของมัน โดยคูณขนาดก้าวด้วย `self.lr` และห้ามแก้ list `params` เดิม",
+    "en": "Write the `step` method of `GradientDescent` so it returns a new list where each parameter moves against its gradient, scaled by `self.lr`. Do not modify the original `params` list."
+  },
+  "hints": [
+    {
+      "th": "สูตรคือ `p_ใหม่ = p - lr * g` สำหรับพารามิเตอร์ `p` แต่ละตัวกับเกรเดียนต์ `g` ที่คู่กัน",
+      "en": "The rule is `new_p = p - lr * g` for each parameter `p` and its matching gradient `g`."
+    },
+    {
+      "th": "`zip(params, grads)` จับคู่พารามิเตอร์กับเกรเดียนต์ให้ทีละคู่",
+      "en": "`zip(params, grads)` pairs each parameter with its gradient."
+    },
+    {
+      "th": "เขียนได้ในบรรทัดเดียวด้วย list comprehension: `[... for p, g in zip(params, grads)]`",
+      "en": "One line does it with a list comprehension: `[... for p, g in zip(params, grads)]`."
+    }
+  ]
+}

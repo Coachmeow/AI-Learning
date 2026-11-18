@@ -1,0 +1,25 @@
+{
+  "minutes": 5,
+  "title": {
+    "th": "เติมโค้ด: หาบรรทัดที่ยาวเกินเส้น 88",
+    "en": "Fill in: find lines past the 88 ruler"
+  },
+  "prompt": {
+    "th": "editor ในบทนี้มีเส้นบอกความยาวที่คอลัมน์ 88 เพราะ Black ตัดบรรทัดที่นั่น เติมฟังก์ชัน `long_lines(text, limit=88)` ให้คืน list ของ `(เลขบรรทัด, ความยาว)` ของทุกบรรทัดที่ยาวกว่า `limit` ตัวอักษร (ยาวเท่า limit พอดีไม่นับ) เลขบรรทัดเริ่มที่ 1 และความยาวไม่นับตัวขึ้นบรรทัดใหม่",
+    "en": "The editor in this lesson has a ruler at column 88 because Black wraps there. Complete `long_lines(text, limit=88)` so it returns a list of `(line_number, length)` for every line longer than `limit` characters (exactly `limit` does not count). Line numbers start at 1, and the length does not include the newline."
+  },
+  "hints": [
+    {
+      "th": "`text.splitlines()` แยกบรรทัดและตัดตัวขึ้นบรรทัดใหม่ออกให้แล้ว",
+      "en": "`text.splitlines()` splits the lines and already drops the newlines."
+    },
+    {
+      "th": "`enumerate(..., start=1)` ให้เลขบรรทัดเริ่มที่ 1",
+      "en": "`enumerate(..., start=1)` numbers the lines from 1."
+    },
+    {
+      "th": "`if len(line) > limit: result.append((number, len(line)))`",
+      "en": "`if len(line) > limit: result.append((number, len(line)))`"
+    }
+  ]
+}

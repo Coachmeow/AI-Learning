@@ -1,0 +1,25 @@
+{
+  "minutes": 30,
+  "title": {
+    "th": "อ่าน ~/.ssh/config แบบที่ ssh อ่าน",
+    "en": "Read ~/.ssh/config the way ssh does"
+  },
+  "prompt": {
+    "th": "Remote SSH ใช้การตั้งค่าใน `~/.ssh/config` เขียน `ssh_options(config, alias)` ที่คืน dict ของตัวเลือกที่ `ssh <alias>` จะใช้จริง ตามกฎของ ssh\n\n1. ข้ามบรรทัดว่างและคอมเมนต์ `#` แต่ละบรรทัดคือ `Keyword value` หรือ `Keyword=value` ชื่อ keyword ไม่สนตัวพิมพ์ ให้เก็บเป็นตัวพิมพ์เล็ก\n2. บรรทัด `Host` เริ่มบล็อกใหม่ และมีได้หลายรูปแบบคั่นด้วยช่องว่าง รูปแบบใช้ `*` และ `?` ได้ (เทียบด้วย `fnmatch.fnmatchcase`) รูปแบบที่ขึ้นต้นด้วย `!` คือข้อยกเว้น: ถ้า alias ตรงกับข้อยกเว้น บล็อกนั้นไม่มีผล บล็อกมีผลเมื่อ alias ตรงกับรูปแบบปกติอย่างน้อยหนึ่งรูปแบบและไม่ตรงกับข้อยกเว้นเลย\n3. ตัวเลือกที่อยู่ก่อนบรรทัด `Host` แรกใช้กับทุกเครื่อง\n4. ค่าที่พบ**ครั้งแรก**ของแต่ละตัวเลือก (ไล่ตามลำดับในไฟล์) คือค่าที่ใช้ ค่าที่พบทีหลังไม่ทับ\n5. ถ้าไม่มี `hostname` ให้ใช้ alias เป็น hostname\n\nมี test ซ่อนอยู่บางส่วน",
+    "en": "Remote SSH uses the settings in `~/.ssh/config`. Write `ssh_options(config, alias)` returning the dict of options that `ssh <alias>` really uses, following ssh's rules:\n\n1. Skip blank lines and `#` comments. Each line is `Keyword value` or `Keyword=value`; keywords ignore case, so store them in lowercase.\n2. A `Host` line starts a new block and can hold several space-separated patterns, which may use `*` and `?` (match with `fnmatch.fnmatchcase`). A pattern starting with `!` is an exception: if the alias matches it, the block does not apply. A block applies when the alias matches at least one normal pattern and no exception.\n3. Options before the first `Host` line apply to every host.\n4. The **first** value found for each option (in file order) is the one used; later values never override it.\n5. If no `hostname` is set, the alias itself is the hostname.\n\nSome tests are hidden."
+  },
+  "hints": [
+    {
+      "th": "เริ่มด้วย `applies = True` (สำหรับส่วนก่อน Host แรก) ทุกครั้งที่เจอบรรทัด `Host` ให้คำนวณ `applies` ใหม่จากรูปแบบในบรรทัดนั้น",
+      "en": "Start with `applies = True` (for the part before the first Host). Each `Host` line recomputes `applies` from its patterns."
+    },
+    {
+      "th": "แยก keyword กับค่าได้ด้วย `re.split(r\"\\s*=\\s*|\\s+\", line, maxsplit=1)` แล้วใช้ `options.setdefault(key, value)` ซึ่งเก็บค่าแรกไว้และไม่ทับ",
+      "en": "Split keyword and value with `re.split(r\"\\s*=\\s*|\\s+\", line, maxsplit=1)`, then `options.setdefault(key, value)`, which keeps the first value and never overwrites."
+    },
+    {
+      "th": "เพราะค่าแรกชนะ ssh จึงแนะนำให้วางบล็อก `Host *` (ค่าตั้งต้น) ไว้ท้ายไฟล์ ถ้าวางไว้บนสุด ค่าในนั้นจะชนะทุกบล็อกที่อยู่ล่างกว่า",
+      "en": "Because the first value wins, ssh configs put the `Host *` defaults block at the end. Placed at the top, its values beat every block below."
+    }
+  ]
+}

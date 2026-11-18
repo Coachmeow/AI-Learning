@@ -1,0 +1,25 @@
+{
+  "minutes": 20,
+  "title": {
+    "th": "จำลอง pipe ของ shell",
+    "en": "Simulate a shell pipeline"
+  },
+  "prompt": {
+    "th": "เขียน `run_pipeline(text, command)` ที่จำลองการต่อคำสั่งด้วย `|` กับข้อความ `text` (ถือเป็นเนื้อหาไฟล์ log) แยกขั้นด้วย `|` แล้วแยกคำในแต่ละขั้นด้วย `shlex.split` แต่ละขั้นรับ list ของบรรทัดและส่ง list ของบรรทัดต่อ รองรับคำสั่งเหล่านี้\n\n- `grep PATTERN` เก็บบรรทัดที่มี PATTERN (เทียบแบบสตริงธรรมดา ตัวพิมพ์ต้องตรง) `grep -v PATTERN` เก็บบรรทัดที่**ไม่**มี\n- `wc -l` ได้บรรทัดเดียวคือจำนวนบรรทัด\n- `head -n N` และ `tail -n N` (ไม่ระบุ `-n` ให้ใช้ 10)\n- `sort` เรียงแบบข้อความ `sort -n` เรียงตามค่าตัวเลขของคำแรก `-r` กลับลำดับ (ใช้ร่วมกันได้ เช่น `sort -n -r`)\n- `awk '{print $NF}'` และ `awk '{print $K}'` (K เป็นเลขเริ่มที่ 1) พิมพ์คำนั้นของแต่ละบรรทัด\n\nคืนผลเป็นสตริง: บรรทัดคั่นด้วย `\\n` และลงท้ายด้วย `\\n` (ถ้าไม่มีบรรทัดเลยคืน `\"\"`) คำสั่งที่ไม่รองรับให้ `raise ValueError`",
+    "en": "Write `run_pipeline(text, command)` that simulates a `|` pipeline over `text` (the contents of a log file). Split the stages on `|`, split each stage's words with `shlex.split`. Each stage takes a list of lines and passes a list of lines on. Support:\n\n- `grep PATTERN` keeps lines containing PATTERN (plain substring, case-sensitive); `grep -v PATTERN` keeps lines that do **not**.\n- `wc -l` gives one line: the number of lines.\n- `head -n N` and `tail -n N` (10 when `-n` is missing).\n- `sort` sorts as text, `sort -n` by the numeric value of the first word, `-r` reverses (they combine, as in `sort -n -r`).\n- `awk '{print $NF}'` and `awk '{print $K}'` (K counted from 1) print that word of each line.\n\nReturn a string: lines joined with `\\n` and ending in `\\n` (`\"\"` when there are no lines). Raise `ValueError` for anything unsupported."
+  },
+  "hints": [
+    {
+      "th": "เริ่มจาก `lines = text.splitlines()` แล้ว `for stage in command.split(\"|\"):` แยกคำด้วย `args = shlex.split(stage)` ชื่อคำสั่งคือ `args[0]`",
+      "en": "Start from `lines = text.splitlines()`, then `for stage in command.split(\"|\"):` with `args = shlex.split(stage)`; the command name is `args[0]`."
+    },
+    {
+      "th": "`sort -n` ใช้ `key=lambda l: float(l.split()[0])` ถ้าใช้ `sorted(lines)` ธรรมดา `\"10\"` จะมาก่อน `\"9\"`",
+      "en": "`sort -n` needs `key=lambda l: float(l.split()[0])`; plain `sorted(lines)` puts `\"10\"` before `\"9\"`."
+    },
+    {
+      "th": "สำหรับ awk ดึงสิ่งที่อยู่หลัง `print ` แล้วตัด `}` ออก ได้ `$NF` หรือ `$3` ถ้าเป็น `$NF` ใช้ `words[-1]` ถ้าเป็นตัวเลขใช้ `words[k - 1]`",
+      "en": "For awk, take what follows `print ` and drop the `}` to get `$NF` or `$3`; `$NF` means `words[-1]`, a number k means `words[k - 1]`."
+    }
+  ]
+}

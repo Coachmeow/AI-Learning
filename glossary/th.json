@@ -1,0 +1,935 @@
+{
+  "_comment": "Thai terms used across lesson translations. 'th' is the Thai to write; 'first' is how to write it the first time in a lesson (Thai + English). Keep English when 'th' equals the English term. See docs/DESIGN.md section 10.",
+  "terms": [
+    {
+      "en": "optimization",
+      "th": "การหาค่าเหมาะที่สุด",
+      "first": "การหาค่าเหมาะที่สุด (optimization)"
+    },
+    {
+      "en": "optimizer",
+      "th": "optimizer"
+    },
+    {
+      "en": "loss function",
+      "th": "ฟังก์ชันความสูญเสีย",
+      "first": "ฟังก์ชันความสูญเสีย (loss function)",
+      "note": "ใช้ \"loss\" เฉยๆ ได้หลังจากครั้งแรก"
+    },
+    {
+      "en": "loss",
+      "th": "loss"
+    },
+    {
+      "en": "gradient",
+      "th": "เกรเดียนต์",
+      "first": "เกรเดียนต์ (gradient)"
+    },
+    {
+      "en": "gradient descent",
+      "th": "gradient descent"
+    },
+    {
+      "en": "learning rate",
+      "th": "learning rate",
+      "first": "อัตราการเรียนรู้ (learning rate)"
+    },
+    {
+      "en": "weights",
+      "th": "น้ำหนัก",
+      "first": "น้ำหนัก (weights)"
+    },
+    {
+      "en": "parameter",
+      "th": "พารามิเตอร์"
+    },
+    {
+      "en": "hyperparameter",
+      "th": "ไฮเปอร์พารามิเตอร์"
+    },
+    {
+      "en": "momentum",
+      "th": "โมเมนตัม"
+    },
+    {
+      "en": "velocity",
+      "th": "ความเร็ว",
+      "first": "ความเร็ว (velocity)"
+    },
+    {
+      "en": "saddle point",
+      "th": "จุดอานม้า",
+      "first": "จุดอานม้า (saddle point)"
+    },
+    {
+      "en": "local minimum",
+      "th": "จุดต่ำสุดเฉพาะที่",
+      "first": "จุดต่ำสุดเฉพาะที่ (local minimum)"
+    },
+    {
+      "en": "global minimum",
+      "th": "จุดต่ำสุดสัมบูรณ์",
+      "first": "จุดต่ำสุดสัมบูรณ์ (global minimum)"
+    },
+    {
+      "en": "convex",
+      "th": "นูน",
+      "first": "นูน (convex)"
+    },
+    {
+      "en": "non-convex",
+      "th": "ไม่นูน",
+      "first": "ไม่นูน (non-convex)"
+    },
+    {
+      "en": "converge / convergence",
+      "th": "ลู่เข้า / การลู่เข้า"
+    },
+    {
+      "en": "diverge",
+      "th": "ลู่ออก"
+    },
+    {
+      "en": "overshoot",
+      "th": "ก้าวเลย"
+    },
+    {
+      "en": "batch / mini-batch",
+      "th": "batch / mini-batch"
+    },
+    {
+      "en": "epoch",
+      "th": "epoch"
+    },
+    {
+      "en": "noise",
+      "th": "สัญญาณรบกวน",
+      "first": "สัญญาณรบกวน (noise)"
+    },
+    {
+      "en": "learning rate schedule",
+      "th": "ตารางปรับ learning rate",
+      "first": "ตารางปรับ learning rate (learning rate schedule)"
+    },
+    {
+      "en": "bias correction",
+      "th": "การแก้ความเอนเอียง",
+      "first": "bias correction (การแก้ความเอนเอียง)"
+    },
+    {
+      "en": "loss landscape",
+      "th": "ภูมิประเทศของ loss",
+      "first": "ภูมิประเทศของ loss (loss landscape)"
+    },
+    {
+      "en": "generalize",
+      "th": "ใช้กับข้อมูลใหม่ได้ดี",
+      "first": "ใช้กับข้อมูลใหม่ได้ดี (generalize)"
+    },
+    {
+      "en": "neural network",
+      "th": "โครงข่ายประสาทเทียม"
+    },
+    {
+      "en": "model",
+      "th": "โมเดล"
+    },
+    {
+      "en": "dimension / high-dimensional space",
+      "th": "มิติ / ปริภูมิหลายมิติ"
+    },
+    {
+      "en": "derivative",
+      "th": "อนุพันธ์"
+    },
+    {
+      "en": "Build It / Use It / Ship It",
+      "th": "ลงมือสร้าง (Build It) / นำไปใช้ (Use It) / ส่งมอบ (Ship It)"
+    },
+    {
+      "en": "Learning Objectives",
+      "th": "สิ่งที่จะได้เรียนรู้"
+    },
+    {
+      "en": "The Problem / The Concept",
+      "th": "ปัญหา / แนวคิด"
+    },
+    {
+      "en": "Exercises / Hints",
+      "th": "แบบฝึกหัด / คำใบ้"
+    },
+    {
+      "en": "Key Terms / Further Reading",
+      "th": "คำศัพท์สำคัญ / อ่านเพิ่มเติม"
+    },
+    {
+      "en": "dev environment",
+      "th": "สภาพแวดล้อมสำหรับพัฒนา",
+      "first": "สภาพแวดล้อมสำหรับพัฒนา (dev environment)"
+    },
+    {
+      "en": "virtual environment",
+      "th": "virtual environment",
+      "first": "สภาพแวดล้อมเสมือน (virtual environment)"
+    },
+    {
+      "en": "package manager",
+      "th": "ตัวจัดการแพ็กเกจ",
+      "first": "ตัวจัดการแพ็กเกจ (package manager)"
+    },
+    {
+      "en": "dependency",
+      "th": "dependency"
+    },
+    {
+      "en": "runtime",
+      "th": "runtime"
+    },
+    {
+      "en": "repository root",
+      "th": "โฟลเดอร์รากของ repository"
+    },
+    {
+      "en": "preflight check",
+      "th": "การตรวจก่อนเริ่ม",
+      "first": "การตรวจก่อนเริ่ม (preflight)"
+    },
+    {
+      "en": "reproducible build",
+      "th": "build ซ้ำได้ผลเหมือนเดิม"
+    },
+    {
+      "en": "install / installer",
+      "th": "ติดตั้ง / ตัวติดตั้ง"
+    },
+    {
+      "en": "verify",
+      "th": "ตรวจสอบ"
+    },
+    {
+      "en": "version control",
+      "th": "การควบคุมเวอร์ชัน",
+      "first": "การควบคุมเวอร์ชัน (version control)"
+    },
+    {
+      "en": "repository / repo",
+      "th": "repository / repo"
+    },
+    {
+      "en": "commit",
+      "th": "commit"
+    },
+    {
+      "en": "branch",
+      "th": "branch"
+    },
+    {
+      "en": "merge",
+      "th": "merge"
+    },
+    {
+      "en": "remote",
+      "th": "remote"
+    },
+    {
+      "en": "fork",
+      "th": "fork"
+    },
+    {
+      "en": "working directory",
+      "th": "ไดเรกทอรีทำงาน",
+      "first": "ไดเรกทอรีทำงาน (working directory)"
+    },
+    {
+      "en": "staging area",
+      "th": "พื้นที่พักไฟล์",
+      "first": "พื้นที่พักไฟล์ (staging area)"
+    },
+    {
+      "en": "checkpoint (model file)",
+      "th": "checkpoint",
+      "note": "ไฟล์น้ำหนักโมเดลที่บันทึกไว้ระหว่าง/หลังฝึก"
+    },
+    {
+      "en": "untracked file",
+      "th": "ไฟล์ที่ยังไม่ถูกติดตาม",
+      "first": "ไฟล์ที่ยังไม่ถูกติดตาม (untracked)"
+    },
+    {
+      "en": "maintainer",
+      "th": "ผู้ดูแล"
+    },
+    {
+      "en": "GPU",
+      "th": "GPU"
+    },
+    {
+      "en": "CUDA",
+      "th": "CUDA"
+    },
+    {
+      "en": "VRAM",
+      "th": "VRAM",
+      "note": "หน่วยความจำบน GPU แยกจาก RAM ของระบบ"
+    },
+    {
+      "en": "fp16 / fp32 / bf16 / int8",
+      "th": "fp16 / fp32 / bf16 / int8",
+      "note": "ชนิดตัวเลขที่ใช้เก็บน้ำหนัก (ใช้ 2 / 4 / 2 / 1 byte ต่อพารามิเตอร์)"
+    },
+    {
+      "en": "half precision",
+      "th": "half precision"
+    },
+    {
+      "en": "Tensor Core",
+      "th": "Tensor Core"
+    },
+    {
+      "en": "benchmark",
+      "th": "การเทียบความเร็ว",
+      "first": "การเทียบความเร็ว (benchmark)"
+    },
+    {
+      "en": "speedup",
+      "th": "เร็วขึ้นกี่เท่า (speedup)"
+    },
+    {
+      "en": "asynchronous",
+      "th": "ทำงานแบบไม่รอกัน",
+      "first": "ทำงานแบบไม่รอกัน (asynchronous)"
+    },
+    {
+      "en": "activation",
+      "th": "activation"
+    },
+    {
+      "en": "tensor",
+      "th": "tensor"
+    },
+    {
+      "en": "cloud GPU",
+      "th": "GPU บนคลาวด์"
+    },
+    {
+      "en": "median",
+      "th": "ค่ามัธยฐาน",
+      "first": "ค่ามัธยฐาน (median)"
+    },
+    {
+      "en": "API",
+      "th": "API"
+    },
+    {
+      "en": "API key",
+      "th": "API key"
+    },
+    {
+      "en": "environment variable",
+      "th": "ตัวแปรสภาพแวดล้อม",
+      "first": "ตัวแปรสภาพแวดล้อม (environment variable)"
+    },
+    {
+      "en": "endpoint",
+      "th": "endpoint"
+    },
+    {
+      "en": "request / response",
+      "th": "คำขอ / คำตอบ",
+      "first": "คำขอ (request) / คำตอบ (response)"
+    },
+    {
+      "en": "request body / response body",
+      "th": "ตัวคำขอ / ตัวคำตอบ"
+    },
+    {
+      "en": "header (HTTP)",
+      "th": "header"
+    },
+    {
+      "en": "authentication",
+      "th": "การยืนยันตัวตน",
+      "first": "การยืนยันตัวตน (authentication)"
+    },
+    {
+      "en": "rate limit",
+      "th": "rate limit",
+      "first": "การจำกัดอัตรา (rate limit)"
+    },
+    {
+      "en": "exponential backoff",
+      "th": "exponential backoff",
+      "note": "รอนานขึ้นเป็นสองเท่าทุกครั้งที่ลองใหม่"
+    },
+    {
+      "en": "token (API billing)",
+      "th": "token"
+    },
+    {
+      "en": "streaming",
+      "th": "streaming"
+    },
+    {
+      "en": "SDK",
+      "th": "SDK"
+    },
+    {
+      "en": "status code (HTTP)",
+      "th": "รหัสสถานะ HTTP"
+    },
+    {
+      "en": "debug",
+      "th": "ไล่หาปัญหา",
+      "first": "ไล่หาปัญหา (debug)"
+    },
+    {
+      "en": "notebook",
+      "th": "notebook"
+    },
+    {
+      "en": "cell",
+      "th": "เซลล์",
+      "first": "เซลล์ (cell)"
+    },
+    {
+      "en": "kernel",
+      "th": "kernel"
+    },
+    {
+      "en": "magic command",
+      "th": "magic command",
+      "note": "คำสั่งเฉพาะของ Jupyter ที่ขึ้นต้นด้วย % หรือ %%"
+    },
+    {
+      "en": "command mode / edit mode",
+      "th": "โหมดคำสั่ง / โหมดแก้ไข"
+    },
+    {
+      "en": "out-of-order execution",
+      "th": "การรันไม่ตามลำดับ",
+      "first": "การรันไม่ตามลำดับ (out-of-order execution)"
+    },
+    {
+      "en": "hidden state",
+      "th": "สถานะที่ซ่อนอยู่",
+      "first": "สถานะที่ซ่อนอยู่ (hidden state)"
+    },
+    {
+      "en": "memory leak",
+      "th": "หน่วยความจำรั่ว",
+      "first": "หน่วยความจำรั่ว (memory leak)"
+    },
+    {
+      "en": "inline (output, plot)",
+      "th": "แสดงในหน้า"
+    },
+    {
+      "en": "prototype",
+      "th": "ต้นแบบ / ลองต้นแบบ"
+    },
+    {
+      "en": "production code",
+      "th": "โค้ดใช้งานจริง",
+      "first": "โค้ดใช้งานจริง (production)"
+    },
+    {
+      "en": "pipeline",
+      "th": "ไปป์ไลน์",
+      "first": "ไปป์ไลน์ (pipeline)"
+    },
+    {
+      "en": "dataframe",
+      "th": "dataframe"
+    },
+    {
+      "en": "session (Colab)",
+      "th": "session"
+    },
+    {
+      "en": "namespace",
+      "th": "namespace"
+    },
+    {
+      "en": "dependency hell",
+      "th": "นรกของ dependency",
+      "first": "นรกของ dependency (dependency hell)"
+    },
+    {
+      "en": "lockfile",
+      "th": "ไฟล์ lock",
+      "first": "ไฟล์ lock (lockfile)"
+    },
+    {
+      "en": "transitive dependency",
+      "th": "dependency ทางอ้อม",
+      "first": "dependency ทางอ้อม (transitive dependency)"
+    },
+    {
+      "en": "optional dependencies / extras",
+      "th": "dependency แบบเลือกติดตั้ง"
+    },
+    {
+      "en": "resolver (dependency)",
+      "th": "ตัวแก้ dependency",
+      "first": "ตัวแก้ dependency (resolver)"
+    },
+    {
+      "en": "pin (a version)",
+      "th": "ล็อกเวอร์ชัน"
+    },
+    {
+      "en": "activate / deactivate",
+      "th": "activate / deactivate"
+    },
+    {
+      "en": "global install",
+      "th": "ติดตั้งลงระบบ (global)"
+    },
+    {
+      "en": "interpreter",
+      "th": "ตัวแปลภาษา",
+      "first": "ตัวแปลภาษา (interpreter)"
+    },
+    {
+      "en": "CUDA mismatch",
+      "th": "เวอร์ชัน CUDA ไม่ตรงกัน"
+    },
+    {
+      "en": "version specifier",
+      "th": "เงื่อนไขเวอร์ชัน",
+      "first": "เงื่อนไขเวอร์ชัน (version specifier)"
+    },
+    {
+      "en": "backtracking",
+      "th": "การย้อนกลับไปลองทางอื่น",
+      "first": "การย้อนกลับ (backtracking)"
+    },
+    {
+      "en": "container",
+      "th": "container"
+    },
+    {
+      "en": "image (Docker)",
+      "th": "image"
+    },
+    {
+      "en": "Dockerfile",
+      "th": "Dockerfile"
+    },
+    {
+      "en": "layer (image)",
+      "th": "layer"
+    },
+    {
+      "en": "volume / mount",
+      "th": "volume / mount"
+    },
+    {
+      "en": "base image",
+      "th": "base image"
+    },
+    {
+      "en": "host (machine)",
+      "th": "เครื่องหลัก",
+      "first": "เครื่องหลัก (host)"
+    },
+    {
+      "en": "virtual machine",
+      "th": "เครื่องเสมือน",
+      "first": "เครื่องเสมือน (virtual machine)"
+    },
+    {
+      "en": "orchestrate (services)",
+      "th": "ประสานหลายบริการ"
+    },
+    {
+      "en": "inference",
+      "th": "การรันโมเดล",
+      "first": "การรันโมเดล (inference)",
+      "note": "ในบริบทของเซิร์ฟเวอร์ใช้ \"ให้บริการโมเดล\""
+    },
+    {
+      "en": "vector database",
+      "th": "vector database"
+    },
+    {
+      "en": "build context",
+      "th": "build context"
+    },
+    {
+      "en": "emulation",
+      "th": "การจำลอง",
+      "first": "การจำลอง (emulation)"
+    },
+    {
+      "en": "port mapping",
+      "th": "การ map พอร์ต"
+    },
+    {
+      "en": "editor",
+      "th": "editor"
+    },
+    {
+      "en": "extension (editor)",
+      "th": "ส่วนเสริม",
+      "first": "ส่วนเสริม (extension)"
+    },
+    {
+      "en": "autocomplete",
+      "th": "การเติมคำอัตโนมัติ"
+    },
+    {
+      "en": "type checking / type hint",
+      "th": "การตรวจชนิดข้อมูล / คำใบ้ชนิดข้อมูล"
+    },
+    {
+      "en": "format on save / formatter",
+      "th": "จัดรูปแบบเมื่อบันทึก / ตัวจัดรูปแบบ"
+    },
+    {
+      "en": "linting / linter",
+      "th": "lint"
+    },
+    {
+      "en": "ruler (editor)",
+      "th": "เส้นบอกความยาว"
+    },
+    {
+      "en": "integrated terminal",
+      "th": "terminal ใน editor"
+    },
+    {
+      "en": "remote development",
+      "th": "พัฒนาบนเครื่องระยะไกล"
+    },
+    {
+      "en": "language server / LSP",
+      "th": "language server / LSP"
+    },
+    {
+      "en": "Command Palette",
+      "th": "Command Palette"
+    },
+    {
+      "en": "SSH key",
+      "th": "SSH key"
+    },
+    {
+      "en": "JSONC",
+      "th": "JSONC",
+      "note": "JSON ที่มีคอมเมนต์และจุลภาคท้ายได้ (ไฟล์ตั้งค่าของ VS Code)"
+    },
+    {
+      "en": "dataset",
+      "th": "ชุดข้อมูล",
+      "first": "ชุดข้อมูล (dataset)"
+    },
+    {
+      "en": "dataset split (train / validation / test)",
+      "th": "ชุด train / validation / test"
+    },
+    {
+      "en": "streaming (data)",
+      "th": "การสตรีม",
+      "first": "การสตรีม (streaming)"
+    },
+    {
+      "en": "cache",
+      "th": "แคช",
+      "first": "แคช (cache)"
+    },
+    {
+      "en": "seed (random)",
+      "th": "seed"
+    },
+    {
+      "en": "reproducible",
+      "th": "ทำซ้ำได้",
+      "first": "ทำซ้ำได้ (reproducible)"
+    },
+    {
+      "en": "columnar format",
+      "th": "รูปแบบเก็บเป็นคอลัมน์"
+    },
+    {
+      "en": "Parquet / Arrow",
+      "th": "Parquet / Arrow"
+    },
+    {
+      "en": "Git LFS / DVC",
+      "th": "Git LFS / DVC"
+    },
+    {
+      "en": "pointer file",
+      "th": "ไฟล์ตัวชี้"
+    },
+    {
+      "en": "data leakage",
+      "th": "ข้อมูลรั่ว",
+      "first": "ข้อมูลรั่ว (data leakage)"
+    },
+    {
+      "en": "overfitting",
+      "th": "overfitting"
+    },
+    {
+      "en": "evaluation",
+      "th": "การประเมินผล",
+      "first": "การประเมินผล (evaluation)"
+    },
+    {
+      "en": "zero-copy",
+      "th": "อ่านโดยไม่ต้องคัดลอก (zero-copy)"
+    },
+    {
+      "en": "terminal / shell",
+      "th": "terminal / shell"
+    },
+    {
+      "en": "pipe",
+      "th": "pipe"
+    },
+    {
+      "en": "redirect",
+      "th": "การเปลี่ยนทิศทาง",
+      "first": "การเปลี่ยนทิศทาง (redirect)"
+    },
+    {
+      "en": "stdout / stderr / stdin",
+      "th": "stdout / stderr / stdin"
+    },
+    {
+      "en": "background process",
+      "th": "โปรเซสเบื้องหลัง"
+    },
+    {
+      "en": "detach / attach (tmux)",
+      "th": "detach / attach"
+    },
+    {
+      "en": "pane (tmux)",
+      "th": "ช่อง",
+      "first": "ช่อง (pane)"
+    },
+    {
+      "en": "alias (shell)",
+      "th": "alias"
+    },
+    {
+      "en": "port forwarding",
+      "th": "การส่งต่อพอร์ต",
+      "first": "การส่งต่อพอร์ต (port forwarding)"
+    },
+    {
+      "en": "PID / process",
+      "th": "PID / โปรเซส"
+    },
+    {
+      "en": "hangup signal (SIGHUP)",
+      "th": "สัญญาณ hangup (SIGHUP)"
+    },
+    {
+      "en": "OOM (out of memory)",
+      "th": "หน่วยความจำไม่พอ (OOM)"
+    },
+    {
+      "en": "buffering",
+      "th": "การพักข้อมูลใน buffer"
+    },
+    {
+      "en": "file system",
+      "th": "ระบบไฟล์",
+      "first": "ระบบไฟล์ (file system)"
+    },
+    {
+      "en": "home directory",
+      "th": "โฟลเดอร์ home"
+    },
+    {
+      "en": "root (user / directory)",
+      "th": "root"
+    },
+    {
+      "en": "permissions / permission bits",
+      "th": "สิทธิ์ / บิตกำหนดสิทธิ์",
+      "first": "สิทธิ์ (permissions)"
+    },
+    {
+      "en": "owner / group / others",
+      "th": "เจ้าของ / กลุ่ม / คนอื่น"
+    },
+    {
+      "en": "octal",
+      "th": "เลขฐานแปด"
+    },
+    {
+      "en": "package (system)",
+      "th": "แพ็กเกจ"
+    },
+    {
+      "en": "service / daemon",
+      "th": "บริการ / daemon"
+    },
+    {
+      "en": "disk space",
+      "th": "พื้นที่ดิสก์"
+    },
+    {
+      "en": "case-sensitive",
+      "th": "สนตัวพิมพ์เล็กใหญ่"
+    },
+    {
+      "en": "line endings (CRLF / LF)",
+      "th": "การขึ้นบรรทัดใหม่ (CRLF / LF)"
+    },
+    {
+      "en": "instance (cloud)",
+      "th": "instance"
+    },
+    {
+      "en": "WSL2",
+      "th": "WSL2"
+    },
+    {
+      "en": "debugging / debugger",
+      "th": "การไล่บั๊ก / debugger",
+      "first": "การไล่บั๊ก (debugging)"
+    },
+    {
+      "en": "profiling / profiler",
+      "th": "การวัดประสิทธิภาพ / profiler",
+      "first": "การวัดประสิทธิภาพ (profiling)"
+    },
+    {
+      "en": "bottleneck",
+      "th": "คอขวด",
+      "first": "คอขวด (bottleneck)"
+    },
+    {
+      "en": "breakpoint",
+      "th": "breakpoint"
+    },
+    {
+      "en": "logging / log level",
+      "th": "logging / ระดับความรุนแรง"
+    },
+    {
+      "en": "shape / dtype / device (tensor)",
+      "th": "shape / dtype / อุปกรณ์"
+    },
+    {
+      "en": "NaN / Inf",
+      "th": "NaN / Inf"
+    },
+    {
+      "en": "forward pass / backward pass",
+      "th": "forward pass / backward pass"
+    },
+    {
+      "en": "exploding / vanishing gradients",
+      "th": "เกรเดียนต์ระเบิด / เกรเดียนต์หายไป"
+    },
+    {
+      "en": "gradient clipping",
+      "th": "gradient clipping"
+    },
+    {
+      "en": "mixed precision",
+      "th": "mixed precision"
+    },
+    {
+      "en": "temporal leakage",
+      "th": "การรั่วตามเวลา",
+      "first": "การรั่วตามเวลา (temporal leakage)"
+    },
+    {
+      "en": "tottime / cumtime",
+      "th": "tottime / cumtime",
+      "note": "เวลาในฟังก์ชันเอง / เวลารวมฟังก์ชันที่ถูกเรียก"
+    },
+    {
+      "en": "stack trace",
+      "th": "stack trace"
+    },
+    {
+      "en": "idiom (code)",
+      "th": "สำนวน",
+      "first": "สำนวน (idiom)"
+    },
+    {
+      "en": "unpacking",
+      "th": "การแตกค่า",
+      "first": "การแตกค่า (unpacking)"
+    },
+    {
+      "en": "f-string",
+      "th": "f-string"
+    },
+    {
+      "en": "comprehension",
+      "th": "comprehension"
+    },
+    {
+      "en": "generator / generator expression",
+      "th": "generator / generator expression"
+    },
+    {
+      "en": "iterable / iterator",
+      "th": "iterable / iterator"
+    },
+    {
+      "en": "closure",
+      "th": "closure"
+    },
+    {
+      "en": "dataclass",
+      "th": "dataclass"
+    },
+    {
+      "en": "context manager",
+      "th": "context manager"
+    },
+    {
+      "en": "type hint",
+      "th": "type hint"
+    },
+    {
+      "en": "mutable default argument",
+      "th": "ค่า default ที่เปลี่ยนแปลงได้"
+    },
+    {
+      "en": "pointer / reference",
+      "th": "ตัวชี้ / ตัวอ้างถึง",
+      "first": "ตัวชี้ (pointer)"
+    },
+    {
+      "en": "vectorized code",
+      "th": "โค้ดแบบ vectorized"
+    },
+    {
+      "en": "broadcasting",
+      "th": "broadcasting"
+    },
+    {
+      "en": "standardize / standardizer",
+      "th": "ปรับมาตรฐาน / ตัวปรับมาตรฐาน",
+      "first": "การปรับมาตรฐาน (standardization)"
+    },
+    {
+      "en": "population standard deviation",
+      "th": "ส่วนเบี่ยงเบนมาตรฐานของประชากร"
+    },
+    {
+      "en": "mini-batch",
+      "th": "mini-batch"
+    },
+    {
+      "en": "nearest-centroid classifier",
+      "th": "ตัวจำแนกแบบจุดศูนย์กลางที่ใกล้ที่สุด"
+    },
+    {
+      "en": "lazy (evaluation)",
+      "th": "แบบขี้เกียจ (lazy)"
+    }
+  ]
+}

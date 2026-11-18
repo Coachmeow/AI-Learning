@@ -1,0 +1,25 @@
+{
+  "minutes": 5,
+  "title": {
+    "th": "เติมโค้ด: ตารางที่แถวไม่ผูกกัน",
+    "en": "Fill in: a grid whose rows are independent"
+  },
+  "prompt": {
+    "th": "บทเรียนแสดงว่า `[[0] * 3] * 2` ทำให้ทุกแถวเป็น list ตัวเดียวกัน แก้แถวหนึ่งแล้วแถวอื่นเปลี่ยนตาม เติมฟังก์ชัน `make_grid(rows, cols, value=0)` ให้คืน list ของ list ขนาด `rows` × `cols` ที่ทุกช่องเป็น `value` และแต่ละแถวเป็น list ของตัวเอง",
+    "en": "The lesson shows that `[[0] * 3] * 2` makes every row the same list, so changing one row changes the others. Complete `make_grid(rows, cols, value=0)` so it returns a `rows` × `cols` list of lists filled with `value`, where each row is its own list."
+  },
+  "hints": [
+    {
+      "th": "`[value] * cols` สร้างแถวหนึ่งแถวได้ แต่การคูณ list ชั้นนอกจะทำซ้ำแค่ตัวอ้างถึง",
+      "en": "`[value] * cols` builds one row, but multiplying the outer list only repeats a reference to it."
+    },
+    {
+      "th": "ใช้ comprehension เพื่อสร้างแถวใหม่ทุกรอบ: `[... for _ in range(rows)]`",
+      "en": "Use a comprehension so a new row is built on every pass: `[... for _ in range(rows)]`."
+    },
+    {
+      "th": "`return [[value] * cols for _ in range(rows)]`",
+      "en": "`return [[value] * cols for _ in range(rows)]`"
+    }
+  ]
+}

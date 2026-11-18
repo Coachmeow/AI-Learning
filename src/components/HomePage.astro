@@ -1,0 +1,519 @@
+---
+// Home page (both languages): hero with "continue where you left off", learning paths,
+// the 20 phases with reading progress and Thai translation progress, and progress backup.
+import phases from '../data/phases.json';
+import { docsIndex } from '../lib/docs-index';
+
+interface Props {
+  lang: 'th' | 'en';
+}
+const { lang } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+
+const docs = await docsIndex();
+const lessonIds = [...docs.keys()].filter((id) => /^en\/\d\d-[^/]+\/\d\d-[^/]+$/.test(id)).sort();
+const byPhase = (pid: string) => lessonIds.filter((id) => id.startsWith(`en/${pid}/`)).map((id) => id.slice(3));
+const cards = phases.map((p) => {
+  const keys = byPhase(p.id);
+  const thCount = keys.filter((k) => docs.has(`th/${k}`)).length;
+  return { ...p, num: p.id.slice(0, 2), count: keys.length, thCount, keys, href: keys[0] ? `${base}${lang}/${keys[0]}/` : '#' };
+});
+const total = cards.reduce((n, c) => n + c.count, 0);
+const totalTh = cards.reduce((n, c) => n + c.thCount, 0);
+const sum = (from: number, to: number) => cards.slice(from, to + 1).reduce((n, c) => n + c.count, 0);
+const lessonUrl = (key: string) => `${base}${lang}/${key}/`;
+
+const T = {
+  th: {
+    eyebrow: 'ฟรี · โอเพนซอร์ส · ใช้ได้แม้ไม่ต่อเน็ต',
+    h1a: 'เรียน AI ด้วยการ',
+    h1b: 'ลงมือสร้างเอง',
+    lead: 'เขียนโมเดล ระบบค้นคืน และเอเจนต์ด้วยมือตัวเองตั้งแต่ศูนย์ แล้วดูว่าเครื่องมือจริงทำงานแบบเดียวกันอย่างไร อ่านได้ทั้งภาษาไทยและภาษาอังกฤษ รันโค้ดในเบราว์เซอร์ได้ และมีแบบทดสอบท้ายบท',
+    start: 'เริ่มเรียนบทแรก',
+    choose: 'เลือกเส้นทางการเรียน',
+    otherLang: 'Read in English',
+    continueTitle: 'เรียนต่อจากที่ค้างไว้',
+    continueNone: 'ยังไม่ได้เริ่มเรียน',
+    continueNoneSub: 'เริ่มจากบทแรก หรือเลือกเส้นทางด้านล่าง ความคืบหน้าจะเก็บไว้ในเบราว์เซอร์นี้',
+    continueBtn: 'เรียนต่อ',
+    statRead: 'บทที่อ่าน',
+    statQuiz: 'quiz ที่ผ่าน',
+    statEx: 'โจทย์ที่ผ่าน',
+    facts: [
+      [String(total), 'บทเรียน'],
+      [String(cards.length), 'phase ตั้งแต่พื้นฐานถึงโปรเจกต์จริง'],
+      ['3 ระดับ', 'แบบทดสอบ ง่าย กลาง ยาก'],
+      ['Python', 'รันในเบราว์เซอร์ได้ทันที'],
+    ],
+    pathsTitle: 'เลือกเส้นทางการเรียน',
+    pathsSub: 'เริ่มจากเส้นทางที่ตรงกับเป้าหมาย แล้วค่อยเรียนส่วนอื่นเพิ่มทีหลังได้',
+    lessons: 'บท',
+    paths: [
+      { range: 'Phase 00–09', count: sum(0, 9), title: 'พื้นฐานโมเดล', desc: 'เริ่มจากคณิตศาสตร์ แล้วเขียน backprop, CNN และ transformer ขึ้นเองทีละชิ้น', start: 'เริ่มที่การเตรียมเครื่องมือ', href: lessonUrl('00-setup-and-tooling/01-dev-environment') },
+      { range: 'Phase 10–12', count: sum(10, 12), title: 'ระบบ LLM', desc: 'สร้าง tokenizer ฝึก LLM ขนาดเล็ก แล้วต่อด้วย prompt, RAG และงานหลายรูปแบบข้อมูล', start: 'เริ่มที่ Prompt engineering', href: lessonUrl('11-llm-engineering/01-prompt-engineering') },
+      { range: 'Phase 13–19', count: sum(13, 19), title: 'เอเจนต์และการใช้งานจริง', desc: 'agent loop, MCP, ระบบหลายเอเจนต์ การ deploy ความปลอดภัย และโปรเจกต์ปิดท้าย', start: 'เริ่มที่ The agent loop', href: lessonUrl('14-agent-engineering/01-the-agent-loop') },
+    ],
+    phasesTitle: `หลักสูตรทั้งหมด ${cards.length} phase`,
+    legendRead: 'ที่คุณอ่านแล้ว',
+    legendTh: 'แปลเป็นไทยแล้ว',
+    read: 'อ่านแล้ว',
+    thAll: 'ภาษาไทยครบแล้ว',
+    thSome: 'ไทย',
+    thNone: 'ภาษาอังกฤษ',
+    translated: `แปลเป็นภาษาไทยแล้ว ${totalTh} จาก ${total} บท บทที่ยังไม่แปลจะแสดงต้นฉบับภาษาอังกฤษ`,
+    backupTitle: 'สำรองความคืบหน้า',
+    backupSub: 'ความคืบหน้าเก็บไว้ในเบราว์เซอร์นี้เท่านั้น ส่งออกเป็นไฟล์ไว้ย้ายเครื่องหรือกันหายได้',
+    export: 'ส่งออกเป็นไฟล์',
+    import: 'นำเข้าจากไฟล์',
+    imported: 'นำเข้าแล้ว',
+    importFail: 'ไฟล์นี้ใช้ไม่ได้',
+    credit: 'เนื้อหาแปลและดัดแปลงจาก AI Engineering from Scratch โดย Rohit Ghumare · สัญญาอนุญาต MIT',
+  },
+  en: {
+    eyebrow: 'Free · Open source · Works offline',
+    h1a: 'Learn AI engineering',
+    h1b: 'by building it',
+    lead: 'Write models, retrieval pipelines and agents from scratch, then see how real tools do the same work. Read in Thai or English, run the code in your browser, and check yourself at the end of every lesson.',
+    start: 'Start the first lesson',
+    choose: 'Choose a learning path',
+    otherLang: 'อ่านภาษาไทย',
+    continueTitle: 'Continue where you left off',
+    continueNone: 'Not started yet',
+    continueNoneSub: 'Start with the first lesson or pick a path below. Progress is saved in this browser.',
+    continueBtn: 'Continue',
+    statRead: 'lessons read',
+    statQuiz: 'quizzes passed',
+    statEx: 'exercises passed',
+    facts: [
+      [String(total), 'lessons'],
+      [String(cards.length), 'phases, from foundations to real projects'],
+      ['3 levels', 'easy, medium and hard checks'],
+      ['Python', 'runs right in your browser'],
+    ],
+    pathsTitle: 'Choose a learning path',
+    pathsSub: 'Start with the path that fits your goal, then branch out later.',
+    lessons: 'lessons',
+    paths: [
+      { range: 'Phase 00–09', count: sum(0, 9), title: 'Model foundations', desc: 'Start from the math, then build backprop, CNNs and transformers yourself, piece by piece.', start: 'Start with setup and tooling', href: lessonUrl('00-setup-and-tooling/01-dev-environment') },
+      { range: 'Phase 10–12', count: sum(10, 12), title: 'LLM systems', desc: 'Build a tokenizer, train a small LLM, then prompting, RAG and multimodal work.', start: 'Start with prompt engineering', href: lessonUrl('11-llm-engineering/01-prompt-engineering') },
+      { range: 'Phase 13–19', count: sum(13, 19), title: 'Agents and delivery', desc: 'The agent loop, MCP, multi-agent systems, deployment, safety and capstone projects.', start: 'Start with the agent loop', href: lessonUrl('14-agent-engineering/01-the-agent-loop') },
+    ],
+    phasesTitle: `All ${cards.length} phases`,
+    legendRead: 'read by you',
+    legendTh: 'translated to Thai',
+    read: 'Read',
+    thAll: 'Thai complete',
+    thSome: 'Thai',
+    thNone: 'English only',
+    translated: `${totalTh} of ${total} lessons are translated to Thai.`,
+    backupTitle: 'Back up your progress',
+    backupSub: 'Progress lives only in this browser. Export it to a file to move devices or keep it safe.',
+    export: 'Export to a file',
+    import: 'Import from a file',
+    imported: 'Imported',
+    importFail: 'This file cannot be used',
+    credit: 'Lessons from AI Engineering from Scratch by Rohit Ghumare · MIT License',
+  },
+}[lang];
+
+const thLabel = (c: (typeof cards)[number]) => (c.thCount === 0 ? T.thNone : c.thCount === c.count ? T.thAll : `${T.thSome} ${c.thCount}/${c.count}`);
+const pct = (a: number, b: number) => `${b ? Math.round((a / b) * 100) : 0}%`;
+const firstLesson = cards[0].href;
+const phaseKeys = Object.fromEntries(cards.map((c) => [c.id, c.keys]));
+---
+
+<div class="ail-home not-content" data-lang={lang}>
+  <section class="h-hero">
+    <div class="h-hero-main">
+      <span class="h-chip">{T.eyebrow}</span>
+      <h1>{T.h1a}<br /><span>{T.h1b}</span></h1>
+      <p class="h-lead">{T.lead}</p>
+      <div class="h-actions">
+        <a class="ail-btn primary h-big" href={firstLesson}>{T.start}</a>
+        <a class="ail-btn h-big" href="#paths">{T.choose}</a>
+      </div>
+      <a class="h-lang" href={`${base}${lang === 'th' ? 'en' : 'th'}/`} lang={lang === 'th' ? 'en' : 'th'}>{T.otherLang} ›</a>
+    </div>
+    <div class="h-card h-continue">
+      <div class="h-muted h-small">{T.continueTitle}</div>
+      <div class="h-cont-body" data-continue>
+        <div class="h-cont-where h-muted h-small" data-where></div>
+        <div class="h-cont-title" data-title>{T.continueNone}</div>
+        <p class="h-muted h-small" data-none>{T.continueNoneSub}</p>
+      </div>
+      <a class="ail-btn primary h-wide" href={firstLesson} data-cont-link>{T.continueBtn}</a>
+      <div class="h-stats">
+        <div><b data-stat="read">0</b><span>{T.statRead}</span></div>
+        <div><b data-stat="quiz">0</b><span>{T.statQuiz}</span></div>
+        <div><b data-stat="ex">0</b><span>{T.statEx}</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="h-facts">
+    {T.facts.map(([n, label]) => <div><b>{n}</b><span>{label}</span></div>)}
+  </section>
+
+  <section id="paths" class="h-section">
+    <h2>{T.pathsTitle}</h2>
+    <p class="h-muted">{T.pathsSub}</p>
+    <div class="h-paths">
+      {
+        T.paths.map((p) => (
+          <a class="h-card h-path" href={p.href}>
+            <div class="h-row">
+              <span class="h-tag">{p.range}</span>
+              <span class="h-muted h-small">{p.count} {T.lessons}</span>
+            </div>
+            <div class="h-path-title">{p.title}</div>
+            <div class="h-path-desc">{p.desc}</div>
+            <div class="h-path-start">{p.start} ›</div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="h-section">
+    <div class="h-row h-wrap">
+      <h2>{T.phasesTitle}</h2>
+      <div class="h-legend h-muted h-small">
+        <span><i class="h-sw h-sw-read"></i>{T.legendRead}</span>
+        <span><i class="h-sw h-sw-th"></i>{T.legendTh}</span>
+      </div>
+    </div>
+    <p class="h-muted h-small">{T.translated}</p>
+    <div class="h-phases">
+      {
+        cards.map((c) => (
+          <a class="h-card h-phase" href={c.href} data-phase={c.id} data-count={c.count}>
+            <div class="h-row">
+              <span class="h-mono h-muted h-small">PHASE {c.num}</span>
+              <span class="h-muted h-small">
+                {c.count} {T.lessons}
+              </span>
+            </div>
+            <div class="h-phase-title">{lang === 'th' ? c.th : c.en}</div>
+            <div class="h-muted h-small">{lang === 'th' ? c.en : c.th}</div>
+            <div class="h-bar">
+              <i class="h-bar-read" data-read-bar style="width:0%" />
+            </div>
+            <div class="h-bar">
+              <i class="h-bar-th" style={`width:${pct(c.thCount, c.count)}`} />
+            </div>
+            <div class="h-row h-muted h-small">
+              <span>
+                {T.read} <span data-read-count>0</span>/{c.count}
+              </span>
+              <span>{thLabel(c)}</span>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="h-section h-card h-backup">
+    <div>
+      <h2>{T.backupTitle}</h2>
+      <p class="h-muted">{T.backupSub}</p>
+    </div>
+    <div class="h-actions">
+      <button type="button" class="ail-btn" data-export>{T.export}</button>
+      <label class="ail-btn">
+        {T.import}
+        <input type="file" accept="application/json,.json" data-import hidden />
+      </label>
+      <span class="h-muted h-small" data-import-msg role="status"></span>
+    </div>
+  </section>
+
+  <p class="h-credit h-muted h-small">
+    <a href="https://github.com/rohitg00/ai-engineering-from-scratch">{T.credit}</a>
+  </p>
+
+  <script
+    is:inline
+    type="application/json"
+    id="ail-home-data"
+    set:html={JSON.stringify({ phaseKeys, base, lang, imported: T.imported, importFail: T.importFail }).replace(/</g, '\\u003c')}
+  />
+</div>
+
+<script>
+  import '../scripts/home.ts';
+</script>
+
+<style>
+  .ail-home {
+    --h-gap: 1rem;
+    color: var(--sl-color-gray-2);
+  }
+  .ail-home h1,
+  .ail-home h2 {
+    color: var(--sl-color-white);
+    margin: 0;
+    line-height: 1.3;
+  }
+  .ail-home h2 {
+    font-size: 1.75rem;
+  }
+  .h-muted {
+    color: var(--sl-color-gray-3);
+  }
+  .h-small {
+    font-size: 0.875rem;
+  }
+  .h-mono {
+    font-family: var(--sl-font-mono);
+  }
+  .h-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.5rem 1rem;
+  }
+  .h-wrap {
+    flex-wrap: wrap;
+  }
+  .h-card {
+    display: block;
+    padding: 1.25rem;
+    border-radius: 16px;
+    border: 1px solid var(--ail-line);
+    background: var(--ail-surface);
+    color: inherit;
+    text-decoration: none;
+  }
+  a.h-card:hover {
+    border-color: var(--ail-accent);
+  }
+  .h-hero {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    align-items: center;
+    padding: 2rem 0 2.5rem;
+  }
+  .h-hero-main {
+    flex: 999 1 26rem;
+    min-width: 0;
+  }
+  .h-chip,
+  .h-tag {
+    display: inline-block;
+    padding: 0.3rem 0.85rem;
+    border-radius: 999px;
+    background: var(--sl-color-accent-low);
+    color: var(--sl-color-text-accent);
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .h-tag {
+    padding: 0.15rem 0.6rem;
+    font-size: 0.8rem;
+  }
+  .ail-home h1 {
+    margin-top: 1rem;
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    letter-spacing: -0.01em;
+  }
+  .ail-home h1 span {
+    color: var(--sl-color-text-accent);
+  }
+  .h-lead {
+    margin-top: 1.1rem;
+    max-width: 38rem;
+    font-size: 1.15rem;
+    line-height: 1.8;
+  }
+  .h-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+  .ail-home .ail-btn {
+    text-decoration: none;
+  }
+  .h-lang {
+    display: inline-block;
+    margin-top: 1rem;
+    font-weight: 600;
+    color: var(--sl-color-text-accent);
+  }
+  .h-big {
+    min-height: 3rem;
+    padding: 0 1.4rem;
+  }
+  .h-continue {
+    flex: 1 1 20rem;
+    min-width: 0;
+    box-shadow: 0 12px 32px rgb(0 0 0 / 0.06);
+  }
+  .h-cont-body {
+    margin-top: 0.6rem;
+  }
+  .h-cont-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.45;
+    color: var(--sl-color-white);
+  }
+  .h-wide {
+    width: 100%;
+    justify-content: center;
+    margin-top: 1rem;
+    box-sizing: border-box;
+  }
+  .h-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .h-stats div {
+    padding: 0.7rem;
+    border-radius: 12px;
+    background: var(--ail-surface-2);
+    display: flex;
+    flex-direction: column;
+    line-height: 1.35;
+  }
+  .h-stats b {
+    font-size: 1.35rem;
+    color: var(--sl-color-white);
+  }
+  .h-stats span {
+    font-size: 0.8rem;
+    color: var(--sl-color-gray-3);
+  }
+  .h-facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: 1px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--ail-line);
+    background: var(--ail-line);
+  }
+  .h-facts div {
+    padding: 1.1rem 1.25rem;
+    background: var(--ail-surface);
+    display: flex;
+    flex-direction: column;
+  }
+  .h-facts b {
+    font-size: 1.6rem;
+    color: var(--sl-color-white);
+  }
+  .h-section {
+    margin-top: 3.5rem;
+  }
+  .h-section > p {
+    margin: 0.4rem 0 0;
+  }
+  .h-paths,
+  .h-phases {
+    display: grid;
+    gap: 0.9rem;
+    margin-top: 1.25rem;
+  }
+  .h-paths {
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  }
+  .h-phases {
+    grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr));
+  }
+  .h-path {
+    padding: 1.5rem;
+  }
+  .h-path-title {
+    margin-top: 0.9rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--sl-color-white);
+  }
+  .h-path-desc {
+    margin-top: 0.4rem;
+    line-height: 1.75;
+  }
+  .h-path-start {
+    margin-top: 0.9rem;
+    font-weight: 600;
+    color: var(--sl-color-text-accent);
+  }
+  .h-phase-title {
+    margin-top: 0.45rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.45;
+    color: var(--sl-color-white);
+  }
+  .h-bar {
+    height: 6px;
+    border-radius: 3px;
+    background: var(--ail-surface-2);
+    overflow: hidden;
+    margin-top: 0.4rem;
+  }
+  .h-bar:first-of-type {
+    margin-top: 0.9rem;
+  }
+  .h-bar i {
+    display: block;
+    height: 100%;
+  }
+  .h-bar-read,
+  .h-sw-read {
+    background: var(--ail-ok);
+  }
+  .h-bar-th,
+  .h-sw-th {
+    background: var(--ail-accent);
+  }
+  .h-phase .h-row:last-child {
+    margin-top: 0.5rem;
+  }
+  .h-legend {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .h-legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .h-sw {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+  }
+  .h-backup {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem 2rem;
+    padding: 1.5rem;
+  }
+  .h-backup h2 {
+    font-size: 1.3rem;
+  }
+  .h-backup .h-actions {
+    margin-top: 0;
+  }
+  .h-backup label.ail-btn {
+    cursor: pointer;
+  }
+  .h-credit {
+    margin-top: 2.5rem;
+    text-align: center;
+  }
+  .h-credit a {
+    color: inherit;
+  }
+</style>

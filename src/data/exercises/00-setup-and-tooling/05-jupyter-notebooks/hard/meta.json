@@ -1,0 +1,25 @@
+{
+  "minutes": 30,
+  "title": {
+    "th": "จำลอง Restart & Run All",
+    "en": "Simulate Restart & Run All"
+  },
+  "prompt": {
+    "th": "ก่อนแชร์ notebook ควรกด Kernel > Restart & Run All ลองเขียนเวอร์ชันย่อของปุ่มนี้เอง: `restart_and_run_all(nb)` รันเซลล์โค้ดทุกเซลล์จากบนลงล่าง\n\n1. ทุกครั้งที่เรียกให้เริ่มจาก namespace ใหม่ (dict ว่าง) เหมือน kernel ที่เพิ่งรีสตาร์ต เซลล์ในการเรียกครั้งเดียวกันใช้ namespace ร่วมกัน\n2. ก่อนรัน ตัดบรรทัดที่เป็นของ Jupyter เท่านั้นออก คือบรรทัดที่ขึ้นต้นด้วย `%` หรือ `!` (หลังช่องว่างนำหน้า) ส่วนเซลล์ที่บรรทัดแรกขึ้นต้นด้วย `%%` (cell magic เช่น `%%time`) ให้ตัดแค่บรรทัดแรกแล้วรันที่เหลือ\n3. เก็บสิ่งที่แต่ละเซลล์พิมพ์ออกมาแยกกัน (ใช้ `contextlib.redirect_stdout` กับ `io.StringIO`)\n4. คืน list ของผลลัพธ์ หนึ่งรายการต่อเซลล์โค้ดที่ได้รัน เป็น dict `{\"index\": i, \"ok\": bool, \"output\": str, \"error\": None หรือชื่อคลาสของ exception}` โดย `i` เป็น index ใน `nb[\"cells\"]` และ `source` อาจเป็นสตริงหรือ list ของบรรทัด\n5. หยุดทันทีหลังเซลล์แรกที่เกิด exception (รวมเซลล์นั้นในผลลัพธ์ด้วย)\n\nมี test ซ่อนอยู่บางส่วน",
+    "en": "Before sharing a notebook you should run Kernel > Restart & Run All. Write a small version of that button: `restart_and_run_all(nb)` runs every code cell from top to bottom.\n\n1. Every call starts from a fresh namespace (an empty dict), like a freshly restarted kernel. Cells within one call share it.\n2. Before running, remove Jupyter-only lines: lines starting with `%` or `!` (after leading spaces). If a cell's first line starts with `%%` (a cell magic such as `%%time`), drop only that first line and run the rest.\n3. Capture what each cell prints separately (use `contextlib.redirect_stdout` with `io.StringIO`).\n4. Return a list with one result per code cell that ran: a dict `{\"index\": i, \"ok\": bool, \"output\": str, \"error\": None or the exception's class name}`, where `i` is the index in `nb[\"cells\"]`, and `source` may be a string or a list of lines.\n5. Stop right after the first cell that raises an exception (that cell is included in the results).\n\nSome tests are hidden."
+  },
+  "hints": [
+    {
+      "th": "สร้าง `ns = {}` ภายในฟังก์ชัน (ไม่ใช่ระดับโมดูล) แล้วใช้ `exec(code, ns)` กับทุกเซลล์ ตัวแปรจะส่งต่อกันในการเรียกครั้งเดียวกัน แต่ไม่ข้ามไปการเรียกครั้งถัดไป",
+      "en": "Create `ns = {}` inside the function (not at module level) and run each cell with `exec(code, ns)`. Variables carry over within one call but never into the next call."
+    },
+    {
+      "th": "ตัด magic ก่อน: ถ้า `lines[0].lstrip().startswith(\"%%\")` ให้ `lines = lines[1:]` แล้วกรองบรรทัดที่ `line.lstrip()[:1] in (\"%\", \"!\")` ออก",
+      "en": "Strip magics first: if `lines[0].lstrip().startswith(\"%%\")`, use `lines = lines[1:]`, then drop lines where `line.lstrip()[:1] in (\"%\", \"!\")`."
+    },
+    {
+      "th": "ครอบแต่ละเซลล์ด้วย `buf = io.StringIO()` และ `with redirect_stdout(buf):` ภายใน `try` แล้วใช้ `type(e).__name__` เป็นชื่อ error ถ้ามี exception ให้เพิ่มผลลัพธ์แล้ว `break`",
+      "en": "Wrap each cell in `buf = io.StringIO()` and `with redirect_stdout(buf):` inside a `try`, and use `type(e).__name__` as the error name. On an exception, append the result and `break`."
+    }
+  ]
+}

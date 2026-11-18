@@ -1,0 +1,486 @@
+{
+  "lesson": "00-setup-and-tooling/07-docker-for-ai",
+  "source_hash": "1ed8ca02231e4ed40b749b07f2728659676a5fe4c7de6ad01b1638b5e1c6b198",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What is the primary difference between a Docker container and a virtual machine?",
+        "th": "ความแตกต่างหลักระหว่าง Docker container กับเครื่องเสมือน (virtual machine) คืออะไร"
+      },
+      "options": [
+        {
+          "en": "There is no practical difference",
+          "th": "ในทางปฏิบัติไม่ต่างกัน"
+        },
+        {
+          "en": "Containers are slower but more secure than VMs",
+          "th": "container ช้ากว่าแต่ปลอดภัยกว่า VM"
+        },
+        {
+          "en": "Containers share the host OS kernel while VMs run their own full OS",
+          "th": "container ใช้ kernel ของระบบปฏิบัติการบนเครื่องหลักร่วมกัน ส่วน VM รันระบบปฏิบัติการเต็มของตัวเอง"
+        },
+        {
+          "en": "Containers can only run Linux while VMs support any OS",
+          "th": "container รันได้แค่ Linux ส่วน VM รองรับทุกระบบปฏิบัติการ"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Containers share the host kernel and isolate at the process level, making them start in seconds. VMs run a complete guest OS with its own kernel, requiring more resources and slower startup.",
+        "th": "container ใช้ kernel ของเครื่องหลักร่วมกันและแยกกันในระดับโปรเซส จึงเปิดได้ในไม่กี่วินาที ส่วน VM รันระบบปฏิบัติการทั้งระบบพร้อม kernel ของตัวเอง ใช้ทรัพยากรมากกว่าและเปิดช้ากว่า"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What is a Dockerfile?",
+        "th": "Dockerfile คืออะไร"
+      },
+      "options": [
+        {
+          "en": "A configuration file for the Docker daemon",
+          "th": "ไฟล์ตั้งค่าของ Docker daemon"
+        },
+        {
+          "en": "A set of instructions for building a Docker image layer by layer",
+          "th": "ชุดคำสั่งสำหรับ build Docker image ทีละชั้น"
+        },
+        {
+          "en": "A file that lists running containers",
+          "th": "ไฟล์ที่แสดงรายการ container ที่กำลังรัน"
+        },
+        {
+          "en": "A log file that records container activity",
+          "th": "ไฟล์ log ที่บันทึกการทำงานของ container"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "A Dockerfile contains sequential instructions (FROM, RUN, COPY, etc.) that Docker executes to build an image. Each instruction creates a cached layer.",
+        "th": "Dockerfile มีคำสั่งเรียงตามลำดับ (FROM, RUN, COPY ฯลฯ) ที่ Docker ทำทีละขั้นเพื่อ build image แต่ละคำสั่งสร้าง layer ที่ถูกแคชไว้"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "What is the relationship between an image and a container?",
+        "th": "image กับ container เกี่ยวข้องกันอย่างไร"
+      },
+      "options": [
+        {
+          "en": "They are two names for the same thing",
+          "th": "เป็นสองชื่อของสิ่งเดียวกัน"
+        },
+        {
+          "en": "A container is a running instance of an image",
+          "th": "container คือ image ที่กำลังรันอยู่"
+        },
+        {
+          "en": "An image is a running container that was saved",
+          "th": "image คือ container ที่กำลังรันแล้วถูกบันทึกไว้"
+        },
+        {
+          "en": "A container builds images",
+          "th": "container เป็นตัว build image"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The image is the read-only recipe built from a Dockerfile; a container is that recipe being cooked. You can start many containers from one image.",
+        "th": "image คือสูตรที่อ่านได้อย่างเดียวซึ่ง build มาจาก Dockerfile ส่วน container คือการนำสูตรนั้นมาทำอาหารจริง image เดียวเปิดเป็นหลาย container ได้"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Which `docker run` flag gives the container access to every GPU?",
+        "th": "ตัวเลือกใดของ `docker run` ทำให้ container เข้าถึง GPU ได้ทุกตัว"
+      },
+      "options": [
+        {
+          "en": "`--gpus all`",
+          "th": "`--gpus all`"
+        },
+        {
+          "en": "`--cuda`",
+          "th": "`--cuda`"
+        },
+        {
+          "en": "`-p 8888:8888`",
+          "th": "`-p 8888:8888`"
+        },
+        {
+          "en": "`-v /dev/gpu:/gpu`",
+          "th": "`-v /dev/gpu:/gpu`"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "`--gpus all` asks the NVIDIA Container Toolkit to expose the host GPUs. Without the toolkit installed, the flag fails.",
+        "th": "`--gpus all` ขอให้ NVIDIA Container Toolkit ส่ง GPU ของเครื่องหลักเข้าไป ถ้ายังไม่ได้ติดตั้ง toolkit ตัวเลือกนี้จะใช้ไม่ได้"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "What does `-p 8888:8888` do in `docker run`?",
+        "th": "`-p 8888:8888` ในคำสั่ง `docker run` ทำอะไร"
+      },
+      "options": [
+        {
+          "en": "Limits the container to 8,888 MB of memory",
+          "th": "จำกัดหน่วยความจำของ container ไว้ที่ 8,888 MB"
+        },
+        {
+          "en": "Maps port 8888 on your machine to port 8888 in the container",
+          "th": "map พอร์ต 8888 บนเครื่องคุณไปยังพอร์ต 8888 ใน container"
+        },
+        {
+          "en": "Runs 8888 copies of the container",
+          "th": "รัน container 8888 ชุด"
+        },
+        {
+          "en": "Sets the process id",
+          "th": "ตั้งหมายเลขโปรเซส"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "`-p host:container` publishes a port, which is how Jupyter inside the container becomes reachable at `localhost:8888` on your machine.",
+        "th": "`-p host:container` เปิดพอร์ตออกมา Jupyter ที่รันใน container จึงเปิดได้ที่ `localhost:8888` บนเครื่องของคุณ"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "Why are volume mounts critical for AI development with Docker?",
+        "th": "ทำไมการ mount volume จึงสำคัญมากสำหรับการพัฒนางาน AI ด้วย Docker"
+      },
+      "options": [
+        {
+          "en": "Volumes allow multiple containers to share the same GPU",
+          "th": "volume ทำให้หลาย container ใช้ GPU ตัวเดียวกันได้"
+        },
+        {
+          "en": "Volumes make containers run faster by using host disk speed",
+          "th": "volume ทำให้ container รันเร็วขึ้นเพราะใช้ความเร็วของดิสก์เครื่องหลัก"
+        },
+        {
+          "en": "Volumes are required for Python packages to install correctly",
+          "th": "ต้องมี volume แพ็กเกจ Python จึงจะติดตั้งได้ถูกต้อง"
+        },
+        {
+          "en": "Volumes persist data (models, datasets, code) across container rebuilds so you don't re-download gigabytes each time",
+          "th": "volume เก็บข้อมูล (โมเดล ชุดข้อมูล โค้ด) ไว้ข้ามการ build container ใหม่ จะได้ไม่ต้องดาวน์โหลดหลาย GB ทุกครั้ง"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Without volumes, everything inside a container is lost when it stops. Volume mounts map host directories into the container, so model weights (14+ GB) and datasets survive rebuilds.",
+        "th": "ถ้าไม่มี volume ทุกอย่างใน container จะหายเมื่อมันหยุด การ mount volume map โฟลเดอร์ของเครื่องหลักเข้าไปใน container น้ำหนักโมเดล (14 GB ขึ้นไป) และชุดข้อมูลจึงอยู่รอดหลัง build ใหม่"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "What does the NVIDIA Container Toolkit enable?",
+        "th": "NVIDIA Container Toolkit ทำให้ทำอะไรได้"
+      },
+      "options": [
+        {
+          "en": "Installing CUDA drivers inside the container",
+          "th": "ติดตั้งไดรเวอร์ CUDA ภายใน container"
+        },
+        {
+          "en": "Running NVIDIA GPU containers on AMD hardware",
+          "th": "รัน container สำหรับ GPU ของ NVIDIA บนฮาร์ดแวร์ AMD"
+        },
+        {
+          "en": "Exposing host GPUs to Docker containers via the --gpus flag",
+          "th": "ส่ง GPU ของเครื่องหลักเข้าไปใน Docker container ผ่านตัวเลือก --gpus"
+        },
+        {
+          "en": "Compiling CUDA code during the Docker build process",
+          "th": "คอมไพล์โค้ด CUDA ระหว่าง build Docker"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "The NVIDIA Container Toolkit is a runtime hook that exposes host GPUs to containers. The CUDA toolkit lives inside the container, but the GPU driver is shared from the host.",
+        "th": "NVIDIA Container Toolkit เป็นตัวเสริมของ runtime ที่ส่ง GPU ของเครื่องหลักเข้าไปใน container CUDA toolkit อยู่ใน container แต่ไดรเวอร์ GPU ใช้ร่วมกับเครื่องหลัก"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "In a Docker Compose file for AI, how does the 'ai-dev' service reach the 'qdrant' vector database?",
+        "th": "ในไฟล์ Docker Compose สำหรับงาน AI บริการ 'ai-dev' เข้าถึง vector database 'qdrant' ได้อย่างไร"
+      },
+      "options": [
+        {
+          "en": "By mounting a shared volume between the two containers",
+          "th": "mount volume ที่ใช้ร่วมกันระหว่างสอง container"
+        },
+        {
+          "en": "By using the service name 'qdrant' as the hostname, since Compose creates a shared network",
+          "th": "ใช้ชื่อบริการ 'qdrant' เป็นชื่อเครื่อง เพราะ Compose สร้างเครือข่ายที่ใช้ร่วมกันให้"
+        },
+        {
+          "en": "By configuring a VPN between the containers",
+          "th": "ตั้ง VPN ระหว่าง container"
+        },
+        {
+          "en": "By using the host machine's IP address and port",
+          "th": "ใช้ IP address และพอร์ตของเครื่องหลัก"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Docker Compose automatically creates a shared network where services can reach each other by name. The ai-dev container connects to 'http://qdrant:6333' using the service name as hostname.",
+        "th": "Docker Compose สร้างเครือข่ายที่ใช้ร่วมกันให้อัตโนมัติ ทุกบริการเรียกหากันด้วยชื่อได้ container ai-dev จึงเชื่อมต่อ 'http://qdrant:6333' โดยใช้ชื่อบริการเป็นชื่อเครื่อง"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "You only need CPU inference with a small image. Which base image fits best?",
+        "th": "คุณต้องการแค่รันโมเดลบน CPU ด้วย image ขนาดเล็ก base image ใดเหมาะที่สุด"
+      },
+      "options": [
+        {
+          "en": "`nvidia/cuda:12.4.1-devel-ubuntu22.04`",
+          "th": "`nvidia/cuda:12.4.1-devel-ubuntu22.04`"
+        },
+        {
+          "en": "`pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime`",
+          "th": "`pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime`"
+        },
+        {
+          "en": "`python:3.12-slim`",
+          "th": "`python:3.12-slim`"
+        },
+        {
+          "en": "`nvidia/cuda:12.4.1-runtime-ubuntu22.04`",
+          "th": "`nvidia/cuda:12.4.1-runtime-ubuntu22.04`"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "`python:3.12-slim` has no CUDA and is about 150 MB, against roughly 1.5-6 GB for the CUDA and PyTorch images.",
+        "th": "`python:3.12-slim` ไม่มี CUDA และมีขนาดราว 150 MB เทียบกับ image ของ CUDA และ PyTorch ที่ใหญ่ราว 1.5-6 GB"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "What is the difference between `docker compose down` and `docker compose down -v`?",
+        "th": "`docker compose down` กับ `docker compose down -v` ต่างกันอย่างไร"
+      },
+      "options": [
+        {
+          "en": "`-v` prints more details",
+          "th": "`-v` แสดงรายละเอียดมากขึ้น"
+        },
+        {
+          "en": "`-v` also deletes the named volumes, such as the Qdrant data",
+          "th": "`-v` ลบ volume ที่ตั้งชื่อไว้ด้วย เช่น ข้อมูลของ Qdrant"
+        },
+        {
+          "en": "`-v` keeps the containers running",
+          "th": "`-v` ทำให้ container ยังรันอยู่"
+        },
+        {
+          "en": "There is no difference",
+          "th": "ไม่ต่างกัน"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "`down` stops and removes the containers but keeps volumes such as `qdrant_data`; `-v` removes those too, so the stored vectors are gone.",
+        "th": "`down` หยุดและลบ container แต่เก็บ volume อย่าง `qdrant_data` ไว้ ส่วน `-v` ลบ volume เหล่านั้นด้วย เวกเตอร์ที่เก็บไว้จึงหายไป"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "On an M3 Mac, without `--platform=linux/amd64`, the build fails at `pip install torch==2.6.0+cu124` with \"No matching distribution found\". Why?",
+        "th": "บน Mac M3 ถ้าไม่ใส่ `--platform=linux/amd64` การ build จะล้มเหลวที่ `pip install torch==2.6.0+cu124` ด้วยข้อความ \"No matching distribution found\" เพราะอะไร"
+      },
+      "options": [
+        {
+          "en": "The CUDA image has no arm64 version",
+          "th": "image ของ CUDA ไม่มีแบบ arm64"
+        },
+        {
+          "en": "Docker picked the arm64 base image, but the cu124 wheels exist only for x86_64",
+          "th": "Docker เลือก base image แบบ arm64 แต่ wheel แบบ cu124 มีเฉพาะ x86_64"
+        },
+        {
+          "en": "PyTorch 2.6 does not support Python 3.12",
+          "th": "PyTorch 2.6 ไม่รองรับ Python 3.12"
+        },
+        {
+          "en": "The Mac has no internet inside Docker",
+          "th": "Mac ไม่มีอินเทอร์เน็ตภายใน Docker"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Docker Desktop picks the image's arm64 variant on Apple Silicon. Pinning `linux/amd64` pulls the x86_64 image under emulation, where the wheel exists; the container still has no GPU.",
+        "th": "Docker Desktop เลือก image แบบ arm64 บน Apple Silicon การระบุ `linux/amd64` จะดึง image แบบ x86_64 มารันผ่านการจำลอง ซึ่งมี wheel นั้นอยู่ แต่ container ก็ยังไม่มี GPU"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "A Flask app in the container listens on `127.0.0.1:5000`. You ran with `-p 5000:5000`, yet `http://localhost:5000` on your machine does not answer. Why?",
+        "th": "แอป Flask ใน container รับคำขอที่ `127.0.0.1:5000` คุณรันด้วย `-p 5000:5000` แล้ว แต่ `http://localhost:5000` บนเครื่องคุณไม่ตอบ เพราะอะไร"
+      },
+      "options": [
+        {
+          "en": "Port 5000 is reserved by Docker",
+          "th": "พอร์ต 5000 ถูก Docker จองไว้"
+        },
+        {
+          "en": "Inside the container, 127.0.0.1 is the container itself, so outside traffic never reaches it; bind to `0.0.0.0`",
+          "th": "ภายใน container 127.0.0.1 คือตัว container เอง คำขอจากข้างนอกจึงมาไม่ถึง ให้ผูกกับ `0.0.0.0`"
+        },
+        {
+          "en": "`-p` must be written `-p 127.0.0.1:5000`",
+          "th": "ต้องเขียน `-p` เป็น `-p 127.0.0.1:5000`"
+        },
+        {
+          "en": "Flask needs a GPU",
+          "th": "Flask ต้องใช้ GPU"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Port mapping delivers traffic to the container's network interface. A server bound to localhost inside the container ignores it, which is why the lesson's hint says `host=\"0.0.0.0\"`.",
+        "th": "การ map พอร์ตส่งคำขอไปที่เครือข่ายของ container เซิร์ฟเวอร์ที่ผูกกับ localhost ภายใน container จะไม่รับคำขอนั้น คำใบ้ของบทจึงบอกให้ใช้ `host=\"0.0.0.0\"`"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Your Dockerfile has `COPY . /workspace` before the long `pip install` steps. Every code edit reinstalls all packages. What fixes it?",
+        "th": "Dockerfile ของคุณมี `COPY . /workspace` อยู่ก่อนขั้น `pip install` ที่ใช้เวลานาน ทุกครั้งที่แก้โค้ด แพ็กเกจจะถูกติดตั้งใหม่ทั้งหมด แก้อย่างไร"
+      },
+      "options": [
+        {
+          "en": "Add `--no-cache-dir` to pip",
+          "th": "เพิ่ม `--no-cache-dir` ให้ pip"
+        },
+        {
+          "en": "Install the packages first and copy the code afterwards, so code edits only rebuild the last layers",
+          "th": "ติดตั้งแพ็กเกจก่อนแล้วค่อยคัดลอกโค้ดทีหลัง การแก้โค้ดจะได้ build ใหม่แค่ layer ท้ายๆ"
+        },
+        {
+          "en": "Use `docker system prune -a` before each build",
+          "th": "ใช้ `docker system prune -a` ก่อน build ทุกครั้ง"
+        },
+        {
+          "en": "Switch to a `runtime` base image",
+          "th": "เปลี่ยนเป็น base image แบบ `runtime`"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Layers are cached in order: once one layer changes, every layer after it is rebuilt. Put what changes rarely (dependencies) first and what changes often (your code) last.",
+        "th": "layer ถูกแคชตามลำดับ เมื่อ layer หนึ่งเปลี่ยน ทุก layer ที่อยู่หลังจากนั้นต้อง build ใหม่ ให้วางสิ่งที่เปลี่ยนไม่บ่อย (dependency) ไว้ก่อน และสิ่งที่เปลี่ยนบ่อย (โค้ดของคุณ) ไว้ท้าย"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "`FROM nvidia/cuda:12.4.1-runtime-ubuntu22.04` fails when pip builds flash-attn with `nvcc: not found`. What is the fix?",
+        "th": "`FROM nvidia/cuda:12.4.1-runtime-ubuntu22.04` ล้มเหลวตอน pip build flash-attn ด้วยข้อความ `nvcc: not found` ต้องแก้อย่างไร"
+      },
+      "options": [
+        {
+          "en": "Add `--gpus all` to `docker build`",
+          "th": "เพิ่ม `--gpus all` ให้ `docker build`"
+        },
+        {
+          "en": "Switch to the `devel` image, which includes the CUDA compilers",
+          "th": "เปลี่ยนเป็น image แบบ `devel` ซึ่งมีคอมไพเลอร์ของ CUDA"
+        },
+        {
+          "en": "Install the NVIDIA Container Toolkit inside the image",
+          "th": "ติดตั้ง NVIDIA Container Toolkit ลงใน image"
+        },
+        {
+          "en": "Use `python:3.12-slim`",
+          "th": "ใช้ `python:3.12-slim`"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "`runtime` images ship only the CUDA runtime; `nvcc` lives in the `devel` image, which the lesson recommends for packages that compile CUDA code.",
+        "th": "image แบบ `runtime` มีแค่ CUDA runtime ส่วน `nvcc` อยู่ใน image แบบ `devel` ซึ่งบทเรียนแนะนำสำหรับแพ็กเกจที่ต้องคอมไพล์โค้ด CUDA"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "In the compose stack, code in `ai-dev` connects to `http://localhost:6333` and gets \"connection refused\". Why?",
+        "th": "ในชุด compose โค้ดใน `ai-dev` เชื่อมต่อ `http://localhost:6333` แล้วได้ \"connection refused\" เพราะอะไร"
+      },
+      "options": [
+        {
+          "en": "Qdrant needs a GPU",
+          "th": "Qdrant ต้องใช้ GPU"
+        },
+        {
+          "en": "In a container, localhost means that container itself; reach the database by its service name, `http://qdrant:6333`",
+          "th": "ใน container คำว่า localhost หมายถึงตัว container เอง ต้องเรียก database ด้วยชื่อบริการ `http://qdrant:6333`"
+        },
+        {
+          "en": "Port 6333 must be removed from the compose file",
+          "th": "ต้องลบพอร์ต 6333 ออกจากไฟล์ compose"
+        },
+        {
+          "en": "Qdrant only accepts HTTPS",
+          "th": "Qdrant รับแค่ HTTPS"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Each container has its own network namespace. Compose's shared network resolves the name `qdrant` to the right container, while `localhost` stays inside `ai-dev`.",
+        "th": "แต่ละ container มีเครือข่ายของตัวเอง เครือข่ายที่ใช้ร่วมกันของ Compose แปลงชื่อ `qdrant` เป็น container ที่ถูกต้องให้ ส่วน `localhost` วนอยู่แค่ใน `ai-dev`"
+      }
+    }
+  ]
+}

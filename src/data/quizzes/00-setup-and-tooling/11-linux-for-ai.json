@@ -1,0 +1,486 @@
+{
+  "lesson": "00-setup-and-tooling/11-linux-for-ai",
+  "source_hash": "07a2808c4707f0ba4290d7c92df72e48cb09fc8a9f6e85222c4b2229b1d314af",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What does the '~' symbol represent in a Linux file path?",
+        "th": "สัญลักษณ์ '~' ใน path ของ Linux หมายถึงอะไร"
+      },
+      "options": [
+        {
+          "en": "The root directory of the file system",
+          "th": "รากของระบบไฟล์"
+        },
+        {
+          "en": "The temporary files directory",
+          "th": "โฟลเดอร์เก็บไฟล์ชั่วคราว"
+        },
+        {
+          "en": "The current user's home directory",
+          "th": "โฟลเดอร์ home ของผู้ใช้ปัจจุบัน"
+        },
+        {
+          "en": "The directory where system programs are installed",
+          "th": "โฟลเดอร์ที่ติดตั้งโปรแกรมของระบบ"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "The tilde (~) is a shortcut for the current user's home directory, typically /home/username on Linux. 'cd ~' takes you home from anywhere.",
+        "th": "เครื่องหมาย tilde (~) เป็นทางลัดไปยังโฟลเดอร์ home ของผู้ใช้ปัจจุบัน ปกติคือ /home/username บน Linux คำสั่ง 'cd ~' พากลับบ้านได้จากทุกที่"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What is the purpose of 'sudo' before a command?",
+        "th": "'sudo' ที่นำหน้าคำสั่งมีไว้ทำอะไร"
+      },
+      "options": [
+        {
+          "en": "It runs the command with root (administrator) privileges",
+          "th": "รันคำสั่งด้วยสิทธิ์ root (ผู้ดูแลระบบ)"
+        },
+        {
+          "en": "It runs the command in a sandboxed environment",
+          "th": "รันคำสั่งในสภาพแวดล้อมที่กั้นแยกไว้ (sandbox)"
+        },
+        {
+          "en": "It speeds up the command execution",
+          "th": "ทำให้คำสั่งรันเร็วขึ้น"
+        },
+        {
+          "en": "It logs the command output to a system file",
+          "th": "บันทึกผลลัพธ์ของคำสั่งลงไฟล์ของระบบ"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "sudo (superuser do) temporarily elevates your privileges to root level for a single command. Required for system-level operations like installing packages with apt.",
+        "th": "sudo (superuser do) ยกสิทธิ์ของคุณเป็นระดับ root ชั่วคราวสำหรับคำสั่งเดียว จำเป็นสำหรับงานระดับระบบ เช่น ติดตั้งแพ็กเกจด้วย apt"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Which command creates `a/b/c` in one step, even if `a` and `b` don't exist?",
+        "th": "คำสั่งใดสร้าง `a/b/c` ได้ในขั้นเดียว แม้ `a` และ `b` จะยังไม่มี"
+      },
+      "options": [
+        {
+          "en": "`mkdir a/b/c`",
+          "th": "`mkdir a/b/c`"
+        },
+        {
+          "en": "`mkdir -p a/b/c`",
+          "th": "`mkdir -p a/b/c`"
+        },
+        {
+          "en": "`touch a/b/c`",
+          "th": "`touch a/b/c`"
+        },
+        {
+          "en": "`cp -r a/b/c`",
+          "th": "`cp -r a/b/c`"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "`-p` creates every missing parent. Without it, `mkdir a/b/c` fails because `a/b` does not exist.",
+        "th": "`-p` สร้างโฟลเดอร์แม่ที่ยังไม่มีให้ทั้งหมด ถ้าไม่ใส่ `mkdir a/b/c` จะล้มเหลวเพราะยังไม่มี `a/b`"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Which directory is cleared on reboot, so you should not keep checkpoints there?",
+        "th": "โฟลเดอร์ใดถูกล้างเมื่อรีบูต จึงไม่ควรเก็บ checkpoint ไว้ที่นั่น"
+      },
+      "options": [
+        {
+          "en": "`/home/your-username/`",
+          "th": "`/home/your-username/`"
+        },
+        {
+          "en": "`/etc/`",
+          "th": "`/etc/`"
+        },
+        {
+          "en": "`/tmp/`",
+          "th": "`/tmp/`"
+        },
+        {
+          "en": "`/var/log/`",
+          "th": "`/var/log/`"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "`/tmp/` holds temporary files and is wiped on reboot. Your work belongs under your home directory.",
+        "th": "`/tmp/` เก็บไฟล์ชั่วคราวและถูกล้างเมื่อรีบูต งานของคุณควรอยู่ใต้โฟลเดอร์ home"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "On a fresh Ubuntu GPU box, what should you run before `sudo apt install`?",
+        "th": "บนเครื่อง GPU ที่ติดตั้ง Ubuntu ใหม่ ควรรันอะไรก่อน `sudo apt install`"
+      },
+      "options": [
+        {
+          "en": "`sudo apt update`",
+          "th": "`sudo apt update`"
+        },
+        {
+          "en": "`sudo apt remove`",
+          "th": "`sudo apt remove`"
+        },
+        {
+          "en": "`apt list --installed`",
+          "th": "`apt list --installed`"
+        },
+        {
+          "en": "`sudo su`",
+          "th": "`sudo su`"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "`apt update` refreshes the package list; without it apt may not find packages or may try outdated versions.",
+        "th": "`apt update` โหลดรายการแพ็กเกจใหม่ ถ้าไม่รัน apt อาจหาแพ็กเกจไม่เจอหรือพยายามติดตั้งเวอร์ชันที่ล้าสมัย"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "You get 'Permission denied' when trying to run a shell script. What command fixes this?",
+        "th": "คุณเจอ 'Permission denied' ตอนพยายามรันสคริปต์ shell คำสั่งใดแก้ได้"
+      },
+      "options": [
+        {
+          "en": "chown root script.sh",
+          "th": "chown root script.sh"
+        },
+        {
+          "en": "mv script.sh /usr/bin/",
+          "th": "mv script.sh /usr/bin/"
+        },
+        {
+          "en": "chmod +x script.sh",
+          "th": "chmod +x script.sh"
+        },
+        {
+          "en": "sudo rm script.sh",
+          "th": "sudo rm script.sh"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "chmod +x adds execute permission to the file. Without the execute bit set, the shell refuses to run the script even if you own it.",
+        "th": "chmod +x เพิ่มสิทธิ์รัน (execute) ให้ไฟล์ ถ้าไม่ได้ตั้งบิต execute ไว้ shell จะไม่ยอมรันสคริปต์ แม้คุณจะเป็นเจ้าของไฟล์ก็ตาม"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "On a remote GPU box, your training data fills the disk. Which command shows the largest directories consuming space?",
+        "th": "บนเครื่อง GPU ระยะไกล ข้อมูลฝึกกินดิสก์จนเต็ม คำสั่งใดแสดงโฟลเดอร์ที่ใช้พื้นที่มากที่สุด"
+      },
+      "options": [
+        {
+          "en": "ls -la /",
+          "th": "ls -la /"
+        },
+        {
+          "en": "cat /proc/meminfo",
+          "th": "cat /proc/meminfo"
+        },
+        {
+          "en": "du -h --max-depth=1 / | sort -hr | head -20",
+          "th": "du -h --max-depth=1 / | sort -hr | head -20"
+        },
+        {
+          "en": "free -h",
+          "th": "free -h"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "du -h shows disk usage per directory, --max-depth=1 limits to top-level directories, and sort -hr sorts by size in descending order. This reveals which directories are consuming the most space.",
+        "th": "du -h แสดงพื้นที่ที่แต่ละโฟลเดอร์ใช้ --max-depth=1 จำกัดไว้ที่โฟลเดอร์ระดับบนสุด และ sort -hr เรียงจากใหญ่ไปเล็ก จึงเห็นว่าโฟลเดอร์ไหนกินพื้นที่มากที่สุด"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "What is a key difference between the macOS and Linux versions of 'sed -i'?",
+        "th": "'sed -i' ของ macOS กับของ Linux ต่างกันอย่างไรในจุดสำคัญ"
+      },
+      "options": [
+        {
+          "en": "Linux sed is faster than macOS sed",
+          "th": "sed ของ Linux เร็วกว่าของ macOS"
+        },
+        {
+          "en": "Linux sed does not support regular expressions",
+          "th": "sed ของ Linux ไม่รองรับ regular expression"
+        },
+        {
+          "en": "macOS sed cannot modify files in place",
+          "th": "sed ของ macOS แก้ไฟล์ในที่เดิมไม่ได้"
+        },
+        {
+          "en": "macOS sed requires an empty string argument after -i ('sed -i \"\"'), while Linux does not",
+          "th": "sed ของ macOS ต้องมีอาร์กิวเมนต์สตริงว่างหลัง -i ('sed -i \"\"') ส่วนของ Linux ไม่ต้องมี"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "macOS uses BSD sed which requires 'sed -i \"\" pattern file', while Linux uses GNU sed which accepts 'sed -i pattern file'. This is a common gotcha when moving scripts between systems.",
+        "th": "macOS ใช้ sed แบบ BSD ซึ่งต้องเขียน 'sed -i \"\" pattern file' ส่วน Linux ใช้ sed แบบ GNU ที่รับ 'sed -i pattern file' นี่เป็นกับดักที่เจอบ่อยเวลาย้ายสคริปต์ข้ามระบบ"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "After `chmod 644 config.yaml`, who can do what?",
+        "th": "หลัง `chmod 644 config.yaml` ใครทำอะไรได้บ้าง"
+      },
+      "options": [
+        {
+          "en": "Everyone can read and write",
+          "th": "ทุกคนอ่านและเขียนได้"
+        },
+        {
+          "en": "The owner can read and write; group and others can only read",
+          "th": "เจ้าของอ่านและเขียนได้ ส่วนกลุ่มและคนอื่นอ่านได้อย่างเดียว"
+        },
+        {
+          "en": "Only the owner can read it",
+          "th": "เจ้าของอ่านได้คนเดียว"
+        },
+        {
+          "en": "Everyone can execute it",
+          "th": "ทุกคนรันได้"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Each digit is read (4) + write (2) + execute (1) for owner, group and others. 6 = 4 + 2 is read and write, 4 is read only, so `rw-r--r--`.",
+        "th": "แต่ละหลักคือ อ่าน (4) + เขียน (2) + รัน (1) ของเจ้าของ กลุ่ม และคนอื่นตามลำดับ 6 = 4 + 2 คืออ่านและเขียน ส่วน 4 คืออ่านอย่างเดียว ได้ `rw-r--r--`"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "`ls -l train.py` shows `-rwxr-xr--`. What is that in octal?",
+        "th": "`ls -l train.py` แสดง `-rwxr-xr--` เขียนเป็นเลขฐานแปดได้เท่าไร"
+      },
+      "options": [
+        {
+          "en": "755",
+          "th": "755"
+        },
+        {
+          "en": "754",
+          "th": "754"
+        },
+        {
+          "en": "744",
+          "th": "744"
+        },
+        {
+          "en": "644",
+          "th": "644"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "`rwx` = 4+2+1 = 7, `r-x` = 4+1 = 5, `r--` = 4. So 754: everyone else can read but not run it.",
+        "th": "`rwx` = 4+2+1 = 7, `r-x` = 4+1 = 5, `r--` = 4 จึงเป็น 754 คนอื่นอ่านได้แต่รันไม่ได้"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "A script written on Windows fails on Linux with `/bin/bash^M: bad interpreter`. What is wrong?",
+        "th": "สคริปต์ที่เขียนบน Windows รันบน Linux แล้วได้ `/bin/bash^M: bad interpreter` ผิดที่อะไร"
+      },
+      "options": [
+        {
+          "en": "bash is not installed",
+          "th": "ไม่ได้ติดตั้ง bash"
+        },
+        {
+          "en": "The file has Windows `\\r\\n` line endings; convert it with `dos2unix`",
+          "th": "ไฟล์ขึ้นบรรทัดใหม่แบบ Windows (`\\r\\n`) ให้แปลงด้วย `dos2unix`"
+        },
+        {
+          "en": "The script needs `chmod +x`",
+          "th": "สคริปต์ต้อง `chmod +x` ก่อน"
+        },
+        {
+          "en": "Linux cannot run scripts written on Windows",
+          "th": "Linux รันสคริปต์ที่เขียนบน Windows ไม่ได้"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "`^M` is the carriage return `\\r`. With `\\r\\n` endings, the first line asks for an interpreter called `bash\\r`, which does not exist. `dos2unix` strips the `\\r`.",
+        "th": "`^M` คืออักขระ carriage return (`\\r`) เมื่อขึ้นบรรทัดใหม่ด้วย `\\r\\n` บรรทัดแรกจะเรียกตัวแปลภาษาชื่อ `bash\\r` ซึ่งไม่มีอยู่ `dos2unix` ตัด `\\r` ออกให้"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "`from Model import Net` works on your Mac but fails on the Linux GPU box; the file is `model.py`. Why?",
+        "th": "`from Model import Net` ใช้ได้บน Mac แต่ล้มเหลวบนเครื่อง GPU ที่เป็น Linux ทั้งที่ไฟล์ชื่อ `model.py` เพราะอะไร"
+      },
+      "options": [
+        {
+          "en": "Linux needs `__init__.py` in every folder",
+          "th": "Linux ต้องมี `__init__.py` ทุกโฟลเดอร์"
+        },
+        {
+          "en": "The Linux filesystem is case-sensitive, so `Model` and `model` are different names",
+          "th": "ระบบไฟล์ของ Linux สนตัวพิมพ์เล็กใหญ่ `Model` กับ `model` จึงเป็นคนละชื่อ"
+        },
+        {
+          "en": "Python on Linux is older",
+          "th": "Python บน Linux เก่ากว่า"
+        },
+        {
+          "en": "The GPU cannot import modules",
+          "th": "GPU import โมดูลไม่ได้"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "macOS's default filesystem ignores case, so the wrong spelling still finds `model.py`. Linux treats them as two files; match the case exactly.",
+        "th": "ระบบไฟล์ตั้งต้นของ macOS ไม่สนตัวพิมพ์ การสะกดผิดจึงยังเจอ `model.py` แต่ Linux ถือว่าเป็นคนละไฟล์ ต้องสะกดตัวพิมพ์ให้ตรง"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "`kill 12345` does not stop a hung training process. What do you try next, and what is the cost?",
+        "th": "`kill 12345` หยุดโปรเซสการฝึกที่ค้างไม่ได้ ควรลองอะไรต่อ และต้องแลกกับอะไร"
+      },
+      "options": [
+        {
+          "en": "`kill -9 12345`; the process is killed at once and cannot clean up, so an in-progress checkpoint write may be lost",
+          "th": "`kill -9 12345` โปรเซสถูก kill ทันทีและเก็บกวาดอะไรไม่ได้ checkpoint ที่เขียนค้างอยู่อาจเสีย"
+        },
+        {
+          "en": "`rm -rf /proc/12345`",
+          "th": "`rm -rf /proc/12345`"
+        },
+        {
+          "en": "Reboot is the only option",
+          "th": "รีบูตเครื่องเป็นทางเดียว"
+        },
+        {
+          "en": "`sudo kill 12345` is always gentler",
+          "th": "`sudo kill 12345` นุ่มนวลกว่าเสมอ"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Plain `kill` asks the process to exit and lets it clean up. `-9` (SIGKILL) cannot be caught or ignored, which is why it works and why it is the last resort.",
+        "th": "`kill` ธรรมดาขอให้โปรเซสหยุดและให้โอกาสเก็บกวาด ส่วน `-9` (SIGKILL) ดักจับหรือเพิกเฉยไม่ได้ จึงได้ผลแน่นอน และควรใช้เป็นทางสุดท้าย"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "In WSL2, CUDA is not available even after you installed the Linux NVIDIA driver inside Ubuntu. What is the fix?",
+        "th": "ใน WSL2 ใช้ CUDA ไม่ได้ แม้จะติดตั้งไดรเวอร์ NVIDIA สำหรับ Linux ใน Ubuntu แล้ว ต้องแก้อย่างไร"
+      },
+      "options": [
+        {
+          "en": "Install the NVIDIA driver on the Windows side; WSL2 uses it, not a Linux driver",
+          "th": "ติดตั้งไดรเวอร์ NVIDIA ฝั่ง Windows เพราะ WSL2 ใช้ไดรเวอร์นั้น ไม่ใช่ไดรเวอร์ของ Linux"
+        },
+        {
+          "en": "Switch WSL2 to WSL1",
+          "th": "เปลี่ยน WSL2 เป็น WSL1"
+        },
+        {
+          "en": "Run `sudo apt install cuda` twice",
+          "th": "รัน `sudo apt install cuda` สองครั้ง"
+        },
+        {
+          "en": "GPUs are not supported in WSL2",
+          "th": "WSL2 ไม่รองรับ GPU"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The lesson says it directly: install the Windows NVIDIA driver, not the Linux one, and CUDA becomes available inside WSL2.",
+        "th": "บทเรียนบอกไว้ตรงๆ ว่าให้ติดตั้งไดรเวอร์ NVIDIA ของ Windows ไม่ใช่ของ Linux แล้ว CUDA จะใช้ได้ใน WSL2"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "The disk is full and `du -sh ~/.cache` reports 80 GB. What is probably there, and what can you safely do?",
+        "th": "ดิสก์เต็มและ `du -sh ~/.cache` รายงานว่าใช้ไป 80 GB ในนั้นน่าจะเป็นอะไร และทำอะไรได้อย่างปลอดภัย"
+      },
+      "options": [
+        {
+          "en": "System files: never touch it",
+          "th": "ไฟล์ของระบบ ห้ามแตะเด็ดขาด"
+        },
+        {
+          "en": "pip and Hugging Face download caches; clear them (`pip cache purge`, remove unused models), since they download again when needed",
+          "th": "แคชที่ pip และ Hugging Face ดาวน์โหลดมา ล้างได้ (`pip cache purge`, ลบโมเดลที่ไม่ใช้) เพราะจะดาวน์โหลดใหม่เมื่อต้องใช้"
+        },
+        {
+          "en": "Your training code",
+          "th": "โค้ดฝึกโมเดลของคุณ"
+        },
+        {
+          "en": "Swap memory",
+          "th": "หน่วยความจำ swap"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "`~/.cache` is where pip and Hugging Face models land. Caches can be rebuilt, so they are the first thing to clean; checkpoints you still need are not.",
+        "th": "`~/.cache` คือที่ที่ pip และโมเดลของ Hugging Face ไปเก็บ แคชสร้างใหม่ได้ จึงเป็นสิ่งแรกที่ควรล้าง ต่างจาก checkpoint ที่ยังต้องใช้"
+      }
+    }
+  ]
+}

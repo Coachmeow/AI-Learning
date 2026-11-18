@@ -1,0 +1,1632 @@
+{
+  "lessons": {
+    "00-setup-and-tooling/01-dev-environment": {
+      "source_hash": "85bc7f1f0682cf607f287710b25f2dd3cde1475feaca985a89bf2cefb1e2cf52"
+    },
+    "00-setup-and-tooling/02-git-and-collaboration": {
+      "source_hash": "5bcc9ca73bdf9f2a3a647d167ed00ff223a81a9a36f996ce148aa1312d545f08"
+    },
+    "00-setup-and-tooling/03-gpu-setup-and-cloud": {
+      "source_hash": "913b61e496cff6bba6c95c5121a4fa389793f5ce98ae9b7745c491158428e25a"
+    },
+    "00-setup-and-tooling/04-apis-and-keys": {
+      "source_hash": "1d4748fc1dc1b4ff3313ab9af092b9831221e7f7d96c1107b3938a895ee93346"
+    },
+    "00-setup-and-tooling/05-jupyter-notebooks": {
+      "source_hash": "543c38dcbca1352c41924f3a5ad4c6fadd715c38aae7e233e3b2be795865889b"
+    },
+    "00-setup-and-tooling/06-python-environments": {
+      "source_hash": "d83b1b070403cd41624ec9d40c890f74b237a94c922bcd8d2f3758a757bcc719"
+    },
+    "00-setup-and-tooling/07-docker-for-ai": {
+      "source_hash": "1ed8ca02231e4ed40b749b07f2728659676a5fe4c7de6ad01b1638b5e1c6b198"
+    },
+    "00-setup-and-tooling/08-editor-setup": {
+      "source_hash": "e1f15c23a08a69e1f176c11403da0e2580379c1929311754dca686c5cd86dbe6"
+    },
+    "00-setup-and-tooling/09-data-management": {
+      "source_hash": "772d99967d3ccde7c765aae10f77622aa3a9db2975a6124d217c307e257dc84a"
+    },
+    "00-setup-and-tooling/10-terminal-and-shell": {
+      "source_hash": "5febcabad487875619e38bab7b925c05ac61d3f059cbfcb0d7d8a4902fd8e4bf"
+    },
+    "00-setup-and-tooling/11-linux-for-ai": {
+      "source_hash": "07a2808c4707f0ba4290d7c92df72e48cb09fc8a9f6e85222c4b2229b1d314af"
+    },
+    "00-setup-and-tooling/12-debugging-and-profiling": {
+      "source_hash": "2c8060d42a1115002a602a1db7241eb5338a7169661c238163c16c5653136513"
+    },
+    "00-setup-and-tooling/13-python-for-ai-engineering": {
+      "source_hash": "ae258f2f5ac9b2bfd395d285699082537b53e9796368719c3d614e6954bca009"
+    },
+    "01-math-foundations/01-linear-algebra-intuition": {
+      "source_hash": "f8bd6e7a8cd337ba0cb2d90a8acddb60b32c58d4dd5d27ae451181772267410c"
+    },
+    "01-math-foundations/02-vectors-matrices-operations": {
+      "source_hash": "a5849d742948a87e8ef7c6eb919df6acea0a3808ef61fe27414e9618b4dfb8ea"
+    },
+    "01-math-foundations/03-matrix-transformations": {
+      "source_hash": "b0b73f786f3e972fb9ca333b26028641423ebfc262a8abcba8c6d0b2ac1fe8f6"
+    },
+    "01-math-foundations/04-calculus-for-ml": {
+      "source_hash": "026ef098b0d57e79d611ba10046c2c2db884e71e3349e4bf6c2f199050325b4d"
+    },
+    "01-math-foundations/05-chain-rule-and-autodiff": {
+      "source_hash": "0ec6ec8f8e98d36719b21d5fe1a78c787261864eb5689b776a8d76391b04fc3f"
+    },
+    "01-math-foundations/06-probability-and-distributions": {
+      "source_hash": "a07e78b85e86e435d4afea907e6c8fdf06c004bcc76869e0dce20d7ab3ad52ed"
+    },
+    "01-math-foundations/07-bayes-theorem": {
+      "source_hash": "a7952aae9bf3e6ea89e2f47ce621bd577c44c15d0b921e36d1d1db5ebb6fc4fb"
+    },
+    "01-math-foundations/08-optimization": {
+      "source_hash": "37a97829f21025866d4bd4349478fcd6572dcc734154b836ce3e69f4813cb278"
+    },
+    "01-math-foundations/09-information-theory": {
+      "source_hash": "d9e36fa94ce202a35f270aa79eefeee525f0c04ccc61064fe8c3f21d1b7bb2d7"
+    },
+    "01-math-foundations/10-dimensionality-reduction": {
+      "source_hash": "89100f37ffd02c413aed2b4d4f8986163fa880315dd0f65314ad42f82f8e14a6"
+    },
+    "01-math-foundations/11-singular-value-decomposition": {
+      "source_hash": "e6d5cdb8721a8d7d4b2062f6a4da5946123d03b3f6e72e7d2225827e2c37fd23"
+    },
+    "01-math-foundations/12-tensor-operations": {
+      "source_hash": "07b6d7983ec360ddce4178a0064be90ad8a7e6375d11ecb4637c3efc614f182d"
+    },
+    "01-math-foundations/13-numerical-stability": {
+      "source_hash": "611df7b0a07db308dad6e0e7830ab796c2f9801964a3a1aeb88c9f40526b3752"
+    },
+    "01-math-foundations/14-norms-and-distances": {
+      "source_hash": "b680d4daed465667166c76e5cc1b4e2a1b2ab2332ee584b2562d495e8adeb7d7"
+    },
+    "01-math-foundations/15-statistics-for-ml": {
+      "source_hash": "03f4ef8f81f9ed57a1ea5e452d55a6ad7d8d80c136410a4c0acf437032d2504a"
+    },
+    "01-math-foundations/16-sampling-methods": {
+      "source_hash": "081187c8609bc0a7f18e08105fdc15377e68fdbbc16dfda7957657de1462f8e9"
+    },
+    "01-math-foundations/17-linear-systems": {
+      "source_hash": "aabfe5438dd2837264e02d88c2ea2a83a9adcc67cb6bf2c1092d618b50ea9f3c"
+    },
+    "01-math-foundations/18-convex-optimization": {
+      "source_hash": "b85edfa04ef99dc140cfdece3fccae676a13b7d2d9fbbc900d3f94c29430f804"
+    },
+    "01-math-foundations/19-complex-numbers": {
+      "source_hash": "4a8ab5a6d4885e98555979cdd01d5de3701eecf7018678dd835f45a5aeba430b"
+    },
+    "01-math-foundations/20-fourier-transform": {
+      "source_hash": "85708528263fd9c85a699ec1967dc4c03c5b1456fa60f846753026703b386883"
+    },
+    "01-math-foundations/21-graph-theory": {
+      "source_hash": "15e51474d311beb51cbda6d860b9b14ec3e83ea6d244fc2bcc5521d6dc9b5b7b"
+    },
+    "01-math-foundations/22-stochastic-processes": {
+      "source_hash": "2c438ab5ccab9e2916721ba1cda63f9ba53deab638d421cd89a02173206acb8d"
+    },
+    "02-ml-fundamentals/01-what-is-machine-learning": {
+      "source_hash": "a81964a035da5a6ed3e69d48a66caea2d02d7cbe28d0e3bd573069fab831eef0"
+    },
+    "02-ml-fundamentals/02-linear-regression": {
+      "source_hash": "1a0efda804690ae0a9d695c39f01f3f5a13e8f970e32d2ae8f767ce13019744c"
+    },
+    "02-ml-fundamentals/03-logistic-regression": {
+      "source_hash": "45a90a012447f086f062a721c4ca524e272f7c8ae1e863ca405845bc0551de38"
+    },
+    "02-ml-fundamentals/04-decision-trees": {
+      "source_hash": "f14b973c84f94a98f69a96036151d5f780c58b332e418c1ff920b5f008e835ef"
+    },
+    "02-ml-fundamentals/05-support-vector-machines": {
+      "source_hash": "ffd0796857de5f9cfbcb5e5c5396f3d07c8379585fc271502d2b06a285b7999e"
+    },
+    "02-ml-fundamentals/06-knn-and-distances": {
+      "source_hash": "0fff81d1a1ae2029c4c8db7a20f11c7b5711c24ba25ce4e23bfb70ab450a82d4"
+    },
+    "02-ml-fundamentals/07-unsupervised-learning": {
+      "source_hash": "edffa5288ffe39f2a850c11366be002b17d8d20dc5e823f5e1f694b74ca72d66"
+    },
+    "02-ml-fundamentals/08-feature-engineering": {
+      "source_hash": "2e66e91a399ba4298696ee25def5b85ac73d39e8e4607c056b6a3cb7a6f4f49c"
+    },
+    "02-ml-fundamentals/09-model-evaluation": {
+      "source_hash": "ffa5dbf1775f0cd8008099cebb460f484e61ac51b3c0e9b665b0563cf486fa2a"
+    },
+    "02-ml-fundamentals/10-bias-variance": {
+      "source_hash": "90827a05e5efc693817fa7586d178bd0a2a889f39fe73570c6a669b01485a9b1"
+    },
+    "02-ml-fundamentals/11-ensemble-methods": {
+      "source_hash": "497158df5ec8f89881419cc43414a1a3dceb6ed23376dba300bdf93f04cde67b"
+    },
+    "02-ml-fundamentals/12-hyperparameter-tuning": {
+      "source_hash": "9f72e12d7734382f385eb5b5bdefb65f6286284f8483c448a9c548300ed949bb"
+    },
+    "02-ml-fundamentals/13-ml-pipelines": {
+      "source_hash": "058d092b6ad38b5a9eaf4a3fc296aac5867d0e99e60ba40ce0cc20b7326820d9"
+    },
+    "02-ml-fundamentals/14-naive-bayes": {
+      "source_hash": "c6a0a270697261df063484940432c6087e7d88026b4accbab468d2940b1f5c1d"
+    },
+    "02-ml-fundamentals/15-time-series": {
+      "source_hash": "283264485d86ce061f74965f9afca110d52ea2b455e8a32302869cc21319f6e3"
+    },
+    "02-ml-fundamentals/16-anomaly-detection": {
+      "source_hash": "511926f7ba6c9e974c5e5b3e0bb0603ee67934db7244824d97251c7ff075415a"
+    },
+    "02-ml-fundamentals/17-imbalanced-data": {
+      "source_hash": "9a9a88a93765cf18f82e7169fbd23b8ff429d8344ed75fbfb9889f218342d138"
+    },
+    "02-ml-fundamentals/18-feature-selection": {
+      "source_hash": "292bda694502d73199356b998ca3f430bac934a99b7d75bf77417bca94e091cb"
+    },
+    "02-ml-fundamentals/19-ml-system-design": {
+      "source_hash": "0b2990f87b178f729150304e88c32f6b41c315bfd7d0ed30ba84c3654c9be9b7"
+    },
+    "02-ml-fundamentals/20-model-monitoring-and-drift": {
+      "source_hash": "c7d059e55efd1e93278f60e2b3a05f5448c9e3016176ce8340e47baff1e1de46"
+    },
+    "02-ml-fundamentals/21-feature-stores-and-training-serving-skew": {
+      "source_hash": "7858b272d2c426e9a48c1d023645e8e010b8d5d89f72c3e3b09a232f8a5f4e61"
+    },
+    "03-deep-learning-core/01-the-perceptron": {
+      "source_hash": "9155cfee7521cb5f07332b038bddb52055da2297baf90a2ec566de3210f4c1ba"
+    },
+    "03-deep-learning-core/02-multi-layer-networks": {
+      "source_hash": "b70f547b0e939f78b15a7129ac4753b69f73aa48023663dd6d4913b99ebda300"
+    },
+    "03-deep-learning-core/03-backpropagation": {
+      "source_hash": "3650022765dfdfeb508f1cf8571dcca07c834f514efb14f202395caa6e15fba0"
+    },
+    "03-deep-learning-core/04-activation-functions": {
+      "source_hash": "ed99907cec27dbee8438480e4d905ae77e1afc46c3773fb81ee1f80ef110f7f9"
+    },
+    "03-deep-learning-core/05-loss-functions": {
+      "source_hash": "96c8ecb9a53e7e139c347cd0c8ffbf4193550eaae2ba3a0426157eba0bf84e95"
+    },
+    "03-deep-learning-core/06-optimizers": {
+      "source_hash": "7d220bf00f715a565148d4293f36091f8204f7348fb8041a1dd93becf91f437e"
+    },
+    "03-deep-learning-core/07-regularization": {
+      "source_hash": "7b22fcc30803550cef1fc03aba4507d5f1fef02f45ebe28ebb3b7487b94009d8"
+    },
+    "03-deep-learning-core/08-weight-initialization": {
+      "source_hash": "d2d02eb67945d316cf036a5323bf8f77da058e03a23656c0aa55fa17859c1adb"
+    },
+    "03-deep-learning-core/09-learning-rate-schedules": {
+      "source_hash": "a708ab446be30bfbaa1b4d255b6f572a882be4d1bc7a5ac48679a11a945c943d"
+    },
+    "03-deep-learning-core/10-mini-framework": {
+      "source_hash": "0169d89014aae606ba49bb74ed4753f82249b9ef7de8ddc662cc7dde09656fb1"
+    },
+    "03-deep-learning-core/11-intro-to-pytorch": {
+      "source_hash": "097a4d314a056d0a9ddafedf0f6c2bfcc3812fe916591e48c3ae5daec7048331"
+    },
+    "03-deep-learning-core/12-intro-to-jax": {
+      "source_hash": "9fe3133043ee5c5841555859f2e60f3cd11c6ee194ae7dd4ff6788a97d307a50"
+    },
+    "03-deep-learning-core/13-debugging-neural-networks": {
+      "source_hash": "dc610caff98900df37b4c9d66a8dd7f1e959706f664201e7190268c9aa81a378"
+    },
+    "04-computer-vision/01-image-fundamentals": {
+      "source_hash": "76ec2a379ed083c4f4dfabae94de9aaffd89f29c76ed812d9dc1ee6df9b24cb1"
+    },
+    "04-computer-vision/02-convolutions-from-scratch": {
+      "source_hash": "13e47587d5ade65d7b34ef1461c26ce3ab85a7267a6b872f446871f9688944f7"
+    },
+    "04-computer-vision/03-cnns-lenet-to-resnet": {
+      "source_hash": "a243c17e83909e9bea1c083e1587790768da6cbfddcdfc39ff19cc5ad91684bb"
+    },
+    "04-computer-vision/04-image-classification": {
+      "source_hash": "0af8e07488ade00c322b681d8889a968987dfe40b0f61180a10533eece8a9571"
+    },
+    "04-computer-vision/05-transfer-learning": {
+      "source_hash": "a4f6aae738351e23e59a2e1e7e623dcdd80619cb761e940fe70753c0f6621691"
+    },
+    "04-computer-vision/06-object-detection-yolo": {
+      "source_hash": "05a0492e3e9dfa7a9741012eff04bf01bfb006cba332c8ac020b1edb1cbdb8bb"
+    },
+    "04-computer-vision/07-semantic-segmentation-unet": {
+      "source_hash": "81af3735be0f9a8b904f3008084e52a18a6eea157197acfc87e592553da5f194"
+    },
+    "04-computer-vision/08-instance-segmentation-mask-rcnn": {
+      "source_hash": "0f4e856ae4965d90b4055fbf73541b84a4cb9feea80bb6a4da3b5af4e04280d1"
+    },
+    "04-computer-vision/09-image-generation-gans": {
+      "source_hash": "3bbea9e3b697b2355934d70df8ead6646ec39aa67cdeda580b2e0be659d5a951"
+    },
+    "04-computer-vision/10-image-generation-diffusion": {
+      "source_hash": "b075e76e0b94a3d54919f392215cc24d3d1971d801e5d6a600082cd07d7d973c"
+    },
+    "04-computer-vision/11-stable-diffusion": {
+      "source_hash": "8f7dd3fa44ea9ffdea9f696e6a841a1e6df7d8e9bee187a8f520099ff83314a9"
+    },
+    "04-computer-vision/12-video-understanding": {
+      "source_hash": "078e43651935c7fd650fa1b11588573a26d4979d29d59dab0107b8089c4043c4"
+    },
+    "04-computer-vision/13-3d-vision-nerf": {
+      "source_hash": "08a2191572ee887175890e6f2835b8090306f7614222ac4508efad2413476f3e"
+    },
+    "04-computer-vision/14-vision-transformers": {
+      "source_hash": "5ec7f2e9fbe6a9ff2ed1981f0ebf8be2ec29fa8a63379701a43d4e16c621fd0e"
+    },
+    "04-computer-vision/15-real-time-edge": {
+      "source_hash": "48728b0c4c921f076a9dbb739fe860f319c966bdbd0e58dd885722a81091c63c"
+    },
+    "04-computer-vision/16-vision-pipeline-capstone": {
+      "source_hash": "7288d82f4883b033e1785336628e5506d1e639256189654016c6bff80742f990"
+    },
+    "04-computer-vision/17-self-supervised-vision": {
+      "source_hash": "2e8e4464a866b5028cd70d7f88fcd0ab65bf8a79a5c31b106d2906160686822a"
+    },
+    "04-computer-vision/18-open-vocab-clip": {
+      "source_hash": "76585709ab74d6fa2f4f908a6e5d40b9a714e70c60169eba6f777912a91d29b4"
+    },
+    "04-computer-vision/19-ocr-document-understanding": {
+      "source_hash": "0eee2f9155fbc36b8056201d25eb376f3a0566ac209bfb19bd69eea9d9e0c902"
+    },
+    "04-computer-vision/20-image-retrieval-metric": {
+      "source_hash": "eb38f4d74d4dbc25bdec5c8984697a5cef35880f7b23c95e11a4d35907849dfa"
+    },
+    "04-computer-vision/21-keypoint-pose": {
+      "source_hash": "ea6705b91e067902a07fc78a4769400aeb1f505876d53ae7ae443da672a40a57"
+    },
+    "04-computer-vision/22-3d-gaussian-splatting": {
+      "source_hash": "cb90cbe59c9db1c08ff31782f912a0d040b7da1fc97369c0060025f777b38147"
+    },
+    "04-computer-vision/23-diffusion-transformers-rectified-flow": {
+      "source_hash": "2ff0554bdd0df3d473c318f44aa41bf564853f832c92063e3c47ab6ce92b3ab0"
+    },
+    "04-computer-vision/24-sam3-open-vocab-segmentation": {
+      "source_hash": "56e317c037a7b9fb92c05d8738f795c30b11e5cc3e082127984a1ca25a2bd040"
+    },
+    "04-computer-vision/25-vision-language-models": {
+      "source_hash": "8998f05f5d863f11139112ef6d845dce76cd3efc7756d6ea040ccb3bad018578"
+    },
+    "04-computer-vision/26-monocular-depth": {
+      "source_hash": "12de986ac233c7f8fce1f284f5d76c9e8251073ad8b043bfe75ff376c0273a70"
+    },
+    "04-computer-vision/27-multi-object-tracking": {
+      "source_hash": "4b47b07c13d23ed224b6b7b3c87412caea7d5d74a47a0ca700948d7fa32a6be8"
+    },
+    "04-computer-vision/28-world-models-video-diffusion": {
+      "source_hash": "1e094e6c62bd4a993f1255bc8d3f70677441b72be94fdc494fd84a93ec9e9bcb"
+    },
+    "05-nlp-foundations-to-advanced/01-text-processing": {
+      "source_hash": "7f51fde4438ac702cb8d94f879569dc5b3cbe7bee3791c744865aa4e6499df34"
+    },
+    "05-nlp-foundations-to-advanced/02-bag-of-words-tfidf": {
+      "source_hash": "a64a5bfbc884a7deeeba34e8e943191877a691862696691e6857db348859819f"
+    },
+    "05-nlp-foundations-to-advanced/03-word-embeddings-word2vec": {
+      "source_hash": "566500e6c43ebc3624a117e76843be1100be7951ac7780c37f15241299846b27"
+    },
+    "05-nlp-foundations-to-advanced/04-glove-fasttext-subword": {
+      "source_hash": "b0f4ddd3caf44026d130fc02db30897d5ff7dcb81409c62a5e685fa38b145045"
+    },
+    "05-nlp-foundations-to-advanced/05-sentiment-analysis": {
+      "source_hash": "12751c92ed61b79c735db54412e45cb8eda4f607976d3a3761b7058394774370"
+    },
+    "05-nlp-foundations-to-advanced/06-named-entity-recognition": {
+      "source_hash": "ed8601c7f708e4c7a6b9aee62e846f852f77f0f3df8854915086383dc1b41dec"
+    },
+    "05-nlp-foundations-to-advanced/07-pos-tagging-parsing": {
+      "source_hash": "0467cecc52d9f320a8e9df719ea25d5d7a0d103d24873b28964e8671c479e053"
+    },
+    "05-nlp-foundations-to-advanced/08-cnns-rnns-for-text": {
+      "source_hash": "148568634778591e4ba2cded001ee032355bb17f8b87b34f4a13f3fa36e183c0"
+    },
+    "05-nlp-foundations-to-advanced/09-sequence-to-sequence": {
+      "source_hash": "70d54698bb43b284e1e717f3d69cf403b8df783b3c11936b23262d169b4c5326"
+    },
+    "05-nlp-foundations-to-advanced/10-attention-mechanism": {
+      "source_hash": "994a9a119000b1fdf5a144c3f3f8e67de28707492f549044da3a3130325adac8"
+    },
+    "05-nlp-foundations-to-advanced/11-machine-translation": {
+      "source_hash": "9314f85fb7d93de19996a04691112ea13c5b4a9d209e51228fb733f9b39567dc"
+    },
+    "05-nlp-foundations-to-advanced/12-text-summarization": {
+      "source_hash": "03f7b91257d205195884a5472c7fe90d2219e896881e39544c2e11b1f616a3dc"
+    },
+    "05-nlp-foundations-to-advanced/13-question-answering": {
+      "source_hash": "878b62393b344c604e769051b4576349e305098bfd150da0e60f2417839380ec"
+    },
+    "05-nlp-foundations-to-advanced/14-information-retrieval-search": {
+      "source_hash": "ad31988b04aee8413c1ed5f5414e2b766da4c2359583ce8457dfba38e30bbf54"
+    },
+    "05-nlp-foundations-to-advanced/15-topic-modeling": {
+      "source_hash": "82868c70477f50c5f1716313b51e8060c3800802260b2675e76e3af297a59e01"
+    },
+    "05-nlp-foundations-to-advanced/16-text-generation-pre-transformer": {
+      "source_hash": "4a2c92eb56502239dddc0213113bf8484c4c245dd5a14d71a93b0f95d9200f27"
+    },
+    "05-nlp-foundations-to-advanced/17-chatbots-rule-to-neural": {
+      "source_hash": "9f456421c381e853ae0172dafdbff30980cd38fac2c591e9de464350021a2363"
+    },
+    "05-nlp-foundations-to-advanced/18-multilingual-nlp": {
+      "source_hash": "a17a4611e21dd2b52a4817699a7195ba79c095999ee0c18aa69045f8ba7eedbc"
+    },
+    "05-nlp-foundations-to-advanced/19-subword-tokenization": {
+      "source_hash": "1d15c01b0538876271544ca18bae413392561692edfec93a361da8d01b54424e"
+    },
+    "05-nlp-foundations-to-advanced/20-structured-outputs-constrained-decoding": {
+      "source_hash": "9a628bd2d03707189860340d747c1c7e1523108ad61bae2db24f33842ca45891"
+    },
+    "05-nlp-foundations-to-advanced/21-nli-textual-entailment": {
+      "source_hash": "16abb84043a60a9446c9a245f03ddee2fa781ffefb69dcdeef086ee8e1997f16"
+    },
+    "05-nlp-foundations-to-advanced/22-embedding-models-deep-dive": {
+      "source_hash": "818eb0777d87d9c7ea7d0a4db26a623363b695db7576752525f984c13801fa2f"
+    },
+    "05-nlp-foundations-to-advanced/23-chunking-strategies-rag": {
+      "source_hash": "b8b7d9323c9387e7f6b96b5590b767631de766b169b081a128bc70c9648b7372"
+    },
+    "05-nlp-foundations-to-advanced/24-coreference-resolution": {
+      "source_hash": "b263bf57c76f4f0e475857b457dc956df2f811e6a26a7b99ecdea3171870ff67"
+    },
+    "05-nlp-foundations-to-advanced/25-entity-linking": {
+      "source_hash": "c64abfb8d740d7eff75c0483731d8894ce9b7f8e266ef02d96003ae321fac752"
+    },
+    "05-nlp-foundations-to-advanced/26-relation-extraction-kg": {
+      "source_hash": "52dad7138b9ea6492a657c8e720344b756954eb9d3e1f1cb628861ee559beec7"
+    },
+    "05-nlp-foundations-to-advanced/27-llm-evaluation-frameworks": {
+      "source_hash": "d8e4cfc3170dab11adbb0f4fbe50476f5de6b2ea682666b03729f9cf583dacbb"
+    },
+    "05-nlp-foundations-to-advanced/28-long-context-evaluation": {
+      "source_hash": "16c5ebb12cf700897c1b117e26bea78d1f26d62e4134b0eb9a5c8bec71bc3c25"
+    },
+    "05-nlp-foundations-to-advanced/29-dialogue-state-tracking": {
+      "source_hash": "588391136ea276236668102eb368c761f7552625751368ac435ee8cd28a3af1d"
+    },
+    "06-speech-and-audio/01-audio-fundamentals": {
+      "source_hash": "1b866cbb7357515dbaad99fbc87bd2d74af1361b74b9621a424d71d60fcec8b3"
+    },
+    "06-speech-and-audio/02-spectrograms-mel-features": {
+      "source_hash": "2a7f2c2a64ca8733c4bb7fd129fbdc27e80a79348087ac6bf5b8f27225fecf6a"
+    },
+    "06-speech-and-audio/03-audio-classification": {
+      "source_hash": "8df38af9f202ab331671b6c096d9db5aff005dc71f16a598194961a4a9c5cd54"
+    },
+    "06-speech-and-audio/04-speech-recognition-asr": {
+      "source_hash": "a5f40471ca641a086e22512495400ef5807df4bb70e9e05e7c52a161fafa077a"
+    },
+    "06-speech-and-audio/05-whisper-architecture-finetuning": {
+      "source_hash": "8f8c75c3e56578994f3653e67ed365b8afdb69b788ce75b9f9cfa6707a5d131a"
+    },
+    "06-speech-and-audio/06-speaker-recognition-verification": {
+      "source_hash": "fc4a39417c5b9921f9dbcd0f0bb3b6dab560095424ad859152072b9694950006"
+    },
+    "06-speech-and-audio/07-text-to-speech": {
+      "source_hash": "f7ca57b34f6f4fdc5c3be36f2bca1dadc16981f872ea615a56415e990273b54c"
+    },
+    "06-speech-and-audio/08-voice-cloning-conversion": {
+      "source_hash": "29f8b23669ba8b936bc178bc3ffd8e29151c711c74640ff2613f6122bab93dba"
+    },
+    "06-speech-and-audio/09-music-generation": {
+      "source_hash": "7bca860b4328cd1d63cb922087271b97d84227103b52b68e7201dd449a4854aa"
+    },
+    "06-speech-and-audio/10-audio-language-models": {
+      "source_hash": "1fb144dd9c402f5de3157803a4a2cd31a0691d257ad7eebbaab75e08fa713294"
+    },
+    "06-speech-and-audio/11-real-time-audio-processing": {
+      "source_hash": "38770fe883e05dd7bc541c3d3dbca612686e46d48c7d9a2f4ab2b8b9bb9735db"
+    },
+    "06-speech-and-audio/12-voice-assistant-pipeline": {
+      "source_hash": "d33b6eaceef59e92dc3865a3c4d677c865567f049bcddb524cccb75b72620e30"
+    },
+    "06-speech-and-audio/13-neural-audio-codecs": {
+      "source_hash": "b7d7b2f9fb6792789448f4fa8361bc5c51b479a8f6ec7af4b5def48f3d1b9448"
+    },
+    "06-speech-and-audio/14-voice-activity-detection-turn-taking": {
+      "source_hash": "3d87d890c5ae38687d7ee79d4f7abf4f43d64bb7e3f6a54012621f968bba1ea4"
+    },
+    "06-speech-and-audio/15-streaming-speech-to-speech-moshi-hibiki": {
+      "source_hash": "805da83feb70c22dd3dbc860b90041a7281a21bb9fdcb452efcb03ee42c34624"
+    },
+    "06-speech-and-audio/16-anti-spoofing-audio-watermarking": {
+      "source_hash": "d07361e94284a279a473642b2f6afce394e24ca89d4bd61254c26b0c5b1ac32f"
+    },
+    "06-speech-and-audio/17-audio-evaluation-metrics": {
+      "source_hash": "fa4b5c6e1d1304754e1d3060b9344b6adc6d49e4992a2b09079745b5c3d14a1b"
+    },
+    "07-transformers-deep-dive/01-why-transformers": {
+      "source_hash": "31ac7781c84fcc566c2832c518ac0a19c157dff563546a3617392c7f0bd168cd"
+    },
+    "07-transformers-deep-dive/02-self-attention-from-scratch": {
+      "source_hash": "cbac89a4606c12e6dbcfdc1c68844732107a7e279377b0f3f5c6a37e213fd4db"
+    },
+    "07-transformers-deep-dive/03-multi-head-attention": {
+      "source_hash": "b65d35b7fc8bc60f91debbbd79ff41cbc8bcfe8363f5f8dc486a24a4e1543408"
+    },
+    "07-transformers-deep-dive/04-positional-encoding": {
+      "source_hash": "07d2e8f497721bec0650eb2ef2d995c71648a1f20c56667bdca9a31d764d1302"
+    },
+    "07-transformers-deep-dive/05-full-transformer": {
+      "source_hash": "b6b70606d3ee9b0a4d7165bb78c97248da19aca1de0e05c576ef98640f25bac4"
+    },
+    "07-transformers-deep-dive/06-bert-masked-language-modeling": {
+      "source_hash": "9d348ce51778c6d6d09e84ca0b5dee5d8a5b375f9bdd01d689398a2a38f87550"
+    },
+    "07-transformers-deep-dive/07-gpt-causal-language-modeling": {
+      "source_hash": "2790f7f8ac85bd7727ff77f7b51818548da6ca39ae99b9742e52cc904e854547"
+    },
+    "07-transformers-deep-dive/08-t5-bart-encoder-decoder": {
+      "source_hash": "579d31995fd22243f8cc62085c1fa2e77ecb07ef562d1325d14c72644f1fd026"
+    },
+    "07-transformers-deep-dive/09-vision-transformers": {
+      "source_hash": "47a705500693b9b20bf52791b48eded19e89173e67ca98041eafd721e3d531b2"
+    },
+    "07-transformers-deep-dive/10-audio-transformers-whisper": {
+      "source_hash": "2d1f70f1e4241a15760d9b223fe9325958ece33c7d784b40319f61e5105f544e"
+    },
+    "07-transformers-deep-dive/11-mixture-of-experts": {
+      "source_hash": "91f671b2514e990a6dfa791bf2308db216a9b59618c91da41a708b292f6cee73"
+    },
+    "07-transformers-deep-dive/12-kv-cache-flash-attention": {
+      "source_hash": "f6e0f0941aa6d9ea04133df31971c9c3e095b0cc5fbf61156de2ef95e4fa3f1c"
+    },
+    "07-transformers-deep-dive/13-scaling-laws": {
+      "source_hash": "5400535eb637eda26854e2184af2b7e6642d8ad98dcebfbee7419410a0960fca"
+    },
+    "07-transformers-deep-dive/14-build-a-transformer-capstone": {
+      "source_hash": "1f8468652dd27eb7b8005038ce04c75fd536e18d887f7a8bc507d2c8fd42ced9"
+    },
+    "07-transformers-deep-dive/15-attention-variants": {
+      "source_hash": "ed3439d74a2a2d0bae9bbcce17fc103eb926ee48cf6a652fb3ff91e9c5c7ec0e"
+    },
+    "07-transformers-deep-dive/16-speculative-decoding": {
+      "source_hash": "33c4041ef51369ae0d9530a6137379e1a8bcf1cace7f17fdb4c7341d3c87e8ff"
+    },
+    "08-generative-ai/01-generative-models-taxonomy-history": {
+      "source_hash": "26247e65fb0475494d2191fbf5d3f8d2365b165f75d2a5a832b8299ec48ba37d"
+    },
+    "08-generative-ai/02-autoencoders-vae": {
+      "source_hash": "4b265b800278781e911cd819fd9b9060b48bc33a618a4ffafdcd57583654ece7"
+    },
+    "08-generative-ai/03-gans-generator-discriminator": {
+      "source_hash": "880fb656f7bddd56ba584bbb1b30e293b065eaa5a7460343ee2bce44a7178813"
+    },
+    "08-generative-ai/04-conditional-gans-pix2pix": {
+      "source_hash": "f8d6cf8629671f85f39c5bd22b8ad41a96d8596c89d72481a46c6b5943e51abe"
+    },
+    "08-generative-ai/05-stylegan": {
+      "source_hash": "17852f58ab1bbed136ecef6e3e0e329f556516b28e4309fd17458635b073c25c"
+    },
+    "08-generative-ai/06-diffusion-ddpm-from-scratch": {
+      "source_hash": "718b34fd1e827f805249e3b23666d69f1c3d8e781fd08a4ed2146f22f6ce8230"
+    },
+    "08-generative-ai/07-latent-diffusion-stable-diffusion": {
+      "source_hash": "fa77424f11dc08c0fa0b9957615eb236791c3e23dced0f7cd5f0a40b893da434"
+    },
+    "08-generative-ai/08-controlnet-lora-conditioning": {
+      "source_hash": "8e91f7afe6bae461d38577d7fcbabf19e4462fc8157e4c36a75e31077370610b"
+    },
+    "08-generative-ai/09-inpainting-outpainting-editing": {
+      "source_hash": "8552e5216c861af4006355e14ff627beb102b80cadcf18d2119e855f70a067af"
+    },
+    "08-generative-ai/10-video-generation": {
+      "source_hash": "1d963bc340d5d31388beaaa689a49810306346446f7c1ac6bbb923f3887f16b3"
+    },
+    "08-generative-ai/11-audio-generation": {
+      "source_hash": "4e2d98d8f5e82f77cecf50c0b73c231441a1739a3410d9705a92b4913050904c"
+    },
+    "08-generative-ai/12-3d-generation": {
+      "source_hash": "bb1297f0e4023f5b1f6d8d5268e34768a037d67c21f44d3f401c359e646136ff"
+    },
+    "08-generative-ai/13-flow-matching-rectified-flows": {
+      "source_hash": "d2a454d33cfe8691069f20243115cb1a4cff3fa3d146930a491b2611a8ecbad4"
+    },
+    "08-generative-ai/14-evaluation-fid-clip-score": {
+      "source_hash": "a29be699f27bbd5df24ba5ece858e8095a6bb7b2dbd5642aa3467db56b73f4ea"
+    },
+    "08-generative-ai/19-visual-autoregressive-var": {
+      "source_hash": "55797a05debe7039fc9f6388a8d1a09d8a9686249e5bd8ebfc1971755409ec49"
+    },
+    "09-reinforcement-learning/01-mdps-states-actions-rewards": {
+      "source_hash": "e3a9d06039dfc77e1b786fc7a1952f2ad9865a0e7e90782d0dd123739a8a1ce7"
+    },
+    "09-reinforcement-learning/02-dynamic-programming": {
+      "source_hash": "0a3c55a3e88bb9ab41033b8ac58642c275c3888940a20126461e21d2f0ac7ecf"
+    },
+    "09-reinforcement-learning/03-monte-carlo-methods": {
+      "source_hash": "babec6bba132cc318c83d39ac31d4515d4f39dee6c4a764635259165d31c0ca5"
+    },
+    "09-reinforcement-learning/04-q-learning-sarsa": {
+      "source_hash": "19aa73b36c6ed935b83980538450dd1c64bd902573120d43a72dd8add3e28d63"
+    },
+    "09-reinforcement-learning/05-dqn": {
+      "source_hash": "19956bfbbe3a0abf7448a708658c13e5c480357878839dae6de0011981bd06ce"
+    },
+    "09-reinforcement-learning/06-policy-gradients-reinforce": {
+      "source_hash": "d77cf04bf9e328b0efb248879df16b67dca9830ecdf4450915620bebeb051193"
+    },
+    "09-reinforcement-learning/07-actor-critic-a2c-a3c": {
+      "source_hash": "76a25e46b921435853d7c555c5297126347914d3b2804091433746263b1c7e3d"
+    },
+    "09-reinforcement-learning/08-ppo": {
+      "source_hash": "895d502f5230879f9ce84308adb0a80b11a273649f22e4ad01a8e11d35306fc8"
+    },
+    "09-reinforcement-learning/09-reward-modeling-rlhf": {
+      "source_hash": "01fca36e8da48ab49e9b81f9dc31e8dc0e00a33dc648a29d257b06729bf2af65"
+    },
+    "09-reinforcement-learning/10-multi-agent-rl": {
+      "source_hash": "f562696de9b2218277edd20c85aebfac594791c111e76d0d343be7c923fa431f"
+    },
+    "09-reinforcement-learning/11-sim-to-real-transfer": {
+      "source_hash": "f0507206f8d7da91fdeb22769a65be5bf289d0164f59b0025a03edd26b2864e1"
+    },
+    "09-reinforcement-learning/12-rl-for-games": {
+      "source_hash": "dc4744085323c1c710df5d8977e95603fd659be971954e91f5ae7c5640162fc1"
+    },
+    "10-llms-from-scratch/01-tokenizers": {
+      "source_hash": "a610edfbc9557f582cfcc1fddeefe3e3f34b3dd62da00341836af00579156669"
+    },
+    "10-llms-from-scratch/02-building-a-tokenizer": {
+      "source_hash": "82abf6155d819b770f97f769df8b72b6e1ee55365a55d86469e0a968d9486b62"
+    },
+    "10-llms-from-scratch/03-data-pipelines": {
+      "source_hash": "22a4bb3da4708cee6bbbffe618afd9c244e085ffc5e85c66bb4703002c525a10"
+    },
+    "10-llms-from-scratch/04-pre-training-mini-gpt": {
+      "source_hash": "ea1017c955dd0366f76cf53f766e5c1c10e41d52e7cca81a7a22f17c03318171"
+    },
+    "10-llms-from-scratch/05-scaling-distributed": {
+      "source_hash": "b9ae0ccea1f097aa7d3715f6578a007b167d065be32530ebb83dec516b2ca406"
+    },
+    "10-llms-from-scratch/06-instruction-tuning-sft": {
+      "source_hash": "a0413c8311b56776f7368253cda3e0a3d8183a6acc4d8e612df8809ecf995e4b"
+    },
+    "10-llms-from-scratch/07-rlhf": {
+      "source_hash": "30a1fc49e095627252b51e3760eaa1b3ddccd18f22d591978df6acab13f2eaf6"
+    },
+    "10-llms-from-scratch/08-dpo": {
+      "source_hash": "8ed68c9a1735cf8873001c591ef2ad0af65a18c376b9e1e082f54de00e48862d"
+    },
+    "10-llms-from-scratch/09-constitutional-ai-self-improvement": {
+      "source_hash": "af0f34ce409d3d83826fc41709188800bf84cf85318afb30884fa064752543ab"
+    },
+    "10-llms-from-scratch/10-evaluation": {
+      "source_hash": "89c01fff0229f0f8c3d7bfc6aa3ce18b66785b5961b1dbff1ca775d72c841eae"
+    },
+    "10-llms-from-scratch/11-quantization": {
+      "source_hash": "859b9d5f9cdb89478daeb224e8e4f6eb20d506bcc36213abf5723190f10217ed"
+    },
+    "10-llms-from-scratch/12-inference-optimization": {
+      "source_hash": "d502aa75594c7ba543a0093160c851ea1cd5982c529edcfc0efea9d0796a1cfc"
+    },
+    "10-llms-from-scratch/13-building-complete-llm-pipeline": {
+      "source_hash": "fe40adae45eb850687b3018a13ffcd9c4e7a7792bb9b7fdf70ea1aa3aec1a94f"
+    },
+    "10-llms-from-scratch/14-open-models-architecture-walkthroughs": {
+      "source_hash": "5733b9ea94a8917de0c1f60b99c1a085cefb78d7031fe25f1751cf920da0aad1"
+    },
+    "10-llms-from-scratch/15-speculative-decoding-eagle3": {
+      "source_hash": "def5e4c4173038ac537a9f1d501d385a9d6cd1445180fb8abe0a8df4ac5eaaec"
+    },
+    "10-llms-from-scratch/16-differential-attention-v2": {
+      "source_hash": "8b272a903f034da52649c5b0196ed2cc7cffed6f1f5d3d842e52108b28da91c3"
+    },
+    "10-llms-from-scratch/17-native-sparse-attention": {
+      "source_hash": "03a4582032b804add0e24ee58c5a7b2515a58617830d1463466f322c43c1eef2"
+    },
+    "10-llms-from-scratch/18-multi-token-prediction": {
+      "source_hash": "51c090d5541be4ee0c712f9b0441cb83812ed8fc0b17b24a93ee9ae68d8262bc"
+    },
+    "10-llms-from-scratch/19-dualpipe-parallelism": {
+      "source_hash": "29883e29f4cbd942cbf72d6617b1160b037365b1b59883b1a1e427f270be7517"
+    },
+    "10-llms-from-scratch/20-deepseek-v3-walkthrough": {
+      "source_hash": "33665a06442ab0b1773ef3ef7bf65852bb276685695e80209a17ec0b7025510e"
+    },
+    "10-llms-from-scratch/21-jamba-hybrid-ssm-transformer": {
+      "source_hash": "348d181647cd42ccb46d035110ddcf6308cc26f37b559673596c59d99a236f79"
+    },
+    "10-llms-from-scratch/22-async-hogwild-inference": {
+      "source_hash": "3e003a937780e90af6aba4893d5104effdb98d95dca66454b3d4422788e6c7b4"
+    },
+    "10-llms-from-scratch/25-speculative-decoding": {
+      "source_hash": "b62292991800cb2662f181c8a58e1928301aa57eca26bdbc1c6eb86ab540ad21"
+    },
+    "10-llms-from-scratch/34-gradient-checkpointing": {
+      "source_hash": "0e163637633045d697fc1ed0f88f3ad82297086b653f8c1dc909e843a240ab00"
+    },
+    "11-llm-engineering/01-prompt-engineering": {
+      "source_hash": "342126cd4dfb12e02a910da193fd3609388f6f0e6f79314e18bba6eda292c179"
+    },
+    "11-llm-engineering/02-few-shot-cot": {
+      "source_hash": "74b50bbd6ed857280d5691db90fd7a5436584ea065f5b8eb145a67a7f8ca7e52"
+    },
+    "11-llm-engineering/03-structured-outputs": {
+      "source_hash": "6d310ae5ce8f771c5668d8742f1d1b1c922e738c087225d7c4b31eed492e43d7"
+    },
+    "11-llm-engineering/04-embeddings": {
+      "source_hash": "21b2da56b70c914026936fce930ef6bf7a3a6319b13c5362a6ffcb7d60affaff"
+    },
+    "11-llm-engineering/05-context-engineering": {
+      "source_hash": "bb343a1aef4b46455524b753f7575d7e35c9e3d7185b7023746898f46fafcde2"
+    },
+    "11-llm-engineering/06-rag": {
+      "source_hash": "a0d5b356c1ce021f6a9ca0ccfd2693a7cae56802c6b17927fb72f116bd7b2752"
+    },
+    "11-llm-engineering/07-advanced-rag": {
+      "source_hash": "1fffa399fbba751c3e112397ae48af35e14dcc538bfbab5cfdfa841da2fc65f5"
+    },
+    "11-llm-engineering/08-fine-tuning-lora": {
+      "source_hash": "cc811f59307d63654a917759f262a65d3d45d4ef416693362c59e096cdb94a8f"
+    },
+    "11-llm-engineering/09-function-calling": {
+      "source_hash": "30695ec65c0ada92bac742cb5a287603a340c26ed7b1674767d886f54f591b29"
+    },
+    "11-llm-engineering/10-evaluation": {
+      "source_hash": "22f792158f65dcf8283c00ca612406b5d34c40a95d42e8961792a2f034204ee5"
+    },
+    "11-llm-engineering/11-caching-cost": {
+      "source_hash": "7eb024099bbd65d93bd0b6203ffecc13712f7418f052dbd76a18c54a4a8312dd"
+    },
+    "11-llm-engineering/12-guardrails": {
+      "source_hash": "7bca84f499c6a75c2f97253f3fa4cf85befb0fbcf66e4c882e125279686ad73f"
+    },
+    "11-llm-engineering/13-production-app": {
+      "source_hash": "c2dc0a6e0dea5276569fd7bd940b438590fbec2c1c81d5e571eb853a6a02712f"
+    },
+    "11-llm-engineering/14-model-context-protocol": {
+      "source_hash": "f91bb617a0f8bd3b6fa78add214b8bd113ff99d2e52d3bbbff3ff8e4f937a166"
+    },
+    "11-llm-engineering/15-prompt-caching": {
+      "source_hash": "b357f1a1e5f6afd5886ca2230d54e5b606ad0c848a6d3a40316451235154c47e"
+    },
+    "11-llm-engineering/16-langgraph-state-machines": {
+      "source_hash": "cd449175f7292a9821644d0b829cd0576a68f0da3aedbbc9e3547b45fd7b05cb"
+    },
+    "11-llm-engineering/17-agent-framework-tradeoffs": {
+      "source_hash": "12430c15a30c3f95a202a23c80838712db3a7b3c477c99ae744f5c54898d30d8"
+    },
+    "12-multimodal-ai/01-vision-transformer-patch-tokens": {
+      "source_hash": "ae76987bbccfa09cfe75d4377d61491b15d29f124e2522587dfd94e252db6fd0"
+    },
+    "12-multimodal-ai/02-clip-contrastive-pretraining": {
+      "source_hash": "7fff707b218b7a4bc72c9ec19b75c72f07d62a64084e86e0d6b28045a5680695"
+    },
+    "12-multimodal-ai/03-blip2-qformer-bridge": {
+      "source_hash": "4645fe0977b9dbf354a918bae32d0240beb2f90951c99fa1cf2870f2d48b726a"
+    },
+    "12-multimodal-ai/04-flamingo-gated-cross-attention": {
+      "source_hash": "a9718d2251190dee83d3b6e0b6a4005834a3b518dd1f0d827e0a324fbb9cb421"
+    },
+    "12-multimodal-ai/05-llava-visual-instruction-tuning": {
+      "source_hash": "44e5f8105f9acaefae1eb95ebe86fa678796dedbdea431ab7a7b87fdf0809e72"
+    },
+    "12-multimodal-ai/06-any-resolution-patch-n-pack": {
+      "source_hash": "37c3f0b147f3b03aaf59daca56701b6d5cfc1df2fa1972d4fd23b20f8de2e4d4"
+    },
+    "12-multimodal-ai/07-open-weight-vlm-recipes": {
+      "source_hash": "a67ed1991e85d275a0f968a9e8a5adae505bb3b4f256d0dbeddd4bf41c1689b6"
+    },
+    "12-multimodal-ai/08-llava-onevision-single-multi-video": {
+      "source_hash": "330304e5b4965da1880506b381ab61fa994f878106cc1454c5c56ed0d5c75f19"
+    },
+    "12-multimodal-ai/09-qwen-vl-family-dynamic-fps": {
+      "source_hash": "7eb013c046c0e536cdb7ec0f39f0ad447d3830f6a9ad126768ae729f985bc7fc"
+    },
+    "12-multimodal-ai/10-internvl3-native-multimodal": {
+      "source_hash": "915de70d71d6c5db46a43b6f85e2a79162807f0a0bb0bb509f400d9f5322c288"
+    },
+    "12-multimodal-ai/11-chameleon-early-fusion-tokens": {
+      "source_hash": "f19e04c4852706d9975389b513c680e013813cdcdf9ba81ec77fc6a39d0a1570"
+    },
+    "12-multimodal-ai/12-emu3-next-token-for-generation": {
+      "source_hash": "a94ab4c70d5bf986498ba253c31cdbf81f08598400addc82fc32b5e226b5291e"
+    },
+    "12-multimodal-ai/13-transfusion-autoregressive-diffusion": {
+      "source_hash": "4aaefdb50e20120971c696562f5059a81a616fd64d77248afea7dcde4dbaa35b"
+    },
+    "12-multimodal-ai/14-show-o-discrete-diffusion-unified": {
+      "source_hash": "0a4af044c4c422105db62a99bc792067a0fac75d4688ff4e8ee1c2cbbc03764f"
+    },
+    "12-multimodal-ai/15-janus-pro-decoupled-encoders": {
+      "source_hash": "697c5f067514c58b167ad711930b8718b304f1bef79fbbbfb431b2afa3d002e0"
+    },
+    "12-multimodal-ai/16-mio-any-to-any-streaming": {
+      "source_hash": "e470bb27c6b0e041cd36a89dfeb0026ce41327c256e492b1eb9a6d0ecccc263c"
+    },
+    "12-multimodal-ai/17-video-language-temporal-grounding": {
+      "source_hash": "94b3638242d6c0cc1ecf167095ab6dc3a685d6aa62fba4e889bc89f6fed512d6"
+    },
+    "12-multimodal-ai/18-long-video-million-token": {
+      "source_hash": "3ccdef02a78bf655d6fb0ee38bfcc802041cc04e6c6bcd1bb69a34a10898b9b1"
+    },
+    "12-multimodal-ai/19-audio-language-whisper-to-af3": {
+      "source_hash": "37efd92d72dbff8cde77c3de15d9d7e397d74ab42242428df8482a7219100819"
+    },
+    "12-multimodal-ai/20-omni-models-thinker-talker": {
+      "source_hash": "67c8b530860b2957eb987f0a7a1a3ea4f201b254db47bb6fab4d7f12510a2f6a"
+    },
+    "12-multimodal-ai/21-embodied-vlas-openvla-pi0-groot": {
+      "source_hash": "b49e20c67b6ccba5ba4b7fc83d51d88af7e226f0863c7c12dc46624da2f07513"
+    },
+    "12-multimodal-ai/22-document-diagram-understanding": {
+      "source_hash": "e24926b38d30c1b2f65890241c724b3599d32dd5ccb97876e77471c8c12aca84"
+    },
+    "12-multimodal-ai/23-colpali-vision-native-rag": {
+      "source_hash": "7ebf72935211afe682130f8dea65de1bb614dfe96c03129bdb60bc0567f80cf7"
+    },
+    "12-multimodal-ai/24-multimodal-rag-cross-modal": {
+      "source_hash": "23142e320b46e283495369ff9059df0716cfdd10235347b35043b8b55eb7a2e8"
+    },
+    "12-multimodal-ai/25-multimodal-agents-computer-use": {
+      "source_hash": "5929dfe72b8ed4fc20626a5cbcb7e0492343eaa9f35e6eee2284021be649b2d4"
+    },
+    "13-tools-and-protocols/01-the-tool-interface": {
+      "source_hash": "b6bf48f9a0e28daff3a4b9142b768b95c2cc7854bb56532b58cbdfc08a103d9d"
+    },
+    "13-tools-and-protocols/02-function-calling-deep-dive": {
+      "source_hash": "aa24fa46df4b86aa1c91eaa2c954074a4f6242848bc07c995ba05896e5651b65"
+    },
+    "13-tools-and-protocols/03-parallel-and-streaming-tool-calls": {
+      "source_hash": "c432739b2215e0dd769752335cef59d11518f6f453b9f6a449d673d7da200f50"
+    },
+    "13-tools-and-protocols/04-structured-output": {
+      "source_hash": "4cab72b558717834c5e1c13abff9c7c54096abb5dc96506ea4388d14a2e78c49"
+    },
+    "13-tools-and-protocols/05-tool-schema-design": {
+      "source_hash": "35fe0a5976c9429339d1d958d9f64fbe99100c2ef6cb9bb789047dfe563dc266"
+    },
+    "13-tools-and-protocols/06-mcp-fundamentals": {
+      "source_hash": "e6819b4388d7f544a847fa616783dfac299991758971f1a57fe4d8f90ab30585"
+    },
+    "13-tools-and-protocols/07-building-an-mcp-server": {
+      "source_hash": "8acac5ca68ac5a3057d94199905e5f26743fda4624b4eea05087a84e2857a76e"
+    },
+    "13-tools-and-protocols/08-building-an-mcp-client": {
+      "source_hash": "73f32b6c4f4826619aabaa0e4cc87c8b86a8b633e168f7650737fc16fdfa8a71"
+    },
+    "13-tools-and-protocols/09-mcp-transports": {
+      "source_hash": "0092f3d212295c3c84e78c4717026a6e8c50656f99c97ef234a4a8ba38035059"
+    },
+    "13-tools-and-protocols/10-mcp-resources-and-prompts": {
+      "source_hash": "33a78ce7ae71803648390a280e970b92ae20da8c4f7163d60819865fba348e07"
+    },
+    "13-tools-and-protocols/11-mcp-sampling": {
+      "source_hash": "9531c85283c173c9ca7948d517a429fb0693c1fe3f2a35c6f51eabb4dde945f4"
+    },
+    "13-tools-and-protocols/12-mcp-roots-and-elicitation": {
+      "source_hash": "4f7d5d8d91d3ebe26d86988aa184bf57495cd04208ed10fcbf87017e80c5a897"
+    },
+    "13-tools-and-protocols/13-mcp-async-tasks": {
+      "source_hash": "162a09298be06761cb20769ceb6a8efdb47fa1dec6c71815ff5e092c7eaac918"
+    },
+    "13-tools-and-protocols/14-mcp-apps": {
+      "source_hash": "d545708c1f6d42f565ecfce9584318c4f4239361464ad276a00cc3cb30637cb8"
+    },
+    "13-tools-and-protocols/15-mcp-security-tool-poisoning": {
+      "source_hash": "d07d5ebbf356bc1f89cb678b9278ff091022a48e8a341adeb7fc921129e22e2c"
+    },
+    "13-tools-and-protocols/16-mcp-security-oauth-2-1": {
+      "source_hash": "f4d9dde4b4733ccf2b1b08eb5e673d6b42b21bae5def41f75da7a0ce3d55d9aa"
+    },
+    "13-tools-and-protocols/17-mcp-gateways-and-registries": {
+      "source_hash": "3328a3dadeb52a9761c065f0e6baa13cdf585dc33c88470300e06646085a1be4"
+    },
+    "13-tools-and-protocols/18-mcp-auth-production": {
+      "source_hash": "e98cc85f54c2866e3ca59e81222082fc42093cb12487076de8fdb169b6b22763"
+    },
+    "13-tools-and-protocols/19-a2a-protocol": {
+      "source_hash": "6ffa81e756cabc661d58601f42a44a276d7c920c397e854a395d3187b97d9c9f"
+    },
+    "13-tools-and-protocols/20-opentelemetry-genai": {
+      "source_hash": "ebe41a7a24b9b154b780588ff8292d3b2dd5699ffbdfc8500e36cb8f86c20d0b"
+    },
+    "13-tools-and-protocols/21-llm-routing-layer": {
+      "source_hash": "c003cee5e221e61268f5b1ece1b3a839193a992243950732fabe52dc646a5668"
+    },
+    "13-tools-and-protocols/22-skills-and-agent-sdks": {
+      "source_hash": "eaf200cabdccf167359ea11288d3a218683bd480be662c9f87f7fd37945aa739"
+    },
+    "13-tools-and-protocols/23-capstone-tool-ecosystem": {
+      "source_hash": "aec50cdafc6a4e91b8a1698fa4c0f1d0cfca356d3de9c8937b657e0fd98617b1"
+    },
+    "13-tools-and-protocols/24-skill-discovery-and-progressive-disclosure": {
+      "source_hash": "983d3ae13336a89447b7e8d621d3f315f482c6d0f3da87d7e3e5d1ee3b1dfd47"
+    },
+    "13-tools-and-protocols/25-skill-invocation-and-routing": {
+      "source_hash": "ab9a79f8a17f8db72ee9bc2d161f06d626c05bd1d5c4a8962316649ebae8e212"
+    },
+    "13-tools-and-protocols/26-skill-permissions-sandboxes-and-trust": {
+      "source_hash": "f4c2a85c579a1c09300c66272779c018689ff7e4c984976a17ece867966888f2"
+    },
+    "13-tools-and-protocols/27-skill-evals-packaging-and-portability": {
+      "source_hash": "16596268d3b856f9cbffdffae816740a3857aa57bde0b31632c048749b7b1485"
+    },
+    "13-tools-and-protocols/28-mcp-tool-contracts-and-content": {
+      "source_hash": "318502acce6a91e0bb71e7d16e593ada50b05b577dc17a6c7ce34af3c902f40f"
+    },
+    "13-tools-and-protocols/29-mcp-reliability-cancellation-and-flow-control": {
+      "source_hash": "3973a6da2b3043ac1c45b807b2b1fe6c519ee2938d646b6753c9fcbcd5f60e1d"
+    },
+    "13-tools-and-protocols/30-mcp-registry-supply-chain-and-drift": {
+      "source_hash": "8003babaeeb2a1eeec7123694b9a5441aecc7fa6e7f220362fa98489e9ada797"
+    },
+    "13-tools-and-protocols/31-mcp-conformance-versioning-and-operations": {
+      "source_hash": "89cd680349ae3fea97f3aaf2ca437977a0b374907a5abe768ff757d4a442bda7"
+    },
+    "13-tools-and-protocols/32-program-anatomy-elf-from-scratch": {
+      "source_hash": "a26063131a41a7116ae2d65f8679d0c1b4672502e9d9789cd6a11a0cd5f84502"
+    },
+    "13-tools-and-protocols/33-disassembly-and-control-flow": {
+      "source_hash": "81d4f7c7253c14defb44373cf496ca3a186169c2786dc01bbe5df71f5fe3726a"
+    },
+    "13-tools-and-protocols/34-lifting-to-pseudocode": {
+      "source_hash": "47e548c6de9b0f2138486cd0c4b7a81e36a9b73d2b5d68b31d2a87d5ea8d312c"
+    },
+    "13-tools-and-protocols/35-evidence-confidence-and-unknowns": {
+      "source_hash": "634ecd031dc6bee8dfb8380e20e432011d51bcc26429621be753ef1dc2c57c74"
+    },
+    "13-tools-and-protocols/36-rebuild-and-prove-equal": {
+      "source_hash": "06ba329c28458928b5cf0ec529ca5303c3042717bde1af5b24aad8fb67cfe2a6"
+    },
+    "13-tools-and-protocols/37-the-reverse-engineering-landscape": {
+      "source_hash": "6e26b6692f81c4ffac962d3210b1f05bac156dec8649c2dbb14d94bcbc719323"
+    },
+    "13-tools-and-protocols/38-calling-conventions-and-stack-frames": {
+      "source_hash": "b83a96a07c0237c7c7edb1d59af2aace38ad9899abc6db6501558cf982e62677"
+    },
+    "13-tools-and-protocols/39-compiler-idioms-and-optimization": {
+      "source_hash": "8899427ac4dd257abbd507a18ed9fc10e8d60fdf4df55283f4972327212f1536"
+    },
+    "13-tools-and-protocols/40-linking-loading-and-stripped-binaries": {
+      "source_hash": "9a3b245aa2b8aa64458e4b7b303fc5cd71d890582a146338dc2055a3e34c74e7"
+    },
+    "13-tools-and-protocols/41-recovering-data-and-types": {
+      "source_hash": "4c72ae3e38402e639852ecc967033a7f77361429655e803f86ddd8be7dffca39"
+    },
+    "13-tools-and-protocols/42-dynamic-analysis-of-your-own-program": {
+      "source_hash": "9548c916ec04a9b9bc29694b1230b2bcd99b50b23b852fe28a59807f74ae37c2"
+    },
+    "13-tools-and-protocols/43-bytecode-and-managed-formats": {
+      "source_hash": "49d2db5b70892fe7a8ee48b634c2805f78154527d60c1ecb10cdd5166bcc6d0c"
+    },
+    "13-tools-and-protocols/44-binary-diffing-and-symbolic-execution": {
+      "source_hash": "43f7d2f24296423d771d3ea04c052277bbce603115b759886207713b619714f6"
+    },
+    "13-tools-and-protocols/45-ai-assisted-reverse-engineering": {
+      "source_hash": "9814ebdfca9a5404b63b51783e41babfa45abbfbdd2f81297e98b9257830c46b"
+    },
+    "14-agent-engineering/01-the-agent-loop": {
+      "source_hash": "5f40298b9c1cbabd41a85ede8679c80c55b9a6c9ed92ac661ecd1f9aba18b83e"
+    },
+    "14-agent-engineering/02-rewoo-plan-and-execute": {
+      "source_hash": "77bae11694f6830852c5f3f96eeab8ba6ad7b7c471eee95abbbd7f1325f764f0"
+    },
+    "14-agent-engineering/03-reflexion-verbal-rl": {
+      "source_hash": "d5ca27d862b04ec0b95c8d6a5b9dba71ba5bebdfaa5507d0045bb328bde1c6c1"
+    },
+    "14-agent-engineering/04-tree-of-thoughts-lats": {
+      "source_hash": "49d991ecd7ed41e4f9bf9592ca3846dd24891a58d7751da8dc3fe89f56051717"
+    },
+    "14-agent-engineering/05-self-refine-and-critic": {
+      "source_hash": "e37637e9879e9f90c9f1f2e9a5f8b320d6eea2feb14f2bcd2f3f97c031713ad0"
+    },
+    "14-agent-engineering/06-tool-use-and-function-calling": {
+      "source_hash": "17c7dab4c590fb0d604cdacf1f6ca3983b09690616101fcf74f6e41444b14158"
+    },
+    "14-agent-engineering/07-memory-virtual-context-memgpt": {
+      "source_hash": "b9b63012a18809ee8c412cb45a136d7603e4caecaf0369221275e4759103c373"
+    },
+    "14-agent-engineering/08-memory-blocks-sleep-time-compute": {
+      "source_hash": "2277d5b87fb46ca276dfdf549bf2695a083b98d1fc6e50f95cb96e6798b72eb5"
+    },
+    "14-agent-engineering/09-hybrid-memory-mem0": {
+      "source_hash": "8a1e745fd819b3039ddeabad018c6c818b0a607f05c7f32f811dcc1d088ddfe7"
+    },
+    "14-agent-engineering/10-skill-libraries-voyager": {
+      "source_hash": "74b6f8b3a99d8618121e1a7eb69bdeccbccf6b0fdf6ff68f52e4660e095fb1c0"
+    },
+    "14-agent-engineering/11-planning-htn-and-evolutionary": {
+      "source_hash": "87b298fffee4e9b4acc2e87f974d45547fab759d95be8179756017d9989d04f5"
+    },
+    "14-agent-engineering/12-anthropic-workflow-patterns": {
+      "source_hash": "5358e210da6cb1daae5bd231571cf5fe620e07807c4d6a775cbada6f7dec1417"
+    },
+    "14-agent-engineering/13-langgraph-stateful-graphs": {
+      "source_hash": "eff89296945c389b50c9491488940eebee8dc61756ea274a2b1a094709fb4951"
+    },
+    "14-agent-engineering/14-autogen-actor-model": {
+      "source_hash": "95008ec6465e365824fc4400b3869f5d86d18e7744fa7c7752e6e113da55d71d"
+    },
+    "14-agent-engineering/15-crewai-role-based-crews": {
+      "source_hash": "7d4074c3393e128d5d2107662f6bb32ad3941daff1d8dbd2878a9d640441aeba"
+    },
+    "14-agent-engineering/16-openai-agents-sdk": {
+      "source_hash": "717928a83b334c3b579d3c084bbca05d05be8ccb51ff7ffca1afbb22b60a5184"
+    },
+    "14-agent-engineering/17-claude-agent-sdk": {
+      "source_hash": "5c4dfec90c4719fe5be0ec9c83284c79e4c8f342ebcdc14b4a787ca9b9fb56d3"
+    },
+    "14-agent-engineering/18-agno-and-mastra-runtimes": {
+      "source_hash": "825b6ee75ecab014886579c42bbae112c977eb6b51b91d570c412faa3933ec79"
+    },
+    "14-agent-engineering/19-benchmarks-swebench-gaia": {
+      "source_hash": "1f6969969aa0188aadd3eb08fc5e954272b2ada7af19a6f3cd45190589d12fed"
+    },
+    "14-agent-engineering/20-benchmarks-webarena-osworld": {
+      "source_hash": "b8bf09222e3354a4821118c55d121da7a9389837f687f2e1953fbaa86a79ec63"
+    },
+    "14-agent-engineering/21-computer-use-agents": {
+      "source_hash": "cb7dd4c16d935462eba8e79a8266c9f055199e5e3c78e3eea75adce252b36434"
+    },
+    "14-agent-engineering/22-voice-agents-pipecat-livekit": {
+      "source_hash": "1e19a345e8d265ac41ccb7db02221abfcbcb241e2d92d8eddf7a84833c3791f2"
+    },
+    "14-agent-engineering/23-otel-genai-conventions": {
+      "source_hash": "368256f3ca81864c30c7f11fce1bd54aa6fe9cfb231300d8624ddbb0b18e5ac4"
+    },
+    "14-agent-engineering/24-agent-observability-platforms": {
+      "source_hash": "fb1ae59e5fd5be84fcff9de9aa7207769b5f3ce55098c65fabd7ac09a8c8394b"
+    },
+    "14-agent-engineering/25-multi-agent-debate": {
+      "source_hash": "68f57c1077f7de89fc8361c1103c40f51a97e6777c48b5d0d064a8e852a5f325"
+    },
+    "14-agent-engineering/26-failure-modes-agentic": {
+      "source_hash": "4e1157cbd7c55cb83c83d615b4989eb4aa5d1a3d7d89a2de658b88d027b355e8"
+    },
+    "14-agent-engineering/27-prompt-injection-defense": {
+      "source_hash": "e0a8cb4745eb7dda8309b7ab2fdf0152edc1f5e18ee4f4b334a4c397d3c4aef5"
+    },
+    "14-agent-engineering/28-orchestration-patterns": {
+      "source_hash": "444df0431af097e50bf90c14ccf9eb41530b4e3963b2f778148960a9e3409510"
+    },
+    "14-agent-engineering/29-production-runtimes": {
+      "source_hash": "3def6ae4a4dc4b4da7449a1fa4ef444cea22041866ca59d0690260b255d57321"
+    },
+    "14-agent-engineering/30-eval-driven-agent-development": {
+      "source_hash": "244ffa2fbcead10269c318a3ab7492f4bf1f9e34b16ac028f432a65983df49bc"
+    },
+    "14-agent-engineering/31-agent-workbench-why-models-fail": {
+      "source_hash": "36af4e90bbc49c169065a70bb028be10e1446aafc87a72b6cb98d8d0ee9bb0e8"
+    },
+    "14-agent-engineering/32-minimal-agent-workbench": {
+      "source_hash": "3feb0b08af14790a1900b398a6261f3185fc7c6807dbb58a54e4e8b63aee35bc"
+    },
+    "14-agent-engineering/33-instructions-as-executable-constraints": {
+      "source_hash": "315ea6032c4e9051494c1e88b24c67416c4248ef23f8cb9961f338f2ffb7c59e"
+    },
+    "14-agent-engineering/34-repo-memory-and-state": {
+      "source_hash": "80336064c3044ec4cf9e04ce6f1e9593ad413a7d43e8d1e7505549910f26ddc2"
+    },
+    "14-agent-engineering/35-initialization-scripts": {
+      "source_hash": "7fca38c8cfab23aa339707385389c9fafaf2915c9536b575a38d61422c2db61d"
+    },
+    "14-agent-engineering/36-scope-contracts": {
+      "source_hash": "b0e02ec32434f693ee6d2d7984b9b89f9d8569861531d0367767261b842db9ae"
+    },
+    "14-agent-engineering/37-runtime-feedback-loops": {
+      "source_hash": "c344a674a928a4757e49267873b901769b57c664a7f8f6c68875da053561bdc2"
+    },
+    "14-agent-engineering/38-verification-gates": {
+      "source_hash": "9bc482c6f1623348d255578f22c59138e8d0485b69d58d8e71cc2b6a29ef796a"
+    },
+    "14-agent-engineering/39-reviewer-agent": {
+      "source_hash": "6e6acaa0c11e90b340d0b51bc3506a3c393b96e56526cacd376b93d5e03d42b9"
+    },
+    "14-agent-engineering/40-multi-session-handoff": {
+      "source_hash": "ea7c966604190d8059983d953a4a7a6468043d9dfc8c83411a0bd8e85bf58965"
+    },
+    "14-agent-engineering/41-workbench-for-real-repos": {
+      "source_hash": "9a58b9916cea0b7c4e5e1f49675cc66f5946b34b71695873f705d0efde0bfa45"
+    },
+    "14-agent-engineering/42-agent-workbench-capstone": {
+      "source_hash": "d03b1309eae007d989df5cfb4094d4cd508e1322a153c781a43df00313023607"
+    },
+    "14-agent-engineering/43-frame-the-task-before-code": {
+      "source_hash": "f449b44aa385420589590ed1741300cadcda60bf755f53b0ba4b17506b623297"
+    },
+    "14-agent-engineering/44-plan-from-evidence": {
+      "source_hash": "fb6d6d155ebf6528bbd15c8864b7f52f70f0e53487da0fe1feec50ce363ce1c1"
+    },
+    "14-agent-engineering/45-delegate-with-isolation": {
+      "source_hash": "e8e1648517f5ed33e64df41e05aa7fffea36cb002a5251fb5cb2d0d57edfd96d"
+    },
+    "14-agent-engineering/46-turn-feedback-into-system": {
+      "source_hash": "d331d44d4f902c96e8a94a55736a580e1fc1219e07ce8c060634982380bc64f5"
+    },
+    "14-agent-engineering/47-outcomes-before-output": {
+      "source_hash": "54161fa3be55204994aa8da9c2465f08f79e6153f3b1680e8890b63c1684df50"
+    },
+    "14-agent-engineering/48-discover-the-real-workflow": {
+      "source_hash": "9aab3b6f1670ed310a4b7615d350db780d944ed963c2b0a0509e3f48224a848f"
+    },
+    "14-agent-engineering/49-map-assumptions-and-risk": {
+      "source_hash": "dd135028173b9ea09383b24f13e7114ec4023a5e82d5ab75bf8af5d9756ecdca"
+    },
+    "14-agent-engineering/50-choose-the-smallest-testable-slice": {
+      "source_hash": "632c498b3f3d8f9f2a855c253bb31f0b427b61e329ebb56c4a94a034ab8c8810"
+    },
+    "14-agent-engineering/51-write-specifications-that-preserve-judgment": {
+      "source_hash": "6fd2736bb9c216b01a5ae0a3580c282cc0f0141fcb97b222d5c8b5e9642fe514"
+    },
+    "14-agent-engineering/52-design-success-metrics": {
+      "source_hash": "8a09f201f5b5bfdf9e5c7b592d757455cb597ace8a75f68efa1be1d01efcc2d9"
+    },
+    "14-agent-engineering/53-prototype-pilot-or-production": {
+      "source_hash": "bdb5a1e9f1e8a089c8b40edc826c18f999edebf9e7e0fded23da64d6f95fd398"
+    },
+    "14-agent-engineering/54-build-the-feedback-ratchet": {
+      "source_hash": "104e1c35317141e921e5c1a01ad6411d863341351462b7bd72f2d7ee6460ecbd"
+    },
+    "15-autonomous-systems/01-long-horizon-agents": {
+      "source_hash": "7cf7fe08cf58b6389c2786f3bd6f329a0ce3b78a0a236091aeaa91fddb5a4647"
+    },
+    "15-autonomous-systems/02-star-family-reasoning": {
+      "source_hash": "5a1d29f1d36186b0aa5319b7887def3ee88afe7661cd5ec2f4935f8cf8a48258"
+    },
+    "15-autonomous-systems/03-alphaevolve-evolutionary-coding": {
+      "source_hash": "b1030ea53e0a546c73632ffd2b50cf8bdcdbce33dfb90b9bbf398e849b5d6d63"
+    },
+    "15-autonomous-systems/04-darwin-godel-machine": {
+      "source_hash": "2958e5d662189f48409910c9117c588b2a35aa7690728a4e83a0de189a9a0cad"
+    },
+    "15-autonomous-systems/05-ai-scientist-v2": {
+      "source_hash": "4c4a38d947aab62b0844b03a95295f3f87af43b2cd7250fabc1774dea30bb447"
+    },
+    "15-autonomous-systems/06-automated-alignment-research": {
+      "source_hash": "cda28052586a2969b68c257767d24a0be027a454cada718e23daf03c504426de"
+    },
+    "15-autonomous-systems/07-recursive-self-improvement": {
+      "source_hash": "cc14f19668cede554befe0d751a5bf68a88ea8090035dcf7b46963239c64b528"
+    },
+    "15-autonomous-systems/08-bounded-self-improvement": {
+      "source_hash": "0e34f51b81c0431f0c52678ef7bfd61f11dce50b506ecde278a52951281e9c0f"
+    },
+    "15-autonomous-systems/09-coding-agent-landscape": {
+      "source_hash": "666bb2c1f1d0209b1aaaf477a90e191762827467df8ba2d77f466768d41e62d0"
+    },
+    "15-autonomous-systems/10-claude-code-permission-modes": {
+      "source_hash": "90c49f2e0dad684f8742841bd2dbc505a1e1dfe24681d09359e3f5997b667bec"
+    },
+    "15-autonomous-systems/11-browser-agents": {
+      "source_hash": "29592c4fcad3b3228b000978f7ac97c0225e17fe566ea01aa8061810e7f66bc7"
+    },
+    "15-autonomous-systems/12-durable-execution": {
+      "source_hash": "ff2372f98d254ef74514801b263dd6487fb1da6a1ae28e48037532ec4979899f"
+    },
+    "15-autonomous-systems/13-cost-governors": {
+      "source_hash": "adfdb6fac9301fb7343957e5bbf8d201cfc0304d8e04f10c52a149bfcc9aca9c"
+    },
+    "15-autonomous-systems/14-kill-switches-canaries": {
+      "source_hash": "3b0ffd3f69a0004b3a83e38eee52765d893209fef39b47a549db192dbd2d2d90"
+    },
+    "15-autonomous-systems/15-propose-then-commit": {
+      "source_hash": "99bdc74baefe1f89ec94da6b1648ecf888313a02dc8ccf1d2370f6fbd40bcbaa"
+    },
+    "15-autonomous-systems/16-checkpoints-rollback": {
+      "source_hash": "857ee3f502be5f3dab057d2143112adc5792e030ef2d593bb1240f8e770458f6"
+    },
+    "15-autonomous-systems/17-constitutional-ai": {
+      "source_hash": "e745ea0437216b1a8962d8d6e4105c75b222544c04f519a2c874b715f7d1303e"
+    },
+    "15-autonomous-systems/18-llama-guard": {
+      "source_hash": "0c9d5a2d8d705fa1bf4cdce0f49cd3a887fe9d2c8720d198bb8d3112de09caf6"
+    },
+    "15-autonomous-systems/19-anthropic-rsp": {
+      "source_hash": "b7e996a568b7005d57615bec9e08009c950529daa1d49474ec7238cc6784f959"
+    },
+    "15-autonomous-systems/20-openai-preparedness-deepmind-fsf": {
+      "source_hash": "80ef49dfb4d1570ee83f713494457195a83b4dfac4ba7e6e09175c1961ae84c3"
+    },
+    "15-autonomous-systems/21-metr-external-evaluation": {
+      "source_hash": "288071fdc5b515bc3a4d846680494783d44486ece7da54c06b43f0811a5482ce"
+    },
+    "15-autonomous-systems/22-cais-caisi-societal-risk": {
+      "source_hash": "863a6537ab1cdcff85032d66c873bc3ce91336e974bb268e567e63aa5ffc384c"
+    },
+    "16-multi-agent-and-swarms/01-why-multi-agent": {
+      "source_hash": "43afcd0c4577433cf152e33711cdee7dc0a0625a37b01a3d30c1588d52dd952e"
+    },
+    "16-multi-agent-and-swarms/02-fipa-acl-heritage": {
+      "source_hash": "0b6d4eaa787cf9b4c36b12b68f6ba4f93ec318741d84f07546dd6bed0b77c0ff"
+    },
+    "16-multi-agent-and-swarms/03-communication-protocols": {
+      "source_hash": "736ef386c6e6899469883d7b0183f2a490374c1c6d5cbc9ab9fa6b4649de562b"
+    },
+    "16-multi-agent-and-swarms/04-primitive-model": {
+      "source_hash": "3c97ed2db64f108e71effbb247837440e59633dab02eaacbc230ebc6f82f9a42"
+    },
+    "16-multi-agent-and-swarms/05-supervisor-orchestrator-pattern": {
+      "source_hash": "c41f26a1340de6de0c42a8f5e63da141620a345ec7946b44e4e8acc1bc71c728"
+    },
+    "16-multi-agent-and-swarms/06-hierarchical-architecture": {
+      "source_hash": "76e955429fd65d38e850380c1fd9d0ed9d9afa22f5f33b09603be12cc5e88f7a"
+    },
+    "16-multi-agent-and-swarms/07-society-of-mind-debate": {
+      "source_hash": "b7f7879bac2c885a9cb09b8a4da6e2ddf52cbddb061c83085ec406fc0981b038"
+    },
+    "16-multi-agent-and-swarms/08-role-specialization": {
+      "source_hash": "d076fac35817ea2ea4bf3c6063b867fd0c7d866b66ac9ec6aa3d6eec4915e441"
+    },
+    "16-multi-agent-and-swarms/09-parallel-swarm-networks": {
+      "source_hash": "9fa5da48d0ef8d146958bd781905046ece8ce8e1b96c4927665b2d310e1052af"
+    },
+    "16-multi-agent-and-swarms/10-group-chat-speaker-selection": {
+      "source_hash": "fb7b34b071fbeaea42ae442fe2acbd32a31028a29c457141f6debae67e07561f"
+    },
+    "16-multi-agent-and-swarms/11-handoffs-and-routines": {
+      "source_hash": "25269ff3945862f145f8a5f5bc13381ac48740632cc64fa27fa40ab844509865"
+    },
+    "16-multi-agent-and-swarms/12-a2a-protocol": {
+      "source_hash": "30a84d4ee82dd2f0d1fd9ad7de6acbd6fb2a8c1d66bf4478d60c4858d54a4761"
+    },
+    "16-multi-agent-and-swarms/13-shared-memory-blackboard": {
+      "source_hash": "e0c90524270201868e7d1ddabc368ec80af3dfae460dd53ad13808fa28a371a9"
+    },
+    "16-multi-agent-and-swarms/14-consensus-and-bft": {
+      "source_hash": "198b1edf88134293aa259d77ecdd708ad2042360fba0d0f49d0e9c02a08d49b7"
+    },
+    "16-multi-agent-and-swarms/15-voting-debate-topology": {
+      "source_hash": "0f2ec5623ae8f6c1e4f9beb9d32232a341a1755c624489179c83026ada237c31"
+    },
+    "16-multi-agent-and-swarms/16-negotiation-bargaining": {
+      "source_hash": "78a0e76de803c0f3ec9f162361a6a15711a05dc33c34a05eb49734adb4192b6c"
+    },
+    "16-multi-agent-and-swarms/17-generative-agents-simulation": {
+      "source_hash": "5b225b79f8424c34087f1c47695c14991ceb05aac2935c6c7ffa28e204e400c8"
+    },
+    "16-multi-agent-and-swarms/18-theory-of-mind-coordination": {
+      "source_hash": "063ebb41993cdd7490ef80fe623a520f684c9291019d8a627375d8bb76745f08"
+    },
+    "16-multi-agent-and-swarms/19-swarm-optimization-pso-aco": {
+      "source_hash": "e2a3c1e1ea2fd359fdfef7d7c33327fbdfd5dcdbf1c4db936d663676dc8d3675"
+    },
+    "16-multi-agent-and-swarms/20-marl-maddpg-qmix-mappo": {
+      "source_hash": "064953b7815529d448909593b45fe320f174bbe6c04d2f8adbfd06db06b6eb12"
+    },
+    "16-multi-agent-and-swarms/21-agent-economies": {
+      "source_hash": "1abac01dc5e80b8425bc990660aeb62cf35a25c17187654ca6dafc261135c6f3"
+    },
+    "16-multi-agent-and-swarms/22-production-scaling-queues-checkpoints": {
+      "source_hash": "56afa515e8bc34cb408cd23481bd9b0e2bfc5a9bf089e0ba00bfc12a5af32bbd"
+    },
+    "16-multi-agent-and-swarms/23-failure-modes-mast-groupthink": {
+      "source_hash": "6db80722b20fd759dd38a4529f262c2b573fa78a663bae1e933ac53674aa6f9f"
+    },
+    "16-multi-agent-and-swarms/24-evaluation-coordination-benchmarks": {
+      "source_hash": "23d8cd9d0440b70ba9da7299a9b07c687437f1200f266890a2e109b405d16ce1"
+    },
+    "16-multi-agent-and-swarms/25-case-studies-2026-sota": {
+      "source_hash": "7292a73dcd0342a6bd2fcedace7291975fe50c04cd79df71242d608d67a69153"
+    },
+    "17-infrastructure-and-production/01-managed-llm-platforms": {
+      "source_hash": "d0b39be710390d62d63b2ae2f0b82be90141f676ffea1d262039207ead89e0ae"
+    },
+    "17-infrastructure-and-production/02-inference-platform-economics": {
+      "source_hash": "6407712a7379117237763d03daccbaf5fbe878c41edd81dce9730ac636229762"
+    },
+    "17-infrastructure-and-production/03-gpu-autoscaling-kubernetes": {
+      "source_hash": "da9d90dceb164d1781123c2b9d8ff1f2c01824c4731c1ad705884ac69468a8cb"
+    },
+    "17-infrastructure-and-production/04-vllm-serving-internals": {
+      "source_hash": "65401a1e53624415ecbcaaae0291f8e2df403937b60b6316b46e6a0dfcf676fc"
+    },
+    "17-infrastructure-and-production/05-eagle3-speculative-decoding": {
+      "source_hash": "d13b8002b16986401920b4b761c53f60b13b42f5a79bb3bdad53e913fa5bee36"
+    },
+    "17-infrastructure-and-production/06-sglang-radixattention": {
+      "source_hash": "2110c54d955c0bbe9b8166597c8b38e9951d36eac0ef70214f1026714a8c7dcb"
+    },
+    "17-infrastructure-and-production/07-tensorrt-llm-blackwell": {
+      "source_hash": "4b92710269e72bd204f4c39c314ab244e5f7880243e99738bcabacb825dc16d1"
+    },
+    "17-infrastructure-and-production/08-inference-metrics-goodput": {
+      "source_hash": "c8f52c0a95ddea1f4f04add7a820e65f08d0a3838a7dceb3bad135d29cf1797e"
+    },
+    "17-infrastructure-and-production/09-production-quantization": {
+      "source_hash": "08a47936e912f70f55674fb719aa21d3dd91f6caee2236a352f90b0650214f25"
+    },
+    "17-infrastructure-and-production/10-cold-start-mitigation": {
+      "source_hash": "34f063553b81495398de8768b8e36ed7e63b182152302b4995adbb690849c46c"
+    },
+    "17-infrastructure-and-production/11-multi-region-kv-locality": {
+      "source_hash": "f7d4c4fe920309107ad5f8c3f886abc2afcd21981150afcb9a16e2ecabd45ba7"
+    },
+    "17-infrastructure-and-production/12-edge-inference": {
+      "source_hash": "f91c89c85f37de64cdcb0fb249481a2c168c51beae2a67eafce6f9f6c89cdf1d"
+    },
+    "17-infrastructure-and-production/13-llm-observability": {
+      "source_hash": "eef0e8c56bfce6c48914766194c3fb738c7c4998fee43471c54038f447df1cc2"
+    },
+    "17-infrastructure-and-production/14-prompt-semantic-caching": {
+      "source_hash": "115c4b454ca9dea2e42f6235b591e06962a123f4b72b2815db8b0bf177298a79"
+    },
+    "17-infrastructure-and-production/15-batch-apis": {
+      "source_hash": "8f0830eead1c5643e3e5d93c26ac5827a3c68800d07dc69c9c9c7f3cea99ac52"
+    },
+    "17-infrastructure-and-production/16-model-routing": {
+      "source_hash": "1b34b95e327b3e08c601e6c43166c83eaad749e2db4320a7bb950d7433e4a99d"
+    },
+    "17-infrastructure-and-production/17-disaggregated-prefill-decode": {
+      "source_hash": "4499f3d0a464f6435b1080e454918bf04f8a19c4f9673178c50c2ec4fbd6ba94"
+    },
+    "17-infrastructure-and-production/18-vllm-production-stack-lmcache": {
+      "source_hash": "b0a7a99cb349b2c565b3fb4a74c68579e59ee118908ea6caf664ee5b3b5bd50a"
+    },
+    "17-infrastructure-and-production/19-ai-gateways": {
+      "source_hash": "3971447756acdfff93de997069f2af5827e4ee2437bdde6fd606a05340c53c9e"
+    },
+    "17-infrastructure-and-production/20-shadow-canary-progressive": {
+      "source_hash": "5bbd6ad29833b7a488b8c6b7219fbec5c25ffd8e7f6e52db72415f44db1c60a7"
+    },
+    "17-infrastructure-and-production/21-ab-testing-llm-features": {
+      "source_hash": "d4edfad90e30d21ff757e17b72f49f9390d3a8285d1f9ed990bf4d94d8a404d7"
+    },
+    "17-infrastructure-and-production/22-load-testing-llm-apis": {
+      "source_hash": "414be4a68575426b4da7b006a649833c98b1d0195de0ec7f84efae5909922e72"
+    },
+    "17-infrastructure-and-production/23-sre-for-ai": {
+      "source_hash": "d5cceb80c891dddd33fafc64b748142398e238f451378aa5494a371ce97c8a4b"
+    },
+    "17-infrastructure-and-production/24-chaos-engineering-llm": {
+      "source_hash": "542b1d44311e286e95b10a49f6e5f34424cba50a2328b40c16765487accbbd47"
+    },
+    "17-infrastructure-and-production/25-security-secrets-audit": {
+      "source_hash": "c649b4c394f04daa9b26279ea55aa695a44c09e36e3bd4f6913c84f9f5bd4f1b"
+    },
+    "17-infrastructure-and-production/26-compliance-frameworks": {
+      "source_hash": "bee93ab4fffc30868366ac3472f571a29aca11c777360fb4ba339dca8a7685b8"
+    },
+    "17-infrastructure-and-production/27-finops-llms": {
+      "source_hash": "5e9ed0279918d556de2fbb7a01f106b081b6d9bfc2c85eb3dd3394efde9b36b2"
+    },
+    "17-infrastructure-and-production/28-self-hosted-serving-selection": {
+      "source_hash": "012bfaa2cdad6f507ae1b7ef80d7678559785df99ece51f767a9305bb7a1ed7a"
+    },
+    "17-infrastructure-and-production/29-model-demo-interfaces": {
+      "source_hash": "7ac37457ebfedbe187822db52b841a011004ee625bc52280b69b0db77838eb8d"
+    },
+    "18-ethics-safety-alignment/01-instruction-following-alignment-signal": {
+      "source_hash": "abc93a84a06c33034b4bde4f27fe0c5e4e6392844ec7b9c00734a9a07dfe3e38"
+    },
+    "18-ethics-safety-alignment/02-reward-hacking-goodhart": {
+      "source_hash": "eb4e392b565325497792f716256eb669b691b0d21278b0b461d33a6e4cb4f740"
+    },
+    "18-ethics-safety-alignment/03-direct-preference-optimization-family": {
+      "source_hash": "9764cc0bbb8f3ac7f080d3e27692c9316272f9f181d847ef8e35ade63c3e79b9"
+    },
+    "18-ethics-safety-alignment/04-sycophancy-rlhf-amplification": {
+      "source_hash": "e1b10ac51ac7705f3f1c6f050640dec4390ab7c2456832d7dea3b790778f8cd1"
+    },
+    "18-ethics-safety-alignment/05-constitutional-ai-rlaif": {
+      "source_hash": "0e157508a5b3a67273897bedd49dc6e25587987bd795810415fff2b751b2494e"
+    },
+    "18-ethics-safety-alignment/06-mesa-optimization-deceptive-alignment": {
+      "source_hash": "6f8c10761fcb7ebedcfdc1a0b1226224e3631dea428a2da9fc79678abec5662b"
+    },
+    "18-ethics-safety-alignment/07-sleeper-agents-persistent-deception": {
+      "source_hash": "6da3fd9b818e853ff2cde0bb5848429dd83add3df750e58c1c0fa40e33c0d3d0"
+    },
+    "18-ethics-safety-alignment/08-in-context-scheming-frontier-models": {
+      "source_hash": "56a11e98178785b5802743c1cb29eaf51f85babfeec7d5a3a4bd942277da5f0d"
+    },
+    "18-ethics-safety-alignment/09-alignment-faking": {
+      "source_hash": "ce0f8406fdbde26ea94bc56beef8401cf2a97e5c42e26488db93b6d90fd58217"
+    },
+    "18-ethics-safety-alignment/10-ai-control-subversion": {
+      "source_hash": "55a04abc670ebba3c4a4e1ca04bc5a80f9df14c7ac7c6e592bdf53c86ede0c2b"
+    },
+    "18-ethics-safety-alignment/11-scalable-oversight-weak-to-strong": {
+      "source_hash": "68d0b2492c85b01038b45a8dca737bb571d74230eec235ce9ae56cb8b2b01ad0"
+    },
+    "18-ethics-safety-alignment/12-red-teaming-pair-automated-attacks": {
+      "source_hash": "aae825da2e670246284d59422c69cd459ea2571686b8851da77cb4a924aa38ed"
+    },
+    "18-ethics-safety-alignment/13-many-shot-jailbreaking": {
+      "source_hash": "120560539b50ba260cb998ef51fd627f6c5ead424044edd1e03470139fbeb49c"
+    },
+    "18-ethics-safety-alignment/14-ascii-art-visual-jailbreaks": {
+      "source_hash": "b2c8d1ff374179b4c69e0dbf861d2405f45f113498ada169f3ee399b9d5d7a77"
+    },
+    "18-ethics-safety-alignment/15-indirect-prompt-injection": {
+      "source_hash": "37939be6a5dc22f850c194315227056f860dbdf930e29fb8bd6ca7318e169238"
+    },
+    "18-ethics-safety-alignment/16-red-team-tooling-garak-llamaguard-pyrit": {
+      "source_hash": "95c683baf99bd6286d226542b0816100708cae0f13cb7f0346d81f5b476cd5d4"
+    },
+    "18-ethics-safety-alignment/17-wmdp-dual-use-evaluation": {
+      "source_hash": "a3b023672996801c09b47d279f144bb5473bb5a8ea87ab7576aa4d50888e712a"
+    },
+    "18-ethics-safety-alignment/18-frontier-safety-frameworks-rsp-pf-fsf": {
+      "source_hash": "1d55ca0628b796119896e183d01ab668f8e1f70583538191dcd6d7c990dd5a1c"
+    },
+    "18-ethics-safety-alignment/19-model-welfare-research": {
+      "source_hash": "5f9b74c51a62f74e3c0c854b13f6f8b3ef1b1f3821dac5f91c08940a5624d23e"
+    },
+    "18-ethics-safety-alignment/20-bias-representational-harm": {
+      "source_hash": "204914b54d343de7354dff8d76207e3d31aa6f534244b964258c3e2ee07cada6"
+    },
+    "18-ethics-safety-alignment/21-fairness-criteria-group-individual-counterfactual": {
+      "source_hash": "0def00f9a3885aa72b2b2395198d4ddc4ab1f9e5eabc1190f512b9a936b0b684"
+    },
+    "18-ethics-safety-alignment/22-differential-privacy-for-llms": {
+      "source_hash": "cbc11eb70ae641d47f19a9ea258914ac2052f65f3a3dd4ae3aa2fbd1878cdfa4"
+    },
+    "18-ethics-safety-alignment/23-watermarking-synthid-stable-signature-c2pa": {
+      "source_hash": "351f8beee19e97dbbfd67584c957875b37fec3f53c10d12ecc5fc6a473e0c658"
+    },
+    "18-ethics-safety-alignment/24-regulatory-frameworks-eu-us-uk-korea": {
+      "source_hash": "d6739f6d381b52f29717d3f038dc3b956675be7c025814d7f490eb41598f6c8f"
+    },
+    "18-ethics-safety-alignment/25-echoleak-cves-for-ai": {
+      "source_hash": "7b6f5921612c7057971ad2d9fdbcb3b0334f8ee2fa68dc296b59b0961d362b54"
+    },
+    "18-ethics-safety-alignment/26-model-system-dataset-cards": {
+      "source_hash": "f42f7db557db873f382f69bee9eafc9258c1d8e9ff8fdee10405bd945bd516e1"
+    },
+    "18-ethics-safety-alignment/27-data-provenance-training-governance": {
+      "source_hash": "3c131dacdb541481574b962a26f85f583ff8f28617d809590ca0aa607f834e5a"
+    },
+    "18-ethics-safety-alignment/28-alignment-research-ecosystem": {
+      "source_hash": "eb6098c1bbb264acf247c0a2b6aabf704e54fcb2e9b932712aab9839da2b02dd"
+    },
+    "18-ethics-safety-alignment/29-moderation-systems-openai-perspective-llamaguard": {
+      "source_hash": "4000fec97ef8549ce52344a7ae441702b234ccddc22e79f2d9c2086d1b1218ec"
+    },
+    "18-ethics-safety-alignment/30-dual-use-risk-cyber-bio-chem-nuclear": {
+      "source_hash": "b97a59baa3996394aaee38f1d64b26b39f25a33cafeed0cff519492f5e929e7b"
+    },
+    "19-capstone-projects/01-terminal-native-coding-agent": {
+      "source_hash": "6afe48736a376bc7851ec61fb3e76cb2de7899434db0317dad1f658ff272be98"
+    },
+    "19-capstone-projects/02-rag-over-codebase": {
+      "source_hash": "26842243a3bf8e215501d391b7d587ebbea2769d8972e8f99251d6bfe6b51bd8"
+    },
+    "19-capstone-projects/03-realtime-voice-assistant": {
+      "source_hash": "80585e54d7b6f9997c0eac0213b45444de6a5cfb3385a3f2b2b6b9fc52de7301"
+    },
+    "19-capstone-projects/04-multimodal-document-qa": {
+      "source_hash": "84325eadd19ab9ff3056630e69f22ffdfb883d66f22b17344cc9a97f7a3320dd"
+    },
+    "19-capstone-projects/05-autonomous-research-agent": {
+      "source_hash": "2c07709d0826fa90ab987f1993d6740269b6b72e27adf024fae745e3e49db575"
+    },
+    "19-capstone-projects/06-devops-troubleshooting-agent": {
+      "source_hash": "27c6f27459ac77e84bd8c524b8cdf68eb3e06b40a8bb09822dad3c19d513dc60"
+    },
+    "19-capstone-projects/07-end-to-end-fine-tuning-pipeline": {
+      "source_hash": "82cac27cc64f9da5ea55af65374aac888ad441f3f8ae6d5992373a14dab72686"
+    },
+    "19-capstone-projects/08-production-rag-chatbot": {
+      "source_hash": "28614494af25a91ff7caa896cc08858228f3ff4dd1754bdae38234d4f0b1b402"
+    },
+    "19-capstone-projects/09-code-migration-agent": {
+      "source_hash": "90a692b377c0b308200b45ed6b56595dd9aa670ed5442dd5d30c7ad0f8c89ad5"
+    },
+    "19-capstone-projects/10-multi-agent-software-team": {
+      "source_hash": "d7769f2aa0db0ab1928504ce5e02029fe3c895046363e7f6e691596375cb3ac7"
+    },
+    "19-capstone-projects/11-llm-observability-dashboard": {
+      "source_hash": "64a1aae880494a058bde615a36d8a77f6e3218c36400a9e202a038f4bdc7180e"
+    },
+    "19-capstone-projects/12-video-understanding-pipeline": {
+      "source_hash": "e0469150ccabaf0967fd3f8464afcab319c66157718fc5bd75d0489480c2e647"
+    },
+    "19-capstone-projects/13-mcp-server-with-registry": {
+      "source_hash": "c221986f36b94c8082b1492ce684e5904ae3fcbe9c8b8368c5289e2e005a1740"
+    },
+    "19-capstone-projects/14-speculative-decoding-server": {
+      "source_hash": "093124e0d219a084af3fb549243a68d0b8cd571dc6915ac369f3aa3706e9bb04"
+    },
+    "19-capstone-projects/15-constitutional-safety-harness": {
+      "source_hash": "ba49600d8d629cf172db790695955f79b82b67bd3a07a049346ab2faf9504e95"
+    },
+    "19-capstone-projects/16-github-issue-to-pr-agent": {
+      "source_hash": "0a4572b81f0b0b7b44bf4c73b48325929d4928ca8696d409946ca3203db4c3f8"
+    },
+    "19-capstone-projects/17-personal-ai-tutor": {
+      "source_hash": "335b6115d928f34d06cf275cb4d08d743dc1ccffa0d50d98ed6401d5fd7d2232"
+    },
+    "19-capstone-projects/20-agent-harness-loop-contract": {
+      "source_hash": "b9e6753360efb94a4c542b00da5224c2d52b43f52efda6bd4acdecc23b7317e2"
+    },
+    "19-capstone-projects/21-tool-registry-schema-validation": {
+      "source_hash": "80b8727ab1cfdbb15eac80a2ab9c200b6bbf154717696aa63909a9061837363e"
+    },
+    "19-capstone-projects/22-jsonrpc-stdio-transport": {
+      "source_hash": "f0fd2413edd7bf135e8ad67c637281f831545e86e5516c9b0cdfe3e2863468de"
+    },
+    "19-capstone-projects/23-function-call-dispatcher": {
+      "source_hash": "cfcb28626b8081c0c05e9aac2f137abca1a7d6dade52e125d61890fc466fbda3"
+    },
+    "19-capstone-projects/24-plan-execute-control-flow": {
+      "source_hash": "8984956576da92fd7219d63309f4948f219d43e48bf9eccab3be36dc0a863769"
+    },
+    "19-capstone-projects/25-verification-gates-observation-budget": {
+      "source_hash": "d46257ee1f167f22581bb7c9e8b6682b406258df8b61f5038b98170090cf1fc2"
+    },
+    "19-capstone-projects/26-sandbox-runner-denylist": {
+      "source_hash": "043082b035f96ae61b8c2fd29be7bac16d33e9d97b8794b36cddd63e9de5fb29"
+    },
+    "19-capstone-projects/27-eval-harness-fixture-tasks": {
+      "source_hash": "25c3c96fe3816f484e3038900f199484a3d4953a1dd051e53f13959841bdef5b"
+    },
+    "19-capstone-projects/28-observability-otel-traces": {
+      "source_hash": "ee7cf2e8bb9424ccc10718c8874994e3a12b11d6e9a536f607b0a5c41839c68e"
+    },
+    "19-capstone-projects/29-end-to-end-coding-task-demo": {
+      "source_hash": "7ed4125d146109e8c83e7d55151d271ad2566619db2ccd76ad856167417d153c"
+    },
+    "19-capstone-projects/30-bpe-tokenizer-from-scratch": {
+      "source_hash": "fc951586c3c98fcb6bee3b590167dd7146c2e2eb49671e7e554cf7b30f7e5251"
+    },
+    "19-capstone-projects/31-tokenized-dataset-sliding-window": {
+      "source_hash": "ce29e2e35f99f800ed84c3d4a329479f1c2e0e23353153048fe44623ad19ef0e"
+    },
+    "19-capstone-projects/32-token-positional-embeddings": {
+      "source_hash": "364b63f1f52be150de96253cf7922e59df48b70336eb84f16ad425f856fa5ecd"
+    },
+    "19-capstone-projects/33-multihead-self-attention": {
+      "source_hash": "0673a3ab15cd44ad26aee74ad4024bc503f6b89e0a9399f6e0ecef8acc050da0"
+    },
+    "19-capstone-projects/34-transformer-block": {
+      "source_hash": "39a20690536ef26bc4fc26a5a52830f0ad29782ffc0ad57e99c7a8eb94b65d94"
+    },
+    "19-capstone-projects/35-gpt-model-assembly": {
+      "source_hash": "f5ce8549603c13fe1c3b17163fa5825f19fd941600b736db3aef76ec7c8d35a1"
+    },
+    "19-capstone-projects/36-training-loop-eval": {
+      "source_hash": "6dd9136e43b46087273cd7217f8b7a1d0e8078a67b1dfbf7646f01a8030dec96"
+    },
+    "19-capstone-projects/37-loading-pretrained-weights": {
+      "source_hash": "a8807ef637bcaf8ea78169611926d0ca666b7608cdb5b66057f18a7f947ee43d"
+    },
+    "19-capstone-projects/38-classifier-finetuning": {
+      "source_hash": "844d87e1015a4807435be7057c0675548c62097cd335203e7553de1afaaf57e3"
+    },
+    "19-capstone-projects/39-instruction-tuning-sft": {
+      "source_hash": "b1f002c47c3340b23e53127e7b2f2c29c2fdb6f1e4dca5421deff19b7e761b80"
+    },
+    "19-capstone-projects/40-dpo-from-scratch": {
+      "source_hash": "a2cb19836e454ba319193fa11b1e578e4e1eba49ae172fad98af72e48ad7b469"
+    },
+    "19-capstone-projects/41-eval-pipeline": {
+      "source_hash": "129bc0e0e10da2bb3f8c0a795c297b6578ef040e06c71daee9258d7c980db5c0"
+    },
+    "19-capstone-projects/42-large-corpus-downloader": {
+      "source_hash": "fc592281f007269218f6f3490e497560278b0eb224e19c090af31a5d067a35e3"
+    },
+    "19-capstone-projects/43-hdf5-tokenized-corpus": {
+      "source_hash": "a790ca2336c7e6566ba0b21f2e5a2fbdda7547bb7c8267c6dce70b41d9f9391a"
+    },
+    "19-capstone-projects/44-cosine-lr-warmup": {
+      "source_hash": "98e7aad3f4ac3d899a4a38853b5045a4d18408ee7b150ff25cbece77f903cedd"
+    },
+    "19-capstone-projects/45-gradient-clipping-amp": {
+      "source_hash": "a25542ca4668031db4a4baa90030decb15b05e66000602b2df447080abb2916d"
+    },
+    "19-capstone-projects/46-gradient-accumulation": {
+      "source_hash": "6bb02e2d36dec4aa564d89b0856600508074057c5915a2f906b2b37ca82fca26"
+    },
+    "19-capstone-projects/47-checkpoint-save-resume": {
+      "source_hash": "92982555df1ac82ae9b6e1266e9034ceae19bec15a80380fabb9c633c248c34e"
+    },
+    "19-capstone-projects/48-distributed-fsdp-ddp": {
+      "source_hash": "63a8bf79d1886fecca0c98b66a71c20c71f01e7a6716ab98747d2e701bb61259"
+    },
+    "19-capstone-projects/49-lm-eval-harness": {
+      "source_hash": "bc5b43d92d7f0eda4a3340eb902e9eb641998e6645ed2d9a640ab45a8a6fdfd9"
+    },
+    "19-capstone-projects/50-hypothesis-generator": {
+      "source_hash": "e1d28c8f5ac62618cfea48204454ce8cdb9c0be3ddd5b5d065ce15ca9e1ecc94"
+    },
+    "19-capstone-projects/51-literature-retrieval": {
+      "source_hash": "65a4d23263e10c3833dea661590b93789ca1f258738a8b80b46091c95b7c19bb"
+    },
+    "19-capstone-projects/52-experiment-runner": {
+      "source_hash": "4be9360f1550a12574cb832c3ca127b35d3d498fa8ca5e4ca28d19d356fbe254"
+    },
+    "19-capstone-projects/53-result-evaluator": {
+      "source_hash": "b8830d42dac13873d1a641bff4c94ca01ac2971061fa4b592afabc346213cab9"
+    },
+    "19-capstone-projects/54-paper-writer": {
+      "source_hash": "30c8728a11a2ee82bb290cef20e58a9cb4115e9f6d1fd5500840a2430e51f655"
+    },
+    "19-capstone-projects/55-critic-loop": {
+      "source_hash": "09e0b6699f23c4bf9bd1c6918ecbf186fbf38de6912209fa160bb7d64e9bb28e"
+    },
+    "19-capstone-projects/56-iteration-scheduler": {
+      "source_hash": "15134a332623e008bff812ba102dd0811a855d8b0ebad7571b6277639af37813"
+    },
+    "19-capstone-projects/57-end-to-end-research-demo": {
+      "source_hash": "a4d06d03ecc5f869ab08fa9d332fa92d6b398a4edf00dd12ccfd4bcc34568fb5"
+    },
+    "19-capstone-projects/58-vision-encoder-patches": {
+      "source_hash": "8632eb2d21b609c00fc93c7f805e54de22338f2828826839fd01391810009954"
+    },
+    "19-capstone-projects/59-vit-transformer": {
+      "source_hash": "2f3a45fff87d156d14c4bd51f77e318f17630340be4dfb354dc21eb388b9820c"
+    },
+    "19-capstone-projects/60-projection-layer-modality-align": {
+      "source_hash": "461de926a79537fbc4b0bf021c1c55b04b1ad6fde1599397ff4f0f3bc88b8e5c"
+    },
+    "19-capstone-projects/61-cross-attention-fusion": {
+      "source_hash": "b52fbcfdcf193e43b5d601e94614bae5ebefc69406e728814a96c7e485b3c45a"
+    },
+    "19-capstone-projects/62-vision-language-pretraining": {
+      "source_hash": "3c17a427a68580a8b67a51c21d791c3b09f94ce9e5ed890338edc4b132491b92"
+    },
+    "19-capstone-projects/63-multimodal-eval": {
+      "source_hash": "63e8164d1f263d49353a7bb206ac80c554f292a43464154f8786f18cfe3621fc"
+    },
+    "19-capstone-projects/64-chunking-strategies-advanced": {
+      "source_hash": "3bdc9a4aff4fa21bef49ab98ab91e8216375722ec2fe4bcb12585b9dde4f9518"
+    },
+    "19-capstone-projects/65-hybrid-retrieval-bm25-dense": {
+      "source_hash": "87652d74770a1ed131f4c0ab7fdb2a57430284a5ff28fe55684db3fbe1577ef4"
+    },
+    "19-capstone-projects/66-reranker-cross-encoder": {
+      "source_hash": "0e1226c719b3a9ea1954cb5baa222ad02b59ed09f751172c6bb34e79714b0705"
+    },
+    "19-capstone-projects/67-query-rewriting-hyde": {
+      "source_hash": "543867bbea0e62313ae8341542f878696ca5878cd945cf023060176bf9d1037f"
+    },
+    "19-capstone-projects/68-rag-eval-precision-recall": {
+      "source_hash": "6294e3884c8476c6332333fc417d3d437161342a0b0e74cfaf49ebc21d629c3c"
+    },
+    "19-capstone-projects/69-end-to-end-rag-system": {
+      "source_hash": "85311d9bd44f6624f5ff7c662f2e43357a0af46a1f073d5f9b2b375016a4ae73"
+    },
+    "19-capstone-projects/70-task-spec-format": {
+      "source_hash": "fd6a959d561ee0faf8dc886e5cdf0a4dce509bcf3ad4fa535c0ceab8c299b5f9"
+    },
+    "19-capstone-projects/71-classical-metrics": {
+      "source_hash": "36141d046f58aa48c5be14a5f53af12c8dc412e0e28862b8fa9cba3bef74dbc8"
+    },
+    "19-capstone-projects/72-code-exec-metric": {
+      "source_hash": "3a65a1b04223a643029b3dd65903937b7b042b5153791e62e1419c58f1b06c5d"
+    },
+    "19-capstone-projects/73-perplexity-calibration": {
+      "source_hash": "a35c60410cab97591c6b41acfaad54a56ef04ad0450f7c3debd169b1e173e7c2"
+    },
+    "19-capstone-projects/74-leaderboard-aggregation": {
+      "source_hash": "3aabe8ab0865359da1d59cc012ba1826c48435adfc613a958ba5ca8194fe9c44"
+    },
+    "19-capstone-projects/75-end-to-end-eval-runner": {
+      "source_hash": "467d2ec758f5cc27cd542a84c0393e3f1094db8d92b04e6a5837633dbab18174"
+    },
+    "19-capstone-projects/76-collective-ops-from-scratch": {
+      "source_hash": "12dc32674a44da3f4e6564c87805696f61b2ecc2d840377bbb337eff35ac0500"
+    },
+    "19-capstone-projects/77-data-parallel-ddp": {
+      "source_hash": "ba4e5e072160097b74df0c309cd521418b32e8ad311bfa0f89e4c913482491f2"
+    },
+    "19-capstone-projects/78-zero-parameter-sharding": {
+      "source_hash": "2c9a05b62cbb763205718f96b805d3cc642d4275b4d0c5e29db03acdd99b6cd2"
+    },
+    "19-capstone-projects/79-pipeline-parallel": {
+      "source_hash": "48bc5fd50e016d359a40838d743687b418bc17e37ded1678aad7047c19e9d36b"
+    },
+    "19-capstone-projects/80-checkpoint-sharded-resume": {
+      "source_hash": "0a3c6dbb7e63bffccecfd6f76f96c2e96cddc30e6e0ef3997853f81c52e9c755"
+    },
+    "19-capstone-projects/81-end-to-end-distributed-train": {
+      "source_hash": "8e3202c838cc06308d0de6eae578e33a397be0213c5acbce68db99e489f099aa"
+    },
+    "19-capstone-projects/82-jailbreak-taxonomy": {
+      "source_hash": "a844fc587df1d1c09c632b9cd3942c054b5c1f37d2881051dbc80684fda35fa8"
+    },
+    "19-capstone-projects/83-prompt-injection-detector": {
+      "source_hash": "4f05ff0ae962c406c11de66dfd45cce73101fad6e5bf3bd4424323755736934f"
+    },
+    "19-capstone-projects/84-refusal-evaluation": {
+      "source_hash": "1af3af68e5b793ebe5242d97d449db5c7007b9c25f456b974ae2d2f5929bd5fd"
+    },
+    "19-capstone-projects/85-content-classifier-integration": {
+      "source_hash": "d30b1a143e271f1e0abee3cbd9b300f26d97580975d4b1fbbe4ed0b435ba0455"
+    },
+    "19-capstone-projects/86-constitutional-rules-engine": {
+      "source_hash": "ff288e9321ff8a5436b74084a529e5ff0d8be5ceb82a76d7efc435fc1b0203d6"
+    },
+    "19-capstone-projects/87-end-to-end-safety-gate": {
+      "source_hash": "d03bd3c19b8f55f50605e69243f75895ccfd718885613e2c40fce7dea3e0c6c8"
+    }
+  },
+  "repo": "https://github.com/rohitg00/ai-engineering-from-scratch",
+  "commit": "6a63ddb066207fca854ece311da0289295c2a313"
+}

@@ -1,0 +1,25 @@
+{
+  "minutes": 35,
+  "title": {
+    "th": "เขียนตัวแก้ dependency ขนาดเล็ก",
+    "en": "Write a tiny dependency resolver"
+  },
+  "prompt": {
+    "th": "เขียน `resolve(index, requirements)` ที่ทำงานแบบ `uv` หรือ `pip` ย่อส่วน\n\n- `index` คือ dict `{แพ็กเกจ: {เวอร์ชัน: {dependency: spec}}}` บอกว่าแต่ละเวอร์ชันต้องใช้แพ็กเกจอะไรเวอร์ชันไหน\n- `requirements` คือ dict `{แพ็กเกจ: spec}` ที่โปรเจกต์ต้องการโดยตรง (spec ว่าง = เวอร์ชันไหนก็ได้)\n\nให้คืน dict `{แพ็กเกจ: เวอร์ชัน}` ที่ครอบคลุมทุกแพ็กเกจที่ต้องใช้ รวมถึง dependency ทางอ้อม โดยทุก spec ที่เกี่ยวข้องต้องเป็นจริงพร้อมกัน และเลือกเวอร์ชันที่ใหม่ที่สุดก่อน ถ้าเลือกแล้วไปขัดกันข้างหน้า ต้องย้อนกลับมาลองเวอร์ชันที่เก่ากว่า (backtracking) ถ้าไม่มีทางเลือกไหนใช้ได้ หรือต้องใช้แพ็กเกจที่ไม่มีใน `index` ให้ `raise ValueError`\n\nstarter มี `satisfies` และ `pick_version` จากโจทย์ก่อนหน้าให้ใช้ มี test ซ่อนอยู่บางส่วน",
+    "en": "Write `resolve(index, requirements)`, a tiny version of what `uv` or `pip` do.\n\n- `index` is a dict `{package: {version: {dependency: spec}}}` saying what each version needs.\n- `requirements` is a dict `{package: spec}` the project needs directly (an empty spec means any version).\n\nReturn a dict `{package: version}` covering every package needed, transitive ones included, such that every relevant spec holds at once, preferring the newest versions. If a choice leads to a conflict later, back up and try an older version (backtracking). If no combination works, or a needed package is missing from `index`, `raise ValueError`.\n\nThe starter includes `satisfies` and `pick_version` from the earlier exercises. Some tests are hidden."
+  },
+  "hints": [
+    {
+      "th": "เก็บสถานะสามอย่าง: แพ็กเกจที่รอเลือก (list), แพ็กเกจที่เลือกแล้ว (dict) และเงื่อนไขที่สะสมของแต่ละแพ็กเกจ (dict ของ list ของ spec) แล้วเขียนฟังก์ชันค้นหาแบบ recursive ที่หยิบแพ็กเกจที่รออยู่ตัวแรกมาเลือก",
+      "en": "Keep three things: packages still to pick (a list), packages already picked (a dict), and the specs collected for each package (a dict of lists). Then write a recursive search that takes the first pending package."
+    },
+    {
+      "th": "ลองเวอร์ชันจากใหม่ไปเก่า (`sorted(index[name], key=parse, reverse=True)`) ข้ามตัวที่ไม่ตรงกับเงื่อนไขที่สะสมไว้ และข้ามตัวที่ dependency ของมันขัดกับแพ็กเกจที่เลือกไปแล้ว",
+      "en": "Try versions newest first (`sorted(index[name], key=parse, reverse=True)`), skip those that fail the collected specs, and skip those whose dependencies clash with packages already picked."
+    },
+    {
+      "th": "เมื่อเลือกเวอร์ชันหนึ่ง ให้สร้างสำเนาของสถานะ (เพิ่มเงื่อนไขจาก dependency และต่อ dependency เข้าคิว) แล้วค้นต่อ ถ้าได้ `None` กลับมาให้ลองเวอร์ชันถัดไป ถ้าลองครบแล้วไม่ได้ให้คืน `None` เพื่อย้อนกลับขึ้นไป",
+      "en": "When you pick a version, copy the state (add the dependency specs, queue the dependencies) and search on. If that returns `None`, try the next version; if none works, return `None` so the caller backs up."
+    }
+  ]
+}

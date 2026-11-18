@@ -1,0 +1,25 @@
+{
+  "minutes": 30,
+  "title": {
+    "th": "ทำนายว่า layer ไหนจะถูก build ใหม่",
+    "en": "Predict which layers get rebuilt"
+  },
+  "prompt": {
+    "th": "Docker แคช layer ตามลำดับ เขียน `rebuild_plan(old, new, changed)` ที่คืน list ของ `\"cached\"` หรือ `\"rebuild\"` หนึ่งค่าต่อคำสั่งใน `new` ตามลำดับ\n\n- `old` และ `new` คือ list ของคำสั่งใน Dockerfile ครั้งก่อนกับครั้งนี้ (สตริงเช่น `\"COPY requirements.txt /app/\"`)\n- `changed` คือเซตของไฟล์ที่แก้ไปตั้งแต่ build ครั้งก่อน (path จาก build context เช่น `\"src/model.py\"`)\n\nกฎ:\n1. คำสั่งลำดับที่ i ใช้แคชได้เมื่อ `old` มีคำสั่งลำดับที่ i ที่เหมือนกันทุกตัวอักษร และทุกคำสั่งก่อนหน้าใช้แคชได้\n2. คำสั่ง `COPY` และ `ADD` ต้อง build ใหม่ถ้าไฟล์ต้นทางของมันเปลี่ยน ต้นทางคือทุกคำยกเว้นคำสุดท้าย (ปลายทาง) และข้ามตัวเลือกที่ขึ้นต้นด้วย `--` ต้นทาง `.` หมายถึงทั้ง context (เปลี่ยนไฟล์ไหนก็นับ) ต้นทางที่เป็นโฟลเดอร์ เช่น `src` หรือ `src/` นับไฟล์ทุกไฟล์ข้างใน\n3. เมื่อมีคำสั่งหนึ่งต้อง build ใหม่ ทุกคำสั่งหลังจากนั้นต้อง build ใหม่ด้วย\n\nมี test ซ่อนอยู่บางส่วน",
+    "en": "Docker caches layers in order. Write `rebuild_plan(old, new, changed)` that returns a list with `\"cached\"` or `\"rebuild\"` for each instruction in `new`, in order.\n\n- `old` and `new` are the Dockerfile instructions of the previous and current build (strings such as `\"COPY requirements.txt /app/\"`).\n- `changed` is the set of files edited since the previous build (paths in the build context, e.g. `\"src/model.py\"`).\n\nRules:\n1. Instruction i can use the cache when `old` has an identical instruction i and every earlier instruction used the cache.\n2. `COPY` and `ADD` must rebuild if any of their source files changed. Sources are every word except the last (the destination), skipping options that start with `--`. A source of `.` means the whole context (any change counts). A folder source such as `src` or `src/` covers every file inside it.\n3. Once one instruction rebuilds, every later one rebuilds too.\n\nSome tests are hidden."
+  },
+  "hints": [
+    {
+      "th": "เก็บธง `broken = False` แล้ววน `for i, ins in enumerate(new):` ถ้า `broken` เป็นจริงอยู่แล้ว คำสั่งนี้ต้อง rebuild ทันที",
+      "en": "Keep a flag `broken = False` and loop `for i, ins in enumerate(new):`. Once `broken` is true, every instruction is a rebuild."
+    },
+    {
+      "th": "หาไฟล์ต้นทาง: `words = ins.split()` ถ้า `words[0].upper()` เป็น COPY หรือ ADD ให้ `sources = [w for w in words[1:-1] if not w.startswith(\"--\")]`",
+      "en": "Find the sources: `words = ins.split()`; if `words[0].upper()` is COPY or ADD, `sources = [w for w in words[1:-1] if not w.startswith(\"--\")]`."
+    },
+    {
+      "th": "ไฟล์ `f` อยู่ใต้ต้นทาง `s` เมื่อ `s == \".\"` หรือ `f == s.rstrip(\"/\")` หรือ `f.startswith(s.rstrip(\"/\") + \"/\")`",
+      "en": "File `f` is covered by source `s` when `s == \".\"`, or `f == s.rstrip(\"/\")`, or `f.startswith(s.rstrip(\"/\") + \"/\")`."
+    }
+  ]
+}

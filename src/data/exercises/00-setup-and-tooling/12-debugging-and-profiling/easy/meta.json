@@ -1,0 +1,25 @@
+{
+  "minutes": 6,
+  "title": {
+    "th": "เติมโค้ด: Timer ที่จดเวลาทุกช่วง",
+    "en": "Fill in: a Timer that records every section"
+  },
+  "prompt": {
+    "th": "คลาส `Timer` ในบทเรียนพิมพ์เวลาของแต่ละช่วงโค้ด ลองทำเวอร์ชันที่เก็บผลไว้: เติมเมธอด `__exit__` ให้คำนวณเวลาที่ผ่านไปตั้งแต่ `__enter__` (`self.clock()` ตอนออก ลบ `self.start`) แล้วเก็บไว้ใน `self.elapsed` และต่อท้ายลงใน `self.times[self.name]` ซึ่งเป็น list (ชื่อเดียวกันใช้หลายครั้งได้ ให้เก็บทุกครั้ง) `times` เป็น dict ที่ส่งเข้ามาและใช้ร่วมกันหลาย Timer",
+    "en": "The lesson's `Timer` prints how long each section takes. Make one that keeps the results: complete `__exit__` so it computes the time since `__enter__` (`self.clock()` on exit minus `self.start`), stores it in `self.elapsed`, and appends it to the list `self.times[self.name]` (a name can be used many times; keep every timing). `times` is a dict passed in and shared by many timers."
+  },
+  "hints": [
+    {
+      "th": "`self.elapsed = self.clock() - self.start` ลำดับการลบสำคัญ เวลาต้องไม่ติดลบ",
+      "en": "`self.elapsed = self.clock() - self.start`; the order matters, a time is never negative."
+    },
+    {
+      "th": "`self.times.setdefault(self.name, []).append(self.elapsed)` สร้าง list ให้ครั้งแรกและต่อท้ายในครั้งถัดไป",
+      "en": "`self.times.setdefault(self.name, []).append(self.elapsed)` creates the list the first time and appends after that."
+    },
+    {
+      "th": "`__exit__` ไม่ต้องคืนค่า (คืน `None`) เพื่อไม่ให้กลืน exception ที่เกิดในบล็อก `with`",
+      "en": "`__exit__` should return nothing (`None`) so it doesn't swallow exceptions raised inside the `with` block."
+    }
+  ]
+}

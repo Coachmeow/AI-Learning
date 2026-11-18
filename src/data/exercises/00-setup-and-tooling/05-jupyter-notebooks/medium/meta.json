@@ -1,0 +1,25 @@
+{
+  "minutes": 15,
+  "title": {
+    "th": "หาเซลล์ที่ถูกรันไม่ตามลำดับ",
+    "en": "Find cells that ran out of order"
+  },
+  "prompt": {
+    "th": "เขียน `run_order_report(nb)` ที่ตรวจตัวเลข `execution_count` ของเซลล์โค้ด (ตัวเลขใน `[ ]` ข้างเซลล์) แล้วคืน dict สองรายการ ทั้งคู่เป็น index ใน `nb[\"cells\"]` เรียงจากน้อยไปมาก\n\n- `\"not_run\"`: เซลล์โค้ดที่ `execution_count` เป็น `None` (ยังไม่เคยรัน)\n- `\"out_of_order\"`: เซลล์โค้ดที่ตัวเลขไม่มากกว่าตัวเลขที่มากที่สุดของเซลล์โค้ดที่อยู่เหนือมัน (ถ้ารันจากบนลงล่าง ตัวเลขต้องเพิ่มขึ้นเสมอ)\n\nเซลล์ markdown ไม่ต้องสนใจ และเซลล์ที่ยังไม่รันไม่นับเป็นค่ามากที่สุด",
+    "en": "Write `run_order_report(nb)` that checks the `execution_count` of the code cells (the number in `[ ]` beside a cell) and returns a dict of two lists, both holding indexes into `nb[\"cells\"]` in ascending order:\n\n- `\"not_run\"`: code cells whose `execution_count` is `None` (never run).\n- `\"out_of_order\"`: code cells whose number is not greater than the largest number of any code cell above them (in a top-to-bottom run the numbers always go up).\n\nIgnore markdown cells, and never-run cells do not count towards the largest number."
+  },
+  "hints": [
+    {
+      "th": "เก็บตัวแปร `highest = 0` แล้ววน `for i, cell in enumerate(nb[\"cells\"]):`",
+      "en": "Keep `highest = 0` and loop with `for i, cell in enumerate(nb[\"cells\"]):`."
+    },
+    {
+      "th": "เทียบกับค่ามากที่สุดที่เห็นมา ไม่ใช่แค่เซลล์ก่อนหน้า: ตัวเลข [1], [5], [2], [3] มีเซลล์ที่ไม่ตามลำดับสองเซลล์ คือ [2] และ [3] เพราะทั้งคู่รันก่อน [5]",
+      "en": "Compare with the largest number so far, not just the previous cell: counters [1], [5], [2], [3] have two out-of-order cells, [2] and [3], since both ran before [5]."
+    },
+    {
+      "th": "ถ้า `count <= highest` ให้บันทึกว่าไม่ตามลำดับ ไม่เช่นนั้นให้ `highest = count` ส่วน `None` ให้บันทึกใน not_run แล้วข้ามไป",
+      "en": "If `count <= highest`, record it as out of order; otherwise set `highest = count`. For `None`, record it in not_run and move on."
+    }
+  ]
+}

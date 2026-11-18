@@ -1,0 +1,25 @@
+{
+  "minutes": 6,
+  "title": {
+    "th": "เติมโค้ด: แบ่งข้อมูลแบบสุ่มที่ทำซ้ำได้",
+    "en": "Fill in: a random split you can repeat"
+  },
+  "prompt": {
+    "th": "เติมฟังก์ชัน `seeded_split(items, test_frac, seed)` ให้สลับลำดับ**สำเนา**ของ `items` ด้วยตัวสุ่ม `rng` ที่สร้างจาก `seed` แล้วแบ่งเป็น `(train, test)` โดย test คือ `ceil(len(items) * test_frac)` ตัวแรกหลังสลับ seed เดียวกันต้องได้ผลเหมือนเดิมทุกครั้ง และห้ามแก้ list `items` ที่ส่งเข้ามา",
+    "en": "Complete `seeded_split(items, test_frac, seed)` so it shuffles a **copy** of `items` with the `rng` built from `seed`, then splits it into `(train, test)`, where test is the first `ceil(len(items) * test_frac)` items after the shuffle. The same seed must always give the same result, and the `items` list you are given must not change."
+  },
+  "hints": [
+    {
+      "th": "สลับด้วย `rng.shuffle(shuffled)` ไม่ใช่ `random.shuffle(...)` เพราะตัวหลังใช้ตัวสุ่มส่วนกลางที่ไม่ได้ผูกกับ seed",
+      "en": "Shuffle with `rng.shuffle(shuffled)`, not `random.shuffle(...)`, which uses the global generator that is not tied to the seed."
+    },
+    {
+      "th": "`shuffled = list(items)` สร้างสำเนาไว้แล้ว ให้สลับตัวนี้ ไม่ใช่ `items`",
+      "en": "`shuffled = list(items)` is already a copy; shuffle that, not `items`."
+    },
+    {
+      "th": "เติมแค่บรรทัดเดียว: `rng.shuffle(shuffled)`",
+      "en": "One line does it: `rng.shuffle(shuffled)`."
+    }
+  ]
+}

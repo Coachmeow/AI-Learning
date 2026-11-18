@@ -1,0 +1,25 @@
+{
+  "minutes": 5,
+  "title": {
+    "th": "เติมโค้ด: เวอร์ชันใหม่พอหรือยัง",
+    "en": "Fill in: is this version new enough?"
+  },
+  "prompt": {
+    "th": "บทนี้ต้องการ Python 3.11 ขึ้นไปและ Node.js 20 ขึ้นไป เติมฟังก์ชัน `is_new_enough(version, minimum)` ให้คืน `True` เมื่อ `version` ใหม่เท่ากับหรือใหม่กว่า `minimum` ทั้งสองค่าเป็นสตริงแบบ `\"3.12.4\"` หรือ `\"3.11\"` ส่วนที่ไม่ได้เขียนให้นับเป็น 0 ดังนั้น `\"3.11\"` กับ `\"3.11.0\"` ถือว่าเท่ากัน",
+    "en": "This lesson needs Python 3.11+ and Node.js 20+. Complete `is_new_enough(version, minimum)` so it returns `True` when `version` is the same as or newer than `minimum`. Both are strings such as `\"3.12.4\"` or `\"3.11\"`. Missing parts count as 0, so `\"3.11\"` and `\"3.11.0\"` are equal."
+  },
+  "hints": [
+    {
+      "th": "อย่าเทียบสตริงตรงๆ: `\"3.9\" >= \"3.11\"` ได้ `True` เพราะเทียบทีละตัวอักษร ต้องเทียบเป็นตัวเลข",
+      "en": "Don't compare the strings directly: `\"3.9\" >= \"3.11\"` is `True` because strings compare character by character. Compare numbers instead."
+    },
+    {
+      "th": "list ของตัวเลขเทียบกันได้ทีละตำแหน่งจากซ้ายไปขวา เช่น `[3, 9] < [3, 11]` แต่ list ที่สั้นกว่าจะถือว่าน้อยกว่า จึงต้องเติม 0 ให้ยาวเท่ากันก่อน",
+      "en": "Lists of numbers compare position by position from the left, e.g. `[3, 9] < [3, 11]`, but a shorter list counts as smaller, so pad with zeros to the same length first."
+    },
+    {
+      "th": "หาความยาว `n = max(len(found), len(need))` แล้วเติมด้วย `found + [0] * (n - len(found))` ทำแบบเดียวกันกับ `need` แล้วจึง `return found >= need`",
+      "en": "Take `n = max(len(found), len(need))`, pad with `found + [0] * (n - len(found))`, do the same for `need`, then `return found >= need`."
+    }
+  ]
+}

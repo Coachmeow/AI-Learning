@@ -1,0 +1,25 @@
+{
+  "minutes": 5,
+  "title": {
+    "th": "เติมโค้ด: git ตั้งชื่อไฟล์อย่างไร",
+    "en": "Fill in: how git names a file"
+  },
+  "prompt": {
+    "th": "git ไม่ได้เก็บไฟล์ตามชื่อ แต่ตาม hash ของเนื้อหา ไฟล์ทุกไฟล์ (blob) ได้ id เป็น SHA-1 ของ `b\"blob <ขนาด>\\0\"` ต่อด้วยเนื้อหา โดย `<ขนาด>` คือจำนวน byte เขียนเป็นตัวเลขฐานสิบ และ `\\0` คือ byte ศูนย์ เติมบรรทัด `header` ในฟังก์ชัน `blob_hash(content)` ให้ได้ค่าเดียวกับที่ `git hash-object` พิมพ์ออกมา",
+    "en": "Git stores files by a hash of their content, not by name. Every file (a blob) gets the SHA-1 of `b\"blob <size>\\0\"` followed by the content, where `<size>` is the number of bytes written in decimal and `\\0` is a zero byte. Fill in the `header` line of `blob_hash(content)` so it returns what `git hash-object` prints."
+  },
+  "hints": [
+    {
+      "th": "ขนาดคือ `len(content)` ซึ่งนับเป็น byte เพราะ `content` เป็น `bytes` อยู่แล้ว ตัวอักษรไทยหนึ่งตัวกินพื้นที่ 3 byte",
+      "en": "The size is `len(content)`, which counts bytes because `content` is already `bytes`. One Thai character takes 3 bytes."
+    },
+    {
+      "th": "ต่อ bytes เข้าด้วยกันด้วย `+` และแปลงตัวเลขเป็น bytes ด้วย `str(n).encode()`",
+      "en": "Join bytes with `+`, and turn the number into bytes with `str(n).encode()`."
+    },
+    {
+      "th": "`header = b\"blob \" + str(len(content)).encode() + b\"\\0\"`",
+      "en": "`header = b\"blob \" + str(len(content)).encode() + b\"\\0\"`"
+    }
+  ]
+}

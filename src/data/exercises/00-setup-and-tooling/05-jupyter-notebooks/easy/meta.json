@@ -1,0 +1,25 @@
+{
+  "minutes": 6,
+  "title": {
+    "th": "เติมโค้ด: ดึงโค้ดออกจากไฟล์ .ipynb",
+    "en": "Fill in: pull the code out of an .ipynb file"
+  },
+  "prompt": {
+    "th": "ไฟล์ `.ipynb` เป็น JSON ที่มี `\"cells\"` เป็น list ของเซลล์ แต่ละเซลล์มี `\"cell_type\"` (`\"code\"` หรือ `\"markdown\"`) และ `\"source\"` ซึ่งอาจเป็นสตริงเดียว หรือ list ของบรรทัดที่ลงท้ายด้วย `\\n` อยู่แล้ว เติมฟังก์ชัน `code_cells(nb)` ให้คืน list ของโค้ดในเซลล์โค้ดเท่านั้น ตามลำดับ โดยแต่ละตัวเป็นสตริงเดียว",
+    "en": "An `.ipynb` file is JSON whose `\"cells\"` is a list of cells. Each cell has a `\"cell_type\"` (`\"code\"` or `\"markdown\"`) and a `\"source\"`, which is either one string or a list of lines that already end in `\\n`. Complete `code_cells(nb)` so it returns the source of the code cells only, in order, each as a single string."
+  },
+  "hints": [
+    {
+      "th": "ข้ามเซลล์ที่ `cell[\"cell_type\"] != \"code\"`",
+      "en": "Skip cells where `cell[\"cell_type\"] != \"code\"`."
+    },
+    {
+      "th": "ถ้า `source` เป็น list ให้ต่อด้วย `\"\".join(source)` ไม่ใช่ `\"\\n\".join` เพราะแต่ละบรรทัดมี `\\n` อยู่แล้ว",
+      "en": "If `source` is a list, join it with `\"\".join(source)`, not `\"\\n\".join`, because each line already ends in `\\n`."
+    },
+    {
+      "th": "`isinstance(source, list)` ใช้แยกว่าเป็น list หรือสตริง",
+      "en": "`isinstance(source, list)` tells a list from a string."
+    }
+  ]
+}

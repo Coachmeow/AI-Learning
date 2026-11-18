@@ -1,0 +1,25 @@
+{
+  "minutes": 15,
+  "title": {
+    "th": "เขียน SGD แบบมีโมเมนตัมเอง",
+    "en": "Write SGD with momentum"
+  },
+  "prompt": {
+    "th": "เขียนเมธอด `step` ของ `SGDMomentum` ให้ (1) สร้างความเร็ว (velocity) เป็นศูนย์ในครั้งแรกที่ถูกเรียก (2) อัปเดตความเร็ว `v = momentum * v + g` (3) คืนพารามิเตอร์ใหม่ `p - lr * v` ความเร็วต้องสะสมต่อเนื่องข้ามการเรียก `step` แต่ละครั้ง",
+    "en": "Write the `step` method of `SGDMomentum`: (1) create the velocity as zeros on the first call, (2) update it with `v = momentum * v + g`, (3) return the new parameters `p - lr * v`. The velocity must carry over between calls to `step`."
+  },
+  "hints": [
+    {
+      "th": "เก็บความเร็วไว้ใน `self.velocity` เพื่อให้ค่าค้างอยู่ระหว่างการเรียก `step` แต่ละครั้ง",
+      "en": "Keep the velocity in `self.velocity` so it survives between calls to `step`."
+    },
+    {
+      "th": "สร้าง `[0.0] * len(params)` เฉพาะตอนที่ `self.velocity is None` เท่านั้น ถ้าสร้างใหม่ทุกครั้ง โมเมนตัมจะไม่มีผลเลย",
+      "en": "Create `[0.0] * len(params)` only when `self.velocity is None`. Recreating it every call cancels the momentum."
+    },
+    {
+      "th": "อัปเดตความเร็วก่อน แล้วจึงใช้ความเร็วใหม่ขยับพารามิเตอร์",
+      "en": "Update the velocity first, then move the parameters with the new velocity."
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+---
+// Server side of the quiz + hands-on section. Data is embedded as JSON; assessment.ts renders it.
+import { ui, type Lang } from '../data/ui';
+
+interface Props {
+  lessonKey: string;
+  lang: Lang;
+}
+const { lessonKey, lang } = Astro.props;
+const t = ui[lang];
+
+type Bi = { th: string; en: string };
+const pick = (v: Bi | string) => (typeof v === 'string' ? v : v[lang] || v.en);
+
+const curated = import.meta.glob('../data/quizzes/**/*.json', { eager: true, import: 'default' }) as Record<string, any>;
+const upstream = import.meta.glob('../data/upstream-quiz/**/*.json', { eager: true, import: 'default' }) as Record<string, any>;
+const metas = import.meta.glob('../data/exercises/**/meta.json', { eager: true, import: 'default' }) as Record<string, any>;
+const pyFiles = import.meta.glob('../data/exercises/**/*.py', { eager: true, query: '?raw', import: 'default' }) as Record<string, string>;
+
+let quiz: any[] = [];
+const cq = curated[`../data/quizzes/${lessonKey}.json`];
+const uq = upstream[`../data/upstream-quiz/${lessonKey}.json`];
+if (cq) {
+  quiz = cq.questions.map((q: any) => ({
+    id: q.id,
+    difficulty: q.difficulty,
+    origin: q.origin,
+    question: pick(q.question),
+    code: q.code,
+    options: q.options.map(pick),
+    answer: q.answer,
+    explanation: pick(q.explanation),
+  }));
+} else if (uq) {
+  // Not curated yet: show the original questions (English) with pre-lesson ones as "easy".
+  const qs = Array.isArray(uq) ? uq : uq.questions;
+  quiz = qs.map((q: any, i: number) => ({
+    id: `u${i + 1}`,
+    difficulty: q.stage === 'pre' ? 'easy' : 'medium',
+    origin: 'upstream',
+    question: q.question,
+    options: q.options,
+    answer: q.correct,
+    explanation: q.explanation,
+  }));
+}
+
+const exercises: Record<string, any> = {};
+for (const level of ['easy', 'medium', 'hard']) {
+  const dir = `../data/exercises/${lessonKey}/${level}`;
+  const meta = metas[`${dir}/meta.json`];
+  if (!meta) continue;
+  exercises[level] = {
+    title: pick(meta.title),
+    minutes: meta.minutes,
+    prompt: pick(meta.prompt),
+    hints: meta.hints.map(pick),
+    starter: pyFiles[`${dir}/starter.py`],
+    solution: pyFiles[`${dir}/solution.py`],
+    tests: pyFiles[`${dir}/tests.py`],
+  };
+}
+
+const hasAny = quiz.length > 0 || Object.keys(exercises).length > 0;
+const payload = JSON.stringify({ lesson: lessonKey, lang, ui: t, quiz, exercises }).replace(/</g, '\\u003c');
+---
+
+{
+  hasAny && (
+    <section class="ail-assess not-content" aria-labelledby="ail-assess-title" data-pagefind-ignore="all">
+      <h2 id="ail-assess-title">{t.assessTitle}</h2>
+      <p class="ail-sub">{t.assessSub}</p>
+      <div class="ail-tabs" role="tablist">
+        <button type="button" role="tab" class="ail-tab" data-tab="quiz" aria-selected="true">
+          {t.tabQuiz}
+        </button>
+        <button type="button" role="tab" class="ail-tab" data-tab="code" aria-selected="false">
+          {t.tabCode}
+        </button>
+      </div>
+      <div class="ail-levels" />
+      <div class="ail-panel" data-panel="quiz" role="tabpanel" />
+      <div class="ail-panel" data-panel="code" role="tabpanel" hidden />
+      <script is:inline type="application/json" class="ail-data" set:html={payload} />
+    </section>
+  )
+}
+
+<script>
+  import '../scripts/assessment.ts';
+</script>
