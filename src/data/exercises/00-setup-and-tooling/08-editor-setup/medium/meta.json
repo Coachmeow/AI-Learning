@@ -1,0 +1,25 @@
+{
+  "minutes": 18,
+  "title": {
+    "th": "อ่านไฟล์ settings.json ที่มีคอมเมนต์",
+    "en": "Read a settings.json that has comments"
+  },
+  "prompt": {
+    "th": "ไฟล์ตั้งค่าของ VS Code เป็น JSONC คือ JSON ที่มีคอมเมนต์และจุลภาคท้ายได้ ซึ่ง `json.loads` อ่านไม่ได้ เขียน `load_jsonc(text)` ที่\n\n1. ตัดคอมเมนต์แบบ `// ...` (ถึงท้ายบรรทัด) และ `/* ... */` ออก\n2. ตัดจุลภาคที่อยู่ก่อน `}` หรือ `]` (อาจมีช่องว่างหรือขึ้นบรรทัดคั่น) ออก\n3. ห้ามแตะอะไรที่อยู่ในสตริง เช่น `\"https://example.com\"` หรือ `\"a, }\"` และระวังเครื่องหมายคำพูดที่ escape ไว้ (`\\\"`) ในสตริง\n\nแล้วคืนผลของ `json.loads` บนข้อความที่ทำความสะอาดแล้ว",
+    "en": "VS Code settings files are JSONC: JSON that allows comments and trailing commas, which `json.loads` rejects. Write `load_jsonc(text)` that:\n\n1. Removes `// ...` comments (to the end of the line) and `/* ... */` comments.\n2. Removes a comma that comes right before `}` or `]` (spaces or newlines may sit between).\n3. Leaves everything inside strings alone, such as `\"https://example.com\"` or `\"a, }\"`, and copes with escaped quotes (`\\\"`) inside strings.\n\nThen return `json.loads` of the cleaned text."
+  },
+  "hints": [
+    {
+      "th": "อย่าใช้ regex ตัดคอมเมนต์ตรงๆ เพราะจะตัด `//` ใน URL ด้วย ให้เดินทีละตัวอักษรแล้วจำว่าตอนนี้อยู่ในสตริงหรือไม่",
+      "en": "Don't strip comments with one regex: it would also cut the `//` in URLs. Walk the text one character at a time and remember whether you are inside a string."
+    },
+    {
+      "th": "ในสตริง ถ้าเจอ `\\` ให้คัดลอกตัวมันกับตัวถัดไปทั้งคู่ แล้วข้ามไป (เพื่อไม่ให้ `\\\"` ปิดสตริง) และเจอ `\"` เมื่อไรก็ออกจากสตริง",
+      "en": "Inside a string, on `\\` copy it and the next character together and skip both (so `\\\"` doesn't end the string); a plain `\"` ends the string."
+    },
+    {
+      "th": "จุลภาคท้าย: ตอนเจอ `,` นอกสตริง ให้มองไปข้างหน้าข้ามช่องว่าง (และคอมเมนต์ที่ตัดไปแล้ว) ถ้าตัวถัดไปเป็น `}` หรือ `]` ก็ไม่ต้องเก็บจุลภาคนี้ ทำได้ง่ายถ้าตัดคอมเมนต์ก่อนหนึ่งรอบ แล้วค่อยวนตัดจุลภาคอีกรอบ",
+      "en": "Trailing commas: on a `,` outside a string, look ahead past whitespace; if the next character is `}` or `]`, drop the comma. It is easiest to strip comments in one pass and drop commas in a second pass."
+    }
+  ]
+}

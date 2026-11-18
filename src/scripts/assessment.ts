@@ -65,7 +65,8 @@ function h(tag: string, attrs: Record<string, any> = {}, kids: (Node | string | 
 const escapeHtml = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const inline = (s: string) =>
   escapeHtml(s)
-    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    // ``a ` b`` spans (code that contains a backtick) and plain `code` spans, in one pass.
+    .replace(/``\s?(.+?)\s?``|`([^`]+)`/g, (_m, wide: string | undefined, plain: string | undefined) => `<code>${wide ?? plain}</code>`)
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
 
 const ICON_OK = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ail-ok)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M7.5 12.5l3 3 6-6.5"/></svg>';

@@ -1,0 +1,486 @@
+{
+  "lesson": "00-setup-and-tooling/08-editor-setup",
+  "source_hash": "e1f15c23a08a69e1f176c11403da0e2580379c1929311754dca686c5cd86dbe6",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What is a Language Server Protocol (LSP)?",
+        "th": "Language Server Protocol (LSP) คืออะไร"
+      },
+      "options": [
+        {
+          "en": "A protocol for transferring files between editors",
+          "th": "โปรโตคอลสำหรับส่งไฟล์ระหว่าง editor"
+        },
+        {
+          "en": "A compression format for source code files",
+          "th": "รูปแบบการบีบอัดไฟล์ซอร์สโค้ด"
+        },
+        {
+          "en": "A network protocol for remote pair programming",
+          "th": "โปรโตคอลเครือข่ายสำหรับเขียนโปรแกรมคู่กันจากระยะไกล"
+        },
+        {
+          "en": "A standard for editors to receive type info, completions, and diagnostics from a language-specific server",
+          "th": "มาตรฐานที่ให้ editor รับข้อมูลชนิดข้อมูล คำแนะนำการเติมคำ และการวินิจฉัยปัญหาจากเซิร์ฟเวอร์เฉพาะของแต่ละภาษา"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "LSP is a standardized protocol that lets editors communicate with language servers for features like autocomplete, type checking, and error diagnostics, regardless of the editor used.",
+        "th": "LSP คือโปรโตคอลมาตรฐานที่ให้ editor คุยกับ language server เพื่อใช้ความสามารถอย่างการเติมคำอัตโนมัติ การตรวจชนิดข้อมูล และการวินิจฉัย error ได้ ไม่ว่าจะใช้ editor ตัวไหน"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "Why is format-on-save useful for team projects?",
+        "th": "ทำไมการจัดรูปแบบเมื่อบันทึก (format-on-save) จึงมีประโยชน์กับโปรเจกต์ที่ทำเป็นทีม"
+      },
+      "options": [
+        {
+          "en": "It ensures consistent code style across all contributors without manual formatting",
+          "th": "ทำให้โค้ดของทุกคนมีสไตล์เดียวกันโดยไม่ต้องจัดเอง"
+        },
+        {
+          "en": "It compresses the code for faster git operations",
+          "th": "บีบอัดโค้ดเพื่อให้ git ทำงานเร็วขึ้น"
+        },
+        {
+          "en": "It reduces file sizes by removing whitespace",
+          "th": "ลดขนาดไฟล์ด้วยการลบช่องว่าง"
+        },
+        {
+          "en": "It catches runtime bugs before the code is executed",
+          "th": "จับบั๊กตอนรันได้ก่อนรันโค้ด"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Format-on-save runs a formatter (like Black or Ruff) every time you save, ensuring all code follows the same style conventions regardless of who wrote it.",
+        "th": "format-on-save รันตัวจัดรูปแบบ (เช่น Black หรือ Ruff) ทุกครั้งที่บันทึก โค้ดทั้งหมดจึงเป็นไปตามสไตล์เดียวกันไม่ว่าใครจะเป็นคนเขียน"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Which shortcut toggles the integrated terminal in VS Code?",
+        "th": "ปุ่มลัดใดเปิด/ปิด terminal ใน VS Code"
+      },
+      "options": [
+        {
+          "en": "`` Ctrl+` ``",
+          "th": "`` Ctrl+` ``"
+        },
+        {
+          "en": "`Ctrl+Shift+P`",
+          "th": "`Ctrl+Shift+P`"
+        },
+        {
+          "en": "`Shift+Enter`",
+          "th": "`Shift+Enter`"
+        },
+        {
+          "en": "`Ctrl+/`",
+          "th": "`Ctrl+/`"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "`` Ctrl+` `` toggles the terminal on every platform. `Ctrl+Shift+P` opens the Command Palette.",
+        "th": "`` Ctrl+` `` เปิด/ปิด terminal ได้ทุกแพลตฟอร์ม ส่วน `Ctrl+Shift+P` เปิด Command Palette"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Where should you put `extensions.json` so VS Code offers to install the recommended extensions?",
+        "th": "ควรวาง `extensions.json` ไว้ที่ไหน เพื่อให้ VS Code ชวนติดตั้งส่วนเสริมที่แนะนำ"
+      },
+      "options": [
+        {
+          "en": "In your home folder",
+          "th": "ในโฟลเดอร์ home"
+        },
+        {
+          "en": "In `.vscode/extensions.json` inside the project folder",
+          "th": "ใน `.vscode/extensions.json` ภายในโฟลเดอร์โปรเจกต์"
+        },
+        {
+          "en": "Next to the VS Code program",
+          "th": "ข้างโปรแกรม VS Code"
+        },
+        {
+          "en": "In `~/.ssh/`",
+          "th": "ใน `~/.ssh/`"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "VS Code reads workspace recommendations from `.vscode/extensions.json` and prompts you when you open that folder.",
+        "th": "VS Code อ่านรายการแนะนำของ workspace จาก `.vscode/extensions.json` แล้วชวนให้ติดตั้งเมื่อเปิดโฟลเดอร์นั้น"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Which extension shows who last changed each line (inline git blame)?",
+        "th": "ส่วนเสริมใดแสดงว่าใครแก้แต่ละบรรทัดล่าสุด (git blame ในบรรทัด)"
+      },
+      "options": [
+        {
+          "en": "Ruff",
+          "th": "Ruff"
+        },
+        {
+          "en": "GitLens",
+          "th": "GitLens"
+        },
+        {
+          "en": "Pylance",
+          "th": "Pylance"
+        },
+        {
+          "en": "Jupyter",
+          "th": "Jupyter"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "GitLens adds git history to the editor, including inline blame. Ruff lints, Pylance type-checks and Jupyter runs notebooks.",
+        "th": "GitLens เพิ่มประวัติ git เข้ามาใน editor รวมถึง blame ในบรรทัด ส่วน Ruff ใช้ lint, Pylance ตรวจชนิดข้อมูล และ Jupyter ใช้รัน notebook"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "Which VS Code extension enables editing code on a remote GPU machine as if it were local?",
+        "th": "ส่วนเสริมใดของ VS Code ที่ทำให้แก้โค้ดบนเครื่อง GPU ระยะไกลได้เหมือนอยู่ในเครื่องตัวเอง"
+      },
+      "options": [
+        {
+          "en": "Pylance",
+          "th": "Pylance"
+        },
+        {
+          "en": "Debugpy",
+          "th": "Debugpy"
+        },
+        {
+          "en": "GitLens",
+          "th": "GitLens"
+        },
+        {
+          "en": "Remote SSH",
+          "th": "Remote SSH"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Remote SSH installs a lightweight VS Code server on the remote machine and streams the UI to your local editor, letting you edit files, run terminals, and debug remotely.",
+        "th": "Remote SSH ติดตั้งเซิร์ฟเวอร์ VS Code ขนาดเล็กบนเครื่องระยะไกล แล้วส่งหน้าจอมาที่ editor ในเครื่องคุณ คุณจึงแก้ไฟล์ รัน terminal และไล่บั๊กบนเครื่องระยะไกลได้"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "Why should 'notebook.output.scrolling' be enabled in VS Code settings for AI work?",
+        "th": "ทำไมควรเปิด 'notebook.output.scrolling' ในการตั้งค่า VS Code สำหรับงาน AI"
+      },
+      "options": [
+        {
+          "en": "It enables smooth scrolling animations in the editor",
+          "th": "เปิดภาพเคลื่อนไหวตอนเลื่อนใน editor ให้ลื่นขึ้น"
+        },
+        {
+          "en": "It allows scrolling between notebook cells with the mouse wheel",
+          "th": "ทำให้เลื่อนระหว่างเซลล์ของ notebook ด้วยลูกล้อเมาส์ได้"
+        },
+        {
+          "en": "It enables horizontal scrolling for wide dataframes",
+          "th": "ทำให้เลื่อนแนวนอนดู dataframe ที่กว้างได้"
+        },
+        {
+          "en": "It prevents training loop output (thousands of lines) from exploding the output panel",
+          "th": "กันไม่ให้ผลลัพธ์ของลูปการฝึก (หลายพันบรรทัด) ทำให้แผงผลลัพธ์ยาวล้นจอ"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Training loops can print thousands of lines of output. Without output scrolling, the notebook output panel grows unbounded, making the notebook unusable.",
+        "th": "ลูปการฝึกอาจพิมพ์ผลลัพธ์ออกมาหลายพันบรรทัด ถ้าไม่เปิดการเลื่อนดูผลลัพธ์ แผงผลลัพธ์ของ notebook จะยาวขึ้นเรื่อยๆ จนใช้งาน notebook ไม่ได้"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "What does setting 'python.analysis.typeCheckingMode' to 'basic' in VS Code accomplish?",
+        "th": "การตั้ง 'python.analysis.typeCheckingMode' เป็น 'basic' ใน VS Code ได้ผลอะไร"
+      },
+      "options": [
+        {
+          "en": "It enables syntax highlighting for Python files",
+          "th": "เปิดการไฮไลต์ไวยากรณ์ของไฟล์ Python"
+        },
+        {
+          "en": "It formats Python code according to PEP 8 standards",
+          "th": "จัดรูปแบบโค้ด Python ตามมาตรฐาน PEP 8"
+        },
+        {
+          "en": "It enables Python 3.12 language features",
+          "th": "เปิดใช้ความสามารถของภาษา Python 3.12"
+        },
+        {
+          "en": "It catches wrong argument types and tensor shape mismatches before running the code",
+          "th": "จับชนิดของอาร์กิวเมนต์ที่ผิดและ shape ของ tensor ที่ไม่ตรงกันได้ก่อนรันโค้ด"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Basic type checking with Pylance flags type mismatches, wrong argument types, and incorrect API parameters at edit time, catching bugs before you run a potentially expensive training script.",
+        "th": "การตรวจชนิดข้อมูลระดับ basic ของ Pylance แจ้งเตือนชนิดข้อมูลที่ไม่ตรงกัน ชนิดของอาร์กิวเมนต์ที่ผิด และพารามิเตอร์ของ API ที่ไม่ถูกต้องตั้งแต่ตอนแก้โค้ด จึงจับบั๊กได้ก่อนรันสคริปต์ฝึกที่อาจเสียค่าใช้จ่ายสูง"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "Why is one of the editor rulers set at column 88?",
+        "th": "ทำไมจึงตั้งเส้นบอกความยาวเส้นหนึ่งไว้ที่คอลัมน์ 88"
+      },
+      "options": [
+        {
+          "en": "Python forbids longer lines",
+          "th": "Python ห้ามบรรทัดที่ยาวกว่านี้"
+        },
+        {
+          "en": "Black wraps code at 88 characters",
+          "th": "Black ตัดบรรทัดโค้ดที่ 88 ตัวอักษร"
+        },
+        {
+          "en": "Terminals are 88 columns wide",
+          "th": "terminal กว้าง 88 คอลัมน์"
+        },
+        {
+          "en": "GitHub hides longer lines",
+          "th": "GitHub ซ่อนบรรทัดที่ยาวกว่านี้"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Black's default line length is 88. The second ruler at 120 warns when docstrings and comments grow too long.",
+        "th": "ความยาวบรรทัดตั้งต้นของ Black คือ 88 ส่วนเส้นที่ 120 ใช้เตือนเมื่อ docstring และคอมเมนต์ยาวเกินไป"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "Which problem does `\"files.autoSave\": \"afterDelay\"` prevent?",
+        "th": "`\"files.autoSave\": \"afterDelay\"` ช่วยกันปัญหาใด"
+      },
+      "options": [
+        {
+          "en": "Losing files when the disk is full",
+          "th": "ไฟล์หายเมื่อดิสก์เต็ม"
+        },
+        {
+          "en": "Running a training script with stale code because you forgot to save",
+          "th": "รันสคริปต์ฝึกด้วยโค้ดเก่า เพราะลืมบันทึก"
+        },
+        {
+          "en": "Merge conflicts in git",
+          "th": "การ merge ขัดกันใน git"
+        },
+        {
+          "en": "Slow autocomplete",
+          "th": "การเติมคำอัตโนมัติช้า"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Python runs what is on disk, not what is in the editor. Auto-save keeps the two in sync so a run never uses yesterday's version.",
+        "th": "Python รันไฟล์ที่อยู่บนดิสก์ ไม่ใช่สิ่งที่อยู่ใน editor การบันทึกอัตโนมัติทำให้สองอย่างนี้ตรงกัน การรันจึงไม่ใช้โค้ดเวอร์ชันเก่า"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Remote-SSH cannot connect to `gpu-box`, and `ssh gpu-box` in a terminal fails too. What should you fix first?",
+        "th": "Remote-SSH เชื่อมต่อ `gpu-box` ไม่ได้ และ `ssh gpu-box` ใน terminal ก็ล้มเหลวเช่นกัน ควรแก้อะไรก่อน"
+      },
+      "options": [
+        {
+          "en": "Reinstall VS Code",
+          "th": "ติดตั้ง VS Code ใหม่"
+        },
+        {
+          "en": "Your SSH setup (the `~/.ssh/config` entry, keys, address), until plain `ssh gpu-box` works",
+          "th": "การตั้งค่า SSH ของคุณ (รายการใน `~/.ssh/config`, key, ที่อยู่) จนกว่า `ssh gpu-box` ธรรมดาจะใช้ได้"
+        },
+        {
+          "en": "The Pylance settings",
+          "th": "การตั้งค่าของ Pylance"
+        },
+        {
+          "en": "Install the Remote SSH extension on the server",
+          "th": "ติดตั้งส่วนเสริม Remote SSH บนเซิร์ฟเวอร์"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Remote-SSH uses your normal SSH client. If `ssh gpu-box` fails on its own, VS Code cannot succeed either; the lesson's hint is to confirm plain SSH works first.",
+        "th": "Remote-SSH ใช้ SSH client ปกติของคุณ ถ้า `ssh gpu-box` ล้มเหลวเอง VS Code ก็เชื่อมต่อไม่ได้เช่นกัน คำใบ้ของบทจึงให้ยืนยันว่า SSH ธรรมดาใช้ได้ก่อน"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "You pasted the lesson's settings below your existing ones, and VS Code underlines the file in red. What went wrong?",
+        "th": "คุณวางการตั้งค่าของบทเรียนต่อท้ายการตั้งค่าเดิม แล้ว VS Code ขีดเส้นแดงทั้งไฟล์ เกิดอะไรขึ้น"
+      },
+      "options": [
+        {
+          "en": "VS Code does not allow more than five settings",
+          "th": "VS Code ไม่ยอมให้มีการตั้งค่าเกินห้ารายการ"
+        },
+        {
+          "en": "The file now holds two top-level `{ }` objects, which is not valid JSON; merge the keys into one object",
+          "th": "ในไฟล์มีวัตถุ `{ }` ระดับบนสุดสองชุด ซึ่งไม่ใช่ JSON ที่ถูกต้อง ต้องรวม key ไว้ในวัตถุเดียว"
+        },
+        {
+          "en": "Comments are never allowed in settings",
+          "th": "ในไฟล์ตั้งค่าห้ามมีคอมเมนต์เลย"
+        },
+        {
+          "en": "The settings only work in Cursor",
+          "th": "การตั้งค่านี้ใช้ได้แค่ใน Cursor"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "A settings file is one JSON object. Pasting a second `{...}` after the first breaks it; put all keys inside one pair of braces, separated by commas.",
+        "th": "ไฟล์ตั้งค่าคือวัตถุ JSON เดียว การวาง `{...}` อีกชุดต่อท้ายทำให้ไฟล์พัง ต้องใส่ key ทั้งหมดไว้ในวงเล็บปีกกาคู่เดียว คั่นด้วยจุลภาค"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "What does `ssh-copy-id user@your-gpu-box-ip` do, and why do it?",
+        "th": "`ssh-copy-id user@your-gpu-box-ip` ทำอะไร และทำไปเพื่ออะไร"
+      },
+      "options": [
+        {
+          "en": "Copies your private key to the server so it can log in to you",
+          "th": "คัดลอก private key ไปที่เซิร์ฟเวอร์ เพื่อให้เซิร์ฟเวอร์ล็อกอินเข้าเครื่องคุณได้"
+        },
+        {
+          "en": "Adds your public key to the server's authorized keys, so you can log in without a password",
+          "th": "เพิ่ม public key ของคุณลงในรายการ key ที่อนุญาตของเซิร์ฟเวอร์ คุณจึงล็อกอินได้โดยไม่ต้องใส่รหัสผ่าน"
+        },
+        {
+          "en": "Copies VS Code to the server",
+          "th": "คัดลอก VS Code ไปที่เซิร์ฟเวอร์"
+        },
+        {
+          "en": "Creates a new user account on the server",
+          "th": "สร้างบัญชีผู้ใช้ใหม่บนเซิร์ฟเวอร์"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "`ssh-keygen` makes a key pair; `ssh-copy-id` installs the public half on the server. The private key never leaves your machine, and logins stop asking for a password.",
+        "th": "`ssh-keygen` สร้างคู่ key ส่วน `ssh-copy-id` ติดตั้ง public key ไว้บนเซิร์ฟเวอร์ private key ไม่เคยออกจากเครื่องของคุณ และการล็อกอินจะไม่ถามรหัสผ่านอีก"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Why do the lesson's `settings.json` and `extensions.json` also work in Cursor and Windsurf?",
+        "th": "ทำไม `settings.json` และ `extensions.json` ของบทเรียนจึงใช้กับ Cursor และ Windsurf ได้ด้วย"
+      },
+      "options": [
+        {
+          "en": "They are forks of VS Code, so they share its settings format and extension ecosystem",
+          "th": "ทั้งสองแยกมาจาก VS Code (fork) จึงใช้รูปแบบการตั้งค่าและส่วนเสริมชุดเดียวกัน"
+        },
+        {
+          "en": "They convert the files automatically from Vim",
+          "th": "ทั้งสองแปลงไฟล์มาจาก Vim ให้อัตโนมัติ"
+        },
+        {
+          "en": "All editors use the same settings file",
+          "th": "ทุก editor ใช้ไฟล์ตั้งค่าเดียวกัน"
+        },
+        {
+          "en": "They only read `extensions.json`",
+          "th": "ทั้งสองอ่านแค่ `extensions.json`"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Cursor and Windsurf are VS Code forks with AI features added. Neovim is different: it needs its own LSP and plugin setup.",
+        "th": "Cursor และ Windsurf คือ VS Code ที่แยกมาพัฒนาต่อและเพิ่มความสามารถด้าน AI ส่วน Neovim ต่างออกไป ต้องตั้งค่า LSP และปลั๊กอินของตัวเอง"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Why can one language server like Pyright give the same completions in VS Code, Neovim and other editors?",
+        "th": "ทำไม language server ตัวเดียวอย่าง Pyright จึงให้การเติมคำแบบเดียวกันได้ทั้งใน VS Code, Neovim และ editor อื่น"
+      },
+      "options": [
+        {
+          "en": "Each editor includes its own copy of Python",
+          "th": "ทุก editor มี Python ติดมาในตัว"
+        },
+        {
+          "en": "Editors talk to it through the same standard protocol (LSP), so the language logic is written once",
+          "th": "editor คุยกับมันผ่านโปรโตคอลมาตรฐานเดียวกัน (LSP) ตรรกะของภาษาจึงเขียนครั้งเดียว"
+        },
+        {
+          "en": "The editors share a cloud service",
+          "th": "editor ทั้งหมดใช้บริการคลาวด์ร่วมกัน"
+        },
+        {
+          "en": "Pyright is built into the operating system",
+          "th": "Pyright ติดมากับระบบปฏิบัติการ"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "LSP separates the editor from the language intelligence: the editor sends requests, the server answers with types, completions and diagnostics. That is why nvim-lspconfig can reuse pyright.",
+        "th": "LSP แยก editor ออกจากความเข้าใจภาษา editor ส่งคำขอไป เซิร์ฟเวอร์ตอบกลับด้วยชนิดข้อมูล คำแนะนำการเติมคำ และการวินิจฉัย nvim-lspconfig จึงใช้ pyright ซ้ำได้"
+      }
+    }
+  ]
+}

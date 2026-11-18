@@ -564,6 +564,60 @@
     {
       "en": "port mapping",
       "th": "การ map พอร์ต"
+    },
+    {
+      "en": "editor",
+      "th": "editor"
+    },
+    {
+      "en": "extension (editor)",
+      "th": "ส่วนเสริม",
+      "first": "ส่วนเสริม (extension)"
+    },
+    {
+      "en": "autocomplete",
+      "th": "การเติมคำอัตโนมัติ"
+    },
+    {
+      "en": "type checking / type hint",
+      "th": "การตรวจชนิดข้อมูล / คำใบ้ชนิดข้อมูล"
+    },
+    {
+      "en": "format on save / formatter",
+      "th": "จัดรูปแบบเมื่อบันทึก / ตัวจัดรูปแบบ"
+    },
+    {
+      "en": "linting / linter",
+      "th": "lint"
+    },
+    {
+      "en": "ruler (editor)",
+      "th": "เส้นบอกความยาว"
+    },
+    {
+      "en": "integrated terminal",
+      "th": "terminal ใน editor"
+    },
+    {
+      "en": "remote development",
+      "th": "พัฒนาบนเครื่องระยะไกล"
+    },
+    {
+      "en": "language server / LSP",
+      "th": "language server / LSP"
+    },
+    {
+      "en": "Command Palette",
+      "th": "Command Palette"
+    },
+    {
+      "en": "SSH key",
+      "th": "SSH key"
+    },
+    {
+      "en": "JSONC",
+      "th": "JSONC",
+      "note": "JSON ที่มีคอมเมนต์และจุลภาคท้ายได้ (ไฟล์ตั้งค่าของ VS Code)"
     }
   ]
 }
