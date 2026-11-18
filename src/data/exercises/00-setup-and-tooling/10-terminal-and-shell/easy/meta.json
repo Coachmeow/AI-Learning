@@ -1,0 +1,25 @@
+{
+  "minutes": 5,
+  "title": {
+    "th": "เติมโค้ด: ดึงค่า loss ออกจาก log",
+    "en": "Fill in: pull the loss values out of a log"
+  },
+  "prompt": {
+    "th": "ในบทเรียนใช้ `grep \"loss:\" train.log | awk '{print $NF}'` ดึงค่า loss ออกจาก log ลองทำแบบเดียวกันใน Python: เติม `extract_losses(log_text)` ให้คืน list ของ float จากทุกบรรทัดที่มี `loss:` โดยใช้คำสุดท้ายของบรรทัด (เหมือน `$NF`) บรรทัดอื่นให้ข้ามไป",
+    "en": "The lesson uses `grep \"loss:\" train.log | awk '{print $NF}'` to pull loss values from a log. Do the same in Python: complete `extract_losses(log_text)` so it returns a list of floats from every line containing `loss:`, using the last word of the line (like `$NF`). Skip every other line."
+  },
+  "hints": [
+    {
+      "th": "`if \"loss:\" in line:` คือ grep และ `line.split()[-1]` คือ `$NF` ของ awk",
+      "en": "`if \"loss:\" in line:` is the grep, and `line.split()[-1]` is awk's `$NF`."
+    },
+    {
+      "th": "แปลงเป็นตัวเลขด้วย `float(...)` ก่อน append",
+      "en": "Convert with `float(...)` before appending."
+    },
+    {
+      "th": "`losses.append(float(line.split()[-1]))` ภายใน if",
+      "en": "`losses.append(float(line.split()[-1]))` inside the if."
+    }
+  ]
+}

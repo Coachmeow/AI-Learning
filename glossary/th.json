@@ -680,6 +680,61 @@
     {
       "en": "zero-copy",
       "th": "อ่านโดยไม่ต้องคัดลอก (zero-copy)"
+    },
+    {
+      "en": "terminal / shell",
+      "th": "terminal / shell"
+    },
+    {
+      "en": "pipe",
+      "th": "pipe"
+    },
+    {
+      "en": "redirect",
+      "th": "การเปลี่ยนทิศทาง",
+      "first": "การเปลี่ยนทิศทาง (redirect)"
+    },
+    {
+      "en": "stdout / stderr / stdin",
+      "th": "stdout / stderr / stdin"
+    },
+    {
+      "en": "background process",
+      "th": "โปรเซสเบื้องหลัง"
+    },
+    {
+      "en": "detach / attach (tmux)",
+      "th": "detach / attach"
+    },
+    {
+      "en": "pane (tmux)",
+      "th": "ช่อง",
+      "first": "ช่อง (pane)"
+    },
+    {
+      "en": "alias (shell)",
+      "th": "alias"
+    },
+    {
+      "en": "port forwarding",
+      "th": "การส่งต่อพอร์ต",
+      "first": "การส่งต่อพอร์ต (port forwarding)"
+    },
+    {
+      "en": "PID / process",
+      "th": "PID / โปรเซส"
+    },
+    {
+      "en": "hangup signal (SIGHUP)",
+      "th": "สัญญาณ hangup (SIGHUP)"
+    },
+    {
+      "en": "OOM (out of memory)",
+      "th": "หน่วยความจำไม่พอ (OOM)"
+    },
+    {
+      "en": "buffering",
+      "th": "การพักข้อมูลใน buffer"
     }
   ]
 }

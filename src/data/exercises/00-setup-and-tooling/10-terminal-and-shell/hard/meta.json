@@ -1,0 +1,25 @@
+{
+  "minutes": 30,
+  "title": {
+    "th": "ไล่ดูว่า stdout กับ stderr ไปไหน",
+    "en": "Work out where stdout and stderr go"
+  },
+  "prompt": {
+    "th": "เขียน `resolve_redirects(command)` ที่อ่านคำสั่ง shell (แยกคำด้วย `shlex.split`) แล้วคืน dict `{\"argv\": [...], \"stdout\": (ปลายทาง, โหมด), \"stderr\": (ปลายทาง, โหมด)}` โดยเริ่มจากทั้งสองไปที่ `(\"terminal\", \"w\")` และทำการเปลี่ยนทิศทาง**จากซ้ายไปขวา**\n\n- `> f` หรือ `1> f` ให้ stdout = `(f, \"w\")` ส่วน `>> f` หรือ `1>> f` ให้ `(f, \"a\")`\n- `2> f` และ `2>> f` ทำแบบเดียวกันกับ stderr\n- `&> f` และ `&>> f` ส่งทั้งสองไปที่ `f`\n- `2>&1` ให้ stderr ไปที่ที่ stdout ชี้อยู่**ตอนนั้น** และ `1>&2` (หรือ `>&2`) ให้ stdout ไปที่ที่ stderr ชี้อยู่ตอนนั้น\n- ตัวดำเนินการอาจติดกับชื่อไฟล์ เช่น `>out.log` หรือ `2>>err.log`\n- คำอื่นทั้งหมดเป็นส่วนของ `argv` ตามลำดับ\n\nถ้าตัวดำเนินการไม่มีชื่อไฟล์ตามมา ให้ `raise ValueError` มี test ซ่อนอยู่บางส่วน",
+    "en": "Write `resolve_redirects(command)` that reads a shell command (split with `shlex.split`) and returns `{\"argv\": [...], \"stdout\": (target, mode), \"stderr\": (target, mode)}`. Both start at `(\"terminal\", \"w\")`, and redirects are applied **left to right**:\n\n- `> f` or `1> f` sets stdout to `(f, \"w\")`; `>> f` or `1>> f` sets `(f, \"a\")`.\n- `2> f` and `2>> f` do the same for stderr.\n- `&> f` and `&>> f` send both to `f`.\n- `2>&1` points stderr wherever stdout points **at that moment**, and `1>&2` (or `>&2`) points stdout wherever stderr points at that moment.\n- An operator may be glued to its file name, as in `>out.log` or `2>>err.log`.\n- Every other word is part of `argv`, in order.\n\nRaise `ValueError` if an operator has no file name after it. Some tests are hidden."
+  },
+  "hints": [
+    {
+      "th": "ใช้ regex จับตัวดำเนินการที่ขึ้นต้นคำ: `re.fullmatch(r\"(&|1|2)?(>>|>)(&[12])?(.*)\", word)` จะได้ fd, ชนิด (> หรือ >>), เป้า `&1`/`&2` และชื่อไฟล์ที่ติดมา (ถ้ามี)",
+      "en": "Match operators at the start of a word with a regex: `re.fullmatch(r\"(&|1|2)?(>>|>)(&[12])?(.*)\", word)` gives the fd, the kind (> or >>), an `&1`/`&2` target and a glued file name (if any)."
+    },
+    {
+      "th": "ถ้าไม่มีชื่อไฟล์ติดมา ให้ใช้คำถัดไปเป็นชื่อไฟล์ (เดินด้วย index เอง แทน `for word in words`) ถ้าไม่มีคำถัดไปให้ raise ValueError",
+      "en": "If no file name is glued on, the next word is the file name (walk with an index instead of `for word in words`); if there is no next word, raise ValueError."
+    },
+    {
+      "th": "`2>&1` คัดลอก**ค่าปัจจุบัน**ของ stdout ไป: `state[2] = state[1]` เพราะเป็น tuple ที่แก้ไม่ได้ การเปลี่ยน stdout ทีหลังจะไม่กระทบ stderr ซึ่งตรงกับพฤติกรรมของ shell จริง",
+      "en": "`2>&1` copies stdout's **current value**: `state[2] = state[1]`. Because it is an immutable tuple, changing stdout later does not touch stderr, exactly like a real shell."
+    }
+  ]
+}

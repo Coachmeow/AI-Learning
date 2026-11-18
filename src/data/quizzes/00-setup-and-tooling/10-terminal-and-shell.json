@@ -1,0 +1,487 @@
+{
+  "lesson": "00-setup-and-tooling/10-terminal-and-shell",
+  "source_hash": "5febcabad487875619e38bab7b925c05ac61d3f059cbfcb0d7d8a4902fd8e4bf",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What does the pipe operator '|' do in a shell command?",
+        "th": "ตัวดำเนินการ pipe '|' ในคำสั่ง shell ทำอะไร"
+      },
+      "options": [
+        {
+          "en": "Runs two commands in parallel",
+          "th": "รันสองคำสั่งพร้อมกันแบบขนาน"
+        },
+        {
+          "en": "Combines two files into one",
+          "th": "รวมสองไฟล์เป็นไฟล์เดียว"
+        },
+        {
+          "en": "Sends the standard output of one command as standard input to the next",
+          "th": "ส่งผลลัพธ์มาตรฐาน (stdout) ของคำสั่งหนึ่งไปเป็นข้อมูลขาเข้ามาตรฐาน (stdin) ของคำสั่งถัดไป"
+        },
+        {
+          "en": "Saves the output of a command to a file",
+          "th": "บันทึกผลลัพธ์ของคำสั่งลงไฟล์"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "The pipe operator connects commands in a pipeline. For example, 'cat log.txt | grep error' sends the contents of log.txt as input to grep, which filters for lines containing 'error'.",
+        "th": "pipe เชื่อมคำสั่งเป็นทอดๆ เช่น 'cat log.txt | grep error' ส่งเนื้อหาของ log.txt ไปเป็นข้อมูลขาเข้าของ grep ซึ่งกรองเอาเฉพาะบรรทัดที่มีคำว่า 'error'"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What happens to a running process when you close the terminal that started it?",
+        "th": "จะเกิดอะไรขึ้นกับโปรเซสที่กำลังรัน เมื่อปิด terminal ที่เปิดมันขึ้นมา"
+      },
+      "options": [
+        {
+          "en": "The process pauses until you open a new terminal",
+          "th": "โปรเซสหยุดชั่วคราวจนกว่าจะเปิด terminal ใหม่"
+        },
+        {
+          "en": "The process continues running in the background",
+          "th": "โปรเซสรันต่อไปเบื้องหลัง"
+        },
+        {
+          "en": "The process receives a hangup signal (SIGHUP) and typically terminates",
+          "th": "โปรเซสได้รับสัญญาณ hangup (SIGHUP) และมักจะหยุดทำงาน"
+        },
+        {
+          "en": "The process automatically migrates to a system service",
+          "th": "โปรเซสย้ายไปเป็นบริการของระบบเอง"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Closing the terminal sends SIGHUP to child processes, which causes them to terminate by default. Tools like tmux, nohup, or screen prevent this.",
+        "th": "การปิด terminal ส่ง SIGHUP ไปยังโปรเซสลูก ซึ่งโดยค่าเริ่มต้นทำให้หยุดทำงาน เครื่องมืออย่าง tmux, nohup หรือ screen ช่วยกันเรื่องนี้ได้"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "What does `Ctrl+R` do in bash or zsh?",
+        "th": "`Ctrl+R` ใน bash หรือ zsh ทำอะไร"
+      },
+      "options": [
+        {
+          "en": "Reloads the shell config",
+          "th": "โหลดการตั้งค่า shell ใหม่"
+        },
+        {
+          "en": "Searches your command history as you type",
+          "th": "ค้นหาประวัติคำสั่งตามที่พิมพ์"
+        },
+        {
+          "en": "Repeats the last command",
+          "th": "รันคำสั่งล่าสุดซ้ำ"
+        },
+        {
+          "en": "Restarts the terminal",
+          "th": "รีสตาร์ต terminal"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "`Ctrl+R` starts a reverse history search: type part of an old command, press `Ctrl+R` again to cycle through matches. The lesson calls it the most useful shortcut you'll learn.",
+        "th": "`Ctrl+R` เริ่มค้นหาประวัติแบบย้อนหลัง พิมพ์ส่วนหนึ่งของคำสั่งเก่า แล้วกด `Ctrl+R` อีกครั้งเพื่อวนดูคำสั่งที่ตรงกัน บทเรียนบอกว่าเป็นปุ่มลัดที่มีประโยชน์ที่สุด"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "How do you detach from a tmux session while leaving it running?",
+        "th": "จะ detach ออกจาก session ของ tmux โดยให้มันทำงานต่อได้อย่างไร"
+      },
+      "options": [
+        {
+          "en": "`Ctrl+C`",
+          "th": "`Ctrl+C`"
+        },
+        {
+          "en": "`Ctrl+B` then `d`",
+          "th": "`Ctrl+B` แล้วตามด้วย `d`"
+        },
+        {
+          "en": "`exit`",
+          "th": "`exit`"
+        },
+        {
+          "en": "`Ctrl+Z`",
+          "th": "`Ctrl+Z`"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "`Ctrl+B` is tmux's prefix, and `d` detaches. `Ctrl+C` would stop the running program and `exit` closes the pane.",
+        "th": "`Ctrl+B` คือ prefix ของ tmux และ `d` คือ detach ส่วน `Ctrl+C` จะหยุดโปรแกรมที่รันอยู่ และ `exit` ปิดช่องนั้น"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "What is the difference between `>` and `>>`?",
+        "th": "`>` กับ `>>` ต่างกันอย่างไร"
+      },
+      "options": [
+        {
+          "en": "`>` overwrites the file, `>>` appends to it",
+          "th": "`>` เขียนทับไฟล์ ส่วน `>>` ต่อท้ายไฟล์"
+        },
+        {
+          "en": "`>` appends, `>>` overwrites",
+          "th": "`>` ต่อท้าย ส่วน `>>` เขียนทับ"
+        },
+        {
+          "en": "`>>` redirects stderr",
+          "th": "`>>` เปลี่ยนทิศทาง stderr"
+        },
+        {
+          "en": "There is no difference",
+          "th": "ไม่ต่างกัน"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "`>` replaces the file's contents with stdout; `>>` adds stdout to the end, which is what you want when several runs share one log.",
+        "th": "`>` แทนที่เนื้อหาเดิมของไฟล์ด้วย stdout ส่วน `>>` เพิ่ม stdout ต่อท้าย เหมาะเมื่อหลายการรันใช้ log ไฟล์เดียวกัน"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "What is the key advantage of tmux over using 'nohup command &' for long-running training jobs?",
+        "th": "ข้อได้เปรียบหลักของ tmux เหนือ 'nohup command &' สำหรับงานฝึกที่รันนานคืออะไร"
+      },
+      "options": [
+        {
+          "en": "tmux automatically restarts failed processes",
+          "th": "tmux รีสตาร์ตโปรเซสที่ล้มเหลวให้อัตโนมัติ"
+        },
+        {
+          "en": "tmux uses less CPU than nohup",
+          "th": "tmux ใช้ CPU น้อยกว่า nohup"
+        },
+        {
+          "en": "tmux lets you detach, reattach, and see live output with multiple panes",
+          "th": "tmux ให้ detach, attach กลับ และดูผลลัพธ์สดๆ ได้หลายช่อง"
+        },
+        {
+          "en": "tmux compresses the process output to save disk space",
+          "th": "tmux บีบอัดผลลัพธ์ของโปรเซสเพื่อประหยัดพื้นที่ดิสก์"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "tmux creates persistent sessions you can detach from and reattach to later, with live output visible in multiple panes. nohup only logs to a file with no way to interact or reattach.",
+        "th": "tmux สร้าง session ที่คงอยู่ ซึ่ง detach ออกมาแล้ว attach กลับไปทีหลังได้ และเห็นผลลัพธ์สดหลายช่อง ส่วน nohup แค่บันทึกลงไฟล์ ไม่มีทางโต้ตอบหรือ attach กลับ"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "What does 'python train.py > output.log 2>&1' accomplish?",
+        "th": "'python train.py > output.log 2>&1' ทำอะไร"
+      },
+      "options": [
+        {
+          "en": "Runs train.py and saves only errors to output.log",
+          "th": "รัน train.py แล้วบันทึกเฉพาะ error ลง output.log"
+        },
+        {
+          "en": "Runs train.py with double the memory allocation",
+          "th": "รัน train.py ด้วยหน่วยความจำสองเท่า"
+        },
+        {
+          "en": "Runs train.py twice and logs the second run",
+          "th": "รัน train.py สองครั้งแล้วบันทึก log ของครั้งที่สอง"
+        },
+        {
+          "en": "Runs train.py and redirects both standard output and standard error to output.log",
+          "th": "รัน train.py แล้วส่งทั้ง stdout และ stderr ไปที่ output.log"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "'> output.log' redirects stdout to the file. '2>&1' sends stderr to the same place as stdout. The result is both normal output and errors captured in one file.",
+        "th": "'> output.log' ส่ง stdout ไปที่ไฟล์ และ '2>&1' ส่ง stderr ไปที่เดียวกับ stdout ผลคือทั้งผลลัพธ์ปกติและ error ถูกเก็บไว้ในไฟล์เดียว"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "Which command lets you access a remote Jupyter notebook running on port 8888 of a GPU box from your local browser?",
+        "th": "คำสั่งใดทำให้เปิด Jupyter notebook ที่รันอยู่บนพอร์ต 8888 ของเครื่อง GPU ระยะไกลได้จากเบราว์เซอร์ในเครื่องตัวเอง"
+      },
+      "options": [
+        {
+          "en": "ssh -L 8888:localhost:8888 user@gpu-box",
+          "th": "ssh -L 8888:localhost:8888 user@gpu-box"
+        },
+        {
+          "en": "ssh user@gpu-box --forward-port 8888",
+          "th": "ssh user@gpu-box --forward-port 8888"
+        },
+        {
+          "en": "scp -P 8888 user@gpu-box:~/notebook.ipynb",
+          "th": "scp -P 8888 user@gpu-box:~/notebook.ipynb"
+        },
+        {
+          "en": "rsync -avz user@gpu-box:8888 localhost:8888",
+          "th": "rsync -avz user@gpu-box:8888 localhost:8888"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "SSH local port forwarding (-L) maps a remote port to your local machine. After this command, opening localhost:8888 in your browser accesses the remote Jupyter server.",
+        "th": "การส่งต่อพอร์ตของ SSH แบบ local (-L) map พอร์ตของเครื่องระยะไกลมาที่เครื่องคุณ หลังรันคำสั่งนี้ การเปิด localhost:8888 ในเบราว์เซอร์จะเข้าถึงเซิร์ฟเวอร์ Jupyter บนเครื่องระยะไกล"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "What does this print?",
+        "th": "คำสั่งนี้พิมพ์อะไรออกมา"
+      },
+      "code": "printf \"loss: 0.5\\nacc: 0.9\\nloss: 0.3\\n\" | grep loss | wc -l",
+      "options": [
+        {
+          "en": "1",
+          "th": "1"
+        },
+        {
+          "en": "2",
+          "th": "2"
+        },
+        {
+          "en": "3",
+          "th": "3"
+        },
+        {
+          "en": "0.8",
+          "th": "0.8"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "`grep loss` keeps the two lines that contain \"loss\", and `wc -l` counts lines, so the answer is 2.",
+        "th": "`grep loss` เก็บไว้สองบรรทัดที่มีคำว่า \"loss\" และ `wc -l` นับจำนวนบรรทัด คำตอบจึงเป็น 2"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "A log line reads `epoch 3 loss: 0.3333`. What does `awk '{print $NF}'` print for it?",
+        "th": "บรรทัดใน log คือ `epoch 3 loss: 0.3333` คำสั่ง `awk '{print $NF}'` พิมพ์อะไรสำหรับบรรทัดนี้"
+      },
+      "options": [
+        {
+          "en": "`epoch`",
+          "th": "`epoch`"
+        },
+        {
+          "en": "`3`",
+          "th": "`3`"
+        },
+        {
+          "en": "`loss:`",
+          "th": "`loss:`"
+        },
+        {
+          "en": "`0.3333`",
+          "th": "`0.3333`"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "awk splits the line on whitespace; `NF` is the number of fields, so `$NF` is the last field, the loss value.",
+        "th": "awk แยกบรรทัดด้วยช่องว่าง `NF` คือจำนวนฟิลด์ `$NF` จึงเป็นฟิลด์สุดท้าย คือค่า loss"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "`tail -f train.log | grep ERROR > errors.txt` runs for minutes, errors appear in the log, yet `errors.txt` stays empty. Why?",
+        "th": "`tail -f train.log | grep ERROR > errors.txt` รันมาหลายนาที มี error เขียนลง log แล้ว แต่ `errors.txt` ยังว่างอยู่ เพราะอะไร"
+      },
+      "options": [
+        {
+          "en": "grep cannot read from a pipe",
+          "th": "grep อ่านข้อมูลจาก pipe ไม่ได้"
+        },
+        {
+          "en": "When grep's output is not a terminal it buffers it; add `--line-buffered`",
+          "th": "เมื่อผลลัพธ์ของ grep ไม่ได้ไปที่ terminal มันจะพักไว้ใน buffer ก่อน ให้เพิ่ม `--line-buffered`"
+        },
+        {
+          "en": "`tail -f` only shows the last 10 lines",
+          "th": "`tail -f` แสดงแค่ 10 บรรทัดสุดท้าย"
+        },
+        {
+          "en": "ERROR must be written in lowercase",
+          "th": "ต้องเขียน ERROR เป็นตัวพิมพ์เล็ก"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Writing to a file or pipe, grep collects output in blocks and flushes later. `--line-buffered`, as in the lesson's `tail -f ... | grep --line-buffered`, writes each match at once.",
+        "th": "เมื่อเขียนลงไฟล์หรือ pipe grep จะสะสมผลลัพธ์เป็นก้อนแล้วค่อยเขียนทีหลัง `--line-buffered` แบบในคำสั่ง `tail -f ... | grep --line-buffered` ของบทเรียน ทำให้เขียนผลที่ตรงทันที"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "`python train.py 2>&1 > train.log` still prints errors to the terminal. Why?",
+        "th": "`python train.py 2>&1 > train.log` ยังพิมพ์ error ออกมาที่ terminal เพราะอะไร"
+      },
+      "options": [
+        {
+          "en": "Python ignores redirects",
+          "th": "Python ไม่สนการเปลี่ยนทิศทาง"
+        },
+        {
+          "en": "Redirects apply left to right: `2>&1` copied stderr to the terminal before stdout moved to the file; write `> train.log 2>&1`",
+          "th": "การเปลี่ยนทิศทางทำจากซ้ายไปขวา: `2>&1` ส่ง stderr ไปที่ terminal ก่อนที่ stdout จะถูกย้ายไปที่ไฟล์ ต้องเขียน `> train.log 2>&1`"
+        },
+        {
+          "en": "stderr can never go to a file",
+          "th": "stderr ไปลงไฟล์ไม่ได้"
+        },
+        {
+          "en": "The log file is full",
+          "th": "ไฟล์ log เต็ม"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "`2>&1` means \"send stderr where stdout points right now\". At that moment stdout is still the terminal, so stderr stays there; only the order `> file 2>&1` sends both to the file.",
+        "th": "`2>&1` แปลว่า \"ส่ง stderr ไปที่ที่ stdout ชี้อยู่ตอนนี้\" ขณะนั้น stdout ยังเป็น terminal อยู่ stderr จึงค้างอยู่ที่นั่น ต้องเรียงเป็น `> file 2>&1` ทั้งสองอย่างจึงจะลงไฟล์"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "You started `nohup python train.py > train.log 2>&1 &` and closed the SSH session. The next day, how do you check progress?",
+        "th": "คุณรัน `nohup python train.py > train.log 2>&1 &` แล้วปิด SSH session วันรุ่งขึ้นจะดูความคืบหน้าได้อย่างไร"
+      },
+      "options": [
+        {
+          "en": "`tmux attach` to the job",
+          "th": "`tmux attach` เข้าไปที่งานนั้น"
+        },
+        {
+          "en": "`fg %1` from the new session",
+          "th": "`fg %1` จาก session ใหม่"
+        },
+        {
+          "en": "Read the log, for example `tail -f train.log`; a nohup job cannot be reattached",
+          "th": "อ่าน log เช่น `tail -f train.log` เพราะงานที่รันด้วย nohup attach กลับไม่ได้"
+        },
+        {
+          "en": "It was killed when you logged out",
+          "th": "งานถูก kill ไปแล้วตอนออกจากระบบ"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "nohup survives the hangup but gives you nothing to attach to, and `fg` only sees jobs of the current shell. The log file is the window into it, which is why tmux is the lesson's choice for long runs.",
+        "th": "nohup อยู่รอดจากสัญญาณ hangup แต่ไม่มีอะไรให้ attach กลับ และ `fg` เห็นแค่งานของ shell ปัจจุบัน ไฟล์ log จึงเป็นช่องทางเดียวที่ดูได้ บทเรียนจึงเลือก tmux สำหรับงานที่รันนาน"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "What is the difference between `rsync -avz ./data/ host:~/data/` and `rsync -avz ./data host:~/data/`?",
+        "th": "`rsync -avz ./data/ host:~/data/` กับ `rsync -avz ./data host:~/data/` ต่างกันอย่างไร"
+      },
+      "options": [
+        {
+          "en": "None",
+          "th": "ไม่ต่างกัน"
+        },
+        {
+          "en": "With the trailing slash the contents go into `~/data/`; without it you get `~/data/data/`",
+          "th": "ถ้ามี / ต่อท้าย เนื้อหาข้างในจะไปอยู่ใน `~/data/` ถ้าไม่มี จะได้ `~/data/data/`"
+        },
+        {
+          "en": "Without the slash rsync deletes the remote folder",
+          "th": "ถ้าไม่มี / rsync จะลบโฟลเดอร์บนเครื่องระยะไกล"
+        },
+        {
+          "en": "The slash makes the copy compressed",
+          "th": "/ ทำให้การคัดลอกถูกบีบอัด"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "A trailing slash on the source means \"the contents of this folder\"; without it rsync copies the folder itself into the destination.",
+        "th": "/ ต่อท้ายต้นทางแปลว่า \"เนื้อหาในโฟลเดอร์นี้\" ถ้าไม่มี rsync จะคัดลอกตัวโฟลเดอร์ทั้งโฟลเดอร์ไปไว้ในปลายทาง"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "`find . -name \"*.pt\" | xargs du -h` fails on a file called `best model.pt`. What is the robust fix?",
+        "th": "`find . -name \"*.pt\" | xargs du -h` ทำงานพลาดกับไฟล์ชื่อ `best model.pt` วิธีแก้ที่ทนทานคือข้อใด"
+      },
+      "options": [
+        {
+          "en": "Rename every file by hand",
+          "th": "เปลี่ยนชื่อทุกไฟล์เอง"
+        },
+        {
+          "en": "Use `find ... -print0 | xargs -0 du -h`, which separates names with a NUL byte instead of whitespace",
+          "th": "ใช้ `find ... -print0 | xargs -0 du -h` ซึ่งคั่นชื่อไฟล์ด้วย byte NUL แทนช่องว่าง"
+        },
+        {
+          "en": "Add `sort -rh`",
+          "th": "เพิ่ม `sort -rh`"
+        },
+        {
+          "en": "Use `ls *.pt` instead",
+          "th": "ใช้ `ls *.pt` แทน"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "xargs splits its input on whitespace, so `best model.pt` becomes two arguments. NUL can never appear in a file name, so `-print0` with `xargs -0` keeps every name whole.",
+        "th": "xargs แยกข้อมูลขาเข้าด้วยช่องว่าง `best model.pt` จึงกลายเป็นสองอาร์กิวเมนต์ ส่วน NUL ไม่มีทางอยู่ในชื่อไฟล์ได้ `-print0` คู่กับ `xargs -0` จึงเก็บชื่อทุกชื่อไว้ครบ"
+      }
+    }
+  ]
+}
