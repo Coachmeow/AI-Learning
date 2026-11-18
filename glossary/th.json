@@ -618,6 +618,68 @@
       "en": "JSONC",
       "th": "JSONC",
       "note": "JSON ที่มีคอมเมนต์และจุลภาคท้ายได้ (ไฟล์ตั้งค่าของ VS Code)"
+    },
+    {
+      "en": "dataset",
+      "th": "ชุดข้อมูล",
+      "first": "ชุดข้อมูล (dataset)"
+    },
+    {
+      "en": "dataset split (train / validation / test)",
+      "th": "ชุด train / validation / test"
+    },
+    {
+      "en": "streaming (data)",
+      "th": "การสตรีม",
+      "first": "การสตรีม (streaming)"
+    },
+    {
+      "en": "cache",
+      "th": "แคช",
+      "first": "แคช (cache)"
+    },
+    {
+      "en": "seed (random)",
+      "th": "seed"
+    },
+    {
+      "en": "reproducible",
+      "th": "ทำซ้ำได้",
+      "first": "ทำซ้ำได้ (reproducible)"
+    },
+    {
+      "en": "columnar format",
+      "th": "รูปแบบเก็บเป็นคอลัมน์"
+    },
+    {
+      "en": "Parquet / Arrow",
+      "th": "Parquet / Arrow"
+    },
+    {
+      "en": "Git LFS / DVC",
+      "th": "Git LFS / DVC"
+    },
+    {
+      "en": "pointer file",
+      "th": "ไฟล์ตัวชี้"
+    },
+    {
+      "en": "data leakage",
+      "th": "ข้อมูลรั่ว",
+      "first": "ข้อมูลรั่ว (data leakage)"
+    },
+    {
+      "en": "overfitting",
+      "th": "overfitting"
+    },
+    {
+      "en": "evaluation",
+      "th": "การประเมินผล",
+      "first": "การประเมินผล (evaluation)"
+    },
+    {
+      "en": "zero-copy",
+      "th": "อ่านโดยไม่ต้องคัดลอก (zero-copy)"
     }
   ]
 }

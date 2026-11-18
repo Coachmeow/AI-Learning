@@ -1,0 +1,25 @@
+{
+  "minutes": 30,
+  "title": {
+    "th": "แบ่งข้อมูลโดยไม่ให้ข้อมูลซ้ำรั่วไปชุด test",
+    "en": "Split without leaking duplicates into test"
+  },
+  "prompt": {
+    "th": "ชุดข้อมูลข้อความมักมีรีวิวที่ซ้ำกันแทบทุกตัวอักษร ถ้าตัวหนึ่งอยู่ใน train แต่อีกตัวอยู่ใน test โมเดลจะได้คะแนน test ดีเกินจริง (data leakage) เขียน `leak_free_split(texts, test_frac, seed)` ที่คืน `(train, test)`\n\n1. ข้อความสองข้อความถือว่าซ้ำกันเมื่อ normalize แล้วเหมือนกัน: แปลงเป็นตัวพิมพ์เล็ก ลบอักขระใน `string.punctuation` แล้วยุบช่องว่างที่ติดกันเหลือหนึ่งตัวและตัดช่องว่างหัวท้าย\n2. จัดข้อความที่ซ้ำกันไว้เป็นกลุ่มเดียว เรียงกลุ่มตามลำดับที่พบครั้งแรก แล้วสลับลำดับกลุ่มด้วย `random.Random(seed).shuffle`\n3. หยิบกลุ่มตามลำดับที่สลับแล้วใส่ test ทีละกลุ่ม จนจำนวนข้อความใน test ถึง `ceil(len(texts) * test_frac)` หรือมากกว่า ที่เหลือเป็น train\n4. ทั้ง train และ test ต้องเรียงข้อความตามลำดับเดิมใน `texts`\n\nมี test ซ่อนอยู่บางส่วน",
+    "en": "Text datasets often contain near-identical reviews. If one copy is in train and another in test, the test score looks better than it really is (data leakage). Write `leak_free_split(texts, test_frac, seed)` returning `(train, test)`:\n\n1. Two texts are duplicates when they are equal after normalising: lowercase, delete the characters in `string.punctuation`, collapse runs of whitespace into one space and strip the ends.\n2. Put duplicates in one group, order the groups by first appearance, then shuffle the group order with `random.Random(seed).shuffle`.\n3. Take groups in that shuffled order into test, one whole group at a time, until test holds at least `ceil(len(texts) * test_frac)` texts; the rest is train.\n4. Both train and test keep the texts in their original order from `texts`.\n\nSome tests are hidden."
+  },
+  "hints": [
+    {
+      "th": "normalize ด้วย `\" \".join(t.lower().translate(str.maketrans(\"\", \"\", string.punctuation)).split())` ได้ในบรรทัดเดียว",
+      "en": "`\" \".join(t.lower().translate(str.maketrans(\"\", \"\", string.punctuation)).split())` normalises in one line."
+    },
+    {
+      "th": "เก็บกลุ่มเป็น dict จากข้อความที่ normalize แล้วไปยัง list ของ index ใน `texts` (dict ของ Python จำลำดับที่ใส่ไว้ จึงได้ลำดับที่พบครั้งแรกมาเอง)",
+      "en": "Keep groups as a dict from normalised text to the list of indexes in `texts` (Python dicts remember insertion order, which gives you first appearance for free)."
+    },
+    {
+      "th": "เก็บ index ที่เลือกเข้า test ไว้ในเซต แล้วสร้างผลลัพธ์ด้วยการวน `texts` ตามลำดับเดิม: index ไหนอยู่ในเซตไป test นอกนั้นไป train",
+      "en": "Collect the indexes chosen for test in a set, then build the result by walking `texts` in order: indexes in the set go to test, the rest to train."
+    }
+  ]
+}

@@ -1,0 +1,487 @@
+{
+  "lesson": "00-setup-and-tooling/09-data-management",
+  "source_hash": "772d99967d3ccde7c765aae10f77622aa3a9db2975a6124d217c307e257dc84a",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "Why is it important to have separate train, validation, and test splits in machine learning?",
+        "th": "ทำไมงาน machine learning จึงต้องแยกชุด train, validation และ test ออกจากกัน"
+      },
+      "options": [
+        {
+          "en": "To ensure each split uses a different file format",
+          "th": "เพื่อให้แต่ละชุดใช้รูปแบบไฟล์ต่างกัน"
+        },
+        {
+          "en": "To make the dataset smaller so training is faster",
+          "th": "เพื่อให้ชุดข้อมูลเล็กลง การฝึกจะได้เร็วขึ้น"
+        },
+        {
+          "en": "To distribute data across multiple GPUs",
+          "th": "เพื่อกระจายข้อมูลไปหลาย GPU"
+        },
+        {
+          "en": "To evaluate model performance on unseen data and prevent overfitting",
+          "th": "เพื่อประเมินประสิทธิภาพของโมเดลกับข้อมูลที่ไม่เคยเห็น และป้องกัน overfitting"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "The training set teaches the model, the validation set tunes hyperparameters during training, and the test set provides a final unbiased evaluation on data the model has never seen.",
+        "th": "ชุด train ใช้สอนโมเดล ชุด validation ใช้ปรับไฮเปอร์พารามิเตอร์ระหว่างฝึก และชุด test ใช้ประเมินผลครั้งสุดท้ายแบบไม่ลำเอียง กับข้อมูลที่โมเดลไม่เคยเห็นมาก่อน"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What is the Hugging Face Hub primarily used for in AI/ML workflows?",
+        "th": "ในงาน AI/ML ใช้ Hugging Face Hub ทำอะไรเป็นหลัก"
+      },
+      "options": [
+        {
+          "en": "Managing Python virtual environments",
+          "th": "จัดการ virtual environment ของ Python"
+        },
+        {
+          "en": "Version controlling source code like GitHub",
+          "th": "ควบคุมเวอร์ชันของซอร์สโค้ดแบบ GitHub"
+        },
+        {
+          "en": "Running GPU training jobs in the cloud",
+          "th": "รันงานฝึกบน GPU บนคลาวด์"
+        },
+        {
+          "en": "Hosting and sharing datasets, models, and ML artifacts",
+          "th": "เป็นที่เก็บและแชร์ชุดข้อมูล โมเดล และผลงานด้าน ML"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Hugging Face Hub is a platform for hosting and sharing pre-trained models, datasets, and ML demos. The 'datasets' library provides a standard way to load data from it.",
+        "th": "Hugging Face Hub เป็นแพลตฟอร์มสำหรับเก็บและแชร์โมเดลที่ฝึกมาแล้ว ชุดข้อมูล และเดโมด้าน ML ส่วนไลบรารี 'datasets' คือวิธีมาตรฐานในการโหลดข้อมูลจากที่นั่น"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Where does the `datasets` library cache downloads by default?",
+        "th": "ไลบรารี `datasets` เก็บแคชของสิ่งที่ดาวน์โหลดไว้ที่ไหนเป็นค่าเริ่มต้น"
+      },
+      "options": [
+        {
+          "en": "`./data/`",
+          "th": "`./data/`"
+        },
+        {
+          "en": "`~/.cache/huggingface/datasets/`",
+          "th": "`~/.cache/huggingface/datasets/`"
+        },
+        {
+          "en": "`/tmp/`",
+          "th": "`/tmp/`"
+        },
+        {
+          "en": "Nowhere: it downloads every time",
+          "th": "ไม่เก็บเลย ดาวน์โหลดใหม่ทุกครั้ง"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "After the first download, `load_dataset` reads from `~/.cache/huggingface/datasets/`. Models go to `~/.cache/huggingface/hub/`.",
+        "th": "หลังดาวน์โหลดครั้งแรก `load_dataset` จะอ่านจาก `~/.cache/huggingface/datasets/` ส่วนโมเดลเก็บไว้ที่ `~/.cache/huggingface/hub/`"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Why pass `seed=42` to `train_test_split`?",
+        "th": "ทำไมต้องส่ง `seed=42` ให้ `train_test_split`"
+      },
+      "options": [
+        {
+          "en": "42 gives the best accuracy",
+          "th": "42 ทำให้ได้ความแม่นยำสูงสุด"
+        },
+        {
+          "en": "The same seed gives the same split every run, so experiments are reproducible",
+          "th": "seed เดิมให้การแบ่งแบบเดิมทุกครั้งที่รัน การทดลองจึงทำซ้ำได้"
+        },
+        {
+          "en": "It makes the split faster",
+          "th": "ทำให้แบ่งได้เร็วขึ้น"
+        },
+        {
+          "en": "It is required, or the function fails",
+          "th": "ต้องใส่ ไม่อย่างนั้นฟังก์ชันจะ error"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The split is a random shuffle. Fixing the seed fixes the shuffle, so every run and every teammate gets the same train and test rows. The value 42 itself is arbitrary.",
+        "th": "การแบ่งคือการสุ่มสลับลำดับ การกำหนด seed ทำให้การสลับเหมือนเดิม ทุกการรันและทุกคนในทีมจึงได้แถวของ train และ test ชุดเดียวกัน ส่วนเลข 42 จะใช้เลขอะไรก็ได้"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "According to the lesson, which format is best for storing datasets in AI work?",
+        "th": "ตามบทเรียน รูปแบบใดดีที่สุดสำหรับเก็บชุดข้อมูลในงาน AI"
+      },
+      "options": [
+        {
+          "en": "CSV",
+          "th": "CSV"
+        },
+        {
+          "en": "JSON",
+          "th": "JSON"
+        },
+        {
+          "en": "Parquet",
+          "th": "Parquet"
+        },
+        {
+          "en": "Plain text",
+          "th": "ข้อความธรรมดา"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Parquet is small and fast to read, so it is the storage format. Arrow is what you work with in memory, and CSV and JSON are for interchange.",
+        "th": "Parquet เล็กและอ่านเร็ว จึงใช้เป็นรูปแบบเก็บข้อมูล ส่วน Arrow ใช้ทำงานในหน่วยความจำ และ CSV กับ JSON มีไว้แลกเปลี่ยนข้อมูล"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "What advantage does the Parquet format have over CSV for storing ML datasets?",
+        "th": "รูปแบบ Parquet ได้เปรียบ CSV อย่างไรในการเก็บชุดข้อมูล ML"
+      },
+      "options": [
+        {
+          "en": "Parquet supports more data types than CSV",
+          "th": "Parquet รองรับชนิดข้อมูลมากกว่า CSV"
+        },
+        {
+          "en": "Parquet files are human-readable in any text editor",
+          "th": "เปิดไฟล์ Parquet อ่านด้วย text editor ได้ทุกตัว"
+        },
+        {
+          "en": "Parquet uses columnar storage for smaller file sizes and faster read speeds",
+          "th": "Parquet เก็บข้อมูลเป็นคอลัมน์ ไฟล์จึงเล็กกว่าและอ่านได้เร็วกว่า"
+        },
+        {
+          "en": "Parquet files can be edited in spreadsheet applications",
+          "th": "แก้ไฟล์ Parquet ในโปรแกรมสเปรดชีตได้"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Parquet is a columnar binary format that compresses better than CSV and enables fast column-level reads. It is the preferred storage format for ML datasets.",
+        "th": "Parquet เป็นรูปแบบไบนารีที่เก็บเป็นคอลัมน์ บีบอัดได้ดีกว่า CSV และอ่านทีละคอลัมน์ได้เร็ว จึงเป็นรูปแบบที่นิยมใช้เก็บชุดข้อมูล ML"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "What does 'streaming=True' do when loading a dataset with the Hugging Face datasets library?",
+        "th": "'streaming=True' ทำอะไรเมื่อโหลดชุดข้อมูลด้วยไลบรารี datasets ของ Hugging Face"
+      },
+      "options": [
+        {
+          "en": "Converts the dataset to a streaming video format",
+          "th": "แปลงชุดข้อมูลเป็นรูปแบบวิดีโอสตรีมมิง"
+        },
+        {
+          "en": "Enables real-time updates as new data is added to the Hub",
+          "th": "อัปเดตแบบเรียลไทม์เมื่อมีข้อมูลใหม่เพิ่มบน Hub"
+        },
+        {
+          "en": "Loads data row by row without downloading the full dataset to disk",
+          "th": "โหลดข้อมูลทีละแถวโดยไม่ต้องดาวน์โหลดทั้งชุดลงดิสก์"
+        },
+        {
+          "en": "Downloads the dataset faster using parallel connections",
+          "th": "ดาวน์โหลดชุดข้อมูลเร็วขึ้นด้วยการเชื่อมต่อหลายเส้นพร้อมกัน"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Streaming mode creates an IterableDataset that fetches rows on demand. Memory usage stays constant regardless of dataset size, which is essential for datasets too large to fit on disk.",
+        "th": "โหมดสตรีมสร้าง IterableDataset ที่ดึงแต่ละแถวเมื่อต้องใช้ หน่วยความจำที่ใช้คงที่ไม่ว่าชุดข้อมูลจะใหญ่แค่ไหน ซึ่งจำเป็นสำหรับชุดข้อมูลที่ใหญ่เกินดิสก์"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "When should you use DVC (Data Version Control) instead of just .gitignore for large files?",
+        "th": "เมื่อไรควรใช้ DVC (Data Version Control) แทนการใช้แค่ .gitignore กับไฟล์ขนาดใหญ่"
+      },
+      "options": [
+        {
+          "en": "When you need to reproduce exact experiments across machines with versioned data",
+          "th": "เมื่อต้องทำการทดลองซ้ำให้ได้ผลเดียวกันทุกเครื่อง ด้วยข้อมูลที่ทำเวอร์ชันไว้"
+        },
+        {
+          "en": "When you only have CSV files in your project",
+          "th": "เมื่อโปรเจกต์มีแค่ไฟล์ CSV"
+        },
+        {
+          "en": "When your dataset is smaller than 1 MB",
+          "th": "เมื่อชุดข้อมูลเล็กกว่า 1 MB"
+        },
+        {
+          "en": "When you are working alone on a personal project",
+          "th": "เมื่อทำโปรเจกต์ส่วนตัวคนเดียว"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "DVC tracks data versions with small pointer files in git while storing the actual data in remote storage (S3, GCS). It ensures anyone can reproduce your exact experiment with the same data.",
+        "th": "DVC ติดตามเวอร์ชันของข้อมูลด้วยไฟล์ตัวชี้ขนาดเล็กใน git ขณะที่ข้อมูลจริงอยู่บนที่เก็บระยะไกล (S3, GCS) ใครก็ทำการทดลองของคุณซ้ำได้ด้วยข้อมูลชุดเดียวกัน"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "The IMDB train split has 25,000 rows. What does the lesson's two-step split print?",
+        "th": "ชุด train ของ IMDB มี 25,000 แถว โค้ดแบ่งสองขั้นในบทเรียนพิมพ์อะไรออกมา"
+      },
+      "code": "split = dataset.train_test_split(test_size=0.2, seed=42)\ntrain_val = split[\"train\"].train_test_split(test_size=0.125, seed=42)\nprint(f\"Train: {len(train_val['train'])}, Val: {len(train_val['test'])}, Test: {len(split['test'])}\")",
+      "options": [
+        {
+          "en": "Train: 20000, Val: 2500, Test: 2500",
+          "th": "Train: 20000, Val: 2500, Test: 2500"
+        },
+        {
+          "en": "Train: 17500, Val: 2500, Test: 5000",
+          "th": "Train: 17500, Val: 2500, Test: 5000"
+        },
+        {
+          "en": "Train: 20000, Val: 3125, Test: 5000",
+          "th": "Train: 20000, Val: 3125, Test: 5000"
+        },
+        {
+          "en": "Train: 17500, Val: 3125, Test: 4375",
+          "th": "Train: 17500, Val: 3125, Test: 4375"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The first split sends 20% to test: 5,000, leaving 20,000. The second takes 12.5% of those 20,000 for validation: 2,500, leaving 17,500 to train. That is 70/10/20, not the typical 80/10/10.",
+        "th": "การแบ่งครั้งแรกแยก 20% เป็น test ได้ 5,000 เหลือ 20,000 การแบ่งครั้งที่สองเอา 12.5% ของ 20,000 เป็น validation ได้ 2,500 เหลือ train 17,500 จึงเป็นสัดส่วน 70/10/20 ไม่ใช่ 80/10/10 ที่ใช้กันทั่วไป"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "With Git LFS, what is stored in the git repository itself?",
+        "th": "เมื่อใช้ Git LFS อะไรถูกเก็บอยู่ใน git repository จริงๆ"
+      },
+      "options": [
+        {
+          "en": "The full large files, compressed",
+          "th": "ไฟล์ใหญ่ทั้งไฟล์แบบบีบอัด"
+        },
+        {
+          "en": "Small pointer files; the real files live on a separate server",
+          "th": "ไฟล์ตัวชี้ขนาดเล็ก ส่วนไฟล์จริงอยู่บนเซิร์ฟเวอร์แยก"
+        },
+        {
+          "en": "Nothing at all",
+          "th": "ไม่มีอะไรเลย"
+        },
+        {
+          "en": "Only the `.gitignore` entries",
+          "th": "มีแค่รายการใน `.gitignore`"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "`git lfs track` makes git store a pointer for matching files, recorded in `.gitattributes`, while the content goes to LFS storage (1 GB free on GitHub).",
+        "th": "`git lfs track` ทำให้ git เก็บตัวชี้แทนไฟล์ที่ตรงรูปแบบ โดยบันทึกไว้ใน `.gitattributes` ส่วนเนื้อหาจริงไปอยู่ในที่เก็บของ LFS (GitHub ให้ฟรี 1 GB)"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Exercise 4 asks for a 70/15/15 split using `train_test_split` twice. Which `test_size` values do that?",
+        "th": "แบบฝึกหัดที่ 4 ให้แบ่ง 70/15/15 ด้วย `train_test_split` สองครั้ง ต้องใช้ `test_size` เท่าไร"
+      },
+      "options": [
+        {
+          "en": "0.15, then 0.15",
+          "th": "0.15 แล้วตามด้วย 0.15"
+        },
+        {
+          "en": "0.3, then 0.5 on the 30% part",
+          "th": "0.3 แล้วตามด้วย 0.5 กับส่วน 30% นั้น"
+        },
+        {
+          "en": "0.7, then 0.15",
+          "th": "0.7 แล้วตามด้วย 0.15"
+        },
+        {
+          "en": "0.3, then 0.15 on the 70% part",
+          "th": "0.3 แล้วตามด้วย 0.15 กับส่วน 70%"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The second `test_size` is a fraction of what you split, not of the whole. Taking 30% off and halving it gives 15% + 15%; 0.15 twice would give about 72/13/15.",
+        "th": "`test_size` ครั้งที่สองเป็นสัดส่วนของส่วนที่นำมาแบ่ง ไม่ใช่ของทั้งหมด การแยก 30% ออกมาแล้วแบ่งครึ่งได้ 15% + 15% ส่วนการใช้ 0.15 สองครั้งจะได้ราว 72/13/15"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "You split with `seed=42` on Monday and `seed=7` on Tuesday, then compare the two models' test accuracy. What is wrong?",
+        "th": "คุณแบ่งข้อมูลด้วย `seed=42` ในวันจันทร์ และ `seed=7` ในวันอังคาร แล้วเทียบความแม่นยำบนชุด test ของสองโมเดล ผิดตรงไหน"
+      },
+      "options": [
+        {
+          "en": "Nothing: the seed does not affect results",
+          "th": "ไม่ผิด seed ไม่มีผลกับผลลัพธ์"
+        },
+        {
+          "en": "The test sets differ, so the scores are not comparable, and Tuesday's test may contain Monday's training rows",
+          "th": "ชุด test ต่างกัน คะแนนจึงเทียบกันไม่ได้ และชุด test ของวันอังคารอาจมีแถวที่ใช้ฝึกในวันจันทร์"
+        },
+        {
+          "en": "Seeds above 10 are not allowed",
+          "th": "ใช้ seed เกิน 10 ไม่ได้"
+        },
+        {
+          "en": "Only the validation split changes",
+          "th": "เปลี่ยนแค่ชุด validation"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "A different seed reshuffles everything. Each model is then graded on different questions, and rows can move between train and test, so the comparison says little.",
+        "th": "seed ที่ต่างกันสลับข้อมูลใหม่ทั้งหมด แต่ละโมเดลจึงถูกวัดด้วยข้อสอบคนละชุด และแถวอาจย้ายไปมาระหว่าง train กับ test การเทียบจึงแทบไม่มีความหมาย"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "With `streaming=True`, `len(dataset)` and `dataset[100]` both fail. Why?",
+        "th": "เมื่อใช้ `streaming=True` ทั้ง `len(dataset)` และ `dataset[100]` ใช้ไม่ได้ เพราะอะไร"
+      },
+      "options": [
+        {
+          "en": "The dataset failed to download",
+          "th": "ดาวน์โหลดชุดข้อมูลไม่สำเร็จ"
+        },
+        {
+          "en": "An `IterableDataset` yields rows as they arrive; it has no known length or random access",
+          "th": "`IterableDataset` ส่งข้อมูลออกมาทีละแถวเมื่อมาถึง จึงไม่รู้ความยาวและเข้าถึงแถวใดๆ ตรงๆ ไม่ได้"
+        },
+        {
+          "en": "You must call `.to_parquet()` first",
+          "th": "ต้องเรียก `.to_parquet()` ก่อน"
+        },
+        {
+          "en": "Streaming only works with CSV",
+          "th": "การสตรีมใช้ได้แค่กับ CSV"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Streaming trades random access for constant memory: you loop over it (as the lesson does with `enumerate`) instead of indexing it.",
+        "th": "การสตรีมแลกการเข้าถึงแถวใดๆ ตรงๆ กับการใช้หน่วยความจำคงที่ ต้องวนลูปอ่าน (แบบที่บทเรียนใช้ `enumerate`) แทนการเรียกด้วย index"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "`.gitignore` lists `*.safetensors`, and you also ran `git lfs track \"*.safetensors\"`. A teammate clones the repo and finds no model file. Why?",
+        "th": "`.gitignore` มี `*.safetensors` และคุณยังรัน `git lfs track \"*.safetensors\"` ด้วย เพื่อนร่วมทีม clone repo ไปแล้วไม่เจอไฟล์โมเดลเลย เพราะอะไร"
+      },
+      "options": [
+        {
+          "en": "LFS needs 24 hours to sync",
+          "th": "LFS ต้องใช้เวลา 24 ชั่วโมงในการซิงก์"
+        },
+        {
+          "en": "The ignore rule kept the file from ever being committed, so LFS had nothing to upload; pick one approach",
+          "th": "กฎ ignore ทำให้ไฟล์ไม่เคยถูก commit LFS จึงไม่มีอะไรให้อัปโหลด ต้องเลือกวิธีเดียว"
+        },
+        {
+          "en": "LFS only works for `.bin` files",
+          "th": "LFS ใช้ได้แค่กับไฟล์ `.bin`"
+        },
+        {
+          "en": "The teammate must use DVC",
+          "th": "เพื่อนร่วมทีมต้องใช้ DVC"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "`.gitignore` means \"don't track this file\"; LFS means \"track it, but store it elsewhere\". Together, the file is never added. Remove it from `.gitignore` to share it via LFS.",
+        "th": "`.gitignore` แปลว่า \"ไม่ต้องติดตามไฟล์นี้\" ส่วน LFS แปลว่า \"ติดตาม แต่เก็บไว้ที่อื่น\" เมื่อใช้คู่กัน ไฟล์จึงไม่เคยถูกเพิ่มเข้าไป ถ้าจะแชร์ผ่าน LFS ต้องเอาออกจาก `.gitignore`"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "A cached dataset of several GB opens almost instantly with `load_dataset`. What makes that possible?",
+        "th": "ชุดข้อมูลหลาย GB ที่แคชไว้เปิดด้วย `load_dataset` ได้แทบจะทันที อะไรทำให้เป็นไปได้"
+      },
+      "options": [
+        {
+          "en": "It is loaded fully into RAM in the background",
+          "th": "โหลดเข้า RAM ทั้งหมดอยู่เบื้องหลัง"
+        },
+        {
+          "en": "The cache uses Arrow files that are memory-mapped, so rows are read only when needed, without copying",
+          "th": "แคชใช้ไฟล์ Arrow ที่ map เข้าหน่วยความจำ จึงอ่านแต่ละแถวเมื่อต้องใช้เท่านั้นโดยไม่ต้องคัดลอก"
+        },
+        {
+          "en": "It downloads a compressed copy each time",
+          "th": "ดาวน์โหลดสำเนาที่บีบอัดใหม่ทุกครั้ง"
+        },
+        {
+          "en": "The data is converted to CSV first",
+          "th": "แปลงข้อมูลเป็น CSV ก่อน"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Arrow is an in-memory columnar format, and `datasets` maps its cache files instead of parsing them, which gives the zero-copy reads named in the key terms.",
+        "th": "Arrow คือรูปแบบเก็บเป็นคอลัมน์ในหน่วยความจำ และ `datasets` map ไฟล์แคชเข้ามาแทนการอ่านแปลงทั้งไฟล์ จึงอ่านได้แบบไม่ต้องคัดลอก (zero-copy) ตามที่ระบุในคำศัพท์สำคัญ"
+      }
+    }
+  ]
+}
