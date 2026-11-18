@@ -1,0 +1,25 @@
+{
+  "minutes": 30,
+  "title": {
+    "th": "ตัวปรับมาตรฐานที่ไม่รั่วข้อมูล",
+    "en": "A standardizer that doesn't leak"
+  },
+  "prompt": {
+    "th": "เขียน `make_standardizer(rows)` แบบขั้นที่ 4 ของบทเรียน: รับแถวของชุด train (list ของ tuple หรือ list ของ float ที่ยาวเท่ากัน) แล้วคืนฟังก์ชัน `standardize(row)` ที่คืน list ของ `(ค่า - ค่าเฉลี่ย) / ส่วนเบี่ยงเบนมาตรฐาน` ของแต่ละคอลัมน์\n\n- ใช้ส่วนเบี่ยงเบนมาตรฐานของประชากร (หารด้วย n) เหมือน `statistics.pstdev`\n- คอลัมน์ที่เป็นค่าคงที่ (ส่วนเบี่ยงเบนเป็น 0) ให้ใช้ตัวหารเป็น 1\n- คำนวณค่าสถิติ**ครั้งเดียว**ตอนสร้าง แล้วเก็บไว้ใน closure การแก้ list `rows` ทีหลังต้องไม่เปลี่ยนผลลัพธ์\n- แถวที่ส่งให้ `standardize` ต้องยาวเท่าจำนวนคอลัมน์ ไม่อย่างนั้นให้ `raise ValueError` (ใช้ `zip(..., strict=True)`)\n- `rows` ว่างให้ `raise ValueError`\n\nมี test ซ่อนอยู่บางส่วน",
+    "en": "Write `make_standardizer(rows)` as in the lesson's Step 4: take the training rows (lists or tuples of floats, all the same length) and return a function `standardize(row)` that returns the list of `(value - mean) / std` for each column.\n\n- Use the population standard deviation (divide by n), like `statistics.pstdev`.\n- A constant column (std 0) uses a scale of 1.\n- Compute the statistics **once**, when the standardizer is made, and keep them in the closure; changing the `rows` list later must not change the results.\n- A row passed to `standardize` must have one value per column, otherwise `raise ValueError` (use `zip(..., strict=True)`).\n- Empty `rows` raises `ValueError`.\n\nSome tests are hidden."
+  },
+  "hints": [
+    {
+      "th": "`columns = list(zip(*rows))` เปลี่ยนแถวเป็นคอลัมน์ แล้วคำนวณ `means` และ `scales` เป็น list ใหม่ก่อน return ฟังก์ชันชั้นใน",
+      "en": "`columns = list(zip(*rows))` turns rows into columns; compute `means` and `scales` as new lists before you return the inner function."
+    },
+    {
+      "th": "ถ้า `standardize` คำนวณค่าเฉลี่ยจาก `rows` ทุกครั้งที่ถูกเรียก การแก้ `rows` ภายหลังจะทำให้ผลเปลี่ยน ให้ closure เก็บแค่ `means` และ `scales`",
+      "en": "If `standardize` recomputes the means from `rows` on every call, a later change to `rows` changes the results. Let the closure keep only `means` and `scales`."
+    },
+    {
+      "th": "ส่วนเบี่ยงเบนประชากร: `math.sqrt(sum((v - m) ** 2 for v in col) / len(col))` แล้ว `scale = s if s > 0 else 1.0`",
+      "en": "Population std: `math.sqrt(sum((v - m) ** 2 for v in col) / len(col))`, then `scale = s if s > 0 else 1.0`."
+    }
+  ]
+}

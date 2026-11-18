@@ -109,7 +109,8 @@ for qfile in sorted((ROOT / "src" / "data" / "quizzes").glob("*/*.json")):
     if len(set(ids)) != len(ids):
         problems.append(f"quiz {rel}: duplicate ids")
     up_file = ROOT / "src" / "data" / "upstream-quiz" / rel
-    upstream = json.loads(up_file.read_text(encoding="utf-8"))["questions"] if up_file.exists() else []
+    raw = json.loads(up_file.read_text(encoding="utf-8")) if up_file.exists() else []
+    upstream = raw["questions"] if isinstance(raw, dict) else raw  # some upstream files are a bare list
     for q in qs:
         qid = f"quiz {rel} {q.get('id')}"
         if not filled(q.get("question")) or not filled(q.get("explanation")):

@@ -3,7 +3,7 @@
 
 Upstream questions are copied word for word from src/data/upstream-quiz (English text,
 options, answer and explanation); the spec only adds the Thai. New questions carry both
-languages. Upstream "pre" questions become easy and "post" questions medium unless the
+languages. Upstream "pre" questions become easy and "check" and "post" questions medium unless the
 spec says otherwise.
 
 Spec (JSON):
@@ -26,7 +26,7 @@ import re
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-LEVEL = {"pre": "easy", "post": "medium"}
+LEVEL = {"pre": "easy", "check": "medium", "post": "medium"}
 ORDER = {"easy": 0, "medium": 1, "hard": 2}
 
 
@@ -37,7 +37,8 @@ def pair(v):
 for spec_path in sys.argv[1:]:
     spec = json.loads(pathlib.Path(spec_path).read_text(encoding="utf-8"))
     key = spec["lesson"]
-    upstream = json.loads((ROOT / "src/data/upstream-quiz" / f"{key}.json").read_text(encoding="utf-8"))["questions"]
+    raw = json.loads((ROOT / "src/data/upstream-quiz" / f"{key}.json").read_text(encoding="utf-8"))
+    upstream = raw["questions"] if isinstance(raw, dict) else raw  # some upstream files are a bare list
     en_md = (ROOT / "src/content/docs/en" / f"{key}.md").read_text(encoding="utf-8")
     source_hash = re.search(r'^source_hash: "([0-9a-f]+)"', en_md, re.M).group(1)
 

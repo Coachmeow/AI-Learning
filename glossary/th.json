@@ -850,6 +850,86 @@
     {
       "en": "stack trace",
       "th": "stack trace"
+    },
+    {
+      "en": "idiom (code)",
+      "th": "สำนวน",
+      "first": "สำนวน (idiom)"
+    },
+    {
+      "en": "unpacking",
+      "th": "การแตกค่า",
+      "first": "การแตกค่า (unpacking)"
+    },
+    {
+      "en": "f-string",
+      "th": "f-string"
+    },
+    {
+      "en": "comprehension",
+      "th": "comprehension"
+    },
+    {
+      "en": "generator / generator expression",
+      "th": "generator / generator expression"
+    },
+    {
+      "en": "iterable / iterator",
+      "th": "iterable / iterator"
+    },
+    {
+      "en": "closure",
+      "th": "closure"
+    },
+    {
+      "en": "dataclass",
+      "th": "dataclass"
+    },
+    {
+      "en": "context manager",
+      "th": "context manager"
+    },
+    {
+      "en": "type hint",
+      "th": "type hint"
+    },
+    {
+      "en": "mutable default argument",
+      "th": "ค่า default ที่เปลี่ยนแปลงได้"
+    },
+    {
+      "en": "pointer / reference",
+      "th": "ตัวชี้ / ตัวอ้างถึง",
+      "first": "ตัวชี้ (pointer)"
+    },
+    {
+      "en": "vectorized code",
+      "th": "โค้ดแบบ vectorized"
+    },
+    {
+      "en": "broadcasting",
+      "th": "broadcasting"
+    },
+    {
+      "en": "standardize / standardizer",
+      "th": "ปรับมาตรฐาน / ตัวปรับมาตรฐาน",
+      "first": "การปรับมาตรฐาน (standardization)"
+    },
+    {
+      "en": "population standard deviation",
+      "th": "ส่วนเบี่ยงเบนมาตรฐานของประชากร"
+    },
+    {
+      "en": "mini-batch",
+      "th": "mini-batch"
+    },
+    {
+      "en": "nearest-centroid classifier",
+      "th": "ตัวจำแนกแบบจุดศูนย์กลางที่ใกล้ที่สุด"
+    },
+    {
+      "en": "lazy (evaluation)",
+      "th": "แบบขี้เกียจ (lazy)"
     }
   ]
 }
