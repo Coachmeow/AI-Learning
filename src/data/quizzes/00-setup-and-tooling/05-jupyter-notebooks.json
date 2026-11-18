@@ -1,0 +1,487 @@
+{
+  "lesson": "00-setup-and-tooling/05-jupyter-notebooks",
+  "source_hash": "543c38dcbca1352c41924f3a5ad4c6fadd715c38aae7e233e3b2be795865889b",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What is a Jupyter notebook?",
+        "th": "Jupyter notebook คืออะไร"
+      },
+      "options": [
+        {
+          "en": "An interactive document that mixes executable code cells with markdown text and inline outputs",
+          "th": "เอกสารแบบโต้ตอบที่ผสมเซลล์โค้ดที่รันได้ ข้อความ markdown และผลลัพธ์ที่แสดงในหน้า"
+        },
+        {
+          "en": "A package manager for Python libraries",
+          "th": "ตัวจัดการแพ็กเกจของไลบรารี Python"
+        },
+        {
+          "en": "A version control system for data science projects",
+          "th": "ระบบควบคุมเวอร์ชันสำหรับโปรเจกต์ data science"
+        },
+        {
+          "en": "A text editor for writing Python scripts",
+          "th": "โปรแกรมแก้ไขข้อความสำหรับเขียนสคริปต์ Python"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "A Jupyter notebook (.ipynb) is an interactive environment where you can write and execute code in cells, see outputs inline, and mix code with formatted text explanations.",
+        "th": "Jupyter notebook (.ipynb) คือสภาพแวดล้อมแบบโต้ตอบที่เขียนและรันโค้ดเป็นเซลล์ เห็นผลลัพธ์ทันทีใต้โค้ด และผสมโค้ดกับข้อความอธิบายที่จัดรูปแบบได้"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What does the Jupyter kernel do?",
+        "th": "kernel ของ Jupyter ทำหน้าที่อะไร"
+      },
+      "options": [
+        {
+          "en": "Runs the code in cells and keeps variables in memory between executions",
+          "th": "รันโค้ดในเซลล์และเก็บตัวแปรไว้ในหน่วยความจำระหว่างการรันแต่ละครั้ง"
+        },
+        {
+          "en": "Connects the notebook to GitHub for version control",
+          "th": "เชื่อม notebook กับ GitHub เพื่อควบคุมเวอร์ชัน"
+        },
+        {
+          "en": "Manages file storage for the notebook",
+          "th": "จัดการพื้นที่เก็บไฟล์ของ notebook"
+        },
+        {
+          "en": "Formats markdown cells into HTML",
+          "th": "แปลงเซลล์ markdown เป็น HTML"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The kernel is a separate Python process that executes cell code and maintains state (variables, imports) in memory. All cells in a notebook share the same kernel.",
+        "th": "kernel คือโปรเซส Python แยกต่างหากที่รันโค้ดในเซลล์และเก็บสถานะ (ตัวแปร, สิ่งที่ import ไว้) ในหน่วยความจำ ทุกเซลล์ใน notebook ใช้ kernel ตัวเดียวกัน"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Which key runs the current cell and moves to the next one?",
+        "th": "ปุ่มใดรันเซลล์ปัจจุบันแล้วเลื่อนไปเซลล์ถัดไป"
+      },
+      "options": [
+        {
+          "en": "`Shift+Enter`",
+          "th": "`Shift+Enter`"
+        },
+        {
+          "en": "`Escape`",
+          "th": "`Escape`"
+        },
+        {
+          "en": "`DD`",
+          "th": "`DD`"
+        },
+        {
+          "en": "`Ctrl+/`",
+          "th": "`Ctrl+/`"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "`Shift+Enter` runs the cell and moves on; it is the shortcut you will use most. `Escape` enters command mode, `DD` deletes a cell and `Ctrl+/` toggles a comment.",
+        "th": "`Shift+Enter` รันเซลล์แล้วเลื่อนต่อ เป็นปุ่มลัดที่จะได้ใช้บ่อยที่สุด ส่วน `Escape` เข้าโหมดคำสั่ง `DD` ลบเซลล์ และ `Ctrl+/` เปิด/ปิดคอมเมนต์"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Which prefix runs a shell command, such as `pip install`, from a code cell?",
+        "th": "เครื่องหมายใดนำหน้าเพื่อรันคำสั่ง shell เช่น `pip install` จากเซลล์โค้ด"
+      },
+      "options": [
+        {
+          "en": "`#`",
+          "th": "`#`"
+        },
+        {
+          "en": "`%%`",
+          "th": "`%%`"
+        },
+        {
+          "en": "`!`",
+          "th": "`!`"
+        },
+        {
+          "en": "`$`",
+          "th": "`$`"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "`!pip install scikit-learn` runs the shell command. `%` and `%%` start Jupyter magics, and `#` starts a Python comment.",
+        "th": "`!pip install scikit-learn` รันคำสั่ง shell ส่วน `%` และ `%%` ใช้นำหน้า magic ของ Jupyter และ `#` ขึ้นต้นคอมเมนต์ของ Python"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "What is inside an `.ipynb` file?",
+        "th": "ในไฟล์ `.ipynb` มีอะไรอยู่"
+      },
+      "options": [
+        {
+          "en": "Compiled Python bytecode",
+          "th": "bytecode ของ Python ที่คอมไพล์แล้ว"
+        },
+        {
+          "en": "JSON with the cells, their outputs and metadata",
+          "th": "JSON ที่เก็บเซลล์ ผลลัพธ์ของเซลล์ และ metadata"
+        },
+        {
+          "en": "A zipped Python environment",
+          "th": "สภาพแวดล้อม Python ที่บีบอัดไว้"
+        },
+        {
+          "en": "Only the code, without outputs",
+          "th": "มีแค่โค้ด ไม่มีผลลัพธ์"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "An `.ipynb` (IPython Notebook) file is JSON: a list of cells with their source, outputs and execution counts, plus metadata. All three interfaces read the same format.",
+        "th": "ไฟล์ `.ipynb` (IPython Notebook) เป็น JSON: มีรายการเซลล์พร้อมโค้ด ผลลัพธ์ และลำดับการรัน รวมถึง metadata หน้าจอทั้งสามแบบอ่านรูปแบบเดียวกันนี้"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "What is the difference between %timeit and %%time magic commands?",
+        "th": "magic command %timeit กับ %%time ต่างกันอย่างไร"
+      },
+      "options": [
+        {
+          "en": "There is no difference, they are aliases",
+          "th": "ไม่ต่างกัน เป็นชื่อเรียกแทนกัน"
+        },
+        {
+          "en": "%timeit runs code many times and averages, %%time runs code once",
+          "th": "%timeit รันโค้ดหลายรอบแล้วหาค่าเฉลี่ย ส่วน %%time รันครั้งเดียว"
+        },
+        {
+          "en": "%timeit measures wall time, %%time measures CPU time",
+          "th": "%timeit วัดเวลาจริงตามนาฬิกา ส่วน %%time วัดเวลา CPU"
+        },
+        {
+          "en": "%timeit works on single lines, %%time works on the whole notebook",
+          "th": "%timeit ใช้กับบรรทัดเดียว ส่วน %%time ใช้กับทั้ง notebook"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "%timeit runs the statement many times for a statistical average (good for microbenchmarks). %%time runs the cell once and reports wall time (good for training runs).",
+        "th": "%timeit รันคำสั่งหลายรอบเพื่อหาค่าเฉลี่ยทางสถิติ (เหมาะกับการวัดโค้ดสั้นๆ) ส่วน %%time รันทั้งเซลล์ครั้งเดียวแล้วรายงานเวลาจริง (เหมาะกับการฝึกโมเดล)"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "What is the most common cause of a notebook working on your machine but failing when someone runs it top to bottom?",
+        "th": "สาเหตุที่พบบ่อยที่สุดที่ notebook ใช้ได้บนเครื่องคุณ แต่พังเมื่อคนอื่นรันจากบนลงล่าง คือข้อใด"
+      },
+      "options": [
+        {
+          "en": "Missing the %matplotlib inline magic command",
+          "th": "ขาด magic command %matplotlib inline"
+        },
+        {
+          "en": "Using too many markdown cells",
+          "th": "ใช้เซลล์ markdown มากเกินไป"
+        },
+        {
+          "en": "Out-of-order cell execution creating hidden dependencies on execution order",
+          "th": "การรันเซลล์ไม่ตามลำดับ ทำให้เกิดการพึ่งพาลำดับการรันที่มองไม่เห็น"
+        },
+        {
+          "en": "Using a different Python version",
+          "th": "ใช้ Python คนละเวอร์ชัน"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Running cells out of order creates hidden state dependencies. A variable might exist because you ran cell 5 before cell 2. Kernel > Restart & Run All verifies linear execution.",
+        "th": "การรันเซลล์ไม่ตามลำดับทำให้เกิดการพึ่งพาสถานะที่ซ่อนอยู่ ตัวแปรบางตัวอาจมีอยู่เพียงเพราะคุณรันเซลล์ 5 ก่อนเซลล์ 2 การกด Kernel > Restart & Run All จะยืนยันว่ารันเรียงตามลำดับได้"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "When should you move code from a notebook into a .py script?",
+        "th": "ควรย้ายโค้ดจาก notebook ไปเป็นสคริปต์ .py เมื่อไร"
+      },
+      "options": [
+        {
+          "en": "Never -- notebooks are always better for AI work",
+          "th": "ไม่ต้องย้ายเลย notebook ดีกว่าเสมอสำหรับงาน AI"
+        },
+        {
+          "en": "Only when you need to run on a GPU",
+          "th": "เฉพาะเมื่อต้องรันบน GPU"
+        },
+        {
+          "en": "As soon as you write more than 10 lines of code",
+          "th": "ทันทีที่เขียนโค้ดเกิน 10 บรรทัด"
+        },
+        {
+          "en": "When the code is a reusable utility, training pipeline, or production code",
+          "th": "เมื่อโค้ดเป็นเครื่องมือที่ใช้ซ้ำ ไปป์ไลน์การฝึก หรือโค้ดใช้งานจริง"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "The rule is 'explore in notebooks, ship in scripts.' Reusable utilities, training pipelines, and anything running in production should be .py files. Notebooks are for exploration and prototyping.",
+        "th": "กฎคือ 'สำรวจใน notebook, ส่งมอบเป็นสคริปต์' เครื่องมือที่ใช้ซ้ำ ไปป์ไลน์การฝึก และทุกอย่างที่รันในระบบใช้งานจริงควรเป็นไฟล์ .py ส่วน notebook มีไว้สำรวจและลองต้นแบบ"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "You run cell 1, then cell 2 twice, then cell 3. What does cell 3 print?",
+        "th": "คุณรันเซลล์ 1 แล้วรันเซลล์ 2 สองครั้ง จากนั้นรันเซลล์ 3 เซลล์ 3 พิมพ์อะไรออกมา"
+      },
+      "code": "# cell 1\nx = 1\n# cell 2\nx = x + 1\n# cell 3\nprint(x)",
+      "options": [
+        {
+          "en": "1",
+          "th": "1"
+        },
+        {
+          "en": "2",
+          "th": "2"
+        },
+        {
+          "en": "3",
+          "th": "3"
+        },
+        {
+          "en": "NameError",
+          "th": "NameError"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "The kernel keeps `x` between runs: cell 1 sets 1, each run of cell 2 adds one, so `x` is 3. Run top to bottom once, it would print 2. That gap is hidden state.",
+        "th": "kernel เก็บ `x` ไว้ข้ามการรัน: เซลล์ 1 ตั้งค่าเป็น 1 แล้วการรันเซลล์ 2 แต่ละครั้งบวกเพิ่มหนึ่ง `x` จึงเป็น 3 ถ้ารันจากบนลงล่างครั้งเดียวจะพิมพ์ 2 ความต่างนี้คือสถานะที่ซ่อนอยู่"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "You deleted the cell that set `lr = 0.1`, yet a later cell still uses `lr` without an error. Why?",
+        "th": "คุณลบเซลล์ที่ตั้ง `lr = 0.1` ไปแล้ว แต่เซลล์ถัดไปยังใช้ `lr` ได้โดยไม่มี error เพราะอะไร"
+      },
+      "options": [
+        {
+          "en": "Jupyter saves deleted cells in the file",
+          "th": "Jupyter เก็บเซลล์ที่ลบไว้ในไฟล์"
+        },
+        {
+          "en": "`lr` is a built-in Python name",
+          "th": "`lr` เป็นชื่อที่มีมากับ Python"
+        },
+        {
+          "en": "The variable is still in the kernel's memory; deleting a cell does not undo what it ran",
+          "th": "ตัวแปรยังอยู่ในหน่วยความจำของ kernel การลบเซลล์ไม่ได้ย้อนสิ่งที่เซลล์นั้นรันไปแล้ว"
+        },
+        {
+          "en": "The later cell re-runs the deleted cell automatically",
+          "th": "เซลล์ถัดไปรันเซลล์ที่ลบไปใหม่ให้อัตโนมัติ"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "This is hidden state: the notebook looks clean but depends on a ghost cell. After a restart, `lr` would be undefined. Restart the kernel regularly to catch it.",
+        "th": "นี่คือสถานะที่ซ่อนอยู่: notebook ดูสะอาดแต่ยังพึ่งเซลล์ผี หลังรีสตาร์ต `lr` จะไม่มีอยู่ ให้รีสตาร์ต kernel เป็นประจำเพื่อจับปัญหานี้"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "The execution counters of a shared notebook read [3], [1], [7], [2] from top to bottom. What does that tell you?",
+        "th": "ตัวเลขลำดับการรันใน notebook ที่มีคนแชร์มา อ่านจากบนลงล่างได้ [3], [1], [7], [2] บอกอะไร"
+      },
+      "options": [
+        {
+          "en": "The notebook is fine: numbers are just labels",
+          "th": "notebook ไม่มีปัญหา ตัวเลขเป็นแค่ป้ายชื่อ"
+        },
+        {
+          "en": "The cells were run out of order, so it may not work top to bottom; run Kernel > Restart & Run All before trusting it",
+          "th": "เซลล์ถูกรันไม่ตามลำดับ จึงอาจรันจากบนลงล่างไม่ได้ ให้กด Kernel > Restart & Run All ก่อนจะเชื่อผล"
+        },
+        {
+          "en": "Some cells failed with errors",
+          "th": "บางเซลล์รันแล้ว error"
+        },
+        {
+          "en": "The kernel crashed three times",
+          "th": "kernel ล่มไปสามครั้ง"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "After a clean top-to-bottom run the counters go up: [1], [2], [3], [4]. Any other pattern means cells ran out of order and may depend on each other's hidden state.",
+        "th": "หลังรันจากบนลงล่างแบบสะอาด ตัวเลขจะเพิ่มขึ้นเรื่อยๆ: [1], [2], [3], [4] รูปแบบอื่นแปลว่าเซลล์ถูกรันไม่ตามลำดับ และอาจพึ่งสถานะที่ซ่อนอยู่ของกันและกัน"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "You moved `prepare_data()` into `utils.py` and import it in the notebook. After editing `utils.py`, the notebook still runs the old code. Why, and what fixes it?",
+        "th": "คุณย้าย `prepare_data()` ไปไว้ใน `utils.py` แล้ว import มาใช้ใน notebook หลังแก้ `utils.py` notebook ยังรันโค้ดเก่าอยู่ เพราะอะไร และแก้อย่างไร"
+      },
+      "options": [
+        {
+          "en": "Files saved by an editor take an hour to update",
+          "th": "ไฟล์ที่บันทึกจาก editor ใช้เวลาหนึ่งชั่วโมงกว่าจะอัปเดต"
+        },
+        {
+          "en": "The kernel imported the module once and keeps it cached; restart the kernel or `importlib.reload(utils)`",
+          "th": "kernel import โมดูลไปครั้งเดียวแล้วเก็บไว้ในแคช ให้รีสตาร์ต kernel หรือใช้ `importlib.reload(utils)`"
+        },
+        {
+          "en": "`.py` files cannot be imported into notebooks",
+          "th": "import ไฟล์ `.py` เข้า notebook ไม่ได้"
+        },
+        {
+          "en": "You must convert `utils.py` into a notebook",
+          "th": "ต้องแปลง `utils.py` เป็น notebook ก่อน"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Python imports a module once per process and reuses it. The kernel is a long-lived process, so edits only appear after a restart, `importlib.reload`, or IPython's `%autoreload`.",
+        "th": "Python import โมดูลครั้งเดียวต่อโปรเซสแล้วใช้ซ้ำ kernel เป็นโปรเซสที่อยู่ยาว การแก้ไขจึงจะเห็นผลหลังรีสตาร์ต, `importlib.reload` หรือ `%autoreload` ของ IPython"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Your Colab session timed out and the trained model saved in `/content` is gone. How do you keep files next time?",
+        "th": "session ของ Colab หมดเวลา และโมเดลที่ฝึกแล้วบันทึกไว้ใน `/content` หายไป ครั้งหน้าจะเก็บไฟล์ไว้ได้อย่างไร"
+      },
+      "options": [
+        {
+          "en": "Save more often to `/content`",
+          "th": "บันทึกลง `/content` ให้บ่อยขึ้น"
+        },
+        {
+          "en": "Mount Google Drive (`drive.mount('/content/drive')`) and save there, or download the file",
+          "th": "mount Google Drive (`drive.mount('/content/drive')`) แล้วบันทึกไว้ที่นั่น หรือดาวน์โหลดไฟล์เก็บไว้"
+        },
+        {
+          "en": "Use a GPU runtime, which keeps files",
+          "th": "ใช้ runtime แบบ GPU ซึ่งเก็บไฟล์ไว้ให้"
+        },
+        {
+          "en": "Run `!pip install persist`",
+          "th": "รัน `!pip install persist`"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Colab files do not persist between sessions, and free sessions end after 90 idle minutes. Only Drive (or a download) survives the session.",
+        "th": "ไฟล์ใน Colab ไม่คงอยู่ข้าม session และ session ฟรีจะจบหลังไม่ได้ใช้งาน 90 นาที มีแค่ Drive (หรือการดาวน์โหลด) ที่อยู่รอดหลัง session จบ"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Memory keeps growing after you load and `del` several large dataframes, and `del df` alone did not help. What is the most reliable fix?",
+        "th": "หน่วยความจำเพิ่มขึ้นเรื่อยๆ หลังโหลดและ `del` dataframe ขนาดใหญ่หลายชุด และแค่ `del df` ก็ไม่ช่วย วิธีใดได้ผลแน่นอนที่สุด"
+      },
+      "options": [
+        {
+          "en": "Call `del df` twice",
+          "th": "เรียก `del df` สองครั้ง"
+        },
+        {
+          "en": "Add more markdown cells",
+          "th": "เพิ่มเซลล์ markdown"
+        },
+        {
+          "en": "Restart the kernel, which frees everything the process held",
+          "th": "รีสตาร์ต kernel ซึ่งคืนทุกอย่างที่โปรเซสถือไว้"
+        },
+        {
+          "en": "Switch to `%%time`",
+          "th": "เปลี่ยนไปใช้ `%%time`"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "`del` only removes one name; the data stays alive while anything else refers to it, such as another variable or IPython's output history (`_`, `Out`). `gc.collect()` can help, but restarting the kernel always frees it.",
+        "th": "`del` ลบแค่ชื่อเดียว ข้อมูลยังอยู่ตราบที่ยังมีอย่างอื่นอ้างถึง เช่น ตัวแปรอื่นหรือประวัติผลลัพธ์ของ IPython (`_`, `Out`) `gc.collect()` อาจช่วยได้ แต่การรีสตาร์ต kernel คืนหน่วยความจำได้ทุกครั้ง"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Why do notebooks often produce huge git diffs even when you changed one line of code?",
+        "th": "ทำไม notebook มักทำให้ diff ใน git ใหญ่มาก ทั้งที่แก้โค้ดไปแค่บรรทัดเดียว"
+      },
+      "options": [
+        {
+          "en": "Git cannot read JSON",
+          "th": "git อ่าน JSON ไม่ได้"
+        },
+        {
+          "en": "The `.ipynb` JSON also stores outputs (even images) and execution counts, which change on every run",
+          "th": "JSON ของ `.ipynb` เก็บผลลัพธ์ด้วย (รวมถึงรูปภาพ) และลำดับการรัน ซึ่งเปลี่ยนทุกครั้งที่รัน"
+        },
+        {
+          "en": "Jupyter rewrites the whole file in a random order",
+          "th": "Jupyter เขียนไฟล์ใหม่ทั้งไฟล์แบบสุ่มลำดับ"
+        },
+        {
+          "en": "Markdown cells are stored as binary",
+          "th": "เซลล์ markdown ถูกเก็บเป็นไบนารี"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Re-running cells changes outputs and counters, so the file changes in many places. Clearing outputs before committing, or moving stable code into `.py` files, keeps diffs readable.",
+        "th": "การรันเซลล์ใหม่เปลี่ยนผลลัพธ์และตัวเลขลำดับ ไฟล์จึงเปลี่ยนหลายจุด การล้างผลลัพธ์ก่อน commit หรือย้ายโค้ดที่นิ่งแล้วไปไว้ในไฟล์ `.py` ช่วยให้ diff อ่านง่าย"
+      }
+    }
+  ]
+}

@@ -381,6 +381,73 @@
       "en": "debug",
       "th": "ไล่หาปัญหา",
       "first": "ไล่หาปัญหา (debug)"
+    },
+    {
+      "en": "notebook",
+      "th": "notebook"
+    },
+    {
+      "en": "cell",
+      "th": "เซลล์",
+      "first": "เซลล์ (cell)"
+    },
+    {
+      "en": "kernel",
+      "th": "kernel"
+    },
+    {
+      "en": "magic command",
+      "th": "magic command",
+      "note": "คำสั่งเฉพาะของ Jupyter ที่ขึ้นต้นด้วย % หรือ %%"
+    },
+    {
+      "en": "command mode / edit mode",
+      "th": "โหมดคำสั่ง / โหมดแก้ไข"
+    },
+    {
+      "en": "out-of-order execution",
+      "th": "การรันไม่ตามลำดับ",
+      "first": "การรันไม่ตามลำดับ (out-of-order execution)"
+    },
+    {
+      "en": "hidden state",
+      "th": "สถานะที่ซ่อนอยู่",
+      "first": "สถานะที่ซ่อนอยู่ (hidden state)"
+    },
+    {
+      "en": "memory leak",
+      "th": "หน่วยความจำรั่ว",
+      "first": "หน่วยความจำรั่ว (memory leak)"
+    },
+    {
+      "en": "inline (output, plot)",
+      "th": "แสดงในหน้า"
+    },
+    {
+      "en": "prototype",
+      "th": "ต้นแบบ / ลองต้นแบบ"
+    },
+    {
+      "en": "production code",
+      "th": "โค้ดใช้งานจริง",
+      "first": "โค้ดใช้งานจริง (production)"
+    },
+    {
+      "en": "pipeline",
+      "th": "ไปป์ไลน์",
+      "first": "ไปป์ไลน์ (pipeline)"
+    },
+    {
+      "en": "dataframe",
+      "th": "dataframe"
+    },
+    {
+      "en": "session (Colab)",
+      "th": "session"
+    },
+    {
+      "en": "namespace",
+      "th": "namespace"
     }
   ]
 }
