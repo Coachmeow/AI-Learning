@@ -315,6 +315,72 @@
       "en": "median",
       "th": "ค่ามัธยฐาน",
       "first": "ค่ามัธยฐาน (median)"
+    },
+    {
+      "en": "API",
+      "th": "API"
+    },
+    {
+      "en": "API key",
+      "th": "API key"
+    },
+    {
+      "en": "environment variable",
+      "th": "ตัวแปรสภาพแวดล้อม",
+      "first": "ตัวแปรสภาพแวดล้อม (environment variable)"
+    },
+    {
+      "en": "endpoint",
+      "th": "endpoint"
+    },
+    {
+      "en": "request / response",
+      "th": "คำขอ / คำตอบ",
+      "first": "คำขอ (request) / คำตอบ (response)"
+    },
+    {
+      "en": "request body / response body",
+      "th": "ตัวคำขอ / ตัวคำตอบ"
+    },
+    {
+      "en": "header (HTTP)",
+      "th": "header"
+    },
+    {
+      "en": "authentication",
+      "th": "การยืนยันตัวตน",
+      "first": "การยืนยันตัวตน (authentication)"
+    },
+    {
+      "en": "rate limit",
+      "th": "rate limit",
+      "first": "การจำกัดอัตรา (rate limit)"
+    },
+    {
+      "en": "exponential backoff",
+      "th": "exponential backoff",
+      "note": "รอนานขึ้นเป็นสองเท่าทุกครั้งที่ลองใหม่"
+    },
+    {
+      "en": "token (API billing)",
+      "th": "token"
+    },
+    {
+      "en": "streaming",
+      "th": "streaming"
+    },
+    {
+      "en": "SDK",
+      "th": "SDK"
+    },
+    {
+      "en": "status code (HTTP)",
+      "th": "รหัสสถานะ HTTP"
+    },
+    {
+      "en": "debug",
+      "th": "ไล่หาปัญหา",
+      "first": "ไล่หาปัญหา (debug)"
     }
   ]
 }

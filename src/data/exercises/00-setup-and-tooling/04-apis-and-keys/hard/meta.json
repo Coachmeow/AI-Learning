@@ -1,0 +1,25 @@
+{
+  "minutes": 30,
+  "title": {
+    "th": "เรียก API ซ้ำอย่างสุภาพเมื่อเจอ error ชั่วคราว",
+    "en": "Retry an API politely after temporary errors"
+  },
+  "prompt": {
+    "th": "เขียน `call_with_retry(send, request, max_retries=4, base=1.0, sleep=time.sleep)` โดย `send(request)` คืน tuple `(status, headers, body)` (headers เป็น dict)\n\n1. สถานะ 200-299: คืน `body` ทันที\n2. สถานะชั่วคราว 429, 500, 502, 503, 529: รอแล้วลองใหม่ ครั้งที่ลองใหม่ลำดับที่ k (เริ่มที่ 0) ให้รอ `base * 2 ** k` วินาที แต่ถ้า headers มี `retry-after` (ไม่สนตัวพิมพ์เล็กใหญ่ของชื่อ) ให้รอตามค่านั้นแทน (เป็นวินาที อาจเป็นทศนิยม)\n3. สถานะอื่น (เช่น 400, 401, 404): ห้ามลองใหม่ ให้ `raise ApiError(status, body)` ทันที\n4. ลองใหม่ได้ไม่เกิน `max_retries` ครั้ง (รวมแล้วเรียก `send` ไม่เกิน `max_retries + 1` ครั้ง) ถ้ายังไม่สำเร็จให้ `raise ApiError` ด้วยสถานะสุดท้าย และไม่ต้องรอหลังครั้งสุดท้าย\n\nใช้ `sleep(seconds)` ที่ส่งเข้ามาเท่านั้น (ตัวตรวจจะส่งตัวปลอมที่จดเวลารอไว้) มี test ซ่อนอยู่บางส่วน",
+    "en": "Write `call_with_retry(send, request, max_retries=4, base=1.0, sleep=time.sleep)`, where `send(request)` returns a `(status, headers, body)` tuple (headers is a dict).\n\n1. Status 200-299: return `body` at once.\n2. Temporary statuses 429, 500, 502, 503, 529: wait and try again. Before retry number k (from 0) wait `base * 2 ** k` seconds, unless the headers contain `retry-after` (name in any letter case): then wait that many seconds instead (it may be a decimal).\n3. Any other status (such as 400, 401, 404): never retry; `raise ApiError(status, body)` at once.\n4. Retry at most `max_retries` times (so `send` runs at most `max_retries + 1` times). If it still fails, `raise ApiError` with the last status, without sleeping after the final attempt.\n\nOnly wait through the `sleep(seconds)` you are given (the checks pass a fake one that records the waits). Some tests are hidden."
+  },
+  "hints": [
+    {
+      "th": "วน `for attempt in range(max_retries + 1):` เรียก `send` หนึ่งครั้งต่อรอบ แล้วแยกสามกรณี: สำเร็จ / ชั่วคราว / อื่นๆ",
+      "en": "Loop `for attempt in range(max_retries + 1):`, call `send` once per pass, then split three ways: success / temporary / anything else."
+    },
+    {
+      "th": "หา retry-after โดยไม่สนตัวพิมพ์: `{k.lower(): v for k, v in headers.items()}.get(\"retry-after\")` แล้วแปลงด้วย `float(...)`",
+      "en": "Find retry-after in any case with `{k.lower(): v for k, v in headers.items()}.get(\"retry-after\")`, then convert with `float(...)`."
+    },
+    {
+      "th": "ก่อน `sleep` ให้เช็กว่ายังเหลือสิทธิ์ลองใหม่หรือไม่ (`attempt < max_retries`) ถ้าไม่เหลือให้ออกจากลูปแล้ว `raise ApiError(status, body)`",
+      "en": "Before calling `sleep`, check that a retry is still allowed (`attempt < max_retries`). If not, leave the loop and `raise ApiError(status, body)`."
+    }
+  ]
+}

@@ -1,0 +1,487 @@
+{
+  "lesson": "00-setup-and-tooling/04-apis-and-keys",
+  "source_hash": "1d4748fc1dc1b4ff3313ab9af092b9831221e7f7d96c1107b3938a895ee93346",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What is an API key used for when calling an LLM service?",
+        "th": "เวลาเรียกบริการ LLM API key มีไว้ทำอะไร"
+      },
+      "options": [
+        {
+          "en": "Encrypting the data sent to the server",
+          "th": "เข้ารหัสข้อมูลที่ส่งไปยังเซิร์ฟเวอร์"
+        },
+        {
+          "en": "Authenticating your identity and authorizing requests",
+          "th": "ยืนยันตัวตนของคุณและอนุญาตคำขอ"
+        },
+        {
+          "en": "Compressing requests to reduce bandwidth",
+          "th": "บีบอัดคำขอเพื่อลดแบนด์วิดท์"
+        },
+        {
+          "en": "Selecting which programming language the server uses",
+          "th": "เลือกภาษาโปรแกรมที่เซิร์ฟเวอร์ใช้"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "An API key is a unique string that identifies your account, authorizes your requests, and allows the provider to track usage and billing.",
+        "th": "API key คือสตริงเฉพาะตัวที่ระบุบัญชีของคุณ อนุญาตคำขอของคุณ และให้ผู้ให้บริการติดตามการใช้งานและคิดเงินได้"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "Why should API keys never be hardcoded directly in source code?",
+        "th": "ทำไมไม่ควรเขียน API key ไว้ในซอร์สโค้ดโดยตรง"
+      },
+      "options": [
+        {
+          "en": "Python cannot read string literals longer than 50 characters",
+          "th": "Python อ่านสตริงที่ยาวเกิน 50 ตัวอักษรไม่ได้"
+        },
+        {
+          "en": "API providers block keys that appear in source files",
+          "th": "ผู้ให้บริการ API จะบล็อก key ที่อยู่ในไฟล์ซอร์สโค้ด"
+        },
+        {
+          "en": "Hardcoded keys make the code run slower",
+          "th": "key ที่เขียนไว้ในโค้ดทำให้โค้ดรันช้าลง"
+        },
+        {
+          "en": "They can be accidentally committed to git and exposed publicly",
+          "th": "อาจเผลอ commit เข้า git แล้วหลุดออกสู่สาธารณะ"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Hardcoded keys in source code risk being committed to version control and pushed to public repositories, where they can be scraped and abused by others.",
+        "th": "key ที่เขียนไว้ในซอร์สโค้ดเสี่ยงจะถูก commit เข้าระบบควบคุมเวอร์ชันและ push ขึ้น repo สาธารณะ ซึ่งคนอื่นกวาดเก็บไปใช้ในทางที่ผิดได้"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Which HTTP status code do you get when the API key is wrong?",
+        "th": "ถ้า API key ผิด จะได้รหัสสถานะ HTTP อะไร"
+      },
+      "options": [
+        {
+          "en": "200",
+          "th": "200"
+        },
+        {
+          "en": "401",
+          "th": "401"
+        },
+        {
+          "en": "404",
+          "th": "404"
+        },
+        {
+          "en": "429",
+          "th": "429"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "401 Unauthorized means authentication failed: the key is missing or invalid. 429 is the rate limit and 404 is a wrong URL.",
+        "th": "401 Unauthorized แปลว่ายืนยันตัวตนไม่ผ่าน คือไม่มี key หรือ key ไม่ถูกต้อง ส่วน 429 คือเกิน rate limit และ 404 คือ URL ผิด"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "In the SDK example, what does `max_tokens=256` control?",
+        "th": "ในตัวอย่างที่ใช้ SDK `max_tokens=256` ควบคุมอะไร"
+      },
+      "options": [
+        {
+          "en": "The longest prompt you may send",
+          "th": "ความยาวสูงสุดของ prompt ที่ส่งได้"
+        },
+        {
+          "en": "The most tokens the model may write in its reply",
+          "th": "จำนวน token สูงสุดที่โมเดลเขียนในคำตอบได้"
+        },
+        {
+          "en": "How many requests you can send per minute",
+          "th": "จำนวนคำขอที่ส่งได้ต่อนาที"
+        },
+        {
+          "en": "The price per token",
+          "th": "ราคาต่อ token"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "`max_tokens` caps the length of the reply. Output tokens are billed, so this also caps the cost of the answer.",
+        "th": "`max_tokens` จำกัดความยาวของคำตอบ และเพราะ token ขาออกถูกคิดเงิน ค่านี้จึงจำกัดค่าใช้จ่ายของคำตอบไปด้วย"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Where do the lesson's SDK examples get the API key from?",
+        "th": "ตัวอย่างที่ใช้ SDK ในบทนี้เอา API key มาจากไหน"
+      },
+      "options": [
+        {
+          "en": "From a string in the code",
+          "th": "จากสตริงที่เขียนไว้ในโค้ด"
+        },
+        {
+          "en": "They need no key",
+          "th": "ไม่ต้องใช้ key"
+        },
+        {
+          "en": "From the `ANTHROPIC_API_KEY` environment variable, which the SDK reads by itself",
+          "th": "จากตัวแปรสภาพแวดล้อม `ANTHROPIC_API_KEY` ซึ่ง SDK อ่านเอง"
+        },
+        {
+          "en": "From the `LLM_MODEL` variable",
+          "th": "จากตัวแปร `LLM_MODEL`"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "`anthropic.Anthropic()` is created with no arguments: the SDK looks up `ANTHROPIC_API_KEY` in the environment. `LLM_MODEL` only picks the model.",
+        "th": "`anthropic.Anthropic()` ถูกสร้างโดยไม่ส่งอะไรเข้าไปเลย SDK จะไปหา `ANTHROPIC_API_KEY` ในตัวแปรสภาพแวดล้อมเอง ส่วน `LLM_MODEL` มีไว้เลือกโมเดลเท่านั้น"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "What is the recommended way to store API keys for local development?",
+        "th": "วิธีที่แนะนำในการเก็บ API key ตอนพัฒนาบนเครื่องตัวเองคือข้อใด"
+      },
+      "options": [
+        {
+          "en": "In a .env file that is listed in .gitignore",
+          "th": "ในไฟล์ .env ที่ใส่ไว้ใน .gitignore"
+        },
+        {
+          "en": "In the README.md for easy access",
+          "th": "ใน README.md จะได้หยิบใช้ง่าย"
+        },
+        {
+          "en": "In a Python variable at the top of your script",
+          "th": "ในตัวแปร Python ที่บรรทัดบนสุดของสคริปต์"
+        },
+        {
+          "en": "In the requirements.txt alongside package versions",
+          "th": "ใน requirements.txt คู่กับเวอร์ชันของแพ็กเกจ"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "A .env file stores keys as environment variables and should be added to .gitignore so it is never committed to version control. SDKs read keys from environment variables automatically.",
+        "th": "ไฟล์ .env เก็บ key เป็นตัวแปรสภาพแวดล้อม และควรเพิ่มไว้ใน .gitignore เพื่อไม่ให้ถูก commit เข้าระบบควบคุมเวอร์ชัน SDK จะอ่าน key จากตัวแปรสภาพแวดล้อมให้เอง"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "In the raw HTTP API call to Anthropic, which header carries the API key?",
+        "th": "ในการเรียก API ของ Anthropic ผ่าน HTTP ตรงๆ header ใดเป็นตัวส่ง API key"
+      },
+      "options": [
+        {
+          "en": "Authorization: Bearer sk-ant-...",
+          "th": "Authorization: Bearer sk-ant-..."
+        },
+        {
+          "en": "Content-Type: application/json",
+          "th": "Content-Type: application/json"
+        },
+        {
+          "en": "anthropic-version: 2023-06-01",
+          "th": "anthropic-version: 2023-06-01"
+        },
+        {
+          "en": "x-api-key: sk-ant-...",
+          "th": "x-api-key: sk-ant-..."
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Anthropic's API uses the 'x-api-key' header for authentication, not the more common 'Authorization: Bearer' pattern. This is specific to their API design.",
+        "th": "API ของ Anthropic ใช้ header 'x-api-key' ในการยืนยันตัวตน ไม่ใช่รูปแบบ 'Authorization: Bearer' ที่พบบ่อยกว่า นี่เป็นการออกแบบเฉพาะของ API เจ้านี้"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "What happens when you exceed an API's rate limit?",
+        "th": "จะเกิดอะไรขึ้นเมื่อส่งคำขอเกิน rate limit ของ API"
+      },
+      "options": [
+        {
+          "en": "Your request is queued and processed later automatically",
+          "th": "คำขอถูกเข้าคิวแล้วประมวลผลภายหลังโดยอัตโนมัติ"
+        },
+        {
+          "en": "The server returns an error (typically HTTP 429) and you must wait before retrying",
+          "th": "เซิร์ฟเวอร์ตอบกลับเป็น error (ปกติคือ HTTP 429) และต้องรอก่อนลองใหม่"
+        },
+        {
+          "en": "Your API key is permanently revoked",
+          "th": "API key ของคุณถูกยกเลิกถาวร"
+        },
+        {
+          "en": "The API silently drops your request with no response",
+          "th": "API ทิ้งคำขอไปเงียบๆ โดยไม่ตอบอะไร"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Rate limiting returns HTTP 429 (Too Many Requests). You need to wait and retry, typically with exponential backoff. Rate limits prevent abuse and ensure fair usage.",
+        "th": "การจำกัดอัตราจะตอบกลับด้วย HTTP 429 (Too Many Requests) คุณต้องรอแล้วลองใหม่ โดยทั่วไปใช้ exponential backoff การจำกัดอัตรามีไว้กันการใช้ในทางที่ผิดและให้ทุกคนได้ใช้อย่างเป็นธรรม"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "What does this print when `LLM_MODEL` is not set?",
+        "th": "โค้ดนี้พิมพ์อะไรเมื่อไม่ได้ตั้งค่า `LLM_MODEL`"
+      },
+      "code": "import os\nos.environ.pop(\"LLM_MODEL\", None)\nprint(os.environ.get(\"LLM_MODEL\", \"claude-sonnet-5\"))",
+      "options": [
+        {
+          "en": "`None`",
+          "th": "`None`"
+        },
+        {
+          "en": "`claude-sonnet-5`",
+          "th": "`claude-sonnet-5`"
+        },
+        {
+          "en": "`LLM_MODEL`",
+          "th": "`LLM_MODEL`"
+        },
+        {
+          "en": "It raises `KeyError`",
+          "th": "เกิด `KeyError`"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "`os.environ.get(name, default)` returns the default when the variable is missing, which is how the lesson falls back to the Sonnet alias.",
+        "th": "`os.environ.get(name, default)` คืนค่า default เมื่อไม่มีตัวแปรนั้น บทเรียนใช้วิธีนี้เพื่อกลับไปใช้ชื่อย่อของ Sonnet"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "You run the raw HTTP example without setting `ANTHROPIC_API_KEY`. What happens?",
+        "th": "คุณรันตัวอย่าง HTTP ตรงๆ โดยไม่ได้ตั้งค่า `ANTHROPIC_API_KEY` จะเกิดอะไรขึ้น"
+      },
+      "options": [
+        {
+          "en": "The server replies 401",
+          "th": "เซิร์ฟเวอร์ตอบ 401"
+        },
+        {
+          "en": "The request is sent with an empty key",
+          "th": "คำขอถูกส่งไปพร้อม key ว่าง"
+        },
+        {
+          "en": "Python raises `KeyError` before any request is sent",
+          "th": "Python เกิด `KeyError` ก่อนจะส่งคำขอใดๆ"
+        },
+        {
+          "en": "It falls back to a free demo key",
+          "th": "กลับไปใช้ key ทดลองฟรีแทน"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "`os.environ[\"ANTHROPIC_API_KEY\"]` uses square brackets, so a missing variable raises `KeyError` while the headers are being built; nothing reaches the server.",
+        "th": "`os.environ[\"ANTHROPIC_API_KEY\"]` ใช้วงเล็บเหลี่ยม ถ้าไม่มีตัวแปรนี้จะเกิด `KeyError` ตั้งแต่ตอนสร้าง header จึงไม่มีอะไรไปถึงเซิร์ฟเวอร์เลย"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "You pushed a `.env` with a real key to a public repo, then deleted it in the next commit. What should you do?",
+        "th": "คุณ push ไฟล์ `.env` ที่มี key จริงขึ้น repo สาธารณะ แล้วลบทิ้งใน commit ถัดไป ควรทำอย่างไร"
+      },
+      "options": [
+        {
+          "en": "Nothing: the file is gone",
+          "th": "ไม่ต้องทำอะไร เพราะไฟล์หายไปแล้ว"
+        },
+        {
+          "en": "Revoke the key and create a new one at once: it is still in the git history and may already be scraped",
+          "th": "ยกเลิก key แล้วสร้างใหม่ทันที เพราะ key ยังอยู่ในประวัติ git และอาจถูกกวาดเก็บไปแล้ว"
+        },
+        {
+          "en": "Make the repo private for a day",
+          "th": "เปลี่ยน repo เป็นส่วนตัวสักวัน"
+        },
+        {
+          "en": "Add `.env` to `.gitignore`",
+          "th": "เพิ่ม `.env` ลงใน `.gitignore`"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Deleting a file only adds a new commit; the old commit still contains the key, and bots scan public repos within minutes. Treat the key as leaked: revoke it, issue a new one, and add `.env` to `.gitignore` so it doesn't happen again.",
+        "th": "การลบไฟล์แค่เพิ่ม commit ใหม่ commit เก่ายังมี key อยู่ และมีบอตคอยสแกน repo สาธารณะภายในไม่กี่นาที ให้ถือว่า key รั่วแล้ว: ยกเลิก key ออก key ใหม่ แล้วเพิ่ม `.env` ลง `.gitignore` เพื่อไม่ให้เกิดซ้ำ"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "An agent loop retries immediately every time it gets HTTP 429, and keeps getting 429. What is the best fix?",
+        "th": "เอเจนต์ที่วนลูปลองใหม่ทันทีทุกครั้งที่ได้ HTTP 429 และได้ 429 ซ้ำไปเรื่อยๆ ควรแก้อย่างไรดีที่สุด"
+      },
+      "options": [
+        {
+          "en": "Retry faster so a request gets through",
+          "th": "ลองใหม่ให้เร็วขึ้น เผื่อจะมีคำขอที่ผ่าน"
+        },
+        {
+          "en": "Create several API keys and rotate them",
+          "th": "สร้าง API key หลายอันแล้วสลับใช้"
+        },
+        {
+          "en": "Wait before each retry, doubling the wait each time (exponential backoff), and honour a `retry-after` header if present",
+          "th": "รอก่อนลองใหม่แต่ละครั้งและเพิ่มเวลารอเป็นสองเท่าทุกรอบ (exponential backoff) และทำตาม header `retry-after` ถ้ามี"
+        },
+        {
+          "en": "Raise `max_tokens`",
+          "th": "เพิ่ม `max_tokens`"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "429 means \"too many requests right now\". Retrying instantly only adds load. Backing off gives the limit time to reset, and `retry-after` tells you exactly how long to wait.",
+        "th": "429 แปลว่า \"ตอนนี้ส่งคำขอมากเกินไป\" การลองใหม่ทันทียิ่งเพิ่มภาระ การถอยรอช่วยให้โควตารีเซ็ต และ `retry-after` บอกตรงๆ ว่าต้องรอนานเท่าไร"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "The SDK version reads `response.content[0].text`, the raw HTTP version reads `result[\"content\"][0][\"text\"]`. Why the difference?",
+        "th": "แบบ SDK อ่านค่าด้วย `response.content[0].text` แต่แบบ HTTP ตรงๆ ใช้ `result[\"content\"][0][\"text\"]` ทำไมต่างกัน"
+      },
+      "options": [
+        {
+          "en": "The two calls return different data",
+          "th": "สองแบบได้ข้อมูลคนละชุด"
+        },
+        {
+          "en": "The raw call returns XML",
+          "th": "การเรียกแบบ HTTP ตรงๆ ได้ XML กลับมา"
+        },
+        {
+          "en": "Same JSON fields: the SDK turns them into object attributes, while `json.loads` gives plain dicts and lists",
+          "th": "ฟิลด์ JSON ชุดเดียวกัน แต่ SDK แปลงเป็น attribute ของ object ส่วน `json.loads` ได้ dict และ list ธรรมดา"
+        },
+        {
+          "en": "`text` only exists in the SDK",
+          "th": "`text` มีเฉพาะใน SDK"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Both get the same response with `content`, `usage` and `stop_reason`. The SDK wraps it in typed objects; the raw path leaves it as parsed JSON, which is why debugging often starts with the raw form.",
+        "th": "ทั้งสองแบบได้คำตอบเดียวกันที่มี `content`, `usage` และ `stop_reason` SDK ห่อไว้ใน object ที่มีชนิดชัดเจน ส่วนแบบ HTTP ตรงๆ เป็น JSON ที่แปลงแล้ว การไล่หาปัญหาจึงมักเริ่มจากแบบดิบ"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Suppose input costs $3 per million tokens and output $15 per million. A call uses 1,200 input and 300 output tokens. What does it cost?",
+        "th": "สมมติ token ขาเข้าราคา $3 ต่อล้าน token และขาออก $15 ต่อล้าน token การเรียกครั้งหนึ่งใช้ token ขาเข้า 1,200 และขาออก 300 ค่าใช้จ่ายเท่าไร"
+      },
+      "options": [
+        {
+          "en": "$0.0081",
+          "th": "$0.0081"
+        },
+        {
+          "en": "$0.0270",
+          "th": "$0.0270"
+        },
+        {
+          "en": "$0.0054",
+          "th": "$0.0054"
+        },
+        {
+          "en": "$0.0180",
+          "th": "$0.0180"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Input and output are billed separately: 1,200 × $3 / 1,000,000 = $0.0036 and 300 × $15 / 1,000,000 = $0.0045, so $0.0081 in total.",
+        "th": "token ขาเข้าและขาออกคิดเงินแยกกัน: 1,200 × $3 / 1,000,000 = $0.0036 และ 300 × $15 / 1,000,000 = $0.0045 รวม $0.0081"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Which error should a client NOT retry automatically?",
+        "th": "error ข้อใดที่ client ไม่ควรลองใหม่อัตโนมัติ"
+      },
+      "options": [
+        {
+          "en": "429 Too Many Requests",
+          "th": "429 Too Many Requests"
+        },
+        {
+          "en": "503 Service Unavailable",
+          "th": "503 Service Unavailable"
+        },
+        {
+          "en": "401 Unauthorized",
+          "th": "401 Unauthorized"
+        },
+        {
+          "en": "A network timeout",
+          "th": "การเชื่อมต่อหมดเวลา (timeout)"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "429, 503 and timeouts are temporary, so waiting and retrying can succeed. A 401 means the key is wrong; every retry fails the same way until you fix the key.",
+        "th": "429, 503 และ timeout เป็นปัญหาชั่วคราว รอแล้วลองใหม่อาจสำเร็จได้ แต่ 401 แปลว่า key ผิด ลองใหม่กี่ครั้งก็ล้มเหลวแบบเดิมจนกว่าจะแก้ key"
+      }
+    }
+  ]
+}

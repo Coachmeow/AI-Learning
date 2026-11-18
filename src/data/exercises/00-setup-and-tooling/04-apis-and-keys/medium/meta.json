@@ -1,0 +1,25 @@
+{
+  "minutes": 15,
+  "title": {
+    "th": "อ่านไฟล์ .env เอง",
+    "en": "Read a .env file yourself"
+  },
+  "prompt": {
+    "th": "เขียน `parse_env(text)` ที่อ่านเนื้อหาของไฟล์ `.env` แล้วคืน dict ของชื่อตัวแปรกับค่า ตามกฎนี้\n\n1. ข้ามบรรทัดว่างและบรรทัดที่ขึ้นต้นด้วย `#` (หลังตัดช่องว่างหน้าบรรทัดแล้ว)\n2. บรรทัดอาจขึ้นต้นด้วย `export ` ให้ตัดทิ้ง\n3. แยกชื่อกับค่าที่ `=` ตัวแรกเท่านั้น (ค่าอาจมี `=` อยู่ข้างใน) แล้วตัดช่องว่างรอบชื่อและรอบค่า\n4. ถ้าค่าอยู่ในเครื่องหมายคำพูดคู่หรือเดี่ยวที่ตรงกันหัวท้าย ให้ตัดเครื่องหมายคำพูดออก\n5. บรรทัดที่ไม่มี `=` หรือชื่อว่าง ให้ `raise ValueError` โดยบอกเลขบรรทัด (เริ่มนับที่ 1)\n\nถ้าชื่อซ้ำ ค่าที่อยู่บรรทัดหลังชนะ",
+    "en": "Write `parse_env(text)` that reads the contents of a `.env` file and returns a dict of names to values, with these rules:\n\n1. Skip blank lines and lines starting with `#` (after leading spaces are removed).\n2. A line may start with `export `; drop it.\n3. Split the name from the value at the first `=` only (values may contain `=`), and strip spaces around both.\n4. If the value is wrapped in a matching pair of double or single quotes, remove them.\n5. A line with no `=` or an empty name raises `ValueError` that mentions the line number (counting from 1).\n\nIf a name repeats, the later line wins."
+  },
+  "hints": [
+    {
+      "th": "วน `for n, raw in enumerate(text.splitlines(), start=1):` จะได้เลขบรรทัดไว้ใส่ใน error",
+      "en": "Loop with `for n, raw in enumerate(text.splitlines(), start=1):` so you have the line number for errors."
+    },
+    {
+      "th": "`line.partition(\"=\")` แยกที่ `=` ตัวแรกให้ และบอกได้ว่าเจอ `=` หรือไม่ (ตัวกลางจะเป็นสตริงว่างถ้าไม่เจอ)",
+      "en": "`line.partition(\"=\")` splits at the first `=` and tells you whether one was found (the middle part is empty if not)."
+    },
+    {
+      "th": "ตัดเครื่องหมายคำพูดเฉพาะเมื่อ `len(value) >= 2 and value[0] == value[-1] and value[0] in \"\\\"'\"` แล้วใช้ `value[1:-1]`",
+      "en": "Only strip quotes when `len(value) >= 2 and value[0] == value[-1] and value[0] in \"\\\"'\"`, then use `value[1:-1]`."
+    }
+  ]
+}
