@@ -1,0 +1,13 @@
+{
+  "minutes": 6,
+  "title": {"th": "เติมโค้ด: ตัด gradient ตามนอร์ม", "en": "Fill in: clip gradients by norm"},
+  "prompt": {
+    "th": "เติม `clip_by_norm(grads, max_norm)` ให้คืน list ใหม่ของ gradient: ถ้านอร์ม (รากที่สองของผลรวมกำลังสอง) เกิน `max_norm` ให้คูณทุกตัวด้วย `max_norm / นอร์ม` เพื่อให้นอร์มเท่ากับ `max_norm` พอดีโดยทิศเหมือนเดิม ถ้าไม่เกินให้คืนค่าเดิม การคำนวณนอร์มมีให้แล้ว เติมบรรทัดที่มี `# TODO`",
+    "en": "Complete `clip_by_norm(grads, max_norm)` so it returns a new list of gradients: if the norm (square root of the sum of squares) is above `max_norm`, multiply every value by `max_norm / norm`, so the norm becomes exactly `max_norm` with the same direction. Otherwise return the values unchanged. The norm is already computed. Fill in the `# TODO` line."
+  },
+  "hints": [
+    {"th": "ตัวคูณสเกลคือ `max_norm / total_norm` ไม่ใช่ `total_norm / max_norm`", "en": "The scale is `max_norm / total_norm`, not `total_norm / max_norm`."},
+    {"th": "คูณทุกตัวด้วยตัวคูณเดียวกัน อย่าตัดแต่ละตัวแยกกัน (แบบนั้นเปลี่ยนทิศ)", "en": "Multiply every value by the same factor; don't clip each value separately (that changes the direction)."},
+    {"th": "`return [g * max_norm / total_norm for g in grads]`", "en": "`return [g * max_norm / total_norm for g in grads]`"}
+  ]
+}

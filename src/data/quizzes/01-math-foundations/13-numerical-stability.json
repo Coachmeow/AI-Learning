@@ -1,0 +1,486 @@
+{
+  "lesson": "01-math-foundations/13-numerical-stability",
+  "source_hash": "611df7b0a07db308dad6e0e7830ab796c2f9801964a3a1aeb88c9f40526b3752",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What is the approximate range of numbers that float32 can represent?",
+        "th": "float32 เก็บตัวเลขได้ในช่วงประมาณเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "+/- 1.8e308",
+          "th": "+/- 1.8e308"
+        },
+        {
+          "en": "+/- 3.4e38",
+          "th": "+/- 3.4e38"
+        },
+        {
+          "en": "+/- 1.0e10",
+          "th": "+/- 1.0e10"
+        },
+        {
+          "en": "+/- 65,504",
+          "th": "+/- 65,504"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Float32 has an 8-bit exponent giving a range of approximately +/- 3.4e38. Float16 is limited to +/- 65,504, and float64 reaches +/- 1.8e308.",
+        "th": "Float32 มีเลขชี้กำลัง 8 บิต ให้ช่วงประมาณ +/- 3.4e38 ส่วน float16 จำกัดอยู่ที่ +/- 65,504 และ float64 ไปถึง +/- 1.8e308"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "Why does 0.1 + 0.2 not equal 0.3 in floating-point arithmetic?",
+        "th": "ทำไม 0.1 + 0.2 จึงไม่เท่ากับ 0.3 ในการคำนวณเลขทศนิยมแบบ floating point?"
+      },
+      "options": [
+        {
+          "en": "The CPU has a bug in its addition circuit",
+          "th": "CPU มีบั๊กในวงจรบวก"
+        },
+        {
+          "en": "0.1 and 0.2 cannot be represented exactly in binary floating point",
+          "th": "0.1 และ 0.2 แทนด้วยเลขทศนิยมฐานสองได้ไม่ตรงพอดี"
+        },
+        {
+          "en": "Python rounds all decimals to integers",
+          "th": "Python ปัดทศนิยมทุกตัวเป็นจำนวนเต็ม"
+        },
+        {
+          "en": "0.3 is not a valid floating-point number",
+          "th": "0.3 ไม่ใช่เลขทศนิยมที่ถูกต้อง"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The number 0.1 is a repeating fraction in binary (like 1/3 in decimal). Float32 truncates it, so the stored value is approximately 0.100000001490116. The accumulated error makes the sum differ from 0.3.",
+        "th": "0.1 เป็นเศษส่วนที่ซ้ำไม่รู้จบในฐานสอง (เหมือน 1/3 ในฐานสิบ) Float32 ตัดมันทิ้ง ค่าที่เก็บจริงจึงประมาณ 0.100000001490116 ความคลาดเคลื่อนที่สะสมทำให้ผลรวมต่างจาก 0.3"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Which of these gives nan in Python?",
+        "th": "ข้อใดให้ผลเป็น nan ใน Python?"
+      },
+      "options": [
+        {
+          "en": "1e308 * 10",
+          "th": "1e308 * 10"
+        },
+        {
+          "en": "float('inf') - float('inf')",
+          "th": "float('inf') - float('inf')"
+        },
+        {
+          "en": "math.exp(-1000)",
+          "th": "math.exp(-1000)"
+        },
+        {
+          "en": "1 / 3",
+          "th": "1 / 3"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "inf - inf is undefined, so the result is nan. 1e308 * 10 overflows to inf, math.exp(-1000) underflows to 0.0, and 1 / 3 is an ordinary float.",
+        "th": "inf - inf ไม่นิยาม ผลจึงเป็น nan ส่วน 1e308 * 10 ล้นเป็น inf, math.exp(-1000) underflow เป็น 0.0 และ 1 / 3 เป็นเลขทศนิยมธรรมดา"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "What is the machine epsilon of float32?",
+        "th": "machine epsilon ของ float32 คือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "About 1.19e-7 (2^-23)",
+          "th": "ประมาณ 1.19e-7 (2^-23)"
+        },
+        {
+          "en": "About 1.4e-45",
+          "th": "ประมาณ 1.4e-45"
+        },
+        {
+          "en": "About 2.2e-16",
+          "th": "ประมาณ 2.2e-16"
+        },
+        {
+          "en": "About 6e-8",
+          "th": "ประมาณ 6e-8"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Machine epsilon is the gap between 1.0 and the next float32, 2^-23 ≈ 1.19e-7, because float32 has 23 mantissa bits. 2.2e-16 is float64's epsilon, and 1.4e-45 is float32's smallest positive number.",
+        "th": "machine epsilon คือระยะห่างระหว่าง 1.0 กับ float32 ตัวถัดไป คือ 2^-23 ≈ 1.19e-7 เพราะ float32 มีแมนทิสซา 23 บิต ส่วน 2.2e-16 คือ epsilon ของ float64 และ 1.4e-45 คือจำนวนบวกที่เล็กที่สุดของ float32"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "How should you check whether two floats a and b are equal?",
+        "th": "ควรตรวจว่าเลขทศนิยม a กับ b เท่ากันไหมอย่างไร?"
+      },
+      "options": [
+        {
+          "en": "a == b",
+          "th": "a == b"
+        },
+        {
+          "en": "str(a) == str(b)",
+          "th": "str(a) == str(b)"
+        },
+        {
+          "en": "math.isclose(a, b) or abs(a - b) < a small tolerance",
+          "th": "math.isclose(a, b) หรือ abs(a - b) < ค่าความคลาดเคลื่อนเล็ก ๆ"
+        },
+        {
+          "en": "int(a) == int(b)",
+          "th": "int(a) == int(b)"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Rounding error makes results that should be equal differ in the last digits, as with 0.1 + 0.2 and 0.3. Compare with a tolerance instead of exact equality.",
+        "th": "ความคลาดเคลื่อนจากการปัดเศษทำให้ผลที่ควรเท่ากันต่างกันที่หลักท้าย ๆ เช่น 0.1 + 0.2 กับ 0.3 ให้เทียบโดยมีค่าความคลาดเคลื่อนที่ยอมรับได้ แทนการเทียบว่าเท่ากันพอดี"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "In the stable softmax implementation, why do you subtract max(logits) before exponentiating?",
+        "th": "ใน softmax ที่เสถียร ทำไมจึงลบ max(logits) ก่อนยกกำลัง exp?"
+      },
+      "options": [
+        {
+          "en": "It normalizes the logits to have zero mean",
+          "th": "เพื่อทำให้ logits มีค่าเฉลี่ยเป็นศูนย์"
+        },
+        {
+          "en": "It converts logits from float16 to float32",
+          "th": "เพื่อแปลง logits จาก float16 เป็น float32"
+        },
+        {
+          "en": "It makes the output probabilities more uniform",
+          "th": "เพื่อทำให้ความน่าจะเป็นที่ได้สม่ำเสมอขึ้น"
+        },
+        {
+          "en": "It prevents exp() from overflowing by ensuring the largest exponent is 0",
+          "th": "เพื่อป้องกันไม่ให้ exp() ล้น โดยทำให้เลขชี้กำลังที่ใหญ่ที่สุดเป็น 0"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "After subtracting max(logits), the largest value is 0 and exp(0) = 1, which cannot overflow. All other values are negative, so their exponentials are less than 1. The probabilities are mathematically identical to the naive version.",
+        "th": "หลังลบ max(logits) ค่าที่ใหญ่ที่สุดคือ 0 และ exp(0) = 1 ซึ่งล้นไม่ได้ ค่าอื่นทั้งหมดติดลบ exp ของมันจึงน้อยกว่า 1 ความน่าจะเป็นเท่ากับเวอร์ชันตรง ๆ ทุกประการทางคณิตศาสตร์"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "When using centered finite differences for gradient checking, what happens if the step size h is too small (e.g., 1e-15)?",
+        "th": "เมื่อใช้ผลต่างจำกัดแบบกลางในการตรวจ gradient จะเกิดอะไรขึ้นถ้าขนาดก้าว h เล็กเกินไป (เช่น 1e-15)?"
+      },
+      "options": [
+        {
+          "en": "The approximation becomes more accurate",
+          "th": "การประมาณแม่นขึ้น"
+        },
+        {
+          "en": "The gradient automatically becomes zero",
+          "th": "gradient กลายเป็นศูนย์โดยอัตโนมัติ"
+        },
+        {
+          "en": "Catastrophic cancellation destroys the result because f(x+h) and f(x-h) are nearly identical",
+          "th": "การหักล้างแบบหายนะทำลายผลลัพธ์ เพราะ f(x+h) กับ f(x-h) เกือบเท่ากัน"
+        },
+        {
+          "en": "The function evaluation becomes faster",
+          "th": "การคำนวณฟังก์ชันเร็วขึ้น"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "When h is extremely small, f(x+h) and f(x-h) differ only in their last few significant digits. Subtracting them cancels the leading digits, leaving mostly rounding noise. Typical good values are h = 1e-5 to 1e-7.",
+        "th": "เมื่อ h เล็กมาก f(x+h) กับ f(x-h) ต่างกันแค่ไม่กี่หลักนัยสำคัญท้าย ๆ การลบกันทำให้หลักนำหักล้างหมด เหลือแต่สัญญาณรบกวนจากการปัดเศษ ค่าที่ดีโดยทั่วไปคือ h = 1e-5 ถึง 1e-7"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "Why is bfloat16 generally preferred over float16 for neural network training?",
+        "th": "ทำไม bfloat16 จึงมักนิยมกว่า float16 ในการเทรนโครงข่ายประสาทเทียม?"
+      },
+      "options": [
+        {
+          "en": "bfloat16 uses less memory than float16",
+          "th": "bfloat16 ใช้หน่วยความจำน้อยกว่า float16"
+        },
+        {
+          "en": "bfloat16 has the same exponent range as float32, avoiding overflow on large activations without loss scaling",
+          "th": "bfloat16 มีช่วงของเลขชี้กำลังเท่ากับ float32 จึงไม่ล้นเมื่อ activation ใหญ่ โดยไม่ต้องใช้ loss scaling"
+        },
+        {
+          "en": "bfloat16 is supported by more GPU architectures than float16",
+          "th": "GPU หลายสถาปัตยกรรมรองรับ bfloat16 มากกว่า float16"
+        },
+        {
+          "en": "bfloat16 has more mantissa bits, giving better precision",
+          "th": "bfloat16 มีบิตแมนทิสซามากกว่า จึงแม่นยำกว่า"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "bfloat16 has 8 exponent bits (same as float32, range up to 3.4e38) while float16 has only 5 exponent bits (max ~65,504). During training, activations and gradients can exceed 65,504, causing float16 overflow. bfloat16 handles this without loss scaling.",
+        "th": "bfloat16 มีเลขชี้กำลัง 8 บิต (เท่ากับ float32 ช่วงถึง 3.4e38) ขณะที่ float16 มีแค่ 5 บิต (มากสุดราว 65,504) ระหว่างเทรน activation และ gradient อาจเกิน 65,504 ทำให้ float16 ล้น bfloat16 รับมือได้โดยไม่ต้องใช้ loss scaling"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "What does clip_by_norm([3.0, 4.0], max_norm=1.0) return?",
+        "th": "clip_by_norm([3.0, 4.0], max_norm=1.0) คืนค่าอะไร?"
+      },
+      "options": [
+        {
+          "en": "[1.0, 1.0]",
+          "th": "[1.0, 1.0]"
+        },
+        {
+          "en": "[0.6, 0.8]",
+          "th": "[0.6, 0.8]"
+        },
+        {
+          "en": "[3.0, 4.0]",
+          "th": "[3.0, 4.0]"
+        },
+        {
+          "en": "[0.75, 1.0]",
+          "th": "[0.75, 1.0]"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The norm is 5, above 1, so every entry is scaled by 1/5: [0.6, 0.8]. The direction (3:4) is kept. [1.0, 1.0] is what clipping each value to 1 would give, which changes the direction.",
+        "th": "นอร์มคือ 5 เกิน 1 ทุกช่องจึงถูกปรับสเกลด้วย 1/5: [0.6, 0.8] ทิศ (3:4) ยังเหมือนเดิม ส่วน [1.0, 1.0] คือผลของการตัดแต่ละค่าที่ 1 ซึ่งเปลี่ยนทิศ"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "An activation of 70,000 is stored in float16. What value does it become?",
+        "th": "activation ค่า 70,000 ถูกเก็บเป็น float16 จะกลายเป็นค่าอะไร?"
+      },
+      "options": [
+        {
+          "en": "65,504",
+          "th": "65,504"
+        },
+        {
+          "en": "70,000",
+          "th": "70,000"
+        },
+        {
+          "en": "inf",
+          "th": "inf"
+        },
+        {
+          "en": "nan",
+          "th": "nan"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "float16's largest finite value is 65,504, so 70,000 overflows to inf. One inf in the forward pass soon turns into nan (for example inf - inf), which is why bfloat16, with float32's range, is safer for training.",
+        "th": "ค่าจำกัดที่ใหญ่ที่สุดของ float16 คือ 65,504 ค่า 70,000 จึงล้นเป็น inf และ inf ตัวเดียวใน forward pass จะกลายเป็น nan ในไม่ช้า (เช่น inf - inf) นี่คือเหตุผลที่ bfloat16 ซึ่งมีช่วงเท่า float32 ปลอดภัยกว่าสำหรับการเทรน"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "You compute the variance of [1000000, 1000001, 1000002] in float32 as mean(x²) - mean(x)². The true value is about 0.667. What happens?",
+        "th": "คุณคำนวณความแปรปรวนของ [1000000, 1000001, 1000002] ใน float32 ด้วย mean(x²) - mean(x)² ค่าจริงประมาณ 0.667 จะเกิดอะไรขึ้น?"
+      },
+      "options": [
+        {
+          "en": "It gives about 0.667, slightly rounded",
+          "th": "ได้ประมาณ 0.667 ที่ปัดเศษนิดหน่อย"
+        },
+        {
+          "en": "It raises an OverflowError",
+          "th": "เกิด OverflowError"
+        },
+        {
+          "en": "The answer is garbage, even negative (NumPy gives -65536): x² ≈ 10^12, where float32 values are thousands apart, and subtracting two nearly equal numbers leaves only rounding noise",
+          "th": "คำตอบผิดไปเลย ถึงขั้นติดลบ (NumPy ให้ -65536): x² ≈ 10^12 ซึ่งค่า float32 ห่างกันเป็นหลักพัน การลบสองค่าที่เกือบเท่ากันจึงเหลือแต่สัญญาณรบกวน"
+        },
+        {
+          "en": "It gives exactly 0",
+          "th": "ได้ 0 พอดี"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Near 10^12, neighbouring float32 values are about 65,536 apart, so mean(x²) and mean(x)² are each off by far more than 0.667. Their difference is catastrophic cancellation. Centering first, or Welford's algorithm, keeps the numbers small and gives 0.667.",
+        "th": "ใกล้ 10^12 ค่า float32 ที่อยู่ติดกันห่างกันราว 65,536 ทั้ง mean(x²) และ mean(x)² จึงคลาดเคลื่อนมากกว่า 0.667 มาก ผลต่างของมันคือการหักล้างแบบหายนะ การจัดกึ่งกลางก่อนหรือใช้อัลกอริทึมของ Welford ทำให้ตัวเลขเล็กและได้ 0.667"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "What does logsumexp_stable([-1000.0, -1000.0]) return, and what does logsumexp_naive do with the same input in plain Python?",
+        "th": "logsumexp_stable([-1000.0, -1000.0]) คืนค่าอะไร และ logsumexp_naive ทำอะไรกับขาเข้าเดียวกันใน Python ธรรมดา?"
+      },
+      "options": [
+        {
+          "en": "Both return -inf",
+          "th": "ทั้งสองคืน -inf"
+        },
+        {
+          "en": "About -999.307 (-1000 + ln 2); the naive one raises ValueError, because both exponentials underflow to 0 and math.log(0.0) is an error",
+          "th": "ประมาณ -999.307 (-1000 + ln 2) ส่วนเวอร์ชันตรง ๆ เกิด ValueError เพราะ exp ทั้งสองตัว underflow เป็น 0 และ math.log(0.0) เป็น error"
+        },
+        {
+          "en": "Both return -1000",
+          "th": "ทั้งสองคืน -1000"
+        },
+        {
+          "en": "-2000 and -inf",
+          "th": "-2000 และ -inf"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Stable: c = -1000, so it is -1000 + log(e^0 + e^0) = -1000 + ln 2 ≈ -999.307. Naive: exp(-1000) is 0.0 in float64, the sum is 0.0, and Python's math.log(0.0) raises 'ValueError: math domain error' (NumPy would return -inf instead).",
+        "th": "แบบเสถียร: c = -1000 จึงได้ -1000 + log(e^0 + e^0) = -1000 + ln 2 ≈ -999.307 แบบตรง ๆ: exp(-1000) เป็น 0.0 ใน float64 ผลรวมเป็น 0.0 และ math.log(0.0) ของ Python ทำให้เกิด 'ValueError: math domain error' (NumPy จะคืน -inf แทน)"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "What do simulate_bfloat16(1.001) and float32_to_float16_round(1.001) return?",
+        "th": "simulate_bfloat16(1.001) และ float32_to_float16_round(1.001) คืนค่าอะไร?"
+      },
+      "options": [
+        {
+          "en": "Both return 1.001",
+          "th": "ทั้งสองคืน 1.001"
+        },
+        {
+          "en": "1.0 and 1.0009765625: bfloat16's 7 mantissa bits can't resolve 0.001, float16's 10 bits can almost",
+          "th": "1.0 และ 1.0009765625: แมนทิสซา 7 บิตของ bfloat16 แยก 0.001 ไม่ได้ ส่วน 10 บิตของ float16 เกือบได้"
+        },
+        {
+          "en": "1.0009765625 and 1.0",
+          "th": "1.0009765625 และ 1.0"
+        },
+        {
+          "en": "inf and 1.0",
+          "th": "inf และ 1.0"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Near 1, bfloat16 steps by 2^-7 ≈ 0.0078, so 1.001 truncates to 1.0. float16 steps by 2^-10 ≈ 0.00098, so 1.001 rounds to 1.0009765625. bfloat16 trades precision for float32's range.",
+        "th": "ใกล้ 1 bfloat16 ก้าวทีละ 2^-7 ≈ 0.0078 ค่า 1.001 จึงถูกตัดเป็น 1.0 float16 ก้าวทีละ 2^-10 ≈ 0.00098 ค่า 1.001 จึงปัดเป็น 1.0009765625 bfloat16 แลกความแม่นยำกับช่วงของ float32"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "A gradient of 1e-8 is stored in float16, with and without loss scaling by 1024. What happens?",
+        "th": "gradient ค่า 1e-8 ถูกเก็บเป็น float16 ทั้งแบบมีและไม่มี loss scaling ด้วย 1024 จะเกิดอะไรขึ้น?"
+      },
+      "options": [
+        {
+          "en": "Both keep 1e-8 exactly",
+          "th": "ทั้งสองเก็บ 1e-8 ได้พอดี"
+        },
+        {
+          "en": "Both become 0",
+          "th": "ทั้งสองกลายเป็น 0"
+        },
+        {
+          "en": "Without scaling it overflows to inf",
+          "th": "ถ้าไม่ปรับสเกลจะล้นเป็น inf"
+        },
+        {
+          "en": "Without scaling it becomes 0; scaled, 1.024e-5 is representable and dividing by 1024 afterwards gives back about 1e-8",
+          "th": "ถ้าไม่ปรับสเกลจะกลายเป็น 0 ถ้าปรับสเกล 1.024e-5 เก็บได้ และหารด้วย 1024 ทีหลังก็ได้ราว 1e-8 กลับมา"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "float16's smallest positive value is about 6e-8, so 1e-8 underflows to 0 and that update is lost. Multiplying the loss by 1024 makes the gradient 1.024e-5, safely representable; the division by 1024 is done in float32 before the weight update.",
+        "th": "จำนวนบวกที่เล็กที่สุดของ float16 ประมาณ 6e-8 ค่า 1e-8 จึง underflow เป็น 0 และการอัปเดตนั้นหายไป การคูณ loss ด้วย 1024 ทำให้ gradient เป็น 1.024e-5 ซึ่งเก็บได้อย่างปลอดภัย การหารด้วย 1024 ทำใน float32 ก่อนอัปเดตน้ำหนัก"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "In Python, (0.1 + 0.2) + 0.3 gives 0.6000000000000001 but 0.1 + (0.2 + 0.3) gives 0.6. What does this explain?",
+        "th": "ใน Python (0.1 + 0.2) + 0.3 ได้ 0.6000000000000001 แต่ 0.1 + (0.2 + 0.3) ได้ 0.6 สิ่งนี้อธิบายอะไร?"
+      },
+      "options": [
+        {
+          "en": "A bug in Python's parser",
+          "th": "บั๊กในตัวแยกวิเคราะห์ของ Python"
+        },
+        {
+          "en": "Floating-point addition is not associative, so GPU reductions that sum in a different order give slightly different results",
+          "th": "การบวกเลขทศนิยมไม่มีสมบัติการเปลี่ยนกลุ่ม การรวมบน GPU ที่บวกต่างลำดับกันจึงได้ผลต่างกันเล็กน้อย"
+        },
+        {
+          "en": "0.6 can't be stored in float64",
+          "th": "0.6 เก็บใน float64 ไม่ได้"
+        },
+        {
+          "en": "Parentheses make Python use float32",
+          "th": "วงเล็บทำให้ Python ใช้ float32"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Each addition rounds its result, so the order of additions changes which rounding errors happen. Parallel sums on GPUs pick their order by hardware and scheduling, which is why runs can differ around 1e-6 unless you force deterministic algorithms.",
+        "th": "การบวกแต่ละครั้งปัดผลลัพธ์ ลำดับของการบวกจึงเปลี่ยนว่าความคลาดเคลื่อนจากการปัดเศษเกิดขึ้นที่ไหน การรวมแบบขนานบน GPU เลือกลำดับตามฮาร์ดแวร์และการจัดตาราง การรันแต่ละครั้งจึงต่างกันราว 1e-6 เว้นแต่จะบังคับใช้อัลกอริทึมแบบกำหนดผลแน่นอน"
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "minutes": 15,
+  "title": {"th": "ความแปรปรวนแบบ Welford ในรอบเดียว", "en": "One-pass Welford variance"},
+  "prompt": {
+    "th": "แบบฝึกหัดที่ 1 ของบทเรียน: เขียน `welford(xs)` ที่คืน `(mean, variance)` โดยความแปรปรวนเป็นแบบประชากร (หารด้วย n) ด้วยอัลกอริทึมของ Welford\n\n- `xs` อาจเป็น iterable ใดก็ได้ รวมถึง generator ที่อ่านได้**รอบเดียว** จึงห้ามใช้ `len(xs)` หรือวนซ้ำสองรอบ\n- ทีละค่า: `n += 1`, `delta = x - mean`, `mean += delta / n`, `m2 += delta * (x - mean)` (ใช้ mean ใหม่) ตอนจบ variance = `m2 / n`\n- ถ้าไม่มีค่าเลยให้ `raise ValueError`\n\nสูตรตรง ๆ `mean(x²) - mean(x)²` พังกับข้อมูลที่ค่าเฉลี่ยใหญ่ เช่น ราว 10^9 มี test ซ่อนอยู่บางส่วน",
+    "en": "The lesson's Exercise 1: write `welford(xs)`. It returns `(mean, variance)`, with the population variance (divide by n), using Welford's algorithm.\n\n- `xs` can be any iterable, including a generator that can be read **only once**, so don't use `len(xs)` or loop over it twice.\n- For each value: `n += 1`, `delta = x - mean`, `mean += delta / n`, `m2 += delta * (x - mean)` (with the new mean). At the end, variance = `m2 / n`.\n- If there are no values, `raise ValueError`.\n\nThe direct formula `mean(x²) - mean(x)²` breaks on data with a large mean, such as about 10^9. Some tests are hidden."
+  },
+  "hints": [
+    {"th": "เริ่มที่ `n, mean, m2 = 0, 0.0, 0.0` แล้ววน `for x in xs:` ครั้งเดียว", "en": "Start from `n, mean, m2 = 0, 0.0, 0.0` and loop `for x in xs:` once."},
+    {"th": "ใน `m2 += delta * (x - mean)` ตัว `mean` ต้องเป็นค่าที่อัปเดตแล้ว ถ้าใช้ `delta * delta` ผลจะผิด", "en": "In `m2 += delta * (x - mean)`, `mean` must already be updated; `delta * delta` gives the wrong result."},
+    {"th": "หลังลูป ถ้า `n == 0` ให้ raise ValueError ไม่อย่างนั้นคืน `(mean, m2 / n)`", "en": "After the loop, raise ValueError if `n == 0`; otherwise return `(mean, m2 / n)`."}
+  ]
+}

@@ -1743,6 +1743,57 @@
     {
       "en": "attention head",
       "th": "หัวของ attention (head)"
+    },
+    {
+      "en": "numerical stability",
+      "th": "เสถียรภาพเชิงตัวเลข",
+      "first": "เสถียรภาพเชิงตัวเลข (numerical stability)"
+    },
+    {
+      "en": "floating point / IEEE 754",
+      "th": "เลขทศนิยมแบบ floating point / IEEE 754"
+    },
+    {
+      "en": "mantissa / exponent / sign bit",
+      "th": "แมนทิสซา / เลขชี้กำลัง / บิตเครื่องหมาย"
+    },
+    {
+      "en": "machine epsilon",
+      "th": "machine epsilon"
+    },
+    {
+      "en": "catastrophic cancellation",
+      "th": "การหักล้างแบบหายนะ",
+      "first": "การหักล้างแบบหายนะ (catastrophic cancellation)"
+    },
+    {
+      "en": "loss scaling",
+      "th": "loss scaling"
+    },
+    {
+      "en": "float16 / bfloat16",
+      "th": "float16 / bfloat16"
+    },
+    {
+      "en": "Welford's algorithm",
+      "th": "อัลกอริทึมของ Welford"
+    },
+    {
+      "en": "Kahan / Neumaier summation",
+      "th": "การบวกแบบชดเชยของ Kahan / Neumaier"
+    },
+    {
+      "en": "layer normalization",
+      "th": "layer normalization"
+    },
+    {
+      "en": "associative (addition)",
+      "th": "สมบัติการเปลี่ยนกลุ่ม",
+      "first": "สมบัติการเปลี่ยนกลุ่ม (associative)"
+    },
+    {
+      "en": "deterministic",
+      "th": "กำหนดผลแน่นอน (deterministic)"
     }
   ]
 }

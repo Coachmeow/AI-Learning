@@ -1,0 +1,13 @@
+{
+  "minutes": 25,
+  "title": {"th": "การบวกแบบชดเชยของ Neumaier", "en": "Neumaier compensated summation"},
+  "prompt": {
+    "th": "การบวกเลขทศนิยมทีละตัวสะสมความคลาดเคลื่อนจากการปัดเศษ เขียน `neumaier_sum(xs)` ที่บวกทุกค่าใน `xs` (iterable ใดก็ได้) โดยเก็บค่าชดเชย `c` ของส่วนที่หายไปจากการปัดเศษ\n\n- ทีละค่า: `t = s + x` ถ้า `abs(s) >= abs(x)` ส่วนที่หายไปคือ `(s - t) + x` ไม่อย่างนั้นคือ `(x - t) + s` บวกเข้า `c` แล้ว `s = t`\n- ตอนจบคืน `s + c` และ `xs` ว่างคืน `0.0`\n- ห้ามใช้ `sum()` หรือ `math.fsum()` (Python 3.12 ขึ้นไปทำแบบนี้ให้ใน `sum()` แล้ว แต่ข้อนี้ให้เขียนเอง)\n\nทำไมต้องมีสองกรณี? การบวกแบบ Kahan ดั้งเดิมพังกับ `[1.0, 1e100, 1.0, -1e100]` ซึ่งผลจริงคือ 2.0 มี test ซ่อนอยู่บางส่วน",
+    "en": "Adding floats one at a time accumulates rounding error. Write `neumaier_sum(xs)`. It adds every value of `xs` (any iterable) while keeping a compensation `c` for what rounding loses.\n\n- For each value: `t = s + x`. If `abs(s) >= abs(x)`, the lost part is `(s - t) + x`; otherwise it is `(x - t) + s`. Add it to `c`, then set `s = t`.\n- At the end return `s + c`; an empty `xs` returns `0.0`.\n- Don't use `sum()` or `math.fsum()` (Python 3.12+ already does this inside `sum()`, but here you write it yourself).\n\nWhy two cases? Plain Kahan summation fails on `[1.0, 1e100, 1.0, -1e100]`, whose true sum is 2.0. Some tests are hidden."
+  },
+  "hints": [
+    {"th": "เมื่อ `abs(s) >= abs(x)` ตัว x ที่เล็กกว่าคือตัวที่เสียหลักท้าย ๆ ไป `(s - t)` ได้ค่าลบของส่วนของ x ที่เข้าไปใน t แล้วบวก x กลับจะเหลือส่วนที่หาย", "en": "When `abs(s) >= abs(x)`, the smaller x is the one losing its last digits: `(s - t)` is minus the part of x that made it into t, and adding x back leaves the lost part."},
+    {"th": "ใน `[1.0, 1e100, 1.0, -1e100]` ตอนบวก 1e100 ตัวที่เล็กกว่าคือ s (1.0) จึงต้องใช้กรณี `(x - t) + s` Kahan ดั้งเดิมไม่มีกรณีนี้จึงเสีย 1.0 ไป", "en": "In `[1.0, 1e100, 1.0, -1e100]`, when 1e100 is added the smaller one is s (1.0), so you need the `(x - t) + s` case; plain Kahan has no such case and loses the 1.0."},
+    {"th": "อย่าลืมบวก `c` กลับเข้าไปตอนจบ: `return s + c`", "en": "Don't forget to add `c` back at the end: `return s + c`."}
+  ]
+}
