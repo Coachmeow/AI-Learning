@@ -1,0 +1,13 @@
+{
+  "minutes": 15,
+  "title": {"th": "ส่วนขอบและความเป็นอิสระจากตารางร่วม", "en": "Marginals and independence from a joint table"},
+  "prompt": {
+    "th": "แบบฝึกหัดที่ 2 ของบทเรียน: เขียน `analyze_joint(joint)` ที่รับตารางการแจกแจงร่วม `joint[i][j] = P(X = i, Y = j)` (list ของแถว มีกี่แถวกี่คอลัมน์ก็ได้) แล้วคืน `(px, py, independent)`\n\n- `px` คือผลรวมของแต่ละแถว และ `py` คือผลรวมของแต่ละคอลัมน์\n- `independent` เป็น `True` เมื่อ**ทุกช่อง**เท่ากับ `px[i] * py[j]` โดยยอมให้คลาดเคลื่อนได้ไม่เกิน `1e-9` (เลขทศนิยมไม่ค่อยเท่ากันพอดี)\n- ถ้ามีช่องที่ติดลบ หรือผลรวมทุกช่องห่างจาก 1 เกิน `1e-9` ให้ `raise ValueError`\n\nมี test ซ่อนอยู่บางส่วน",
+    "en": "The lesson's Exercise 2: write `analyze_joint(joint)`. It takes a joint distribution table `joint[i][j] = P(X = i, Y = j)` (a list of rows, any number of rows and columns) and returns `(px, py, independent)`.\n\n- `px` holds the row sums and `py` the column sums.\n- `independent` is `True` when **every cell** equals `px[i] * py[j]` to within `1e-9` (floating-point values are rarely exactly equal).\n- If any cell is negative, or the cells add up to something more than `1e-9` away from 1, `raise ValueError`.\n\nSome tests are hidden."
+  },
+  "hints": [
+    {"th": "`px = [sum(row) for row in joint]` และ `py = [sum(row[j] for row in joint) for j in range(len(joint[0]))]`", "en": "`px = [sum(row) for row in joint]` and `py = [sum(row[j] for row in joint) for j in range(len(joint[0]))]`."},
+    {"th": "ตรวจทุกคู่ (i, j) ด้วย `math.isclose(joint[i][j], px[i] * py[j], abs_tol=1e-9)` ไม่ใช่ `==` และไม่ใช่แค่ช่องบนเส้นทแยงมุม", "en": "Check every (i, j) pair with `math.isclose(joint[i][j], px[i] * py[j], abs_tol=1e-9)`: not `==`, and not only the diagonal cells."},
+    {"th": "ตรวจความถูกต้องของตารางก่อนคำนวณอย่างอื่น: `any(c < 0 for row in joint for c in row)` และ `abs(sum(px) - 1) > 1e-9`", "en": "Validate the table before anything else: `any(c < 0 for row in joint for c in row)` and `abs(sum(px) - 1) > 1e-9`."}
+  ]
+}

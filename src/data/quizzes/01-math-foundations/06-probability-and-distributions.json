@@ -1,0 +1,487 @@
+{
+  "lesson": "01-math-foundations/06-probability-and-distributions",
+  "source_hash": "a07e78b85e86e435d4afea907e6c8fdf06c004bcc76869e0dce20d7ab3ad52ed",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What is the difference between a probability mass function (PMF) and a probability density function (PDF)?",
+        "th": "ฟังก์ชันมวลความน่าจะเป็น (PMF) ต่างจากฟังก์ชันความหนาแน่นความน่าจะเป็น (PDF) อย่างไร?"
+      },
+      "options": [
+        {
+          "en": "PMFs always sum to 0.5, PDFs integrate to 1",
+          "th": "PMF รวมกันได้ 0.5 เสมอ ส่วน PDF หาปริพันธ์ได้ 1"
+        },
+        {
+          "en": "PMFs give exact probabilities for discrete outcomes, while PDFs give densities for continuous variables that must be integrated over an interval to get probability",
+          "th": "PMF ให้ความน่าจะเป็นที่แน่นอนของผลลัพธ์ไม่ต่อเนื่อง ส่วน PDF ให้ความหนาแน่นของตัวแปรต่อเนื่อง ซึ่งต้องหาปริพันธ์บนช่วงหนึ่งจึงได้ความน่าจะเป็น"
+        },
+        {
+          "en": "There is no difference; they are the same concept with different names",
+          "th": "ไม่ต่างกัน เป็นแนวคิดเดียวกันแต่ชื่อต่างกัน"
+        },
+        {
+          "en": "PMFs are used for continuous variables, PDFs for discrete variables",
+          "th": "PMF ใช้กับตัวแปรต่อเนื่อง ส่วน PDF ใช้กับตัวแปรไม่ต่อเนื่อง"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "For discrete variables, the PMF gives P(X=k) directly. For continuous variables, the PDF f(x) is a density -- P(a<=X<=b) requires integrating f(x) from a to b. The density at a single point is not a probability.",
+        "th": "สำหรับตัวแปรไม่ต่อเนื่อง PMF ให้ P(X=k) ตรง ๆ สำหรับตัวแปรต่อเนื่อง PDF f(x) เป็นความหนาแน่น การหา P(a<=X<=b) ต้องหาปริพันธ์ของ f(x) จาก a ถึง b ความหนาแน่นที่จุดเดียวไม่ใช่ความน่าจะเป็น"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What does the Central Limit Theorem state?",
+        "th": "ทฤษฎีบทลิมิตสู่ส่วนกลาง (Central Limit Theorem) กล่าวว่าอย่างไร?"
+      },
+      "options": [
+        {
+          "en": "The mean of many independent random samples converges to a normal distribution regardless of the source distribution",
+          "th": "ค่าเฉลี่ยของตัวอย่างสุ่มอิสระจำนวนมากลู่เข้าสู่การแจกแจงปกติ ไม่ว่าการแจกแจงต้นทางจะเป็นแบบไหน"
+        },
+        {
+          "en": "All data follows a normal distribution",
+          "th": "ข้อมูลทุกชุดมีการแจกแจงปกติ"
+        },
+        {
+          "en": "The probability of rare events decreases as sample size increases",
+          "th": "ความน่าจะเป็นของเหตุการณ์ที่เกิดน้อยลดลงเมื่อขนาดตัวอย่างเพิ่มขึ้น"
+        },
+        {
+          "en": "Large datasets always have low variance",
+          "th": "ชุดข้อมูลขนาดใหญ่มีความแปรปรวนต่ำเสมอ"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The CLT says that the average of many independent random variables approaches a Gaussian, no matter what the original distribution looks like. This explains why the normal distribution appears everywhere.",
+        "th": "CLT บอกว่าค่าเฉลี่ยของตัวแปรสุ่มอิสระจำนวนมากเข้าใกล้การแจกแจงแบบเกาส์ ไม่ว่าการแจกแจงตั้งต้นจะหน้าตาอย่างไร นี่อธิบายว่าทำไมการแจกแจงปกติจึงโผล่มาทุกที่"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "You roll two fair dice. What is the probability that they add up to 7?",
+        "th": "ทอยลูกเต๋าที่เที่ยงตรงสองลูก ความน่าจะเป็นที่ผลรวมเป็น 7 คือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "7/36",
+          "th": "7/36"
+        },
+        {
+          "en": "1/12",
+          "th": "1/12"
+        },
+        {
+          "en": "1/6",
+          "th": "1/6"
+        },
+        {
+          "en": "1/2",
+          "th": "1/2"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "There are 36 equally likely pairs, and 6 of them add to 7: (1,6), (2,5), (3,4), (4,3), (5,2), (6,1). So the probability is 6/36 = 1/6.",
+        "th": "มีคู่ที่โอกาสเท่ากัน 36 คู่ และ 6 คู่รวมได้ 7: (1,6), (2,5), (3,4), (4,3), (5,2), (6,1) ความน่าจะเป็นจึงเป็น 6/36 = 1/6"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Can a probability density function have a value greater than 1?",
+        "th": "ฟังก์ชันความหนาแน่นความน่าจะเป็นมีค่ามากกว่า 1 ได้ไหม?"
+      },
+      "options": [
+        {
+          "en": "No, because probabilities are never above 1",
+          "th": "ไม่ได้ เพราะความน่าจะเป็นไม่เคยเกิน 1"
+        },
+        {
+          "en": "Yes: the uniform distribution on [0, 0.5] has density 2 everywhere on that interval",
+          "th": "ได้: การแจกแจงสม่ำเสมอบน [0, 0.5] มีความหนาแน่นเป็น 2 ตลอดช่วงนั้น"
+        },
+        {
+          "en": "Only for discrete variables",
+          "th": "ได้เฉพาะตัวแปรไม่ต่อเนื่อง"
+        },
+        {
+          "en": "Only when the variance is above 1",
+          "th": "ได้เฉพาะเมื่อความแปรปรวนมากกว่า 1"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "A density is not a probability. Only its integral over an interval must be at most 1. For the uniform on [0, 0.5], f(x) = 1/(b - a) = 2, and 2 * 0.5 = 1 over the whole interval.",
+        "th": "ความหนาแน่นไม่ใช่ความน่าจะเป็น มีแค่ปริพันธ์บนช่วงที่ต้องไม่เกิน 1 สำหรับการแจกแจงสม่ำเสมอบน [0, 0.5] f(x) = 1/(b - a) = 2 และ 2 * 0.5 = 1 ตลอดทั้งช่วง"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "What is the expected value of one roll of a fair six-sided die?",
+        "th": "ค่าคาดหมายของการทอยลูกเต๋าหกหน้าที่เที่ยงตรงหนึ่งครั้งคือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "3",
+          "th": "3"
+        },
+        {
+          "en": "3.5",
+          "th": "3.5"
+        },
+        {
+          "en": "4",
+          "th": "4"
+        },
+        {
+          "en": "21",
+          "th": "21"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "E[X] = (1 + 2 + 3 + 4 + 5 + 6) / 6 = 21 / 6 = 3.5. An expected value doesn't have to be a value the die can show.",
+        "th": "E[X] = (1 + 2 + 3 + 4 + 5 + 6) / 6 = 21 / 6 = 3.5 ค่าคาดหมายไม่จำเป็นต้องเป็นค่าที่ลูกเต๋าออกได้จริง"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "Why does softmax subtract the maximum logit before exponentiating (the 'softmax trick')?",
+        "th": "ทำไม softmax จึงลบ logit ที่มากที่สุดออกก่อนยกกำลัง exp ('เทคนิคของ softmax')?"
+      },
+      "options": [
+        {
+          "en": "To make all probabilities equal",
+          "th": "เพื่อให้ความน่าจะเป็นทุกตัวเท่ากัน"
+        },
+        {
+          "en": "To prevent numerical overflow from exponentiating large numbers while producing mathematically identical results",
+          "th": "เพื่อป้องกันการล้นเชิงตัวเลขจากการยกกำลังตัวเลขใหญ่ โดยยังได้ผลลัพธ์เท่าเดิมทางคณิตศาสตร์"
+        },
+        {
+          "en": "To speed up the computation by reducing the number of exponentiations",
+          "th": "เพื่อเร่งการคำนวณด้วยการลดจำนวนครั้งของการยกกำลัง"
+        },
+        {
+          "en": "To normalize the logits to have mean zero",
+          "th": "เพื่อทำให้ logits มีค่าเฉลี่ยเป็นศูนย์"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "exp(100) overflows to infinity. Subtracting max(logits) shifts all values so the largest is 0. exp(0)=1 is safe. The subtraction cancels out in the normalization, giving identical probabilities.",
+        "th": "exp(100) ล้นเป็นอนันต์ การลบ max(logits) เลื่อนทุกค่าให้ค่าที่มากที่สุดเป็น 0 และ exp(0)=1 ปลอดภัย การลบนี้หักล้างกันในขั้นทำให้เป็นมาตรฐาน จึงได้ความน่าจะเป็นเท่าเดิม"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "Cross-entropy loss for classification simplifies to -log(q(true_class)). What does this mean intuitively?",
+        "th": "Cross-entropy loss สำหรับการจำแนกลดรูปเหลือ -log(q(true_class)) โดยสัญชาตญาณแล้วหมายความว่าอะไร?"
+      },
+      "options": [
+        {
+          "en": "Multiply the predicted probabilities by the true labels",
+          "th": "คูณความน่าจะเป็นที่ทำนายด้วย label จริง"
+        },
+        {
+          "en": "Penalize the model based on how low its predicted probability is for the correct class -- lower prediction means higher loss",
+          "th": "ลงโทษโมเดลตามว่ามันทำนายความน่าจะเป็นของคลาสที่ถูกต้องต่ำแค่ไหน ยิ่งทำนายต่ำ loss ยิ่งสูง"
+        },
+        {
+          "en": "Average the log probabilities across all classes",
+          "th": "เฉลี่ย log ของความน่าจะเป็นของทุกคลาส"
+        },
+        {
+          "en": "Compute the entropy of the true distribution",
+          "th": "คำนวณเอนโทรปีของการแจกแจงจริง"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "If the model predicts 0.9 for the correct class, loss = -log(0.9) = 0.105 (low). If it predicts 0.01, loss = -log(0.01) = 4.6 (high). The loss punishes low confidence in the correct answer.",
+        "th": "ถ้าโมเดลทำนาย 0.9 ให้คลาสที่ถูกต้อง loss = -log(0.9) = 0.105 (ต่ำ) ถ้าทำนาย 0.01 loss = -log(0.01) = 4.6 (สูง) loss ลงโทษความมั่นใจที่ต่ำในคำตอบที่ถูก"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "Why do language models work with log probabilities instead of raw probabilities?",
+        "th": "ทำไมโมเดลภาษาจึงทำงานกับ log ของความน่าจะเป็นแทนความน่าจะเป็นดิบ?"
+      },
+      "options": [
+        {
+          "en": "Multiplying many small probabilities causes numerical underflow to zero; log probabilities convert products to sums, avoiding this",
+          "th": "การคูณความน่าจะเป็นเล็ก ๆ จำนวนมากทำให้เกิด underflow จนเป็นศูนย์ ส่วน log ของความน่าจะเป็นเปลี่ยนผลคูณเป็นผลบวกจึงเลี่ยงปัญหานี้ได้"
+        },
+        {
+          "en": "Log probabilities are easier to interpret visually",
+          "th": "log ของความน่าจะเป็นตีความด้วยตาได้ง่ายกว่า"
+        },
+        {
+          "en": "Raw probabilities cannot represent values less than 0.01",
+          "th": "ความน่าจะเป็นดิบแทนค่าที่น้อยกว่า 0.01 ไม่ได้"
+        },
+        {
+          "en": "Log probabilities are required by the transformer architecture",
+          "th": "สถาปัตยกรรม transformer บังคับให้ใช้ log ของความน่าจะเป็น"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "P(sentence) = P(word1) * P(word2) * ... quickly underflows to 0.0 with float64. Log P(sentence) = log P(word1) + log P(word2) + ... stays in a finite range. Products become sums.",
+        "th": "P(sentence) = P(word1) * P(word2) * ... underflow เป็น 0.0 อย่างรวดเร็วแม้ใช้ float64 ส่วน log P(sentence) = log P(word1) + log P(word2) + ... อยู่ในช่วงที่จำกัด ผลคูณกลายเป็นผลบวก"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "In the lesson's weather and umbrella table, what is P(rain | umbrella)?",
+        "th": "จากตารางสภาพอากาศกับร่มในบทเรียน P(ฝนตก | พกร่ม) คือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "0.45",
+          "th": "0.45"
+        },
+        {
+          "en": "About 0.82",
+          "th": "ประมาณ 0.82"
+        },
+        {
+          "en": "0.90",
+          "th": "0.90"
+        },
+        {
+          "en": "0.50",
+          "th": "0.50"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "P(rain | umbrella) = P(rain and umbrella) / P(umbrella) = 0.45 / 0.55 ≈ 0.818. The 0.45 is the joint probability, before dividing by the marginal.",
+        "th": "P(ฝนตก | พกร่ม) = P(ฝนตกและพกร่ม) / P(พกร่ม) = 0.45 / 0.55 ≈ 0.818 ส่วน 0.45 คือความน่าจะเป็นร่วม ก่อนหารด้วยส่วนขอบ"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "In the same table, are weather and umbrella independent?",
+        "th": "ในตารางเดียวกัน สภาพอากาศกับร่มเป็นอิสระต่อกันไหม?"
+      },
+      "options": [
+        {
+          "en": "Yes, because both marginals of weather are 0.50",
+          "th": "เป็น เพราะส่วนขอบของสภาพอากาศเป็น 0.50 ทั้งคู่"
+        },
+        {
+          "en": "Yes, because all the cells add up to 1",
+          "th": "เป็น เพราะทุกช่องรวมกันได้ 1"
+        },
+        {
+          "en": "No: P(rain and umbrella) = 0.45, but P(rain) * P(umbrella) = 0.50 * 0.55 = 0.275",
+          "th": "ไม่เป็น: P(ฝนตกและพกร่ม) = 0.45 แต่ P(ฝนตก) * P(พกร่ม) = 0.50 * 0.55 = 0.275"
+        },
+        {
+          "en": "You can't tell from a joint table",
+          "th": "บอกจากตารางการแจกแจงร่วมไม่ได้"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Independence needs every cell to equal the product of its marginals. 0.45 is far from 0.275: seeing an umbrella makes rain much more likely, so the variables are dependent.",
+        "th": "ความเป็นอิสระต้องการให้ทุกช่องเท่ากับผลคูณของส่วนขอบ 0.45 ห่างจาก 0.275 มาก การเห็นร่มทำให้ฝนตกมีโอกาสมากขึ้นมาก ตัวแปรทั้งสองจึงไม่เป็นอิสระต่อกัน"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "For the logits [2.0, 0.5, -1.0, 3.0, 0.1], the cross-entropy with target 3 is about 0.421. What is it with target 0?",
+        "th": "สำหรับ logits [2.0, 0.5, -1.0, 3.0, 0.1] cross-entropy เมื่อ target คือ 3 มีค่าประมาณ 0.421 ถ้า target คือ 0 จะเป็นเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "About 0.632, since 3.0 / 2.0 times larger",
+          "th": "ประมาณ 0.632 เพราะใหญ่ขึ้น 3.0 / 2.0 เท่า"
+        },
+        {
+          "en": "About 1.421",
+          "th": "ประมาณ 1.421"
+        },
+        {
+          "en": "About 0.842",
+          "th": "ประมาณ 0.842"
+        },
+        {
+          "en": "About 2.0",
+          "th": "ประมาณ 2.0"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The loss is -log_softmax(z)[t] = logsumexp(z) - z[t]. The logsumexp part is the same for every target, so changing the target from logit 3.0 to logit 2.0 adds exactly 3.0 - 2.0 = 1 to the loss: 0.421 + 1 = 1.421.",
+        "th": "loss คือ -log_softmax(z)[t] = logsumexp(z) - z[t] ส่วน logsumexp เท่ากันทุก target การเปลี่ยน target จาก logit 3.0 เป็น logit 2.0 จึงเพิ่ม loss ไปพอดี 3.0 - 2.0 = 1 ได้ 0.421 + 1 = 1.421"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Which logits give exactly the same softmax probabilities as [1, 2, 3]?",
+        "th": "logits ชุดใดให้ความน่าจะเป็นจาก softmax เท่ากับ [1, 2, 3] พอดี?"
+      },
+      "options": [
+        {
+          "en": "[10, 20, 30]",
+          "th": "[10, 20, 30]"
+        },
+        {
+          "en": "[2, 4, 6]",
+          "th": "[2, 4, 6]"
+        },
+        {
+          "en": "[101, 102, 103]",
+          "th": "[101, 102, 103]"
+        },
+        {
+          "en": "[-1, -2, -3]",
+          "th": "[-1, -2, -3]"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Adding the same constant to every logit multiplies the numerator and the denominator by the same exp(c), so it cancels; this is why subtracting the max is safe. Scaling the logits changes the gaps between them: [10, 20, 30] gives about [0.00, 0.00005, 0.99995]. [-1, -2, -3] reverses the order.",
+        "th": "การบวกค่าคงที่เดียวกันให้ทุก logit คูณทั้งตัวเศษและตัวส่วนด้วย exp(c) เดียวกัน จึงหักล้างกัน นี่คือเหตุผลที่การลบค่ามากสุดปลอดภัย ส่วนการคูณ logits เปลี่ยนระยะห่างระหว่างกัน: [10, 20, 30] ได้ประมาณ [0.00, 0.00005, 0.99995] และ [-1, -2, -3] กลับลำดับ"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "One die roll has standard deviation about 1.71. What is the standard deviation of the average of 30 independent rolls?",
+        "th": "การทอยลูกเต๋าหนึ่งครั้งมีส่วนเบี่ยงเบนมาตรฐานประมาณ 1.71 ค่าเฉลี่ยของการทอยอิสระ 30 ครั้งมีส่วนเบี่ยงเบนมาตรฐานเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "About 1.71, the same as one roll",
+          "th": "ประมาณ 1.71 เท่ากับการทอยครั้งเดียว"
+        },
+        {
+          "en": "About 0.057 (1.71 / 30)",
+          "th": "ประมาณ 0.057 (1.71 / 30)"
+        },
+        {
+          "en": "About 0.31 (1.71 / √30)",
+          "th": "ประมาณ 0.31 (1.71 / √30)"
+        },
+        {
+          "en": "About 9.35 (1.71 * √30)",
+          "th": "ประมาณ 9.35 (1.71 * √30)"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "The variance of an average of n independent copies is Var(X) / n, so the standard deviation shrinks by √n: 1.708 / √30 ≈ 0.312. This √n is the scaling in the Central Limit Theorem.",
+        "th": "ความแปรปรวนของค่าเฉลี่ยจากสำเนาอิสระ n ตัวคือ Var(X) / n ส่วนเบี่ยงเบนมาตรฐานจึงลดลง √n เท่า: 1.708 / √30 ≈ 0.312 และ √n นี้คือการปรับสเกลในทฤษฎีบทลิมิตสู่ส่วนกลาง"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "In float64, what do you get from multiplying 0.01 by itself 200 times, and what is the sum of the 200 logs?",
+        "th": "ใน float64 การคูณ 0.01 ซ้ำกัน 200 ครั้งได้อะไร และผลรวมของ log ทั้ง 200 ตัวเป็นเท่าไร?"
+      },
+      "code": "p = 1.0\nfor _ in range(200):\n    p *= 0.01",
+      "options": [
+        {
+          "en": "p is 1e-400 and the log sum is about -921",
+          "th": "p คือ 1e-400 และผลรวม log ประมาณ -921"
+        },
+        {
+          "en": "p is 0.0 (underflow), while the log sum is a normal number, about -921.03",
+          "th": "p เป็น 0.0 (underflow) ส่วนผลรวม log เป็นตัวเลขปกติประมาณ -921.03"
+        },
+        {
+          "en": "p raises an OverflowError",
+          "th": "p ทำให้เกิด OverflowError"
+        },
+        {
+          "en": "Both are 0.0",
+          "th": "ทั้งสองเป็น 0.0"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The true product is 1e-400, but float64 cannot hold positive numbers below about 5e-324, so p silently becomes 0.0 with no error. The log sum is 200 * ln(0.01) ≈ -921.03, easy to store. Once p is 0.0, you can't compare two such sentences at all.",
+        "th": "ผลคูณจริงคือ 1e-400 แต่ float64 เก็บจำนวนบวกที่เล็กกว่าราว 5e-324 ไม่ได้ p จึงกลายเป็น 0.0 อย่างเงียบ ๆ โดยไม่มี error ส่วนผลรวม log คือ 200 * ln(0.01) ≈ -921.03 ซึ่งเก็บได้ง่าย เมื่อ p เป็น 0.0 แล้ว คุณจะเทียบประโยคสองประโยคแบบนี้ไม่ได้เลย"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "In `sample_normal_box_muller`, what happens if `random.random()` returns exactly 0.0 for `u1`?",
+        "th": "ใน `sample_normal_box_muller` จะเกิดอะไรขึ้นถ้า `random.random()` คืน 0.0 พอดีให้ `u1`?"
+      },
+      "options": [
+        {
+          "en": "z becomes 0 and the sample equals mu",
+          "th": "z เป็น 0 และตัวอย่างเท่ากับ mu"
+        },
+        {
+          "en": "z becomes infinity and the sample is inf",
+          "th": "z เป็นอนันต์ และตัวอย่างเป็น inf"
+        },
+        {
+          "en": "Nothing: random.random() can never return 0.0",
+          "th": "ไม่มีอะไรเกิดขึ้น: random.random() คืน 0.0 ไม่ได้"
+        },
+        {
+          "en": "math.log(0.0) raises ValueError; using u1 = 1 - random.random() avoids it, since that is never 0",
+          "th": "math.log(0.0) ทำให้เกิด ValueError การใช้ u1 = 1 - random.random() เลี่ยงได้ เพราะค่านั้นไม่มีทางเป็น 0"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "random.random() returns values in [0.0, 1.0), so 0.0 is possible, though rare. Python's math.log(0.0) raises 'ValueError: math domain error' rather than returning -inf. 1 - random.random() lies in (0.0, 1.0], so its log is always defined.",
+        "th": "random.random() คืนค่าในช่วง [0.0, 1.0) 0.0 จึงเป็นไปได้ แม้จะเกิดน้อย math.log(0.0) ของ Python ทำให้เกิด 'ValueError: math domain error' แทนที่จะคืน -inf ส่วน 1 - random.random() อยู่ในช่วง (0.0, 1.0] log ของมันจึงหาค่าได้เสมอ"
+      }
+    }
+  ]
+}

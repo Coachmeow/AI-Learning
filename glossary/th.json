@@ -1305,6 +1305,94 @@
     {
       "en": "recursion limit",
       "th": "recursion limit"
+    },
+    {
+      "en": "sample space",
+      "th": "ปริภูมิตัวอย่าง",
+      "first": "ปริภูมิตัวอย่าง (sample space)"
+    },
+    {
+      "en": "event",
+      "th": "เหตุการณ์"
+    },
+    {
+      "en": "axiom",
+      "th": "สัจพจน์"
+    },
+    {
+      "en": "conditional probability",
+      "th": "ความน่าจะเป็นแบบมีเงื่อนไข",
+      "first": "ความน่าจะเป็นแบบมีเงื่อนไข (conditional probability)"
+    },
+    {
+      "en": "independence / independent",
+      "th": "ความเป็นอิสระ / เป็นอิสระต่อกัน"
+    },
+    {
+      "en": "probability mass function (PMF)",
+      "th": "ฟังก์ชันมวลความน่าจะเป็น (PMF)"
+    },
+    {
+      "en": "probability density function (PDF)",
+      "th": "ฟังก์ชันความหนาแน่นความน่าจะเป็น (PDF)"
+    },
+    {
+      "en": "random variable",
+      "th": "ตัวแปรสุ่ม"
+    },
+    {
+      "en": "normal distribution / Gaussian",
+      "th": "การแจกแจงปกติ / การแจกแจงแบบเกาส์"
+    },
+    {
+      "en": "uniform distribution",
+      "th": "การแจกแจงสม่ำเสมอ"
+    },
+    {
+      "en": "variance",
+      "th": "ความแปรปรวน",
+      "first": "ความแปรปรวน (variance)"
+    },
+    {
+      "en": "standard deviation",
+      "th": "ส่วนเบี่ยงเบนมาตรฐาน",
+      "first": "ส่วนเบี่ยงเบนมาตรฐาน (standard deviation)"
+    },
+    {
+      "en": "joint distribution",
+      "th": "การแจกแจงร่วม",
+      "first": "การแจกแจงร่วม (joint distribution)"
+    },
+    {
+      "en": "marginal distribution",
+      "th": "การแจกแจงส่วนขอบ",
+      "first": "การแจกแจงส่วนขอบ (marginal distribution)"
+    },
+    {
+      "en": "Central Limit Theorem (CLT)",
+      "th": "ทฤษฎีบทลิมิตสู่ส่วนกลาง",
+      "first": "ทฤษฎีบทลิมิตสู่ส่วนกลาง (Central Limit Theorem)"
+    },
+    {
+      "en": "log probability",
+      "th": "log ของความน่าจะเป็น"
+    },
+    {
+      "en": "underflow / overflow",
+      "th": "underflow / ล้น (overflow)"
+    },
+    {
+      "en": "logits",
+      "th": "logits"
+    },
+    {
+      "en": "log-sum-exp",
+      "th": "log-sum-exp"
+    },
+    {
+      "en": "sampling",
+      "th": "การสุ่มตัวอย่าง",
+      "first": "การสุ่มตัวอย่าง (sampling)"
     }
   ]
 }

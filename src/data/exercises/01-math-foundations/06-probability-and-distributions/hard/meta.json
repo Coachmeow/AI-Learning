@@ -1,0 +1,13 @@
+{
+  "minutes": 25,
+  "title": {"th": "Cross-entropy และ gradient ที่เสถียร", "en": "A stable cross-entropy and its gradient"},
+  "prompt": {
+    "th": "เขียน `cross_entropy_with_grad(logits, target)` ที่คืน `(loss, grad)`\n\n- `loss = -log(softmax(logits)[target])` แต่ต้องคำนวณผ่าน log-sum-exp: `loss = logsumexp(logits) - logits[target]` โดย `logsumexp(z) = m + log(sum(exp(zi - m)))` และ `m = max(z)`\n- `grad[i]` คืออนุพันธ์ของ loss เทียบกับ `logits[i]` ซึ่งเท่ากับ `softmax(logits)[i] - (1 ถ้า i == target ไม่อย่างนั้น 0)`\n- ต้องใช้ได้กับ logits ที่ห่างกันมาก เช่น `[1000.0, -1000.0]` กับ target 1 ซึ่ง loss คือ 2000 (การหา `log` ของ softmax ตรง ๆ จะพัง เพราะความน่าจะเป็น underflow เป็น 0)\n- ห้ามแก้ list `logits` ที่ส่งเข้ามา\n\nมี test ซ่อนอยู่บางส่วน",
+    "en": "Write `cross_entropy_with_grad(logits, target)`. It returns `(loss, grad)`.\n\n- `loss = -log(softmax(logits)[target])`, but compute it through log-sum-exp: `loss = logsumexp(logits) - logits[target]`, where `logsumexp(z) = m + log(sum(exp(zi - m)))` and `m = max(z)`.\n- `grad[i]` is the derivative of the loss with respect to `logits[i]`, which equals `softmax(logits)[i] - (1 if i == target else 0)`.\n- It must work for widely spread logits such as `[1000.0, -1000.0]` with target 1, where the loss is 2000. (Taking the `log` of the softmax directly breaks there, because the probability underflows to 0.)\n- Don't change the `logits` list you are given.\n\nSome tests are hidden."
+  },
+  "hints": [
+    {"th": "คำนวณ `m = max(logits)` และ `s = sum(math.exp(z - m) for z in logits)` ครั้งเดียว แล้ว `lse = m + math.log(s)` ใช้ได้ทั้ง loss และ softmax", "en": "Compute `m = max(logits)` and `s = sum(math.exp(z - m) for z in logits)` once; `lse = m + math.log(s)` then serves both the loss and the softmax."},
+    {"th": "softmax ของตัวที่ i คือ `math.exp(logits[i] - m) / s` และ loss คือ `lse - logits[target]` ซึ่งไม่ต้องหา log ของความน่าจะเป็นเลย", "en": "The i-th softmax value is `math.exp(logits[i] - m) / s`, and the loss is `lse - logits[target]`, which never takes the log of a probability."},
+    {"th": "gradient ชี้ไปทางที่ loss เพิ่ม: คลาสที่ถูกต้องได้ค่าลบ (`p - 1`) คลาสอื่นได้ค่าบวก (`p`) และผลรวมของ gradient เป็น 0 เสมอ", "en": "The gradient points the way the loss grows: the correct class gets a negative value (`p - 1`), the others a positive one (`p`), and the gradient always adds up to 0."}
+  ]
+}
