@@ -1,0 +1,13 @@
+{
+  "minutes": 15,
+  "title": {"th": "Perplexity ของลำดับโทเค็น", "en": "Perplexity of a token sequence"},
+  "prompt": {
+    "th": "แบบฝึกหัดที่ 4 ของบทเรียน: เขียน `perplexity(pairs)` ที่รับรายการคู่ `(true_index, logits)` หนึ่งคู่ต่อโทเค็น แล้วคืน perplexity ของทั้งลำดับ\n\n- loss ของแต่ละโทเค็นคือ cross-entropy เป็นแนต: `-log(softmax(logits)[true_index])`\n- perplexity = `e ** (ค่าเฉลี่ยของ loss)`\n- logits อาจมีค่าใหญ่มาก (เช่น 1000) จึงต้องคำนวณ softmax หรือ log-softmax แบบลบค่ามากสุดออกก่อน\n- รายการว่างให้ `raise ValueError`\n\nมี test ซ่อนอยู่บางส่วน",
+    "en": "The lesson's Exercise 4: write `perplexity(pairs)`. It takes a list of `(true_index, logits)` pairs, one per token, and returns the perplexity of the whole sequence.\n\n- Each token's loss is the cross-entropy in nats: `-log(softmax(logits)[true_index])`.\n- perplexity = `e ** (mean of the losses)`.\n- Logits can be very large (such as 1000), so compute the softmax or log-softmax with the largest logit subtracted first.\n- An empty list must `raise ValueError`.\n\nSome tests are hidden."
+  },
+  "hints": [
+    {"th": "loss ของโทเค็นหนึ่งคือ `m + log(sum(exp(z - m) for z in logits)) - logits[true_index]` โดย `m = max(logits)`", "en": "One token's loss is `m + log(sum(exp(z - m) for z in logits)) - logits[true_index]`, with `m = max(logits)`."},
+    {"th": "หาค่าเฉลี่ยของ loss ก่อน แล้วค่อยยกกำลัง ไม่ใช่เฉลี่ยความน่าจะเป็น perplexity คือหนึ่งหารด้วยค่าเฉลี่ยเรขาคณิตของความน่าจะเป็น", "en": "Average the losses first, then exponentiate; don't average the probabilities. Perplexity is one over the geometric mean of the probabilities."},
+    {"th": "ใช้ `math.exp` เพราะ loss เป็นแนต ไม่ใช่ `2 **`", "en": "Use `math.exp`, because the losses are in nats; not `2 **`."}
+  ]
+}

@@ -1,0 +1,486 @@
+{
+  "lesson": "01-math-foundations/09-information-theory",
+  "source_hash": "d9e36fa94ce202a35f270aa79eefeee525f0c04ccc61064fe8c3f21d1b7bb2d7",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What does 'entropy' measure in information theory?",
+        "th": "ในทฤษฎีสารสนเทศ 'เอนโทรปี' วัดอะไร?"
+      },
+      "options": [
+        {
+          "en": "The number of bits in a binary message",
+          "th": "จำนวนบิตในข้อความฐานสอง"
+        },
+        {
+          "en": "The error rate of a communication channel",
+          "th": "อัตราความผิดพลาดของช่องสัญญาณสื่อสาร"
+        },
+        {
+          "en": "The energy of a physical system",
+          "th": "พลังงานของระบบทางฟิสิกส์"
+        },
+        {
+          "en": "The average surprise or uncertainty in a probability distribution",
+          "th": "ความประหลาดใจเฉลี่ยหรือความไม่แน่นอนของการแจกแจงความน่าจะเป็น"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Entropy H(P) = -sum(p(x) * log(p(x))) measures the average amount of surprise across all outcomes. High entropy means high uncertainty (uniform distribution). Low entropy means the outcome is predictable.",
+        "th": "เอนโทรปี H(P) = -sum(p(x) * log(p(x))) วัดปริมาณความประหลาดใจเฉลี่ยบนผลลัพธ์ทั้งหมด เอนโทรปีสูงแปลว่าความไม่แน่นอนสูง (การแจกแจงสม่ำเสมอ) เอนโทรปีต่ำแปลว่าผลลัพธ์คาดเดาได้"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What is the cross-entropy loss commonly used for in neural networks?",
+        "th": "Cross-entropy loss มักใช้ทำอะไรในโครงข่ายประสาทเทียม?"
+      },
+      "options": [
+        {
+          "en": "Generating new data samples",
+          "th": "สร้างตัวอย่างข้อมูลใหม่"
+        },
+        {
+          "en": "Regularizing model weights to prevent overfitting",
+          "th": "ทำ regularization ให้น้ำหนักของโมเดลเพื่อป้องกัน overfitting"
+        },
+        {
+          "en": "Classification tasks, measuring how far predicted probabilities are from true labels",
+          "th": "งานจำแนก โดยวัดว่าความน่าจะเป็นที่ทำนายห่างจาก label จริงแค่ไหน"
+        },
+        {
+          "en": "Regression tasks with continuous outputs",
+          "th": "งาน regression ที่มีผลลัพธ์ต่อเนื่อง"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Cross-entropy loss H(P,Q) = -sum(p(x)*log(q(x))) measures the difference between the true distribution (labels) and the model's predicted distribution. It is THE standard loss for classification.",
+        "th": "Cross-entropy loss H(P,Q) = -sum(p(x)*log(q(x))) วัดความต่างระหว่างการแจกแจงจริง (label) กับการแจกแจงที่โมเดลทำนาย มันคือ loss มาตรฐานของการจำแนก"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "What is the entropy of a fair coin flip, in bits?",
+        "th": "เอนโทรปีของการโยนเหรียญเที่ยงตรงเป็นกี่บิต?"
+      },
+      "options": [
+        {
+          "en": "0",
+          "th": "0"
+        },
+        {
+          "en": "0.5",
+          "th": "0.5"
+        },
+        {
+          "en": "1",
+          "th": "1"
+        },
+        {
+          "en": "2",
+          "th": "2"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "H = -(0.5 log2 0.5 + 0.5 log2 0.5) = 1 bit. One fair yes/no outcome is exactly one bit of information.",
+        "th": "H = -(0.5 log2 0.5 + 0.5 log2 0.5) = 1 บิต ผลลัพธ์ใช่/ไม่ใช่ที่เที่ยงตรงหนึ่งครั้งคือสารสนเทศหนึ่งบิตพอดี"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "An event has probability 1/8. How surprising is it, in bits?",
+        "th": "เหตุการณ์หนึ่งมีความน่าจะเป็น 1/8 มันน่าประหลาดใจกี่บิต?"
+      },
+      "options": [
+        {
+          "en": "8",
+          "th": "8"
+        },
+        {
+          "en": "3",
+          "th": "3"
+        },
+        {
+          "en": "0.125",
+          "th": "0.125"
+        },
+        {
+          "en": "1/3",
+          "th": "1/3"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "I = -log2(1/8) = log2(8) = 3 bits: it takes three fair coin flips to single out one of 8 equally likely outcomes.",
+        "th": "I = -log2(1/8) = log2(8) = 3 บิต ต้องใช้การโยนเหรียญเที่ยงตรงสามครั้งจึงจะระบุผลลัพธ์หนึ่งใน 8 แบบที่โอกาสเท่ากันได้"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Which distribution has higher entropy?",
+        "th": "การแจกแจงใดมีเอนโทรปีสูงกว่า?"
+      },
+      "options": [
+        {
+          "en": "[0.97, 0.01, 0.01, 0.01], because one outcome stands out",
+          "th": "[0.97, 0.01, 0.01, 0.01] เพราะมีผลลัพธ์หนึ่งที่โดดเด่น"
+        },
+        {
+          "en": "[0.25, 0.25, 0.25, 0.25], because every outcome is equally likely",
+          "th": "[0.25, 0.25, 0.25, 0.25] เพราะทุกผลลัพธ์มีโอกาสเท่ากัน"
+        },
+        {
+          "en": "They are equal, since both have 4 outcomes",
+          "th": "เท่ากัน เพราะทั้งคู่มี 4 ผลลัพธ์"
+        },
+        {
+          "en": "You can't compare entropies of different shapes",
+          "th": "เทียบเอนโทรปีของการแจกแจงที่รูปร่างต่างกันไม่ได้"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The uniform distribution over 4 outcomes has the most uncertainty: 2 bits. The peaked one is about 0.24 bits, because you can almost always guess the outcome.",
+        "th": "การแจกแจงสม่ำเสมอบน 4 ผลลัพธ์มีความไม่แน่นอนสูงสุด: 2 บิต ส่วนแบบที่มียอดแหลมมีประมาณ 0.24 บิต เพราะคุณเดาผลลัพธ์ได้ถูกแทบทุกครั้ง"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "Why is minimizing cross-entropy equivalent to minimizing KL divergence during training?",
+        "th": "ทำไมการทำให้ cross-entropy ต่ำที่สุดระหว่างเทรน จึงเท่ากับการทำให้ KL divergence ต่ำที่สุด?"
+      },
+      "options": [
+        {
+          "en": "Because cross-entropy and KL divergence are the same formula",
+          "th": "เพราะ cross-entropy กับ KL divergence เป็นสูตรเดียวกัน"
+        },
+        {
+          "en": "Because cross-entropy = entropy + KL divergence, and the entropy of the true labels is constant, so minimizing cross-entropy minimizes KL divergence",
+          "th": "เพราะ cross-entropy = เอนโทรปี + KL divergence และเอนโทรปีของ label จริงคงที่ การทำให้ cross-entropy ต่ำที่สุดจึงทำให้ KL divergence ต่ำที่สุด"
+        },
+        {
+          "en": "Because KL divergence is always zero during training",
+          "th": "เพราะ KL divergence เป็นศูนย์เสมอระหว่างเทรน"
+        },
+        {
+          "en": "Because the model's entropy equals zero at convergence",
+          "th": "เพราะเอนโทรปีของโมเดลเป็นศูนย์เมื่อลู่เข้า"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "H(P,Q) = H(P) + D_KL(P||Q). Since the true distribution P doesn't change during training, H(P) is constant. Minimizing H(P,Q) is the same as minimizing D_KL(P||Q) -- pushing the model toward the true distribution.",
+        "th": "H(P,Q) = H(P) + D_KL(P||Q) เพราะการแจกแจงจริง P ไม่เปลี่ยนระหว่างเทรน H(P) จึงคงที่ การทำให้ H(P,Q) ต่ำที่สุดจึงเหมือนกับการทำให้ D_KL(P||Q) ต่ำที่สุด คือดันโมเดลเข้าหาการแจกแจงจริง"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "A language model has perplexity 50 on a test set. What does this mean?",
+        "th": "โมเดลภาษามี perplexity 50 บนชุดทดสอบ หมายความว่าอะไร?"
+      },
+      "options": [
+        {
+          "en": "The model has 50 layers",
+          "th": "โมเดลมี 50 ชั้น"
+        },
+        {
+          "en": "The model makes 50 errors per sentence",
+          "th": "โมเดลผิด 50 ครั้งต่อประโยค"
+        },
+        {
+          "en": "On average, the model is as uncertain as if it were choosing uniformly from 50 possible next tokens at each step",
+          "th": "โดยเฉลี่ยแล้วโมเดลไม่แน่ใจพอ ๆ กับการสุ่มเลือกโทเค็นถัดไปจาก 50 ตัวที่โอกาสเท่ากันในแต่ละขั้น"
+        },
+        {
+          "en": "The model was trained for 50 epochs",
+          "th": "โมเดลถูกเทรน 50 epoch"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Perplexity = e^(cross-entropy). A perplexity of 50 means the model's uncertainty at each token is equivalent to picking randomly from 50 equally likely options. Lower perplexity means better predictions.",
+        "th": "Perplexity = e^(cross-entropy) perplexity 50 แปลว่าความไม่แน่นอนของโมเดลในแต่ละโทเค็นเทียบเท่ากับการสุ่มเลือกจาก 50 ตัวเลือกที่โอกาสเท่ากัน perplexity ที่ต่ำกว่าแปลว่าทำนายได้ดีกว่า"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "How does mutual information differ from Pearson correlation for feature selection?",
+        "th": "สารสนเทศร่วมต่างจากสหสัมพันธ์แบบเพียร์สันอย่างไรในการเลือกคุณลักษณะ?"
+      },
+      "options": [
+        {
+          "en": "Mutual information is faster to compute",
+          "th": "สารสนเทศร่วมคำนวณเร็วกว่า"
+        },
+        {
+          "en": "They always give the same feature rankings",
+          "th": "ทั้งสองให้อันดับคุณลักษณะเหมือนกันเสมอ"
+        },
+        {
+          "en": "Pearson correlation works for any data type while mutual information only works for continuous data",
+          "th": "สหสัมพันธ์แบบเพียร์สันใช้ได้กับข้อมูลทุกชนิด ส่วนสารสนเทศร่วมใช้ได้กับข้อมูลต่อเนื่องเท่านั้น"
+        },
+        {
+          "en": "Mutual information detects any statistical dependency (linear or nonlinear) while correlation only detects linear relationships",
+          "th": "สารสนเทศร่วมตรวจจับการพึ่งพาทางสถิติได้ทุกแบบ (เชิงเส้นหรือไม่เชิงเส้น) ส่วนสหสัมพันธ์ตรวจจับได้แค่ความสัมพันธ์เชิงเส้น"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Mutual information I(X;Y) captures all statistical dependencies between variables, including nonlinear and non-monotonic ones. Pearson correlation only measures linear association, missing many important relationships.",
+        "th": "สารสนเทศร่วม I(X;Y) จับการพึ่งพาทางสถิติทั้งหมดระหว่างตัวแปร รวมถึงแบบไม่เชิงเส้นและแบบไม่เป็นทางเดียว ส่วนสหสัมพันธ์แบบเพียร์สันวัดแค่ความสัมพันธ์เชิงเส้น จึงพลาดความสัมพันธ์สำคัญไปหลายแบบ"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "A model gives the true class a probability of 0.25. What are the cross-entropy loss (in nats) and the perplexity?",
+        "th": "โมเดลให้ความน่าจะเป็น 0.25 กับคลาสที่ถูกต้อง cross-entropy loss (หน่วยแนต) และ perplexity เป็นเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "Loss 0.25, perplexity 4",
+          "th": "loss 0.25, perplexity 4"
+        },
+        {
+          "en": "Loss about 1.386, perplexity 4",
+          "th": "loss ประมาณ 1.386, perplexity 4"
+        },
+        {
+          "en": "Loss 2, perplexity 4",
+          "th": "loss 2, perplexity 4"
+        },
+        {
+          "en": "Loss about 1.386, perplexity 0.25",
+          "th": "loss ประมาณ 1.386, perplexity 0.25"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The loss is -ln(0.25) ≈ 1.386 nats, and the perplexity is e^1.386 = 4: as unsure as picking uniformly from 4 options. Loss 2 would be the same value measured in bits.",
+        "th": "loss คือ -ln(0.25) ≈ 1.386 แนต และ perplexity คือ e^1.386 = 4 ไม่แน่ใจพอ ๆ กับการสุ่มเลือกจาก 4 ตัวเลือก ส่วน loss 2 คือค่าเดียวกันที่วัดเป็นบิต"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "With label smoothing ε = 0.1 and 5 classes, what does the one-hot target [0, 0, 1, 0, 0] become?",
+        "th": "เมื่อใช้ label smoothing ε = 0.1 กับ 5 คลาส เป้าหมาย one-hot [0, 0, 1, 0, 0] จะกลายเป็นอะไร?"
+      },
+      "options": [
+        {
+          "en": "[0.02, 0.02, 0.92, 0.02, 0.02]",
+          "th": "[0.02, 0.02, 0.92, 0.02, 0.02]"
+        },
+        {
+          "en": "[0.025, 0.025, 0.9, 0.025, 0.025]",
+          "th": "[0.025, 0.025, 0.9, 0.025, 0.025]"
+        },
+        {
+          "en": "[0.1, 0.1, 0.9, 0.1, 0.1]",
+          "th": "[0.1, 0.1, 0.9, 0.1, 0.1]"
+        },
+        {
+          "en": "[0.02, 0.02, 0.9, 0.02, 0.02]",
+          "th": "[0.02, 0.02, 0.9, 0.02, 0.02]"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "soft = (1 - ε) * hard + ε / 5. Every class gets 0.1 / 5 = 0.02, and the true class also keeps 0.9: 0.9 + 0.02 = 0.92. The result still adds up to 1.",
+        "th": "soft = (1 - ε) * hard + ε / 5 ทุกคลาสได้ 0.1 / 5 = 0.02 และคลาสที่ถูกยังได้ 0.9 เพิ่ม: 0.9 + 0.02 = 0.92 ผลรวมยังเป็น 1"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "For P = [0.9, 0.1] and Q = [0.5, 0.5], what are D_KL(P‖Q) and D_KL(Q‖P) in bits?",
+        "th": "สำหรับ P = [0.9, 0.1] และ Q = [0.5, 0.5] ค่า D_KL(P‖Q) และ D_KL(Q‖P) เป็นกี่บิต?"
+      },
+      "options": [
+        {
+          "en": "Both about 0.531",
+          "th": "ทั้งสองประมาณ 0.531"
+        },
+        {
+          "en": "About 0.531 and about 0.737",
+          "th": "ประมาณ 0.531 และประมาณ 0.737"
+        },
+        {
+          "en": "About 0.737 and about 0.531",
+          "th": "ประมาณ 0.737 และประมาณ 0.531"
+        },
+        {
+          "en": "Both 0, since both distributions add up to 1",
+          "th": "ทั้งสองเป็น 0 เพราะการแจกแจงทั้งสองรวมกันได้ 1"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "D_KL(P‖Q) = 0.9 log2(0.9/0.5) + 0.1 log2(0.1/0.5) ≈ 0.763 - 0.232 = 0.531. D_KL(Q‖P) = 0.5 log2(0.5/0.9) + 0.5 log2(0.5/0.1) ≈ -0.424 + 1.161 = 0.737. Each direction weights the log ratio by a different distribution, so they differ.",
+        "th": "D_KL(P‖Q) = 0.9 log2(0.9/0.5) + 0.1 log2(0.1/0.5) ≈ 0.763 - 0.232 = 0.531 และ D_KL(Q‖P) = 0.5 log2(0.5/0.9) + 0.5 log2(0.5/0.1) ≈ -0.424 + 1.161 = 0.737 แต่ละทิศถ่วงน้ำหนักอัตราส่วนใน log ด้วยการแจกแจงคนละตัว ค่าจึงต่างกัน"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "What does the lesson's `cross_entropy([0.5, 0.5], [1.0, 0.0])` return, and why?",
+        "th": "`cross_entropy([0.5, 0.5], [1.0, 0.0])` ในบทเรียนคืนค่าอะไร และเพราะอะไร?"
+      },
+      "options": [
+        {
+          "en": "0.5, the average of the two terms",
+          "th": "0.5 คือค่าเฉลี่ยของสองพจน์"
+        },
+        {
+          "en": "1.0, the entropy of P",
+          "th": "1.0 คือเอนโทรปีของ P"
+        },
+        {
+          "en": "It raises ZeroDivisionError",
+          "th": "เกิด ZeroDivisionError"
+        },
+        {
+          "en": "inf: the model gives probability 0 to an outcome that really happens half the time",
+          "th": "inf: โมเดลให้ความน่าจะเป็น 0 กับผลลัพธ์ที่เกิดจริงครึ่งหนึ่งของเวลา"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "The second outcome has p = 0.5 > 0 but q = 0, so the function returns float('inf'), matching -log(0) = ∞. An infinitely surprised model is infinitely penalized, which is why real models never output an exact 0 from softmax.",
+        "th": "ผลลัพธ์ที่สองมี p = 0.5 > 0 แต่ q = 0 ฟังก์ชันจึงคืน float('inf') ตรงกับ -log(0) = ∞ โมเดลที่ประหลาดใจอย่างไม่สิ้นสุดก็ถูกลงโทษอย่างไม่สิ้นสุด นี่คือเหตุผลที่โมเดลจริงไม่เคยให้ 0 พอดีจาก softmax"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "What is the mutual information of the joint table [[0.4, 0.1], [0.1, 0.4]], in bits?",
+        "th": "สารสนเทศร่วมของตารางร่วม [[0.4, 0.1], [0.1, 0.4]] เป็นกี่บิต?"
+      },
+      "options": [
+        {
+          "en": "About 0.278",
+          "th": "ประมาณ 0.278"
+        },
+        {
+          "en": "About 0.722",
+          "th": "ประมาณ 0.722"
+        },
+        {
+          "en": "0.8",
+          "th": "0.8"
+        },
+        {
+          "en": "0, since both marginals are uniform",
+          "th": "0 เพราะส่วนขอบทั้งสองเป็นแบบสม่ำเสมอ"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Both marginals are [0.5, 0.5], so H(X) = 1 bit. Given X, Y matches it 80% of the time, so H(Y | X) = H(0.8, 0.2) ≈ 0.722. I = H(Y) - H(Y | X) ≈ 1 - 0.722 = 0.278 bits. Uniform marginals don't make the variables independent: the cells are not 0.25.",
+        "th": "ส่วนขอบทั้งสองคือ [0.5, 0.5] จึงได้ H(X) = 1 บิต เมื่อรู้ X แล้ว Y ตรงกับมัน 80% ของเวลา H(Y | X) = H(0.8, 0.2) ≈ 0.722 ดังนั้น I = H(Y) - H(Y | X) ≈ 1 - 0.722 = 0.278 บิต ส่วนขอบที่สม่ำเสมอไม่ได้ทำให้ตัวแปรเป็นอิสระต่อกัน เพราะแต่ละช่องไม่ใช่ 0.25"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "A model gives the correct token probabilities 0.5, 0.25 and 0.125 on a three-token sequence. What is the perplexity?",
+        "th": "โมเดลให้ความน่าจะเป็น 0.5, 0.25 และ 0.125 กับโทเค็นที่ถูกในลำดับยาวสามโทเค็น perplexity เป็นเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "About 3.43, one over the average probability",
+          "th": "ประมาณ 3.43 คือหนึ่งหารด้วยความน่าจะเป็นเฉลี่ย"
+        },
+        {
+          "en": "8",
+          "th": "8"
+        },
+        {
+          "en": "4",
+          "th": "4"
+        },
+        {
+          "en": "14, the sum of 2, 4 and 8",
+          "th": "14 คือผลรวมของ 2, 4 และ 8"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "The mean cross-entropy is (ln 2 + ln 4 + ln 8) / 3 = 2 ln 2, so the perplexity is e^(2 ln 2) = 4. Perplexity is one over the geometric mean of the probabilities, not the arithmetic mean: (0.5 * 0.25 * 0.125)^(1/3) = 0.25.",
+        "th": "cross-entropy เฉลี่ยคือ (ln 2 + ln 4 + ln 8) / 3 = 2 ln 2 perplexity จึงเป็น e^(2 ln 2) = 4 perplexity คือหนึ่งหารด้วยค่าเฉลี่ยเรขาคณิตของความน่าจะเป็น ไม่ใช่ค่าเฉลี่ยเลขคณิต: (0.5 * 0.25 * 0.125)^(1/3) = 0.25"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "X is a fair coin and Y always equals X. What are H(X, Y) and I(X; Y)?",
+        "th": "X คือเหรียญเที่ยงตรง และ Y เท่ากับ X เสมอ H(X, Y) และ I(X; Y) เป็นเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "H(X, Y) = 2 bits, I(X; Y) = 0",
+          "th": "H(X, Y) = 2 บิต, I(X; Y) = 0"
+        },
+        {
+          "en": "H(X, Y) = 2 bits, I(X; Y) = 1 bit",
+          "th": "H(X, Y) = 2 บิต, I(X; Y) = 1 บิต"
+        },
+        {
+          "en": "H(X, Y) = 1 bit, I(X; Y) = 1 bit",
+          "th": "H(X, Y) = 1 บิต, I(X; Y) = 1 บิต"
+        },
+        {
+          "en": "H(X, Y) = 1 bit, I(X; Y) = 0",
+          "th": "H(X, Y) = 1 บิต, I(X; Y) = 0"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Only (H, H) and (T, T) occur, each with probability 0.5, so H(X, Y) = 1 bit. Then I(X; Y) = H(X) + H(Y) - H(X, Y) = 1 + 1 - 1 = 1 bit, which is I(X; X) = H(X). Two independent coins would give 2 bits and 0.",
+        "th": "เกิดได้แค่ (หัว, หัว) และ (ก้อย, ก้อย) อย่างละ 0.5 H(X, Y) จึงเป็น 1 บิต แล้ว I(X; Y) = H(X) + H(Y) - H(X, Y) = 1 + 1 - 1 = 1 บิต ซึ่งก็คือ I(X; X) = H(X) ถ้าเป็นเหรียญอิสระสองเหรียญจะได้ 2 บิตและ 0"
+      }
+    }
+  ]
+}

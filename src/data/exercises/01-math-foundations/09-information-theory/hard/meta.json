@@ -1,0 +1,13 @@
+{
+  "minutes": 30,
+  "title": {"th": "จัดอันดับคุณลักษณะด้วยสารสนเทศร่วม", "en": "Rank features by mutual information"},
+  "prompt": {
+    "th": "เขียนสองฟังก์ชัน:\n\n1. `mutual_information(xs, ys)` คืนสารสนเทศร่วมเป็นบิตจากตัวอย่างที่จับคู่กัน (ค่าเป็นอะไรก็ได้ที่ hash ได้ เช่น ตัวเลขหรือข้อความ) โดยใช้การแจกแจงร่วมเชิงประจักษ์: `p(x, y)` = จำนวนครั้งที่เจอคู่ (x, y) / n และ `p(x)`, `p(y)` จากการนับแบบเดียวกัน แล้ว `I = sum p(x,y) * log2(p(x,y) / (p(x) p(y)))` ถ้า `xs` กับ `ys` ยาวไม่เท่ากันหรือว่าง ให้ `raise ValueError`\n2. `rank_features(features, target)` รับ dict `{ชื่อ: list ของค่า}` แล้วคืน list ของคู่ `(ชื่อ, mi)` เรียงจาก MI มากไปน้อย ถ้า MI เท่ากันให้เรียงตามชื่อ (ก-ฮ / a-z)\n\nสารสนเทศร่วมจับความสัมพันธ์แบบไม่เชิงเส้นได้ เช่น `y = x * x` บน x = -2..2 ซึ่งสหสัมพันธ์เป็นศูนย์ มี test ซ่อนอยู่บางส่วน",
+    "en": "Write two functions:\n\n1. `mutual_information(xs, ys)` returns the mutual information in bits from paired samples (any hashable values, such as numbers or strings), using the empirical joint distribution: `p(x, y)` = how often the pair (x, y) appears / n, with `p(x)` and `p(y)` counted the same way. Then `I = sum p(x,y) * log2(p(x,y) / (p(x) p(y)))`. If `xs` and `ys` differ in length or are empty, `raise ValueError`.\n2. `rank_features(features, target)` takes a dict `{name: list of values}` and returns a list of `(name, mi)` pairs sorted from the highest MI to the lowest. Ties are sorted by name (a-z).\n\nMutual information catches non-linear relationships, such as `y = x * x` on x = -2..2, where the correlation is zero. Some tests are hidden."
+  },
+  "hints": [
+    {"th": "ใช้ `collections.Counter`: `pxy = Counter(zip(xs, ys))`, `px = Counter(xs)`, `py = Counter(ys)` แล้วหารด้วย n ทุกตัว", "en": "Use `collections.Counter`: `pxy = Counter(zip(xs, ys))`, `px = Counter(xs)`, `py = Counter(ys)`, and divide each by n."},
+    {"th": "วนเฉพาะคู่ที่เจอจริงใน `pxy` คู่ที่ไม่เคยเจอมี p(x, y) = 0 จึงไม่มีผล ใช้ `math.log2` เพื่อให้ได้บิต", "en": "Loop only over pairs that appear in `pxy`; unseen pairs have p(x, y) = 0 and contribute nothing. Use `math.log2` to get bits."},
+    {"th": "เรียงด้วย `sorted(items, key=lambda t: (-t[1], t[0]))` ได้ทั้ง MI มากไปน้อยและชื่อ a-z ในคราวเดียว", "en": "`sorted(items, key=lambda t: (-t[1], t[0]))` gives MI from high to low and names a-z in one go."}
+  ]
+}

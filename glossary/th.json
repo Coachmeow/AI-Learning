@@ -1466,6 +1466,82 @@
     {
       "en": "A/B testing",
       "th": "A/B testing"
+    },
+    {
+      "en": "information theory",
+      "th": "ทฤษฎีสารสนเทศ",
+      "first": "ทฤษฎีสารสนเทศ (information theory)"
+    },
+    {
+      "en": "information content (surprise)",
+      "th": "ปริมาณสารสนเทศ (ความประหลาดใจ)"
+    },
+    {
+      "en": "entropy",
+      "th": "เอนโทรปี",
+      "first": "เอนโทรปี (entropy)"
+    },
+    {
+      "en": "cross-entropy",
+      "th": "cross-entropy"
+    },
+    {
+      "en": "KL divergence",
+      "th": "KL divergence"
+    },
+    {
+      "en": "mutual information",
+      "th": "สารสนเทศร่วม",
+      "first": "สารสนเทศร่วม (mutual information)"
+    },
+    {
+      "en": "conditional entropy",
+      "th": "เอนโทรปีแบบมีเงื่อนไข",
+      "first": "เอนโทรปีแบบมีเงื่อนไข (conditional entropy)"
+    },
+    {
+      "en": "joint entropy",
+      "th": "เอนโทรปีร่วม",
+      "first": "เอนโทรปีร่วม (joint entropy)"
+    },
+    {
+      "en": "perplexity",
+      "th": "perplexity"
+    },
+    {
+      "en": "bits / nats",
+      "th": "บิต / แนต"
+    },
+    {
+      "en": "label smoothing",
+      "th": "label smoothing"
+    },
+    {
+      "en": "negative log-likelihood (NLL)",
+      "th": "negative log-likelihood (NLL)"
+    },
+    {
+      "en": "one-hot",
+      "th": "one-hot"
+    },
+    {
+      "en": "calibration",
+      "th": "การสอบเทียบ",
+      "first": "การสอบเทียบ (calibration)"
+    },
+    {
+      "en": "Pearson correlation",
+      "th": "สหสัมพันธ์แบบเพียร์สัน"
+    },
+    {
+      "en": "feature selection",
+      "th": "การเลือกคุณลักษณะ",
+      "first": "การเลือกคุณลักษณะ (feature selection)"
+    },
+    {
+      "en": "feature",
+      "th": "คุณลักษณะ",
+      "first": "คุณลักษณะ (feature)"
     }
   ]
 }

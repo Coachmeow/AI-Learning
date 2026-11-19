@@ -1,0 +1,13 @@
+{
+  "minutes": 6,
+  "title": {"th": "เติมโค้ด: เอนโทรปีเป็นบิต", "en": "Fill in: entropy in bits"},
+  "prompt": {
+    "th": "เติม `entropy(probs)` ให้คืนเอนโทรปีของการแจกแจง `probs` เป็นบิต: ผลรวมของ `-p * log2(p)` ทุกตัว โดยข้ามค่าที่เป็น 0 (เพราะ `log2(0)` หาค่าไม่ได้ และพจน์นั้นมีค่าเป็น 0 อยู่แล้ว) เติมบรรทัดที่มี `# TODO`",
+    "en": "Complete `entropy(probs)` so it returns the entropy of the distribution `probs` in bits: the sum of `-p * log2(p)` over every value, skipping values that are 0 (`log2(0)` is undefined, and the term is 0 anyway). Fill in the `# TODO` line."
+  },
+  "hints": [
+    {"th": "ใช้ `math.log2(p)` เพื่อให้ได้หน่วยบิต ถ้าใช้ `math.log` จะได้แนต", "en": "Use `math.log2(p)` to get bits; `math.log` would give nats."},
+    {"th": "อย่าลืมเครื่องหมายลบ: log ของความน่าจะเป็นติดลบเสมอ แต่เอนโทรปีต้องไม่ติดลบ", "en": "Don't forget the minus sign: the log of a probability is negative, but entropy is not."},
+    {"th": "`return -sum(p * math.log2(p) for p in probs if p > 0)`", "en": "`return -sum(p * math.log2(p) for p in probs if p > 0)`"}
+  ]
+}
