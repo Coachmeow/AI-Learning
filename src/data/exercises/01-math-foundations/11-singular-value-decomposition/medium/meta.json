@@ -1,0 +1,13 @@
+{
+  "minutes": 15,
+  "title": {"th": "เลือกแรงก์จากความคลาดเคลื่อนที่ยอมรับได้", "en": "Choose a rank from an error budget"},
+  "prompt": {
+    "th": "เขียน `rank_for_error(singular_values, max_rel_error)` ที่คืนแรงก์ k ที่เล็กที่สุด (ตั้งแต่ 0 ถึงจำนวนค่าเอกฐาน) ซึ่งการประมาณแรงก์ k มีความคลาดเคลื่อนสัมพัทธ์ใน Frobenius norm ไม่เกิน `max_rel_error`\n\n- เรียงค่าเอกฐานจากมากไปน้อยก่อน (ค่าที่ส่งเข้ามาอาจไม่เรียง)\n- ความคลาดเคลื่อนสัมพัทธ์ที่แรงก์ k = `sqrt(ผลรวมของ σ² ที่ทิ้ง) / sqrt(ผลรวมของ σ² ทั้งหมด)`\n- ถ้าค่าเอกฐานเป็นศูนย์ทั้งหมด ให้คืน 0 และถ้ามีค่าที่ติดลบ ให้ `raise ValueError`\n\nมี test ซ่อนอยู่บางส่วน",
+    "en": "Write `rank_for_error(singular_values, max_rel_error)`. It returns the smallest rank k (from 0 up to the number of singular values) whose rank-k approximation has a relative Frobenius error of at most `max_rel_error`.\n\n- Sort the singular values from largest to smallest first (they may arrive unsorted).\n- The relative error at rank k = `sqrt(sum of the dropped σ²) / sqrt(sum of all σ²)`.\n- If every singular value is zero, return 0. If any is negative, `raise ValueError`.\n\nSome tests are hidden."
+  },
+  "hints": [
+    {"th": "ใช้กำลังสองของค่าเอกฐาน ไม่ใช่ค่าเอกฐานเอง: ความคลาดเคลื่อนใน Frobenius norm มาจากผลรวมของ σ²", "en": "Use squared singular values, not the singular values themselves: the Frobenius error comes from the sum of σ²."},
+    {"th": "ลองทุก k ตั้งแต่ 0 ขึ้นไป แล้วคืน k แรกที่ความคลาดเคลื่อน `<= max_rel_error` (ใช้ `<=` เพราะค่าที่เท่ากันพอดีถือว่าผ่าน)", "en": "Try every k from 0 upwards and return the first one whose error is `<= max_rel_error` (`<=`, because an exactly equal error counts)."},
+    {"th": "ที่ k = 0 ความคลาดเคลื่อนคือ 1 (ทิ้งทุกอย่าง) และที่ k = จำนวนทั้งหมดความคลาดเคลื่อนคือ 0 จึงมีคำตอบเสมอ", "en": "At k = 0 the error is 1 (everything is dropped) and at k = all of them it is 0, so there is always an answer."}
+  ]
+}

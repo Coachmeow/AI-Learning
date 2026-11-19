@@ -1,0 +1,13 @@
+{
+  "minutes": 35,
+  "title": {"th": "SVD แบบแม่นยำของเมทริกซ์ 2x2", "en": "An exact SVD of a 2x2 matrix"},
+  "prompt": {
+    "th": "เขียน `svd2(A)` ที่คืน `(U, S, Vt)` ของเมทริกซ์ 2x2 ใดก็ได้ โดย `U` และ `Vt` เป็น list ของแถว (แบบ NumPy) และ `S = [s1, s2]`\n\n- `U @ diag(S) @ Vt` ต้องได้ `A` กลับ, `U` และ `Vt` ต้องเป็นเมทริกซ์เชิงตั้งฉาก (orthonormal), และ `s1 >= s2 >= 0`\n- วิธี: หาค่าลักษณะเฉพาะของ `M = A^T A` (สมมาตร 2x2) ด้วย `mid ± spread` ค่าเอกฐานคือรากที่สองของมัน แถวของ `Vt` คือเวกเตอร์ลักษณะเฉพาะ แล้ว `u_i = A v_i / s_i`\n- กรณีที่ต้องระวัง: ค่าลักษณะเฉพาะตัวเล็กอาจออกมาติดลบนิดหนึ่งจากการปัดเศษ (ให้ตัดเป็น 0), ค่าเอกฐานเป็นศูนย์ (หาร A v / 0 ไม่ได้ ให้ใช้ `u2` ที่ตั้งฉากกับ `u1` แทน), และค่าเอกฐานซ้ำกันหรือ `M` เป็นเมทริกซ์ทแยงมุม (สูตรเวกเตอร์ลักษณะเฉพาะให้เวกเตอร์ศูนย์)\n\nมี test ซ่อนอยู่บางส่วน",
+    "en": "Write `svd2(A)`. It returns `(U, S, Vt)` for any 2x2 matrix, with `U` and `Vt` as lists of rows (like NumPy) and `S = [s1, s2]`.\n\n- `U @ diag(S) @ Vt` must give back `A`, `U` and `Vt` must be orthogonal (orthonormal), and `s1 >= s2 >= 0`.\n- Method: find the eigenvalues of `M = A^T A` (2x2 symmetric) as `mid ± spread`; the singular values are their square roots. The rows of `Vt` are the eigenvectors, and `u_i = A v_i / s_i`.\n- Watch out for: the small eigenvalue coming out slightly negative from rounding (clip it to 0), a zero singular value (you can't divide A v by 0, so use a `u2` perpendicular to `u1` instead), and repeated singular values or a diagonal `M` (the eigenvector formula gives a zero vector).\n\nSome tests are hidden."
+  },
+  "hints": [
+    {"th": "สำหรับ M = [[p, q], [q, r]]: `mid = (p + r) / 2`, `spread = sqrt(((p - r) / 2) ** 2 + q * q)` และ `lam2 = max(mid - spread, 0.0)`", "en": "For M = [[p, q], [q, r]]: `mid = (p + r) / 2`, `spread = sqrt(((p - r) / 2) ** 2 + q * q)` and `lam2 = max(mid - spread, 0.0)`."},
+    {"th": "ถ้า `abs(q) > 1e-12` ให้ v1 = ทำให้ `[q, lam1 - p]` ยาว 1 ไม่อย่างนั้น M เป็นทแยงมุม เลือก `[1, 0]` เมื่อ `p >= r` และ `[0, 1]` ในกรณีอื่น แล้ว `v2 = [-v1[1], v1[0]]`", "en": "If `abs(q) > 1e-12`, v1 = `[q, lam1 - p]` normalized; otherwise M is diagonal: pick `[1, 0]` when `p >= r` and `[0, 1]` otherwise. Then `v2 = [-v1[1], v1[0]]`."},
+    {"th": "เมื่อ s เกือบเป็นศูนย์ (`<= 1e-12`): ถ้าเป็น s1 ให้ `u1 = [1, 0]` และถ้าเป็น s2 ให้ `u2 = [-u1[1], u1[0]]` พจน์นั้นคูณด้วย 0 อยู่แล้ว การสร้างกลับจึงยังถูก", "en": "When s is (almost) zero (`<= 1e-12`): for s1 use `u1 = [1, 0]`, and for s2 use `u2 = [-u1[1], u1[0]]`. That term is multiplied by 0 anyway, so the reconstruction stays right."}
+  ]
+}

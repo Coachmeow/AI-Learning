@@ -1609,6 +1609,77 @@
     {
       "en": "anomaly detection",
       "th": "การตรวจจับความผิดปกติ"
+    },
+    {
+      "en": "singular value decomposition (SVD)",
+      "th": "การแยกค่าเอกฐาน (SVD)"
+    },
+    {
+      "en": "singular value",
+      "th": "ค่าเอกฐาน",
+      "first": "ค่าเอกฐาน (singular value)"
+    },
+    {
+      "en": "left / right singular vector",
+      "th": "เวกเตอร์เอกฐานซ้าย / ขวา"
+    },
+    {
+      "en": "outer product",
+      "th": "ผลคูณภายนอก",
+      "first": "ผลคูณภายนอก (outer product)"
+    },
+    {
+      "en": "low-rank approximation",
+      "th": "การประมาณแรงก์ต่ำ",
+      "first": "การประมาณแรงก์ต่ำ (low-rank approximation)"
+    },
+    {
+      "en": "truncated SVD",
+      "th": "truncated SVD"
+    },
+    {
+      "en": "Eckart-Young theorem",
+      "th": "ทฤษฎีบทของ Eckart-Young"
+    },
+    {
+      "en": "Frobenius norm / spectral norm",
+      "th": "Frobenius norm / spectral norm"
+    },
+    {
+      "en": "pseudoinverse (Moore-Penrose)",
+      "th": "เมทริกซ์ผกผันเทียม",
+      "first": "เมทริกซ์ผกผันเทียม (pseudoinverse)"
+    },
+    {
+      "en": "overdetermined system",
+      "th": "ระบบที่มีสมการมากกว่าตัวแปร"
+    },
+    {
+      "en": "condition number",
+      "th": "condition number"
+    },
+    {
+      "en": "latent factor",
+      "th": "ปัจจัยแฝง",
+      "first": "ปัจจัยแฝง (latent factor)"
+    },
+    {
+      "en": "latent semantic analysis (LSA)",
+      "th": "Latent Semantic Analysis (LSA)"
+    },
+    {
+      "en": "term-document matrix",
+      "th": "เมทริกซ์คำ-เอกสาร"
+    },
+    {
+      "en": "recommendation system",
+      "th": "ระบบแนะนำ",
+      "first": "ระบบแนะนำ (recommendation system)"
+    },
+    {
+      "en": "orthogonal matrix",
+      "th": "เมทริกซ์เชิงตั้งฉาก",
+      "first": "เมทริกซ์เชิงตั้งฉาก (orthogonal matrix)"
     }
   ]
 }

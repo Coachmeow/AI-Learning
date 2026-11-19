@@ -1,0 +1,486 @@
+{
+  "lesson": "01-math-foundations/11-singular-value-decomposition",
+  "source_hash": "e6d5cdb8721a8d7d4b2062f6a4da5946123d03b3f6e72e7d2225827e2c37fd23",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What advantage does SVD have over eigendecomposition?",
+        "th": "SVD มีข้อได้เปรียบอะไรเหนือการแยกค่าลักษณะเฉพาะ?"
+      },
+      "options": [
+        {
+          "en": "SVD is always faster to compute",
+          "th": "SVD คำนวณเร็วกว่าเสมอ"
+        },
+        {
+          "en": "SVD produces smaller output matrices",
+          "th": "SVD ให้เมทริกซ์ผลลัพธ์ที่เล็กกว่า"
+        },
+        {
+          "en": "SVD works on any matrix of any shape, while eigendecomposition requires square matrices with full eigenvector sets",
+          "th": "SVD ใช้ได้กับเมทริกซ์ทุกรูปร่าง ส่วนการแยกค่าลักษณะเฉพาะต้องใช้เมทริกซ์จัตุรัสที่มีเวกเตอร์ลักษณะเฉพาะครบชุด"
+        },
+        {
+          "en": "SVD does not require numerical computation",
+          "th": "SVD ไม่ต้องคำนวณเชิงตัวเลข"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Eigendecomposition only works on square matrices that have n linearly independent eigenvectors. SVD decomposes ANY m x n matrix into U * Sigma * V^T with no restrictions on shape or rank.",
+        "th": "การแยกค่าลักษณะเฉพาะใช้ได้กับเมทริกซ์จัตุรัสที่มีเวกเตอร์ลักษณะเฉพาะที่เป็นอิสระเชิงเส้น n ตัวเท่านั้น SVD แยกเมทริกซ์ m x n ใดก็ได้เป็น U * Sigma * V^T โดยไม่มีข้อจำกัดเรื่องรูปร่างหรือแรงก์"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What does 'low-rank approximation' mean?",
+        "th": "'การประมาณแรงก์ต่ำ' (low-rank approximation) หมายถึงอะไร?"
+      },
+      "options": [
+        {
+          "en": "Converting a matrix to a lower precision data type",
+          "th": "แปลงเมทริกซ์เป็นชนิดข้อมูลที่ความแม่นยำต่ำลง"
+        },
+        {
+          "en": "Removing rows with low values from a matrix",
+          "th": "ลบแถวที่มีค่าน้อยออกจากเมทริกซ์"
+        },
+        {
+          "en": "Sorting the rows of a matrix by their magnitude",
+          "th": "เรียงแถวของเมทริกซ์ตามขนาด"
+        },
+        {
+          "en": "Approximating a matrix by keeping only its most important components, producing a simpler matrix with fewer independent directions",
+          "th": "ประมาณเมทริกซ์โดยเก็บแค่องค์ประกอบที่สำคัญที่สุด ได้เมทริกซ์ที่ง่ายกว่าและมีทิศที่เป็นอิสระต่อกันน้อยลง"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "A rank-k approximation keeps only the top k singular values and their vectors, discarding the rest. The Eckart-Young theorem proves this is the BEST possible approximation of that rank.",
+        "th": "การประมาณแรงก์ k เก็บแค่ค่าเอกฐาน k ตัวบนสุดกับเวกเตอร์ของมัน ทิ้งที่เหลือ ทฤษฎีบทของ Eckart-Young พิสูจน์ว่านี่คือการประมาณที่ดีที่สุดเท่าที่เป็นไปได้ที่แรงก์นั้น"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "A matrix has singular values 5, 2 and 0. What is its rank?",
+        "th": "เมทริกซ์หนึ่งมีค่าเอกฐาน 5, 2 และ 0 แรงก์ของมันคือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "3",
+          "th": "3"
+        },
+        {
+          "en": "2",
+          "th": "2"
+        },
+        {
+          "en": "5",
+          "th": "5"
+        },
+        {
+          "en": "7",
+          "th": "7"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The rank is the number of non-zero singular values. The zero means one direction is crushed completely, so only 2 independent directions remain.",
+        "th": "แรงก์คือจำนวนค่าเอกฐานที่ไม่เป็นศูนย์ ค่าที่เป็นศูนย์แปลว่ามีทิศหนึ่งถูกบดขยี้ทิ้งทั้งหมด จึงเหลือทิศที่เป็นอิสระต่อกันแค่ 2 ทิศ"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "How many values does a rank-20 SVD of an 800 x 600 image store?",
+        "th": "SVD แรงก์ 20 ของภาพขนาด 800 x 600 ต้องเก็บกี่ค่า?"
+      },
+      "options": [
+        {
+          "en": "28,020 (about 5.8% of the original)",
+          "th": "28,020 (ประมาณ 5.8% ของต้นฉบับ)"
+        },
+        {
+          "en": "16,000",
+          "th": "16,000"
+        },
+        {
+          "en": "480,000, the same as the original",
+          "th": "480,000 เท่ากับต้นฉบับ"
+        },
+        {
+          "en": "20",
+          "th": "20"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "U_k holds 800 * 20, Σ_k holds 20 and V_k holds 600 * 20 values: 20 * (800 + 600 + 1) = 28,020, against 480,000 for the full image.",
+        "th": "U_k เก็บ 800 * 20 ค่า Σ_k เก็บ 20 ค่า และ V_k เก็บ 600 * 20 ค่า: 20 * (800 + 600 + 1) = 28,020 เทียบกับ 480,000 ของภาพเต็ม"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Which statement about singular values is always true?",
+        "th": "ข้อใดเกี่ยวกับค่าเอกฐานเป็นจริงเสมอ?"
+      },
+      "options": [
+        {
+          "en": "They can be negative",
+          "th": "ติดลบได้"
+        },
+        {
+          "en": "They are always integers",
+          "th": "เป็นจำนวนเต็มเสมอ"
+        },
+        {
+          "en": "They are real and non-negative, conventionally sorted from largest to smallest",
+          "th": "เป็นจำนวนจริงที่ไม่ติดลบ และตามธรรมเนียมเรียงจากมากไปน้อย"
+        },
+        {
+          "en": "There is always exactly one",
+          "th": "มีแค่ตัวเดียวเสมอ"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Singular values are square roots of the eigenvalues of A^T A, which is positive semi-definite, so they are real and never negative. They are lengths of the ellipsoid's axes.",
+        "th": "ค่าเอกฐานคือรากที่สองของค่าลักษณะเฉพาะของ A^T A ซึ่งเป็นกึ่งบวกแน่นอน จึงเป็นจำนวนจริงที่ไม่เคยติดลบ มันคือความยาวของแกนทรงรี"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "In SVD A = U * Sigma * V^T, what geometric operation does each factor represent?",
+        "th": "ใน SVD A = U * Sigma * V^T ตัวประกอบแต่ละตัวแทนการดำเนินการเชิงเรขาคณิตแบบไหน?"
+      },
+      "options": [
+        {
+          "en": "All three factors perform the same operation: rotation",
+          "th": "ทั้งสามตัวทำสิ่งเดียวกัน: หมุน"
+        },
+        {
+          "en": "U compresses, Sigma expands, V^T normalizes",
+          "th": "U บีบ Sigma ขยาย V^T ทำให้เป็นมาตรฐาน"
+        },
+        {
+          "en": "V^T rotates in input space, Sigma scales along principal axes, U rotates into output space",
+          "th": "V^T หมุนในปริภูมิขาเข้า Sigma ย่อขยายตามแกนหลัก U หมุนเข้าสู่ปริภูมิขาออก"
+        },
+        {
+          "en": "U scales, Sigma rotates, V^T translates",
+          "th": "U ย่อขยาย Sigma หมุน V^T เลื่อน"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "SVD reveals that every matrix performs: (1) V^T rotates inputs to align with principal directions, (2) Sigma stretches/compresses along each axis, (3) U rotates the result into the output space. Rotate, scale, rotate.",
+        "th": "SVD เผยว่าทุกเมทริกซ์ทำ: (1) V^T หมุนขาเข้าให้อยู่แนวเดียวกับทิศหลัก (2) Sigma ยืด/หดตามแต่ละแกน (3) U หมุนผลลัพธ์เข้าสู่ปริภูมิขาออก หมุน ย่อขยาย หมุน"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "Why does sklearn implement PCA using SVD instead of eigendecomposition of the covariance matrix?",
+        "th": "ทำไม sklearn จึงสร้าง PCA ด้วย SVD แทนการแยกค่าลักษณะเฉพาะของเมทริกซ์ความแปรปรวนร่วม?"
+      },
+      "options": [
+        {
+          "en": "SVD produces different results that are more accurate for ML",
+          "th": "SVD ให้ผลต่างออกไปที่แม่นกว่าสำหรับ ML"
+        },
+        {
+          "en": "SVD is easier to parallelize on GPUs",
+          "th": "SVD ทำงานขนานบน GPU ได้ง่ายกว่า"
+        },
+        {
+          "en": "SVD works directly on the data matrix without forming the covariance matrix, avoiding squaring the condition number and improving numerical stability",
+          "th": "SVD ทำงานกับเมทริกซ์ข้อมูลโดยตรงโดยไม่ต้องสร้างเมทริกซ์ความแปรปรวนร่วม จึงเลี่ยงการยกกำลังสองของ condition number และเสถียรเชิงตัวเลขกว่า"
+        },
+        {
+          "en": "SVD does not require centering the data",
+          "th": "SVD ไม่ต้องจัดข้อมูลให้อยู่กึ่งกลาง"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Forming A^T*A squares the singular values (and condition number). If A has singular values [1000, 0.001], A^T*A has eigenvalues [10^6, 10^-6] -- 6 digits of precision lost. SVD avoids this by working directly on A.",
+        "th": "การสร้าง A^T*A ยกกำลังสองให้ค่าเอกฐาน (และ condition number) ถ้า A มีค่าเอกฐาน [1000, 0.001] แล้ว A^T*A จะมีค่าลักษณะเฉพาะ [10^6, 10^-6] เสียความแม่นยำไป 6 หลัก SVD เลี่ยงปัญหานี้โดยทำงานกับ A โดยตรง"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "How does truncated SVD enable recommendation systems to predict missing ratings?",
+        "th": "Truncated SVD ช่วยให้ระบบแนะนำทำนายคะแนนที่หายไปได้อย่างไร?"
+      },
+      "options": [
+        {
+          "en": "It trains a neural network on the observed ratings",
+          "th": "มันเทรนโครงข่ายประสาทเทียมบนคะแนนที่สังเกตได้"
+        },
+        {
+          "en": "It decomposes the ratings matrix into latent user and movie profiles; the dot product of a user profile with a movie profile predicts the missing rating",
+          "th": "มันแยกเมทริกซ์คะแนนเป็นโปรไฟล์แฝงของผู้ใช้และภาพยนตร์ แล้ว dot product ของโปรไฟล์ผู้ใช้กับโปรไฟล์ภาพยนตร์คือคะแนนที่ทำนาย"
+        },
+        {
+          "en": "It fills missing entries with the average rating",
+          "th": "มันเติมช่องว่างด้วยคะแนนเฉลี่ย"
+        },
+        {
+          "en": "It clusters similar users together and copies their ratings",
+          "th": "มันจัดกลุ่มผู้ใช้ที่คล้ายกันแล้วคัดลอกคะแนนของกันและกัน"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "SVD decomposes the ratings matrix into user profiles (U), latent factor importance (Sigma), and movie profiles (V^T). The low-rank reconstruction fills in missing entries based on the latent factors (genre, era, style) that explain user preferences.",
+        "th": "SVD แยกเมทริกซ์คะแนนเป็นโปรไฟล์ผู้ใช้ (U) ความสำคัญของปัจจัยแฝง (Sigma) และโปรไฟล์ภาพยนตร์ (V^T) การสร้างกลับแบบแรงก์ต่ำเติมช่องที่หายไปจากปัจจัยแฝง (แนว ยุค สไตล์) ที่อธิบายความชอบของผู้ใช้"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "A matrix has singular values 6, 3 and 2. What is the Frobenius-norm error of its best rank-1 approximation?",
+        "th": "เมทริกซ์หนึ่งมีค่าเอกฐาน 6, 3 และ 2 การประมาณแรงก์ 1 ที่ดีที่สุดมีความคลาดเคลื่อนใน Frobenius norm เท่าไร?"
+      },
+      "options": [
+        {
+          "en": "3",
+          "th": "3"
+        },
+        {
+          "en": "5",
+          "th": "5"
+        },
+        {
+          "en": "√13 ≈ 3.61",
+          "th": "√13 ≈ 3.61"
+        },
+        {
+          "en": "6",
+          "th": "6"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "The Frobenius error is the square root of the sum of the squared dropped singular values: √(3² + 2²) = √13 ≈ 3.61. The spectral-norm error would be just the next singular value, 3.",
+        "th": "ความคลาดเคลื่อนใน Frobenius norm คือรากที่สองของผลรวมกำลังสองของค่าเอกฐานที่ทิ้ง: √(3² + 2²) = √13 ≈ 3.61 ส่วนความคลาดเคลื่อนใน spectral norm จะเป็นแค่ค่าเอกฐานตัวถัดไปคือ 3"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "A has singular values 3 and 2. What are the eigenvalues of A^T A?",
+        "th": "A มีค่าเอกฐาน 3 และ 2 ค่าลักษณะเฉพาะของ A^T A คืออะไร?"
+      },
+      "options": [
+        {
+          "en": "3 and 2",
+          "th": "3 และ 2"
+        },
+        {
+          "en": "9 and 4",
+          "th": "9 และ 4"
+        },
+        {
+          "en": "√3 and √2",
+          "th": "√3 และ √2"
+        },
+        {
+          "en": "6 and 4",
+          "th": "6 และ 4"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "A^T A = V Σ^T Σ V^T, so its eigenvalues are the squared singular values: 9 and 4. This squaring is also what squares the condition number.",
+        "th": "A^T A = V Σ^T Σ V^T ค่าลักษณะเฉพาะของมันจึงเป็นค่าเอกฐานยกกำลังสอง: 9 และ 4 การยกกำลังสองนี้เองที่ยกกำลังสองให้ condition number"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Step 5 solves the overdetermined system [[1, 1], [2, 1], [3, 1]] x = [3, 5, 6] with the pseudoinverse. What is x?",
+        "th": "ขั้นที่ 5 แก้ระบบ [[1, 1], [2, 1], [3, 1]] x = [3, 5, 6] ที่มีสมการมากกว่าตัวแปรด้วยเมทริกซ์ผกผันเทียม x คืออะไร?"
+      },
+      "options": [
+        {
+          "en": "[2, 1], since 2*1 + 1 = 3",
+          "th": "[2, 1] เพราะ 2*1 + 1 = 3"
+        },
+        {
+          "en": "[1.5, 1.667]: the slope and intercept of the least-squares line through (1, 3), (2, 5), (3, 6)",
+          "th": "[1.5, 1.667]: ความชันและจุดตัดแกนของเส้นกำลังสองน้อยที่สุดที่ผ่าน (1, 3), (2, 5), (3, 6)"
+        },
+        {
+          "en": "No answer, because the system has no solution",
+          "th": "ไม่มีคำตอบ เพราะระบบนี้ไม่มีคำตอบ"
+        },
+        {
+          "en": "[3, 0]",
+          "th": "[3, 0]"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The columns are x and 1, so x = [slope, intercept]. No line passes through all three points; A⁺b gives the one with the least squared error: slope 1.5, intercept 5/3 ≈ 1.667, the same as np.linalg.lstsq.",
+        "th": "คอลัมน์คือ x กับ 1 ดังนั้น x = [ความชัน, จุดตัดแกน] ไม่มีเส้นตรงไหนผ่านทั้งสามจุด A⁺b ให้เส้นที่ความคลาดเคลื่อนกำลังสองน้อยที่สุด: ความชัน 1.5 จุดตัดแกน 5/3 ≈ 1.667 เหมือนกับ np.linalg.lstsq"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "A has singular values 100 and 0.01. What are the condition numbers of A and of A^T A?",
+        "th": "A มีค่าเอกฐาน 100 และ 0.01 condition number ของ A และของ A^T A เป็นเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "10^4 and 10^8",
+          "th": "10^4 และ 10^8"
+        },
+        {
+          "en": "10^4 and 10^4",
+          "th": "10^4 และ 10^4"
+        },
+        {
+          "en": "100 and 10^4",
+          "th": "100 และ 10^4"
+        },
+        {
+          "en": "10^2 and 10^8",
+          "th": "10^2 และ 10^8"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "cond(A) = 100 / 0.01 = 10^4. A^T A has eigenvalues 10^4 and 10^-4, so its condition number is 10^8: forming A^T A costs about 4 more digits of precision.",
+        "th": "cond(A) = 100 / 0.01 = 10^4 ส่วน A^T A มีค่าลักษณะเฉพาะ 10^4 และ 10^-4 condition number จึงเป็น 10^8 การสร้าง A^T A ทำให้เสียความแม่นยำไปอีกราว 4 หลัก"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "What is the pseudoinverse of the singular matrix [[2, 0], [0, 0]]?",
+        "th": "เมทริกซ์ผกผันเทียมของเมทริกซ์เอกฐาน [[2, 0], [0, 0]] คืออะไร?"
+      },
+      "options": [
+        {
+          "en": "It doesn't exist, because the matrix is singular",
+          "th": "ไม่มี เพราะเมทริกซ์เป็นเอกฐาน"
+        },
+        {
+          "en": "[[0.5, 0], [0, inf]]",
+          "th": "[[0.5, 0], [0, inf]]"
+        },
+        {
+          "en": "[[2, 0], [0, 0]]",
+          "th": "[[2, 0], [0, 0]]"
+        },
+        {
+          "en": "[[0.5, 0], [0, 0]]",
+          "th": "[[0.5, 0], [0, 0]]"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Σ⁺ inverts the non-zero singular values and leaves zeros as zeros: 2 becomes 0.5 and 0 stays 0. The ordinary inverse doesn't exist, but the pseudoinverse always does.",
+        "th": "Σ⁺ กลับค่าเอกฐานที่ไม่เป็นศูนย์และปล่อยศูนย์ไว้เป็นศูนย์: 2 กลายเป็น 0.5 และ 0 ยังเป็น 0 เมทริกซ์ผกผันแบบปกติไม่มี แต่เมทริกซ์ผกผันเทียมมีเสมอ"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Why does `svd_from_scratch` stop when the eigenvalue drops below 1e-10?",
+        "th": "ทำไม `svd_from_scratch` จึงหยุดเมื่อค่าลักษณะเฉพาะต่ำกว่า 1e-10?"
+      },
+      "options": [
+        {
+          "en": "To save time on large matrices",
+          "th": "เพื่อประหยัดเวลากับเมทริกซ์ใหญ่"
+        },
+        {
+          "en": "Because power iteration can't find negative eigenvalues",
+          "th": "เพราะ power iteration หาค่าลักษณะเฉพาะที่ติดลบไม่ได้"
+        },
+        {
+          "en": "The residual has no singular value left; the next step u = A v / sigma would divide by a sigma near 0 and produce noise or inf",
+          "th": "เศษที่เหลือไม่มีค่าเอกฐานเหลือแล้ว ขั้นถัดไป u = A v / sigma จะหารด้วย sigma ที่ใกล้ 0 และได้สัญญาณรบกวนหรือ inf"
+        },
+        {
+          "en": "Because 1e-10 is the largest float",
+          "th": "เพราะ 1e-10 คือเลขทศนิยมที่ใหญ่ที่สุด"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "After deflating every real component, A_residual is (numerically) zero, so AtA's top eigenvalue is about 0. sigma = sqrt(eigenvalue) is then tiny, and u = A_residual @ v / sigma divides rounding noise by it. Stopping keeps only meaningful components, which is also how the rank shows up.",
+        "th": "หลัง deflate องค์ประกอบจริงทุกตัวแล้ว A_residual เป็นศูนย์ (เชิงตัวเลข) ค่าลักษณะเฉพาะตัวบนสุดของ AtA จึงราว 0 sigma = sqrt(eigenvalue) เล็กมาก และ u = A_residual @ v / sigma ก็คือการหารสัญญาณรบกวนจากการปัดเศษด้วยมัน การหยุดทำให้เก็บแค่องค์ประกอบที่มีความหมาย ซึ่งก็คือวิธีที่แรงก์ปรากฏออกมา"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Centered data X has 11 samples and singular values 10 and 5. What are the PCA explained variances and ratios?",
+        "th": "ข้อมูลที่จัดกึ่งกลางแล้ว X มี 11 ตัวอย่าง และมีค่าเอกฐาน 10 และ 5 ความแปรปรวนที่อธิบายได้ของ PCA และสัดส่วนเป็นเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "Variances 10 and 5, ratios 2/3 and 1/3",
+          "th": "ความแปรปรวน 10 และ 5 สัดส่วน 2/3 และ 1/3"
+        },
+        {
+          "en": "Variances 10 and 2.5, ratios 0.8 and 0.2",
+          "th": "ความแปรปรวน 10 และ 2.5 สัดส่วน 0.8 และ 0.2"
+        },
+        {
+          "en": "Variances 100 and 25, ratios 0.5 and 0.5",
+          "th": "ความแปรปรวน 100 และ 25 สัดส่วน 0.5 และ 0.5"
+        },
+        {
+          "en": "Variances 1 and 0.5, ratios 2/3 and 1/3",
+          "th": "ความแปรปรวน 1 และ 0.5 สัดส่วน 2/3 และ 1/3"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Each explained variance is σ² / (n - 1): 100 / 10 = 10 and 25 / 10 = 2.5. The ratios use squared singular values: 100 / 125 = 0.8 and 25 / 125 = 0.2, not 10 / 15.",
+        "th": "ความแปรปรวนที่อธิบายได้แต่ละตัวคือ σ² / (n - 1): 100 / 10 = 10 และ 25 / 10 = 2.5 สัดส่วนใช้ค่าเอกฐานยกกำลังสอง: 100 / 125 = 0.8 และ 25 / 125 = 0.2 ไม่ใช่ 10 / 15"
+      }
+    }
+  ]
+}

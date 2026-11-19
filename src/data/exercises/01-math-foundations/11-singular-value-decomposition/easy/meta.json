@@ -1,0 +1,13 @@
+{
+  "minutes": 8,
+  "title": {"th": "เติมโค้ด: สร้างเมทริกซ์แรงก์ k กลับ", "en": "Fill in: rebuild a rank-k matrix"},
+  "prompt": {
+    "th": "SVD เขียนเป็นผลรวมของเมทริกซ์แรงก์ 1 ได้: `A = sum sigma_i * u_i * v_i^T` เติม `low_rank(terms, k)` ที่รับ `terms` เป็น list ของ `(sigma, u, v)` เรียงจาก sigma มากไปน้อย แล้วคืนเมทริกซ์ (list ของแถว ขนาด len(u) x len(v)) ที่เป็นผลรวมของ k พจน์แรก ช่อง (i, j) ของพจน์หนึ่งคือ `sigma * u[i] * v[j]` เติมบรรทัดที่มี `# TODO`",
+    "en": "An SVD can be written as a sum of rank-1 matrices: `A = sum sigma_i * u_i * v_i^T`. Complete `low_rank(terms, k)`. It takes `terms`, a list of `(sigma, u, v)` sorted from the largest sigma, and returns the matrix (a list of rows, len(u) x len(v)) that is the sum of the first k terms. Cell (i, j) of one term is `sigma * u[i] * v[j]`. Fill in the `# TODO` line."
+  },
+  "hints": [
+    {"th": "ผลคูณภายนอก u v^T คือเมทริกซ์ที่ช่อง (i, j) เท่ากับ `u[i] * v[j]`", "en": "The outer product u v^T is the matrix whose cell (i, j) is `u[i] * v[j]`."},
+    {"th": "ใช้แค่ `terms[:k]` คือ k พจน์แรก (ค่าเอกฐานที่ใหญ่ที่สุด)", "en": "Use only `terms[:k]`, the first k terms (the largest singular values)."},
+    {"th": "`out[i][j] += sigma * u[i] * v[j]`", "en": "`out[i][j] += sigma * u[i] * v[j]`"}
+  ]
+}
