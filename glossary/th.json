@@ -1680,6 +1680,69 @@
       "en": "orthogonal matrix",
       "th": "เมทริกซ์เชิงตั้งฉาก",
       "first": "เมทริกซ์เชิงตั้งฉาก (orthogonal matrix)"
+    },
+    {
+      "en": "rank (tensor) / order",
+      "th": "rank (จำนวนแกนของเทนเซอร์)"
+    },
+    {
+      "en": "axis",
+      "th": "แกน",
+      "first": "แกน (axis)"
+    },
+    {
+      "en": "shape",
+      "th": "shape"
+    },
+    {
+      "en": "stride",
+      "th": "stride"
+    },
+    {
+      "en": "contiguous / non-contiguous",
+      "th": "ต่อเนื่อง / ไม่ต่อเนื่อง (contiguous)"
+    },
+    {
+      "en": "reshape / squeeze / unsqueeze",
+      "th": "reshape / squeeze / unsqueeze"
+    },
+    {
+      "en": "permute",
+      "th": "permute"
+    },
+    {
+      "en": "reduction (sum, mean, max)",
+      "th": "การลดรูป",
+      "first": "การลดรูป (reduction)"
+    },
+    {
+      "en": "einsum (Einstein summation)",
+      "th": "einsum"
+    },
+    {
+      "en": "contraction (tensor)",
+      "th": "การหดรูป",
+      "first": "การหดรูป (contraction)"
+    },
+    {
+      "en": "row-major / column-major",
+      "th": "เรียงตามแถว / เรียงตามคอลัมน์"
+    },
+    {
+      "en": "NCHW / NHWC",
+      "th": "NCHW / NHWC"
+    },
+    {
+      "en": "view (tensor)",
+      "th": "view"
+    },
+    {
+      "en": "multi-head attention",
+      "th": "multi-head attention"
+    },
+    {
+      "en": "attention head",
+      "th": "หัวของ attention (head)"
     }
   ]
 }

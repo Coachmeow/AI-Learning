@@ -1,0 +1,486 @@
+{
+  "lesson": "01-math-foundations/12-tensor-operations",
+  "source_hash": "07b6d7983ec360ddce4178a0064be90ad8a7e6375d11ecb4637c3efc614f182d",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What does the 'shape' of a tensor describe?",
+        "th": "'shape' ของเทนเซอร์บรรยายอะไร?"
+      },
+      "options": [
+        {
+          "en": "A tuple listing the size along each axis",
+          "th": "tuple ที่บอกขนาดตามแต่ละแกน"
+        },
+        {
+          "en": "The memory address of the tensor",
+          "th": "ที่อยู่ในหน่วยความจำของเทนเซอร์"
+        },
+        {
+          "en": "The total number of elements in the tensor",
+          "th": "จำนวนสมาชิกทั้งหมดในเทนเซอร์"
+        },
+        {
+          "en": "The data type of the tensor elements",
+          "th": "ชนิดข้อมูลของสมาชิกในเทนเซอร์"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The shape is a tuple listing the size along each axis. For example, a tensor with shape (2, 3, 4) has 2 elements along axis 0, 3 along axis 1, and 4 along axis 2.",
+        "th": "shape คือ tuple ที่บอกขนาดตามแต่ละแกน ตัวอย่างเช่น เทนเซอร์ที่มี shape (2, 3, 4) มีสมาชิก 2 ตัวตามแกน 0, 3 ตัวตามแกน 1 และ 4 ตัวตามแกน 2"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "In PyTorch, what layout does an image batch tensor use by default?",
+        "th": "ใน PyTorch เทนเซอร์ของภาพหนึ่ง batch ใช้ layout แบบไหนเป็นค่าตั้งต้น?"
+      },
+      "options": [
+        {
+          "en": "CHWN (channels, height, width, batch)",
+          "th": "CHWN (channel, ความสูง, ความกว้าง, batch)"
+        },
+        {
+          "en": "NHWC (batch, height, width, channels)",
+          "th": "NHWC (batch, ความสูง, ความกว้าง, channel)"
+        },
+        {
+          "en": "WHCN (width, height, channels, batch)",
+          "th": "WHCN (ความกว้าง, ความสูง, channel, batch)"
+        },
+        {
+          "en": "NCHW (batch, channels, height, width)",
+          "th": "NCHW (batch, channel, ความสูง, ความกว้าง)"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "PyTorch defaults to NCHW (channels-first) layout. TensorFlow defaults to NHWC (channels-last). Mismatched layouts cause silent errors or performance issues.",
+        "th": "PyTorch ใช้ layout แบบ NCHW (channel มาก่อน) เป็นค่าตั้งต้น ส่วน TensorFlow ใช้ NHWC (channel อยู่ท้าย) การใช้ layout ไม่ตรงกันทำให้เกิดความผิดพลาดแบบเงียบหรือปัญหาด้านประสิทธิภาพ"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "How many elements does a tensor of shape (2, 3, 4) hold?",
+        "th": "เทนเซอร์ shape (2, 3, 4) มีสมาชิกกี่ตัว?"
+      },
+      "options": [
+        {
+          "en": "9",
+          "th": "9"
+        },
+        {
+          "en": "24",
+          "th": "24"
+        },
+        {
+          "en": "3",
+          "th": "3"
+        },
+        {
+          "en": "234",
+          "th": "234"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The number of elements is the product of the sizes: 2 * 3 * 4 = 24. The rank, the number of axes, is 3.",
+        "th": "จำนวนสมาชิกคือผลคูณของขนาด: 2 * 3 * 4 = 24 ส่วน rank ซึ่งคือจำนวนแกนคือ 3"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "What are the strides (in elements) of a contiguous row-major tensor of shape (3, 4)?",
+        "th": "strides (หน่วยเป็นสมาชิก) ของเทนเซอร์ shape (3, 4) ที่ต่อเนื่องแบบเรียงตามแถวคืออะไร?"
+      },
+      "options": [
+        {
+          "en": "(1, 3)",
+          "th": "(1, 3)"
+        },
+        {
+          "en": "(3, 4)",
+          "th": "(3, 4)"
+        },
+        {
+          "en": "(4, 1)",
+          "th": "(4, 1)"
+        },
+        {
+          "en": "(12, 1)",
+          "th": "(12, 1)"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Moving one row skips a whole row of 4 elements; moving one column skips 1 element. So the strides are (4, 1).",
+        "th": "เลื่อนไปหนึ่งแถวต้องข้ามทั้งแถว 4 สมาชิก เลื่อนไปหนึ่งคอลัมน์ข้าม 1 สมาชิก strides จึงเป็น (4, 1)"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "What does squeeze() do to a tensor of shape (1, 3, 1, 2)?",
+        "th": "squeeze() ทำอะไรกับเทนเซอร์ shape (1, 3, 1, 2)?"
+      },
+      "options": [
+        {
+          "en": "Removes the axes of size 1, giving (3, 2)",
+          "th": "ลบแกนที่มีขนาด 1 ออก ได้ (3, 2)"
+        },
+        {
+          "en": "Adds an axis, giving (1, 1, 3, 1, 2)",
+          "th": "เพิ่มแกน ได้ (1, 1, 3, 1, 2)"
+        },
+        {
+          "en": "Flattens it to (6,)",
+          "th": "ทำให้แบนเป็น (6,)"
+        },
+        {
+          "en": "Sums over the first axis",
+          "th": "รวมตามแกนแรก"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "squeeze drops every axis of size 1 without changing the data: (1, 3, 1, 2) becomes (3, 2). unsqueeze does the opposite and inserts one.",
+        "th": "squeeze ทิ้งทุกแกนที่มีขนาด 1 โดยไม่เปลี่ยนข้อมูล: (1, 3, 1, 2) กลายเป็น (3, 2) ส่วน unsqueeze ทำตรงข้ามคือแทรกแกนขนาด 1 เข้าไป"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "What is the result shape when broadcasting tensors of shape (8, 1, 6, 1) and (7, 1, 5)?",
+        "th": "เมื่อ broadcast เทนเซอร์ shape (8, 1, 6, 1) กับ (7, 1, 5) ได้ shape ผลลัพธ์เป็นอะไร?"
+      },
+      "options": [
+        {
+          "en": "(8, 7, 6, 5)",
+          "th": "(8, 7, 6, 5)"
+        },
+        {
+          "en": "(8, 1, 6, 5)",
+          "th": "(8, 1, 6, 5)"
+        },
+        {
+          "en": "(8, 7, 6, 1)",
+          "th": "(8, 7, 6, 1)"
+        },
+        {
+          "en": "Broadcasting fails — shapes are incompatible",
+          "th": "Broadcast ไม่ได้ เพราะ shape เข้ากันไม่ได้"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Align shapes from the right: (8,1,6,1) and (1,7,1,5). Dimensions are compatible when equal or one is 1. The result takes the maximum along each axis: (8, 7, 6, 5).",
+        "th": "จัด shape ให้ตรงกันจากทางขวา: (8,1,6,1) กับ (1,7,1,5) มิติเข้ากันได้เมื่อเท่ากันหรือตัวหนึ่งเป็น 1 ผลลัพธ์ใช้ค่ามากสุดในแต่ละแกน: (8, 7, 6, 5)"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "In the einsum expression 'bhtd,bhsd->bhts', what happens to the index 'd'?",
+        "th": "ในนิพจน์ einsum 'bhtd,bhsd->bhts' เกิดอะไรขึ้นกับดัชนี 'd'?"
+      },
+      "options": [
+        {
+          "en": "It is transposed between the two input tensors",
+          "th": "ถูก transpose ระหว่างเทนเซอร์ขาเข้าทั้งสอง"
+        },
+        {
+          "en": "It is summed over (contracted) because it appears in both inputs but not the output",
+          "th": "ถูกรวม (หดรูป) เพราะปรากฏในขาเข้าทั้งสองแต่ไม่อยู่ในขาออก"
+        },
+        {
+          "en": "It is broadcast across both tensors",
+          "th": "ถูก broadcast ไปทั้งสองเทนเซอร์"
+        },
+        {
+          "en": "It is kept in the output as a new axis",
+          "th": "ถูกเก็บไว้ในขาออกเป็นแกนใหม่"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "In einsum, any index that appears in the inputs but not the output is summed over. Index 'd' appears in both 'bhtd' and 'bhsd' but not in the output 'bhts', so it is contracted (multiplied and summed).",
+        "th": "ใน einsum ดัชนีใดที่อยู่ในขาเข้าแต่ไม่อยู่ในขาออกจะถูกรวม ดัชนี 'd' อยู่ทั้งใน 'bhtd' และ 'bhsd' แต่ไม่อยู่ในขาออก 'bhts' จึงถูกหดรูป (คูณแล้วรวม)"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "Why does calling .view() fail on a transposed tensor in PyTorch?",
+        "th": "ทำไมการเรียก .view() กับเทนเซอร์ที่ transpose แล้วใน PyTorch จึงล้มเหลว?"
+      },
+      "options": [
+        {
+          "en": "The tensor is non-contiguous in memory after transpose, and view requires contiguous data",
+          "th": "หลัง transpose เทนเซอร์ไม่ต่อเนื่องในหน่วยความจำ และ view ต้องการข้อมูลที่ต่อเนื่อง"
+        },
+        {
+          "en": "Transposed tensors have a different data type",
+          "th": "เทนเซอร์ที่ transpose แล้วมีชนิดข้อมูลต่างไป"
+        },
+        {
+          "en": "Transpose changes the total number of elements",
+          "th": "Transpose เปลี่ยนจำนวนสมาชิกทั้งหมด"
+        },
+        {
+          "en": "View only works on 2D tensors",
+          "th": "View ใช้ได้กับเทนเซอร์ 2 มิติเท่านั้น"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Transpose swaps strides without moving data, making the tensor non-contiguous. The .view() operation requires contiguous memory layout. Use .reshape() or call .contiguous() first.",
+        "th": "Transpose สลับ strides โดยไม่ย้ายข้อมูล ทำให้เทนเซอร์ไม่ต่อเนื่อง การดำเนินการ .view() ต้องการ layout ในหน่วยความจำที่ต่อเนื่อง ให้ใช้ .reshape() หรือเรียก .contiguous() ก่อน"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "What shape does np.einsum(\"bij,bjk->bik\", A, B) return for A of shape (4, 3, 5) and B of shape (4, 5, 2)?",
+        "th": "np.einsum(\"bij,bjk->bik\", A, B) คืน shape อะไร เมื่อ A มี shape (4, 3, 5) และ B มี shape (4, 5, 2)?"
+      },
+      "options": [
+        {
+          "en": "(4, 5, 5)",
+          "th": "(4, 5, 5)"
+        },
+        {
+          "en": "(3, 2)",
+          "th": "(3, 2)"
+        },
+        {
+          "en": "(4, 3, 2)",
+          "th": "(4, 3, 2)"
+        },
+        {
+          "en": "(4, 3, 5, 2)",
+          "th": "(4, 3, 5, 2)"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "b is kept, j (size 5) is summed because it is missing from the output, and i, k remain: (4, 3, 2). It is a batch of four 3x5 @ 5x2 products.",
+        "th": "b ถูกเก็บไว้ j (ขนาด 5) ถูกรวมเพราะไม่อยู่ในขาออก และเหลือ i กับ k: (4, 3, 2) มันคือผลคูณ 3x5 @ 5x2 จำนวนสี่ชุดใน batch"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "Which pair of shapes cannot be broadcast together?",
+        "th": "shape คู่ใดที่ broadcast ด้วยกันไม่ได้?"
+      },
+      "options": [
+        {
+          "en": "(3, 1) and (4,)",
+          "th": "(3, 1) กับ (4,)"
+        },
+        {
+          "en": "(3,) and (4,)",
+          "th": "(3,) กับ (4,)"
+        },
+        {
+          "en": "(2, 3, 4) and (4,)",
+          "th": "(2, 3, 4) กับ (4,)"
+        },
+        {
+          "en": "(5, 1, 7) and (1, 6, 1)",
+          "th": "(5, 1, 7) กับ (1, 6, 1)"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Aligned from the right, 3 and 4 are neither equal nor 1, so NumPy raises ValueError. (3, 1) and (4,) give (3, 4); (2, 3, 4) and (4,) give (2, 3, 4); (5, 1, 7) and (1, 6, 1) give (5, 6, 7).",
+        "th": "เมื่อจัดจากทางขวา 3 กับ 4 ไม่เท่ากันและไม่มีตัวไหนเป็น 1 NumPy จึงเกิด ValueError ส่วน (3, 1) กับ (4,) ได้ (3, 4) (2, 3, 4) กับ (4,) ได้ (2, 3, 4) และ (5, 1, 7) กับ (1, 6, 1) ได้ (5, 6, 7)"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "A contiguous tensor of shape (3, 4) has strides (4, 1). What are the shape and strides after transpose(0, 1)?",
+        "th": "เทนเซอร์ต่อเนื่อง shape (3, 4) มี strides (4, 1) หลัง transpose(0, 1) shape และ strides เป็นอะไร?"
+      },
+      "options": [
+        {
+          "en": "Shape (4, 3), strides (3, 1): the data is copied into a new order",
+          "th": "shape (4, 3), strides (3, 1): ข้อมูลถูกคัดลอกเรียงใหม่"
+        },
+        {
+          "en": "Shape (4, 3), strides (1, 4): only the metadata is swapped, so it is non-contiguous",
+          "th": "shape (4, 3), strides (1, 4): สลับแค่ข้อมูลกำกับ จึงไม่ต่อเนื่อง"
+        },
+        {
+          "en": "Shape (3, 4), strides (1, 4)",
+          "th": "shape (3, 4), strides (1, 4)"
+        },
+        {
+          "en": "Shape (4, 3), strides (4, 1)",
+          "th": "shape (4, 3), strides (4, 1)"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Transpose swaps both the shape and the strides and moves no data. With strides (1, 4), the next element of a row is 4 places away, so the tensor is non-contiguous. A contiguous (4, 3) tensor would have strides (3, 1).",
+        "th": "Transpose สลับทั้ง shape และ strides โดยไม่ย้ายข้อมูล เมื่อ strides เป็น (1, 4) สมาชิกถัดไปในแถวอยู่ห่างไป 4 ตำแหน่ง เทนเซอร์จึงไม่ต่อเนื่อง ถ้าเป็นเทนเซอร์ (4, 3) ที่ต่อเนื่องจะมี strides (3, 1)"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "preds has shape (64, 1) and y has shape (64,). What does ((preds - y) ** 2).mean() actually compute?",
+        "th": "preds มี shape (64, 1) และ y มี shape (64,) ((preds - y) ** 2).mean() คำนวณอะไรจริง ๆ?"
+      },
+      "options": [
+        {
+          "en": "The correct MSE over 64 samples",
+          "th": "MSE ที่ถูกต้องบน 64 ตัวอย่าง"
+        },
+        {
+          "en": "It raises a shape error",
+          "th": "เกิด error เรื่อง shape"
+        },
+        {
+          "en": "The mean over a (64, 64) matrix of every prediction against every target: a silent bug",
+          "th": "ค่าเฉลี่ยบนเมทริกซ์ (64, 64) ของทุกคำทำนายเทียบกับทุกเป้าหมาย: บั๊กแบบเงียบ"
+        },
+        {
+          "en": "The MSE of only the first sample",
+          "th": "MSE ของตัวอย่างแรกเท่านั้น"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "(64, 1) and (64,) broadcast to (64, 64): row i holds preds[i] minus every y[j]. No error is raised, the loss is a plain number, and training quietly optimizes the wrong thing. Fix it with preds.squeeze(1) or y.reshape(-1, 1).",
+        "th": "(64, 1) กับ (64,) broadcast เป็น (64, 64): แถว i คือ preds[i] ลบด้วย y[j] ทุกตัว ไม่มี error loss เป็นตัวเลขธรรมดา และการเทรนก็ไป optimize สิ่งที่ผิดอย่างเงียบ ๆ แก้ด้วย preds.squeeze(1) หรือ y.reshape(-1, 1)"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "With A = [[1, 2], [3, 4]] and B = [[5, 6], [7, 8]], what does np.einsum(\"ij,ij->\", A, B) return?",
+        "th": "เมื่อ A = [[1, 2], [3, 4]] และ B = [[5, 6], [7, 8]] np.einsum(\"ij,ij->\", A, B) คืนค่าอะไร?"
+      },
+      "options": [
+        {
+          "en": "[[19, 22], [43, 50]]",
+          "th": "[[19, 22], [43, 50]]"
+        },
+        {
+          "en": "[[5, 12], [21, 32]]",
+          "th": "[[5, 12], [21, 32]]"
+        },
+        {
+          "en": "70",
+          "th": "70"
+        },
+        {
+          "en": "134",
+          "th": "134"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Both i and j are missing from the output, so both are summed: 1*5 + 2*6 + 3*7 + 4*8 = 70, the element-wise product summed. [[19, 22], [43, 50]] would be \"ik,kj->ij\" and [[5, 12], [21, 32]] would be \"ij,ij->ij\".",
+        "th": "ทั้ง i และ j ไม่อยู่ในขาออก จึงถูกรวมทั้งคู่: 1*5 + 2*6 + 3*7 + 4*8 = 70 คือผลคูณทีละสมาชิกที่รวมกันแล้ว ส่วน [[19, 22], [43, 50]] คือ \"ik,kj->ij\" และ [[5, 12], [21, 32]] คือ \"ij,ij->ij\""
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Multi-head attention with batch 16, seq_len 128, embed_dim 768 and 12 heads. What is the shape of the attention scores?",
+        "th": "Multi-head attention ที่ batch 16, seq_len 128, embed_dim 768 และ 12 หัว คะแนน attention มี shape อะไร?"
+      },
+      "options": [
+        {
+          "en": "(16, 12, 128, 64)",
+          "th": "(16, 12, 128, 64)"
+        },
+        {
+          "en": "(16, 128, 768)",
+          "th": "(16, 128, 768)"
+        },
+        {
+          "en": "(16, 128, 128)",
+          "th": "(16, 128, 128)"
+        },
+        {
+          "en": "(16, 12, 128, 128)",
+          "th": "(16, 12, 128, 128)"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Each head has size 768 / 12 = 64. \"bhtd,bhsd->bhts\" sums over d and keeps one score per query position t and key position s in every head: (16, 12, 128, 128). (16, 12, 128, 64) is the shape of Q, K, V and the weighted sum.",
+        "th": "แต่ละหัวมีขนาด 768 / 12 = 64 \"bhtd,bhsd->bhts\" รวมตาม d และเก็บคะแนนหนึ่งค่าต่อตำแหน่ง query t และตำแหน่ง key s ในทุกหัว: (16, 12, 128, 128) ส่วน (16, 12, 128, 64) คือ shape ของ Q, K, V และผลรวมถ่วงน้ำหนัก"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "You double seq_len. How does the cost of computing the attention scores \"bhtd,bhsd->bhts\" change?",
+        "th": "คุณเพิ่ม seq_len เป็นสองเท่า ต้นทุนการคำนวณคะแนน attention \"bhtd,bhsd->bhts\" เปลี่ยนไปอย่างไร?"
+      },
+      "options": [
+        {
+          "en": "It doubles",
+          "th": "เพิ่มเป็นสองเท่า"
+        },
+        {
+          "en": "It is unchanged, because d is the summed index",
+          "th": "ไม่เปลี่ยน เพราะ d คือดัชนีที่ถูกรวม"
+        },
+        {
+          "en": "It grows 4 times, because both t and s double",
+          "th": "เพิ่มเป็น 4 เท่า เพราะทั้ง t และ s เพิ่มเป็นสองเท่า"
+        },
+        {
+          "en": "It grows 8 times",
+          "th": "เพิ่มเป็น 8 เท่า"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "The cost is the product of every index size, B * H * T * S * D. T and S are both the sequence length, so doubling it multiplies the cost by 2 * 2 = 4. This quadratic growth is why long contexts are expensive.",
+        "th": "ต้นทุนคือผลคูณของขนาดทุกดัชนี B * H * T * S * D ทั้ง T และ S คือความยาวลำดับ การเพิ่มเป็นสองเท่าจึงคูณต้นทุนด้วย 2 * 2 = 4 การโตแบบกำลังสองนี้คือเหตุผลที่ context ยาว ๆ มีราคาแพง"
+      }
+    }
+  ]
+}

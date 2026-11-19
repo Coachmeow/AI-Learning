@@ -1,0 +1,13 @@
+{
+  "minutes": 15,
+  "title": {"th": "shape ผลลัพธ์ของ broadcasting", "en": "The result shape of broadcasting"},
+  "prompt": {
+    "th": "เขียน `broadcast_shape(a, b)` ที่รับ shape สองตัว (tuple) แล้วคืน shape ผลลัพธ์ของ broadcasting เป็น tuple ตามกฎของ NumPy\n\n- จัดให้ตรงกันจากทางขวา เติม 1 ทางซ้ายให้ตัวที่มีมิติน้อยกว่า\n- สองมิติเข้ากันได้เมื่อเท่ากัน หรือตัวหนึ่งเป็น 1 แล้วผลคือ**อีกตัวหนึ่ง** (ระวัง: มิติขนาด 0 broadcast กับ 1 ได้ 0 ไม่ใช่ 1)\n- ถ้าเข้ากันไม่ได้ให้ `raise ValueError`\n\nมี test ซ่อนอยู่บางส่วน",
+    "en": "Write `broadcast_shape(a, b)`. It takes two shapes (tuples) and returns the broadcast result shape as a tuple, following NumPy's rules.\n\n- Align from the right, padding the shorter shape with 1s on the left.\n- Two sizes are compatible when they are equal, or one is 1, and then the result is **the other one** (careful: a size-0 axis broadcast with 1 gives 0, not 1).\n- If they are incompatible, `raise ValueError`.\n\nSome tests are hidden."
+  },
+  "hints": [
+    {"th": "เติม 1 ด้านซ้าย: `a = (1,) * (n - len(a)) + tuple(a)` โดย `n = max(len(a), len(b))` แล้วทำแบบเดียวกันกับ b", "en": "Pad on the left: `a = (1,) * (n - len(a)) + tuple(a)` with `n = max(len(a), len(b))`, and the same for b."},
+    {"th": "เทียบทีละคู่: ถ้าเท่ากันใช้ค่านั้น ถ้าตัวหนึ่งเป็น 1 ใช้อีกตัว ไม่อย่างนั้น raise ValueError", "en": "Compare pair by pair: equal gives that size, a 1 gives the other size, anything else raises ValueError."},
+    {"th": "อย่าใช้ `max(x, y)`: ใช้ได้เกือบทุกกรณี ยกเว้น `(0,)` กับ `(1,)` ที่ต้องได้ `(0,)`", "en": "Don't use `max(x, y)`: it works almost everywhere, except `(0,)` with `(1,)`, which must give `(0,)`."}
+  ]
+}

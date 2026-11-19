@@ -1,0 +1,13 @@
+{
+  "minutes": 35,
+  "title": {"th": "einsum ตั้งแต่ศูนย์", "en": "einsum from scratch"},
+  "prompt": {
+    "th": "แบบฝึกหัดที่ 3 ของบทเรียน: เขียน `einsum(subscripts, *arrays)` ที่ทำงานกับ list ซ้อนกัน (ไม่ใช้ NumPy) และรองรับรูปแบบที่มี `->` เสมอ เช่น `\"i,i->\"`, `\"ik,kj->ij\"`, `\"i,j->ij\"`, `\"ij->ji\"`, `\"ii->\"` (trace) และ `\"bij,bjk->bik\"`\n\n- ตัวอักษรที่อยู่ในขาเข้าแต่ไม่อยู่ในขาออกถูกรวม (sum) ตัวที่อยู่ในขาออกเรียงตามลำดับที่เขียนหลัง `->`\n- ตัวอักษรเดียวกันต้องมีขนาดเท่ากันทุกที่ (รวมถึง `ii` ในเทนเซอร์เดียวกัน) ไม่อย่างนั้นให้ `raise ValueError`\n- ขาออกที่ไม่มีตัวอักษร (`->` ตามด้วยว่าง) คืนตัวเลขตัวเดียว\n\nวิธีที่ตรงไปตรงมา: วนทุกชุดค่าของทุกตัวอักษร (`itertools.product`) คูณค่าจากทุกขาเข้า แล้วบวกเข้าตำแหน่งขาออก มี test ซ่อนอยู่บางส่วน",
+    "en": "The lesson's Exercise 3: write `einsum(subscripts, *arrays)` for nested lists (no NumPy), always in the form with `->`, such as `\"i,i->\"`, `\"ik,kj->ij\"`, `\"i,j->ij\"`, `\"ij->ji\"`, `\"ii->\"` (trace) and `\"bij,bjk->bik\"`.\n\n- Letters in the inputs but not in the output are summed. Output letters are laid out in the order written after `->`.\n- A letter must have the same size everywhere it appears (including `ii` within one array); otherwise `raise ValueError`.\n- An output with no letters (nothing after `->`) returns a single number.\n\nA direct method: loop over every combination of values of every letter (`itertools.product`), multiply the values from all inputs, and add into the output position. Some tests are hidden."
+  },
+  "hints": [
+    {"th": "หา shape ของ list ซ้อนด้วยการเดินลง `a[0]` ไปเรื่อย ๆ แล้วเก็บ `sizes[ตัวอักษร]` ถ้าเจอตัวอักษรเดิมแต่ขนาดต่างให้ raise ValueError", "en": "Find a nested list's shape by walking down `a[0]`, and record `sizes[letter]`; if a letter comes back with a different size, raise ValueError."},
+    {"th": "สร้างขาออกเป็นศูนย์ตาม shape ของตัวอักษรหลัง `->` ด้วยฟังก์ชันเรียกตัวเองซ้ำ แล้วในลูป `env = dict(zip(letters, combo))` ใช้ `env` หาดัชนีของแต่ละขาเข้าและของขาออก", "en": "Build a zero output from the letters after `->` with a recursive helper; inside the loop, `env = dict(zip(letters, combo))` gives the indices for every input and for the output."},
+    {"th": "บวกเข้าตำแหน่งขาออก (`+=`) อย่ากำหนดทับ (`=`) เพราะหลายชุดค่าตกที่ตำแหน่งเดียวกัน และอย่าเรียงตัวอักษรของขาออกใหม่ `\"ij->ji\"` ต้องได้ transpose", "en": "Add into the output position (`+=`), don't assign (`=`): many combinations land in the same place. And don't reorder the output letters: `\"ij->ji\"` must transpose."}
+  ]
+}

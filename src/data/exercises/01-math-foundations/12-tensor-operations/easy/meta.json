@@ -1,0 +1,13 @@
+{
+  "minutes": 6,
+  "title": {"th": "เติมโค้ด: strides แบบเรียงตามแถว", "en": "Fill in: row-major strides"},
+  "prompt": {
+    "th": "เติม `compute_strides(shape)` ให้คืน strides (หน่วยเป็นจำนวนสมาชิก) ของเทนเซอร์ที่ต่อเนื่องแบบเรียงตามแถว เป็น tuple แกนสุดท้ายมี stride 1 และ stride ของแกน i คือ stride ของแกน i + 1 คูณขนาดของแกน i + 1 เช่น shape `(3, 4)` ได้ `(4, 1)` เติมบรรทัดที่มี `# TODO`",
+    "en": "Complete `compute_strides(shape)` so it returns the strides (in elements) of a contiguous row-major tensor, as a tuple. The last axis has stride 1, and the stride of axis i is the stride of axis i + 1 times the size of axis i + 1. For example, shape `(3, 4)` gives `(4, 1)`. Fill in the `# TODO` line."
+  },
+  "hints": [
+    {"th": "ลูปเดินจากแกนรองสุดท้ายย้อนไปแกนแรก (`range(len(shape) - 2, -1, -1)`) เพราะแต่ละ stride ขึ้นกับตัวทางขวา", "en": "The loop walks from the second-last axis back to the first (`range(len(shape) - 2, -1, -1)`), because each stride depends on the one to its right."},
+    {"th": "ใช้ขนาดของแกน i + 1 ไม่ใช่แกน i", "en": "Use the size of axis i + 1, not axis i."},
+    {"th": "`strides[i] = strides[i + 1] * shape[i + 1]`", "en": "`strides[i] = strides[i + 1] * shape[i + 1]`"}
+  ]
+}
