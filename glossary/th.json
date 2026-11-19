@@ -1177,6 +1177,77 @@
       "en": "commutative",
       "th": "สลับที่ได้",
       "first": "สมบัติการสลับที่ (commutative)"
+    },
+    {
+      "en": "partial derivative",
+      "th": "อนุพันธ์ย่อย",
+      "first": "อนุพันธ์ย่อย (partial derivative)"
+    },
+    {
+      "en": "numerical derivative",
+      "th": "อนุพันธ์เชิงตัวเลข",
+      "first": "อนุพันธ์เชิงตัวเลข (numerical derivative)"
+    },
+    {
+      "en": "central difference",
+      "th": "ผลต่างกลาง",
+      "first": "ผลต่างกลาง (central difference)"
+    },
+    {
+      "en": "tangent line",
+      "th": "เส้นสัมผัส"
+    },
+    {
+      "en": "chain rule",
+      "th": "กฎลูกโซ่",
+      "first": "กฎลูกโซ่ (chain rule)"
+    },
+    {
+      "en": "Hessian",
+      "th": "Hessian"
+    },
+    {
+      "en": "Jacobian",
+      "th": "จาโคเบียน",
+      "first": "จาโคเบียน (Jacobian)"
+    },
+    {
+      "en": "Taylor series",
+      "th": "อนุกรมเทย์เลอร์",
+      "first": "อนุกรมเทย์เลอร์ (Taylor series)"
+    },
+    {
+      "en": "integral",
+      "th": "ปริพันธ์",
+      "first": "ปริพันธ์ (integral)"
+    },
+    {
+      "en": "critical point",
+      "th": "จุดวิกฤต",
+      "first": "จุดวิกฤต (critical point)"
+    },
+    {
+      "en": "positive definite / negative definite / indefinite",
+      "th": "บวกแน่นอน / ลบแน่นอน / ไม่แน่นอน"
+    },
+    {
+      "en": "global minimum / local minimum",
+      "th": "ค่าต่ำสุดวงกว้าง / ค่าต่ำสุดเฉพาะที่"
+    },
+    {
+      "en": "Newton's method",
+      "th": "วิธีของนิวตัน",
+      "first": "วิธีของนิวตัน (Newton's method)"
+    },
+    {
+      "en": "expected value",
+      "th": "ค่าคาดหมาย",
+      "first": "ค่าคาดหมาย (expected value)"
+    },
+    {
+      "en": "contour plot",
+      "th": "แผนภาพเส้นชั้น",
+      "first": "แผนภาพเส้นชั้น (contour plot)"
     }
   ]
 }

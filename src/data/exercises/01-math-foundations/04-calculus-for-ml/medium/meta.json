@@ -1,0 +1,13 @@
+{
+  "minutes": 15,
+  "title": {"th": "เทรนเส้นตรงด้วย gradient descent", "en": "Train a line with gradient descent"},
+  "prompt": {
+    "th": "เขียน `fit_line(xs, ys, lr, epochs)` ที่หา w และ b ของ y = w*x + b ด้วย gradient descent แบบทั้ง batch บนค่าเฉลี่ยความคลาดเคลื่อนกำลังสอง (MSE) แบบขั้นที่ 8 ของบทเรียน แล้วคืน `(w, b)`\n\n- เริ่มจาก `w = 0.0` และ `b = 0.0`\n- แต่ละ epoch: คำนวณ `dw` และ `db` เป็นค่าเฉลี่ยของ `2 * error * x` และ `2 * error` ทุกจุด โดย `error = w * x + b - y` แล้วจึงอัปเดต `w` และ `b` พร้อมกัน\n- `epochs = 0` คืน `(0.0, 0.0)`\n\nมี test ซ่อนอยู่บางส่วน",
+    "en": "Write `fit_line(xs, ys, lr, epochs)`. It finds w and b of y = w*x + b by full-batch gradient descent on the mean squared error, like Step 8 of the lesson, and returns `(w, b)`.\n\n- Start from `w = 0.0` and `b = 0.0`.\n- Each epoch: compute `dw` and `db` as the means of `2 * error * x` and `2 * error` over all points, with `error = w * x + b - y`, and only then update `w` and `b` together.\n- `epochs = 0` returns `(0.0, 0.0)`.\n\nSome tests are hidden."
+  },
+  "hints": [
+    {"th": "ในแต่ละ epoch ให้ตั้ง `dw = db = 0.0` แล้ววนทุกคู่ `(x, y)` เพื่อสะสม gradient ก่อน ยังไม่ต้องแตะ w และ b", "en": "In each epoch set `dw = db = 0.0` and loop over every `(x, y)` pair to add up the gradient first, without touching w and b yet."},
+    {"th": "หลังวนครบทุกจุดแล้ว หารด้วย `len(xs)` เพื่อให้ได้ค่าเฉลี่ย", "en": "After the loop over the points, divide by `len(xs)` to get the means."},
+    {"th": "ถ้าอัปเดต w ก่อนคำนวณ db หรืออัปเดตทีละจุด ค่าจะต่างจากที่กำหนด ให้อัปเดตครั้งเดียวต่อ epoch: `w -= lr * dw / n` และ `b -= lr * db / n`", "en": "Updating w before computing db, or updating after each point, gives different numbers. Update once per epoch: `w -= lr * dw / n` and `b -= lr * db / n`."}
+  ]
+}

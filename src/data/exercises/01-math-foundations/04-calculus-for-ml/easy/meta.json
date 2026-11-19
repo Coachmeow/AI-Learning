@@ -1,0 +1,13 @@
+{
+  "minutes": 5,
+  "title": {"th": "เติมโค้ด: อนุพันธ์แบบผลต่างกลาง", "en": "Fill in: central-difference derivative"},
+  "prompt": {
+    "th": "เติม `numerical_derivative(f, x, h)` ให้คืนค่าประมาณของ f'(x) ด้วยผลต่างกลาง (central difference): ความชันระหว่างจุด x - h กับ x + h เติมบรรทัดที่มี `# TODO`",
+    "en": "Complete `numerical_derivative(f, x, h)` so it returns an estimate of f'(x) by the central difference: the slope between x - h and x + h. Fill in the `# TODO` line."
+  },
+  "hints": [
+    {"th": "ความชัน = (ผลต่างของค่าฟังก์ชัน) / (ระยะห่างของสองจุด) และระยะห่างระหว่าง x - h กับ x + h คือ 2h", "en": "Slope = (difference in function values) / (distance between the points), and the distance from x - h to x + h is 2h."},
+    {"th": "อย่าใช้ `(f(x + h) - f(x)) / h` แบบนั้นคือผลต่างไปข้างหน้า ซึ่งคลาดเคลื่อนมากกว่า", "en": "Don't use `(f(x + h) - f(x)) / h`: that is the forward difference, which is less accurate."},
+    {"th": "`return (f(x + h) - f(x - h)) / (2 * h)`", "en": "`return (f(x + h) - f(x - h)) / (2 * h)`"}
+  ]
+}

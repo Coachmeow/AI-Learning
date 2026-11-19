@@ -1,0 +1,13 @@
+{
+  "minutes": 30,
+  "title": {"th": "จำแนกจุดวิกฤตด้วย Hessian", "en": "Classify a critical point with the Hessian"},
+  "prompt": {
+    "th": "เขียน `classify(f, x, y, h=1e-4)` ที่บอกว่าจุด (x, y) ของฟังก์ชัน `f(x, y)` เป็น `'minimum'`, `'maximum'`, `'saddle'` หรือ `'unknown'`\n\n1. หา gradient ด้วยผลต่างกลางที่ใช้ `h` ถ้าค่าสัมบูรณ์ของส่วนประกอบใดเกิน `1e-6` แปลว่าไม่ใช่จุดวิกฤต ให้ `raise ValueError`\n2. หา Hessian เชิงตัวเลขด้วยสูตรใน `hessian_2d` ขั้นที่ 6 ของบทเรียน (ใช้ `h` เดียวกัน)\n3. หาค่าลักษณะเฉพาะทั้งสองของ Hessian (เป็นเมทริกซ์สมมาตร จึงเป็นจำนวนจริงเสมอ)\n4. ทั้งสองค่ามากกว่า `1e-6`: `'minimum'` ทั้งสองค่าน้อยกว่า `-1e-6`: `'maximum'` ค่าหนึ่งมากกว่า `1e-6` และอีกค่าน้อยกว่า `-1e-6`: `'saddle'` กรณีอื่น (มีค่าที่ใกล้ศูนย์) การทดสอบตัดสินไม่ได้: `'unknown'`\n\nมี test ซ่อนอยู่บางส่วน",
+    "en": "Write `classify(f, x, y, h=1e-4)`. It says whether the point (x, y) of the function `f(x, y)` is a `'minimum'`, `'maximum'`, `'saddle'` or `'unknown'`.\n\n1. Estimate the gradient by central differences with step `h`. If either component's absolute value is above `1e-6`, it is not a critical point: `raise ValueError`.\n2. Estimate the Hessian with the formulas of `hessian_2d` in Step 6 of the lesson (same `h`).\n3. Find the two eigenvalues of the Hessian (it is symmetric, so they are always real).\n4. Both above `1e-6`: `'minimum'`. Both below `-1e-6`: `'maximum'`. One above `1e-6` and the other below `-1e-6`: `'saddle'`. Anything else (an eigenvalue near zero) means the test can't decide: `'unknown'`.\n\nSome tests are hidden."
+  },
+  "hints": [
+    {"th": "gradient: `gx = (f(x + h, y) - f(x - h, y)) / (2 * h)` และ `gy` แบบเดียวกันในแกน y ใช้ผลต่างกลาง ไม่ใช่ผลต่างไปข้างหน้า ซึ่งคลาดเคลื่อนราว h เกินเกณฑ์ 1e-6", "en": "Gradient: `gx = (f(x + h, y) - f(x - h, y)) / (2 * h)`, and `gy` the same along y. Use central differences: a forward difference is off by about h, which is above the 1e-6 limit."},
+    {"th": "ดูแค่ fxx กับ fyy ไม่พอ: x² + 4xy + y² มีช่องทแยงมุมเป็นบวกทั้งคู่แต่เป็นจุดอานม้า ต้องใช้ค่าลักษณะเฉพาะที่รวม fxy ด้วย", "en": "Looking at fxx and fyy alone is not enough: x² + 4xy + y² has both diagonal entries positive but is a saddle. Use the eigenvalues, which include fxy."},
+    {"th": "สำหรับ [[p, q], [q, r]]: `mid = (p + r) / 2`, `spread = (((p - r) / 2) ** 2 + q ** 2) ** 0.5` ค่าลักษณะเฉพาะคือ `mid + spread` และ `mid - spread`", "en": "For [[p, q], [q, r]]: `mid = (p + r) / 2`, `spread = (((p - r) / 2) ** 2 + q ** 2) ** 0.5`. The eigenvalues are `mid + spread` and `mid - spread`."}
+  ]
+}

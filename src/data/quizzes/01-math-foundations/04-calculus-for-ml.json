@@ -1,0 +1,487 @@
+{
+  "lesson": "01-math-foundations/04-calculus-for-ml",
+  "source_hash": "026ef098b0d57e79d611ba10046c2c2db884e71e3349e4bf6c2f199050325b4d",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What does the derivative of a function at a point tell you?",
+        "th": "อนุพันธ์ของฟังก์ชันที่จุดหนึ่งบอกอะไรเรา?"
+      },
+      "options": [
+        {
+          "en": "The maximum value the function can reach",
+          "th": "ค่าสูงสุดที่ฟังก์ชันไปถึงได้"
+        },
+        {
+          "en": "The area under the function up to that point",
+          "th": "พื้นที่ใต้ฟังก์ชันจนถึงจุดนั้น"
+        },
+        {
+          "en": "The rate of change (slope) of the function at that point",
+          "th": "อัตราการเปลี่ยนแปลง (ความชัน) ของฟังก์ชันที่จุดนั้น"
+        },
+        {
+          "en": "The value of the function at that point",
+          "th": "ค่าของฟังก์ชันที่จุดนั้น"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "The derivative f'(x) measures how much the output changes per unit change in input. Geometrically, it is the slope of the tangent line at that point.",
+        "th": "อนุพันธ์ f'(x) วัดว่าขาออกเปลี่ยนไปเท่าไรต่อการเปลี่ยนขาเข้าหนึ่งหน่วย ในเชิงเรขาคณิตมันคือความชันของเส้นสัมผัสที่จุดนั้น"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What is a gradient in the context of machine learning?",
+        "th": "Gradient ในบริบทของ machine learning คืออะไร?"
+      },
+      "options": [
+        {
+          "en": "The difference between predicted and actual values",
+          "th": "ผลต่างระหว่างค่าที่ทำนายกับค่าจริง"
+        },
+        {
+          "en": "A measure of model accuracy",
+          "th": "ตัววัดความแม่นยำของโมเดล"
+        },
+        {
+          "en": "A vector of all partial derivatives that points in the direction of steepest ascent",
+          "th": "เวกเตอร์ของอนุพันธ์ย่อยทั้งหมด ซึ่งชี้ไปทางที่ชันขึ้นมากที่สุด"
+        },
+        {
+          "en": "The learning rate used during training",
+          "th": "learning rate ที่ใช้ระหว่างเทรน"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "The gradient collects every partial derivative into one vector. It points in the direction that increases the function fastest. To minimize loss, you move opposite the gradient.",
+        "th": "Gradient รวมอนุพันธ์ย่อยทุกตัวไว้ในเวกเตอร์เดียว มันชี้ไปทางที่ทำให้ฟังก์ชันเพิ่มเร็วที่สุด ถ้าจะลด loss ให้เดินไปทางตรงข้ามกับ gradient"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "For f(x) = x², what is the slope at x = 3?",
+        "th": "สำหรับ f(x) = x² ความชันที่ x = 3 เป็นเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "9",
+          "th": "9"
+        },
+        {
+          "en": "3",
+          "th": "3"
+        },
+        {
+          "en": "6",
+          "th": "6"
+        },
+        {
+          "en": "2",
+          "th": "2"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "The derivative of x² is 2x, so the slope at x = 3 is 6. The value 9 is f(3), the height, not the slope.",
+        "th": "อนุพันธ์ของ x² คือ 2x ความชันที่ x = 3 จึงเป็น 6 ส่วน 9 คือ f(3) ซึ่งเป็นความสูง ไม่ใช่ความชัน"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "To make a loss smaller, which way does gradient descent move the weights?",
+        "th": "เพื่อให้ loss ลดลง gradient descent ขยับน้ำหนักไปทางไหน?"
+      },
+      "options": [
+        {
+          "en": "Opposite to the gradient",
+          "th": "ทางตรงข้ามกับ gradient"
+        },
+        {
+          "en": "Along the gradient",
+          "th": "ตามทิศของ gradient"
+        },
+        {
+          "en": "At right angles to the gradient",
+          "th": "ตั้งฉากกับ gradient"
+        },
+        {
+          "en": "In a random direction",
+          "th": "ทิศสุ่ม"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The gradient points uphill, the way the loss grows fastest. Gradient descent subtracts it, so it steps downhill.",
+        "th": "Gradient ชี้ขึ้นเขา คือทางที่ loss เพิ่มเร็วที่สุด gradient descent ลบมันออก จึงก้าวลงเขา"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "What usually happens when the learning rate is much too large?",
+        "th": "ถ้า learning rate ใหญ่เกินไปมาก มักเกิดอะไรขึ้น?"
+      },
+      "options": [
+        {
+          "en": "Training becomes slower but more precise",
+          "th": "การเทรนช้าลงแต่แม่นขึ้น"
+        },
+        {
+          "en": "The steps overshoot the minimum, and the loss can bounce around or grow",
+          "th": "ก้าวเลยจุดต่ำสุดไป loss อาจแกว่งไปมาหรือเพิ่มขึ้น"
+        },
+        {
+          "en": "Nothing changes, since only the direction matters",
+          "th": "ไม่มีอะไรเปลี่ยน เพราะทิศทางเท่านั้นที่สำคัญ"
+        },
+        {
+          "en": "The gradient becomes zero",
+          "th": "gradient กลายเป็นศูนย์"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The learning rate sets the step size. Too large and each step jumps past the bottom of the valley, so the loss bounces or diverges. Too small and training crawls.",
+        "th": "learning rate กำหนดขนาดก้าว ถ้าใหญ่เกิน แต่ละก้าวกระโดดข้ามก้นหุบไป loss จึงแกว่งหรือลู่ออก ถ้าเล็กเกิน การเทรนก็คืบช้า ๆ"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "In gradient descent, what does the update rule 'w = w - lr * dL/dw' accomplish?",
+        "th": "ใน gradient descent กฎการอัปเดต 'w = w - lr * dL/dw' ทำอะไร?"
+      },
+      "options": [
+        {
+          "en": "It normalizes the weight to have magnitude 1",
+          "th": "ทำให้น้ำหนักมีขนาดเป็น 1"
+        },
+        {
+          "en": "It increases the loss to test model robustness",
+          "th": "เพิ่ม loss เพื่อทดสอบความทนทานของโมเดล"
+        },
+        {
+          "en": "It resets the weight to its initial value minus the gradient",
+          "th": "รีเซ็ตน้ำหนักกลับไปเป็นค่าเริ่มต้นลบด้วย gradient"
+        },
+        {
+          "en": "It adjusts each weight in the direction that reduces the loss, scaled by the learning rate",
+          "th": "ปรับน้ำหนักแต่ละตัวไปทางที่ลด loss โดยปรับขนาดด้วย learning rate"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "dL/dw tells you which direction increases the loss. Subtracting it (times the learning rate) moves the weight in the direction that decreases the loss. This is repeated for every weight in the model.",
+        "th": "dL/dw บอกว่าทางไหนทำให้ loss เพิ่ม การลบมันออก (คูณ learning rate) ทำให้น้ำหนักขยับไปทางที่ loss ลดลง และทำซ้ำกับน้ำหนักทุกตัวในโมเดล"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "Why can't Newton's method (which uses the Hessian matrix) be directly applied to neural networks with millions of parameters?",
+        "th": "ทำไมจึงใช้วิธีของนิวตัน (ซึ่งใช้เมทริกซ์ Hessian) กับโครงข่ายประสาทเทียมที่มีพารามิเตอร์เป็นล้านตัวโดยตรงไม่ได้?"
+      },
+      "options": [
+        {
+          "en": "Newton's method converges too slowly for deep networks",
+          "th": "วิธีของนิวตันลู่เข้าช้าเกินไปสำหรับโครงข่ายลึก"
+        },
+        {
+          "en": "The Hessian is an N x N matrix, requiring O(N^2) storage and O(N^3) computation per step, which is intractable for millions of parameters",
+          "th": "Hessian เป็นเมทริกซ์ N x N ต้องใช้หน่วยความจำ O(N^2) และการคำนวณ O(N^3) ต่อก้าว ซึ่งทำไม่ได้จริงเมื่อมีพารามิเตอร์เป็นล้าน"
+        },
+        {
+          "en": "Newton's method requires analytical derivatives which cannot be computed for neural networks",
+          "th": "วิธีของนิวตันต้องใช้อนุพันธ์เชิงวิเคราะห์ ซึ่งคำนวณไม่ได้สำหรับโครงข่ายประสาทเทียม"
+        },
+        {
+          "en": "Newton's method only works for convex functions",
+          "th": "วิธีของนิวตันใช้ได้กับฟังก์ชันคอนเวกซ์เท่านั้น"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "For N=1 million parameters, the Hessian has 1 trillion entries. Computing and inverting it is impossible. This is why we use first-order methods (SGD, Adam) that approximate second-order information cheaply.",
+        "th": "เมื่อ N = 1 ล้านพารามิเตอร์ Hessian มีล้านล้านช่อง การคำนวณและหาเมทริกซ์ผกผันของมันเป็นไปไม่ได้ เราจึงใช้วิธีอันดับหนึ่ง (SGD, Adam) ที่ประมาณข้อมูลอันดับสองได้ในราคาถูก"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "What is the numerical (central difference) approximation for f'(x)?",
+        "th": "การประมาณ f'(x) เชิงตัวเลขแบบผลต่างกลาง (central difference) คืออะไร?"
+      },
+      "options": [
+        {
+          "en": "(f(x+h) - f(x)) / h",
+          "th": "(f(x+h) - f(x)) / h"
+        },
+        {
+          "en": "f(x) * h",
+          "th": "f(x) * h"
+        },
+        {
+          "en": "(f(x+h) - f(x-h)) / (2*h)",
+          "th": "(f(x+h) - f(x-h)) / (2*h)"
+        },
+        {
+          "en": "f(x+h) / h",
+          "th": "f(x+h) / h"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "The central difference (f(x+h) - f(x-h)) / (2h) is more accurate than the forward difference because it averages the slope on both sides of x, canceling out the leading error term.",
+        "th": "ผลต่างกลาง (f(x+h) - f(x-h)) / (2h) แม่นกว่าผลต่างไปข้างหน้า เพราะมันเฉลี่ยความชันทั้งสองฝั่งของ x ทำให้พจน์ความคลาดเคลื่อนหลักหักล้างกันไป"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "For f(x, y) = x² + 3xy + y², what is the gradient at (1, 2)?",
+        "th": "สำหรับ f(x, y) = x² + 3xy + y² gradient ที่จุด (1, 2) คืออะไร?"
+      },
+      "options": [
+        {
+          "en": "[2, 4]",
+          "th": "[2, 4]"
+        },
+        {
+          "en": "[7, 8]",
+          "th": "[7, 8]"
+        },
+        {
+          "en": "[5, 5]",
+          "th": "[5, 5]"
+        },
+        {
+          "en": "[8, 7]",
+          "th": "[8, 7]"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "∂f/∂x = 2x + 3y = 2 + 6 = 8 and ∂f/∂y = 3x + 2y = 3 + 4 = 7. The cross term 3xy adds to both partial derivatives; [2, 4] ignores it.",
+        "th": "∂f/∂x = 2x + 3y = 2 + 6 = 8 และ ∂f/∂y = 3x + 2y = 3 + 4 = 7 พจน์ไขว้ 3xy ส่งผลต่ออนุพันธ์ย่อยทั้งสองตัว ส่วน [2, 4] ลืมพจน์นี้ไป"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "With y = (3x + 1)², what is dy/dx at x = 1?",
+        "th": "เมื่อ y = (3x + 1)² ค่า dy/dx ที่ x = 1 เป็นเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "8",
+          "th": "8"
+        },
+        {
+          "en": "24",
+          "th": "24"
+        },
+        {
+          "en": "16",
+          "th": "16"
+        },
+        {
+          "en": "12",
+          "th": "12"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "By the chain rule, dy/dx = 2(3x + 1) * 3 = 6(3x + 1). At x = 1 that is 6 * 4 = 24. Forgetting the inner derivative 3 gives 8.",
+        "th": "ตามกฎลูกโซ่ dy/dx = 2(3x + 1) * 3 = 6(3x + 1) ที่ x = 1 จึงได้ 6 * 4 = 24 ถ้าลืมอนุพันธ์ของตัวใน (3) จะได้ 8"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "This runs gradient descent on f(x) = x² with lr = 1.0. What happens?",
+        "th": "โค้ดนี้รัน gradient descent บน f(x) = x² ด้วย lr = 1.0 จะเกิดอะไรขึ้น?"
+      },
+      "code": "x = 5.0\nlr = 1.0\nfor step in range(4):\n    x = x - lr * 2 * x\n    print(x)",
+      "options": [
+        {
+          "en": "It reaches 0 after the first step",
+          "th": "ถึง 0 ตั้งแต่ก้าวแรก"
+        },
+        {
+          "en": "It moves slowly towards 0: 4.0, 3.2, ...",
+          "th": "ค่อย ๆ เข้าหา 0: 4.0, 3.2, ..."
+        },
+        {
+          "en": "It jumps between -5.0 and 5.0 for ever",
+          "th": "กระโดดไปมาระหว่าง -5.0 กับ 5.0 ไม่รู้จบ"
+        },
+        {
+          "en": "It grows towards infinity",
+          "th": "โตขึ้นไปจนเป็นอนันต์"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Each step is x - 1.0 * 2x = -x, so x flips sign and never gets closer: -5.0, 5.0, -5.0, 5.0. For this function any lr between 0 and 1 converges, lr = 1 oscillates, and lr above 1 diverges.",
+        "th": "แต่ละก้าวคือ x - 1.0 * 2x = -x ค่า x จึงกลับเครื่องหมายและไม่เข้าใกล้ขึ้นเลย: -5.0, 5.0, -5.0, 5.0 สำหรับฟังก์ชันนี้ lr ระหว่าง 0 ถึง 1 จะลู่เข้า lr = 1 จะแกว่ง และ lr ที่เกิน 1 จะลู่ออก"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "f(x, y) = x² + 4xy + y² has gradient 0 at (0, 0). What kind of point is it?",
+        "th": "f(x, y) = x² + 4xy + y² มี gradient เป็น 0 ที่ (0, 0) จุดนี้เป็นจุดแบบไหน?"
+      },
+      "options": [
+        {
+          "en": "A local minimum, because both diagonal entries of the Hessian are positive",
+          "th": "ค่าต่ำสุดเฉพาะที่ เพราะช่องบนเส้นทแยงมุมของ Hessian เป็นบวกทั้งคู่"
+        },
+        {
+          "en": "A saddle point, because the Hessian [[2, 4], [4, 2]] has eigenvalues 6 and -2",
+          "th": "จุดอานม้า เพราะ Hessian [[2, 4], [4, 2]] มีค่าลักษณะเฉพาะ 6 และ -2"
+        },
+        {
+          "en": "A local maximum, because the cross term is larger than the squares",
+          "th": "ค่าสูงสุดเฉพาะที่ เพราะพจน์ไขว้ใหญ่กว่าพจน์กำลังสอง"
+        },
+        {
+          "en": "You can't tell without the third derivatives",
+          "th": "บอกไม่ได้ถ้าไม่มีอนุพันธ์อันดับสาม"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The Hessian is [[2, 4], [4, 2]]. Its eigenvalues are 6 (along [1, 1]) and -2 (along [1, -1]), mixed signs, so it is a saddle. Along y = -x the function is -2x², which goes down. Positive diagonal entries alone don't make a minimum.",
+        "th": "Hessian คือ [[2, 4], [4, 2]] ค่าลักษณะเฉพาะคือ 6 (ตามทิศ [1, 1]) และ -2 (ตามทิศ [1, -1]) มีทั้งบวกและลบ จึงเป็นจุดอานม้า ตามแนว y = -x ฟังก์ชันคือ -2x² ซึ่งลดลง ช่องทแยงมุมที่เป็นบวกอย่างเดียวไม่ได้ทำให้เป็นค่าต่ำสุด"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "numerical_derivative(lambda x: x**2, 1.0, h=1e-15) returns about 2.11 instead of 2. Why?",
+        "th": "numerical_derivative(lambda x: x**2, 1.0, h=1e-15) คืนค่าประมาณ 2.11 แทนที่จะเป็น 2 เพราะอะไร?"
+      },
+      "options": [
+        {
+          "en": "The central difference only works when h is larger than 1",
+          "th": "ผลต่างกลางใช้ได้เฉพาะเมื่อ h ใหญ่กว่า 1"
+        },
+        {
+          "en": "x**2 has no derivative at x = 1",
+          "th": "x**2 ไม่มีอนุพันธ์ที่ x = 1"
+        },
+        {
+          "en": "f(x + h) and f(x - h) are almost equal, so the subtraction keeps only a few correct digits, and dividing by the tiny 2h magnifies the rounding error",
+          "th": "f(x + h) กับ f(x - h) เกือบเท่ากัน การลบจึงเหลือหลักที่ถูกต้องไม่กี่หลัก และการหารด้วย 2h ที่เล็กมากขยายความคลาดเคลื่อนจากการปัดเศษ"
+        },
+        {
+          "en": "Python stores 1e-15 as exactly zero",
+          "th": "Python เก็บ 1e-15 เป็นศูนย์พอดี"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "A float carries about 16 significant digits. With h = 1e-15 the two values differ only in the last digits, so their difference is mostly rounding noise, and dividing by 2e-15 blows that noise up. The default h = 1e-7 gives 2.00000000006. A smaller h is not always more accurate.",
+        "th": "เลขทศนิยมแบบ float เก็บเลขนัยสำคัญได้ราว 16 หลัก เมื่อ h = 1e-15 ค่าทั้งสองต่างกันแค่หลักท้าย ๆ ผลต่างจึงเป็นสัญญาณรบกวนจากการปัดเศษเกือบทั้งหมด และการหารด้วย 2e-15 ขยายมันให้ใหญ่ขึ้น ค่าตั้งต้น h = 1e-7 ให้ 2.00000000006 h ที่เล็กกว่าจึงไม่ได้แม่นกว่าเสมอไป"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "On f(x) = (x - 2)², starting from x = 10, where does one Newton step x - f'(x)/f''(x) land?",
+        "th": "บน f(x) = (x - 2)² เริ่มจาก x = 10 ก้าวของนิวตัน x - f'(x)/f''(x) หนึ่งก้าวไปตกที่ไหน?"
+      },
+      "options": [
+        {
+          "en": "At x = 2 exactly, because the second-order Taylor model of a quadratic is exact",
+          "th": "ที่ x = 2 พอดี เพราะโมเดลเทย์เลอร์อันดับสองของฟังก์ชันกำลังสองนั้นตรงทุกจุด"
+        },
+        {
+          "en": "At x = 8.4, the same as gradient descent with lr = 0.1",
+          "th": "ที่ x = 8.4 เท่ากับ gradient descent ที่ lr = 0.1"
+        },
+        {
+          "en": "At x = 6, halfway to the minimum",
+          "th": "ที่ x = 6 ครึ่งทางไปจุดต่ำสุด"
+        },
+        {
+          "en": "At x = -6, overshooting the minimum",
+          "th": "ที่ x = -6 เลยจุดต่ำสุดไป"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "f'(10) = 2(10 - 2) = 16 and f''(x) = 2, so the step is 10 - 16 / 2 = 2. Newton's method minimises the quadratic Taylor model, which for a quadratic is the function itself. Gradient descent with lr = 0.1 only reaches 10 - 0.1 * 16 = 8.4.",
+        "th": "f'(10) = 2(10 - 2) = 16 และ f''(x) = 2 ก้าวจึงเป็น 10 - 16 / 2 = 2 วิธีของนิวตันหาค่าต่ำสุดของโมเดลเทย์เลอร์กำลังสอง ซึ่งสำหรับฟังก์ชันกำลังสองก็คือตัวฟังก์ชันเอง ส่วน gradient descent ที่ lr = 0.1 ไปได้แค่ 10 - 0.1 * 16 = 8.4"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "A layer y = W @ x maps 4 inputs to 3 outputs. Which statement about its Jacobian and the backward pass is true?",
+        "th": "ชั้น y = W @ x ส่งขาเข้า 4 ตัวไปเป็นขาออก 3 ตัว ข้อใดถูกต้องเกี่ยวกับจาโคเบียนและ backward pass ของชั้นนี้?"
+      },
+      "options": [
+        {
+          "en": "The Jacobian is 4x3, and dL/dx = W @ dL/dy",
+          "th": "จาโคเบียนมีขนาด 4x3 และ dL/dx = W @ dL/dy"
+        },
+        {
+          "en": "The Jacobian is 3x3, because there are 3 outputs",
+          "th": "จาโคเบียนมีขนาด 3x3 เพราะมีขาออก 3 ตัว"
+        },
+        {
+          "en": "The Jacobian is a single number, the sum of W",
+          "th": "จาโคเบียนเป็นตัวเลขตัวเดียว คือผลรวมของ W"
+        },
+        {
+          "en": "The Jacobian is W itself (3x4), and dL/dx = W.T @ dL/dy has 4 entries",
+          "th": "จาโคเบียนก็คือ W (3x4) และ dL/dx = W.T @ dL/dy มี 4 ช่อง"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Entry (i, j) of the Jacobian is ∂y_i/∂x_j = W[i][j], so the Jacobian is W, an m x n = 3x4 matrix. The gradient flows back through its transpose: W.T (4x3) times dL/dy (3 entries) gives 4 entries, one per input.",
+        "th": "ช่อง (i, j) ของจาโคเบียนคือ ∂y_i/∂x_j = W[i][j] จาโคเบียนจึงเป็น W ซึ่งเป็นเมทริกซ์ m x n = 3x4 gradient ไหลย้อนกลับผ่าน transpose ของมัน: W.T (4x3) คูณ dL/dy (3 ช่อง) ได้ 4 ช่อง หนึ่งช่องต่อขาเข้าหนึ่งตัว"
+      }
+    }
+  ]
+}
