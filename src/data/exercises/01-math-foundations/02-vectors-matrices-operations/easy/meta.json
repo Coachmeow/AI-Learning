@@ -1,0 +1,13 @@
+{
+  "minutes": 6,
+  "title": {"th": "เติมโค้ด: การคูณเมทริกซ์", "en": "Fill in: matrix multiplication"},
+  "prompt": {
+    "th": "เติม `matmul(A, B)` ให้คืนผลคูณเมทริกซ์ของ `A` (m x n) กับ `B` (n x p) เป็น list ของแถวขนาด m x p ช่อง (i, j) คือ dot product ของแถว i ของ `A` กับคอลัมน์ j ของ `B` การตรวจ shape มีให้แล้ว",
+    "en": "Complete `matmul(A, B)` so it returns the matrix product of `A` (m x n) and `B` (n x p) as an m x p list of rows. Cell (i, j) is the dot product of row i of `A` with column j of `B`. The shape check is already there."
+  },
+  "hints": [
+    {"th": "ช่อง (i, j) = `sum(A[i][k] * B[k][j] for k in range(n))`", "en": "Cell (i, j) = `sum(A[i][k] * B[k][j] for k in range(n))`."},
+    {"th": "ห้ามคูณ `A[i][j] * B[i][j]` แบบนั้นคือการคูณทีละสมาชิก", "en": "Don't multiply `A[i][j] * B[i][j]`: that is the element-wise product."},
+    {"th": "`return [[sum(A[i][k] * B[k][j] for k in range(n)) for j in range(p)] for i in range(m)]`", "en": "`return [[sum(A[i][k] * B[k][j] for k in range(n)) for j in range(p)] for i in range(m)]`"}
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "minutes": 15,
+  "title": {"th": "ดีเทอร์มิแนนต์ของเมทริกซ์ n x n", "en": "The determinant of an n x n matrix"},
+  "prompt": {
+    "th": "เขียน `determinant(M)` สำหรับเมทริกซ์จัตุรัสขนาดใดก็ได้ (list ของแถว) ด้วยการกระจายโคแฟกเตอร์ตามแถวแรก แบบในบทเรียน: ขนาด 1x1 คืนค่าช่องเดียว นอกนั้นรวม `(-1)**j * M[0][j] * determinant(minor)` เมื่อ minor คือเมทริกซ์ที่ตัดแถว 0 และคอลัมน์ j ออก ถ้าเมทริกซ์ไม่ใช่จัตุรัสให้ `raise ValueError`",
+    "en": "Write `determinant(M)` for a square matrix of any size (a list of rows) by cofactor expansion along the first row, as in the lesson: a 1x1 matrix returns its single entry; otherwise sum `(-1)**j * M[0][j] * determinant(minor)`, where the minor drops row 0 and column j. If the matrix is not square, `raise ValueError`."
+  },
+  "hints": [
+    {"th": "minor ของคอลัมน์ j: `[row[:j] + row[j + 1:] for row in M[1:]]`", "en": "The minor for column j: `[row[:j] + row[j + 1:] for row in M[1:]]`."},
+    {"th": "เครื่องหมายสลับกัน +, -, +, ... ตามคอลัมน์ ถ้าลืม `(-1)**j` ผลของ 3x3 จะผิด", "en": "The signs alternate +, -, +, ... across the columns; forget `(-1)**j` and 3x3 results come out wrong."},
+    {"th": "ตรวจก่อน: `if any(len(row) != len(M) for row in M): raise ValueError(...)`", "en": "Check first: `if any(len(row) != len(M) for row in M): raise ValueError(...)`."}
+  ]
+}

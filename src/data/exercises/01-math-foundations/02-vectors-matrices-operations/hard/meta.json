@@ -1,0 +1,13 @@
+{
+  "minutes": 30,
+  "title": {"th": "เมทริกซ์ผกผันด้วย Gauss-Jordan", "en": "Inverse by Gauss-Jordan"},
+  "prompt": {
+    "th": "แบบฝึกหัดที่ 2 ของบทเรียนให้หาเมทริกซ์ผกผัน 3x3 ข้อนี้ไปไกลกว่านั้น: เขียน `inverse(A)` สำหรับเมทริกซ์จัตุรัสขนาดใดก็ได้ ด้วยการกำจัดแบบ Gauss-Jordan บนเมทริกซ์แต่งเติม [A | I]\n\n- ในแต่ละคอลัมน์ ให้เลือกแถว pivot ที่ค่า**สัมบูรณ์มากที่สุด**จากแถวที่ยังไม่ใช้ (partial pivoting) แล้วสลับขึ้นมา\n- ถ้าค่าสัมบูรณ์ของ pivot น้อยกว่า `1e-12` ให้ `raise ValueError` เพราะเมทริกซ์เป็นเอกฐาน (รวมถึงเมทริกซ์ที่เป็นเอกฐานแต่เลขทศนิยมไม่ได้ให้ศูนย์พอดี)\n- หารแถว pivot ให้ pivot เป็น 1 แล้วกำจัดคอลัมน์นั้นออกจากแถวอื่นทั้งหมด\n- คืนครึ่งขวาของเมทริกซ์แต่งเติม และห้ามแก้ `A` ที่ส่งเข้ามา\n\nมี test ซ่อนอยู่บางส่วน",
+    "en": "The lesson's Exercise 2 asks for a 3x3 inverse. This goes further: write `inverse(A)` for a square matrix of any size by Gauss-Jordan elimination on the augmented matrix [A | I].\n\n- In each column, pick the unused row with the **largest absolute value** as the pivot (partial pivoting) and swap it up.\n- If the pivot's absolute value is below `1e-12`, `raise ValueError`: the matrix is singular (including singular matrices whose floating-point arithmetic doesn't give an exact zero).\n- Divide the pivot row so the pivot becomes 1, then eliminate that column from every other row.\n- Return the right half of the augmented matrix, and don't change the `A` you are given.\n\nSome tests are hidden."
+  },
+  "hints": [
+    {"th": "สร้าง `aug = [list(map(float, row)) + [1.0 if i == j else 0.0 for j in range(n)] for i, row in enumerate(A)]`", "en": "Build `aug = [list(map(float, row)) + [1.0 if i == j else 0.0 for j in range(n)] for i, row in enumerate(A)]`."},
+    {"th": "เลือก pivot ด้วย `p = max(range(c, n), key=lambda r: abs(aug[r][c]))` การเลือกตัวที่ใหญ่ที่สุดช่วยทั้งกรณี pivot เป็นศูนย์และลดความคลาดเคลื่อน", "en": "Pick the pivot with `p = max(range(c, n), key=lambda r: abs(aug[r][c]))`; taking the largest handles zero pivots and reduces rounding error."},
+    {"th": "หลังหารแถว pivot ด้วย `aug[c][c]` ให้ทุกแถว r ≠ c ทำ `aug[r] = [x - aug[r][c] * y for x, y in zip(aug[r], aug[c])]` (เก็บ `aug[r][c]` ไว้ในตัวแปรก่อน) แล้วคืน `[row[n:] for row in aug]`", "en": "After dividing the pivot row by `aug[c][c]`, for every row r ≠ c do `aug[r] = [x - f * y for x, y in zip(aug[r], aug[c])]` with `f = aug[r][c]` saved first, then return `[row[n:] for row in aug]`."}
+  ]
+}

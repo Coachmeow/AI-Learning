@@ -1,0 +1,486 @@
+{
+  "lesson": "01-math-foundations/02-vectors-matrices-operations",
+  "source_hash": "a5849d742948a87e8ef7c6eb919df6acea0a3808ef61fe27414e9618b4dfb8ea",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "For matrix multiplication (m x n) @ (n x p), what must be true about the dimensions?",
+        "th": "ในการคูณเมทริกซ์ (m x n) @ (n x p) มิติต้องเป็นไปตามเงื่อนไขใด"
+      },
+      "options": [
+        {
+          "en": "The first matrix's rows must equal the second matrix's columns",
+          "th": "จำนวนแถวของเมทริกซ์แรกต้องเท่ากับจำนวนคอลัมน์ของเมทริกซ์ที่สอง"
+        },
+        {
+          "en": "The outer dimensions m and p must match",
+          "th": "มิติด้านนอก m และ p ต้องเท่ากัน"
+        },
+        {
+          "en": "The first matrix's columns must equal the second matrix's rows",
+          "th": "จำนวนคอลัมน์ของเมทริกซ์แรกต้องเท่ากับจำนวนแถวของเมทริกซ์ที่สอง"
+        },
+        {
+          "en": "Every dimension m, n, and p must be equal",
+          "th": "ทุกมิติ m, n และ p ต้องเท่ากัน"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Matrix multiplication requires the number of columns in the first matrix (n) to equal the number of rows in the second matrix (n). The result has shape (m x p).",
+        "th": "การคูณเมทริกซ์ต้องให้จำนวนคอลัมน์ของเมทริกซ์แรก (n) เท่ากับจำนวนแถวของเมทริกซ์ที่สอง (n) ผลลัพธ์มี shape เป็น (m x p)"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "How is the identity matrix defined?",
+        "th": "เมทริกซ์เอกลักษณ์นิยามไว้อย่างไร"
+      },
+      "options": [
+        {
+          "en": "A square matrix that leaves a compatible matrix unchanged when multiplied",
+          "th": "เมทริกซ์จัตุรัสที่เมื่อคูณกับเมทริกซ์ที่คูณกันได้ แล้วเมทริกซ์นั้นไม่เปลี่ยน"
+        },
+        {
+          "en": "A square matrix whose entries are all equal to one",
+          "th": "เมทริกซ์จัตุรัสที่ทุกช่องเป็นหนึ่ง"
+        },
+        {
+          "en": "A transposed matrix whose rows and columns are exchanged",
+          "th": "เมทริกซ์ที่ถูก transpose แล้ว แถวกับคอลัมน์สลับกัน"
+        },
+        {
+          "en": "A square matrix whose diagonal entries are all distinct",
+          "th": "เมทริกซ์จัตุรัสที่ทุกช่องบนเส้นทแยงมุมไม่ซ้ำกัน"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The identity matrix I has ones on the diagonal and zeros everywhere else. Multiplying any matrix by I returns the original matrix unchanged, like multiplying a number by 1.",
+        "th": "เมทริกซ์เอกลักษณ์ I มีเลขหนึ่งบนเส้นทแยงมุมและศูนย์ในช่องอื่นทั้งหมด การคูณเมทริกซ์ใดๆ ด้วย I ได้เมทริกซ์เดิมกลับมา เหมือนการคูณตัวเลขด้วย 1"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "What shape does (128 x 784) @ (784 x 1) produce?",
+        "th": "(128 x 784) @ (784 x 1) ได้ผลลัพธ์ shape อะไร"
+      },
+      "options": [
+        {
+          "en": "(128 x 1)",
+          "th": "(128 x 1)"
+        },
+        {
+          "en": "(784 x 784)",
+          "th": "(784 x 784)"
+        },
+        {
+          "en": "(1 x 128)",
+          "th": "(1 x 128)"
+        },
+        {
+          "en": "It is invalid",
+          "th": "คูณกันไม่ได้"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The inner dimensions (784) match and disappear; the outer ones remain: 128 rows by 1 column, the output of a 784-to-128 layer.",
+        "th": "มิติด้านใน (784) ตรงกันแล้วหายไป เหลือมิติด้านนอก: 128 แถว 1 คอลัมน์ คือผลลัพธ์ของชั้นที่แปลง 784 เป็น 128"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "What is the element-wise product of [[1, 2], [3, 4]] and [[5, 6], [7, 8]]?",
+        "th": "ผลคูณทีละสมาชิกของ [[1, 2], [3, 4]] กับ [[5, 6], [7, 8]] คืออะไร"
+      },
+      "options": [
+        {
+          "en": "[[19, 22], [43, 50]]",
+          "th": "[[19, 22], [43, 50]]"
+        },
+        {
+          "en": "[[5, 12], [21, 32]]",
+          "th": "[[5, 12], [21, 32]]"
+        },
+        {
+          "en": "[[6, 8], [10, 12]]",
+          "th": "[[6, 8], [10, 12]]"
+        },
+        {
+          "en": "70",
+          "th": "70"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Element-wise multiplies matching positions: 1·5, 2·6, 3·7, 4·8. [[19, 22], [43, 50]] is the matrix product.",
+        "th": "การคูณทีละสมาชิกคูณตำแหน่งที่ตรงกัน: 1·5, 2·6, 3·7, 4·8 ส่วน [[19, 22], [43, 50]] คือผลคูณเมทริกซ์"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "What is the determinant of [[1, 2], [3, 4]]?",
+        "th": "ดีเทอร์มิแนนต์ของ [[1, 2], [3, 4]] เท่ากับเท่าไร"
+      },
+      "options": [
+        {
+          "en": "10",
+          "th": "10"
+        },
+        {
+          "en": "-2",
+          "th": "-2"
+        },
+        {
+          "en": "2",
+          "th": "2"
+        },
+        {
+          "en": "0",
+          "th": "0"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "For a 2x2 matrix, ad − bc = 1·4 − 2·3 = −2. It is not zero, so the matrix has an inverse.",
+        "th": "สำหรับเมทริกซ์ 2x2 ใช้ ad − bc = 1·4 − 2·3 = −2 ซึ่งไม่เป็นศูนย์ เมทริกซ์นี้จึงมีตัวผกผัน"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "What is the key difference between element-wise multiplication and matrix multiplication?",
+        "th": "ความต่างหลักระหว่างการคูณทีละสมาชิกกับการคูณเมทริกซ์คืออะไร"
+      },
+      "options": [
+        {
+          "en": "Element-wise multiplication applies only to vectors; matrix multiplication applies only to matrices",
+          "th": "การคูณทีละสมาชิกใช้ได้กับเวกเตอร์เท่านั้น ส่วนการคูณเมทริกซ์ใช้ได้กับเมทริกซ์เท่านั้น"
+        },
+        {
+          "en": "Element-wise multiplication uses matching entries; matrix multiplication uses row-column dot products",
+          "th": "การคูณทีละสมาชิกใช้สมาชิกที่ตำแหน่งตรงกัน ส่วนการคูณเมทริกซ์ใช้ dot product ระหว่างแถวกับคอลัมน์"
+        },
+        {
+          "en": "Element-wise multiplication requires inner dimensions; matrix multiplication requires identical shapes",
+          "th": "การคูณทีละสมาชิกต้องให้มิติด้านในตรงกัน ส่วนการคูณเมทริกซ์ต้องให้ shape เหมือนกัน"
+        },
+        {
+          "en": "Element-wise multiplication changes shapes; matrix multiplication always preserves them",
+          "th": "การคูณทีละสมาชิกเปลี่ยน shape ส่วนการคูณเมทริกซ์คง shape ไว้เสมอ"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Element-wise (Hadamard) product multiplies corresponding elements and requires identical shapes. Matrix multiplication computes dot products between rows and columns with the rule (m,n)@(n,p)=(m,p).",
+        "th": "ผลคูณทีละสมาชิก (Hadamard) คูณสมาชิกที่ตรงกันและต้องการ shape เหมือนกัน ส่วนการคูณเมทริกซ์คำนวณ dot product ระหว่างแถวกับคอลัมน์ตามกฎ (m,n)@(n,p)=(m,p)"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "In the expression 'output = relu(W @ x + b)', what role does broadcasting play?",
+        "th": "ในนิพจน์ 'output = relu(W @ x + b)' broadcasting มีบทบาทอย่างไร"
+      },
+      "options": [
+        {
+          "en": "It distributes the calculation across available compute devices",
+          "th": "กระจายการคำนวณไปยังอุปกรณ์ประมวลผลที่มี"
+        },
+        {
+          "en": "It converts W and x to use the same numeric data type",
+          "th": "แปลง W และ x ให้ใช้ชนิดตัวเลขเดียวกัน"
+        },
+        {
+          "en": "It applies ReLU separately to every position in the output",
+          "th": "ใช้ ReLU แยกกับทุกตำแหน่งของผลลัพธ์"
+        },
+        {
+          "en": "It expands b across compatible batch dimensions before addition",
+          "th": "ขยาย b ไปตามมิติของ batch ที่เข้ากันได้ก่อนบวก"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "For one input, W @ x and b must have the same output shape. For a column-oriented batch shaped (features, batch), use b[:, None] so the bias has shape (outputs, 1) and broadcasts across columns. A one-dimensional b follows trailing-dimension alignment and does not reliably broadcast across the batch axis.",
+        "th": "สำหรับข้อมูลขาเข้าตัวเดียว W @ x กับ b ต้องมี shape ขาออกเดียวกัน ถ้าเป็น batch แบบเรียงตามคอลัมน์ที่มี shape (features, batch) ให้ใช้ b[:, None] เพื่อให้ bias มี shape (outputs, 1) แล้ว broadcast ไปตามคอลัมน์ ส่วน b แบบ 1 มิติจะจัดเรียงตามมิติท้าย และ broadcast ไปตามแกน batch ได้ไม่แน่นอน"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "Which property follows from a zero determinant?",
+        "th": "คุณสมบัติข้อใดตามมาจากดีเทอร์มิแนนต์ที่เป็นศูนย์"
+      },
+      "options": [
+        {
+          "en": "The matrix is singular and cannot have an inverse",
+          "th": "เมทริกซ์เป็นเอกฐานและไม่มีเมทริกซ์ผกผัน"
+        },
+        {
+          "en": "The matrix preserves lengths while rotating the input",
+          "th": "เมทริกซ์รักษาความยาวไว้ขณะหมุนข้อมูลขาเข้า"
+        },
+        {
+          "en": "The matrix is an identity transformation with no scaling",
+          "th": "เมทริกซ์เป็นการแปลงเอกลักษณ์ที่ไม่ปรับขนาดเลย"
+        },
+        {
+          "en": "The matrix contains zero in every row and column",
+          "th": "เมทริกซ์มีศูนย์อยู่ในทุกแถวและทุกคอลัมน์"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "A zero determinant means the transformation collapses space by at least one dimension (e.g., mapping 2D to a line). The matrix has no inverse, and linear systems using it have either no solution or infinitely many.",
+        "th": "ดีเทอร์มิแนนต์ที่เป็นศูนย์แปลว่าการแปลงบีบปริภูมิให้หายไปอย่างน้อยหนึ่งมิติ (เช่น จับ 2 มิติลงเหลือเส้นตรง) เมทริกซ์ไม่มีตัวผกผัน และระบบสมการเชิงเส้นที่ใช้มันจะไม่มีคำตอบหรือมีมากมายไม่สิ้นสุด"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "How does the transpose operation change a matrix?",
+        "th": "การ transpose เปลี่ยนเมทริกซ์อย่างไร"
+      },
+      "options": [
+        {
+          "en": "It replaces every off-diagonal entry with zero",
+          "th": "แทนทุกช่องที่ไม่อยู่บนเส้นทแยงมุมด้วยศูนย์"
+        },
+        {
+          "en": "It exchanges the matrix rows and columns",
+          "th": "สลับแถวกับคอลัมน์ของเมทริกซ์"
+        },
+        {
+          "en": "It guarantees that the matrix has an inverse",
+          "th": "รับประกันว่าเมทริกซ์มีตัวผกผัน"
+        },
+        {
+          "en": "It preserves both angle and length for every vector",
+          "th": "รักษาทั้งมุมและความยาวของทุกเวกเตอร์"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Transposition exchanges rows and columns, so an entry at row i and column j moves to row j and column i.",
+        "th": "การ transpose สลับแถวกับคอลัมน์ ช่องที่อยู่แถว i คอลัมน์ j จะย้ายไปอยู่แถว j คอลัมน์ i"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "What does `inverse_2x2` return for A = [[1, 2], [3, 4]]?",
+        "th": "`inverse_2x2` คืนค่าอะไรสำหรับ A = [[1, 2], [3, 4]]"
+      },
+      "options": [
+        {
+          "en": "[[-2.0, 1.0], [1.5, -0.5]]",
+          "th": "[[-2.0, 1.0], [1.5, -0.5]]"
+        },
+        {
+          "en": "[[4, -2], [-3, 1]]",
+          "th": "[[4, -2], [-3, 1]]"
+        },
+        {
+          "en": "[[1.0, 0.5], [0.33, 0.25]]",
+          "th": "[[1.0, 0.5], [0.33, 0.25]]"
+        },
+        {
+          "en": "[[-4, 2], [3, -1]]",
+          "th": "[[-4, 2], [3, -1]]"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Swap the diagonal, negate the off-diagonal, divide by det = −2: [[4, −2], [−3, 1]] / −2 = [[−2, 1], [1.5, −0.5]]. Taking 1/x of each entry is not an inverse.",
+        "th": "สลับเส้นทแยงมุม เปลี่ยนเครื่องหมายช่องนอกเส้นทแยงมุม แล้วหารด้วย det = −2: [[4, −2], [−3, 1]] / −2 = [[−2, 1], [1.5, −0.5]] การกลับเศษส่วนทีละช่อง (1/x) ไม่ใช่เมทริกซ์ผกผัน"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "With A = [[1, 2], [3, 4]] and B = [[5, 6], [7, 8]], A @ B = [[19, 22], [43, 50]]. What is B @ A?",
+        "th": "ถ้า A = [[1, 2], [3, 4]] และ B = [[5, 6], [7, 8]] แล้ว A @ B = [[19, 22], [43, 50]] ถามว่า B @ A เท่ากับเท่าไร"
+      },
+      "options": [
+        {
+          "en": "The same, [[19, 22], [43, 50]]",
+          "th": "เท่าเดิม [[19, 22], [43, 50]]"
+        },
+        {
+          "en": "[[23, 34], [31, 46]]",
+          "th": "[[23, 34], [31, 46]]"
+        },
+        {
+          "en": "[[19, 43], [22, 50]]",
+          "th": "[[19, 43], [22, 50]]"
+        },
+        {
+          "en": "It is undefined",
+          "th": "หาค่าไม่ได้"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Matrix multiplication is not commutative: B @ A uses B's rows with A's columns, e.g. 5·1 + 6·3 = 23. Order matters, which is why layers must be applied in order.",
+        "th": "การคูณเมทริกซ์สลับที่ไม่ได้ B @ A ใช้แถวของ B กับคอลัมน์ของ A เช่น 5·1 + 6·3 = 23 ลำดับจึงมีผล และเป็นเหตุผลที่ต้องใช้ชั้นต่างๆ ตามลำดับ"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "In the two-layer exercise, W1 is 4x3, W2 is 2x4 and x is 3x1. Which expression is valid?",
+        "th": "ในแบบฝึกหัดโครงข่ายสองชั้น W1 มีขนาด 4x3, W2 มีขนาด 2x4 และ x มีขนาด 3x1 นิพจน์ใดคูณกันได้"
+      },
+      "options": [
+        {
+          "en": "W1 @ W2 @ x",
+          "th": "W1 @ W2 @ x"
+        },
+        {
+          "en": "W2 @ (W1 @ x), giving 2x1",
+          "th": "W2 @ (W1 @ x) ได้ 2x1"
+        },
+        {
+          "en": "x @ W1 @ W2",
+          "th": "x @ W1 @ W2"
+        },
+        {
+          "en": "W1 @ x @ W2",
+          "th": "W1 @ x @ W2"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "W1 @ x is (4x3)(3x1) = 4x1, then W2 @ that is (2x4)(4x1) = 2x1. W1 @ W2 would need 3 = 2, so it fails.",
+        "th": "W1 @ x คือ (4x3)(3x1) = 4x1 แล้ว W2 @ ผลนั้นคือ (2x4)(4x1) = 2x1 ส่วน W1 @ W2 ต้องการให้ 3 = 2 จึงคูณไม่ได้"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Layer outputs have shape (32, 128): 32 examples, 128 features. Which bias broadcasts correctly onto every example?",
+        "th": "ผลลัพธ์ของชั้นมี shape (32, 128): 32 ตัวอย่าง 128 feature bias แบบใด broadcast ไปยังทุกตัวอย่างได้ถูกต้อง"
+      },
+      "options": [
+        {
+          "en": "shape (32,)",
+          "th": "shape (32,)"
+        },
+        {
+          "en": "shape (128,)",
+          "th": "shape (128,)"
+        },
+        {
+          "en": "shape (32, 1)",
+          "th": "shape (32, 1)"
+        },
+        {
+          "en": "shape (1, 32)",
+          "th": "shape (1, 32)"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Broadcasting aligns trailing dimensions: (128,) matches the last axis and is repeated over the 32 rows. (32,) clashes with 128 and raises an error; (32, 1) would add one number per example instead of per feature.",
+        "th": "broadcasting จัดเรียงจากมิติท้าย: (128,) ตรงกับแกนสุดท้ายและถูกทำซ้ำไปทั้ง 32 แถว ส่วน (32,) ชนกับ 128 จึงเกิด error และ (32, 1) จะบวกเลขหนึ่งตัวต่อตัวอย่าง แทนที่จะเป็นต่อ feature"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "A 2-D transformation has determinant −2. What does it do to shapes in the plane?",
+        "th": "การแปลง 2 มิติหนึ่งมีดีเทอร์มิแนนต์ −2 มันทำอะไรกับรูปทรงบนระนาบ"
+      },
+      "options": [
+        {
+          "en": "Shrinks areas to half",
+          "th": "หดพื้นที่ลงครึ่งหนึ่ง"
+        },
+        {
+          "en": "Doubles areas and flips orientation (a mirror image)",
+          "th": "ขยายพื้นที่เป็นสองเท่าและกลับด้าน (เหมือนภาพในกระจก)"
+        },
+        {
+          "en": "Collapses everything to a line",
+          "th": "บีบทุกอย่างลงเป็นเส้นตรง"
+        },
+        {
+          "en": "Rotates by −2 radians",
+          "th": "หมุนไป −2 เรเดียน"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "|det| is the area scale factor (2) and a negative sign means orientation is reversed. Only det = 0 collapses a dimension.",
+        "th": "|det| คือตัวคูณพื้นที่ (2) และเครื่องหมายลบแปลว่ากลับด้าน มีแค่ det = 0 ที่บีบมิติหายไป"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "[[0.1, 0.3], [0.3, 0.9]] is singular (row 2 = 3 × row 1), yet `inverse_2x2` does not raise. Why?",
+        "th": "[[0.1, 0.3], [0.3, 0.9]] เป็นเอกฐาน (แถว 2 = 3 × แถว 1) แต่ `inverse_2x2` กลับไม่เกิด error เพราะอะไร"
+      },
+      "options": [
+        {
+          "en": "The matrix is actually invertible",
+          "th": "เมทริกซ์นี้หาตัวผกผันได้จริง"
+        },
+        {
+          "en": "In floating point, 0.1·0.9 − 0.3·0.3 is about 1.4e-17, not exactly 0, so `det == 0` fails and huge numbers come back; compare with a tolerance instead",
+          "th": "ในเลขทศนิยม 0.1·0.9 − 0.3·0.3 ได้ราว 1.4e-17 ไม่ใช่ 0 พอดี `det == 0` จึงไม่จริง และได้ตัวเลขมหาศาลกลับมา ควรเทียบด้วยค่าคลาดเคลื่อนแทน"
+        },
+        {
+          "en": "`inverse_2x2` only checks 3x3 matrices",
+          "th": "`inverse_2x2` ตรวจเฉพาะเมทริกซ์ 3x3"
+        },
+        {
+          "en": "Python rounds the determinant up to 1",
+          "th": "Python ปัดดีเทอร์มิแนนต์ขึ้นเป็น 1"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "0.1, 0.3 and 0.9 are not exact in binary, so the products differ by a rounding error. Dividing by ~1e-17 gives entries near 1e17. Real code tests `abs(det) < tol`, or uses the condition number.",
+        "th": "0.1, 0.3 และ 0.9 เก็บในเลขฐานสองได้ไม่พอดี ผลคูณจึงต่างกันด้วยความคลาดเคลื่อนจากการปัด การหารด้วยค่าราว 1e-17 ให้ตัวเลขราว 1e17 โค้ดจริงจึงทดสอบ `abs(det) < tol` หรือใช้ condition number"
+      }
+    }
+  ]
+}

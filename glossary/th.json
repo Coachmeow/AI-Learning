@@ -1045,6 +1045,57 @@
     {
       "en": "scalar",
       "th": "สเกลาร์"
+    },
+    {
+      "en": "transpose",
+      "th": "ทรานสโพส",
+      "first": "ทรานสโพส (transpose)"
+    },
+    {
+      "en": "determinant",
+      "th": "ดีเทอร์มิแนนต์",
+      "first": "ดีเทอร์มิแนนต์ (determinant)"
+    },
+    {
+      "en": "identity matrix",
+      "th": "เมทริกซ์เอกลักษณ์",
+      "first": "เมทริกซ์เอกลักษณ์ (identity matrix)"
+    },
+    {
+      "en": "element-wise",
+      "th": "ทีละสมาชิก",
+      "first": "ทีละสมาชิก (element-wise)"
+    },
+    {
+      "en": "matrix multiplication",
+      "th": "การคูณเมทริกซ์"
+    },
+    {
+      "en": "bias (neural network)",
+      "th": "ไบแอส",
+      "first": "ไบแอส (bias)"
+    },
+    {
+      "en": "dense layer / fully connected layer",
+      "th": "dense layer"
+    },
+    {
+      "en": "cofactor expansion",
+      "th": "การกระจายโคแฟกเตอร์",
+      "first": "การกระจายโคแฟกเตอร์ (cofactor expansion)"
+    },
+    {
+      "en": "Gauss-Jordan elimination",
+      "th": "การกำจัดแบบ Gauss-Jordan"
+    },
+    {
+      "en": "partial pivoting",
+      "th": "partial pivoting"
+    },
+    {
+      "en": "augmented matrix",
+      "th": "เมทริกซ์แต่งเติม",
+      "first": "เมทริกซ์แต่งเติม (augmented matrix)"
     }
   ]
 }
