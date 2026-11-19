@@ -1,0 +1,486 @@
+{
+  "lesson": "01-math-foundations/10-dimensionality-reduction",
+  "source_hash": "89100f37ffd02c413aed2b4d4f8986163fa880315dd0f65314ad42f82f8e14a6",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What is the 'curse of dimensionality'?",
+        "th": "'คำสาปของมิติ' (curse of dimensionality) คืออะไร?"
+      },
+      "options": [
+        {
+          "en": "As dimensions grow, distances become meaningless, volume concentrates in corners, and you need exponentially more data",
+          "th": "เมื่อจำนวนมิติเพิ่มขึ้น ระยะทางไร้ความหมาย ปริมาตรกระจุกที่มุม และต้องใช้ข้อมูลมากขึ้นแบบเลขชี้กำลัง"
+        },
+        {
+          "en": "Neural networks cannot process data with more than 100 features",
+          "th": "โครงข่ายประสาทเทียมประมวลผลข้อมูลที่มีมากกว่า 100 คุณลักษณะไม่ได้"
+        },
+        {
+          "en": "High-dimensional data always contains noise",
+          "th": "ข้อมูลมิติสูงมีสัญญาณรบกวนเสมอ"
+        },
+        {
+          "en": "High-dimensional data takes too long to download",
+          "th": "ข้อมูลมิติสูงใช้เวลาดาวน์โหลดนานเกินไป"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "In high dimensions, all pairwise distances converge to similar values, data points spread to corners, and maintaining sample density requires exponentially more data. Dimensionality reduction counteracts these effects.",
+        "th": "ในมิติสูง ระยะห่างของทุกคู่ลู่เข้าสู่ค่าใกล้เคียงกัน จุดข้อมูลกระจายไปที่มุม และการรักษาความหนาแน่นของตัวอย่างต้องใช้ข้อมูลมากขึ้นแบบเลขชี้กำลัง การลดมิติช่วยต้านผลเหล่านี้"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What does PCA find?",
+        "th": "PCA หาอะไร?"
+      },
+      "options": [
+        {
+          "en": "Clusters of similar data points",
+          "th": "กลุ่มของจุดข้อมูลที่คล้ายกัน"
+        },
+        {
+          "en": "The most important features by name",
+          "th": "ชื่อของคุณลักษณะที่สำคัญที่สุด"
+        },
+        {
+          "en": "The orthogonal directions of maximum variance in the data",
+          "th": "ทิศทางที่ตั้งฉากกันซึ่งข้อมูลมีความแปรปรวนมากที่สุด"
+        },
+        {
+          "en": "The optimal number of features to keep",
+          "th": "จำนวนคุณลักษณะที่ควรเก็บไว้"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "PCA computes the eigenvectors of the covariance matrix, which are orthogonal directions ranked by how much data variance they capture. The first principal component points along the direction of maximum spread.",
+        "th": "PCA คำนวณเวกเตอร์ลักษณะเฉพาะของเมทริกซ์ความแปรปรวนร่วม ซึ่งเป็นทิศทางที่ตั้งฉากกันและจัดอันดับตามความแปรปรวนที่เก็บได้ องค์ประกอบหลักตัวแรกชี้ไปตามทิศที่ข้อมูลกระจายมากที่สุด"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "What is the first step of PCA?",
+        "th": "ขั้นแรกของ PCA คืออะไร?"
+      },
+      "options": [
+        {
+          "en": "Sort the features by name",
+          "th": "เรียงคุณลักษณะตามชื่อ"
+        },
+        {
+          "en": "Center the data by subtracting each feature's mean",
+          "th": "จัดข้อมูลให้อยู่กึ่งกลางด้วยการลบค่าเฉลี่ยของแต่ละคุณลักษณะ"
+        },
+        {
+          "en": "Drop the features with the smallest values",
+          "th": "ทิ้งคุณลักษณะที่มีค่าน้อยที่สุด"
+        },
+        {
+          "en": "Run t-SNE",
+          "th": "รัน t-SNE"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "PCA looks for directions of variance around the mean, so it first subtracts the mean of each feature. The covariance, eigendecomposition and projection all work on the centered data.",
+        "th": "PCA หาทิศของความแปรปรวนรอบค่าเฉลี่ย มันจึงลบค่าเฉลี่ยของแต่ละคุณลักษณะออกก่อน ความแปรปรวนร่วม การแยกค่าลักษณะเฉพาะ และการฉาย ล้วนทำบนข้อมูลที่จัดกึ่งกลางแล้ว"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "The eigenvalues of a covariance matrix add up to 8. One component has eigenvalue 2. What is its explained variance ratio?",
+        "th": "ค่าลักษณะเฉพาะของเมทริกซ์ความแปรปรวนร่วมรวมกันได้ 8 องค์ประกอบหนึ่งมีค่าลักษณะเฉพาะ 2 สัดส่วนความแปรปรวนที่อธิบายได้ขององค์ประกอบนี้คือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "0.25",
+          "th": "0.25"
+        },
+        {
+          "en": "2",
+          "th": "2"
+        },
+        {
+          "en": "0.5",
+          "th": "0.5"
+        },
+        {
+          "en": "4",
+          "th": "4"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "explained_ratio = eigenvalue / sum of all eigenvalues = 2 / 8 = 0.25. This component captures a quarter of the total variance.",
+        "th": "explained_ratio = ค่าลักษณะเฉพาะ / ผลรวมของค่าลักษณะเฉพาะทั้งหมด = 2 / 8 = 0.25 องค์ประกอบนี้เก็บความแปรปรวนไว้หนึ่งในสี่ของทั้งหมด"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "A sheet of paper crumpled up in 3D space is a manifold of what dimension?",
+        "th": "กระดาษแผ่นหนึ่งที่ถูกขยำในปริภูมิ 3 มิติเป็น manifold กี่มิติ?"
+      },
+      "options": [
+        {
+          "en": "1",
+          "th": "1"
+        },
+        {
+          "en": "3, because it sits in 3D",
+          "th": "3 เพราะมันอยู่ใน 3 มิติ"
+        },
+        {
+          "en": "2",
+          "th": "2"
+        },
+        {
+          "en": "0",
+          "th": "0"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Locally, any point on the paper is described by 2 numbers (how far along and how far across), however it is folded in 3D. That is why high-dimensional data can need only a few coordinates.",
+        "th": "จุดใด ๆ บนกระดาษบรรยายได้ด้วยตัวเลข 2 ตัวในบริเวณใกล้ ๆ (ไปตามยาวเท่าไร และไปตามกว้างเท่าไร) ไม่ว่ามันจะถูกพับใน 3 มิติอย่างไร นี่คือเหตุผลที่ข้อมูลมิติสูงอาจต้องใช้พิกัดแค่ไม่กี่ตัว"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "After running PCA on 784-dimensional MNIST data with k=50 components, you find 95% of variance is captured. What does this tell you?",
+        "th": "หลังรัน PCA กับข้อมูล MNIST 784 มิติด้วย k=50 องค์ประกอบ คุณพบว่าเก็บความแปรปรวนได้ 95% สิ่งนี้บอกอะไร?"
+      },
+      "options": [
+        {
+          "en": "95% of images belong to the same class",
+          "th": "ภาพ 95% อยู่ในคลาสเดียวกัน"
+        },
+        {
+          "en": "The data effectively lives in a ~50-dimensional subspace; the remaining 734 dimensions are mostly noise or redundancy",
+          "th": "ข้อมูลอยู่ในปริภูมิย่อยราว 50 มิติจริง ๆ ส่วนอีก 734 มิติที่เหลือส่วนใหญ่เป็นสัญญาณรบกวนหรือความซ้ำซ้อน"
+        },
+        {
+          "en": "The model will achieve 95% accuracy",
+          "th": "โมเดลจะแม่นยำ 95%"
+        },
+        {
+          "en": "Only 50 pixels matter in each image",
+          "th": "แต่ละภาพมีแค่ 50 พิกเซลที่สำคัญ"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "95% explained variance with 50 components means the essential structure of 784-dimensional data is captured by just 50 directions. The rest carries only 5% of the variation -- mostly noise.",
+        "th": "ความแปรปรวนที่อธิบายได้ 95% ด้วย 50 องค์ประกอบแปลว่าโครงสร้างสำคัญของข้อมูล 784 มิติถูกเก็บไว้ด้วยทิศทางเพียง 50 ทิศ ที่เหลือมีความแปรผันแค่ 5% ซึ่งส่วนใหญ่เป็นสัญญาณรบกวน"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "Why should you NOT use t-SNE as preprocessing before training a classifier?",
+        "th": "ทำไมจึงไม่ควรใช้ t-SNE เป็นขั้นเตรียมข้อมูลก่อนเทรนตัวจำแนก?"
+      },
+      "options": [
+        {
+          "en": "t-SNE is designed for visualization only: it distorts global distances, is stochastic, and the output coordinates have no consistent meaning across runs",
+          "th": "t-SNE ออกแบบมาเพื่อการแสดงภาพเท่านั้น: มันบิดเบือนระยะทางภาพรวม มีความสุ่ม และพิกัดที่ได้ไม่มีความหมายคงที่ระหว่างการรันแต่ละครั้ง"
+        },
+        {
+          "en": "t-SNE requires the labels to be known in advance",
+          "th": "t-SNE ต้องรู้ label ล่วงหน้า"
+        },
+        {
+          "en": "t-SNE is too slow for large datasets",
+          "th": "t-SNE ช้าเกินไปสำหรับชุดข้อมูลขนาดใหญ่"
+        },
+        {
+          "en": "t-SNE reduces data to exactly 2 dimensions which is too few",
+          "th": "t-SNE ลดข้อมูลเหลือ 2 มิติพอดี ซึ่งน้อยเกินไป"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "t-SNE preserves local neighborhoods but distorts global structure. Distances between clusters are meaningless, and different runs produce different layouts. Use PCA for preprocessing and t-SNE/UMAP only for visualization.",
+        "th": "t-SNE รักษาความเป็นเพื่อนบ้านเฉพาะที่แต่บิดเบือนโครงสร้างภาพรวม ระยะห่างระหว่างกลุ่มไม่มีความหมาย และการรันแต่ละครั้งได้การจัดวางต่างกัน ใช้ PCA เตรียมข้อมูล และใช้ t-SNE/UMAP เพื่อแสดงภาพเท่านั้น"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "When would you choose kernel PCA over standard PCA?",
+        "th": "เมื่อไรคุณจะเลือก kernel PCA แทน PCA มาตรฐาน?"
+      },
+      "options": [
+        {
+          "en": "When you need the fastest possible computation",
+          "th": "เมื่อต้องการการคำนวณที่เร็วที่สุด"
+        },
+        {
+          "en": "When you want interpretable principal components",
+          "th": "เมื่อต้องการองค์ประกอบหลักที่ตีความได้"
+        },
+        {
+          "en": "When you have more samples than features",
+          "th": "เมื่อมีตัวอย่างมากกว่าคุณลักษณะ"
+        },
+        {
+          "en": "When the data lies on a nonlinear manifold that standard PCA cannot separate, like concentric circles",
+          "th": "เมื่อข้อมูลอยู่บน manifold ไม่เชิงเส้นที่ PCA มาตรฐานแยกไม่ได้ เช่น วงกลมซ้อนกัน"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Standard PCA finds linear subspaces. If data has nonlinear structure (e.g., two concentric rings), PCA projects both onto the same line. Kernel PCA maps data to a higher-dimensional space where the structure becomes linear.",
+        "th": "PCA มาตรฐานหาปริภูมิย่อยเชิงเส้น ถ้าข้อมูลมีโครงสร้างไม่เชิงเส้น (เช่น วงแหวนซ้อนกันสองวง) PCA จะฉายทั้งสองวงลงบนเส้นเดียวกัน Kernel PCA จับคู่ข้อมูลไปยังปริภูมิมิติสูงกว่าซึ่งโครงสร้างนั้นกลายเป็นเชิงเส้น"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "The eigenvalues are 4.73, 2.51, 1.12, 0.89 and 0.75 (total 10). How many components do you need to explain at least 90% of the variance?",
+        "th": "ค่าลักษณะเฉพาะคือ 4.73, 2.51, 1.12, 0.89 และ 0.75 (รวม 10) ต้องใช้กี่องค์ประกอบจึงจะอธิบายความแปรปรวนได้อย่างน้อย 90%?"
+      },
+      "options": [
+        {
+          "en": "2",
+          "th": "2"
+        },
+        {
+          "en": "3",
+          "th": "3"
+        },
+        {
+          "en": "4",
+          "th": "4"
+        },
+        {
+          "en": "5",
+          "th": "5"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "The cumulative ratios are 0.473, 0.724, 0.836, 0.925, 1.0. Three components reach only 83.6%; the fourth takes it past 90%.",
+        "th": "สัดส่วนสะสมคือ 0.473, 0.724, 0.836, 0.925, 1.0 สามองค์ประกอบไปได้แค่ 83.6% องค์ประกอบที่สี่จึงพาเกิน 90%"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "With the same eigenvalues, you keep only the first 2 components. What fraction of the variance does the reconstruction lose?",
+        "th": "ใช้ค่าลักษณะเฉพาะชุดเดิม และเก็บแค่ 2 องค์ประกอบแรก การสร้างกลับเสียความแปรปรวนไปเป็นสัดส่วนเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "0.276",
+          "th": "0.276"
+        },
+        {
+          "en": "0.724",
+          "th": "0.724"
+        },
+        {
+          "en": "0.6",
+          "th": "0.6"
+        },
+        {
+          "en": "0",
+          "th": "0"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The fraction lost is the sum of the dropped eigenvalues over the total: (1.12 + 0.89 + 0.75) / 10 = 0.276, which is 1 - 0.724.",
+        "th": "สัดส่วนที่เสียคือผลรวมของค่าลักษณะเฉพาะที่ทิ้งหารด้วยผลรวมทั้งหมด: (1.12 + 0.89 + 0.75) / 10 = 0.276 ซึ่งเท่ากับ 1 - 0.724"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Why does the lesson's PCA class use np.linalg.eigh and then reverse the order?",
+        "th": "ทำไมคลาส PCA ในบทเรียนจึงใช้ np.linalg.eigh แล้วกลับลำดับ?"
+      },
+      "options": [
+        {
+          "en": "eigh is for any square matrix and returns the largest eigenvalue first",
+          "th": "eigh ใช้กับเมทริกซ์จัตุรัสใดก็ได้ และคืนค่าลักษณะเฉพาะที่มากที่สุดก่อน"
+        },
+        {
+          "en": "eigh is for symmetric matrices like the covariance: it guarantees real eigenvalues and orthonormal eigenvectors, and returns them in ascending order, so the code reverses them",
+          "th": "eigh ใช้กับเมทริกซ์สมมาตรอย่างเมทริกซ์ความแปรปรวนร่วม: รับประกันค่าลักษณะเฉพาะที่เป็นจำนวนจริงและเวกเตอร์ลักษณะเฉพาะที่เป็น orthonormal และคืนค่าเรียงจากน้อยไปมาก โค้ดจึงกลับลำดับ"
+        },
+        {
+          "en": "eigh is faster but less accurate, so the order needs fixing",
+          "th": "eigh เร็วกว่าแต่แม่นน้อยกว่า จึงต้องแก้ลำดับ"
+        },
+        {
+          "en": "The reversal turns eigenvectors into principal components",
+          "th": "การกลับลำดับเปลี่ยนเวกเตอร์ลักษณะเฉพาะให้เป็นองค์ประกอบหลัก"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The covariance matrix is symmetric, and eigh is the routine for symmetric (Hermitian) matrices: real eigenvalues, orthonormal eigenvectors, and ascending order. PCA wants the largest variance first, hence argsort(...)[::-1].",
+        "th": "เมทริกซ์ความแปรปรวนร่วมสมมาตร และ eigh คือฟังก์ชันสำหรับเมทริกซ์สมมาตร (Hermitian): ค่าลักษณะเฉพาะเป็นจำนวนจริง เวกเตอร์ลักษณะเฉพาะเป็น orthonormal และเรียงจากน้อยไปมาก PCA ต้องการความแปรปรวนมากที่สุดก่อน จึงใช้ argsort(...)[::-1]"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "You run PCA on height in millimetres (variance about 10,000) and weight in kilograms (variance about 100), without scaling. What happens to PC1?",
+        "th": "คุณรัน PCA กับส่วนสูงหน่วยมิลลิเมตร (ความแปรปรวนราว 10,000) และน้ำหนักหน่วยกิโลกรัม (ความแปรปรวนราว 100) โดยไม่ปรับสเกล PC1 จะเป็นอย่างไร?"
+      },
+      "options": [
+        {
+          "en": "It weights both features equally",
+          "th": "ให้น้ำหนักทั้งสองคุณลักษณะเท่ากัน"
+        },
+        {
+          "en": "It points almost entirely along weight",
+          "th": "ชี้ไปตามน้ำหนักเกือบทั้งหมด"
+        },
+        {
+          "en": "PCA ignores units, so nothing changes",
+          "th": "PCA ไม่สนหน่วย จึงไม่มีอะไรเปลี่ยน"
+        },
+        {
+          "en": "It points almost entirely along height, only because its unit makes the numbers bigger; standardize the features first",
+          "th": "ชี้ไปตามส่วนสูงเกือบทั้งหมด เพียงเพราะหน่วยทำให้ตัวเลขใหญ่ ควรปรับมาตรฐาน (standardize) คุณลักษณะก่อน"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "PCA maximizes raw variance, and measuring height in millimetres instead of metres multiplies its variance by a million. PC1 follows the feature with the biggest numbers, not the most information. Dividing each feature by its standard deviation removes the unit effect.",
+        "th": "PCA หาค่าสูงสุดของความแปรปรวนดิบ การวัดส่วนสูงเป็นมิลลิเมตรแทนเมตรคูณความแปรปรวนด้วยล้าน PC1 จึงตามคุณลักษณะที่ตัวเลขใหญ่ที่สุด ไม่ใช่ที่มีสารสนเทศมากที่สุด การหารแต่ละคุณลักษณะด้วยส่วนเบี่ยงเบนมาตรฐานขจัดผลของหน่วยออกไป"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Step 4 compares your projection with sklearn's using np.abs on both. Why?",
+        "th": "ขั้นที่ 4 เทียบการฉายของคุณกับของ sklearn โดยใช้ np.abs ทั้งสองฝั่ง เพราะอะไร?"
+      },
+      "options": [
+        {
+          "en": "sklearn returns squared projections",
+          "th": "sklearn คืนผลการฉายที่ยกกำลังสองแล้ว"
+        },
+        {
+          "en": "An eigenvector is only defined up to sign: v and -v are equally valid, so a component can come out flipped",
+          "th": "เวกเตอร์ลักษณะเฉพาะกำหนดได้แค่ถึงเครื่องหมาย: v กับ -v ใช้ได้เท่ากัน องค์ประกอบจึงอาจออกมากลับด้าน"
+        },
+        {
+          "en": "To hide rounding errors",
+          "th": "เพื่อซ่อนความคลาดเคลื่อนจากการปัดเศษ"
+        },
+        {
+          "en": "Because variances are always positive",
+          "th": "เพราะความแปรปรวนเป็นบวกเสมอ"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "If Cv = λv then C(-v) = λ(-v), so both directions are eigenvectors. Different solvers may return either sign, which flips the sign of that projected coordinate. The absolute values compare the projections regardless of that choice.",
+        "th": "ถ้า Cv = λv แล้ว C(-v) = λ(-v) ทั้งสองทิศจึงเป็นเวกเตอร์ลักษณะเฉพาะ ตัวแก้สมการต่างตัวอาจคืนเครื่องหมายไหนก็ได้ ซึ่งทำให้พิกัดที่ฉายได้กลับเครื่องหมาย ค่าสัมบูรณ์ทำให้เทียบผลการฉายได้โดยไม่ขึ้นกับการเลือกนั้น"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "In Step 2, x3 = 0.5*x1 + 0.3*x2 plus a little noise. Two components capture about 99.9% of the variance. Why?",
+        "th": "ในขั้นที่ 2 x3 = 0.5*x1 + 0.3*x2 บวกสัญญาณรบกวนเล็กน้อย สององค์ประกอบเก็บความแปรปรวนได้ราว 99.9% เพราะอะไร?"
+      },
+      "options": [
+        {
+          "en": "Because the data is circular",
+          "th": "เพราะข้อมูลเป็นวงกลม"
+        },
+        {
+          "en": "Because x3 is almost a linear combination of x1 and x2, the points lie close to a 2D plane; the third eigenvalue is only about the noise variance",
+          "th": "เพราะ x3 เกือบเป็นผลรวมเชิงเส้นของ x1 และ x2 จุดจึงอยู่ใกล้ระนาบ 2 มิติ ค่าลักษณะเฉพาะตัวที่สามมีขนาดแค่ราวความแปรปรวนของสัญญาณรบกวน"
+        },
+        {
+          "en": "Because PCA always keeps 99.9% with 2 components",
+          "th": "เพราะ PCA เก็บได้ 99.9% ด้วย 2 องค์ประกอบเสมอ"
+        },
+        {
+          "en": "Because x1 and x2 are independent",
+          "th": "เพราะ x1 และ x2 เป็นอิสระต่อกัน"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The eigenvalues come out about 6.21, 4.31 and 0.007. x3 adds almost no new direction, because it is determined by x1 and x2 up to noise with standard deviation 0.1. Redundant features collapse into a lower-dimensional subspace.",
+        "th": "ค่าลักษณะเฉพาะออกมาประมาณ 6.21, 4.31 และ 0.007 x3 แทบไม่เพิ่มทิศใหม่ เพราะมันถูกกำหนดด้วย x1 และ x2 ยกเว้นสัญญาณรบกวนที่ส่วนเบี่ยงเบนมาตรฐาน 0.1 คุณลักษณะที่ซ้ำซ้อนยุบรวมเป็นปริภูมิย่อยที่มีมิติต่ำกว่า"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "You want kernel PCA on 100,000 samples. How much memory does the float64 kernel matrix need?",
+        "th": "คุณต้องการทำ kernel PCA กับ 100,000 ตัวอย่าง เมทริกซ์ kernel แบบ float64 ต้องใช้หน่วยความจำเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "About 800 MB",
+          "th": "ประมาณ 800 MB"
+        },
+        {
+          "en": "About 8 GB",
+          "th": "ประมาณ 8 GB"
+        },
+        {
+          "en": "About 80 GB",
+          "th": "ประมาณ 80 GB"
+        },
+        {
+          "en": "About 800 GB",
+          "th": "ประมาณ 800 GB"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "The kernel matrix is n x n = 10^10 entries, at 8 bytes each: 8 * 10^10 bytes = 80 GB, before the O(n^3) eigendecomposition. This is why kernel PCA is memory-limited and standard PCA scales to millions of samples.",
+        "th": "เมทริกซ์ kernel มีขนาด n x n = 10^10 ช่อง ช่องละ 8 ไบต์: 8 * 10^10 ไบต์ = 80 GB ยังไม่รวมการแยกค่าลักษณะเฉพาะที่ใช้ O(n^3) นี่คือเหตุผลที่ kernel PCA ติดขีดจำกัดหน่วยความจำ ขณะที่ PCA มาตรฐานใช้ได้กับตัวอย่างเป็นล้าน"
+      }
+    }
+  ]
+}

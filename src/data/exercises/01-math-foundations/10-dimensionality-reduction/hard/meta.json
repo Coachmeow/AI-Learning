@@ -1,0 +1,13 @@
+{
+  "minutes": 35,
+  "title": {"th": "PCA ด้วย power iteration", "en": "PCA by power iteration"},
+  "prompt": {
+    "th": "เขียน `pca(X, k)` ที่คืน `(components, ratios)` โดยไม่ใช้ NumPy:\n\n1. จัด `X` ให้อยู่กึ่งกลาง แล้วคำนวณเมทริกซ์ความแปรปรวนร่วม `C` (หารด้วย n - 1)\n2. หาองค์ประกอบทีละตัวด้วย power iteration: เริ่มจาก `v = [1, 2, ..., d]` ทำ `v = C v / |C v|` ซ้ำ 500 รอบ แล้ว `lam = v · (C v)`\n3. Deflation: ลบองค์ประกอบที่หาได้ออก `C[i][j] -= lam * v[i] * v[j]` แล้วหาตัวถัดไปจาก `C` ใหม่\n4. กลับเครื่องหมายของ `v` ให้ช่องแรกที่ค่าสัมบูรณ์เกิน `1e-9` เป็นบวก (เวกเตอร์ลักษณะเฉพาะกำหนดได้แค่ถึงเครื่องหมาย)\n5. `ratios[i] = lam_i / trace(C เดิม)`\n\n`components` คือ list ของเวกเตอร์หนึ่งหน่วย k ตัว เรียงจากความแปรปรวนมากไปน้อย ทำไมต้องเริ่มที่ `[1, 2, ..., d]`? ลองเริ่มที่ `[1, 1]` กับข้อมูลที่กระจายตามแนว `[1, -1]` ดู มี test ซ่อนอยู่บางส่วน",
+    "en": "Write `pca(X, k)`. It returns `(components, ratios)` without NumPy:\n\n1. Center `X` and compute its covariance matrix `C` (divide by n - 1).\n2. Find one component at a time by power iteration: start from `v = [1, 2, ..., d]`, repeat `v = C v / |C v|` 500 times, then `lam = v · (C v)`.\n3. Deflation: remove the component you found, `C[i][j] -= lam * v[i] * v[j]`, and find the next one from the new `C`.\n4. Flip the sign of `v` so its first entry with absolute value above `1e-9` is positive (eigenvectors are only defined up to sign).\n5. `ratios[i] = lam_i / trace(original C)`.\n\n`components` is a list of k unit vectors, from the most variance to the least. Why start from `[1, 2, ..., d]`? Try starting from `[1, 1]` on data spread along `[1, -1]`. Some tests are hidden."
+  },
+  "hints": [
+    {"th": "เขียนฟังก์ชันช่วย `matvec(C, v)` และ `norm(v)` ก่อน แล้ว power iteration คือลูป 500 รอบที่ `w = matvec(C, v)` และ `v = [x / norm(w) for x in w]`", "en": "Write helpers `matvec(C, v)` and `norm(v)` first; power iteration is then a 500-step loop of `w = matvec(C, v)` and `v = [x / norm(w) for x in w]`."},
+    {"th": "เวกเตอร์ตั้งต้นที่ตั้งฉากกับทิศหลักจะไม่มีวันเจอทิศนั้น: `[1, 1]` ตั้งฉากกับ `[1, -1]` พอดี ส่วน `[1, 2]` ไม่ตั้งฉาก", "en": "A start vector orthogonal to the top direction never finds it: `[1, 1]` is exactly orthogonal to `[1, -1]`, while `[1, 2]` is not."},
+    {"th": "หาร lam ด้วย trace ของ C **ก่อน** deflation เก็บค่า `total = sum(C[i][i] for i in range(d))` ไว้ตั้งแต่ต้น", "en": "Divide lam by the trace of C **before** any deflation: keep `total = sum(C[i][i] for i in range(d))` from the start."}
+  ]
+}

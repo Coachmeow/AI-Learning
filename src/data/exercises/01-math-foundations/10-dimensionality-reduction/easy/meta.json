@@ -1,0 +1,13 @@
+{
+  "minutes": 6,
+  "title": {"th": "เติมโค้ด: จัดข้อมูลให้อยู่กึ่งกลาง", "en": "Fill in: center the data"},
+  "prompt": {
+    "th": "ขั้นแรกของ PCA คือการจัดข้อมูลให้อยู่กึ่งกลาง เติม `center(X)` ที่รับข้อมูล `X` (list ของแถว แต่ละแถวคือตัวอย่างหนึ่งตัว แต่ละคอลัมน์คือคุณลักษณะหนึ่งตัว) แล้วคืนข้อมูลใหม่ที่ลบค่าเฉลี่ยของ**แต่ละคอลัมน์**ออกจากทุกค่าในคอลัมน์นั้น โดยไม่แก้ `X` ที่ส่งเข้ามา ค่าเฉลี่ยของคอลัมน์คำนวณไว้ให้แล้ว เติมบรรทัดที่มี `# TODO`",
+    "en": "The first step of PCA is centering the data. Complete `center(X)`. It takes data `X` (a list of rows: each row is one sample, each column one feature) and returns new data with **each column's** mean subtracted from every value in that column, without changing the `X` you are given. The column means are already computed. Fill in the `# TODO` line."
+  },
+  "hints": [
+    {"th": "`means[j]` คือค่าเฉลี่ยของคอลัมน์ j ค่าในแถว `row` คอลัมน์ j จึงกลายเป็น `row[j] - means[j]`", "en": "`means[j]` is the mean of column j, so the value in `row` at column j becomes `row[j] - means[j]`."},
+    {"th": "สร้าง list ใหม่ อย่าแก้ `row` เดิม", "en": "Build a new list; don't modify the original `row`."},
+    {"th": "`return [[row[j] - means[j] for j in range(d)] for row in X]`", "en": "`return [[row[j] - means[j] for j in range(d)] for row in X]`"}
+  ]
+}

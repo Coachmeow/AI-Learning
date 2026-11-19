@@ -1542,6 +1542,73 @@
       "en": "feature",
       "th": "คุณลักษณะ",
       "first": "คุณลักษณะ (feature)"
+    },
+    {
+      "en": "dimensionality reduction",
+      "th": "การลดมิติ",
+      "first": "การลดมิติ (dimensionality reduction)"
+    },
+    {
+      "en": "curse of dimensionality",
+      "th": "คำสาปของมิติ",
+      "first": "คำสาปของมิติ (curse of dimensionality)"
+    },
+    {
+      "en": "principal component analysis (PCA)",
+      "th": "การวิเคราะห์องค์ประกอบหลัก (PCA)"
+    },
+    {
+      "en": "explained variance ratio",
+      "th": "สัดส่วนความแปรปรวนที่อธิบายได้",
+      "first": "สัดส่วนความแปรปรวนที่อธิบายได้ (explained variance ratio)"
+    },
+    {
+      "en": "elbow method",
+      "th": "วิธีข้อศอก",
+      "first": "วิธีข้อศอก (elbow method)"
+    },
+    {
+      "en": "t-SNE",
+      "th": "t-SNE"
+    },
+    {
+      "en": "UMAP",
+      "th": "UMAP"
+    },
+    {
+      "en": "manifold",
+      "th": "manifold"
+    },
+    {
+      "en": "kernel PCA / kernel trick",
+      "th": "kernel PCA / kernel trick"
+    },
+    {
+      "en": "reconstruction error",
+      "th": "ความคลาดเคลื่อนจากการสร้างกลับ",
+      "first": "ความคลาดเคลื่อนจากการสร้างกลับ (reconstruction error)"
+    },
+    {
+      "en": "positive semi-definite",
+      "th": "กึ่งบวกแน่นอน",
+      "first": "กึ่งบวกแน่นอน (positive semi-definite)"
+    },
+    {
+      "en": "power iteration",
+      "th": "power iteration"
+    },
+    {
+      "en": "deflation (eigenvalues)",
+      "th": "deflation"
+    },
+    {
+      "en": "standardize (features)",
+      "th": "ปรับมาตรฐาน",
+      "first": "ปรับมาตรฐาน (standardize)"
+    },
+    {
+      "en": "anomaly detection",
+      "th": "การตรวจจับความผิดปกติ"
     }
   ]
 }

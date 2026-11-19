@@ -1,0 +1,13 @@
+{
+  "minutes": 15,
+  "title": {"th": "เมทริกซ์ความแปรปรวนร่วม", "en": "The covariance matrix"},
+  "prompt": {
+    "th": "เขียน `covariance_matrix(X)` ที่คืนเมทริกซ์ความแปรปรวนร่วมแบบตัวอย่าง (sample covariance) ขนาด d x d ของคอลัมน์ใน `X` (n แถว x d คอลัมน์) แบบเดียวกับ `np.cov(X, rowvar=False)`\n\n- `C[i][j] = sum((x_i - mean_i) * (x_j - mean_j)) / (n - 1)` รวมทุกแถว\n- ช่องบนเส้นทแยงมุมคือความแปรปรวนของแต่ละคุณลักษณะ และเมทริกซ์ต้องสมมาตร\n- ถ้า `X` มีน้อยกว่า 2 แถว ให้ `raise ValueError` (หารด้วย n - 1 = 0 ไม่ได้)\n\nมี test ซ่อนอยู่บางส่วน",
+    "en": "Write `covariance_matrix(X)`. It returns the d x d sample covariance matrix of the columns of `X` (n rows x d columns), the same as `np.cov(X, rowvar=False)`.\n\n- `C[i][j] = sum((x_i - mean_i) * (x_j - mean_j)) / (n - 1)` over all rows.\n- The diagonal holds each feature's variance, and the matrix must be symmetric.\n- If `X` has fewer than 2 rows, `raise ValueError` (you can't divide by n - 1 = 0).\n\nSome tests are hidden."
+  },
+  "hints": [
+    {"th": "จัดข้อมูลให้อยู่กึ่งกลางก่อน (ลบค่าเฉลี่ยของแต่ละคอลัมน์) แล้วช่อง (i, j) คือผลรวมของ `row[i] * row[j]` หารด้วย `n - 1`", "en": "Center the data first (subtract each column's mean); then cell (i, j) is the sum of `row[i] * row[j]` divided by `n - 1`."},
+    {"th": "หารด้วย `n - 1` ไม่ใช่ `n` (แบบเดียวกับ `np.cov` ค่าตั้งต้น)", "en": "Divide by `n - 1`, not `n` (the `np.cov` default)."},
+    {"th": "ระวังสลับแถวกับคอลัมน์: ผลลัพธ์มีขนาด d x d (จำนวนคุณลักษณะ) ไม่ใช่ n x n", "en": "Don't mix up rows and columns: the result is d x d (number of features), not n x n."}
+  ]
+}
