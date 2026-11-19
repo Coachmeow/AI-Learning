@@ -1096,6 +1096,87 @@
       "en": "augmented matrix",
       "th": "เมทริกซ์แต่งเติม",
       "first": "เมทริกซ์แต่งเติม (augmented matrix)"
+    },
+    {
+      "en": "rotation matrix",
+      "th": "เมทริกซ์การหมุน",
+      "first": "เมทริกซ์การหมุน (rotation matrix)"
+    },
+    {
+      "en": "scaling matrix",
+      "th": "เมทริกซ์การย่อขยาย",
+      "first": "เมทริกซ์การย่อขยาย (scaling matrix)"
+    },
+    {
+      "en": "shear / shearing",
+      "th": "การเฉือน",
+      "first": "การเฉือน (shear)"
+    },
+    {
+      "en": "reflection",
+      "th": "การสะท้อน",
+      "first": "การสะท้อน (reflection)"
+    },
+    {
+      "en": "composition (of transformations)",
+      "th": "การประกอบ",
+      "first": "การประกอบ (composition)"
+    },
+    {
+      "en": "eigendecomposition",
+      "th": "การแยกค่าลักษณะเฉพาะ",
+      "first": "การแยกค่าลักษณะเฉพาะ (eigendecomposition)"
+    },
+    {
+      "en": "characteristic equation",
+      "th": "สมการลักษณะเฉพาะ",
+      "first": "สมการลักษณะเฉพาะ (characteristic equation)"
+    },
+    {
+      "en": "trace",
+      "th": "trace"
+    },
+    {
+      "en": "discriminant",
+      "th": "discriminant"
+    },
+    {
+      "en": "diagonal matrix",
+      "th": "เมทริกซ์ทแยงมุม",
+      "first": "เมทริกซ์ทแยงมุม (diagonal matrix)"
+    },
+    {
+      "en": "covariance matrix",
+      "th": "เมทริกซ์ความแปรปรวนร่วม",
+      "first": "เมทริกซ์ความแปรปรวนร่วม (covariance matrix)"
+    },
+    {
+      "en": "principal component",
+      "th": "องค์ประกอบหลัก",
+      "first": "องค์ประกอบหลัก (principal component)"
+    },
+    {
+      "en": "vanishing / exploding gradient",
+      "th": "gradient หายไป / ระเบิด"
+    },
+    {
+      "en": "spectral methods",
+      "th": "วิธีเชิงสเปกตรัม",
+      "first": "วิธีเชิงสเปกตรัม (spectral methods)"
+    },
+    {
+      "en": "adjacency matrix",
+      "th": "เมทริกซ์ประชิด",
+      "first": "เมทริกซ์ประชิด (adjacency matrix)"
+    },
+    {
+      "en": "orientation",
+      "th": "ทิศการวางตัว"
+    },
+    {
+      "en": "commutative",
+      "th": "สลับที่ได้",
+      "first": "สมบัติการสลับที่ (commutative)"
     }
   ]
 }

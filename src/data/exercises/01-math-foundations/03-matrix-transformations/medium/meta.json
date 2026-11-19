@@ -1,0 +1,13 @@
+{
+  "minutes": 12,
+  "title": {"th": "ประกอบการแปลงตามลำดับ", "en": "Compose transformations in order"},
+  "prompt": {
+    "th": "เขียน `compose(steps)` ที่รับรายการเมทริกซ์ 2x2 เรียงตามลำดับที่ทำ (ตัวแรกทำก่อน) แล้วคืนเมทริกซ์ 2x2 ตัวเดียวที่ให้ผลเท่ากับการทำทุกขั้นตามลำดับนั้น\n\n- ทำ A ก่อนแล้วตามด้วย B คือ `B @ A` ดังนั้นตัวที่ทำทีหลังต้องคูณจากซ้าย\n- ถ้า `steps` ว่าง ให้คืนเมทริกซ์เอกลักษณ์ `[[1, 0], [0, 1]]`\n- ห้ามแก้เมทริกซ์ใน `steps`\n\nมี test ซ่อนอยู่บางส่วน",
+    "en": "Write `compose(steps)`. It takes a list of 2x2 matrices in the order they are applied (the first one first) and returns the one 2x2 matrix that has the same effect as applying them all in that order.\n\n- Applying A and then B is `B @ A`, so each later step multiplies from the left.\n- If `steps` is empty, return the identity `[[1, 0], [0, 1]]`.\n- Don't change the matrices in `steps`.\n\nSome tests are hidden."
+  },
+  "hints": [
+    {"th": "เริ่มจาก `result = [[1.0, 0.0], [0.0, 1.0]]` แล้ววนทีละเมทริกซ์ `M` ใน `steps`", "en": "Start from `result = [[1.0, 0.0], [0.0, 1.0]]` and loop over each matrix `M` in `steps`."},
+    {"th": "ในแต่ละรอบให้ `result = M @ result` (M อยู่ซ้าย) ไม่ใช่ `result @ M`", "en": "Each time round, set `result = M @ result` (M on the left), not `result @ M`."},
+    {"th": "`result = [[sum(M[i][k] * result[k][j] for k in range(2)) for j in range(2)] for i in range(2)]`", "en": "`result = [[sum(M[i][k] * result[k][j] for k in range(2)) for j in range(2)] for i in range(2)]`"}
+  ]
+}

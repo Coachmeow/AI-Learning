@@ -1,0 +1,13 @@
+{
+  "minutes": 6,
+  "title": {"th": "เติมโค้ด: แปลงทุกจุดด้วยเมทริกซ์", "en": "Fill in: transform every point"},
+  "prompt": {
+    "th": "แบบฝึกหัดที่ 1 ของบทเรียนนำการแปลงไปใช้กับมุมของสี่เหลี่ยมจัตุรัส เติม `apply(M, points)` ให้นำเมทริกซ์ 2x2 `M` ไปคูณกับทุกจุด `[x, y]` ใน `points` แล้วคืนรายการจุดใหม่ตามลำดับเดิม พิกัดใหม่ x คือแถวแรกของ `M` คูณแบบ dot กับ `[x, y]` และพิกัดใหม่ y คือแถวที่สอง เติมบรรทัดที่มี `# TODO`",
+    "en": "The lesson's Exercise 1 applies transformations to the corners of a square. Complete `apply(M, points)` so it multiplies the 2x2 matrix `M` by every point `[x, y]` in `points` and returns the new points in the same order. The new x is the first row of `M` dotted with `[x, y]`, and the new y is the second row. Fill in the `# TODO` line."
+  },
+  "hints": [
+    {"th": "x ใหม่ = `M[0][0] * x + M[0][1] * y`", "en": "New x = `M[0][0] * x + M[0][1] * y`."},
+    {"th": "y ใหม่ใช้แถวที่สอง: `M[1][0] * x + M[1][1] * y` ระวังอย่าใช้คอลัมน์แทนแถว", "en": "New y uses the second row: `M[1][0] * x + M[1][1] * y`. Take care to use rows, not columns."},
+    {"th": "`out.append([M[0][0] * x + M[0][1] * y, M[1][0] * x + M[1][1] * y])`", "en": "`out.append([M[0][0] * x + M[0][1] * y, M[1][0] * x + M[1][1] * y])`"}
+  ]
+}

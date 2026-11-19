@@ -1,0 +1,487 @@
+{
+  "lesson": "01-math-foundations/03-matrix-transformations",
+  "source_hash": "b0b73f786f3e972fb9ca333b26028641423ebfc262a8abcba8c6d0b2ac1fe8f6",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What is an eigenvector of a matrix?",
+        "th": "เวกเตอร์ลักษณะเฉพาะ (eigenvector) ของเมทริกซ์คืออะไร?"
+      },
+      "options": [
+        {
+          "en": "A vector that the matrix only scales (never rotates) when multiplied",
+          "th": "เวกเตอร์ที่เมทริกซ์แค่ย่อขยาย (ไม่เคยหมุน) เมื่อนำมาคูณกัน"
+        },
+        {
+          "en": "The diagonal entries of the matrix expressed as a vector",
+          "th": "ช่องบนเส้นทแยงมุมของเมทริกซ์ที่เขียนเป็นเวกเตอร์"
+        },
+        {
+          "en": "The largest row in the matrix",
+          "th": "แถวที่ใหญ่ที่สุดในเมทริกซ์"
+        },
+        {
+          "en": "A vector perpendicular to all columns of the matrix",
+          "th": "เวกเตอร์ที่ตั้งฉากกับทุกคอลัมน์ของเมทริกซ์"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "An eigenvector v satisfies Av = lambda*v, meaning the matrix A only stretches v by the scalar factor lambda (the eigenvalue) without changing its direction.",
+        "th": "เวกเตอร์ลักษณะเฉพาะ v สอดคล้องกับ Av = lambda*v แปลว่าเมทริกซ์ A แค่ยืด v ด้วยตัวคูณสเกลาร์ lambda (ค่าลักษณะเฉพาะ) โดยไม่เปลี่ยนทิศของมัน"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What does the determinant of a 2D transformation matrix represent geometrically?",
+        "th": "ดีเทอร์มิแนนต์ของเมทริกซ์การแปลง 2 มิติหมายถึงอะไรในเชิงเรขาคณิต?"
+      },
+      "options": [
+        {
+          "en": "The number of eigenvectors the matrix has",
+          "th": "จำนวนเวกเตอร์ลักษณะเฉพาะที่เมทริกซ์มี"
+        },
+        {
+          "en": "The angle of rotation applied by the matrix",
+          "th": "มุมที่เมทริกซ์หมุนไป"
+        },
+        {
+          "en": "The factor by which the matrix scales area",
+          "th": "ตัวคูณที่เมทริกซ์ใช้ขยายพื้นที่"
+        },
+        {
+          "en": "The trace of the matrix",
+          "th": "trace ของเมทริกซ์"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "The determinant measures how much the transformation scales area. det=1 preserves area (rotation), det=2 doubles area, det=0 crushes to a lower dimension, and det=-1 preserves area but flips orientation.",
+        "th": "ดีเทอร์มิแนนต์วัดว่าการแปลงขยายพื้นที่ไปแค่ไหน det=1 คงพื้นที่เดิม (การหมุน) det=2 ทำให้พื้นที่เป็นสองเท่า det=0 บีบลงไปเหลือมิติที่ต่ำกว่า และ det=-1 คงพื้นที่เดิมแต่พลิกทิศการวางตัว"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "What does the matrix [[-1, 0], [0, 1]] do to the point (2, 1)?",
+        "th": "เมทริกซ์ [[-1, 0], [0, 1]] ทำอะไรกับจุด (2, 1)?"
+      },
+      "options": [
+        {
+          "en": "Reflects it across the y-axis to (-2, 1)",
+          "th": "สะท้อนข้ามแกน y ไปเป็น (-2, 1)"
+        },
+        {
+          "en": "Reflects it across the x-axis to (2, -1)",
+          "th": "สะท้อนข้ามแกน x ไปเป็น (2, -1)"
+        },
+        {
+          "en": "Rotates it 180 degrees to (-2, -1)",
+          "th": "หมุน 180 องศาไปเป็น (-2, -1)"
+        },
+        {
+          "en": "Swaps the coordinates to (1, 2)",
+          "th": "สลับพิกัดเป็น (1, 2)"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The first row gives -1*2 + 0*1 = -2 and the second gives 0*2 + 1*1 = 1. Only x flips sign, which is a reflection across the y-axis.",
+        "th": "แถวแรกได้ -1*2 + 0*1 = -2 แถวที่สองได้ 0*2 + 1*1 = 1 มีแค่ x ที่กลับเครื่องหมาย จึงเป็นการสะท้อนข้ามแกน y"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "What do the columns of a 2x2 transformation matrix M tell you?",
+        "th": "คอลัมน์ของเมทริกซ์การแปลง 2x2 ชื่อ M บอกอะไรเรา?"
+      },
+      "options": [
+        {
+          "en": "The eigenvalues of M",
+          "th": "ค่าลักษณะเฉพาะของ M"
+        },
+        {
+          "en": "The determinant and the trace of M",
+          "th": "ดีเทอร์มิแนนต์และ trace ของ M"
+        },
+        {
+          "en": "Where the basis vectors [1, 0] and [0, 1] end up",
+          "th": "เวกเตอร์ฐาน [1, 0] และ [0, 1] ไปตกอยู่ที่ไหน"
+        },
+        {
+          "en": "The inverse of M",
+          "th": "เมทริกซ์ผกผันของ M"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "M @ [1, 0] is the first column and M @ [0, 1] is the second. Every other point is a combination of those two, so the columns define the whole transformation.",
+        "th": "M @ [1, 0] คือคอลัมน์แรก และ M @ [0, 1] คือคอลัมน์ที่สอง จุดอื่นทุกจุดเป็นผลรวมเชิงเส้นของสองเวกเตอร์นี้ คอลัมน์จึงกำหนดการแปลงทั้งหมด"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Which transformation turns a rectangle into a parallelogram while keeping its area?",
+        "th": "การแปลงใดเปลี่ยนสี่เหลี่ยมผืนผ้าให้เป็นสี่เหลี่ยมด้านขนาน โดยพื้นที่ยังเท่าเดิม?"
+      },
+      "options": [
+        {
+          "en": "Rotation",
+          "th": "การหมุน"
+        },
+        {
+          "en": "Uniform scaling by 2",
+          "th": "การย่อขยายด้วย 2 เท่ากันทุกแกน"
+        },
+        {
+          "en": "Reflection",
+          "th": "การสะท้อน"
+        },
+        {
+          "en": "Shear",
+          "th": "การเฉือน"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "A shear shifts one coordinate in proportion to the other, which tilts the sides, and its determinant is 1, so the area stays the same. Rotation and reflection keep a rectangle a rectangle; scaling by 2 multiplies the area by 4.",
+        "th": "การเฉือนเลื่อนพิกัดหนึ่งตามสัดส่วนของอีกพิกัดหนึ่ง ด้านจึงเอียง และดีเทอร์มิแนนต์เป็น 1 พื้นที่จึงเท่าเดิม การหมุนและการสะท้อนยังให้สี่เหลี่ยมผืนผ้าเหมือนเดิม ส่วนการย่อขยายด้วย 2 ทำให้พื้นที่เป็น 4 เท่า"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "Why does the order of matrix transformations matter? (i.e., why is R @ S different from S @ R?)",
+        "th": "ทำไมลำดับของการแปลงด้วยเมทริกซ์จึงมีผล? (คือทำไม R @ S จึงต่างจาก S @ R)"
+      },
+      "options": [
+        {
+          "en": "One order produces a larger matrix than the other",
+          "th": "ลำดับหนึ่งให้เมทริกซ์ที่ใหญ่กว่าอีกลำดับหนึ่ง"
+        },
+        {
+          "en": "The determinants are different for each order",
+          "th": "ดีเทอร์มิแนนต์ของแต่ละลำดับไม่เท่ากัน"
+        },
+        {
+          "en": "Matrix multiplication is not commutative: rotating then scaling gives a different result than scaling then rotating",
+          "th": "การคูณเมทริกซ์ไม่มีสมบัติการสลับที่: หมุนแล้วย่อขยายให้ผลต่างจากย่อขยายแล้วหมุน"
+        },
+        {
+          "en": "Matrix addition is not commutative",
+          "th": "การบวกเมทริกซ์ไม่มีสมบัติการสลับที่"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Matrix multiplication is not commutative. Rotating (1,0) by 90 degrees then scaling by (2,0.5) gives (0,0.5), but scaling first then rotating gives (0,2). The geometric operations compose differently.",
+        "th": "การคูณเมทริกซ์ไม่มีสมบัติการสลับที่ หมุน (1,0) ไป 90 องศาแล้วย่อขยายด้วย (2,0.5) ได้ (0,0.5) แต่ย่อขยายก่อนแล้วค่อยหมุนได้ (0,2) การดำเนินการเชิงเรขาคณิตประกอบกันต่างกัน"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "In a recurrent neural network, what happens when the weight matrix has eigenvalues with magnitude greater than 1?",
+        "th": "ในโครงข่ายประสาทเทียมแบบวนซ้ำ (RNN) จะเกิดอะไรขึ้นเมื่อเมทริกซ์น้ำหนักมีค่าลักษณะเฉพาะที่ขนาดมากกว่า 1?"
+      },
+      "options": [
+        {
+          "en": "The eigenvalues converge to 1 over training",
+          "th": "ค่าลักษณะเฉพาะลู่เข้าหา 1 ระหว่างการเทรน"
+        },
+        {
+          "en": "The network becomes more stable",
+          "th": "โครงข่ายเสถียรขึ้น"
+        },
+        {
+          "en": "Outputs explode exponentially over time steps (exploding gradient problem)",
+          "th": "ผลลัพธ์ระเบิดแบบเลขชี้กำลังเมื่อผ่านแต่ละ time step (ปัญหา exploding gradient)"
+        },
+        {
+          "en": "The network learns faster",
+          "th": "โครงข่ายเรียนรู้เร็วขึ้น"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Repeated multiplication by a matrix amplifies the eigenvalue directions. Eigenvalues > 1 cause exponential growth (exploding gradients), while eigenvalues < 1 cause exponential decay (vanishing gradients).",
+        "th": "การคูณด้วยเมทริกซ์ซ้ำ ๆ ขยายทิศของค่าลักษณะเฉพาะ ค่าลักษณะเฉพาะ > 1 ทำให้โตแบบเลขชี้กำลัง (gradient ระเบิด) ส่วนค่าลักษณะเฉพาะ < 1 ทำให้ลดลงแบบเลขชี้กำลัง (gradient หายไป)"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "The matrix A = [[2, 1], [1, 2]] has eigenvalues 3 and 1. What does eigendecomposition A = V @ D @ V^(-1) reveal?",
+        "th": "เมทริกซ์ A = [[2, 1], [1, 2]] มีค่าลักษณะเฉพาะ 3 และ 1 การแยกค่าลักษณะเฉพาะ A = V @ D @ V^(-1) บอกอะไรเรา?"
+      },
+      "options": [
+        {
+          "en": "A has rank 1 and maps all vectors to a line",
+          "th": "A มีแรงก์ 1 และส่งทุกเวกเตอร์ไปอยู่บนเส้นตรงเดียว"
+        },
+        {
+          "en": "A is equivalent to two rotations",
+          "th": "A เทียบเท่ากับการหมุนสองครั้ง"
+        },
+        {
+          "en": "A compresses all vectors by a factor of 2",
+          "th": "A หดทุกเวกเตอร์ลงครึ่งหนึ่ง"
+        },
+        {
+          "en": "A stretches space by 3x along the [1,1] direction and leaves the [1,-1] direction unchanged",
+          "th": "A ยืดปริภูมิ 3 เท่าตามทิศ [1,1] และคงทิศ [1,-1] ไว้เหมือนเดิม"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "The eigenvalue 3 with eigenvector [1,1] means A stretches 3x along the diagonal. The eigenvalue 1 with eigenvector [1,-1] means A leaves the anti-diagonal unchanged. D holds {3,1}, V holds the eigenvectors.",
+        "th": "ค่าลักษณะเฉพาะ 3 กับเวกเตอร์ลักษณะเฉพาะ [1,1] แปลว่า A ยืด 3 เท่าตามแนวทแยงมุม ค่าลักษณะเฉพาะ 1 กับเวกเตอร์ลักษณะเฉพาะ [1,-1] แปลว่า A คงแนวทแยงมุมอีกเส้นไว้เหมือนเดิม D เก็บ {3,1} และ V เก็บเวกเตอร์ลักษณะเฉพาะ"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "What is the determinant of `S @ R`, where S = scaling_2d(2, 3) and R = rotation_2d(math.pi / 4)?",
+        "th": "ดีเทอร์มิแนนต์ของ `S @ R` เป็นเท่าไร เมื่อ S = scaling_2d(2, 3) และ R = rotation_2d(math.pi / 4)?"
+      },
+      "options": [
+        {
+          "en": "1",
+          "th": "1"
+        },
+        {
+          "en": "5",
+          "th": "5"
+        },
+        {
+          "en": "6",
+          "th": "6"
+        },
+        {
+          "en": "About 4.24",
+          "th": "ประมาณ 4.24"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "The determinant of a product is the product of the determinants: det(S) = 2 * 3 = 6 and det(R) = 1, so det(S @ R) = 6. The rotation moves points but doesn't change area.",
+        "th": "ดีเทอร์มิแนนต์ของผลคูณคือผลคูณของดีเทอร์มิแนนต์: det(S) = 2 * 3 = 6 และ det(R) = 1 ดังนั้น det(S @ R) = 6 การหมุนย้ายจุดแต่ไม่เปลี่ยนพื้นที่"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "What are the eigenvalues of [[4, 2], [1, 3]]?",
+        "th": "ค่าลักษณะเฉพาะของ [[4, 2], [1, 3]] คืออะไร?"
+      },
+      "options": [
+        {
+          "en": "4 and 3",
+          "th": "4 และ 3"
+        },
+        {
+          "en": "5 and 2",
+          "th": "5 และ 2"
+        },
+        {
+          "en": "7 and 10",
+          "th": "7 และ 10"
+        },
+        {
+          "en": "6 and 1",
+          "th": "6 และ 1"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The trace is 4 + 3 = 7 and the determinant is 4*3 - 2*1 = 10, so the characteristic equation is λ² - 7λ + 10 = (λ - 5)(λ - 2) = 0. The diagonal entries are the eigenvalues only for a triangular matrix.",
+        "th": "trace คือ 4 + 3 = 7 และดีเทอร์มิแนนต์คือ 4*3 - 2*1 = 10 สมการลักษณะเฉพาะจึงเป็น λ² - 7λ + 10 = (λ - 5)(λ - 2) = 0 ช่องบนเส้นทแยงมุมจะเป็นค่าลักษณะเฉพาะก็ต่อเมื่อเมทริกซ์เป็นเมทริกซ์สามเหลี่ยมเท่านั้น"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "What does the lesson's `eigenvalues_2x2` return for this matrix, and why?",
+        "th": "`eigenvalues_2x2` ในบทเรียนคืนค่าอะไรสำหรับเมทริกซ์นี้ และเพราะอะไร?"
+      },
+      "code": "eigenvalues_2x2([[0, -1], [1, 0]])",
+      "options": [
+        {
+          "en": "`(1.0, -1.0)`: the matrix swaps and negates the axes",
+          "th": "`(1.0, -1.0)`: เมทริกซ์สลับและกลับเครื่องหมายแกน"
+        },
+        {
+          "en": "`(0.0, 0.0)`: the trace is 0",
+          "th": "`(0.0, 0.0)`: เพราะ trace เป็น 0"
+        },
+        {
+          "en": "`(1j, -1j)`: it is a 90 degree rotation, so no real direction keeps its direction",
+          "th": "`(1j, -1j)`: เป็นการหมุน 90 องศา จึงไม่มีทิศจริงใดที่คงทิศเดิมไว้"
+        },
+        {
+          "en": "It raises an error because the discriminant is negative",
+          "th": "เกิด error เพราะ discriminant ติดลบ"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "The trace is 0 and the determinant is 1, so the discriminant is 0 - 4 = -4. The function takes its complex branch and returns complex(0, 1) and complex(0, -1), which Python prints as 1j and -1j. A rotation by 90 degrees turns every real vector, so it has no real eigenvector.",
+        "th": "trace เป็น 0 และดีเทอร์มิแนนต์เป็น 1 discriminant จึงเป็น 0 - 4 = -4 ฟังก์ชันเข้าทางที่เป็นจำนวนเชิงซ้อน และคืน complex(0, 1) กับ complex(0, -1) ซึ่ง Python แสดงเป็น 1j และ -1j การหมุน 90 องศาหมุนเวกเตอร์จริงทุกตัว จึงไม่มีเวกเตอร์ลักษณะเฉพาะที่เป็นจำนวนจริง"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Which statement about the eigenvalues of the reflection [[-1, 0], [0, 1]] is true?",
+        "th": "ข้อใดถูกต้องเกี่ยวกับค่าลักษณะเฉพาะของการสะท้อน [[-1, 0], [0, 1]]?"
+      },
+      "options": [
+        {
+          "en": "It has eigenvalue -1 with eigenvector [1, 0] and eigenvalue 1 with eigenvector [0, 1]",
+          "th": "มีค่าลักษณะเฉพาะ -1 กับเวกเตอร์ลักษณะเฉพาะ [1, 0] และค่าลักษณะเฉพาะ 1 กับเวกเตอร์ลักษณะเฉพาะ [0, 1]"
+        },
+        {
+          "en": "It has no real eigenvalues, because a reflection flips space",
+          "th": "ไม่มีค่าลักษณะเฉพาะที่เป็นจำนวนจริง เพราะการสะท้อนพลิกปริภูมิ"
+        },
+        {
+          "en": "Both eigenvalues are 1, because a reflection keeps lengths",
+          "th": "ค่าลักษณะเฉพาะทั้งสองเป็น 1 เพราะการสะท้อนรักษาความยาว"
+        },
+        {
+          "en": "It has eigenvalue -1 with eigenvector [0, 1] and eigenvalue 1 with eigenvector [1, 0]",
+          "th": "มีค่าลักษณะเฉพาะ -1 กับเวกเตอร์ลักษณะเฉพาะ [0, 1] และค่าลักษณะเฉพาะ 1 กับเวกเตอร์ลักษณะเฉพาะ [1, 0]"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The matrix sends [1, 0] to [-1, 0] = -1 * [1, 0] and leaves [0, 1] as it is. A negative eigenvalue means that direction is flipped, not rotated. The product of the eigenvalues, -1, is the determinant.",
+        "th": "เมทริกซ์ส่ง [1, 0] ไปเป็น [-1, 0] = -1 * [1, 0] และคง [0, 1] ไว้เหมือนเดิม ค่าลักษณะเฉพาะที่ติดลบแปลว่าทิศนั้นถูกพลิกกลับ ไม่ได้ถูกหมุน และผลคูณของค่าลักษณะเฉพาะ -1 ก็คือดีเทอร์มิแนนต์"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "An RNN updates its state with h = W @ h, and W has eigenvalues 1.1 and 0.9. After 50 steps, what happens to the parts of h along the two eigenvectors?",
+        "th": "RNN อัปเดตสถานะด้วย h = W @ h และ W มีค่าลักษณะเฉพาะ 1.1 กับ 0.9 หลังผ่าน 50 step ส่วนประกอบของ h ตามเวกเตอร์ลักษณะเฉพาะทั้งสองเป็นอย่างไร?"
+      },
+      "options": [
+        {
+          "en": "Both stay about the same, since the eigenvalues average to 1",
+          "th": "ทั้งสองเกือบเท่าเดิม เพราะค่าเฉลี่ยของค่าลักษณะเฉพาะเป็น 1"
+        },
+        {
+          "en": "Both grow about 50 times",
+          "th": "ทั้งสองโตขึ้นประมาณ 50 เท่า"
+        },
+        {
+          "en": "Both shrink towards 0",
+          "th": "ทั้งสองหดลงจนเข้าใกล้ 0"
+        },
+        {
+          "en": "The 1.1 part grows about 117 times and the 0.9 part shrinks to about 0.005 of its size",
+          "th": "ส่วนของ 1.1 โตขึ้นประมาณ 117 เท่า และส่วนของ 0.9 หดเหลือประมาณ 0.005 ของขนาดเดิม"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Each step multiplies the part along an eigenvector by its eigenvalue, so after 50 steps the factors are 1.1^50 ≈ 117 and 0.9^50 ≈ 0.005. Eigenvalues don't average out: one direction explodes while the other vanishes.",
+        "th": "แต่ละ step คูณส่วนประกอบตามเวกเตอร์ลักษณะเฉพาะด้วยค่าลักษณะเฉพาะของมัน หลัง 50 step ตัวคูณจึงเป็น 1.1^50 ≈ 117 และ 0.9^50 ≈ 0.005 ค่าลักษณะเฉพาะไม่ได้หักล้างกันแบบค่าเฉลี่ย ทิศหนึ่งระเบิดขณะที่อีกทิศหายไป"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "With A = V @ D @ V^(-1), why is A^10 easy to compute?",
+        "th": "เมื่อ A = V @ D @ V^(-1) ทำไม A^10 จึงคำนวณได้ง่าย?"
+      },
+      "options": [
+        {
+          "en": "Because V is always an orthogonal matrix",
+          "th": "เพราะ V เป็นเมทริกซ์เชิงตั้งฉากเสมอ"
+        },
+        {
+          "en": "A^10 = V @ D^10 @ V^(-1), and D^10 just raises each diagonal entry to the 10th power",
+          "th": "A^10 = V @ D^10 @ V^(-1) และ D^10 ก็แค่ยกกำลัง 10 ให้แต่ละช่องบนเส้นทแยงมุม"
+        },
+        {
+          "en": "Because the eigenvalues of A^10 are 10 times those of A",
+          "th": "เพราะค่าลักษณะเฉพาะของ A^10 เป็น 10 เท่าของค่าลักษณะเฉพาะของ A"
+        },
+        {
+          "en": "Because det(A^10) = det(A)",
+          "th": "เพราะ det(A^10) = det(A)"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "In the product V D V^(-1) V D V^(-1) ... each V^(-1) V in the middle cancels, leaving V D^10 V^(-1). Powers of a diagonal matrix are entry-wise powers, so the eigenvalues of A^10 are the 10th powers, not 10 times. V is orthogonal only for symmetric A, and det(A^10) = det(A)^10.",
+        "th": "ในผลคูณ V D V^(-1) V D V^(-1) ... คู่ V^(-1) V ที่อยู่ตรงกลางหักล้างกันหมด เหลือ V D^10 V^(-1) การยกกำลังเมทริกซ์ทแยงมุมคือการยกกำลังทีละช่อง ค่าลักษณะเฉพาะของ A^10 จึงเป็นกำลังสิบ ไม่ใช่ 10 เท่า V เป็นเมทริกซ์เชิงตั้งฉากเฉพาะเมื่อ A สมมาตร และ det(A^10) = det(A)^10"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Why can't the shear [[1, 1], [0, 1]] be written as V @ D @ V^(-1)?",
+        "th": "ทำไมการเฉือน [[1, 1], [0, 1]] จึงเขียนในรูป V @ D @ V^(-1) ไม่ได้?"
+      },
+      "options": [
+        {
+          "en": "Its determinant is 0",
+          "th": "ดีเทอร์มิแนนต์ของมันเป็น 0"
+        },
+        {
+          "en": "Its eigenvalues are complex",
+          "th": "ค่าลักษณะเฉพาะของมันเป็นจำนวนเชิงซ้อน"
+        },
+        {
+          "en": "Its only eigenvalue is 1, and every eigenvector lies along [1, 0], so there aren't two independent eigenvectors to fill V",
+          "th": "มีค่าลักษณะเฉพาะเพียง 1 และเวกเตอร์ลักษณะเฉพาะทุกตัวอยู่ตามแนว [1, 0] จึงไม่มีเวกเตอร์ลักษณะเฉพาะที่เป็นอิสระต่อกันสองตัวมาใส่ใน V"
+        },
+        {
+          "en": "Shear matrices are not square",
+          "th": "เมทริกซ์การเฉือนไม่ใช่เมทริกซ์จัตุรัส"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "The characteristic equation is (1 - λ)² = 0, so λ = 1 twice. Solving (A - I)v = 0 gives [[0, 1], [0, 0]] v = 0, which forces v = [t, 0]. With only one eigenvector direction, V has no inverse. The determinant is 1, not 0.",
+        "th": "สมการลักษณะเฉพาะคือ (1 - λ)² = 0 จึงได้ λ = 1 ซ้ำสองครั้ง แก้ (A - I)v = 0 ได้ [[0, 1], [0, 0]] v = 0 ซึ่งบังคับให้ v = [t, 0] เมื่อมีทิศของเวกเตอร์ลักษณะเฉพาะแค่ทิศเดียว V ก็ไม่มีเมทริกซ์ผกผัน ส่วนดีเทอร์มิแนนต์คือ 1 ไม่ใช่ 0"
+      }
+    }
+  ]
+}
