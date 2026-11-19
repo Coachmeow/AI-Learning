@@ -1,0 +1,13 @@
+{
+  "minutes": 25,
+  "title": {"th": "หาแรงก์ด้วยการลดแถว", "en": "Rank by row reduction"},
+  "prompt": {
+    "th": "เขียน `matrix_rank(rows)` ที่คืนแรงก์ของเมทริกซ์ (list ของแถว ไม่จำเป็นต้องเป็นจัตุรัส) ด้วยการลดแถวแบบเกาส์ (Gaussian elimination) แบบในขั้นที่ 5 ของบทเรียน: ไล่ทีละคอลัมน์ หาแถว pivot ที่ค่า**สัมบูรณ์**เกิน `1e-10` จากแถวที่ยังไม่ได้ใช้ สลับขึ้นมา แล้วกำจัดคอลัมน์นั้นออกจากแถวอื่น ห้ามแก้ list ที่ส่งเข้ามา และต้องใช้ค่าคลาดเคลื่อน `1e-10` แทนการเทียบกับศูนย์ตรงๆ เพราะเลขทศนิยมแทบไม่เคยเป็นศูนย์พอดี มี test ซ่อนอยู่บางส่วน",
+    "en": "Write `matrix_rank(rows)` that returns the rank of a matrix (a list of rows, not necessarily square) by Gaussian elimination, as in the lesson's Step 5: go column by column, find a pivot row among the unused rows whose **absolute** value exceeds `1e-10`, swap it up, and eliminate that column from the other rows. Don't change the list you are given, and use the `1e-10` tolerance instead of comparing with zero, because floating point almost never gives an exact zero. Some tests are hidden."
+  },
+  "hints": [
+    {"th": "คัดลอกก่อน: `m = [list(map(float, r)) for r in rows]` แล้วเก็บตัวนับ `rank = 0` ซึ่งเป็นทั้งจำนวน pivot และตำแหน่งแถวถัดไปที่จะใช้", "en": "Copy first: `m = [list(map(float, r)) for r in rows]`, and keep a counter `rank = 0` that is both the number of pivots and the next row to fill."},
+    {"th": "สำหรับแต่ละคอลัมน์ `c`: หา `p` แรกใน `range(rank, len(m))` ที่ `abs(m[p][c]) > 1e-10` ถ้าไม่เจอให้ข้ามคอลัมน์นี้ เพราะไม่มี pivot", "en": "For each column `c`, find the first `p` in `range(rank, len(m))` with `abs(m[p][c]) > 1e-10`; if there is none, skip the column."},
+    {"th": "สลับแถว `p` กับ `rank` แล้วสำหรับทุกแถว `r` อื่น ให้ลบ `m[r][c] / m[rank][c]` เท่าของแถว pivot ออก จากนั้น `rank += 1`", "en": "Swap rows `p` and `rank`, subtract `m[r][c] / m[rank][c]` times the pivot row from every other row `r`, then `rank += 1`."}
+  ]
+}

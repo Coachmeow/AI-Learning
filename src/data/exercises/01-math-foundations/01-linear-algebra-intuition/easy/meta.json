@@ -1,0 +1,13 @@
+{
+  "minutes": 6,
+  "title": {"th": "เติมโค้ด: มุมระหว่างเวกเตอร์สองตัว", "en": "Fill in: the angle between two vectors"},
+  "prompt": {
+    "th": "แบบฝึกหัดที่ 1 ของบทเรียน: เติม `angle_between(a, b)` ให้คืนมุมระหว่างเวกเตอร์ `a` กับ `b` (list ของตัวเลข) เป็นองศา จาก cosine similarity ที่ให้มา ระวัง: เลขทศนิยมทำให้ cosine ของเวกเตอร์กับตัวเองอาจออกมาเป็น `1.0000000000000002` ซึ่ง `math.acos` รับไม่ได้ ต้องบีบค่าให้อยู่ในช่วง -1 ถึง 1 ก่อน",
+    "en": "The lesson's Exercise 1: complete `angle_between(a, b)` so it returns the angle between vectors `a` and `b` (lists of numbers) in degrees, using the given cosine similarity. Careful: floating point can make the cosine of a vector with itself `1.0000000000000002`, which `math.acos` rejects, so clamp the value to between -1 and 1 first."
+  },
+  "hints": [
+    {"th": "บีบค่าด้วย `c = max(-1.0, min(1.0, c))`", "en": "Clamp with `c = max(-1.0, min(1.0, c))`."},
+    {"th": "`math.acos(c)` ให้มุมเป็นเรเดียน และ `math.degrees(...)` แปลงเป็นองศา", "en": "`math.acos(c)` gives radians and `math.degrees(...)` converts to degrees."},
+    {"th": "`return math.degrees(math.acos(max(-1.0, min(1.0, c))))`", "en": "`return math.degrees(math.acos(max(-1.0, min(1.0, c))))`"}
+  ]
+}

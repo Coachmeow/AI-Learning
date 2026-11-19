@@ -930,6 +930,121 @@
     {
       "en": "lazy (evaluation)",
       "th": "แบบขี้เกียจ (lazy)"
+    },
+    {
+      "en": "vector",
+      "th": "เวกเตอร์"
+    },
+    {
+      "en": "matrix",
+      "th": "เมทริกซ์"
+    },
+    {
+      "en": "dot product",
+      "th": "dot product"
+    },
+    {
+      "en": "magnitude (vector length)",
+      "th": "ขนาด / ความยาว",
+      "first": "ขนาด (magnitude)"
+    },
+    {
+      "en": "cosine similarity",
+      "th": "cosine similarity"
+    },
+    {
+      "en": "linear independence / linearly dependent",
+      "th": "ความเป็นอิสระเชิงเส้น / ขึ้นต่อกันเชิงเส้น",
+      "first": "ความเป็นอิสระเชิงเส้น (linear independence)"
+    },
+    {
+      "en": "span",
+      "th": "แผ่ครอบคลุม",
+      "first": "แผ่ (span)"
+    },
+    {
+      "en": "basis",
+      "th": "ฐานหลัก",
+      "first": "ฐานหลัก (basis)"
+    },
+    {
+      "en": "rank",
+      "th": "แรงก์",
+      "first": "แรงก์ (rank)"
+    },
+    {
+      "en": "rank-deficient / full rank",
+      "th": "ขาดแรงก์ / แรงก์เต็ม"
+    },
+    {
+      "en": "projection",
+      "th": "การฉาย",
+      "first": "การฉาย (projection)"
+    },
+    {
+      "en": "orthonormal",
+      "th": "เชิงตั้งฉากปกติ (orthonormal)"
+    },
+    {
+      "en": "orthogonal / perpendicular",
+      "th": "ตั้งฉาก"
+    },
+    {
+      "en": "Gram-Schmidt process",
+      "th": "กระบวนการ Gram-Schmidt"
+    },
+    {
+      "en": "QR decomposition",
+      "th": "การแยก QR",
+      "first": "การแยก QR (QR decomposition)"
+    },
+    {
+      "en": "eigenvalue / eigenvector",
+      "th": "ค่าลักษณะเฉพาะ / เวกเตอร์ลักษณะเฉพาะ",
+      "first": "ค่าลักษณะเฉพาะ (eigenvalue)"
+    },
+    {
+      "en": "inverse (matrix)",
+      "th": "เมทริกซ์ผกผัน",
+      "first": "เมทริกซ์ผกผัน (inverse)"
+    },
+    {
+      "en": "singular (matrix)",
+      "th": "เอกฐาน",
+      "first": "เอกฐาน (singular)"
+    },
+    {
+      "en": "least squares",
+      "th": "กำลังสองน้อยที่สุด",
+      "first": "กำลังสองน้อยที่สุด (least squares)"
+    },
+    {
+      "en": "column space",
+      "th": "ปริภูมิคอลัมน์",
+      "first": "ปริภูมิคอลัมน์ (column space)"
+    },
+    {
+      "en": "subspace",
+      "th": "ปริภูมิย่อย"
+    },
+    {
+      "en": "ill-conditioned",
+      "th": "สภาพไม่ดี",
+      "first": "สภาพไม่ดี (ill-conditioned)"
+    },
+    {
+      "en": "row reduction / Gaussian elimination",
+      "th": "การลดแถว / การกำจัดแบบเกาส์",
+      "first": "การลดแถว (row reduction)"
+    },
+    {
+      "en": "transformation (linear)",
+      "th": "การแปลง",
+      "first": "การแปลง (transformation)"
+    },
+    {
+      "en": "scalar",
+      "th": "สเกลาร์"
     }
   ]
 }

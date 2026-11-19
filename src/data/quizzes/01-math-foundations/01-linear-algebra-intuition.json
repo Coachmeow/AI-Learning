@@ -1,0 +1,487 @@
+{
+  "lesson": "01-math-foundations/01-linear-algebra-intuition",
+  "source_hash": "f8bd6e7a8cd337ba0cb2d90a8acddb60b32c58d4dd5d27ae451181772267410c",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What does the dot product of two vectors measure?",
+        "th": "dot product ของเวกเตอร์สองตัววัดอะไร"
+      },
+      "options": [
+        {
+          "en": "The number of dimensions the vectors share",
+          "th": "จำนวนมิติที่เวกเตอร์มีร่วมกัน"
+        },
+        {
+          "en": "How similar or aligned the two vectors are",
+          "th": "เวกเตอร์สองตัวคล้ายหรือชี้ไปทางเดียวกันแค่ไหน"
+        },
+        {
+          "en": "The distance between the two vectors",
+          "th": "ระยะห่างระหว่างเวกเตอร์สองตัว"
+        },
+        {
+          "en": "The angle between the vectors in degrees",
+          "th": "มุมระหว่างเวกเตอร์เป็นองศา"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The dot product measures alignment: positive means same direction (similar), zero means perpendicular (unrelated), negative means opposite direction (dissimilar). This is the basis of similarity search in AI.",
+        "th": "dot product วัดว่าชี้ไปทางเดียวกันแค่ไหน: เป็นบวกคือทิศเดียวกัน (คล้ายกัน) เป็นศูนย์คือตั้งฉาก (ไม่เกี่ยวกัน) เป็นลบคือทิศตรงข้าม (ต่างกัน) นี่คือพื้นฐานของการค้นหาความคล้ายใน AI"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "In AI, what does 'embedding' refer to?",
+        "th": "ใน AI คำว่า 'embedding' หมายถึงอะไร"
+      },
+      "options": [
+        {
+          "en": "The process of converting code to machine instructions",
+          "th": "กระบวนการแปลงโค้ดเป็นคำสั่งของเครื่อง"
+        },
+        {
+          "en": "A technique for compressing model weights",
+          "th": "เทคนิคบีบอัดน้ำหนักของโมเดล"
+        },
+        {
+          "en": "Inserting one model inside another",
+          "th": "การฝังโมเดลหนึ่งไว้ในอีกโมเดลหนึ่ง"
+        },
+        {
+          "en": "A vector representation that captures the meaning of something (word, image, user)",
+          "th": "เวกเตอร์ที่แทนความหมายของบางสิ่ง (คำ, ภาพ, ผู้ใช้)"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "An embedding maps discrete objects (words, images, users) to continuous vectors in a high-dimensional space where similar items are close together. It is the bridge between real-world concepts and mathematical operations.",
+        "th": "embedding จับคู่สิ่งที่แยกเป็นชิ้น (คำ, ภาพ, ผู้ใช้) เข้ากับเวกเตอร์ต่อเนื่องในปริภูมิหลายมิติ ซึ่งสิ่งที่คล้ายกันจะอยู่ใกล้กัน มันคือสะพานระหว่างแนวคิดในโลกจริงกับการคำนวณทางคณิตศาสตร์"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "What is the magnitude of the vector [3, 4]?",
+        "th": "เวกเตอร์ [3, 4] มีขนาด (magnitude) เท่าไร"
+      },
+      "options": [
+        {
+          "en": "5",
+          "th": "5"
+        },
+        {
+          "en": "7",
+          "th": "7"
+        },
+        {
+          "en": "12",
+          "th": "12"
+        },
+        {
+          "en": "25",
+          "th": "25"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Magnitude is the square root of the sum of squares: √(9 + 16) = √25 = 5.",
+        "th": "ขนาดคือรากที่สองของผลบวกกำลังสอง: √(9 + 16) = √25 = 5"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "What is the cosine similarity of two perpendicular vectors?",
+        "th": "cosine similarity ของเวกเตอร์สองตัวที่ตั้งฉากกันเป็นเท่าไร"
+      },
+      "options": [
+        {
+          "en": "1",
+          "th": "1"
+        },
+        {
+          "en": "0",
+          "th": "0"
+        },
+        {
+          "en": "-1",
+          "th": "-1"
+        },
+        {
+          "en": "It depends on their lengths",
+          "th": "ขึ้นกับความยาวของมัน"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Perpendicular vectors have a dot product of 0, so the cosine is 0 whatever their lengths: they are unrelated.",
+        "th": "เวกเตอร์ที่ตั้งฉากกันมี dot product เป็น 0 ค่า cosine จึงเป็น 0 ไม่ว่าจะยาวเท่าไร แปลว่าไม่เกี่ยวข้องกัน"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "In the lesson's picture, what does a matrix do to a vector?",
+        "th": "ตามภาพในบทเรียน เมทริกซ์ทำอะไรกับเวกเตอร์"
+      },
+      "options": [
+        {
+          "en": "Sorts its numbers",
+          "th": "เรียงตัวเลขในเวกเตอร์"
+        },
+        {
+          "en": "Transforms it into another vector: it can rotate, scale, stretch or project it",
+          "th": "แปลงเป็นอีกเวกเตอร์หนึ่ง: หมุน ปรับขนาด ยืด หรือฉายก็ได้"
+        },
+        {
+          "en": "Measures its length",
+          "th": "วัดความยาวของเวกเตอร์"
+        },
+        {
+          "en": "Stores it for later",
+          "th": "เก็บไว้ใช้ทีหลัง"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "A matrix is a transformation. A neural-network layer is exactly such a matrix applied to the input vector.",
+        "th": "เมทริกซ์คือการแปลง ชั้นของโครงข่ายประสาทเทียมก็คือเมทริกซ์แบบนี้ที่นำไปใช้กับเวกเตอร์ขาเข้า"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "Three vectors v1=[1,0,0], v2=[0,1,0], v3=[2,1,0] are given. Are they linearly independent?",
+        "th": "มีเวกเตอร์สามตัว v1=[1,0,0], v2=[0,1,0], v3=[2,1,0] เวกเตอร์เหล่านี้เป็นอิสระเชิงเส้นหรือไม่"
+      },
+      "options": [
+        {
+          "en": "Yes, because there are three vectors in 3D space",
+          "th": "เป็น เพราะมีเวกเตอร์สามตัวในปริภูมิ 3 มิติ"
+        },
+        {
+          "en": "No, because v3 = 2*v1 + v2, so v3 is a linear combination of the others",
+          "th": "ไม่เป็น เพราะ v3 = 2*v1 + v2 จึงเป็นผลรวมเชิงเส้นของตัวอื่น"
+        },
+        {
+          "en": "Yes, because none of the vectors are identical",
+          "th": "เป็น เพราะไม่มีเวกเตอร์ตัวไหนเหมือนกัน"
+        },
+        {
+          "en": "No, because they all have a zero component",
+          "th": "ไม่เป็น เพราะทุกตัวมีส่วนประกอบเป็นศูนย์"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "v3 = 2*v1 + v2, making the set linearly dependent. All three vectors lie in the xy-plane and cannot reach [0,0,1]. Despite having 3 vectors in 3D, they only span a 2D subspace.",
+        "th": "v3 = 2*v1 + v2 เซตนี้จึงขึ้นต่อกันเชิงเส้น เวกเตอร์ทั้งสามอยู่บนระนาบ xy และไปไม่ถึง [0,0,1] แม้จะมีเวกเตอร์สามตัวใน 3 มิติ แต่แผ่ได้แค่ปริภูมิย่อย 2 มิติ"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "What does the rank of a matrix tell you in the context of machine learning?",
+        "th": "ในบริบทของ machine learning แรงก์ของเมทริกซ์บอกอะไร"
+      },
+      "options": [
+        {
+          "en": "The number of linearly independent columns, indicating how many dimensions of useful information it contains",
+          "th": "จำนวนคอลัมน์ที่เป็นอิสระเชิงเส้น บอกว่ามีข้อมูลที่มีประโยชน์อยู่กี่มิติ"
+        },
+        {
+          "en": "The maximum value in the matrix",
+          "th": "ค่าที่มากที่สุดในเมทริกซ์"
+        },
+        {
+          "en": "How fast the matrix can be multiplied",
+          "th": "เมทริกซ์คูณได้เร็วแค่ไหน"
+        },
+        {
+          "en": "The number of non-zero entries in the matrix",
+          "th": "จำนวนช่องที่ไม่เป็นศูนย์ในเมทริกซ์"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Rank equals the number of linearly independent columns. In ML, a rank-deficient feature matrix means redundant features, infinitely many weight solutions, and the need for regularization.",
+        "th": "แรงก์เท่ากับจำนวนคอลัมน์ที่เป็นอิสระเชิงเส้น ใน ML เมทริกซ์ feature ที่ขาดแรงก์แปลว่ามี feature ซ้ำซ้อน มีคำตอบของน้ำหนักมากมายไม่สิ้นสุด และต้องใช้ regularization"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "How does LoRA (Low-Rank Adaptation) use linear algebra to efficiently fine-tune large language models?",
+        "th": "LoRA (Low-Rank Adaptation) ใช้พีชคณิตเชิงเส้น fine-tune โมเดลภาษาขนาดใหญ่อย่างมีประสิทธิภาพได้อย่างไร"
+      },
+      "options": [
+        {
+          "en": "It decomposes weight updates into two small low-rank matrices instead of updating the full weight matrix",
+          "th": "แยกการอัปเดตน้ำหนักเป็นเมทริกซ์แรงก์ต่ำขนาดเล็กสองตัว แทนการอัปเดตเมทริกซ์น้ำหนักทั้งตัว"
+        },
+        {
+          "en": "It removes unused rows from weight matrices to shrink the model",
+          "th": "ลบแถวที่ไม่ได้ใช้ออกจากเมทริกซ์น้ำหนักเพื่อย่อโมเดล"
+        },
+        {
+          "en": "It freezes the embedding layer and only trains the output head",
+          "th": "แช่แข็งชั้น embedding แล้วฝึกแค่ชั้นผลลัพธ์"
+        },
+        {
+          "en": "It converts all weights from float32 to int8",
+          "th": "แปลงน้ำหนักทั้งหมดจาก float32 เป็น int8"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "LoRA decomposes a 4096x4096 weight update into two matrices of size 4096x16 and 16x4096 (rank-16), reducing trainable parameters from 16M to 131K by assuming updates live in a low-dimensional subspace.",
+        "th": "LoRA แยกการอัปเดตน้ำหนักขนาด 4096x4096 เป็นเมทริกซ์สองตัวขนาด 4096x16 และ 16x4096 (แรงก์ 16) ลดพารามิเตอร์ที่ต้องฝึกจาก 16 ล้านเหลือ 131K โดยสมมติว่าการอัปเดตอยู่ในปริภูมิย่อยมิติต่ำ"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "What is the projection of [1, 2, 3] onto [1, 1, 1]?",
+        "th": "ผลการฉาย [1, 2, 3] ลงบน [1, 1, 1] คืออะไร"
+      },
+      "options": [
+        {
+          "en": "[2, 2, 2]",
+          "th": "[2, 2, 2]"
+        },
+        {
+          "en": "[6, 6, 6]",
+          "th": "[6, 6, 6]"
+        },
+        {
+          "en": "[1, 2, 3]",
+          "th": "[1, 2, 3]"
+        },
+        {
+          "en": "[1, 1, 1]",
+          "th": "[1, 1, 1]"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "(a·b)/(b·b) = 6/3 = 2, so the projection is 2·[1, 1, 1] = [2, 2, 2]: the mean of the components, repeated. The remainder [-1, 0, 1] is perpendicular to [1, 1, 1].",
+        "th": "(a·b)/(b·b) = 6/3 = 2 ผลการฉายจึงเป็น 2·[1, 1, 1] = [2, 2, 2] คือค่าเฉลี่ยของส่วนประกอบซ้ำกันสามตัว ส่วนที่เหลือ [-1, 0, 1] ตั้งฉากกับ [1, 1, 1]"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "Using the lesson's `Matrix` and `Vector` classes, what does this print?",
+        "th": "ถ้าใช้คลาส `Matrix` และ `Vector` ของบทเรียน โค้ดนี้พิมพ์อะไร"
+      },
+      "code": "rotation_90 = Matrix([[0, -1], [1, 0]])\nprint(rotation_90 @ Vector([3, 1]))",
+      "options": [
+        {
+          "en": "Vector([-1, 3])",
+          "th": "Vector([-1, 3])"
+        },
+        {
+          "en": "Vector([1, -3])",
+          "th": "Vector([1, -3])"
+        },
+        {
+          "en": "Vector([3, -1])",
+          "th": "Vector([3, -1])"
+        },
+        {
+          "en": "Vector([-3, 1])",
+          "th": "Vector([-3, 1])"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Row by row: 0·3 + (−1)·1 = −1 and 1·3 + 0·1 = 3. The 90° counter-clockwise rotation sends (3, 1) to (−1, 3).",
+        "th": "คิดทีละแถว: 0·3 + (−1)·1 = −1 และ 1·3 + 0·1 = 3 การหมุนทวนเข็มนาฬิกา 90° ส่ง (3, 1) ไปที่ (−1, 3)"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "With LoRA at rank 8 on a 4096×4096 weight matrix, how many parameters does the update train?",
+        "th": "ถ้าใช้ LoRA แรงก์ 8 กับเมทริกซ์น้ำหนักขนาด 4096×4096 การอัปเดตต้องฝึกพารามิเตอร์กี่ตัว"
+      },
+      "options": [
+        {
+          "en": "32,768",
+          "th": "32,768"
+        },
+        {
+          "en": "65,536",
+          "th": "65,536"
+        },
+        {
+          "en": "131,072",
+          "th": "131,072"
+        },
+        {
+          "en": "16,777,216",
+          "th": "16,777,216"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Two factors, 4096×8 and 8×4096: 2 × 4096 × 8 = 65,536, half of the rank-16 figure in the lesson and about 0.4% of the 16.8M full update.",
+        "th": "ตัวประกอบสองตัวขนาด 4096×8 และ 8×4096: 2 × 4096 × 8 = 65,536 เป็นครึ่งหนึ่งของตัวเลขแรงก์ 16 ในบทเรียน และราว 0.4% ของการอัปเดตเต็มขนาด 16.8 ล้าน"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "The lesson's `gram_schmidt` is given [1,0,0], [2,0,0] and [1,1,1]. How many vectors does it return, and why?",
+        "th": "ส่ง [1,0,0], [2,0,0] และ [1,1,1] ให้ `gram_schmidt` ของบทเรียน จะได้เวกเตอร์กลับมากี่ตัว เพราะอะไร"
+      },
+      "options": [
+        {
+          "en": "3, one for each input",
+          "th": "3 ตัว ตัวละหนึ่งต่อข้อมูลขาเข้า"
+        },
+        {
+          "en": "2: after removing its projection, [2,0,0] has magnitude below 1e-10 and is skipped",
+          "th": "2 ตัว: หลังลบผลการฉายออก [2,0,0] มีขนาดต่ำกว่า 1e-10 จึงถูกข้ามไป"
+        },
+        {
+          "en": "1, because the first two are parallel",
+          "th": "1 ตัว เพราะสองตัวแรกขนานกัน"
+        },
+        {
+          "en": "It raises ZeroDivisionError",
+          "th": "เกิด ZeroDivisionError"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "[2,0,0] lies entirely along u1, so nothing is left after subtracting its projection. The code's magnitude check skips it instead of dividing by zero; the remaining vectors span only a 2-D subspace.",
+        "th": "[2,0,0] อยู่ตามแนว u1 ทั้งหมด หลังลบผลการฉายจึงไม่เหลืออะไร โค้ดตรวจขนาดแล้วข้ามไปแทนที่จะหารด้วยศูนย์ เวกเตอร์ที่เหลือแผ่ได้แค่ปริภูมิย่อย 2 มิติ"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "`A = [[1, 2], [2, 4]]`. What follows for the system Ax = b?",
+        "th": "`A = [[1, 2], [2, 4]]` ข้อใดเป็นจริงสำหรับระบบสมการ Ax = b"
+      },
+      "options": [
+        {
+          "en": "It always has exactly one solution",
+          "th": "มีคำตอบเดียวเสมอ"
+        },
+        {
+          "en": "A has rank 1, so it is not invertible: Ax = b has no solution or infinitely many",
+          "th": "A มีแรงก์ 1 จึงหาตัวผกผันไม่ได้: Ax = b ไม่มีคำตอบเลย หรือมีมากมายไม่สิ้นสุด"
+        },
+        {
+          "en": "A has rank 2 because it has two rows",
+          "th": "A มีแรงก์ 2 เพราะมีสองแถว"
+        },
+        {
+          "en": "Only b = [0, 0] has no solution",
+          "th": "มีแค่ b = [0, 0] ที่ไม่มีคำตอบ"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The second row is twice the first, so rank 1 < 2. b = [1, 2] lies on the line the columns span and has infinitely many solutions; b = [1, 0] has none.",
+        "th": "แถวที่สองเป็นสองเท่าของแถวแรก แรงก์จึงเป็น 1 < 2 ถ้า b = [1, 2] ซึ่งอยู่บนเส้นที่คอลัมน์แผ่ จะมีคำตอบมากมายไม่สิ้นสุด ส่วน b = [1, 0] ไม่มีคำตอบเลย"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Your dataset has feature_3 = 2·feature_1 + feature_2. What is the best response?",
+        "th": "ชุดข้อมูลของคุณมี feature_3 = 2·feature_1 + feature_2 ควรทำอย่างไรดีที่สุด"
+      },
+      "options": [
+        {
+          "en": "Keep it: more features always help",
+          "th": "เก็บไว้ เพราะ feature ยิ่งมากยิ่งดี"
+        },
+        {
+          "en": "Drop the redundant feature (or regularise, e.g. ridge), because it makes the normal equations singular",
+          "th": "ตัด feature ที่ซ้ำซ้อนทิ้ง (หรือใช้ regularization เช่น ridge) เพราะมันทำให้ normal equations เป็นเอกฐาน"
+        },
+        {
+          "en": "Multiply it by 2",
+          "th": "คูณมันด้วย 2"
+        },
+        {
+          "en": "Normalise every feature to length 1",
+          "th": "ปรับทุก feature ให้ยาว 1"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "A linearly dependent column adds no information and leaves infinitely many equally good weight vectors. Removing it, or adding a penalty that picks one solution, restores a unique, stable fit.",
+        "th": "คอลัมน์ที่ขึ้นต่อกันเชิงเส้นไม่ได้เพิ่มข้อมูลใหม่ และทำให้มีเวกเตอร์น้ำหนักที่ดีพอกันมากมายไม่สิ้นสุด การตัดทิ้งหรือเพิ่มค่าปรับที่เลือกคำตอบเดียว ทำให้ได้คำตอบเดียวที่เสถียรกลับมา"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Pair A of embeddings has a dot product of 50, pair B has 5. Can you conclude pair A is more similar?",
+        "th": "embedding คู่ A มี dot product 50 ส่วนคู่ B มี 5 สรุปได้ไหมว่าคู่ A คล้ายกันมากกว่า"
+      },
+      "options": [
+        {
+          "en": "Yes, a larger dot product always means more similar",
+          "th": "ได้ dot product ที่มากกว่าแปลว่าคล้ายกว่าเสมอ"
+        },
+        {
+          "en": "No: the dot product also grows with length; compare cosine similarity, which divides by both magnitudes",
+          "th": "ไม่ได้: dot product โตตามความยาวด้วย ต้องเทียบ cosine similarity ซึ่งหารด้วยขนาดของทั้งคู่"
+        },
+        {
+          "en": "No, only negative values matter",
+          "th": "ไม่ได้ เพราะมีแต่ค่าลบที่มีความหมาย"
+        },
+        {
+          "en": "Yes, if both pairs have the same dimension",
+          "th": "ได้ ถ้าทั้งสองคู่มีจำนวนมิติเท่ากัน"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Long vectors can have a big dot product while pointing in quite different directions. Cosine similarity removes the lengths and leaves only the angle.",
+        "th": "เวกเตอร์ที่ยาวอาจมี dot product มาก ทั้งที่ชี้ไปคนละทางพอสมควร cosine similarity ตัดผลของความยาวออก เหลือแค่มุม"
+      }
+    }
+  ]
+}

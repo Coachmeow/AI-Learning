@@ -1,0 +1,13 @@
+{
+  "minutes": 15,
+  "title": {"th": "เขียน Gram-Schmidt เอง", "en": "Write Gram-Schmidt yourself"},
+  "prompt": {
+    "th": "เขียน `gram_schmidt(vectors)` ที่รับ list ของเวกเตอร์ (list ของ float) แล้วคืนฐานหลักเชิงตั้งฉากปกติตามลำดับ: สำหรับแต่ละเวกเตอร์ ให้ลบผลการฉายลงบนทุกเวกเตอร์ที่ได้มาแล้ว ถ้าสิ่งที่เหลือยาวไม่ถึง `1e-10` (ขึ้นต่อกันกับตัวก่อนหน้า) ให้ข้ามไป ไม่เช่นนั้นให้ normalize แล้วเก็บไว้ ใช้ `dot`, `sub`, `scale` และ `magnitude` ที่ให้มาได้",
+    "en": "Write `gram_schmidt(vectors)` that takes a list of vectors (lists of floats) and returns an orthonormal basis, in order: for each vector, subtract its projection onto every vector found so far; if what remains is shorter than `1e-10` (it depends on the earlier ones), skip it, otherwise normalise it and keep it. You may use the given `dot`, `sub`, `scale` and `magnitude`."
+  },
+  "hints": [
+    {"th": "เวกเตอร์ในผลลัพธ์ยาว 1 อยู่แล้ว ผลการฉายลงบน `u` จึงเป็นแค่ `scale(u, dot(w, u))`", "en": "Vectors in the result already have length 1, so the projection onto `u` is just `scale(u, dot(w, u))`."},
+    {"th": "ใช้ `w` ที่ถูกลบไปแล้วในการฉายครั้งถัดไป (`w = sub(w, scale(u, dot(w, u)))`) จะเสถียรกว่าใช้ `v` ตัวเดิม", "en": "Project the already-reduced `w` each time (`w = sub(w, scale(u, dot(w, u)))`); that is more stable than reusing the original `v`."},
+    {"th": "ตรวจ `magnitude(w) < 1e-10` ก่อน normalize เพื่อไม่ให้หารด้วยศูนย์", "en": "Check `magnitude(w) < 1e-10` before normalising so you never divide by zero."}
+  ]
+}
