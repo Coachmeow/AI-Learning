@@ -1248,6 +1248,63 @@
       "en": "contour plot",
       "th": "แผนภาพเส้นชั้น",
       "first": "แผนภาพเส้นชั้น (contour plot)"
+    },
+    {
+      "en": "automatic differentiation (autodiff)",
+      "th": "การหาอนุพันธ์อัตโนมัติ",
+      "first": "การหาอนุพันธ์อัตโนมัติ (automatic differentiation)"
+    },
+    {
+      "en": "autograd",
+      "th": "autograd"
+    },
+    {
+      "en": "computational graph",
+      "th": "กราฟการคำนวณ",
+      "first": "กราฟการคำนวณ (computational graph)"
+    },
+    {
+      "en": "forward mode / reverse mode",
+      "th": "แบบไปข้างหน้า / แบบย้อนกลับ"
+    },
+    {
+      "en": "dual numbers",
+      "th": "จำนวนคู่",
+      "first": "จำนวนคู่ (dual numbers)"
+    },
+    {
+      "en": "topological sort",
+      "th": "การเรียงลำดับแบบทอพอโลยี",
+      "first": "การเรียงลำดับแบบทอพอโลยี (topological sort)"
+    },
+    {
+      "en": "gradient accumulation",
+      "th": "การสะสม gradient"
+    },
+    {
+      "en": "dynamic graph (define-by-run)",
+      "th": "กราฟพลวัต (define-by-run)"
+    },
+    {
+      "en": "gradient checking",
+      "th": "gradient checking"
+    },
+    {
+      "en": "local derivative",
+      "th": "อนุพันธ์เฉพาะที่",
+      "first": "อนุพันธ์เฉพาะที่ (local derivative)"
+    },
+    {
+      "en": "multi-layer perceptron (MLP)",
+      "th": "MLP"
+    },
+    {
+      "en": "neuron",
+      "th": "นิวรอน"
+    },
+    {
+      "en": "recursion limit",
+      "th": "recursion limit"
     }
   ]
 }

@@ -1,0 +1,13 @@
+{
+  "minutes": 8,
+  "title": {"th": "เติมโค้ด: backward ของการคูณ", "en": "Fill in: the backward of multiplication"},
+  "prompt": {
+    "th": "คลาส `Value` ด้านล่างมีการบวกและ `backward()` ครบแล้ว เติม `_backward` ของ `__mul__` ให้ส่ง gradient ไปยังตัวถูกคูณทั้งสองตัวตามกฎลูกโซ่: gradient เฉพาะที่ของ `self` คือ `other.data` และของ `other` คือ `self.data` ทั้งสองต้องคูณด้วย `out.grad` และต้องสะสมด้วย `+=` เติมบรรทัดที่มี `# TODO`",
+    "en": "The `Value` class below already has addition and `backward()`. Fill in the `_backward` of `__mul__` so it passes gradient to both factors by the chain rule: the local gradient for `self` is `other.data` and for `other` it is `self.data`. Both are multiplied by `out.grad` and must be accumulated with `+=`. Fill in the `# TODO` lines."
+  },
+  "hints": [
+    {"th": "บรรทัดแรก: `self.grad += other.data * out.grad`", "en": "First line: `self.grad += other.data * out.grad`."},
+    {"th": "บรรทัดที่สองสลับบทบาท: `other.grad += self.data * out.grad`", "en": "The second line swaps the roles: `other.grad += self.data * out.grad`."},
+    {"th": "ต้องใช้ `+=` เพราะใน `x * x` ตัวถูกคูณทั้งสองคือ Value ตัวเดียวกัน และต้องได้ gradient สองส่วน", "en": "Use `+=`: in `x * x` both factors are the same Value, and it must receive both contributions."}
+  ]
+}

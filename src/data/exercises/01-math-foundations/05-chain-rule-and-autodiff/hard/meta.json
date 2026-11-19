@@ -1,0 +1,13 @@
+{
+  "minutes": 30,
+  "title": {"th": "เขียน backward() ที่ไม่พังกับกราฟลึก", "en": "A backward() that survives deep graphs"},
+  "prompt": {
+    "th": "คลาส `Value` ด้านล่างมี `+`, `*` และ `tanh` พร้อม `_backward` ของแต่ละตัวแล้ว เขียน `backward(self)` เอง:\n\n- ตั้ง `self.grad = 1.0` แล้วเรียก `_backward` ของทุกโหนดในกราฟ**ครั้งเดียว** ตามลำดับทอพอโลยีแบบย้อนกลับ (โหนดหนึ่งต้องทำหลังจากทุกโหนดที่ใช้มันทำเสร็จแล้ว)\n- โหนดที่ถูกใช้หลายที่ (เช่น `a + a * 3`) ต้องได้ gradient ครบก่อนส่งต่อ\n- ต้องใช้ได้กับกราฟที่ลึก 1,500 ชั้นขึ้นไป `build_topo` แบบเรียกตัวเองซ้ำในบทเรียนจะชน recursion limit ของ Python (ประมาณ 1,000) จึงต้องเรียงลำดับแบบไม่ใช้ recursion\n\nมี test ซ่อนอยู่บางส่วน",
+    "en": "The `Value` class below already has `+`, `*` and `tanh`, each with its `_backward`. Write `backward(self)` yourself:\n\n- Set `self.grad = 1.0`, then call `_backward` of every node in the graph **once**, in reversed topological order (a node runs only after every node that uses it has run).\n- A node used in several places (as in `a + a * 3`) must collect all of its gradient before passing it on.\n- It must work for graphs 1,500 or more levels deep. The lesson's recursive `build_topo` hits Python's recursion limit (about 1,000), so sort without recursion.\n\nSome tests are hidden."
+  },
+  "hints": [
+    {"th": "เลียนแบบ recursion ด้วย stack ของคู่ `(node, expanded)`: ครั้งแรกที่หยิบโหนดขึ้นมา ให้ใส่ `(node, True)` กลับลงไป แล้วตามด้วยลูกที่ยังไม่เคยเยี่ยม เมื่อหยิบได้ `(node, True)` แปลว่าลูกทั้งหมดเสร็จแล้ว ให้ต่อโหนดเข้า `topo`", "en": "Imitate recursion with a stack of `(node, expanded)` pairs: the first time you pop a node, push `(node, True)` back, then its unvisited children. Popping `(node, True)` means all its children are done, so append the node to `topo`."},
+    {"th": "ใช้ set `visited` เพื่อไม่ให้โหนดเข้า `topo` ซ้ำ ถ้าโหนดซ้ำ `_backward` ของมันจะทำงานสองครั้งและนับ gradient ซ้ำ", "en": "Use a `visited` set so no node enters `topo` twice; a repeated node would run its `_backward` twice and count its gradient twice."},
+    {"th": "การไล่แบบกว้างก่อน (BFS) จากขาออกไม่ใช่ลำดับทอพอโลยี: ใน `y = a + (a * 3) * 2` BFS เจอ `a` ก่อนที่ `a * 3` จะส่ง gradient ให้ `a`", "en": "A breadth-first walk from the output is not a topological order: in `y = a + (a * 3) * 2`, BFS reaches `a` before `a * 3` has sent `a` its gradient."}
+  ]
+}

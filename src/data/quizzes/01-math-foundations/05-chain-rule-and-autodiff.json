@@ -1,0 +1,488 @@
+{
+  "lesson": "01-math-foundations/05-chain-rule-and-autodiff",
+  "source_hash": "0ec6ec8f8e98d36719b21d5fe1a78c787261864eb5689b776a8d76391b04fc3f",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What does the chain rule in calculus state?",
+        "th": "กฎลูกโซ่ในแคลคูลัสกล่าวว่าอย่างไร?"
+      },
+      "options": [
+        {
+          "en": "Functions can only be differentiated if they are linear",
+          "th": "หาอนุพันธ์ได้เฉพาะฟังก์ชันที่เป็นเชิงเส้น"
+        },
+        {
+          "en": "The derivative of composed functions is the product of their individual derivatives",
+          "th": "อนุพันธ์ของฟังก์ชันที่ซ้อนกันคือผลคูณของอนุพันธ์ของแต่ละฟังก์ชัน"
+        },
+        {
+          "en": "The derivative of a sum is the sum of derivatives",
+          "th": "อนุพันธ์ของผลบวกคือผลบวกของอนุพันธ์"
+        },
+        {
+          "en": "The integral of a product is the product of integrals",
+          "th": "ปริพันธ์ของผลคูณคือผลคูณของปริพันธ์"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "For y = f(g(x)), the chain rule says dy/dx = f'(g(x)) * g'(x). You multiply the derivatives at each link in the chain. This is the mathematical basis of backpropagation.",
+        "th": "สำหรับ y = f(g(x)) กฎลูกโซ่บอกว่า dy/dx = f'(g(x)) * g'(x) คุณคูณอนุพันธ์ของแต่ละข้อต่อในลูกโซ่ นี่คือฐานทางคณิตศาสตร์ของ backpropagation"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What is a computational graph?",
+        "th": "กราฟการคำนวณ (computational graph) คืออะไร?"
+      },
+      "options": [
+        {
+          "en": "A directed graph where nodes are operations and edges carry values forward or gradients backward",
+          "th": "กราฟมีทิศทางที่โหนดคือการดำเนินการ และเส้นเชื่อมพาค่าไปข้างหน้าหรือพา gradient ย้อนกลับ"
+        },
+        {
+          "en": "A diagram showing the architecture of a neural network",
+          "th": "แผนภาพแสดงสถาปัตยกรรมของโครงข่ายประสาทเทียม"
+        },
+        {
+          "en": "A graph database used for storing training data",
+          "th": "ฐานข้อมูลแบบกราฟที่ใช้เก็บข้อมูลสำหรับเทรน"
+        },
+        {
+          "en": "A plot of loss vs training steps",
+          "th": "กราฟของ loss เทียบกับจำนวนก้าวในการเทรน"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "A computational graph represents the sequence of operations in a computation. Data flows forward through the graph, and gradients flow backward during backpropagation.",
+        "th": "กราฟการคำนวณแทนลำดับของการดำเนินการในการคำนวณหนึ่งครั้ง ข้อมูลไหลไปข้างหน้าผ่านกราฟ และ gradient ไหลย้อนกลับระหว่าง backpropagation"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "When `backward()` starts, what gradient does it set on the output node?",
+        "th": "เมื่อ `backward()` เริ่มทำงาน มันตั้ง gradient ของโหนดขาออกเป็นเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "0.0",
+          "th": "0.0"
+        },
+        {
+          "en": "The output's own value",
+          "th": "ค่าของขาออกเอง"
+        },
+        {
+          "en": "1.0, because dy/dy = 1",
+          "th": "1.0 เพราะ dy/dy = 1"
+        },
+        {
+          "en": "-1.0, because we go downhill",
+          "th": "-1.0 เพราะเราเดินลงเขา"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "The derivative of the output with respect to itself is 1. That seed is multiplied by each local derivative on the way back, so every other gradient is built from it.",
+        "th": "อนุพันธ์ของขาออกเทียบกับตัวเองคือ 1 ค่าตั้งต้นนี้ถูกคูณด้วยอนุพันธ์เฉพาะที่ทุกตัวระหว่างทางย้อนกลับ gradient ตัวอื่นทั้งหมดจึงสร้างขึ้นจากมัน"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Using the dual-number rule (a, a') * (b, b') = (a*b, a'*b + a*b'), what is (3, 1) * (3, 1)?",
+        "th": "ใช้กฎของจำนวนคู่ (a, a') * (b, b') = (a*b, a'*b + a*b') แล้ว (3, 1) * (3, 1) เท่ากับเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "(9, 1)",
+          "th": "(9, 1)"
+        },
+        {
+          "en": "(9, 6)",
+          "th": "(9, 6)"
+        },
+        {
+          "en": "(6, 2)",
+          "th": "(6, 2)"
+        },
+        {
+          "en": "(9, 9)",
+          "th": "(9, 9)"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The value is 3 * 3 = 9 and the derivative is 1*3 + 3*1 = 6. This is x² at x = 3 with x seeded to derivative 1, and indeed d(x²)/dx = 2x = 6.",
+        "th": "ค่าคือ 3 * 3 = 9 และอนุพันธ์คือ 1*3 + 3*1 = 6 นี่คือ x² ที่ x = 3 โดยตั้งอนุพันธ์ของ x เป็น 1 และ d(x²)/dx = 2x = 6 จริง"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "In the lesson's PyTorch example, x = 2 and y = x**2 + 3*x + 1. What does `x.grad` hold after `y.backward()`?",
+        "th": "ในตัวอย่าง PyTorch ของบทเรียน x = 2 และ y = x**2 + 3*x + 1 หลัง `y.backward()` ค่าใน `x.grad` คืออะไร?"
+      },
+      "options": [
+        {
+          "en": "11.0",
+          "th": "11.0"
+        },
+        {
+          "en": "4.0",
+          "th": "4.0"
+        },
+        {
+          "en": "3.0",
+          "th": "3.0"
+        },
+        {
+          "en": "7.0",
+          "th": "7.0"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "dy/dx = 2x + 3 = 2*2 + 3 = 7. The value 11 is y itself, not its derivative.",
+        "th": "dy/dx = 2x + 3 = 2*2 + 3 = 7 ส่วน 11 คือค่าของ y เอง ไม่ใช่อนุพันธ์"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "Why does PyTorch use reverse-mode autodiff (backpropagation) instead of forward-mode?",
+        "th": "ทำไม PyTorch จึงใช้ autodiff แบบย้อนกลับ (backpropagation) แทนแบบไปข้างหน้า?"
+      },
+      "options": [
+        {
+          "en": "Forward mode cannot handle non-linear functions",
+          "th": "แบบไปข้างหน้ารับมือกับฟังก์ชันไม่เชิงเส้นไม่ได้"
+        },
+        {
+          "en": "Reverse mode computes all gradients in one backward pass, while forward mode needs one pass per input variable -- neural networks have millions of inputs but one loss output",
+          "th": "แบบย้อนกลับคำนวณ gradient ทั้งหมดใน backward pass รอบเดียว ส่วนแบบไปข้างหน้าต้องใช้หนึ่งรอบต่อตัวแปรขาเข้าหนึ่งตัว และโครงข่ายประสาทเทียมมีขาเข้าเป็นล้านแต่มี loss เป็นขาออกตัวเดียว"
+        },
+        {
+          "en": "Reverse mode is more numerically accurate",
+          "th": "แบบย้อนกลับแม่นยำเชิงตัวเลขกว่า"
+        },
+        {
+          "en": "Reverse mode uses less memory",
+          "th": "แบบย้อนกลับใช้หน่วยความจำน้อยกว่า"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Neural networks have millions of weight inputs but produce a single scalar loss. Reverse mode needs one backward pass total. Forward mode would need one pass per weight -- millions of passes -- making it impractical.",
+        "th": "โครงข่ายประสาทเทียมมีน้ำหนักเป็นขาเข้านับล้าน แต่ให้ loss เป็นสเกลาร์ตัวเดียว แบบย้อนกลับใช้ backward pass รอบเดียวทั้งหมด ส่วนแบบไปข้างหน้าต้องใช้หนึ่งรอบต่อน้ำหนักหนึ่งตัว (เป็นล้านรอบ) จึงใช้จริงไม่ได้"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "In the Value class autograd engine, why does the backward function use '+=' instead of '=' for accumulating gradients?",
+        "th": "ในเอนจิน autograd คลาส Value ทำไมฟังก์ชัน backward จึงใช้ '+=' แทน '=' ในการสะสม gradient?"
+      },
+      "options": [
+        {
+          "en": "Because a value used in multiple operations receives gradient contributions from each one, which must be summed",
+          "th": "เพราะค่าที่ถูกใช้ในหลายการดำเนินการจะได้ gradient จากแต่ละการดำเนินการ ซึ่งต้องนำมารวมกัน"
+        },
+        {
+          "en": "To average the gradients across multiple samples",
+          "th": "เพื่อเฉลี่ย gradient จากหลายตัวอย่าง"
+        },
+        {
+          "en": "To prevent numerical overflow in the gradients",
+          "th": "เพื่อป้องกันไม่ให้ gradient ล้นเชิงตัวเลข"
+        },
+        {
+          "en": "Because Python does not support the '=' operator in closures",
+          "th": "เพราะ Python ไม่รองรับตัวดำเนินการ '=' ใน closure"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "When a value feeds into multiple operations (e.g., x used in both x*y and x+z), its total gradient is the sum of all incoming gradient contributions. Using '=' would overwrite earlier contributions.",
+        "th": "เมื่อค่าหนึ่งถูกส่งเข้าหลายการดำเนินการ (เช่น x ถูกใช้ทั้งใน x*y และ x+z) gradient รวมของมันคือผลบวกของ gradient ทุกส่วนที่ไหลเข้ามา ถ้าใช้ '=' ส่วนที่มาก่อนจะถูกเขียนทับ"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "What is gradient checking and when should you use it?",
+        "th": "Gradient checking คืออะไร และควรใช้เมื่อไร?"
+      },
+      "options": [
+        {
+          "en": "Checking that gradients are below a threshold to prevent exploding gradients",
+          "th": "ตรวจว่า gradient ต่ำกว่าเกณฑ์เพื่อป้องกัน gradient ระเบิด"
+        },
+        {
+          "en": "Comparing autodiff gradients against numerical finite-difference gradients to verify correctness of the backward pass",
+          "th": "เทียบ gradient จาก autodiff กับ gradient จากผลต่างจำกัดเชิงตัวเลข เพื่อยืนยันว่า backward pass ถูกต้อง"
+        },
+        {
+          "en": "Checking that all parameters received non-zero gradients during training",
+          "th": "ตรวจว่าพารามิเตอร์ทุกตัวได้ gradient ที่ไม่เป็นศูนย์ระหว่างเทรน"
+        },
+        {
+          "en": "Monitoring gradient magnitudes during training to detect vanishing gradients",
+          "th": "เฝ้าดูขนาดของ gradient ระหว่างเทรนเพื่อจับ gradient ที่หายไป"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Gradient checking computes numerical derivatives via (f(x+h) - f(x-h)) / 2h and compares them to autodiff gradients. Use it when adding new operations to your autograd engine or debugging training failures.",
+        "th": "Gradient checking คำนวณอนุพันธ์เชิงตัวเลขด้วย (f(x+h) - f(x-h)) / 2h แล้วเทียบกับ gradient จาก autodiff ใช้เมื่อเพิ่มการดำเนินการใหม่ให้เอนจิน autograd หรือเมื่อดีบักการเทรนที่ล้มเหลว"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "With x1 = Value(2.0), x2 = Value(-3.0) and b = Value(1.0), y = (x1 * x2 + b).relu() and y.backward(). What is x1.grad?",
+        "th": "เมื่อ x1 = Value(2.0), x2 = Value(-3.0) และ b = Value(1.0) แล้ว y = (x1 * x2 + b).relu() และเรียก y.backward() ค่า x1.grad คือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "-3.0, which is x2",
+          "th": "-3.0 ซึ่งก็คือ x2"
+        },
+        {
+          "en": "0.0",
+          "th": "0.0"
+        },
+        {
+          "en": "2.0",
+          "th": "2.0"
+        },
+        {
+          "en": "1.0",
+          "th": "1.0"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The input to relu is 2*(-3) + 1 = -5, which is negative, so relu passes back a gradient of 0. Every gradient below it is multiplied by that 0, so x1, x2 and b all get 0.0. x1.grad would be x2 only if the relu input were positive.",
+        "th": "ขาเข้าของ relu คือ 2*(-3) + 1 = -5 ซึ่งติดลบ relu จึงส่ง gradient ย้อนกลับเป็น 0 gradient ทุกตัวที่อยู่ใต้มันถูกคูณด้วย 0 นั้น x1, x2 และ b จึงได้ 0.0 ทั้งหมด x1.grad จะเท่ากับ x2 ก็ต่อเมื่อขาเข้าของ relu เป็นบวก"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "Why does `backward()` call each node's `_backward` in reversed topological order?",
+        "th": "ทำไม `backward()` จึงเรียก `_backward` ของแต่ละโหนดตามลำดับทอพอโลยีแบบย้อนกลับ?"
+      },
+      "options": [
+        {
+          "en": "So a node's gradient has received every contribution from the nodes that use it before the node passes it on",
+          "th": "เพื่อให้ gradient ของโหนดได้รับส่วนจากทุกโหนดที่ใช้มันครบก่อนที่มันจะส่งต่อ"
+        },
+        {
+          "en": "To use less memory than a random order",
+          "th": "เพื่อใช้หน่วยความจำน้อยกว่าการเรียงแบบสุ่ม"
+        },
+        {
+          "en": "Any order gives the same result; the sort only makes it faster",
+          "th": "ลำดับใดก็ได้ผลเท่ากัน การเรียงแค่ทำให้เร็วขึ้น"
+        },
+        {
+          "en": "So the inputs are processed before the output",
+          "th": "เพื่อให้ขาเข้าถูกประมวลผลก่อนขาออก"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "A node's `_backward` multiplies its current grad into its children. If it ran before every user of the node had added its share, the children would get an incomplete gradient. Reversed topological order runs the output first and each node only after everything that depends on it.",
+        "th": "`_backward` ของโหนดหนึ่งคูณ grad ปัจจุบันของมันส่งให้ลูก ถ้ามันทำงานก่อนที่ทุกโหนดที่ใช้มันจะเติมส่วนของตัวเองครบ ลูกจะได้ gradient ที่ไม่ครบ ลำดับทอพอโลยีแบบย้อนกลับทำขาออกก่อน และทำแต่ละโหนดหลังจากทุกโหนดที่พึ่งพามันเสร็จแล้ว"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "What does this print with the lesson's Value class?",
+        "th": "โค้ดนี้พิมพ์อะไรเมื่อใช้คลาส Value ของบทเรียน?"
+      },
+      "code": "x = Value(3.0)\ny = x * x + x\ny.backward()\nprint(x.grad)",
+      "options": [
+        {
+          "en": "7.0",
+          "th": "7.0"
+        },
+        {
+          "en": "4.0",
+          "th": "4.0"
+        },
+        {
+          "en": "1.0",
+          "th": "1.0"
+        },
+        {
+          "en": "6.0",
+          "th": "6.0"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "dy/dx = 2x + 1 = 7. In `x * x` both operands are the same Value, so its `_backward` adds 3.0 to x.grad twice (6.0), and the `+ x` adds 1.0 more. This only works because the engine uses `+=`.",
+        "th": "dy/dx = 2x + 1 = 7 ใน `x * x` ตัวถูกดำเนินการทั้งสองเป็น Value ตัวเดียวกัน `_backward` ของมันจึงบวก 3.0 เข้า x.grad สองครั้ง (6.0) และ `+ x` บวกเพิ่มอีก 1.0 วิธีนี้ได้ผลเพราะเอนจินใช้ `+=`"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "What does this print, and what does it teach about training loops?",
+        "th": "โค้ดนี้พิมพ์อะไร และบอกอะไรเกี่ยวกับลูปการเทรน?"
+      },
+      "code": "x = Value(2.0)\ny = x * x\ny.backward()\ny.backward()\nprint(x.grad)",
+      "options": [
+        {
+          "en": "4.0: the second backward recomputes the same gradient",
+          "th": "4.0: backward ครั้งที่สองคำนวณ gradient เดิมซ้ำ"
+        },
+        {
+          "en": "0.0: the second backward cancels the first",
+          "th": "0.0: backward ครั้งที่สองหักล้างครั้งแรก"
+        },
+        {
+          "en": "8.0: gradients accumulate, which is why the loop sets every p.grad to 0 before each backward",
+          "th": "8.0: gradient สะสมกัน ลูปการเทรนจึงตั้ง p.grad ทุกตัวเป็น 0 ก่อน backward ทุกครั้ง"
+        },
+        {
+          "en": "16.0: the gradient is squared",
+          "th": "16.0: gradient ถูกยกกำลังสอง"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Each backward adds dy/dx = 2x = 4 into x.grad, so two calls give 8.0. `backward()` resets only the output's grad to 1.0, not the leaves. The XOR training loop zeroes every parameter's grad before calling `loss.backward()` for exactly this reason (PyTorch's `optimizer.zero_grad()`).",
+        "th": "backward แต่ละครั้งบวก dy/dx = 2x = 4 เข้า x.grad เรียกสองครั้งจึงได้ 8.0 `backward()` รีเซ็ตแค่ grad ของขาออกให้เป็น 1.0 ไม่ได้รีเซ็ตใบ (leaf) ลูปการเทรน XOR จึงตั้ง grad ของพารามิเตอร์ทุกตัวเป็นศูนย์ก่อนเรียก `loss.backward()` ด้วยเหตุผลนี้ (เทียบได้กับ `optimizer.zero_grad()` ของ PyTorch)"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "You need the derivatives of all 1,000 outputs of a function that has a single input. Which mode is cheaper?",
+        "th": "คุณต้องการอนุพันธ์ของขาออกทั้ง 1,000 ตัวของฟังก์ชันที่มีขาเข้าเพียงตัวเดียว แบบไหนถูกกว่า?"
+      },
+      "options": [
+        {
+          "en": "Reverse mode: one backward pass gives everything",
+          "th": "แบบย้อนกลับ: backward pass รอบเดียวได้ทั้งหมด"
+        },
+        {
+          "en": "Forward mode: one pass seeded with dx/dx = 1 gives all 1,000 derivatives",
+          "th": "แบบไปข้างหน้า: รอบเดียวที่ตั้ง dx/dx = 1 ได้อนุพันธ์ครบทั้ง 1,000 ตัว"
+        },
+        {
+          "en": "Both need 1,000 passes",
+          "th": "ทั้งสองแบบต้องใช้ 1,000 รอบ"
+        },
+        {
+          "en": "Neither: you must use finite differences",
+          "th": "ไม่ได้ทั้งคู่ ต้องใช้ผลต่างจำกัด"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Forward mode costs one pass per input and reverse mode one pass per output. Here there is 1 input and 1,000 outputs, so forward mode needs 1 pass and reverse mode 1,000. Neural network training is the opposite shape, which is why it uses reverse mode.",
+        "th": "แบบไปข้างหน้าใช้หนึ่งรอบต่อขาเข้าหนึ่งตัว และแบบย้อนกลับใช้หนึ่งรอบต่อขาออกหนึ่งตัว กรณีนี้มีขาเข้า 1 ตัวและขาออก 1,000 ตัว แบบไปข้างหน้าจึงใช้ 1 รอบ ส่วนแบบย้อนกลับใช้ 1,000 รอบ การเทรนโครงข่ายประสาทเทียมมีรูปตรงข้ามกัน จึงใช้แบบย้อนกลับ"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Why does the dual-number product (a, a') * (b, b') have no a'*b' term?",
+        "th": "ทำไมผลคูณของจำนวนคู่ (a, a') * (b, b') จึงไม่มีพจน์ a'*b'?"
+      },
+      "options": [
+        {
+          "en": "Because a'*b' is always small enough to ignore",
+          "th": "เพราะ a'*b' เล็กพอที่จะละทิ้งได้เสมอ"
+        },
+        {
+          "en": "Because derivatives can't be multiplied together",
+          "th": "เพราะอนุพันธ์คูณกันไม่ได้"
+        },
+        {
+          "en": "Because (a + a'ε)(b + b'ε) = ab + (a'b + ab')ε + a'b'ε², and ε² = 0 removes the last term exactly",
+          "th": "เพราะ (a + a'ε)(b + b'ε) = ab + (a'b + ab')ε + a'b'ε² และ ε² = 0 ทำให้พจน์สุดท้ายหายไปพอดี"
+        },
+        {
+          "en": "It is an approximation that makes forward mode faster",
+          "th": "เป็นการประมาณที่ทำให้แบบไปข้างหน้าเร็วขึ้น"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Expanding the product gives an ε² term, and dual numbers are defined with ε² = 0, so it vanishes exactly, not approximately. What is left, a'b + ab', is the product rule, so dual-number derivatives are exact.",
+        "th": "เมื่อกระจายผลคูณจะได้พจน์ ε² และจำนวนคู่นิยามให้ ε² = 0 พจน์นั้นจึงหายไปอย่างแม่นยำ ไม่ใช่โดยประมาณ ส่วนที่เหลือคือ a'b + ab' ซึ่งก็คือกฎผลคูณ อนุพันธ์จากจำนวนคู่จึงแม่นยำ"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "`gradient_check(lambda x: x.relu(), 0.0)` returns autodiff 0.0, numerical 0.5 and a difference of 0.5. What explains it?",
+        "th": "`gradient_check(lambda x: x.relu(), 0.0)` คืนค่า autodiff 0.0 เชิงตัวเลข 0.5 และผลต่าง 0.5 อะไรอธิบายเรื่องนี้?"
+      },
+      "options": [
+        {
+          "en": "relu has a kink at 0: the engine uses slope 0 there, while the central difference straddles the kink and averages the slopes 0 and 1",
+          "th": "relu มีจุดหักที่ 0: เอนจินใช้ความชัน 0 ที่จุดนั้น ส่วนผลต่างกลางคร่อมจุดหักและเฉลี่ยความชัน 0 กับ 1"
+        },
+        {
+          "en": "The relu backward has a bug and should return 0.5",
+          "th": "backward ของ relu มีบั๊ก ควรคืน 0.5"
+        },
+        {
+          "en": "h = 1e-7 is too small for relu",
+          "th": "h = 1e-7 เล็กเกินไปสำหรับ relu"
+        },
+        {
+          "en": "Central differences are always off by 0.5 for piecewise functions",
+          "th": "ผลต่างกลางคลาดเคลื่อน 0.5 เสมอสำหรับฟังก์ชันที่นิยามเป็นช่วง"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "relu(h) = h and relu(-h) = 0, so the central difference is h / (2h) = 0.5 for any h. relu has no derivative at 0, and the engine's choice (`out.data > 0` gives 0) is a convention, not a bug. Gradient checks should avoid points exactly on a kink.",
+        "th": "relu(h) = h และ relu(-h) = 0 ผลต่างกลางจึงเป็น h / (2h) = 0.5 ไม่ว่า h จะเป็นเท่าไร relu ไม่มีอนุพันธ์ที่ 0 และที่เอนจินเลือกใช้ 0 (`out.data > 0` เป็นเท็จ) เป็นข้อตกลง ไม่ใช่บั๊ก การทำ gradient check ควรเลี่ยงจุดที่อยู่บนจุดหักพอดี"
+      }
+    }
+  ]
+}

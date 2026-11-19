@@ -1,0 +1,13 @@
+{
+  "minutes": 15,
+  "title": {"th": "autodiff แบบไปข้างหน้าด้วยจำนวนคู่", "en": "Forward-mode autodiff with dual numbers"},
+  "prompt": {
+    "th": "แบบฝึกหัดที่ 4 ของบทเรียน: เขียนคลาส `Dual(val, der)` ที่เก็บค่าและอนุพันธ์ พร้อมฟังก์ชันช่วย\n\n- รองรับ `+`, `-` และ `*` ระหว่าง `Dual` สองตัว และระหว่าง `Dual` กับตัวเลขธรรมดาได้ทั้งสองด้าน (เช่น `3 * x`, `10 - x`) ตัวเลขธรรมดาคือค่าคงที่ อนุพันธ์จึงเป็น 0\n- การคูณใช้กฎผลคูณ: `(a, a') * (b, b') = (a*b, a'*b + a*b')`\n- `dual_sin(d)` คืน `Dual(sin(d.val), cos(d.val) * d.der)`\n- `derivative(f, x)` เรียก `f(Dual(x, 1.0))` แล้วคืนอนุพันธ์ ถ้า `f` คืนตัวเลขธรรมดา (ฟังก์ชันคงที่) ให้คืน `0.0`\n\nมี test ซ่อนอยู่บางส่วน",
+    "en": "The lesson's Exercise 4: write a class `Dual(val, der)` that holds a value and a derivative, plus helper functions.\n\n- Support `+`, `-` and `*` between two `Dual`s, and between a `Dual` and a plain number on either side (for example `3 * x`, `10 - x`). A plain number is a constant, so its derivative is 0.\n- Multiplication uses the product rule: `(a, a') * (b, b') = (a*b, a'*b + a*b')`.\n- `dual_sin(d)` returns `Dual(sin(d.val), cos(d.val) * d.der)`.\n- `derivative(f, x)` calls `f(Dual(x, 1.0))` and returns the derivative. If `f` returns a plain number (a constant function), return `0.0`.\n\nSome tests are hidden."
+  },
+  "hints": [
+    {"th": "เขียนเมธอดช่วยที่แปลงตัวเลขธรรมดาเป็น `Dual(o, 0.0)` แล้วเรียกใช้ตอนต้นของทุกตัวดำเนินการ", "en": "Write a helper that turns a plain number into `Dual(o, 0.0)` and call it at the start of every operator."},
+    {"th": "`3 * x` เรียก `x.__rmul__(3)` และ `10 - x` เรียก `x.__rsub__(10)` ซึ่งต้องได้ `10 - x` ไม่ใช่ `x - 10`", "en": "`3 * x` calls `x.__rmul__(3)` and `10 - x` calls `x.__rsub__(10)`, which must give `10 - x`, not `x - 10`."},
+    {"th": "ใน `derivative` ให้ตรวจ `isinstance(out, Dual)` ก่อนอ่าน `out.der`", "en": "In `derivative`, check `isinstance(out, Dual)` before reading `out.der`."}
+  ]
+}
