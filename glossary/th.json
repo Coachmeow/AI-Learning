@@ -1393,6 +1393,79 @@
       "en": "sampling",
       "th": "การสุ่มตัวอย่าง",
       "first": "การสุ่มตัวอย่าง (sampling)"
+    },
+    {
+      "en": "Bayes' theorem",
+      "th": "ทฤษฎีบทของเบย์",
+      "first": "ทฤษฎีบทของเบย์ (Bayes' theorem)"
+    },
+    {
+      "en": "prior",
+      "th": "ความน่าจะเป็นก่อน (prior)"
+    },
+    {
+      "en": "posterior",
+      "th": "ความน่าจะเป็นภายหลัง (posterior)"
+    },
+    {
+      "en": "likelihood",
+      "th": "ภาวะน่าจะเป็น (likelihood)"
+    },
+    {
+      "en": "evidence (Bayes)",
+      "th": "หลักฐาน (evidence)"
+    },
+    {
+      "en": "law of total probability",
+      "th": "กฎความน่าจะเป็นรวม"
+    },
+    {
+      "en": "false positive / false negative",
+      "th": "ผลบวกลวง / ผลลบลวง"
+    },
+    {
+      "en": "base rate / base rate fallacy",
+      "th": "อัตราฐาน / การมองข้ามอัตราฐาน"
+    },
+    {
+      "en": "Naive Bayes",
+      "th": "Naive Bayes"
+    },
+    {
+      "en": "Laplace smoothing",
+      "th": "Laplace smoothing"
+    },
+    {
+      "en": "maximum likelihood estimation (MLE)",
+      "th": "การประมาณภาวะน่าจะเป็นสูงสุด (MLE)"
+    },
+    {
+      "en": "maximum a posteriori (MAP)",
+      "th": "การประมาณค่าภายหลังสูงสุด (MAP)"
+    },
+    {
+      "en": "conjugate prior",
+      "th": "conjugate prior"
+    },
+    {
+      "en": "frequentist / Bayesian",
+      "th": "แบบความถี่ / แบบเบย์"
+    },
+    {
+      "en": "credible interval / confidence interval",
+      "th": "ช่วงความน่าเชื่อ / ช่วงความเชื่อมั่น"
+    },
+    {
+      "en": "sensitivity / specificity",
+      "th": "ความไว / ความจำเพาะ"
+    },
+    {
+      "en": "vocabulary (NLP)",
+      "th": "คลังคำ"
+    },
+    {
+      "en": "A/B testing",
+      "th": "A/B testing"
     }
   ]
 }

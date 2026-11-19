@@ -1,0 +1,13 @@
+{
+  "minutes": 6,
+  "title": {"th": "เติมโค้ด: ทฤษฎีบทของเบย์", "en": "Fill in: Bayes' theorem"},
+  "prompt": {
+    "th": "เติม `bayes(prior, likelihood, false_positive_rate)` ให้คืน P(ป่วย | ผลบวก) โดยหลักฐาน (evidence) คือความน่าจะเป็นรวมของผลบวก ซึ่งมาจากคนป่วยที่ตรวจเจอ (`likelihood * prior`) บวกคนไม่ป่วยที่ได้ผลบวกลวง (`false_positive_rate * (1 - prior)`) เติมบรรทัดที่มี `# TODO`",
+    "en": "Complete `bayes(prior, likelihood, false_positive_rate)` so it returns P(sick | positive). The evidence is the total probability of a positive result: sick people the test catches (`likelihood * prior`) plus healthy people with a false positive (`false_positive_rate * (1 - prior)`). Fill in the `# TODO` line."
+  },
+  "hints": [
+    {"th": "ผลบวกมาจากสองกลุ่ม: คนป่วยและคนไม่ป่วย ต้องรวมทั้งสองกลุ่ม", "en": "Positive results come from two groups, the sick and the healthy; add both."},
+    {"th": "กลุ่มคนไม่ป่วยมีสัดส่วน `1 - prior` ไม่ใช่ `prior`", "en": "The healthy group is a fraction `1 - prior` of people, not `prior`."},
+    {"th": "`evidence = likelihood * prior + false_positive_rate * (1 - prior)`", "en": "`evidence = likelihood * prior + false_positive_rate * (1 - prior)`"}
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "minutes": 30,
+  "title": {"th": "Naive Bayes ที่ให้ความน่าจะเป็นได้แม้ข้อความยาว", "en": "Naive Bayes probabilities that survive long messages"},
+  "prompt": {
+    "th": "คลาส `NaiveBayes` ด้านล่างมี `train` แล้ว เขียนสองเมธอด:\n\n1. `log_scores(document)` คืน dict `{คลาส: คะแนน}` โดยคะแนนคือ `log(P(คลาส))` บวก `log(P(คำ | คลาส))` ของทุกคำในข้อความ (ตัวพิมพ์เล็ก แยกด้วยช่องว่าง)\n   - `P(คลาส)` = จำนวน**ข้อความ**ของคลาสนั้น / จำนวนข้อความทั้งหมด\n   - `P(คำ | คลาส) = (count + s) / (total + s * V)` โดย `s` คือ `self.smoothing`, `total` คือจำนวนคำทั้งหมดในคลาส และ `V` คือขนาดคลังคำ\n   - ข้ามคำที่ไม่อยู่ในคลังคำ\n2. `predict_proba(document)` คืน dict `{คลาส: ความน่าจะเป็น}` ที่รวมกันได้ 1 จากคะแนนใน log ข้อความยาวหลายร้อยคำทำให้ `math.exp(คะแนน)` underflow เป็น 0 จึงต้องลบคะแนนสูงสุดออกก่อน (log-sum-exp)\n\nมี test ซ่อนอยู่บางส่วน",
+    "en": "The `NaiveBayes` class below already has `train`. Write two methods:\n\n1. `log_scores(document)` returns a dict `{class: score}`, where the score is `log(P(class))` plus `log(P(word | class))` for every word of the message (lower-cased, split on spaces).\n   - `P(class)` = number of **messages** in the class / total number of messages.\n   - `P(word | class) = (count + s) / (total + s * V)`, where `s` is `self.smoothing`, `total` is the number of words in the class and `V` is the vocabulary size.\n   - Skip words that are not in the vocabulary.\n2. `predict_proba(document)` returns a dict `{class: probability}` that adds up to 1, from the log scores. A message hundreds of words long makes `math.exp(score)` underflow to 0, so subtract the highest score first (log-sum-exp).\n\nSome tests are hidden."
+  },
+  "hints": [
+    {"th": "`log_scores` คือ `predict` ในขั้นที่ 2 ของบทเรียน แต่เก็บคะแนนของทุกคลาสไว้ใน dict แทนที่จะคืนแค่คลาสที่ดีที่สุด", "en": "`log_scores` is the `predict` of Step 2 in the lesson, but it keeps every class's score in a dict instead of returning only the best class."},
+    {"th": "ใช้ `self.smoothing` ทั้งบนตัวเศษและตัวส่วน อย่าเขียน 1 ตายตัว", "en": "Use `self.smoothing` in both the numerator and the denominator; don't hard-code 1."},
+    {"th": "`m = max(scores.values())` แล้ว `w = {c: math.exp(s - m)}` และหารด้วย `sum(w.values())` คลาสที่คะแนนสูงสุดได้ `exp(0) = 1` ตัวส่วนจึงไม่เป็นศูนย์", "en": "`m = max(scores.values())`, then `w = {c: math.exp(s - m)}`, divided by `sum(w.values())`. The top class gets `exp(0) = 1`, so the denominator is never zero."}
+  ]
+}

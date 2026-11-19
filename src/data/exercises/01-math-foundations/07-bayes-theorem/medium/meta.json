@@ -1,0 +1,13 @@
+{
+  "minutes": 15,
+  "title": {"th": "อัปเดตความเชื่อจากผลตรวจหลายครั้ง", "en": "Update a belief over several test results"},
+  "prompt": {
+    "th": "ต่อยอดแบบฝึกหัดที่ 1 ของบทเรียน: เขียน `update_after_tests(prior, results, sensitivity, specificity)` ที่คืน P(ป่วย) หลังเห็นผลตรวจทุกครั้งใน `results` (list ของ `True` = ผลบวก และ `False` = ผลลบ) โดยใช้ posterior ของครั้งก่อนเป็น prior ของครั้งถัดไป\n\n- sensitivity = P(ผลบวก | ป่วย) และ specificity = P(ผลลบ | ไม่ป่วย)\n- ผลบวก: likelihood ของคนป่วยคือ `sensitivity` และของคนไม่ป่วยคือ `1 - specificity`\n- ผลลบ: likelihood ของคนป่วยคือ `1 - sensitivity` และของคนไม่ป่วยคือ `specificity`\n- `results` ว่างคืน `prior` และถ้า `prior`, `sensitivity` หรือ `specificity` ไม่อยู่ในช่วง [0, 1] ให้ `raise ValueError`\n\nมี test ซ่อนอยู่บางส่วน",
+    "en": "Building on the lesson's Exercise 1: write `update_after_tests(prior, results, sensitivity, specificity)`. It returns P(sick) after every test result in `results` (a list of `True` = positive and `False` = negative), using each posterior as the prior for the next result.\n\n- sensitivity = P(positive | sick) and specificity = P(negative | healthy).\n- A positive result: the likelihood is `sensitivity` for the sick and `1 - specificity` for the healthy.\n- A negative result: the likelihood is `1 - sensitivity` for the sick and `specificity` for the healthy.\n- Empty `results` returns `prior`. If `prior`, `sensitivity` or `specificity` is outside [0, 1], `raise ValueError`.\n\nSome tests are hidden."
+  },
+  "hints": [
+    {"th": "วนทีละผลตรวจ เลือกคู่ likelihood `(if_sick, if_healthy)` ตามว่าผลเป็นบวกหรือลบ", "en": "Loop over the results and pick the likelihood pair `(if_sick, if_healthy)` by whether the result is positive or negative."},
+    {"th": "ในแต่ละรอบ `p = if_sick * p / (if_sick * p + if_healthy * (1 - p))` แล้วใช้ `p` ใหม่ในรอบถัดไป", "en": "Each time round, `p = if_sick * p / (if_sick * p + if_healthy * (1 - p))`, and the new `p` is used next time."},
+    {"th": "ระวังสลับ sensitivity กับ specificity: test ใช้ค่าที่ต่างกัน เช่น sensitivity 0.9 และ specificity 0.95", "en": "Don't mix up sensitivity and specificity: the tests use different values, such as sensitivity 0.9 and specificity 0.95."}
+  ]
+}

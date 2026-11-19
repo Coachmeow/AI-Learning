@@ -1,0 +1,486 @@
+{
+  "lesson": "01-math-foundations/07-bayes-theorem",
+  "source_hash": "a7952aae9bf3e6ea89e2f47ce621bd577c44c15d0b921e36d1d1db5ebb6fc4fb",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "In Bayes' theorem, what is the 'prior'?",
+        "th": "ในทฤษฎีบทของเบย์ 'prior' คืออะไร?"
+      },
+      "options": [
+        {
+          "en": "The final updated probability after seeing evidence",
+          "th": "ความน่าจะเป็นสุดท้ายที่ปรับแล้วหลังเห็นหลักฐาน"
+        },
+        {
+          "en": "The probability of the evidence given the hypothesis",
+          "th": "ความน่าจะเป็นของหลักฐานเมื่อสมมติฐานเป็นจริง"
+        },
+        {
+          "en": "The probability of the evidence",
+          "th": "ความน่าจะเป็นของหลักฐาน"
+        },
+        {
+          "en": "Your belief about a hypothesis before observing any evidence",
+          "th": "ความเชื่อเกี่ยวกับสมมติฐานก่อนสังเกตหลักฐานใด ๆ"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "The prior P(A) represents your initial belief about hypothesis A before seeing any data. It gets updated to the posterior P(A|B) after observing evidence B.",
+        "th": "prior P(A) แทนความเชื่อตั้งต้นเกี่ยวกับสมมติฐาน A ก่อนเห็นข้อมูลใด ๆ และจะถูกปรับเป็น posterior P(A|B) หลังสังเกตหลักฐาน B"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "A rare disease affects 1 in 10,000 people. A 99% accurate test returns positive. What is the approximate probability you have the disease?",
+        "th": "โรคหายากชนิดหนึ่งพบใน 1 จาก 10,000 คน ชุดตรวจที่แม่นยำ 99% ให้ผลบวก ความน่าจะเป็นโดยประมาณที่คุณเป็นโรคนี้คือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "99%",
+          "th": "99%"
+        },
+        {
+          "en": "10%",
+          "th": "10%"
+        },
+        {
+          "en": "50%",
+          "th": "50%"
+        },
+        {
+          "en": "About 1%",
+          "th": "ประมาณ 1%"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Despite 99% test accuracy, the disease is so rare (0.01%) that most positive results come from healthy people (false positives). Bayes' theorem gives P(sick|positive) = ~0.98%, not 99%.",
+        "th": "แม้ชุดตรวจจะแม่นยำ 99% แต่โรคนี้หายากมาก (0.01%) ผลบวกส่วนใหญ่จึงมาจากคนที่ไม่ป่วย (ผลบวกลวง) ทฤษฎีบทของเบย์ให้ P(ป่วย|ผลบวก) ≈ 0.98% ไม่ใช่ 99%"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "In Bayes' theorem, what is P(B | A) called?",
+        "th": "ในทฤษฎีบทของเบย์ P(B | A) เรียกว่าอะไร?"
+      },
+      "options": [
+        {
+          "en": "The prior",
+          "th": "Prior (ความน่าจะเป็นก่อน)"
+        },
+        {
+          "en": "The posterior",
+          "th": "Posterior (ความน่าจะเป็นภายหลัง)"
+        },
+        {
+          "en": "The likelihood",
+          "th": "Likelihood (ภาวะน่าจะเป็น)"
+        },
+        {
+          "en": "The evidence",
+          "th": "Evidence (หลักฐาน)"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "P(B | A) is the likelihood: how probable the evidence B is if A is true. The posterior is the reverse, P(A | B).",
+        "th": "P(B | A) คือ likelihood: หลักฐาน B มีโอกาสเกิดแค่ไหนถ้า A เป็นจริง ส่วน posterior คือด้านกลับกัน P(A | B)"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "What does a Beta(1, 1) prior say about a probability parameter?",
+        "th": "prior แบบ Beta(1, 1) บอกอะไรเกี่ยวกับพารามิเตอร์ที่เป็นความน่าจะเป็น?"
+      },
+      "options": [
+        {
+          "en": "It is exactly 0.5",
+          "th": "มีค่า 0.5 พอดี"
+        },
+        {
+          "en": "Every value from 0 to 1 is equally plausible: no opinion yet",
+          "th": "ทุกค่าตั้งแต่ 0 ถึง 1 มีความเป็นไปได้เท่ากัน: ยังไม่มีความเห็น"
+        },
+        {
+          "en": "It is probably close to 1",
+          "th": "น่าจะใกล้ 1"
+        },
+        {
+          "en": "It is probably close to 0",
+          "th": "น่าจะใกล้ 0"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Beta(1, 1) is the uniform distribution on [0, 1]. Its mean is 0.5, but it is flat, so it doesn't favour any value.",
+        "th": "Beta(1, 1) คือการแจกแจงสม่ำเสมอบน [0, 1] ค่าเฉลี่ยคือ 0.5 แต่มันแบนราบ จึงไม่ได้เข้าข้างค่าใดเลย"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "In the lesson's spam example, seeing the word \"lottery\" moves P(spam) from 30% to about what?",
+        "th": "ในตัวอย่างสแปมของบทเรียน การเห็นคำว่า \"lottery\" ขยับ P(spam) จาก 30% ไปเป็นประมาณเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "5%",
+          "th": "5%"
+        },
+        {
+          "en": "35%",
+          "th": "35%"
+        },
+        {
+          "en": "70%",
+          "th": "70%"
+        },
+        {
+          "en": "95.5%",
+          "th": "95.5%"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "P(spam | lottery) = 0.05 * 0.3 / (0.05 * 0.3 + 0.001 * 0.7) = 0.015 / 0.0157 ≈ 0.955. The word is 50 times more common in spam than in normal email, so it is strong evidence.",
+        "th": "P(spam | lottery) = 0.05 * 0.3 / (0.05 * 0.3 + 0.001 * 0.7) = 0.015 / 0.0157 ≈ 0.955 คำนี้พบในสแปมบ่อยกว่าในอีเมลปกติ 50 เท่า จึงเป็นหลักฐานที่หนักแน่น"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "What is Laplace smoothing in a Naive Bayes classifier and why is it necessary?",
+        "th": "Laplace smoothing ในตัวจำแนก Naive Bayes คืออะไร และทำไมจึงจำเป็น?"
+      },
+      "options": [
+        {
+          "en": "It reduces the dimensionality of the feature space",
+          "th": "ลดจำนวนมิติของปริภูมิคุณลักษณะ"
+        },
+        {
+          "en": "It adds a small count to every feature to prevent zero probabilities from unseen words, which would zero out the entire product",
+          "th": "บวกจำนวนนับเล็ก ๆ ให้ทุกคุณลักษณะ เพื่อป้องกันความน่าจะเป็นศูนย์จากคำที่ไม่เคยเห็น ซึ่งจะทำให้ผลคูณทั้งหมดเป็นศูนย์"
+        },
+        {
+          "en": "It smooths the decision boundary between classes",
+          "th": "ทำให้เส้นแบ่งการตัดสินใจระหว่างคลาสเรียบขึ้น"
+        },
+        {
+          "en": "It normalizes feature values to have zero mean and unit variance",
+          "th": "ทำให้ค่าคุณลักษณะมีค่าเฉลี่ยศูนย์และความแปรปรวนหนึ่ง"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Without smoothing, a word never seen in spam training data gets P(word|spam)=0, making the entire product zero regardless of other strong spam indicators. Adding 1 to each count prevents this.",
+        "th": "ถ้าไม่มี smoothing คำที่ไม่เคยเห็นในข้อมูลเทรนของสแปมจะได้ P(word|spam)=0 ทำให้ผลคูณทั้งหมดเป็นศูนย์ ไม่ว่าคำอื่นจะบ่งชี้สแปมชัดแค่ไหน การบวก 1 ให้ทุกการนับป้องกันปัญหานี้"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "How does MAP (Maximum A Posteriori) estimation differ from MLE (Maximum Likelihood Estimation)?",
+        "th": "การประมาณแบบ MAP (Maximum A Posteriori) ต่างจาก MLE (Maximum Likelihood Estimation) อย่างไร?"
+      },
+      "options": [
+        {
+          "en": "MAP is faster to compute than MLE",
+          "th": "MAP คำนวณเร็วกว่า MLE"
+        },
+        {
+          "en": "MLE always produces better results than MAP",
+          "th": "MLE ให้ผลดีกว่า MAP เสมอ"
+        },
+        {
+          "en": "MAP incorporates a prior distribution over parameters, equivalent to adding regularization, while MLE only uses the likelihood",
+          "th": "MAP รวมการแจกแจงก่อน (prior) ของพารามิเตอร์เข้าไป ซึ่งเทียบเท่าการเพิ่ม regularization ส่วน MLE ใช้แค่ likelihood"
+        },
+        {
+          "en": "MAP uses a larger dataset than MLE",
+          "th": "MAP ใช้ชุดข้อมูลที่ใหญ่กว่า MLE"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "MAP maximizes P(data|params) * P(params) while MLE maximizes P(data|params) alone. The prior P(params) acts as regularization -- a Gaussian prior equals L2 regularization, a Laplace prior equals L1.",
+        "th": "MAP หาค่าสูงสุดของ P(data|params) * P(params) ส่วน MLE หาค่าสูงสุดของ P(data|params) อย่างเดียว prior P(params) ทำหน้าที่เป็น regularization: prior แบบเกาส์เท่ากับ L2 regularization และ prior แบบ Laplace เท่ากับ L1"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "In sequential Bayesian updating, you start with Beta(1,1) and observe 7 heads and 3 tails. What is the posterior?",
+        "th": "ในการอัปเดตแบบเบย์ทีละขั้น คุณเริ่มจาก Beta(1,1) แล้วเห็นหัว 7 ครั้งและก้อย 3 ครั้ง posterior คืออะไร?"
+      },
+      "options": [
+        {
+          "en": "Beta(8, 4)",
+          "th": "Beta(8, 4)"
+        },
+        {
+          "en": "Beta(1.7, 1.3)",
+          "th": "Beta(1.7, 1.3)"
+        },
+        {
+          "en": "Normal(0.7, 0.1)",
+          "th": "Normal(0.7, 0.1)"
+        },
+        {
+          "en": "Beta(7, 3)",
+          "th": "Beta(7, 3)"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The Beta-Binomial conjugate update adds successes to the first parameter and failures to the second: Beta(1+7, 1+3) = Beta(8, 4). The posterior mean is 8/12 = 0.667.",
+        "th": "การอัปเดตแบบ conjugate ของ Beta-Binomial บวกจำนวนครั้งที่สำเร็จเข้าพารามิเตอร์แรก และจำนวนครั้งที่ล้มเหลวเข้าพารามิเตอร์ที่สอง: Beta(1+7, 1+3) = Beta(8, 4) ค่าเฉลี่ยของ posterior คือ 8/12 = 0.667"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "You see 7 heads in 10 flips. With a Beta(2, 2) prior, what is the MAP estimate of P(heads)?",
+        "th": "คุณเห็นหัว 7 ครั้งจากการโยน 10 ครั้ง เมื่อใช้ prior แบบ Beta(2, 2) ค่าประมาณ MAP ของ P(หัว) คือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "0.7",
+          "th": "0.7"
+        },
+        {
+          "en": "About 0.667",
+          "th": "ประมาณ 0.667"
+        },
+        {
+          "en": "0.5",
+          "th": "0.5"
+        },
+        {
+          "en": "0.75",
+          "th": "0.75"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "MAP = (h + α - 1) / (n + α + β - 2) = (7 + 1) / (10 + 2) = 8/12 ≈ 0.667. The prior pulls the MLE of 0.7 towards its own mode, 0.5.",
+        "th": "MAP = (h + α - 1) / (n + α + β - 2) = (7 + 1) / (10 + 2) = 8/12 ≈ 0.667 prior ดึง MLE ที่เป็น 0.7 เข้าหาฐานนิยมของตัวเองคือ 0.5"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "A patient tests positive twice on independent 99%-accurate tests, for a disease that affects 1 in 10,000. What is P(sick) now?",
+        "th": "ผู้ป่วยตรวจได้ผลบวกสองครั้งจากการตรวจที่อิสระต่อกันและแม่นยำ 99% สำหรับโรคที่พบใน 1 จาก 10,000 คน ตอนนี้ P(ป่วย) เป็นเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "About 99.99%",
+          "th": "ประมาณ 99.99%"
+        },
+        {
+          "en": "About 1.96%",
+          "th": "ประมาณ 1.96%"
+        },
+        {
+          "en": "About 49.5%",
+          "th": "ประมาณ 49.5%"
+        },
+        {
+          "en": "About 98%",
+          "th": "ประมาณ 98%"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "The first test gives a posterior of about 0.0098. Using that as the prior: 0.99 * 0.0098 / (0.99 * 0.0098 + 0.01 * 0.9902) ≈ 0.495. Each positive multiplies the odds by 99, so two tests take 1:9999 to about 1:1.",
+        "th": "การตรวจครั้งแรกให้ posterior ประมาณ 0.0098 ใช้ค่านั้นเป็น prior: 0.99 * 0.0098 / (0.99 * 0.0098 + 0.01 * 0.9902) ≈ 0.495 ผลบวกแต่ละครั้งคูณอัตราต่อรอง (odds) ด้วย 99 การตรวจสองครั้งจึงพาจาก 1:9999 ไปเป็นราว 1:1"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "You train the lesson's NaiveBayes with smoothing=0 on the same data. What does predict(\"meeting free\") do?",
+        "th": "คุณเทรน NaiveBayes ของบทเรียนด้วย smoothing=0 บนข้อมูลเดิม predict(\"meeting free\") ทำอะไร?"
+      },
+      "options": [
+        {
+          "en": "Returns 'spam', because 'free' is a strong spam word",
+          "th": "คืน 'spam' เพราะ 'free' เป็นคำบ่งชี้สแปมที่ชัด"
+        },
+        {
+          "en": "Returns 'ham', because there are more ham messages",
+          "th": "คืน 'ham' เพราะข้อความ ham มีมากกว่า"
+        },
+        {
+          "en": "Raises ValueError: 'meeting' never appears in spam, so the spam score needs math.log(0)",
+          "th": "เกิด ValueError: 'meeting' ไม่เคยปรากฏในสแปม คะแนนของสแปมจึงต้องหา math.log(0)"
+        },
+        {
+          "en": "Skips both words, because they are unknown",
+          "th": "ข้ามทั้งสองคำ เพราะเป็นคำที่ไม่รู้จัก"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Both words are in the vocabulary, so neither is skipped. With smoothing 0, P('meeting' | spam) = 0 / 21 = 0, and math.log(0.0) raises 'ValueError: math domain error'. 'free' causes the same problem for the ham class. Smoothing exists to stop one unseen word from wiping out a class.",
+        "th": "ทั้งสองคำอยู่ในคลังคำ จึงไม่ถูกข้าม เมื่อ smoothing เป็น 0 P('meeting' | spam) = 0 / 21 = 0 และ math.log(0.0) ทำให้เกิด 'ValueError: math domain error' คำว่า 'free' ก็ก่อปัญหาเดียวกันกับคลาส ham smoothing มีไว้เพื่อไม่ให้คำที่ไม่เคยเห็นคำเดียวลบทั้งคลาสทิ้ง"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "You start from Beta(50, 50) instead of Beta(1, 1) and see 7 heads and 3 tails. What is the posterior mean?",
+        "th": "คุณเริ่มจาก Beta(50, 50) แทน Beta(1, 1) แล้วเห็นหัว 7 ครั้งและก้อย 3 ครั้ง ค่าเฉลี่ยของ posterior คือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "About 0.667, the same as with Beta(1, 1)",
+          "th": "ประมาณ 0.667 เท่ากับเมื่อใช้ Beta(1, 1)"
+        },
+        {
+          "en": "About 0.518",
+          "th": "ประมาณ 0.518"
+        },
+        {
+          "en": "0.7, the data decide",
+          "th": "0.7 ข้อมูลเป็นตัวตัดสิน"
+        },
+        {
+          "en": "Exactly 0.5, the prior wins",
+          "th": "0.5 พอดี prior ชนะ"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The posterior is Beta(57, 53), with mean 57/110 ≈ 0.518. Beta(50, 50) acts like 100 earlier flips split evenly, so 10 new flips move the estimate only a little. A strong prior needs much more data to shift.",
+        "th": "posterior คือ Beta(57, 53) ค่าเฉลี่ย 57/110 ≈ 0.518 Beta(50, 50) เปรียบเหมือนการโยนก่อนหน้า 100 ครั้งที่ออกหัวก้อยเท่ากัน การโยนใหม่ 10 ครั้งจึงขยับค่าประมาณได้นิดเดียว prior ที่แข็งต้องใช้ข้อมูลมากกว่านี้มากจึงจะขยับ"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "The same 99%-accurate test is used where 1 in 100 people have the disease. What is P(sick | positive) now?",
+        "th": "ใช้ชุดตรวจที่แม่นยำ 99% ตัวเดิมในที่ที่คน 1 ใน 100 เป็นโรคนี้ ตอนนี้ P(ป่วย | ผลบวก) เป็นเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "Still about 1%",
+          "th": "ยังประมาณ 1%"
+        },
+        {
+          "en": "50%",
+          "th": "50%"
+        },
+        {
+          "en": "99%",
+          "th": "99%"
+        },
+        {
+          "en": "About 10%",
+          "th": "ประมาณ 10%"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "True positives: 0.99 * 0.01 = 0.0099. False positives: 0.01 * 0.99 = 0.0099. They are equal, so a positive result is a coin flip: 50%. The test didn't change; the base rate did.",
+        "th": "ผลบวกจริง: 0.99 * 0.01 = 0.0099 ผลบวกลวง: 0.01 * 0.99 = 0.0099 เท่ากันพอดี ผลบวกจึงเหมือนโยนเหรียญ: 50% ชุดตรวจไม่ได้เปลี่ยน แต่อัตราฐาน (base rate) เปลี่ยน"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "With the lesson's training data and smoothing 1, spam has 21 words in total and the vocabulary has 44 words. What is P(\"meeting\" | spam)?",
+        "th": "ด้วยข้อมูลเทรนของบทเรียนและ smoothing 1 สแปมมีคำรวม 21 คำ และคลังคำมี 44 คำ P(\"meeting\" | spam) เป็นเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "0, because 'meeting' never appears in spam",
+          "th": "0 เพราะ 'meeting' ไม่เคยปรากฏในสแปม"
+        },
+        {
+          "en": "1/21 ≈ 0.048",
+          "th": "1/21 ≈ 0.048"
+        },
+        {
+          "en": "1/44 ≈ 0.023",
+          "th": "1/44 ≈ 0.023"
+        },
+        {
+          "en": "1/65 ≈ 0.015",
+          "th": "1/65 ≈ 0.015"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Laplace smoothing gives (count + 1) / (total + vocabulary size) = (0 + 1) / (21 + 44) = 1/65 ≈ 0.0154. Adding the vocabulary size to the denominator keeps the probabilities over all 44 words summing to 1.",
+        "th": "Laplace smoothing ให้ (count + 1) / (total + ขนาดคลังคำ) = (0 + 1) / (21 + 44) = 1/65 ≈ 0.0154 การบวกขนาดคลังคำในตัวส่วนทำให้ความน่าจะเป็นของทั้ง 44 คำยังรวมกันได้ 1"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "MAP with an independent Gaussian prior N(0, σ²) on each weight adds what to the negative log-likelihood you minimize?",
+        "th": "MAP ที่ใช้ prior แบบเกาส์ N(0, σ²) ที่อิสระต่อกันบนน้ำหนักแต่ละตัว เพิ่มอะไรเข้าไปใน negative log-likelihood ที่คุณหาค่าต่ำสุด?"
+      },
+      "options": [
+        {
+          "en": "Σ|w| / σ, an L1 penalty",
+          "th": "Σ|w| / σ ซึ่งเป็นบทลงโทษ L1"
+        },
+        {
+          "en": "Σw² / (2σ²), an L2 penalty that gets stronger as σ gets smaller",
+          "th": "Σw² / (2σ²) ซึ่งเป็นบทลงโทษ L2 ที่แรงขึ้นเมื่อ σ เล็กลง"
+        },
+        {
+          "en": "Nothing: a Gaussian prior only changes the learning rate",
+          "th": "ไม่เพิ่มอะไร: prior แบบเกาส์แค่เปลี่ยน learning rate"
+        },
+        {
+          "en": "σ² Σw², a penalty that gets stronger as σ grows",
+          "th": "σ² Σw² ซึ่งเป็นบทลงโทษที่แรงขึ้นเมื่อ σ โตขึ้น"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "-log N(w; 0, σ²) = w² / (2σ²) + a constant, so maximizing P(data | w) * P(w) means minimizing the NLL plus Σw² / (2σ²): L2 regularization with λ = 1/(2σ²). A narrow prior (small σ) is a strong belief that weights are near 0. A Laplace prior gives the L1 penalty instead.",
+        "th": "-log N(w; 0, σ²) = w² / (2σ²) + ค่าคงที่ การหาค่าสูงสุดของ P(data | w) * P(w) จึงเท่ากับการหาค่าต่ำสุดของ NLL บวก Σw² / (2σ²) ซึ่งคือ L2 regularization ที่ λ = 1/(2σ²) prior ที่แคบ (σ เล็ก) คือความเชื่อหนักแน่นว่าน้ำหนักอยู่ใกล้ 0 ส่วน prior แบบ Laplace ให้บทลงโทษ L1"
+      }
+    }
+  ]
+}
