@@ -1,0 +1,13 @@
+{
+  "minutes": 6,
+  "title": {"th": "เติมโค้ด: การแทนค่าย้อนกลับ", "en": "Fill in: back substitution"},
+  "prompt": {
+    "th": "เติม `back_substitution(U, b)` ที่แก้ Ux = b เมื่อ U เป็นเมทริกซ์สามเหลี่ยมบน ลูปไล่จากแถวสุดท้ายขึ้นไปและคำนวณผลรวม `s` ของพจน์ที่รู้ค่าแล้วไว้ให้ เติมบรรทัดที่มี `# TODO` ให้ได้ `x[i]`",
+    "en": "Complete `back_substitution(U, b)`, which solves Ux = b for an upper triangular U. The loop already runs from the last row up and computes the sum `s` of the terms that are already known. Fill in the `# TODO` line to get `x[i]`."
+  },
+  "hints": [
+    {"th": "แถว i คือ U[i][i]·x[i] + s = b[i] ย้าย s ไปอีกฝั่งก่อน", "en": "Row i reads U[i][i]·x[i] + s = b[i]; move s to the other side first."},
+    {"th": "อย่าลืมหารด้วยตัวบนเส้นทแยงมุมของแถวนั้น ไม่ใช่ของแถวแรก", "en": "Don't forget to divide by that row's own diagonal entry, not the first row's."},
+    {"th": "`x[i] = (b[i] - s) / U[i][i]`", "en": "`x[i] = (b[i] - s) / U[i][i]`"}
+  ]
+}

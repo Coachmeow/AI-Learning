@@ -1,0 +1,13 @@
+{
+  "minutes": 15,
+  "title": {"th": "การแยก Cholesky ที่ตรวจเงื่อนไขของมันเอง", "en": "A Cholesky factorization that checks its own conditions"},
+  "prompt": {
+    "th": "เขียน `cholesky(A)` ด้วย Python ล้วน (ไม่ใช้ NumPy) ที่รับเมทริกซ์จัตุรัสเป็น list ของ list แล้วคืน L สามเหลี่ยมล่างที่ทำให้ A = LLᵀ\n\n- `L` เป็น list ของ list ขนาด n x n และช่องเหนือเส้นทแยงมุมเป็น `0.0`\n- ถ้า A ไม่สมมาตร (มีคู่ที่ `abs(A[i][j] - A[j][i]) > 1e-9`) ให้ `raise ValueError`\n- ถ้าเจอ pivot `s <= 0` บนเส้นทแยงมุม แปลว่า A ไม่บวกแน่นอน ให้ `raise ValueError` (ศูนย์พอดีก็ไม่ผ่าน)\n\nสูตรเหมือน `cholesky` ในบทเรียน: `s = A[i][j] - sum(L[i][k] * L[j][k] for k in range(j))` ถ้า i = j ได้ `sqrt(s)` ไม่อย่างนั้นได้ `s / L[j][j]`",
+    "en": "Write `cholesky(A)` in plain Python (no NumPy). It takes a square matrix as a list of lists and returns the lower triangular L with A = LLᵀ.\n\n- `L` is an n x n list of lists, with `0.0` above the diagonal.\n- If A is not symmetric (some pair has `abs(A[i][j] - A[j][i]) > 1e-9`), `raise ValueError`.\n- If a diagonal pivot `s <= 0` turns up, A is not positive definite: `raise ValueError` (exactly zero fails too).\n\nThe formula is the one in the lesson's `cholesky`: `s = A[i][j] - sum(L[i][k] * L[j][k] for k in range(j))`; if i = j the entry is `sqrt(s)`, otherwise `s / L[j][j]`."
+  },
+  "hints": [
+    {"th": "ตรวจความสมมาตรทั้งเมทริกซ์ก่อนเริ่มแยก ไม่อย่างนั้นอัลกอริทึมจะอ่านแค่สามเหลี่ยมล่างและไม่มีวันรู้ว่าสามเหลี่ยมบนต่างไป", "en": "Check symmetry over the whole matrix before you start: the algorithm only reads the lower triangle, so it would never notice a different upper triangle."},
+    {"th": "ทั้งการคำนวณช่องทแยงมุมและช่องนอกเส้นทแยงมุมต้องลบผลรวม `L[i][k] * L[j][k]` ของคอลัมน์ก่อนหน้า", "en": "Both diagonal and off-diagonal entries subtract the sum of `L[i][k] * L[j][k]` over the earlier columns."},
+    {"th": "ใช้ `if s <= 0: raise ValueError(...)` ก่อนเรียก `math.sqrt` อย่าใช้ `abs(s)` เพราะจะซ่อนเมทริกซ์ที่ไม่บวกแน่นอน", "en": "Use `if s <= 0: raise ValueError(...)` before calling `math.sqrt`. Don't take `abs(s)`: it hides matrices that are not positive definite."}
+  ]
+}

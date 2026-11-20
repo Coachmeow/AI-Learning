@@ -1,0 +1,13 @@
+{
+  "minutes": 30,
+  "title": {"th": "Conjugate gradient ที่นับรอบและรู้ตัวเมื่อเมทริกซ์ผิดประเภท", "en": "A conjugate gradient solver that counts iterations and notices the wrong kind of matrix"},
+  "prompt": {
+    "th": "เขียน `conjugate_gradient(A, b, tol=1e-10, max_iter=None)` ด้วย Python ล้วน ตามโครงร่างในบทเรียน:\n\n- เริ่มที่ `x = 0` ดังนั้น `r = b` และ `p = r`\n- ก่อนแต่ละรอบ ถ้า `||r|| <= tol * ||b||` ให้หยุด (เกณฑ์แบบสัมพัทธ์ ไม่ใช่ค่าสัมบูรณ์) ถ้า `b` เป็นศูนย์ทั้งหมด คืนเวกเตอร์ศูนย์และ 0 รอบ\n- คืน `(x, iterations)` โดย `x` เป็น list และ `iterations` คือจำนวนครั้งที่ปรับ `x`\n- `max_iter` ค่าเริ่มต้นคือ n ถ้ายังไม่ถึงเกณฑ์เมื่อครบ `max_iter` รอบ ให้ `raise RuntimeError`\n- ถ้าเจอ `p · Ap <= 0` แปลว่า A ไม่บวกแน่นอน ให้ `raise ValueError`\n- ห้ามแก้ไข `A` หรือ `b` ที่รับเข้ามา\n\nในการคำนวณแบบแม่นยำ CG ใช้ไม่เกินจำนวนค่าลักษณะเฉพาะที่ต่างกันของ A รอบ test ตรวจข้อนี้ด้วย มี test ซ่อนอยู่บางส่วน",
+    "en": "Write `conjugate_gradient(A, b, tol=1e-10, max_iter=None)` in plain Python, following the lesson's outline:\n\n- Start at `x = 0`, so `r = b` and `p = r`.\n- Before each iteration, stop if `||r|| <= tol * ||b||` (a relative criterion, not an absolute one). If `b` is all zeros, return the zero vector and 0 iterations.\n- Return `(x, iterations)`, where `x` is a list and `iterations` counts how many times `x` was updated.\n- `max_iter` defaults to n. If the criterion is still not met after `max_iter` iterations, `raise RuntimeError`.\n- If `p · Ap <= 0` turns up, A is not positive definite: `raise ValueError`.\n- Don't modify the `A` or `b` you were given.\n\nIn exact arithmetic CG needs at most as many iterations as A has distinct eigenvalues, and a test checks this. Some tests are hidden."
+  },
+  "hints": [
+    {"th": "เก็บ `rr = r · r` ไว้ใช้ซ้ำ: alpha = rr / (p · Ap) และ beta = rr_ใหม่ / rr_เก่า", "en": "Keep `rr = r · r` around: alpha = rr / (p · Ap) and beta = rr_new / rr_old."},
+    {"th": "เปรียบเทียบ `||r||` กับ `tol * ||b||` ถ้าเทียบกับ `tol` ตรง ๆ ระบบที่ b เล็กมาก (เช่น 1e-12) จะหยุดตั้งแต่ยังไม่เริ่ม", "en": "Compare `||r||` with `tol * ||b||`. Against plain `tol`, a system whose b is tiny (say 1e-12) stops before it starts."},
+    {"th": "`r = list(b)` สร้างสำเนา ถ้าเขียน `r = b` แล้วแก้ `r[i]` ในที่ คุณจะแก้ b ของผู้เรียกด้วย", "en": "`r = list(b)` makes a copy. With `r = b`, updating `r[i]` in place changes the caller's b too."}
+  ]
+}

@@ -2051,6 +2051,47 @@
     {
       "en": "variational autoencoder (VAE)",
       "th": "VAE (variational autoencoder)"
+    },
+    {
+      "en": "LU decomposition",
+      "th": "การแยก LU"
+    },
+    {
+      "en": "Cholesky decomposition",
+      "th": "การแยก Cholesky"
+    },
+    {
+      "en": "normal equations",
+      "th": "สมการปกติ",
+      "first": "สมการปกติ (normal equations)"
+    },
+    {
+      "en": "back substitution / forward substitution",
+      "th": "การแทนค่าย้อนกลับ / การแทนค่าไปข้างหน้า"
+    },
+    {
+      "en": "upper / lower triangular matrix",
+      "th": "เมทริกซ์สามเหลี่ยมบน / สามเหลี่ยมล่าง"
+    },
+    {
+      "en": "symmetric positive definite (SPD)",
+      "th": "สมมาตรบวกแน่นอน"
+    },
+    {
+      "en": "conjugate gradient (CG)",
+      "th": "conjugate gradient (CG)"
+    },
+    {
+      "en": "residual (linear systems)",
+      "th": "เศษเหลือ (residual)"
+    },
+    {
+      "en": "preconditioning / preconditioner",
+      "th": "preconditioning / preconditioner"
+    },
+    {
+      "en": "direct vs iterative solver",
+      "th": "ตัวแก้แบบตรง / แบบวนซ้ำ"
     }
   ]
 }
