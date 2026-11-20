@@ -1,0 +1,13 @@
+{
+  "minutes": 30,
+  "title": {"th": "RoPE: เข้ารหัสตำแหน่งด้วยการหมุน", "en": "RoPE: encoding position with rotations"},
+  "prompt": {
+    "th": "เขียน Rotary Position Embedding แบบง่ายด้วย Python ล้วน:\n\n- `rope(vec, pos, base=10000.0)`: เวกเตอร์ยาว d (ต้องเป็นเลขคู่และมากกว่า 0 ไม่อย่างนั้น `raise ValueError`) จับคู่ `(vec[2j], vec[2j+1])` สำหรับ j = 0 .. d/2 - 1 แล้วหมุนแต่ละคู่ทวนเข็มนาฬิกาเป็นมุม `pos * base ** (-2j / d)` คืน list ใหม่ ห้ามแก้ `vec`\n- `rope_score(q, k, m, n, base=10000.0)`: ผลคูณจุดของ `rope(q, m, base)` กับ `rope(k, n, base)`\n\nการหมุนคู่ `(x, y)` เป็นมุม a ได้ `(x cos a - y sin a, x sin a + y cos a)` ซึ่งก็คือการคูณ x + yi ด้วย e^(ia) ถ้าทำถูก `rope_score` จะขึ้นกับ m - n เท่านั้น มี test ซ่อนอยู่บางส่วน",
+    "en": "Write a simple Rotary Position Embedding in plain Python:\n\n- `rope(vec, pos, base=10000.0)`: for a vector of length d (it must be even and greater than 0, otherwise `raise ValueError`), pair up `(vec[2j], vec[2j+1])` for j = 0 .. d/2 - 1 and rotate each pair counterclockwise by the angle `pos * base ** (-2j / d)`. Return a new list; don't modify `vec`.\n- `rope_score(q, k, m, n, base=10000.0)`: the dot product of `rope(q, m, base)` and `rope(k, n, base)`.\n\nRotating a pair `(x, y)` by an angle a gives `(x cos a - y sin a, x sin a + y cos a)`, which is multiplying x + yi by e^(ia). Done right, `rope_score` depends only on m - n. Some tests are hidden."
+  },
+  "hints": [
+    {"th": "เลขชี้กำลังคือ -2j / d โดย j เป็นดัชนีของคู่ (0, 1, 2, ...) ไม่ใช่ดัชนีของสมาชิก คู่แรกจึงหมุนเร็วที่สุดด้วยความถี่ 1", "en": "The exponent is -2j / d, where j indexes the pair (0, 1, 2, ...), not the entry. So the first pair rotates fastest, at frequency 1."},
+    {"th": "ทวนเข็มนาฬิกาหมายความว่า (1, 0) ที่มุม π/2 ต้องไปที่ (0, 1) ไม่ใช่ (0, -1)", "en": "Counterclockwise means (1, 0) at angle π/2 must land on (0, 1), not (0, -1)."},
+    {"th": "`rope_score` ต้องหมุน q ด้วย m และหมุน k ด้วย n แยกกัน ถ้าใช้ตำแหน่งเดียวกันทั้งคู่ การหมุนจะหักล้างกันหมดและตำแหน่งจะไม่มีผลอะไรเลย", "en": "`rope_score` must rotate q by m and k by n separately. With the same position for both, the rotations cancel completely and position has no effect at all."}
+  ]
+}

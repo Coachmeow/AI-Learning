@@ -1,0 +1,13 @@
+{
+  "minutes": 15,
+  "title": {"th": "DFT และ DFT ผกผันที่สร้างสัญญาณกลับได้พอดี", "en": "A DFT and an inverse DFT that round-trip exactly"},
+  "prompt": {
+    "th": "เขียนสองฟังก์ชันด้วย `cmath` (ใช้ชนิด `complex` ของ Python ได้):\n\n- `dft(x)`: คืน list ยาว N ที่ `X[k] = sum(x[n] * exp(-2πi·k·n/N))`\n- `idft(X)`: คืน list ยาว N ที่ `x[n] = (1/N) · sum(X[k] * exp(+2πi·k·n/N))`\n\nขาเข้าอาจเป็นจำนวนจริงหรือจำนวนเชิงซ้อนก็ได้ และ list ว่างต้องคืน list ว่าง `idft(dft(x))` ต้องได้ `x` กลับมา (คลาดเคลื่อนไม่เกิน 1e-9)",
+    "en": "Write two functions with `cmath` (Python's `complex` type is fine):\n\n- `dft(x)`: return a list of length N with `X[k] = sum(x[n] * exp(-2πi·k·n/N))`.\n- `idft(X)`: return a list of length N with `x[n] = (1/N) · sum(X[k] * exp(+2πi·k·n/N))`.\n\nInputs may be real or complex, and an empty list must give an empty list. `idft(dft(x))` must give back `x` (within 1e-9)."
+  },
+  "hints": [
+    {"th": "`cmath.exp(-2j * cmath.pi * k * n / N)` คือรากที่ N ของหนึ่งที่ต้องใช้ อย่าลืม 2π", "en": "`cmath.exp(-2j * cmath.pi * k * n / N)` is the root of unity you need. Don't forget the 2π."},
+    {"th": "สองฟังก์ชันต่างกันแค่สองจุด: เครื่องหมายของเลขชี้กำลัง และการหารด้วย N ในตัวผกผัน", "en": "The two functions differ in just two places: the sign of the exponent, and the division by N in the inverse."},
+    {"th": "ทดสอบ: `dft([1, 0, 0, 0])` ต้องได้ 1 ทุกช่อง และ `dft([1, 2, 3, 4])[1]` ต้องได้ `-2 + 2j`", "en": "Test: `dft([1, 0, 0, 0])` must be all ones, and `dft([1, 2, 3, 4])[1]` must be `-2 + 2j`."}
+  ]
+}

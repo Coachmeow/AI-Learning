@@ -2148,6 +2148,62 @@
     {
       "en": "projected gradient descent",
       "th": "projected gradient descent"
+    },
+    {
+      "en": "complex number",
+      "th": "จำนวนเชิงซ้อน"
+    },
+    {
+      "en": "imaginary unit / imaginary part / real part",
+      "th": "หน่วยจินตภาพ / ส่วนจินตภาพ / ส่วนจริง"
+    },
+    {
+      "en": "complex conjugate",
+      "th": "สังยุค",
+      "first": "สังยุค (conjugate)"
+    },
+    {
+      "en": "complex plane (Argand plane)",
+      "th": "ระนาบเชิงซ้อน"
+    },
+    {
+      "en": "polar form / rectangular form",
+      "th": "รูปเชิงขั้ว / รูปสี่เหลี่ยม"
+    },
+    {
+      "en": "modulus / argument (phase)",
+      "th": "มอดุลัส / อาร์กิวเมนต์ (เฟส)"
+    },
+    {
+      "en": "Euler's formula",
+      "th": "สูตรของออยเลอร์",
+      "first": "สูตรของออยเลอร์ (Euler's formula)"
+    },
+    {
+      "en": "phasor",
+      "th": "เฟเซอร์",
+      "first": "เฟเซอร์ (phasor)"
+    },
+    {
+      "en": "roots of unity",
+      "th": "รากที่ N ของหนึ่ง",
+      "first": "รากที่ N ของหนึ่ง (roots of unity)"
+    },
+    {
+      "en": "Discrete Fourier Transform (DFT) / inverse DFT",
+      "th": "การแปลงฟูเรียร์แบบไม่ต่อเนื่อง (DFT) / DFT ผกผัน"
+    },
+    {
+      "en": "Fast Fourier Transform (FFT)",
+      "th": "FFT (Fast Fourier Transform)"
+    },
+    {
+      "en": "positional encoding (sinusoidal)",
+      "th": "positional encoding (แบบไซน์)"
+    },
+    {
+      "en": "Rotary Position Embedding (RoPE)",
+      "th": "RoPE (Rotary Position Embedding)"
     }
   ]
 }

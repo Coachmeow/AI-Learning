@@ -1,0 +1,486 @@
+{
+  "lesson": "01-math-foundations/19-complex-numbers",
+  "source_hash": "4a8ab5a6d4885e98555979cdd01d5de3701eecf7018678dd835f45a5aeba430b",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What is the imaginary unit i defined by?",
+        "th": "หน่วยจินตภาพ i นิยามด้วยอะไร?"
+      },
+      "options": [
+        {
+          "en": "i = -1",
+          "th": "i = -1"
+        },
+        {
+          "en": "i^2 = -1",
+          "th": "i^2 = -1"
+        },
+        {
+          "en": "i^2 = 1",
+          "th": "i^2 = 1"
+        },
+        {
+          "en": "i = sqrt(2)",
+          "th": "i = sqrt(2)"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The imaginary unit i is defined by the property i^2 = -1. It extends the real number line into a 2D plane. Geometrically, multiplying by i is a 90-degree rotation — two multiplications (i^2) give a 180-degree rotation, which is -1.",
+        "th": "หน่วยจินตภาพ i นิยามด้วยคุณสมบัติ i^2 = -1 มันขยายเส้นจำนวนจริงออกเป็นระนาบ 2 มิติ ในเชิงเรขาคณิต การคูณด้วย i คือการหมุน 90 องศา การคูณสองครั้ง (i^2) จึงเป็นการหมุน 180 องศา ซึ่งก็คือ -1"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What does Euler's formula e^(i*theta) equal?",
+        "th": "สูตรของออยเลอร์ e^(i*theta) เท่ากับอะไร?"
+      },
+      "options": [
+        {
+          "en": "cos(theta) + i*sin(theta)",
+          "th": "cos(theta) + i*sin(theta)"
+        },
+        {
+          "en": "sin(theta) + cos(theta)",
+          "th": "sin(theta) + cos(theta)"
+        },
+        {
+          "en": "i^theta",
+          "th": "i^theta"
+        },
+        {
+          "en": "theta + i",
+          "th": "theta + i"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Euler's formula states e^(i*theta) = cos(theta) + i*sin(theta). This connects complex exponentials to trigonometry and shows that e^(i*theta) traces the unit circle as theta varies.",
+        "th": "สูตรของออยเลอร์บอกว่า e^(i*theta) = cos(theta) + i*sin(theta) ซึ่งเชื่อมเอกซ์โพเนนเชียลเชิงซ้อนกับตรีโกณมิติ และแสดงว่า e^(i*theta) วาดวงกลมหนึ่งหน่วยเมื่อ theta เปลี่ยนไป"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "What is the magnitude |3 + 4i|?",
+        "th": "ขนาด |3 + 4i| เท่ากับเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "7",
+          "th": "7"
+        },
+        {
+          "en": "25",
+          "th": "25"
+        },
+        {
+          "en": "5",
+          "th": "5"
+        },
+        {
+          "en": "1",
+          "th": "1"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "|a + bi| = √(a² + b²) = √(9 + 16) = √25 = 5, the distance from the origin to the point (3, 4). 25 is |z|² = z·z̄, before the square root.",
+        "th": "|a + bi| = √(a² + b²) = √(9 + 16) = √25 = 5 คือระยะจากจุดกำเนิดถึงจุด (3, 4) ส่วน 25 คือ |z|² = z·z̄ ก่อนถอดรากที่สอง"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "What is i·(2 + i)?",
+        "th": "i·(2 + i) เท่ากับเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "2i + 1",
+          "th": "2i + 1"
+        },
+        {
+          "en": "-1 + 2i",
+          "th": "-1 + 2i"
+        },
+        {
+          "en": "1 - 2i",
+          "th": "1 - 2i"
+        },
+        {
+          "en": "2 - i",
+          "th": "2 - i"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "i·2 + i·i = 2i + i² = -1 + 2i. Geometrically the point (2, 1) turns 90° counterclockwise to (-1, 2): multiplying by i is a quarter turn.",
+        "th": "i·2 + i·i = 2i + i² = -1 + 2i ในเชิงเรขาคณิต จุด (2, 1) หมุนทวนเข็มนาฬิกา 90° ไปที่ (-1, 2) การคูณด้วย i คือการหมุนหนึ่งในสี่รอบ"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "z₁ has magnitude 2 and angle 30°; z₂ has magnitude 3 and angle 60°. What is z₁·z₂?",
+        "th": "z₁ มีขนาด 2 และมุม 30° ส่วน z₂ มีขนาด 3 และมุม 60° z₁·z₂ คืออะไร?"
+      },
+      "options": [
+        {
+          "en": "Magnitude 5, angle 90°",
+          "th": "ขนาด 5 มุม 90°"
+        },
+        {
+          "en": "Magnitude 6, angle 1800°",
+          "th": "ขนาด 6 มุม 1800°"
+        },
+        {
+          "en": "Magnitude 5, angle 30°",
+          "th": "ขนาด 5 มุม 30°"
+        },
+        {
+          "en": "Magnitude 6, angle 90°, i.e. 6i",
+          "th": "ขนาด 6 มุม 90° ก็คือ 6i"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "In polar form you multiply the magnitudes (2·3 = 6) and add the angles (30° + 60° = 90°). A magnitude of 6 at 90° is the point (0, 6), that is 6i.",
+        "th": "ในรูปเชิงขั้ว คุณคูณขนาด (2·3 = 6) และบวกมุม (30° + 60° = 90°) ขนาด 6 ที่มุม 90° คือจุด (0, 6) ก็คือ 6i"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "What is the result of (3 + 2i)(1 + 4i)?",
+        "th": "(3 + 2i)(1 + 4i) ได้ผลเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "-5 + 14i",
+          "th": "-5 + 14i"
+        },
+        {
+          "en": "5 + 14i",
+          "th": "5 + 14i"
+        },
+        {
+          "en": "3 + 8i",
+          "th": "3 + 8i"
+        },
+        {
+          "en": "4 + 6i",
+          "th": "4 + 6i"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Using FOIL: (3)(1) + (3)(4i) + (2i)(1) + (2i)(4i) = 3 + 12i + 2i + 8i^2 = 3 + 14i + 8(-1) = 3 + 14i - 8 = -5 + 14i.",
+        "th": "กระจายทีละพจน์: (3)(1) + (3)(4i) + (2i)(1) + (2i)(4i) = 3 + 12i + 2i + 8i^2 = 3 + 14i + 8(-1) = 3 + 14i - 8 = -5 + 14i"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "Why are complex numbers used in Rotary Position Embedding (RoPE) for transformers?",
+        "th": "ทำไมจึงใช้จำนวนเชิงซ้อนใน Rotary Position Embedding (RoPE) ของ transformer?"
+      },
+      "options": [
+        {
+          "en": "RoPE uses imaginary numbers to handle negative positions",
+          "th": "RoPE ใช้จำนวนจินตภาพเพื่อรับมือตำแหน่งที่ติดลบ"
+        },
+        {
+          "en": "Complex numbers compress the position encoding to use less memory",
+          "th": "จำนวนเชิงซ้อนบีบอัด position encoding ให้ใช้หน่วยความจำน้อยลง"
+        },
+        {
+          "en": "Complex numbers are required by the attention softmax function",
+          "th": "ฟังก์ชัน softmax ของ attention ต้องใช้จำนวนเชิงซ้อน"
+        },
+        {
+          "en": "Multiplying query/key vectors by complex rotations encodes relative position as a rotation angle",
+          "th": "การคูณเวกเตอร์ query/key ด้วยการหมุนเชิงซ้อนเข้ารหัสตำแหน่งสัมพัทธ์เป็นมุมการหมุน"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "RoPE multiplies query and key vectors by complex rotation matrices e^(i*m*theta) where m is the position. The relative position between two tokens becomes a rotation angle, and attention naturally becomes sensitive to relative (not absolute) position through complex multiplication.",
+        "th": "RoPE คูณเวกเตอร์ query และ key ด้วยเมทริกซ์การหมุนเชิงซ้อน e^(i*m*theta) โดย m คือตำแหน่ง ตำแหน่งสัมพัทธ์ระหว่างสองโทเค็นกลายเป็นมุมการหมุน และ attention ก็รับรู้ตำแหน่งสัมพัทธ์ (ไม่ใช่ตำแหน่งสัมบูรณ์) ได้เองผ่านการคูณเชิงซ้อน"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "The N-th roots of unity are N equally spaced points on the unit circle. What is their sum?",
+        "th": "รากที่ N ของหนึ่งคือ N จุดที่ห่างเท่า ๆ กันบนวงกลมหนึ่งหน่วย ผลรวมของมันคือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "1",
+          "th": "1"
+        },
+        {
+          "en": "N",
+          "th": "N"
+        },
+        {
+          "en": "N/2",
+          "th": "N/2"
+        },
+        {
+          "en": "0",
+          "th": "0"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "The N roots of unity are e^(2*pi*i*k/N) for k = 0, ..., N-1. They are symmetrically distributed around the unit circle, so their vector sum cancels out to zero. This symmetry property is what makes the DFT invertible.",
+        "th": "รากที่ N ของหนึ่งคือ e^(2*pi*i*k/N) สำหรับ k = 0, ..., N-1 มันกระจายอย่างสมมาตรรอบวงกลมหนึ่งหน่วย ผลรวมแบบเวกเตอร์จึงหักล้างกันเป็นศูนย์ ความสมมาตรนี้คือสิ่งที่ทำให้ DFT ผกผันได้"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "What is (5 + 2i) / (1 - 3i)?",
+        "th": "(5 + 2i) / (1 - 3i) เท่ากับเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "-0.1 + 1.7i",
+          "th": "-0.1 + 1.7i"
+        },
+        {
+          "en": "5 - 0.67i",
+          "th": "5 - 0.67i"
+        },
+        {
+          "en": "1.1 + 1.7i",
+          "th": "1.1 + 1.7i"
+        },
+        {
+          "en": "-0.1 - 1.7i",
+          "th": "-0.1 - 1.7i"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Multiply top and bottom by the conjugate 1 + 3i: (5 + 2i)(1 + 3i) = 5 + 15i + 2i + 6i² = -1 + 17i, and (1 - 3i)(1 + 3i) = 1 + 9 = 10. So the result is -0.1 + 1.7i. Dividing the parts separately (5/1, 2/-3) is not valid.",
+        "th": "คูณทั้งเศษและส่วนด้วยสังยุค 1 + 3i: (5 + 2i)(1 + 3i) = 5 + 15i + 2i + 6i² = -1 + 17i และ (1 - 3i)(1 + 3i) = 1 + 9 = 10 ผลลัพธ์จึงเป็น -0.1 + 1.7i การหารแต่ละส่วนแยกกัน (5/1, 2/-3) ใช้ไม่ได้"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "What is (1 + i)⁸?",
+        "th": "(1 + i)⁸ เท่ากับเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "8",
+          "th": "8"
+        },
+        {
+          "en": "16i",
+          "th": "16i"
+        },
+        {
+          "en": "16",
+          "th": "16"
+        },
+        {
+          "en": "256",
+          "th": "256"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "1 + i has magnitude √2 and angle 45°. The eighth power has magnitude (√2)⁸ = 16 and angle 8·45° = 360°, which points along the positive real axis. So (1 + i)⁸ = 16. Polar form turns a long expansion into two lines.",
+        "th": "1 + i มีขนาด √2 และมุม 45° ยกกำลังแปดได้ขนาด (√2)⁸ = 16 และมุม 8·45° = 360° ซึ่งชี้ไปตามแกนจริงด้านบวก ดังนั้น (1 + i)⁸ = 16 รูปเชิงขั้วเปลี่ยนการกระจายยาว ๆ ให้เหลือสองบรรทัด"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "With X[k] = Σₙ x[n]·e^(-2πikn/N), what is X[1] for the signal x = [1, 2, 3, 4]?",
+        "th": "เมื่อ X[k] = Σₙ x[n]·e^(-2πikn/N) ค่า X[1] ของสัญญาณ x = [1, 2, 3, 4] คืออะไร?"
+      },
+      "options": [
+        {
+          "en": "10",
+          "th": "10"
+        },
+        {
+          "en": "-2",
+          "th": "-2"
+        },
+        {
+          "en": "-2 - 2i",
+          "th": "-2 - 2i"
+        },
+        {
+          "en": "-2 + 2i",
+          "th": "-2 + 2i"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "For N = 4 and k = 1 the factors e^(-2πin/4) are 1, -i, -1, i. So X[1] = 1 - 2i - 3 + 4i = -2 + 2i. 10 is X[0] (the sum), -2 is X[2], and -2 - 2i is X[3], the conjugate of X[1] because the signal is real. np.fft.fft([1, 2, 3, 4]) agrees.",
+        "th": "สำหรับ N = 4 และ k = 1 ตัวคูณ e^(-2πin/4) คือ 1, -i, -1, i ดังนั้น X[1] = 1 - 2i - 3 + 4i = -2 + 2i ส่วน 10 คือ X[0] (ผลรวม) -2 คือ X[2] และ -2 - 2i คือ X[3] ซึ่งเป็นสังยุคของ X[1] เพราะสัญญาณเป็นจำนวนจริง np.fft.fft([1, 2, 3, 4]) ให้ผลตรงกัน"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Lesson exercise 3: x = sin(2π·3t) + 0.5·sin(2π·7t) sampled at t = n/32, n = 0..31. Which DFT bins have nonzero magnitude?",
+        "th": "แบบฝึกหัดที่ 3 ของบทเรียน: x = sin(2π·3t) + 0.5·sin(2π·7t) สุ่มตัวอย่างที่ t = n/32, n = 0..31 bin ไหนของ DFT มีขนาดไม่เป็นศูนย์?"
+      },
+      "options": [
+        {
+          "en": "Only 3 and 7",
+          "th": "เฉพาะ 3 และ 7"
+        },
+        {
+          "en": "3, 7, 25 and 29, with magnitudes 16, 8, 8 and 16",
+          "th": "3, 7, 25 และ 29 มีขนาด 16, 8, 8 และ 16"
+        },
+        {
+          "en": "3 and 7 with magnitudes 1 and 0.5",
+          "th": "3 และ 7 มีขนาด 1 และ 0.5"
+        },
+        {
+          "en": "All 32 bins, a little each",
+          "th": "ทั้ง 32 bin ช่องละนิดหน่อย"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "A real sine splits into two phasors, at +k and -k, and bin -k is bin N - k: 32 - 3 = 29 and 32 - 7 = 25. Each has magnitude A·N/2, so 1·32/2 = 16 and 0.5·32/2 = 8. That mirror is why the hint says to look only at bins 0 to 15.",
+        "th": "ไซน์ที่เป็นจำนวนจริงแยกเป็นเฟเซอร์สองตัวที่ +k และ -k และ bin ที่ -k ก็คือ bin N - k: 32 - 3 = 29 และ 32 - 7 = 25 แต่ละตัวมีขนาด A·N/2 จึงได้ 1·32/2 = 16 และ 0.5·32/2 = 8 ภาพสะท้อนนี้คือเหตุผลที่คำใบ้บอกให้ดูแค่ bin 0 ถึง 15"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "In RoPE, a query at position m is multiplied by e^(imθ) and a key at position n by e^(inθ). The score is Re(q·e^(imθ) · conj(k·e^(inθ))). What does it depend on?",
+        "th": "ใน RoPE query ที่ตำแหน่ง m ถูกคูณด้วย e^(imθ) และ key ที่ตำแหน่ง n ถูกคูณด้วย e^(inθ) คะแนนคือ Re(q·e^(imθ) · conj(k·e^(inθ))) มันขึ้นกับอะไร?"
+      },
+      "options": [
+        {
+          "en": "m + n",
+          "th": "m + n"
+        },
+        {
+          "en": "m·n",
+          "th": "m·n"
+        },
+        {
+          "en": "Only m - n (and q, k)",
+          "th": "แค่ m - n (และ q, k)"
+        },
+        {
+          "en": "Only max(m, n)",
+          "th": "แค่ max(m, n)"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "conj(e^(inθ)) = e^(-inθ), so the product is q·conj(k)·e^(i(m - n)θ). Positions (5, 2), (13, 10) and (3, 0) all give the same score. The absolute positions cancel, which is what makes RoPE a relative position encoding.",
+        "th": "conj(e^(inθ)) = e^(-inθ) ผลคูณจึงเป็น q·conj(k)·e^(i(m - n)θ) ตำแหน่ง (5, 2), (13, 10) และ (3, 0) ให้คะแนนเท่ากันทั้งหมด ตำแหน่งสัมบูรณ์หักล้างกันไป นี่คือสิ่งที่ทำให้ RoPE เป็นการเข้ารหัสตำแหน่งแบบสัมพัทธ์"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "In sinusoidal positional encoding with d = 512, pair i rotates at frequency 1/10000^(2i/d) per position. The fastest pair (i = 0) repeats every 2π ≈ 6.3 positions. About how often does the slowest pair (i = 255) repeat?",
+        "th": "ใน positional encoding แบบไซน์ที่ d = 512 คู่ที่ i หมุนด้วยความถี่ 1/10000^(2i/d) ต่อตำแหน่ง คู่ที่เร็วที่สุด (i = 0) วนซ้ำทุก 2π ≈ 6.3 ตำแหน่ง คู่ที่ช้าที่สุด (i = 255) วนซ้ำทุกประมาณกี่ตำแหน่ง?"
+      },
+      "options": [
+        {
+          "en": "About 60,600 positions",
+          "th": "ประมาณ 60,600 ตำแหน่ง"
+        },
+        {
+          "en": "About 512 positions",
+          "th": "ประมาณ 512 ตำแหน่ง"
+        },
+        {
+          "en": "About 10,000 positions",
+          "th": "ประมาณ 10,000 ตำแหน่ง"
+        },
+        {
+          "en": "About 6.3 positions as well",
+          "th": "ประมาณ 6.3 ตำแหน่งเหมือนกัน"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The period is 2π·10000^(2i/d) = 2π·10000^(510/512) ≈ 2π·9,646 ≈ 60,600. The wavelengths form a geometric series from 2π to almost 2π·10000, so fast pairs give fine position detail and slow pairs give coarse position.",
+        "th": "คาบคือ 2π·10000^(2i/d) = 2π·10000^(510/512) ≈ 2π·9,646 ≈ 60,600 ความยาวคลื่นเรียงเป็นอนุกรมเรขาคณิตจาก 2π ถึงเกือบ 2π·10000 คู่ที่เร็วจึงให้รายละเอียดตำแหน่งแบบละเอียด และคู่ที่ช้าให้ตำแหน่งแบบหยาบ"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Let w₀, ..., w₇ be the 8th roots of unity. What is w₀⁸ + w₁⁸ + ... + w₇⁸?",
+        "th": "ให้ w₀, ..., w₇ เป็นรากที่ 8 ของหนึ่ง w₀⁸ + w₁⁸ + ... + w₇⁸ เท่ากับเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "0, like the sum of the roots themselves",
+          "th": "0 เหมือนผลรวมของตัวรากเอง"
+        },
+        {
+          "en": "8",
+          "th": "8"
+        },
+        {
+          "en": "1",
+          "th": "1"
+        },
+        {
+          "en": "-8",
+          "th": "-8"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Every 8th root of unity satisfies w⁸ = 1, so the sum is 1 + 1 + ... + 1 = 8. In general Σₖ wₖᵐ = N when m is a multiple of N and 0 otherwise (for example Σ wₖ² = 0). That rule is the orthogonality that makes the inverse DFT work.",
+        "th": "รากที่ 8 ของหนึ่งทุกตัวทำให้ w⁸ = 1 ผลรวมจึงเป็น 1 + 1 + ... + 1 = 8 โดยทั่วไป Σₖ wₖᵐ = N เมื่อ m เป็นพหุคูณของ N และเป็น 0 ในกรณีอื่น (เช่น Σ wₖ² = 0) กฎนี้คือความตั้งฉากที่ทำให้ DFT ผกผันทำงานได้"
+      }
+    }
+  ]
+}

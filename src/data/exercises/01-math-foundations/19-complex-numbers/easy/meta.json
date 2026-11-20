@@ -1,0 +1,13 @@
+{
+  "minutes": 6,
+  "title": {"th": "เติมโค้ด: การคูณจำนวนเชิงซ้อนด้วยมือ", "en": "Fill in: multiplying complex numbers by hand"},
+  "prompt": {
+    "th": "เติม `cmul(z, w)` ที่คูณจำนวนเชิงซ้อนสองตัวซึ่งเก็บเป็นทูเพิล `(ส่วนจริง, ส่วนจินตภาพ)` โดยไม่ใช้ชนิด `complex` ของ Python แตกทูเพิลไว้ให้แล้ว เติมบรรทัดที่มี `# TODO` จากสูตร (a + bi)(c + di) = (ac - bd) + (ad + bc)i",
+    "en": "Complete `cmul(z, w)`, which multiplies two complex numbers stored as `(real, imag)` tuples without Python's `complex` type. The tuples are already unpacked; fill in the `# TODO` line from (a + bi)(c + di) = (ac - bd) + (ad + bc)i."
+  },
+  "hints": [
+    {"th": "พจน์ bd·i² กลายเป็น -bd เพราะ i² = -1 ส่วนจริงจึงมีเครื่องหมายลบ", "en": "The term bd·i² becomes -bd because i² = -1, which is where the minus in the real part comes from."},
+    {"th": "ส่วนจินตภาพรวมสองพจน์ไขว้: a·d และ b·c", "en": "The imaginary part adds the two cross terms: a·d and b·c."},
+    {"th": "`return (a * c - b * d, a * d + b * c)`", "en": "`return (a * c - b * d, a * d + b * c)`"}
+  ]
+}
