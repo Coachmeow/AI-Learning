@@ -1,0 +1,13 @@
+{
+  "minutes": 15,
+  "title": {"th": "การแจกแจงคงที่ด้วย power method ที่ตรวจขาเข้า", "en": "The stationary distribution by the power method, with input checks"},
+  "prompt": {
+    "th": "เขียน `stationary_distribution(P, tol=1e-12, max_iter=100000)` ด้วย Python ล้วน:\n\n- ตรวจ P ก่อน: ต้องเป็นเมทริกซ์จัตุรัส ทุกช่อง ≥ 0 และทุกแถวรวมได้ 1 (คลาดได้ไม่เกิน 1e-9) ไม่อย่างนั้น `raise ValueError`\n- เริ่มจากการแจกแจงสม่ำเสมอ แล้วคูณ π ← π P ซ้ำ ๆ จนผลรวมของ |π ใหม่ - π เดิม| น้อยกว่า `tol`\n- ถ้าครบ `max_iter` รอบแล้วยังไม่ลู่เข้า (เช่น ลูกโซ่เป็นคาบ) ให้ `raise RuntimeError` อย่าคืนค่ารอบสุดท้ายแบบเงียบ ๆ\n- คืน list ของความน่าจะเป็น",
+    "en": "Write `stationary_distribution(P, tol=1e-12, max_iter=100000)` in plain Python:\n\n- Check P first: it must be square, every entry ≥ 0, and every row must sum to 1 (within 1e-9); otherwise `raise ValueError`.\n- Start from the uniform distribution and repeat π ← π P until the sum of |π_new - π_old| is below `tol`.\n- If it has not converged after `max_iter` rounds (a periodic chain, for example), `raise RuntimeError`; don't quietly return the last iterate.\n- Return a list of probabilities."
+  },
+  "hints": [
+    {"th": "ตรวจผลรวมตามแถว ไม่ใช่ตามคอลัมน์: P[i] คือการแจกแจงของก้าวถัดไปเมื่ออยู่ที่ i", "en": "Check sums along rows, not columns: P[i] is the next-step distribution from state i."},
+    {"th": "ใช้ `new[j] = sum(pi[i] * P[i][j] for i in range(n))` เหมือนแบบฝึกหัดระดับง่าย", "en": "Use `new[j] = sum(pi[i] * P[i][j] for i in range(n))`, as in the easy exercise."},
+    {"th": "ใช้ `for ... else` หรือตัวแปรธง: ถ้าลูปจบเพราะครบรอบ ไม่ใช่เพราะลู่เข้า ให้ raise RuntimeError", "en": "Use `for ... else` or a flag: if the loop ends because it ran out of rounds rather than converging, raise RuntimeError."}
+  ]
+}

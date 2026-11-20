@@ -1,0 +1,486 @@
+{
+  "lesson": "01-math-foundations/22-stochastic-processes",
+  "source_hash": "2c438ab5ccab9e2916721ba1cda63f9ba53deab638d421cd89a02173206acb8d",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What is the Markov property?",
+        "th": "คุณสมบัติมาร์คอฟคืออะไร?"
+      },
+      "options": [
+        {
+          "en": "All states are equally likely at every step",
+          "th": "ทุกสถานะมีโอกาสเท่ากันในทุกก้าว"
+        },
+        {
+          "en": "The next state depends only on the current state, not on the history of previous states",
+          "th": "สถานะถัดไปขึ้นกับสถานะปัจจุบันเท่านั้น ไม่ขึ้นกับประวัติของสถานะก่อนหน้า"
+        },
+        {
+          "en": "The process always returns to its starting state",
+          "th": "กระบวนการกลับมาที่สถานะเริ่มต้นเสมอ"
+        },
+        {
+          "en": "The process must have a finite number of states",
+          "th": "กระบวนการต้องมีจำนวนสถานะจำกัด"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The Markov property (memorylessness) means P(X_{t+1} = j | X_t = i, X_{t-1}, ...) = P(X_{t+1} = j | X_t = i). The future depends only on where you are, not how you got there. This enables compact representation via a transition matrix.",
+        "th": "คุณสมบัติมาร์คอฟ (ความไม่มีความจำ) หมายถึง P(X_{t+1} = j | X_t = i, X_{t-1}, ...) = P(X_{t+1} = j | X_t = i) อนาคตขึ้นกับว่าคุณอยู่ที่ไหนเท่านั้น ไม่ขึ้นกับว่ามาถึงที่นี่ได้อย่างไร ทำให้แทนทั้งระบบได้กระชับด้วยเมทริกซ์การเปลี่ยนสถานะ"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "In a 1D random walk, how does the expected distance from the origin scale with the number of steps n?",
+        "th": "ในการเดินสุ่ม 1 มิติ ระยะห่างจากจุดเริ่มต้นที่คาดหมายโตตามจำนวนก้าว n อย่างไร?"
+      },
+      "options": [
+        {
+          "en": "Logarithmically: proportional to log(n)",
+          "th": "แบบลอการิทึม: แปรผันตาม log(n)"
+        },
+        {
+          "en": "As the square root: proportional to sqrt(n)",
+          "th": "แบบรากที่สอง: แปรผันตาม sqrt(n)"
+        },
+        {
+          "en": "It stays constant regardless of n",
+          "th": "คงที่ไม่ว่า n จะเป็นเท่าไร"
+        },
+        {
+          "en": "Linearly: proportional to n",
+          "th": "แบบเชิงเส้น: แปรผันตาม n"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Each step is +/-1 with equal probability. The variance after n steps is n, so the standard deviation (typical distance from origin) is sqrt(n). After 10,000 steps, the expected distance is about 100, not 10,000.",
+        "th": "แต่ละก้าวเป็น +/-1 ด้วยความน่าจะเป็นเท่ากัน ความแปรปรวนหลัง n ก้าวคือ n ส่วนเบี่ยงเบนมาตรฐาน (ระยะห่างจากจุดเริ่มต้นโดยทั่วไป) จึงเป็น sqrt(n) หลัง 10,000 ก้าว ระยะที่คาดหมายราว 100 ไม่ใช่ 10,000"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "A fair ±1 random walk takes 400 steps. What is the standard deviation of its final position?",
+        "th": "การเดินสุ่ม ±1 ที่ยุติธรรมเดิน 400 ก้าว ส่วนเบี่ยงเบนมาตรฐานของตำแหน่งสุดท้ายคือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "400",
+          "th": "400"
+        },
+        {
+          "en": "0",
+          "th": "0"
+        },
+        {
+          "en": "20",
+          "th": "20"
+        },
+        {
+          "en": "200",
+          "th": "200"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Each step has variance 1 and the steps are independent, so Var(S₄₀₀) = 400 and the standard deviation is √400 = 20. The mean is 0, but a typical walk ends about 20 steps away; a simulation of 20,000 walks gives 19.9.",
+        "th": "แต่ละก้าวมีความแปรปรวน 1 และเป็นอิสระต่อกัน Var(S₄₀₀) = 400 ส่วนเบี่ยงเบนมาตรฐานจึงเป็น √400 = 20 ค่าเฉลี่ยคือ 0 แต่การเดินทั่วไปจบห่างราว 20 ก้าว การจำลอง 20,000 ครั้งได้ 19.9"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Which of these is a valid transition matrix?",
+        "th": "ข้อใดเป็นเมทริกซ์การเปลี่ยนสถานะที่ใช้ได้?"
+      },
+      "options": [
+        {
+          "en": "[[0.5, 0.5], [0.2, 0.8]]",
+          "th": "[[0.5, 0.5], [0.2, 0.8]]"
+        },
+        {
+          "en": "[[0.5, 0.2], [0.5, 0.8]] (columns sum to 1)",
+          "th": "[[0.5, 0.2], [0.5, 0.8]] (คอลัมน์รวมได้ 1)"
+        },
+        {
+          "en": "[[0.6, 0.6], [0.4, 0.4]]",
+          "th": "[[0.6, 0.6], [0.4, 0.4]]"
+        },
+        {
+          "en": "[[1.2, -0.2], [0, 1]]",
+          "th": "[[1.2, -0.2], [0, 1]]"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "In the lesson's convention P[i][j] is the probability of moving from i to j, so every entry is between 0 and 1 and every row sums to 1. Only the first matrix does that; the second sums by columns, the third has rows summing to 1.2 and 0.8, and the fourth has a negative entry.",
+        "th": "ตามสัญกรณ์ของบทเรียน P[i][j] คือความน่าจะเป็นที่จะย้ายจาก i ไป j ทุกช่องจึงอยู่ระหว่าง 0 ถึง 1 และทุกแถวรวมได้ 1 มีแค่เมทริกซ์แรกที่เป็นแบบนั้น ตัวที่สองรวมตามคอลัมน์ ตัวที่สามมีแถวที่รวมได้ 1.2 และ 0.8 และตัวที่สี่มีช่องที่ติดลบ"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "What makes state i an absorbing state?",
+        "th": "อะไรทำให้สถานะ i เป็นสถานะดูดกลืน?"
+      },
+      "options": [
+        {
+          "en": "P[i][i] = 0",
+          "th": "P[i][i] = 0"
+        },
+        {
+          "en": "It is reachable from every other state",
+          "th": "ไปถึงได้จากทุกสถานะอื่น"
+        },
+        {
+          "en": "It has the largest stationary probability",
+          "th": "มีความน่าจะเป็นคงที่สูงที่สุด"
+        },
+        {
+          "en": "P[i][i] = 1: once entered, it is never left",
+          "th": "P[i][i] = 1: เข้าไปแล้วไม่มีวันออก"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "An absorbing state transitions only to itself, so its row is all zeros except a 1 on the diagonal. End-of-text tokens and terminal states in RL behave this way.",
+        "th": "สถานะดูดกลืนเปลี่ยนไปหาตัวเองเท่านั้น แถวของมันจึงเป็นศูนย์ทั้งหมดยกเว้น 1 บนเส้นทแยงมุม โทเค็นจบข้อความและสถานะสิ้นสุดใน RL มีพฤติกรรมแบบนี้"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "What is the stationary distribution of a Markov chain?",
+        "th": "การแจกแจงคงที่ของลูกโซ่มาร์คอฟคืออะไร?"
+      },
+      "options": [
+        {
+          "en": "The uniform distribution over all states",
+          "th": "การแจกแจงสม่ำเสมอบนทุกสถานะ"
+        },
+        {
+          "en": "The initial distribution of states",
+          "th": "การแจกแจงเริ่มต้นของสถานะ"
+        },
+        {
+          "en": "The distribution of states after exactly one transition",
+          "th": "การแจกแจงของสถานะหลังเปลี่ยนสถานะไปหนึ่งครั้งพอดี"
+        },
+        {
+          "en": "The distribution that does not change under the transition matrix: pi * P = pi",
+          "th": "การแจกแจงที่ไม่เปลี่ยนเมื่อคูณด้วยเมทริกซ์การเปลี่ยนสถานะ: pi * P = pi"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "The stationary distribution pi satisfies pi * P = pi — applying the transition matrix leaves it unchanged. It represents the long-run fraction of time spent in each state. For an irreducible, aperiodic chain, any initial distribution converges to pi.",
+        "th": "การแจกแจงคงที่ pi ทำให้ pi * P = pi คือการใช้เมทริกซ์การเปลี่ยนสถานะแล้วมันไม่เปลี่ยน มันแทนสัดส่วนเวลาระยะยาวที่ใช้ในแต่ละสถานะ สำหรับลูกโซ่ที่ irreducible และ aperiodic การแจกแจงเริ่มต้นใด ๆ จะลู่เข้าสู่ pi"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "In Langevin dynamics x_{t+1} = x_t - dt * grad(U) + sqrt(2*T*dt) * z, what happens as temperature T approaches 0?",
+        "th": "ใน Langevin dynamics x_{t+1} = x_t - dt * grad(U) + sqrt(2*T*dt) * z เกิดอะไรขึ้นเมื่อ temperature T เข้าใกล้ 0?"
+      },
+      "options": [
+        {
+          "en": "The process diverges to infinity",
+          "th": "กระบวนการลู่ออกไปอนันต์"
+        },
+        {
+          "en": "The process becomes a pure random walk",
+          "th": "กระบวนการกลายเป็นการเดินสุ่มล้วน"
+        },
+        {
+          "en": "The process becomes pure gradient descent (deterministic optimization)",
+          "th": "กระบวนการกลายเป็น gradient descent ล้วน (การหาค่าเหมาะที่สุดแบบกำหนดแน่นอน)"
+        },
+        {
+          "en": "The process freezes at the initial position",
+          "th": "กระบวนการหยุดนิ่งอยู่ที่ตำแหน่งเริ่มต้น"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "At T = 0, the noise term sqrt(2*T*dt)*z vanishes, leaving x_{t+1} = x_t - dt * grad(U), which is standard gradient descent. At high T, the noise dominates and the process is nearly a random walk. Intermediate T balances exploration and exploitation.",
+        "th": "ที่ T = 0 พจน์สัญญาณรบกวน sqrt(2*T*dt)*z หายไป เหลือ x_{t+1} = x_t - dt * grad(U) ซึ่งก็คือ gradient descent มาตรฐาน ที่ T สูง สัญญาณรบกวนครอบงำและกระบวนการเกือบเป็นการเดินสุ่ม T ระดับกลางสร้างสมดุลระหว่างการสำรวจกับการใช้ประโยชน์"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "In a diffusion model, what does the forward process do to a data sample over T steps?",
+        "th": "ในโมเดล diffusion กระบวนการไปข้างหน้าทำอะไรกับตัวอย่างข้อมูลตลอด T ก้าว?"
+      },
+      "options": [
+        {
+          "en": "It sharpens the image by removing noise at each step",
+          "th": "ทำให้ภาพคมขึ้นโดยลบสัญญาณรบกวนทุกก้าว"
+        },
+        {
+          "en": "It gradually adds Gaussian noise until the sample becomes pure noise, following a Markov chain",
+          "th": "ค่อย ๆ เติมสัญญาณรบกวนเกาส์เซียนจนตัวอย่างกลายเป็นสัญญาณรบกวนล้วน ตามลูกโซ่มาร์คอฟ"
+        },
+        {
+          "en": "It compresses the image to a lower resolution",
+          "th": "บีบอัดภาพให้มีความละเอียดต่ำลง"
+        },
+        {
+          "en": "It applies learned transformations to generate new data",
+          "th": "ใช้การแปลงที่เรียนรู้มาเพื่อสร้างข้อมูลใหม่"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The forward process is a Markov chain: x_t = sqrt(alpha_t) * x_{t-1} + sqrt(1 - alpha_t) * noise. After T steps, x_T is approximately N(0, I) — pure Gaussian noise. The reverse process (learned by a neural network) then denoises step-by-step to generate new data.",
+        "th": "กระบวนการไปข้างหน้าคือลูกโซ่มาร์คอฟ: x_t = sqrt(alpha_t) * x_{t-1} + sqrt(1 - alpha_t) * noise หลัง T ก้าว x_T จะเป็น N(0, I) โดยประมาณ คือสัญญาณรบกวนเกาส์เซียนล้วน จากนั้นกระบวนการย้อนกลับ (ที่โครงข่ายประสาทเทียมเรียนรู้) จะลดสัญญาณรบกวนทีละก้าวเพื่อสร้างข้อมูลใหม่"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "Gambler's ruin: a fair walk starts at 3 with absorbing barriers at 0 and 10. What is the probability of reaching 10 first?",
+        "th": "ความพินาศของนักพนัน: การเดินที่ยุติธรรมเริ่มที่ 3 มีกำแพงดูดกลืนที่ 0 และ 10 ความน่าจะเป็นที่จะถึง 10 ก่อนคือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "0.3",
+          "th": "0.3"
+        },
+        {
+          "en": "0.5",
+          "th": "0.5"
+        },
+        {
+          "en": "0.7",
+          "th": "0.7"
+        },
+        {
+          "en": "0.03",
+          "th": "0.03"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "For a fair walk P(reach N first) = k/N = 3/10. The walk is a martingale, so its expected final position equals the start: 10·p + 0·(1 - p) = 3. A simulation of 20,000 walks gives about 0.30.",
+        "th": "สำหรับการเดินที่ยุติธรรม P(ถึง N ก่อน) = k/N = 3/10 การเดินเป็นมาร์ติงเกล ตำแหน่งสุดท้ายที่คาดหมายจึงเท่ากับจุดเริ่ม: 10·p + 0·(1 - p) = 3 การจำลอง 20,000 ครั้งได้ราว 0.30"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "What is the stationary distribution of P = [[0.9, 0.1], [0.3, 0.7]]?",
+        "th": "การแจกแจงคงที่ของ P = [[0.9, 0.1], [0.3, 0.7]] คืออะไร?"
+      },
+      "options": [
+        {
+          "en": "[0.5, 0.5]",
+          "th": "[0.5, 0.5]"
+        },
+        {
+          "en": "[0.9, 0.1]",
+          "th": "[0.9, 0.1]"
+        },
+        {
+          "en": "[0.75, 0.25]",
+          "th": "[0.75, 0.25]"
+        },
+        {
+          "en": "[0.25, 0.75]",
+          "th": "[0.25, 0.75]"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "In balance the flow from state 0 to 1 equals the flow back: π₀·0.1 = π₁·0.3, so π₀ = 3π₁ and with π₀ + π₁ = 1 you get [0.75, 0.25]. Check: 0.75·0.9 + 0.25·0.3 = 0.75.",
+        "th": "ที่สมดุล การไหลจากสถานะ 0 ไป 1 เท่ากับการไหลกลับ: π₀·0.1 = π₁·0.3 ดังนั้น π₀ = 3π₁ และเมื่อ π₀ + π₁ = 1 ได้ [0.75, 0.25] ตรวจ: 0.75·0.9 + 0.25·0.3 = 0.75"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "The lesson rounds the weather chain's stationary distribution to [0.55, 0.18, 0.27]. What is it exactly?",
+        "th": "บทเรียนปัดการแจกแจงคงที่ของลูกโซ่สภาพอากาศเป็น [0.55, 0.18, 0.27] ค่าที่แท้จริงคืออะไร?"
+      },
+      "options": [
+        {
+          "en": "[1/2, 1/5, 3/10]",
+          "th": "[1/2, 1/5, 3/10]"
+        },
+        {
+          "en": "[6/11, 2/11, 3/11]",
+          "th": "[6/11, 2/11, 3/11]"
+        },
+        {
+          "en": "[1/3, 1/3, 1/3]",
+          "th": "[1/3, 1/3, 1/3]"
+        },
+        {
+          "en": "[7/12, 1/6, 1/4]",
+          "th": "[7/12, 1/6, 1/4]"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "π = [6/11, 2/11, 3/11] ≈ [0.545, 0.182, 0.273]. Check the rainy column: 6/11·0.1 + 2/11·0.4 + 3/11·0.2 = (0.6 + 0.8 + 0.6)/11 = 2/11. [1/2, 1/5, 3/10] fails it: 0.05 + 0.08 + 0.06 = 0.19 ≠ 0.2.",
+        "th": "π = [6/11, 2/11, 3/11] ≈ [0.545, 0.182, 0.273] ตรวจคอลัมน์ฝนตก: 6/11·0.1 + 2/11·0.4 + 3/11·0.2 = (0.6 + 0.8 + 0.6)/11 = 2/11 ส่วน [1/2, 1/5, 3/10] ไม่ผ่าน: 0.05 + 0.08 + 0.06 = 0.19 ≠ 0.2"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Metropolis-Hastings with a symmetric proposal targets p(x) ∝ exp(-x²/2). The chain is at x = 0 and proposes x' = 2. With what probability is the move accepted?",
+        "th": "Metropolis-Hastings ที่ใช้การเสนอแบบสมมาตรมีเป้าหมาย p(x) ∝ exp(-x²/2) ลูกโซ่อยู่ที่ x = 0 และเสนอ x' = 2 การขยับนี้ถูกยอมรับด้วยความน่าจะเป็นเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "1, since every proposal is accepted",
+          "th": "1 เพราะการเสนอทุกครั้งถูกยอมรับ"
+        },
+        {
+          "en": "0, since the target is lower there",
+          "th": "0 เพราะเป้าหมายต่ำกว่าที่จุดนั้น"
+        },
+        {
+          "en": "e⁻⁴ ≈ 0.018",
+          "th": "e⁻⁴ ≈ 0.018"
+        },
+        {
+          "en": "e⁻² ≈ 0.135",
+          "th": "e⁻² ≈ 0.135"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "a = p(2)/p(0) = exp(-4/2)/exp(0) = e⁻² ≈ 0.135, and the acceptance probability is min(1, a). The normalizing constant cancels. Downhill moves are accepted sometimes, never always and never never, which is what lets the chain visit the tails.",
+        "th": "a = p(2)/p(0) = exp(-4/2)/exp(0) = e⁻² ≈ 0.135 และความน่าจะเป็นที่จะยอมรับคือ min(1, a) ค่าคงที่สำหรับ normalize หักล้างกันไป การขยับลงเขาถูกยอมรับบางครั้ง ไม่ใช่ทุกครั้งและไม่ใช่ไม่เคยเลย ซึ่งทำให้ลูกโซ่ไปเยี่ยมหางของการแจกแจงได้"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Langevin dynamics with U(x) = x²/2 and temperature T = 0.5 runs for a long time. From which distribution are the samples drawn?",
+        "th": "Langevin dynamics ที่มี U(x) = x²/2 และ temperature T = 0.5 รันเป็นเวลานาน ตัวอย่างมาจากการแจกแจงใด?"
+      },
+      "options": [
+        {
+          "en": "N(0, 0.5), with variance T",
+          "th": "N(0, 0.5) มีความแปรปรวนเท่ากับ T"
+        },
+        {
+          "en": "N(0, 1)",
+          "th": "N(0, 1)"
+        },
+        {
+          "en": "A point mass at 0",
+          "th": "จุดเดียวที่ 0"
+        },
+        {
+          "en": "N(0, 0.25)",
+          "th": "N(0, 0.25)"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The stationary density is ∝ exp(-U(x)/T) = exp(-x²/(2·0.5)), a Gaussian with variance T = 0.5. A simulation with dt = 0.01 gives a sample variance of about 0.48. T = 0 would collapse to the minimum at 0, and T = 1 would give N(0, 1).",
+        "th": "ความหนาแน่นคงที่ ∝ exp(-U(x)/T) = exp(-x²/(2·0.5)) ซึ่งเป็นเกาส์เซียนที่มีความแปรปรวน T = 0.5 การจำลองด้วย dt = 0.01 ได้ความแปรปรวนของตัวอย่างราว 0.48 ถ้า T = 0 จะยุบไปที่จุดต่ำสุด 0 และถ้า T = 1 จะได้ N(0, 1)"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "A forward diffusion uses β_t = 0.02 at every one of 100 steps, so x₁₀₀ = √ᾱ·x₀ + √(1 - ᾱ)·ε with ᾱ = Π(1 - β_t). How much of x₀ is left?",
+        "th": "diffusion ไปข้างหน้าใช้ β_t = 0.02 ทุกก้าวตลอด 100 ก้าว ดังนั้น x₁₀₀ = √ᾱ·x₀ + √(1 - ᾱ)·ε โดย ᾱ = Π(1 - β_t) เหลือ x₀ อยู่เท่าไร?"
+      },
+      "options": [
+        {
+          "en": "Nothing; after 100 steps it is pure noise",
+          "th": "ไม่เหลือเลย หลัง 100 ก้าวเป็นสัญญาณรบกวนล้วน"
+        },
+        {
+          "en": "0.98, since each step keeps 98%",
+          "th": "0.98 เพราะแต่ละก้าวเก็บไว้ 98%"
+        },
+        {
+          "en": "A coefficient of √(0.98¹⁰⁰) ≈ 0.36, so the signal is still visible",
+          "th": "สัมประสิทธิ์ √(0.98¹⁰⁰) ≈ 0.36 สัญญาณจึงยังมองเห็นได้"
+        },
+        {
+          "en": "0.02 · 100 = 2",
+          "th": "0.02 · 100 = 2"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "ᾱ = 0.98¹⁰⁰ ≈ 0.133, so x₀ keeps a coefficient of √0.133 ≈ 0.36 against noise with coefficient √0.867 ≈ 0.93. That is far from pure noise, which is the lesson's hint for exercise 5: raise beta_end until ᾱ is near 0.",
+        "th": "ᾱ = 0.98¹⁰⁰ ≈ 0.133 ดังนั้น x₀ เหลือสัมประสิทธิ์ √0.133 ≈ 0.36 เทียบกับสัญญาณรบกวนที่มีสัมประสิทธิ์ √0.867 ≈ 0.93 ซึ่งยังห่างจากสัญญาณรบกวนล้วนมาก นี่คือคำใบ้ของแบบฝึกหัดที่ 5 ในบทเรียน: เพิ่ม beta_end จน ᾱ ใกล้ 0"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "P = [[0.9, 0.1], [0.3, 0.7]] has eigenvalues 1 and λ₂. What is λ₂, and by what factor does the distance to the stationary distribution shrink each step?",
+        "th": "P = [[0.9, 0.1], [0.3, 0.7]] มีค่าลักษณะเฉพาะ 1 และ λ₂ λ₂ คือเท่าไร และระยะห่างจากการแจกแจงคงที่หดลงด้วยตัวประกอบเท่าไรในแต่ละก้าว?"
+      },
+      "options": [
+        {
+          "en": "λ₂ = 0.4; it shrinks by 0.4",
+          "th": "λ₂ = 0.4 หดลงด้วยตัวประกอบ 0.4"
+        },
+        {
+          "en": "λ₂ = 0.6; it shrinks by 0.6, so the spectral gap is 0.4",
+          "th": "λ₂ = 0.6 หดลงด้วยตัวประกอบ 0.6 ช่องว่างสเปกตรัมจึงเป็น 0.4"
+        },
+        {
+          "en": "λ₂ = 0.9; it shrinks by 0.9",
+          "th": "λ₂ = 0.9 หดลงด้วยตัวประกอบ 0.9"
+        },
+        {
+          "en": "λ₂ = -0.6; it oscillates",
+          "th": "λ₂ = -0.6 แกว่งไปมา"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The eigenvalues sum to the trace, 0.9 + 0.7 = 1.6, so λ₂ = 0.6. Any starting distribution is π plus a multiple of the second eigenvector, and that part is multiplied by 0.6 each step. The spectral gap 1 - 0.6 = 0.4 gives the lesson's rough mixing time 1/0.4 = 2.5 steps.",
+        "th": "ผลรวมของค่าลักษณะเฉพาะเท่ากับ trace คือ 0.9 + 0.7 = 1.6 ดังนั้น λ₂ = 0.6 การแจกแจงเริ่มต้นใด ๆ คือ π บวกพหุคูณของเวกเตอร์ลักษณะเฉพาะตัวที่สอง และส่วนนั้นถูกคูณด้วย 0.6 ทุกก้าว ช่องว่างสเปกตรัม 1 - 0.6 = 0.4 ให้เวลาผสมคร่าว ๆ ตามบทเรียน 1/0.4 = 2.5 ก้าว"
+      }
+    }
+  ]
+}

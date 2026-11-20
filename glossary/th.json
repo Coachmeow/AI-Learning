@@ -2348,6 +2348,72 @@
       "en": "random walk",
       "th": "การเดินสุ่ม",
       "first": "การเดินสุ่ม (random walk)"
+    },
+    {
+      "en": "stochastic process",
+      "th": "กระบวนการสโตแคสติก",
+      "first": "กระบวนการสโตแคสติก (stochastic process)"
+    },
+    {
+      "en": "Markov property",
+      "th": "คุณสมบัติมาร์คอฟ",
+      "first": "คุณสมบัติมาร์คอฟ (Markov property)"
+    },
+    {
+      "en": "transition matrix",
+      "th": "เมทริกซ์การเปลี่ยนสถานะ",
+      "first": "เมทริกซ์การเปลี่ยนสถานะ (transition matrix)"
+    },
+    {
+      "en": "absorbing state / transient state",
+      "th": "สถานะดูดกลืน / สถานะชั่วคราว"
+    },
+    {
+      "en": "irreducible / aperiodic",
+      "th": "irreducible / aperiodic"
+    },
+    {
+      "en": "mixing time",
+      "th": "เวลาผสม",
+      "first": "เวลาผสม (mixing time)"
+    },
+    {
+      "en": "Brownian motion",
+      "th": "การเคลื่อนที่แบบบราวน์",
+      "first": "การเคลื่อนที่แบบบราวน์ (Brownian motion)"
+    },
+    {
+      "en": "gambler's ruin",
+      "th": "ความพินาศของนักพนัน (gambler's ruin)"
+    },
+    {
+      "en": "martingale",
+      "th": "มาร์ติงเกล",
+      "first": "มาร์ติงเกล (martingale)"
+    },
+    {
+      "en": "Langevin dynamics",
+      "th": "Langevin dynamics"
+    },
+    {
+      "en": "stochastic gradient Langevin dynamics (SGLD)",
+      "th": "SGLD (stochastic gradient Langevin dynamics)"
+    },
+    {
+      "en": "diffusion model / forward and reverse process",
+      "th": "โมเดล diffusion / กระบวนการไปข้างหน้าและย้อนกลับ"
+    },
+    {
+      "en": "noise schedule",
+      "th": "ตารางสัญญาณรบกวน (noise schedule)"
+    },
+    {
+      "en": "Markov decision process (MDP)",
+      "th": "กระบวนการตัดสินใจแบบมาร์คอฟ (MDP)"
+    },
+    {
+      "en": "simulated annealing",
+      "th": "simulated annealing"
     }
   ]
 }

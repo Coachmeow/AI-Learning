@@ -1,0 +1,13 @@
+{
+  "minutes": 6,
+  "title": {"th": "เติมโค้ด: ลูกโซ่มาร์คอฟหนึ่งก้าว", "en": "Fill in: one step of a Markov chain"},
+  "prompt": {
+    "th": "เติม `step_distribution(dist, P)` ที่คืนการแจกแจงหลังเปลี่ยนสถานะหนึ่งก้าว คือ π P โดย `P[i][j]` เป็นความน่าจะเป็นที่จะไปจาก i ไป j ลูปเขียนไว้ให้แล้ว เติมบรรทัดที่มี `# TODO` ให้เป็นความน่าจะเป็นที่จะไปถึงสถานะ j",
+    "en": "Complete `step_distribution(dist, P)`, which returns the distribution after one transition, π P, where `P[i][j]` is the probability of going from i to j. The loop is written; fill in the `# TODO` line with the probability of landing in state j."
+  },
+  "hints": [
+    {"th": "ไปถึง j ได้จากทุกสถานะ i: อยู่ที่ i ด้วยความน่าจะเป็น dist[i] แล้วย้ายไป j ด้วย P[i][j]", "en": "You can reach j from every state i: be at i with probability dist[i], then move to j with P[i][j]."},
+    {"th": "ใช้ P[i][j] ไม่ใช่ P[j][i]: แถวคือจุดเริ่ม คอลัมน์คือจุดหมาย", "en": "Use P[i][j], not P[j][i]: the row is where you start, the column where you go."},
+    {"th": "`new.append(sum(dist[i] * P[i][j] for i in range(n)))`", "en": "`new.append(sum(dist[i] * P[i][j] for i in range(n)))`"}
+  ]
+}
