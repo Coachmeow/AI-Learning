@@ -1,0 +1,13 @@
+{
+  "minutes": 15,
+  "title": {"th": "ตัวกรองแบบ nucleus (top-p)", "en": "A nucleus (top-p) filter"},
+  "prompt": {
+    "th": "เขียน `top_p_filter(probs, p)` ที่คืนชุดโทเค็นของ nucleus sampling โดยยังไม่สุ่ม: list ของคู่ `(index, prob)` ที่ทำให้เป็นมาตรฐานใหม่แล้ว\n\n- เรียงโทเค็นตามความน่าจะเป็นจากมากไปน้อย ถ้าเท่ากันให้ index ที่น้อยกว่ามาก่อน\n- เก็บชุดต้นที่เล็กที่สุดซึ่งผลรวมสะสม `>= p` (รวมโทเค็นที่ทำให้ผลรวมข้ามเกณฑ์ด้วย) ถ้าไม่ถึงเกณฑ์เพราะการปัดเศษ ให้เก็บทั้งหมด\n- หารความน่าจะเป็นที่เก็บไว้ด้วยผลรวมของมันให้รวมกันได้ 1 แล้วคืนตามลำดับที่เรียง\n\nมี test ซ่อนอยู่บางส่วน",
+    "en": "Write `top_p_filter(probs, p)`. It returns the token set of nucleus sampling, without sampling yet: a list of `(index, prob)` pairs, renormalized.\n\n- Sort the tokens by probability, largest first; on ties the smaller index comes first.\n- Keep the smallest prefix whose cumulative sum is `>= p` (including the token that crosses the threshold). If rounding keeps the sum short of it, keep them all.\n- Divide the kept probabilities by their total so they add up to 1, and return them in sorted order.\n\nSome tests are hidden."
+  },
+  "hints": [
+    {"th": "`order = sorted(range(len(probs)), key=lambda i: (-probs[i], i))` ให้ทั้งมากไปน้อยและ index น้อยก่อนเมื่อเท่ากัน", "en": "`order = sorted(range(len(probs)), key=lambda i: (-probs[i], i))` gives largest first and the smaller index first on ties."},
+    {"th": "บวกสะสมแล้วเพิ่มโทเค็นเข้าชุดก่อนตรวจ `if cumulative >= p: break` โทเค็นที่ทำให้ข้ามเกณฑ์จึงอยู่ในชุดด้วย", "en": "Add each token to the set before checking `if cumulative >= p: break`, so the token that crosses the threshold is included."},
+    {"th": "ใช้ `>=` ไม่ใช่ `>`: กับ `[0.5, 0.4, 0.1]` และ p = 0.9 ผลรวม 0.5 + 0.4 เท่ากับ 0.9 พอดี จึงเก็บแค่ 2 ตัว", "en": "Use `>=`, not `>`: with `[0.5, 0.4, 0.1]` and p = 0.9, 0.5 + 0.4 is exactly 0.9, so only 2 tokens are kept."}
+  ]
+}

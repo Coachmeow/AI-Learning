@@ -1,0 +1,486 @@
+{
+  "lesson": "01-math-foundations/16-sampling-methods",
+  "source_hash": "081187c8609bc0a7f18e08105fdc15377e68fdbbc16dfda7957657de1462f8e9",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What does temperature < 1.0 do to a language model's output distribution?",
+        "th": "temperature < 1.0 ทำอะไรกับการแจกแจงของผลลัพธ์ของโมเดลภาษา?"
+      },
+      "options": [
+        {
+          "en": "Removes all tokens except the top one",
+          "th": "ตัดโทเค็นทั้งหมดทิ้งยกเว้นตัวบนสุด"
+        },
+        {
+          "en": "Has no effect on the output",
+          "th": "ไม่มีผลต่อผลลัพธ์"
+        },
+        {
+          "en": "Makes the distribution more uniform (more random)",
+          "th": "ทำให้การแจกแจงสม่ำเสมอขึ้น (สุ่มขึ้น)"
+        },
+        {
+          "en": "Sharpens the distribution, making the highest-probability token more likely",
+          "th": "ทำให้การแจกแจงแหลมขึ้น โทเค็นที่ความน่าจะเป็นสูงสุดมีโอกาสมากขึ้น"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Temperature < 1.0 divides logits by a number less than 1, which amplifies differences between logits. After softmax, the highest-probability token gets an even larger share. Temperature approaches 0 gives greedy (argmax) decoding.",
+        "th": "temperature < 1.0 หาร logits ด้วยตัวเลขที่น้อยกว่า 1 ซึ่งขยายความต่างระหว่าง logits หลัง softmax โทเค็นที่ความน่าจะเป็นสูงสุดได้ส่วนแบ่งมากขึ้นอีก เมื่อ temperature เข้าใกล้ 0 จะกลายเป็น greedy (argmax) decoding"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What is the key difference between top-k and top-p (nucleus) sampling?",
+        "th": "ความต่างหลักระหว่าง top-k กับ top-p (nucleus) sampling คืออะไร?"
+      },
+      "options": [
+        {
+          "en": "Top-k is faster than top-p",
+          "th": "top-k เร็วกว่า top-p"
+        },
+        {
+          "en": "Top-k keeps a fixed number of tokens; top-p keeps a variable number based on cumulative probability",
+          "th": "top-k เก็บจำนวนโทเค็นคงที่ ส่วน top-p เก็บจำนวนที่เปลี่ยนไปตามความน่าจะเป็นสะสม"
+        },
+        {
+          "en": "Top-p only works with temperature = 1.0",
+          "th": "top-p ใช้ได้กับ temperature = 1.0 เท่านั้น"
+        },
+        {
+          "en": "Top-k works on logits while top-p works on probabilities",
+          "th": "top-k ทำงานบน logits ส่วน top-p ทำงานบนความน่าจะเป็น"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Top-k always keeps exactly k tokens regardless of the probability distribution. Top-p adaptively keeps the smallest set of tokens whose cumulative probability exceeds p. When the model is confident, top-p keeps few tokens; when uncertain, it keeps many.",
+        "th": "top-k เก็บโทเค็น k ตัวพอดีเสมอ ไม่ว่าการแจกแจงความน่าจะเป็นจะเป็นอย่างไร top-p เก็บชุดโทเค็นที่เล็กที่สุดซึ่งความน่าจะเป็นสะสมเกิน p แบบปรับตัวได้ เมื่อโมเดลมั่นใจ top-p เก็บโทเค็นไม่กี่ตัว เมื่อไม่แน่ใจมันเก็บหลายตัว"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "You sample x = -ln(u) / 2 with u ~ Uniform(0, 1) many times. What should the sample mean be close to?",
+        "th": "คุณสุ่ม x = -ln(u) / 2 โดย u ~ Uniform(0, 1) หลายครั้ง ค่าเฉลี่ยของตัวอย่างควรใกล้เท่าไร?"
+      },
+      "options": [
+        {
+          "en": "2",
+          "th": "2"
+        },
+        {
+          "en": "0.5",
+          "th": "0.5"
+        },
+        {
+          "en": "1",
+          "th": "1"
+        },
+        {
+          "en": "ln 2",
+          "th": "ln 2"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "This is inverse-CDF sampling from the exponential distribution with λ = 2, whose mean is 1/λ = 0.5.",
+        "th": "นี่คือการสุ่มแบบ inverse CDF จากการแจกแจงแบบเลขชี้กำลังที่ λ = 2 ซึ่งมีค่าเฉลี่ย 1/λ = 0.5"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Out of 1,000 random points in the square [-1, 1] x [-1, 1], 785 fall inside the unit circle. What is the Monte Carlo estimate of π?",
+        "th": "จากจุดสุ่ม 1,000 จุดในสี่เหลี่ยม [-1, 1] x [-1, 1] มี 785 จุดอยู่ในวงกลมหนึ่งหน่วย ค่าประมาณ π แบบ Monte Carlo คือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "0.785",
+          "th": "0.785"
+        },
+        {
+          "en": "3.14",
+          "th": "3.14"
+        },
+        {
+          "en": "7.85",
+          "th": "7.85"
+        },
+        {
+          "en": "1.57",
+          "th": "1.57"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The circle covers π/4 of the square, so π ≈ 4 * 785 / 1000 = 3.14.",
+        "th": "วงกลมครอบคลุม π/4 ของสี่เหลี่ยม ดังนั้น π ≈ 4 * 785 / 1000 = 3.14"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "What is the acceptance rate of Gibbs sampling?",
+        "th": "อัตราการยอมรับของ Gibbs sampling คือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "About 23%",
+          "th": "ประมาณ 23%"
+        },
+        {
+          "en": "100%: every update is accepted",
+          "th": "100%: ทุกการอัปเดตถูกยอมรับ"
+        },
+        {
+          "en": "50%",
+          "th": "50%"
+        },
+        {
+          "en": "It depends on the proposal width",
+          "th": "ขึ้นกับความกว้างของ proposal"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Gibbs draws each variable from its exact conditional distribution, which satisfies detailed balance automatically, so there is nothing to reject. 23% is the optimal rate for Gaussian Metropolis proposals.",
+        "th": "Gibbs สุ่มแต่ละตัวแปรจากการแจกแจงแบบมีเงื่อนไขที่แม่นยำ ซึ่งเป็นไปตามสมดุลโดยละเอียดโดยอัตโนมัติ จึงไม่มีอะไรต้องปฏิเสธ ส่วน 23% คืออัตราที่เหมาะที่สุดของ proposal แบบเกาส์ใน Metropolis"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "Why can't you backpropagate through a standard sampling operation z ~ N(mu, sigma^2)?",
+        "th": "ทำไมจึง backpropagate ผ่านการสุ่มแบบมาตรฐาน z ~ N(mu, sigma^2) ไม่ได้?"
+      },
+      "options": [
+        {
+          "en": "The sampling operation is non-deterministic and has no well-defined derivative with respect to mu and sigma",
+          "th": "การสุ่มไม่ได้กำหนดผลแน่นอน และไม่มีอนุพันธ์ที่นิยามได้ชัดเจนเทียบกับ mu และ sigma"
+        },
+        {
+          "en": "PyTorch doesn't support normal distributions",
+          "th": "PyTorch ไม่รองรับการแจกแจงปกติ"
+        },
+        {
+          "en": "Normal distributions don't have gradients",
+          "th": "การแจกแจงปกติไม่มี gradient"
+        },
+        {
+          "en": "The gradient is always exactly zero",
+          "th": "gradient เป็นศูนย์พอดีเสมอ"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Sampling introduces a stochastic discontinuity — you can't compute d(sample)/d(mu) for a random draw. The reparameterization trick solves this by writing z = mu + sigma * epsilon (where epsilon ~ N(0,1)), making z a deterministic, differentiable function of mu and sigma.",
+        "th": "การสุ่มทำให้เกิดความไม่ต่อเนื่องเชิงสุ่ม คุณคำนวณ d(sample)/d(mu) ของการสุ่มครั้งหนึ่งไม่ได้ reparameterization trick แก้ปัญหานี้โดยเขียน z = mu + sigma * epsilon (โดย epsilon ~ N(0,1)) ทำให้ z เป็นฟังก์ชันของ mu และ sigma ที่กำหนดผลแน่นอนและหาอนุพันธ์ได้"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "In Metropolis-Hastings MCMC, what happens if the proposal standard deviation is set much too large?",
+        "th": "ใน MCMC แบบ Metropolis-Hastings จะเกิดอะไรขึ้นถ้าตั้งส่วนเบี่ยงเบนมาตรฐานของ proposal ใหญ่เกินไปมาก?"
+      },
+      "options": [
+        {
+          "en": "The chain converges faster because it takes bigger steps",
+          "th": "ลูกโซ่ลู่เข้าเร็วขึ้นเพราะก้าวใหญ่ขึ้น"
+        },
+        {
+          "en": "Most proposals land in low-probability regions and are rejected, so the chain barely moves",
+          "th": "proposal ส่วนใหญ่ไปตกในบริเวณที่ความน่าจะเป็นต่ำและถูกปฏิเสธ ลูกโซ่จึงแทบไม่ขยับ"
+        },
+        {
+          "en": "The burn-in period becomes zero",
+          "th": "ช่วง burn-in กลายเป็นศูนย์"
+        },
+        {
+          "en": "The stationary distribution changes to a uniform distribution",
+          "th": "การแจกแจงคงที่เปลี่ยนเป็นแบบสม่ำเสมอ"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "With a large proposal standard deviation, proposed points are far from the current position and likely land in low-probability regions. These are rejected, causing the chain to stay stuck at the current point. The optimal acceptance rate is about 23% for high-dimensional Gaussian proposals.",
+        "th": "เมื่อส่วนเบี่ยงเบนมาตรฐานของ proposal ใหญ่ จุดที่เสนออยู่ไกลจากตำแหน่งปัจจุบันและมักตกในบริเวณที่ความน่าจะเป็นต่ำ จุดเหล่านี้ถูกปฏิเสธ ลูกโซ่จึงค้างอยู่ที่จุดเดิม อัตราการยอมรับที่เหมาะสมที่สุดราว 23% สำหรับ proposal แบบเกาส์ในมิติสูง"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "In rejection sampling, what happens to the acceptance rate as the dimensionality of the target distribution increases?",
+        "th": "ใน rejection sampling อัตราการยอมรับเปลี่ยนไปอย่างไรเมื่อจำนวนมิติของการแจกแจงเป้าหมายเพิ่มขึ้น?"
+      },
+      "options": [
+        {
+          "en": "It drops exponentially because most of the proposal volume gets rejected",
+          "th": "ลดลงแบบเลขชี้กำลัง เพราะปริมาตรส่วนใหญ่ของ proposal ถูกปฏิเสธ"
+        },
+        {
+          "en": "It stays constant regardless of dimension",
+          "th": "คงที่ไม่ว่ากี่มิติ"
+        },
+        {
+          "en": "It increases because there are more dimensions to accept in",
+          "th": "เพิ่มขึ้นเพราะมีมิติให้ยอมรับมากขึ้น"
+        },
+        {
+          "en": "It approaches 50% in all cases",
+          "th": "เข้าใกล้ 50% ในทุกกรณี"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "In high dimensions, the volume of the proposal distribution that overlaps with the target distribution shrinks exponentially. The bound M grows, and the acceptance rate (1/M) drops exponentially. This is the curse of dimensionality for rejection sampling.",
+        "th": "ในมิติสูง ปริมาตรของ proposal ที่ซ้อนทับกับการแจกแจงเป้าหมายหดลงแบบเลขชี้กำลัง ขอบเขต M โตขึ้น และอัตราการยอมรับ (1/M) ลดลงแบบเลขชี้กำลัง นี่คือคำสาปของมิติสำหรับ rejection sampling"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "Token probabilities are [0.5, 0.3, 0.15, 0.05]. How many tokens does top-p = 0.9 keep?",
+        "th": "ความน่าจะเป็นของโทเค็นคือ [0.5, 0.3, 0.15, 0.05] top-p = 0.9 เก็บไว้กี่โทเค็น?"
+      },
+      "options": [
+        {
+          "en": "1",
+          "th": "1"
+        },
+        {
+          "en": "2",
+          "th": "2"
+        },
+        {
+          "en": "3",
+          "th": "3"
+        },
+        {
+          "en": "4",
+          "th": "4"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "The cumulative sums are 0.5, 0.8, 0.95: the first sum to reach 0.9 uses 3 tokens. After renormalizing, the top token gets 0.5 / 0.95 ≈ 0.53.",
+        "th": "ผลรวมสะสมคือ 0.5, 0.8, 0.95 ผลรวมแรกที่ถึง 0.9 ใช้ 3 โทเค็น หลังทำให้เป็นมาตรฐานใหม่ โทเค็นบนสุดได้ 0.5 / 0.95 ≈ 0.53"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "Two tokens have logits 2 and 1. What probability does the first token get at T = 1 and at T = 0.5?",
+        "th": "โทเค็นสองตัวมี logits 2 และ 1 โทเค็นแรกได้ความน่าจะเป็นเท่าไรที่ T = 1 และที่ T = 0.5?"
+      },
+      "options": [
+        {
+          "en": "0.73 and 0.88",
+          "th": "0.73 และ 0.88"
+        },
+        {
+          "en": "0.67 and 0.8",
+          "th": "0.67 และ 0.8"
+        },
+        {
+          "en": "0.73 and 0.62",
+          "th": "0.73 และ 0.62"
+        },
+        {
+          "en": "0.5 and 0.5",
+          "th": "0.5 และ 0.5"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "At T = 1, softmax([2, 1]) gives e²/(e² + e) ≈ 0.73. At T = 0.5 the logits become [4, 2], so it is e⁴/(e⁴ + e²) ≈ 0.88: a lower temperature sharpens the distribution.",
+        "th": "ที่ T = 1 softmax([2, 1]) ให้ e²/(e² + e) ≈ 0.73 ที่ T = 0.5 logits กลายเป็น [4, 2] จึงได้ e⁴/(e⁴ + e²) ≈ 0.88 temperature ที่ต่ำลงทำให้การแจกแจงแหลมขึ้น"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "You sample Beta(2, 5), density 30x(1 - x)⁴, by rejection from Uniform(0, 1) with the tightest bound M. What is the acceptance rate?",
+        "th": "คุณสุ่ม Beta(2, 5) ซึ่งมีความหนาแน่น 30x(1 - x)⁴ ด้วย rejection จาก Uniform(0, 1) โดยใช้ขอบเขต M ที่แน่นที่สุด อัตราการยอมรับคือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "About 41%",
+          "th": "ประมาณ 41%"
+        },
+        {
+          "en": "About 20%",
+          "th": "ประมาณ 20%"
+        },
+        {
+          "en": "100%",
+          "th": "100%"
+        },
+        {
+          "en": "About 2.46%",
+          "th": "ประมาณ 2.46%"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The density peaks at the mode x = 1/5: 30 * 0.2 * 0.8⁴ ≈ 2.458, so M ≈ 2.458 and the acceptance rate is 1/M ≈ 0.407. A looser M would only lower it.",
+        "th": "ความหนาแน่นสูงสุดที่ฐานนิยม x = 1/5: 30 * 0.2 * 0.8⁴ ≈ 2.458 ดังนั้น M ≈ 2.458 และอัตราการยอมรับคือ 1/M ≈ 0.407 ขอบเขต M ที่หลวมกว่าจะทำให้ต่ำลงเท่านั้น"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "A Monte Carlo estimate uses 10,000 samples. You want its typical error 10 times smaller. How many samples do you need?",
+        "th": "ค่าประมาณแบบ Monte Carlo ใช้ 10,000 ตัวอย่าง คุณอยากให้ความคลาดเคลื่อนโดยทั่วไปเล็กลง 10 เท่า ต้องใช้กี่ตัวอย่าง?"
+      },
+      "options": [
+        {
+          "en": "100,000",
+          "th": "100,000"
+        },
+        {
+          "en": "1,000,000",
+          "th": "1,000,000"
+        },
+        {
+          "en": "20,000",
+          "th": "20,000"
+        },
+        {
+          "en": "It depends on the dimension",
+          "th": "ขึ้นกับจำนวนมิติ"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The error falls as 1/√N, so 10 times smaller needs 10² = 100 times more samples: 1,000,000. This rate doesn't depend on dimension, which is why Monte Carlo wins in high dimensions.",
+        "th": "ความคลาดเคลื่อนลดลงตาม 1/√N การลดลง 10 เท่าจึงต้องใช้ตัวอย่างมากขึ้น 10² = 100 เท่า: 1,000,000 อัตรานี้ไม่ขึ้นกับจำนวนมิติ ซึ่งเป็นเหตุผลที่ Monte Carlo ชนะในมิติสูง"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "You want expectations under p = Uniform(0, 1) but draw samples from q = Uniform(0, 2). What importance weights do x = 0.5 and x = 1.5 get?",
+        "th": "คุณต้องการค่าคาดหมายภายใต้ p = Uniform(0, 1) แต่สุ่มตัวอย่างจาก q = Uniform(0, 2) x = 0.5 และ x = 1.5 ได้น้ำหนักความสำคัญเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "1 and 1",
+          "th": "1 และ 1"
+        },
+        {
+          "en": "0.5 and 0.5",
+          "th": "0.5 และ 0.5"
+        },
+        {
+          "en": "2 and 0",
+          "th": "2 และ 0"
+        },
+        {
+          "en": "2 and 2",
+          "th": "2 และ 2"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "w = p(x)/q(x). At 0.5: 1 / 0.5 = 2. At 1.5, p is 0 (outside [0, 1]), so the weight is 0. Half the samples are wasted, and the others count double, which keeps the estimate unbiased.",
+        "th": "w = p(x)/q(x) ที่ 0.5: 1 / 0.5 = 2 ที่ 1.5 p เป็น 0 (อยู่นอก [0, 1]) น้ำหนักจึงเป็น 0 ตัวอย่างครึ่งหนึ่งสูญเปล่า และอีกครึ่งนับสองเท่า ซึ่งทำให้ค่าประมาณยังไม่เอนเอียง"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "In Metropolis with a symmetric proposal, the current point has p(x) = 0.2 and the proposal has p(x') = 0.05. What is the probability of accepting it, and what if p(x') = 0.4?",
+        "th": "ใน Metropolis ที่ proposal สมมาตร จุดปัจจุบันมี p(x) = 0.2 และจุดที่เสนอมี p(x') = 0.05 ความน่าจะเป็นที่จะยอมรับคือเท่าไร และถ้า p(x') = 0.4 ล่ะ?"
+      },
+      "options": [
+        {
+          "en": "0.25, and 1",
+          "th": "0.25 และ 1"
+        },
+        {
+          "en": "0, and 1",
+          "th": "0 และ 1"
+        },
+        {
+          "en": "0.05, and 0.4",
+          "th": "0.05 และ 0.4"
+        },
+        {
+          "en": "0.25, and 2",
+          "th": "0.25 และ 2"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The acceptance probability is min(1, p(x')/p(x)): min(1, 0.25) = 0.25 for the downhill move, and min(1, 2) = 1 uphill. Downhill moves are sometimes accepted, which lets the chain explore the whole distribution.",
+        "th": "ความน่าจะเป็นที่จะยอมรับคือ min(1, p(x')/p(x)): min(1, 0.25) = 0.25 สำหรับการขยับลงเขา และ min(1, 2) = 1 สำหรับขึ้นเขา การขยับลงเขาถูกยอมรับบ้าง ทำให้ลูกโซ่สำรวจการแจกแจงได้ทั้งหมด"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Why does Metropolis' acceptance rule min(1, p(x')/p(x)) with a symmetric proposal q make p the chain's stationary distribution?",
+        "th": "ทำไมกฎการยอมรับ min(1, p(x')/p(x)) ของ Metropolis ที่ proposal q สมมาตร จึงทำให้ p เป็นการแจกแจงคงที่ของลูกโซ่?"
+      },
+      "options": [
+        {
+          "en": "Because every proposal is eventually accepted",
+          "th": "เพราะทุก proposal ถูกยอมรับในที่สุด"
+        },
+        {
+          "en": "Because the flow p(x) q min(1, p(x')/p(x)) = q min(p(x), p(x')) is the same in both directions: detailed balance",
+          "th": "เพราะการไหล p(x) q min(1, p(x')/p(x)) = q min(p(x), p(x')) เท่ากันทั้งสองทิศ: สมดุลโดยละเอียด"
+        },
+        {
+          "en": "Because the burn-in removes the bias",
+          "th": "เพราะ burn-in กำจัดความเอนเอียงออกไป"
+        },
+        {
+          "en": "Because p must be normalized first",
+          "th": "เพราะ p ต้องถูกทำให้เป็นมาตรฐานก่อน"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The probability flow from x to x' is p(x) q min(1, p(x')/p(x)) = q min(p(x), p(x')), which is symmetric in x and x'. Equal flow both ways is detailed balance, which makes p stationary. Only the ratio p(x')/p(x) appears, so p never needs normalizing.",
+        "th": "การไหลของความน่าจะเป็นจาก x ไป x' คือ p(x) q min(1, p(x')/p(x)) = q min(p(x), p(x')) ซึ่งสมมาตรใน x และ x' การไหลเท่ากันทั้งสองทิศคือสมดุลโดยละเอียด ซึ่งทำให้ p เป็นการแจกแจงคงที่ และเพราะมีแค่อัตราส่วน p(x')/p(x) ปรากฏ p จึงไม่ต้องทำให้เป็นมาตรฐานเลย"
+      }
+    }
+  ]
+}

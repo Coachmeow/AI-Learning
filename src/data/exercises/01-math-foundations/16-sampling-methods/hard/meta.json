@@ -1,0 +1,13 @@
+{
+  "minutes": 30,
+  "title": {"th": "Metropolis ที่ทนทานต่อขอบของ support", "en": "A Metropolis sampler that survives the support's edge"},
+  "prompt": {
+    "th": "เขียน `metropolis(log_target, x0, steps, uniforms)` ที่รับเลขสุ่มเข้ามาเอง (ทดสอบได้แน่นอน):\n\n- รอบที่ i เสนอ `x' = x + steps[i]` แล้วคำนวณ `delta = log_target(x') - log_target(x)`\n- ยอมรับเมื่อ `uniforms[i] < exp(min(0, delta))` (ใช้ `<` ไม่ใช่ `<=`) ไม่อย่างนั้นอยู่ที่เดิม\n- คืน `(chain, acceptance_rate)` โดย `chain` มีสถานะหลังทุกรอบ (ยาวเท่า `steps` รวมรอบที่ปฏิเสธ) และ `acceptance_rate` คือจำนวนที่ยอมรับ / จำนวนรอบ\n- `log_target` อาจคืน `float('-inf')` นอก support: ห้ามยอมรับจุดนั้น และห้ามเกิด error\n- ถ้า `log_target(x0)` ไม่ใช่ค่าจำกัด (เริ่มนอก support) หรือ `steps` กับ `uniforms` ยาวไม่เท่ากัน ให้ `raise ValueError`\n\nระวัง: `exp(delta)` ของการขยับขึ้นเขาชันมาก ๆ ล้นได้ มี test ซ่อนอยู่บางส่วน",
+    "en": "Write `metropolis(log_target, x0, steps, uniforms)`, which takes its random numbers as arguments (so it can be tested exactly):\n\n- At iteration i, propose `x' = x + steps[i]` and compute `delta = log_target(x') - log_target(x)`.\n- Accept when `uniforms[i] < exp(min(0, delta))` (use `<`, not `<=`); otherwise stay put.\n- Return `(chain, acceptance_rate)`, where `chain` holds the state after every iteration (as long as `steps`, rejected ones included) and `acceptance_rate` is accepted / iterations.\n- `log_target` may return `float('-inf')` outside the support: never accept such a point, and don't raise an error.\n- If `log_target(x0)` is not finite (a start outside the support), or `steps` and `uniforms` differ in length, `raise ValueError`.\n\nCareful: `exp(delta)` of a very steep uphill move can overflow. Some tests are hidden."
+  },
+  "hints": [
+    {"th": "`min(0, delta)` ทำให้ไม่ต้องยกกำลังค่าบวก: การขยับขึ้นเขาได้ `exp(0) = 1` และยอมรับเสมอ ส่วนจุดนอก support ได้ `exp(-inf) = 0.0`", "en": "`min(0, delta)` means you never exponentiate a positive number: an uphill move gets `exp(0) = 1` and is always accepted, and a point outside the support gets `exp(-inf) = 0.0`."},
+    {"th": "ใช้ `<` เพราะ `uniforms` อาจเป็น 0.0 ได้ และ `0.0 < 0.0` เป็นเท็จ จุดนอก support จึงถูกปฏิเสธเสมอ", "en": "Use `<`: a uniform can be 0.0, and `0.0 < 0.0` is false, so points outside the support are always rejected."},
+    {"th": "เพิ่มสถานะปัจจุบันเข้า `chain` ทุกรอบ ทั้งตอนยอมรับและตอนปฏิเสธ การนับจุดเดิมซ้ำคือสิ่งที่ทำให้การแจกแจงออกมาถูก", "en": "Append the current state to `chain` every iteration, accepted or not; repeating the old point is what makes the distribution come out right."}
+  ]
+}

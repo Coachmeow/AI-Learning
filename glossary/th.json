@@ -1959,6 +1959,98 @@
     {
       "en": "cross-validation fold",
       "th": "fold ของ cross-validation"
+    },
+    {
+      "en": "inverse CDF / inverse transform sampling",
+      "th": "การสุ่มแบบ inverse CDF"
+    },
+    {
+      "en": "cumulative distribution function (CDF)",
+      "th": "ฟังก์ชันการแจกแจงสะสม (CDF)"
+    },
+    {
+      "en": "rejection sampling",
+      "th": "rejection sampling"
+    },
+    {
+      "en": "importance sampling / importance weights",
+      "th": "importance sampling / น้ำหนักความสำคัญ"
+    },
+    {
+      "en": "proposal distribution",
+      "th": "การแจกแจงเสนอ (proposal)"
+    },
+    {
+      "en": "Monte Carlo estimation",
+      "th": "การประมาณแบบ Monte Carlo"
+    },
+    {
+      "en": "law of large numbers",
+      "th": "กฎของจำนวนมาก",
+      "first": "กฎของจำนวนมาก (law of large numbers)"
+    },
+    {
+      "en": "Markov chain Monte Carlo (MCMC)",
+      "th": "MCMC (Markov chain Monte Carlo)"
+    },
+    {
+      "en": "Markov chain",
+      "th": "ลูกโซ่มาร์คอฟ",
+      "first": "ลูกโซ่มาร์คอฟ (Markov chain)"
+    },
+    {
+      "en": "stationary distribution",
+      "th": "การแจกแจงคงที่",
+      "first": "การแจกแจงคงที่ (stationary distribution)"
+    },
+    {
+      "en": "Metropolis-Hastings",
+      "th": "Metropolis-Hastings"
+    },
+    {
+      "en": "Gibbs sampling",
+      "th": "Gibbs sampling"
+    },
+    {
+      "en": "detailed balance",
+      "th": "สมดุลโดยละเอียด",
+      "first": "สมดุลโดยละเอียด (detailed balance)"
+    },
+    {
+      "en": "burn-in / thinning",
+      "th": "burn-in / thinning"
+    },
+    {
+      "en": "temperature (sampling)",
+      "th": "temperature"
+    },
+    {
+      "en": "top-k / top-p (nucleus) sampling",
+      "th": "การสุ่มแบบ top-k / top-p (nucleus)"
+    },
+    {
+      "en": "greedy decoding",
+      "th": "greedy decoding"
+    },
+    {
+      "en": "reparameterization trick",
+      "th": "reparameterization trick"
+    },
+    {
+      "en": "Gumbel-Softmax / Gumbel-Max",
+      "th": "Gumbel-Softmax / Gumbel-Max"
+    },
+    {
+      "en": "stratified sampling",
+      "th": "stratified sampling"
+    },
+    {
+      "en": "diffusion model",
+      "th": "โมเดล diffusion"
+    },
+    {
+      "en": "variational autoencoder (VAE)",
+      "th": "VAE (variational autoencoder)"
     }
   ]
 }

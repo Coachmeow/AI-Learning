@@ -1,0 +1,10 @@
+import math
+
+
+def temperature_softmax(logits, temperature):
+    """Softmax of the logits divided by the temperature."""
+    scaled = [z / temperature for z in logits]
+    m = max(scaled)
+    exps = [math.exp(z - m) for z in scaled]
+    total = sum(exps)
+    return [e / total for e in exps]

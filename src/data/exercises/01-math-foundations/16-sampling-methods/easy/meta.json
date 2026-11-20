@@ -1,0 +1,13 @@
+{
+  "minutes": 6,
+  "title": {"th": "เติมโค้ด: softmax ที่มี temperature", "en": "Fill in: softmax with temperature"},
+  "prompt": {
+    "th": "เติม `temperature_softmax(logits, temperature)` ให้หาร logits ทุกตัวด้วย `temperature` ก่อน แล้วจึงเข้า softmax (ส่วน softmax ที่ลบค่ามากสุดเขียนไว้ให้แล้ว) temperature ต่ำกว่า 1 ทำให้การแจกแจงแหลมขึ้น สูงกว่า 1 ทำให้แบนลง เติมบรรทัดที่มี `# TODO`",
+    "en": "Complete `temperature_softmax(logits, temperature)` so it divides every logit by `temperature` first and then applies softmax (the max-subtracting softmax is already written). A temperature below 1 sharpens the distribution; above 1 flattens it. Fill in the `# TODO` line."
+  },
+  "hints": [
+    {"th": "หารด้วย temperature ไม่ใช่คูณ: T = 0.5 ต้องทำให้ logits ห่างกันมากขึ้น", "en": "Divide by the temperature, don't multiply: T = 0.5 must push the logits further apart."},
+    {"th": "ปรับสเกลก่อนเข้า softmax ไม่ใช่ปรับความน่าจะเป็นหลัง softmax", "en": "Scale before the softmax, not the probabilities after it."},
+    {"th": "`scaled = [z / temperature for z in logits]`", "en": "`scaled = [z / temperature for z in logits]`"}
+  ]
+}
