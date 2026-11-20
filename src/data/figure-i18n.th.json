@@ -103,12 +103,295 @@
     "step 1 waits for every row": "ก้าวที่ 1 รอจนครบทุกแถว",
     "2 of 8 rows held": "เก็บไว้ 2 จาก 8 แถว",
     "step 1 starts with batch 1": "ก้าวที่ 1 เริ่มพร้อม batch แรก",
-    "same rows, same batches, different memory": "แถวเดียวกัน batch เดียวกัน แต่หน่วยความจำต่างกัน"
+    "same rows, same batches, different memory": "แถวเดียวกัน batch เดียวกัน แต่หน่วยความจำต่างกัน",
+    "EIGEN-DIRECTIONS": "ทิศทางลักษณะเฉพาะ",
+    "drag the matrix": "ลองเลื่อนค่าในเมทริกซ์",
+    "off-diagonal b": "ค่านอกเส้นทแยงมุม b",
+    "generic vector angle": "มุมของเวกเตอร์ทั่วไป",
+    "For a symmetric matrix the eigenvectors are the dashed axes, and the matrix simply stretches anything along them by the eigenvalue (orange). A generic grey vector, off those axes, both stretches and rotates into the blue image. Drag its angle: only on an eigen-axis does the output stay parallel to the input.": "สำหรับเมทริกซ์สมมาตร เวกเตอร์ลักษณะเฉพาะคือแกนเส้นประ และเมทริกซ์แค่ยืดทุกอย่างที่อยู่บนแกนนั้นด้วยค่าลักษณะเฉพาะ (สีส้ม) เวกเตอร์ทั่วไปสีเทาที่ไม่ได้อยู่บนแกนเหล่านั้นจะทั้งถูกยืดและถูกหมุนไปเป็นภาพสีน้ำเงิน ลองเลื่อนมุมของมัน: ผลลัพธ์ขนานกับขาเข้าเฉพาะเมื่ออยู่บนแกนลักษณะเฉพาะเท่านั้น",
+    "eigenvalues stretch the dashed axes  ·  the grey input vector rotates into blue, off-axis": "ค่าลักษณะเฉพาะยืดแกนเส้นประ  ·  เวกเตอร์ขาเข้าสีเทาที่อยู่นอกแกนถูกหมุนไปเป็นสีน้ำเงิน",
+    "VECTOR PROJECTION": "การฉายเวกเตอร์",
+    "drag the angles": "ลองเลื่อนมุม",
+    "angle of b": "มุมของ b",
+    "angle of a": "มุมของ a",
+    "length of a": "ความยาวของ a",
+    "Blue is a, grey is the direction of b, orange is the shadow a casts on b. The scalar projection |a|cos θ shrinks to zero when the vectors are perpendicular and goes negative when the angle passes 90°. The dashed line is the perpendicular dropped from a to its foot on b.": "สีน้ำเงินคือ a สีเทาคือทิศของ b สีส้มคือเงาที่ a ทอดลงบน b การฉายแบบสเกลาร์ |a|cos θ หดเป็นศูนย์เมื่อเวกเตอร์ตั้งฉากกัน และติดลบเมื่อมุมเกิน 90° เส้นประคือเส้นตั้งฉากที่ลากจาก a ลงไปถึงจุดบน b",
+    "proj length": "ความยาวการฉาย",
+    "proj_b a = (a·b / |b|²) b   ·   scalar = |a|cos θ   ·   b shown as unit vector (grey)": "proj_b a = (a·b / |b|²) b   ·   สเกลาร์ = |a|cos θ   ·   b แสดงเป็นเวกเตอร์หนึ่งหน่วย (สีเทา)",
+    "MATRIX TRANSFORM": "การแปลงด้วยเมทริกซ์",
+    "drag the four entries": "ลองเลื่อนค่าทั้งสี่ช่อง",
+    "Grey is the unit square; blue is its image under M. The columns of M are where the basis vectors land. The determinant ad − bc is the signed area of that parallelogram: it is the factor by which the matrix scales area, and it turns negative when the transform flips orientation.": "สีเทาคือสี่เหลี่ยมจัตุรัสหนึ่งหน่วย สีน้ำเงินคือภาพของมันภายใต้ M คอลัมน์ของ M คือตำแหน่งที่เวกเตอร์ฐานไปตก ดีเทอร์มิแนนต์ ad − bc คือพื้นที่แบบมีเครื่องหมายของสี่เหลี่ยมด้านขนานนั้น: เป็นตัวประกอบที่เมทริกซ์ใช้ขยายพื้นที่ และติดลบเมื่อการแปลงพลิกทิศทาง",
+    "determinant": "ดีเทอร์มิแนนต์",
+    "DERIVATIVE / TANGENT": "อนุพันธ์ / เส้นสัมผัส",
+    "drag x₀": "ลองเลื่อน x₀",
+    "point x₀": "จุด x₀",
+    "The derivative is the slope of the tangent line. For f(x) = x³ − 3x it equals 3x² − 3, which is zero at x = ±1, the two critical points where the orange line goes flat. Between them the function falls, outside them it rises. Gradient descent reads exactly this slope to decide which way to step.": "อนุพันธ์คือความชันของเส้นสัมผัส สำหรับ f(x) = x³ − 3x มันเท่ากับ 3x² − 3 ซึ่งเป็นศูนย์ที่ x = ±1 คือจุดวิกฤตสองจุดที่เส้นสีส้มแบนราบ ระหว่างสองจุดนี้ฟังก์ชันลดลง นอกช่วงนี้ฟังก์ชันเพิ่มขึ้น gradient descent อ่านความชันนี้เองเพื่อตัดสินใจว่าจะก้าวไปทางไหน",
+    "slope f′(x₀)": "ความชัน f′(x₀)",
+    "f(x) = x³ − 3x   ·   f′(x) = 3x² − 3   ·   tangent y = f(x₀) + f′(x₀)(x − x₀)": "f(x) = x³ − 3x   ·   f′(x) = 3x² − 3   ·   เส้นสัมผัส y = f(x₀) + f′(x₀)(x − x₀)",
+    "CHAIN RULE": "กฎลูกโซ่",
+    "drag x and a": "ลองเลื่อน x และ a",
+    "dy/dx = product": "dy/dx = ผลคูณ",
+    "y = sin(a x²)   ·   dy/dx = cos(a x²) · 2 a x   ·   outer derivative × inner derivative": "y = sin(a x²)   ·   dy/dx = cos(a x²) · 2 a x   ·   อนุพันธ์ชั้นนอก × อนุพันธ์ชั้นใน",
+    "The composite y = sin(a x²) differentiates by multiplying two local slopes: the outer cos(a x²) and the inner 2 a x. Each orange-or-blue bar is one factor; their product is the bar below. This is the rule backpropagation applies link by link to push gradients through a whole network.": "ฟังก์ชันประกอบ y = sin(a x²) หาอนุพันธ์ได้ด้วยการคูณความชันเฉพาะที่สองตัว: ชั้นนอก cos(a x²) และชั้นใน 2 a x แท่งสีส้มหรือสีน้ำเงินแต่ละแท่งคือตัวประกอบหนึ่งตัว ผลคูณของมันคือแท่งด้านล่าง นี่คือกฎที่ backpropagation ใช้ทีละข้อต่อเพื่อส่งเกรเดียนต์ผ่านทั้งโครงข่าย",
+    "GAUSSIAN PDF": "PDF ของการแจกแจงเกาส์เซียน",
+    "drag μ and σ": "ลองเลื่อน μ และ σ",
+    "mean μ": "ค่าเฉลี่ย μ",
+    "std σ": "ส่วนเบี่ยงเบนมาตรฐาน σ",
+    "The mean slides the bell sideways; the standard deviation sets its width. A smaller σ makes a taller, narrower peak, since the total area stays fixed at 1. The shaded band is μ ± σ, which always captures about 68% of the probability no matter where you put the curve.": "ค่าเฉลี่ยเลื่อนระฆังไปทางข้าง ส่วนเบี่ยงเบนมาตรฐานกำหนดความกว้าง σ ที่เล็กลงทำให้ยอดสูงและแคบลง เพราะพื้นที่รวมคงที่เท่ากับ 1 แถบที่แรเงาคือ μ ± σ ซึ่งครอบคลุมความน่าจะเป็นราว 68% เสมอไม่ว่าจะวางเส้นโค้งไว้ตรงไหน",
+    "peak density": "ความหนาแน่นที่ยอด",
+    "p(x) = exp(−½((x−μ)/σ)²) / (σ√(2π))   ·   area always integrates to 1": "p(x) = exp(−½((x−μ)/σ)²) / (σ√(2π))   ·   พื้นที่ใต้เส้นโค้งรวมได้ 1 เสมอ",
+    "BAYES UPDATE": "การปรับความเชื่อแบบเบย์",
+    "drag prior, sensitivity, FPR": "ลองเลื่อน prior, sensitivity และ FPR",
+    "prior P(disease) %": "prior P(เป็นโรค) %",
+    "false-positive rate %": "อัตราผลบวกลวง %",
+    "prior P(disease)": "prior P(เป็นโรค)",
+    "posterior P(disease | +)": "posterior P(เป็นโรค | +)",
+    "% have it, given +": "% เป็นโรคจริง เมื่อผลเป็น +",
+    "The surprise of Bayes: a 95%-accurate test on a disease that affects 1 in 100 still leaves most positives healthy, because the false positives drawn from the huge healthy population swamp the few true cases. The posterior only climbs once the prior is high enough that real cases outnumber the false alarms.": "ความน่าประหลาดใจของเบย์: การตรวจที่แม่นยำ 95% กับโรคที่เป็นกัน 1 ใน 100 คน ยังทำให้คนที่ผลเป็นบวกส่วนใหญ่ไม่ได้ป่วย เพราะผลบวกลวงจากประชากรที่แข็งแรงซึ่งมีจำนวนมหาศาลกลบผู้ป่วยจริงไม่กี่ราย posterior จะสูงขึ้นก็ต่อเมื่อ prior สูงพอที่ผู้ป่วยจริงมีมากกว่าสัญญาณเตือนลวง",
+    "ENTROPY & KL": "เอนโทรปีและ KL",
+    "shape p (blue) and q (grey)": "ปรับรูป p (สีน้ำเงิน) และ q (สีเทา)",
+    "bits H(p)": "บิต H(p)",
+    "Entropy H(p) measures the average surprise of the blue distribution, maxed out when all four bins are equal. KL(p‖q) measures the extra bits paid for coding samples from p using a code built for q; it is never negative, hits zero only when the two match, and is not symmetric. Cross-entropy training minimizes exactly this gap.": "เอนโทรปี H(p) วัดความประหลาดใจเฉลี่ยของการแจกแจงสีน้ำเงิน และสูงสุดเมื่อทั้งสี่ช่องเท่ากัน KL(p‖q) วัดจำนวนบิตที่ต้องจ่ายเพิ่มเมื่อเข้ารหัสตัวอย่างจาก p ด้วยรหัสที่สร้างสำหรับ q มันไม่เคยติดลบ เป็นศูนย์เฉพาะเมื่อทั้งสองตรงกัน และไม่สมมาตร การฝึกด้วย cross-entropy ก็คือการลดช่องว่างนี้",
+    "PCA AXES": "แกนของ PCA",
+    "drag the correlation": "ลองเลื่อนค่าสหสัมพันธ์",
+    "correlation ρ": "สหสัมพันธ์ ρ",
+    "x spread": "การกระจายของ x",
+    "PCA finds the eigenvectors of the covariance matrix. The blue axis (PC1) points along the direction of greatest spread; the orange axis (PC2) is perpendicular and captures what is left. The eigenvalues are the variances along each axis, so the variance-explained on PC1 climbs as the cloud becomes more elongated and correlated.": "PCA หาเวกเตอร์ลักษณะเฉพาะของเมทริกซ์ความแปรปรวนร่วม แกนสีน้ำเงิน (PC1) ชี้ไปทางที่ข้อมูลกระจายมากที่สุด แกนสีส้ม (PC2) ตั้งฉากกับมันและเก็บส่วนที่เหลือ ค่าลักษณะเฉพาะคือความแปรปรวนตามแต่ละแกน สัดส่วนความแปรปรวนที่ PC1 อธิบายได้จึงเพิ่มขึ้นเมื่อกลุ่มจุดยืดยาวและสัมพันธ์กันมากขึ้น",
+    "% variance on PC1": "% ความแปรปรวนบน PC1",
+    "PCs are eigenvectors of the covariance Σ  ·  eigenvalues λ = variance explained along each axis": "PC คือเวกเตอร์ลักษณะเฉพาะของความแปรปรวนร่วม Σ  ·  ค่าลักษณะเฉพาะ λ = ความแปรปรวนที่อธิบายได้ตามแต่ละแกน",
+    "SVD LOW-RANK": "SVD แบบแรงก์ต่ำ",
+    "drag the rank k": "ลองเลื่อนแรงก์ k",
+    "singular values kept (k)": "จำนวนค่าเอกฐานที่เก็บไว้ (k)",
+    "Keeping the k largest singular values gives the best rank-k approximation of a matrix. The first few capture most of the energy, so a low rank reconstructs the pattern almost exactly while storing far fewer numbers. That is the whole idea behind compression and low-rank adapters.": "การเก็บค่าเอกฐาน k ตัวที่ใหญ่ที่สุดให้การประมาณแรงก์ k ที่ดีที่สุดของเมทริกซ์ ไม่กี่ตัวแรกเก็บพลังงานส่วนใหญ่ไว้ แรงก์ต่ำจึงสร้างรูปแบบกลับได้เกือบพอดีโดยเก็บตัวเลขน้อยกว่ามาก นี่คือแนวคิดทั้งหมดเบื้องหลังการบีบอัดและ low-rank adapter",
+    "% energy": "% พลังงาน",
+    "A_k = sum_{i<k} sigma_i u_i v_iT   ·   energy = sum top-k sigma^2 / sum all sigma^2": "A_k = sum_{i<k} sigma_i u_i v_iT   ·   พลังงาน = ผลรวม sigma^2 ของ k ตัวบนสุด / ผลรวม sigma^2 ทั้งหมด",
+    "BROADCASTING": "การ broadcast",
+    "drag two shapes": "ลองเลื่อนรูปร่างสองชุด",
+    "shape A": "รูปร่าง A",
+    "shape B": "รูปร่าง B",
+    "result": "ผลลัพธ์",
+    "broadcasts": "broadcast ได้",
+    "mismatch": "ไม่เข้ากัน",
+    "align trailing dims; each pair must be equal or one of them 1": "จัดมิติท้ายให้ตรงกัน แต่ละคู่ต้องเท่ากัน หรือมีตัวหนึ่งเป็น 1",
+    "Broadcasting lets arrays of different shapes combine without copying data. Line the shapes up from the right; each pair of dimensions must be equal, or one must be 1 and gets stretched. Any other clash is an error. This is why a bias vector adds cleanly to a whole batch.": "broadcasting ทำให้อาร์เรย์ที่รูปร่างต่างกันรวมกันได้โดยไม่ต้องคัดลอกข้อมูล เรียงรูปร่างให้ตรงกันจากทางขวา มิติแต่ละคู่ต้องเท่ากัน หรือตัวหนึ่งต้องเป็น 1 แล้วถูกยืดออก การชนกันแบบอื่นทั้งหมดคือ error นี่คือเหตุผลที่เวกเตอร์ bias บวกเข้ากับทั้ง batch ได้อย่างเรียบร้อย",
+    "drag the logit": "ลองเลื่อน logit",
+    "largest logit value": "ค่า logit ที่ใหญ่ที่สุด",
+    "naive log(sum exp x)": "แบบตรง ๆ log(sum exp x)",
+    "stable m + log(sum exp(x-m))": "แบบเสถียร m + log(sum exp(x-m))",
+    "both agree": "ได้ผลตรงกัน",
+    "naive overflows": "แบบตรง ๆ ล้น",
+    "Infinity (overflow)": "Infinity (ล้น)",
+    "Computing log(sum(exp(x))) directly overflows once any logit passes about 709, where exp exceeds the float64 range. Subtracting the maximum first shifts the largest term to exp(0) = 1, so the sum stays finite. The result is identical because the subtracted maximum is added back outside the log.": "การคำนวณ log(sum(exp(x))) ตรง ๆ จะล้นทันทีที่ logit ตัวใดเกินราว 709 ซึ่ง exp เกินช่วงของ float64 การลบค่ามากที่สุดออกก่อนเลื่อนพจน์ที่ใหญ่ที่สุดไปเป็น exp(0) = 1 ผลรวมจึงยังเป็นค่าจำกัด ผลลัพธ์เหมือนเดิมทุกประการเพราะค่ามากสุดที่ลบออกถูกบวกกลับนอก log",
+    "NORM UNIT BALLS": "ลูกบอลหนึ่งหน่วยของนอร์ม",
+    "pick a norm": "เลือกนอร์ม",
+    "norm": "นอร์ม",
+    "L2 (Euclidean)": "L2 (ยุคลิด)",
+    "L1 (Manhattan)": "L1 (แมนฮัตตัน)",
+    "Linf (max)": "Linf (ค่ามากสุด)",
+    "point x": "จุด x",
+    "point y": "จุด y",
+    "A norm measures length, and its unit ball is every vector of length one. L2 sums squares and gives a circle; L1 sums absolute values and gives a diamond; Linf takes the largest coordinate and gives a square. Which norm you choose changes what counts as close, which is why it shapes regularization and distance.": "นอร์มวัดความยาว และลูกบอลหนึ่งหน่วยของมันคือเวกเตอร์ทุกตัวที่ยาวเท่ากับหนึ่ง L2 รวมกำลังสองและได้วงกลม L1 รวมค่าสัมบูรณ์และได้รูปข้าวหลามตัด Linf ใช้พิกัดที่ใหญ่ที่สุดและได้สี่เหลี่ยมจัตุรัส นอร์มที่เลือกเปลี่ยนความหมายของคำว่าใกล้ จึงกำหนดรูปร่างของ regularization และระยะทาง",
+    "BOOTSTRAP RESAMPLING": "การสุ่มซ้ำแบบ bootstrap",
+    "resample, recompute, repeat": "สุ่มซ้ำ คำนวณใหม่ ทำซ้ำ",
+    "The bootstrap treats your sample as a stand-in for the population. Draw n points with replacement, compute the statistic, and repeat thousands of times: the resulting distribution of bootstrap means shows how much the statistic wobbles from sampling noise alone. The middle 95 percent of it is a confidence interval that needs no normality assumption.": "bootstrap ใช้ตัวอย่างของคุณแทนประชากร สุ่ม n จุดแบบใส่คืน คำนวณค่าสถิติ แล้วทำซ้ำหลายพันครั้ง การแจกแจงของค่าเฉลี่ย bootstrap ที่ได้แสดงว่าค่าสถิติแกว่งไปมาแค่ไหนจากความสุ่มของการสุ่มตัวอย่างอย่างเดียว ช่วงกลาง 95 เปอร์เซ็นต์ของมันคือช่วงความเชื่อมั่นที่ไม่ต้องสมมติว่าข้อมูลแจกแจงแบบปกติ",
+    "observed data (n = 10)": "ข้อมูลที่สังเกตได้ (n = 10)",
+    "resample with replacement": "สุ่มซ้ำแบบใส่คืน",
+    "distribution of bootstrap means": "การแจกแจงของค่าเฉลี่ย bootstrap",
+    "95% confidence interval": "ช่วงความเชื่อมั่น 95%",
+    "MONTE CARLO PI": "ประมาณค่า pi ด้วย Monte Carlo",
+    "drag the sample count": "ลองเลื่อนจำนวนตัวอย่าง",
+    "samples N": "จำนวนตัวอย่าง N",
+    "Scatter points in the unit square and count how many fall inside the quarter circle. That fraction is the ratio of areas, pi/4, so four times it estimates pi. More samples tighten the estimate, but the error only falls like one over the square root of N, the defining cost of Monte Carlo.": "โปรยจุดในสี่เหลี่ยมจัตุรัสหนึ่งหน่วยแล้วนับว่ามีกี่จุดตกในวงกลมหนึ่งในสี่ สัดส่วนนั้นคืออัตราส่วนของพื้นที่ pi/4 สี่เท่าของมันจึงประมาณค่า pi ตัวอย่างที่มากขึ้นทำให้ค่าประมาณแม่นขึ้น แต่ความคลาดเคลื่อนลดลงแค่ตามหนึ่งส่วนรากที่สองของ N ซึ่งเป็นต้นทุนประจำตัวของ Monte Carlo",
+    "pi ~ 4 * (points inside quarter circle) / N   ·   true pi = 3.14159": "pi ~ 4 * (จุดในวงกลมหนึ่งในสี่) / N   ·   pi จริง = 3.14159",
+    "CONDITIONING": "สภาวะของระบบ (conditioning)",
+    "drag toward parallel": "ลองเลื่อนเข้าหาแนวขนาน",
+    "tilt line 2 toward line 1": "เอียงเส้นที่ 2 เข้าหาเส้นที่ 1",
+    "A 2x2 system is the intersection of two lines. When the lines cross at a wide angle the solution is sharp and stable. As they tilt toward parallel the determinant shrinks, the condition number explodes, and a tiny change in the inputs swings the intersection far away. Ill-conditioned systems amplify noise.": "ระบบ 2x2 คือจุดตัดของเส้นตรงสองเส้น เมื่อเส้นตัดกันเป็นมุมกว้าง คำตอบชัดเจนและเสถียร เมื่อมันเอียงเข้าหาแนวขนาน ดีเทอร์มิแนนต์หดลง condition number พุ่งขึ้น และการเปลี่ยนแปลงเล็กน้อยของขาเข้าทำให้จุดตัดเหวี่ยงไปไกล ระบบที่มีสภาวะไม่ดีขยายสัญญาณรบกวน",
+    "cond number": "condition number",
+    "kappa = sigma_max / sigma_min   ·   small noise in b shifts the solution by up to kappa times": "kappa = sigma_max / sigma_min   ·   สัญญาณรบกวนเล็ก ๆ ใน b ทำให้คำตอบเลื่อนได้ถึง kappa เท่า",
+    "CONVEX VS NON-CONVEX": "นูนกับไม่นูน",
+    "switch the landscape": "สลับภูมิประเทศ",
+    "landscape": "ภูมิประเทศ",
+    "convex bowl": "ชามนูน",
+    "non-convex (bumpy)": "ไม่นูน (เป็นหลุมเป็นบ่อ)",
+    "A convex bowl has one minimum, so gradient descent reaches it from any start. The non-convex landscape has several valleys: the grey trail rolls downhill into whichever one is nearest, and the orange dot can settle in a local minimum that is not the global best. Drag the start to see different basins capture the path.": "ชามนูนมีจุดต่ำสุดเดียว gradient descent จึงไปถึงได้จากทุกจุดเริ่มต้น ภูมิประเทศที่ไม่นูนมีหลายหุบเขา: เส้นทางสีเทากลิ้งลงเขาไปยังหุบที่ใกล้ที่สุด และจุดสีส้มอาจไปหยุดที่จุดต่ำสุดเฉพาะที่ซึ่งไม่ใช่จุดที่ดีที่สุด ลองเลื่อนจุดเริ่มต้นเพื่อดูว่าแอ่งต่าง ๆ ดึงเส้นทางไปอย่างไร",
+    "global minimum": "จุดต่ำสุดสัมบูรณ์",
+    "stuck: local minimum": "ติดอยู่: จุดต่ำสุดเฉพาะที่",
+    "f(x) = ½x²   ·   one minimum, every descent path converges there": "f(x) = ½x²   ·   จุดต่ำสุดเดียว ทุกเส้นทางลงเขาลู่เข้าที่นั่น",
+    "f(x) = 0.18x² + sin(3x)   ·   several local minima trap descent": "f(x) = 0.18x² + sin(3x)   ·   จุดต่ำสุดเฉพาะที่หลายจุดดักการลงเขาไว้",
+    "ROOTS OF UNITY": "รากที่ n ของหนึ่ง",
+    "drag n": "ลองเลื่อน n",
+    "n (number of roots)": "n (จำนวนราก)",
+    "The n complex nth-roots of unity are the solutions of z to the n equals one. They sit evenly around the unit circle at angles two pi k over n, one of them always at 1. These evenly spaced points are the sampling frequencies behind the discrete Fourier transform.": "รากที่ n ของหนึ่งในจำนวนเชิงซ้อนทั้ง n ตัวคือคำตอบของ z ยกกำลัง n เท่ากับหนึ่ง มันเรียงห่างเท่า ๆ กันรอบวงกลมหนึ่งหน่วยที่มุม 2πk/n และมีตัวหนึ่งอยู่ที่ 1 เสมอ จุดที่ห่างเท่า ๆ กันเหล่านี้คือความถี่ที่อยู่เบื้องหลังการแปลงฟูเรียร์แบบไม่ต่อเนื่อง",
+    "roots": "ราก",
+    "FOURIER SYNTHESIS": "การสังเคราะห์ฟูเรียร์",
+    "add the harmonics": "ลองบวกฮาร์มอนิก",
+    "Every periodic signal is a sum of sine waves at integer multiples of a base frequency. The faint grey curves are the individual odd harmonics; the blue curve is their sum. Set them to 1, 1/3, 1/5, 1/7 of full strength and the sum starts to square off, the classic Fourier-series approach to a square wave.": "สัญญาณที่เป็นคาบทุกตัวคือผลรวมของคลื่นไซน์ที่ความถี่เป็นพหุคูณจำนวนเต็มของความถี่พื้นฐาน เส้นโค้งสีเทาจาง ๆ คือฮาร์มอนิกคี่แต่ละตัว เส้นสีน้ำเงินคือผลรวมของมัน ตั้งค่าเป็น 1, 1/3, 1/5, 1/7 ของความแรงเต็ม แล้วผลรวมจะเริ่มเป็นเหลี่ยม นี่คือการประมาณคลื่นสี่เหลี่ยมด้วยอนุกรมฟูเรียร์แบบคลาสสิก",
+    "f(t) = Σ aₖ sin(2π(2k+1)t)   ·   any periodic signal is a sum of sines": "f(t) = Σ aₖ sin(2π(2k+1)t)   ·   สัญญาณที่เป็นคาบใด ๆ คือผลรวมของไซน์",
+    "GRAPH DEGREES": "ดีกรีของกราฟ",
+    "drag nodes and edges": "ลองเลื่อนจำนวนโหนดและเส้นเชื่อม",
+    "nodes": "โหนด",
+    "edges": "เส้นเชื่อม",
+    "Every edge touches two nodes, so it adds one to each of their degrees. Add up the degrees of all nodes and you have counted every edge exactly twice. This handshake lemma holds for any graph and forces the number of odd-degree nodes to be even.": "เส้นเชื่อมทุกเส้นแตะสองโหนด จึงเพิ่มดีกรีของแต่ละโหนดอย่างละหนึ่ง บวกดีกรีของทุกโหนดเข้าด้วยกันแล้วคุณจะนับทุกเส้นเชื่อมสองครั้งพอดี handshake lemma นี้เป็นจริงกับทุกกราฟ และบังคับให้จำนวนโหนดที่มีดีกรีคี่เป็นเลขคู่",
+    "handshake lemma: sum of degrees = 2 * (number of edges)": "handshake lemma: ผลรวมดีกรี = 2 * (จำนวนเส้นเชื่อม)",
+    "RANDOM WALK": "การเดินสุ่ม",
+    "drag the step count": "ลองเลื่อนจำนวนก้าว",
+    "steps t": "จำนวนก้าว t",
+    "A one-dimensional walk takes a plus-or-minus-one step each tick. Steps are independent so variances add: after t steps the variance is t and the typical distance from the start is the square root of t. Diffusion spreads slowly, which is why the walk wanders but rarely runs straight away.": "การเดินใน 1 มิติก้าว +1 หรือ -1 ทุกจังหวะ ก้าวต่าง ๆ เป็นอิสระต่อกัน ความแปรปรวนจึงบวกกันได้: หลัง t ก้าว ความแปรปรวนเป็น t และระยะห่างจากจุดเริ่มโดยทั่วไปคือรากที่สองของ t การแพร่กระจายไปอย่างช้า ๆ นี่คือเหตุผลที่การเดินเตร็ดเตร่ไปมาแต่ไม่ค่อยวิ่งตรงหนีไปไกล",
+    "each step +/-1 with equal odds  ·  Var(position) = t,  std = sqrt(t)": "แต่ละก้าว +/-1 ด้วยโอกาสเท่ากัน  ·  Var(ตำแหน่ง) = t,  std = sqrt(t)"
   },
   "patterns": [
     [
       "^final loss f\\(x\\) = ([-\\d.e+]+)  ·  (\\d+) steps$",
       "loss สุดท้าย f(x) = $1  ·  $2 ก้าว"
+    ],
+    [
+      "^(M = \\[\\[.*\\]\\])   ·   Mv = λv only along the eigen-axes$",
+      "$1   ·   Mv = λv เฉพาะบนแกนลักษณะเฉพาะ"
+    ],
+    [
+      "^angle θ = (-?[\\d.]+)°  ·  proj = \\|a\\|cos θ = (-?[\\d.]+)  \\(points opposite b\\)$",
+      "มุม θ = $1°  ·  proj = |a|cos θ = $2  (ชี้สวนทางกับ b)"
+    ],
+    [
+      "^angle θ = (-?[\\d.]+)°  ·  proj = \\|a\\|cos θ = (-?[\\d.]+)$",
+      "มุม θ = $1°  ·  proj = |a|cos θ = $2"
+    ],
+    [
+      "^orientation flipped  ·  area scales by (-?[\\d.]+)x$",
+      "ทิศทางพลิกกลับ  ·  พื้นที่ขยาย $1 เท่า"
+    ],
+    [
+      "^collapsed to a line  ·  area scales by (-?[\\d.]+)x$",
+      "ยุบเป็นเส้นตรง  ·  พื้นที่ขยาย $1 เท่า"
+    ],
+    [
+      "^area scales by (-?[\\d.]+)x$",
+      "พื้นที่ขยาย $1 เท่า"
+    ],
+    [
+      "^x₀ = (-?[\\d.]+)  ·  f\\(x₀\\) = (-?[\\d.]+)  ·  rising$",
+      "x₀ = $1  ·  f(x₀) = $2  ·  กำลังเพิ่มขึ้น"
+    ],
+    [
+      "^x₀ = (-?[\\d.]+)  ·  f\\(x₀\\) = (-?[\\d.]+)  ·  falling$",
+      "x₀ = $1  ·  f(x₀) = $2  ·  กำลังลดลง"
+    ],
+    [
+      "^x₀ = (-?[\\d.]+)  ·  f\\(x₀\\) = (-?[\\d.]+)  ·  flat: a critical point$",
+      "x₀ = $1  ·  f(x₀) = $2  ·  แบนราบ: จุดวิกฤต"
+    ],
+    [
+      "^y = sin\\((-?[\\d.]+)\\) = (-?[\\d.]+)  ·  local slopes multiply: (-?[\\d.]+) × (-?[\\d.]+)$",
+      "y = sin($1) = $2  ·  ความชันเฉพาะที่คูณกัน: $3 × $4"
+    ],
+    [
+      "^μ = (-?[\\d.]+)  ·  σ = (-?[\\d.]+)  ·  shaded ±1σ holds ≈ 68% of the mass$",
+      "μ = $1  ·  σ = $2  ·  แถบ ±1σ ที่แรเงาครอบคลุม ≈ 68% ของมวลความน่าจะเป็น"
+    ],
+    [
+      "^a positive test happens (-?[\\d.]+)% of the time  ·  most are false alarms when the disease is rare$",
+      "ผลตรวจเป็นบวก $1% ของเวลา  ·  เมื่อโรคพบได้ยาก ผลบวกส่วนใหญ่เป็นสัญญาณเตือนลวง"
+    ],
+    [
+      "^(p|q) bin (\\d+)$",
+      "$1 ช่องที่ $2"
+    ],
+    [
+      "^bin (\\d+)$",
+      "ช่องที่ $1"
+    ],
+    [
+      "^KL\\(p‖q\\) = (-?[\\d.]+) bits  ·  always ≥ 0, zero only when p = q  ·  asymmetric: KL\\(p‖q\\) ≠ KL\\(q‖p\\)$",
+      "KL(p‖q) = $1 บิต  ·  ≥ 0 เสมอ เป็นศูนย์เฉพาะเมื่อ p = q  ·  ไม่สมมาตร: KL(p‖q) ≠ KL(q‖p)"
+    ],
+    [
+      "^principal variances λ₁ = (-?[\\d.]+), λ₂ = (-?[\\d.]+)  ·  blue = PC1 \\(most spread\\), orange = PC2$",
+      "ความแปรปรวนหลัก λ₁ = $1, λ₂ = $2  ·  น้ำเงิน = PC1 (กระจายมากที่สุด), ส้ม = PC2"
+    ],
+    [
+      "^rank (\\d+) of (\\d+)  ·  stores (\\d+) numbers vs (\\d+) full  ·  blue bars are the kept singular values$",
+      "แรงก์ $1 จาก $2  ·  เก็บตัวเลข $3 ตัว เทียบกับ $4 ตัวแบบเต็ม  ·  แท่งสีน้ำเงินคือค่าเอกฐานที่เก็บไว้"
+    ],
+    [
+      "^(A|B) dim (\\d+)$",
+      "$1 มิติที่ $2"
+    ],
+    [
+      "^result shape \\(([\\d, ]+)\\)  ·  a 1 stretches to match the other$",
+      "รูปร่างผลลัพธ์ ($1)  ·  มิติที่เป็น 1 ถูกยืดให้เท่าอีกฝั่ง"
+    ],
+    [
+      "^cannot broadcast  ·  dim (\\d+): (\\d+) vs (\\d+) \\(neither is 1\\)$",
+      "broadcast ไม่ได้  ·  มิติที่ $1: $2 กับ $3 (ไม่มีตัวไหนเป็น 1)"
+    ],
+    [
+      "^the two forms are algebraically equal and both finite here \\(max = (-?[\\d.]+)\\)$",
+      "ทั้งสองรูปเท่ากันทางพีชคณิต และที่นี่ได้ค่าจำกัดทั้งคู่ (max = $1)"
+    ],
+    [
+      "^exp\\((-?[\\d.]+)\\) is beyond float64 range \\(~exp 709\\), so the naive sum is Infinity; the stable form returns (-?[\\d.]+)$",
+      "exp($1) เกินช่วงของ float64 (~exp 709) ผลรวมแบบตรง ๆ จึงเป็น Infinity ส่วนรูปที่เสถียรได้ $2"
+    ],
+    [
+      "^(L1|L2|Linf) norm$",
+      "นอร์ม $1"
+    ],
+    [
+      "^(L1|L2|Linf) of \\((-?[\\d.]+), (-?[\\d.]+)\\) = (.+)  ·  the outline is every point of norm 1$",
+      "$1 ของ ($2, $3) = $4  ·  เส้นขอบคือทุกจุดที่มีนอร์มเท่ากับ 1"
+    ],
+    [
+      "^([\\d,]+) of ([\\d,]+) inside  ·  error ([\\d.]+)  ·  shrinks like 1/sqrt\\(N\\)$",
+      "อยู่ข้างใน $1 จาก $2 จุด  ·  ความคลาดเคลื่อน $3  ·  ลดลงตาม 1/sqrt(N)"
+    ],
+    [
+      "^well-conditioned: det = (-?[\\d.]+)  ·  near-parallel lines make the intersection hypersensitive to noise$",
+      "สภาวะดี: det = $1  ·  เส้นที่เกือบขนานทำให้จุดตัดไวต่อสัญญาณรบกวนมาก"
+    ],
+    [
+      "^ill-conditioned: det = (-?[\\d.]+)  ·  near-parallel lines make the intersection hypersensitive to noise$",
+      "สภาวะไม่ดี: det = $1  ·  เส้นที่เกือบขนานทำให้จุดตัดไวต่อสัญญาณรบกวนมาก"
+    ],
+    [
+      "^landed at x = (-?[\\d.]+)  ·  one valley: any start reaches the bottom$",
+      "หยุดที่ x = $1  ·  หุบเดียว: เริ่มที่ไหนก็ถึงก้นหุบ"
+    ],
+    [
+      "^landed at x = (-?[\\d.]+)  ·  many valleys: the start decides which one you fall into$",
+      "หยุดที่ x = $1  ·  หลายหุบ: จุดเริ่มต้นกำหนดว่าจะตกหุบไหน"
+    ],
+    [
+      "^spaced (-?[\\d.]+) deg apart  ·  k = 0 \\(orange\\) is always 1  ·  they sum to 0 for n > 1$",
+      "ห่างกัน $1 องศา  ·  k = 0 (สีส้ม) เป็น 1 เสมอ  ·  ผลรวมเป็น 0 เมื่อ n > 1"
+    ],
+    [
+      "^amp · (\\d)(st|nd|rd|th) harmonic$",
+      "แอมพลิจูด · ฮาร์มอนิกที่ $1"
+    ],
+    [
+      "^harmonics at 1f, 3f, 5f, 7f  ·  amplitudes ([-\\d., ]+)  ·  odd harmonics 1, 1/3, 1/5 build a square wave$",
+      "ฮาร์มอนิกที่ 1f, 3f, 5f, 7f  ·  แอมพลิจูด $1  ·  ฮาร์มอนิกคี่ 1, 1/3, 1/5 สร้างคลื่นสี่เหลี่ยม"
+    ],
+    [
+      "^harmonics at 1f, 3f, 5f, 7f  ·  amplitudes ([-\\d., ]+)$",
+      "ฮาร์มอนิกที่ 1f, 3f, 5f, 7f  ·  แอมพลิจูด $1"
+    ],
+    [
+      "^= 2 \\* (\\d+) edges$",
+      "= 2 * เส้นเชื่อม $1 เส้น"
+    ],
+    [
+      "^each node label is its degree  ·  average degree ([\\d.]+)  ·  capped at (\\d+) \\(complete graph\\)$",
+      "ป้ายของแต่ละโหนดคือดีกรีของมัน  ·  ดีกรีเฉลี่ย $1  ·  จำกัดที่ $2 (กราฟบริบูรณ์)"
+    ],
+    [
+      "^each node label is its degree  ·  average degree ([\\d.]+)$",
+      "ป้ายของแต่ละโหนดคือดีกรีของมัน  ·  ดีกรีเฉลี่ย $1"
+    ],
+    [
+      "^t = (\\d+) steps  ·  endpoints spread out like sqrt\\(t\\), not t  ·  dashed orange is the \\+/- one std envelope$",
+      "t = $1 ก้าว  ·  ปลายทางกระจายตาม sqrt(t) ไม่ใช่ t  ·  เส้นประสีส้มคือขอบเขต ± หนึ่ง std"
     ]
   ]
 }
