@@ -1,0 +1,520 @@
+<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar data-astro-cid-g5ptsecz><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Open Models: Architecture Walkthroughs | AI-Learning</title><script>try{localStorage.setItem('ail-lang',document.documentElement.lang.slice(0,2))}catch(e){}</script><link rel="shortcut icon" href="/AI-Learning/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v7.4.12"/><meta name="generator" content="Starlight v0.43.1"/><meta property="og:title" content="Open Models: Architecture Walkthroughs"/><meta property="og:type" content="article"/><meta property="og:locale" content="en"/><meta property="og:description" content="You built a GPT-2 Small from scratch in Lesson 04. Frontier open models in 2026 are the same family with five or six concrete changes. RMSNorm instead of LayerNorm. SwiGLU instead of GELU. RoPE instead of learned positions. GQA or MLA instead of full MHA. Mixture-of-Experts at scale. The math you already know covers 95% of them. This lesson reads Llama 3, DeepSeek-V3, Mixtral, Qwen, and Gemma side by side and names the exact line where each architecture diverges."/><meta property="og:site_name" content="AI-Learning"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="You built a GPT-2 Small from scratch in Lesson 04. Frontier open models in 2026 are the same family with five or six concrete changes. RMSNorm instead of LayerNorm. SwiGLU instead of GELU. RoPE instead of learned positions. GQA or MLA instead of full MHA. Mixture-of-Experts at scale. The math you already know covers 95% of them. This lesson reads Llama 3, DeepSeek-V3, Mixtral, Qwen, and Gemma side by side and names the exact line where each architecture diverges."/><script>
+	(() => {
+		const storedTheme =
+			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		const theme =
+			storedTheme ||
+			(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+		document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
+	})();
+</script><link rel="stylesheet" href="/AI-Learning/_astro/print.C9eyqPGL.css" media="print"><link rel="stylesheet" href="/AI-Learning/_astro/common.C8mSgam3.css"><script type="module" src="/AI-Learning/_astro/page.cNngjUgL.js"></script></head><body data-astro-cid-g5ptsecz><a class="sl-skip-link" href="#_top" data-astro-cid-qb7clj6f>Skip to content</a><div class="page sl-flex" data-astro-cid-yntsjkba><header class="header" data-astro-cid-yntsjkba><div class="header" data-astro-cid-by6fddyj><div class="title-wrapper sl-flex" data-astro-cid-by6fddyj><a href="/AI-Learning/en/" class="site-title sl-flex" data-astro-cid-6rvad3va><img alt="AI-Learning" src="/AI-Learning/_astro/logo.D12xAJDJ.svg" width="30" height="30" data-astro-cid-6rvad3va><span translate="no" data-astro-cid-6rvad3va>AI-Learning</span></a></div><div class="sl-flex print:hidden" data-astro-cid-by6fddyj><site-search data-translations="{&quot;placeholder&quot;:&quot;Search&quot;}" data-astro-cid-b5kgnn7o="true"><button data-open-modal disabled aria-label="Search" aria-keyshortcuts="Control+K" data-astro-cid-b5kgnn7o><svg data-astro-cid-b5kgnn7o="true" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;" data-astro-cid-hkc32dio><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg><span class="sl-hidden md:sl-block" aria-hidden="true" data-astro-cid-b5kgnn7o>Search</span><kbd class="sl-hidden md:sl-flex" style="display: none" data-astro-cid-b5kgnn7o><kbd data-astro-cid-b5kgnn7o>Ctrl</kbd><kbd data-astro-cid-b5kgnn7o>K</kbd></kbd></button><dialog style="padding: 0" aria-label="Search" data-astro-cid-b5kgnn7o><div class="dialog-frame sl-flex" data-astro-cid-b5kgnn7o><button data-close-modal class="sl-flex md:sl-hidden" data-astro-cid-b5kgnn7o>Cancel</button><div class="search-container" data-astro-cid-b5kgnn7o><div id="starlight__search" data-astro-cid-b5kgnn7o></div></div></div></dialog></site-search><script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script><script type="module" src="/AI-Learning/_astro/Search.astro_astro_type_script_index_0_lang.CM1HYiac.js"></script></div><div class="sl-hidden md:sl-flex print:hidden right-group" data-astro-cid-by6fddyj><div class="sl-flex social-icons" data-astro-cid-by6fddyj></div><starlight-theme-select data-astro-cid-smhvfpqh="true"><label style="--sl-select-width: 6.25em" data-astro-cid-2z5xp7gb><span class="sr-only" data-astro-cid-2z5xp7gb>Select theme</span><span class="icon label-icon" data-astro-cid-2z5xp7gb><svg class="sl-theme-icon-dark" data-astro-cid-smhvfpqh="true" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;" data-astro-cid-hkc32dio><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg class="sl-theme-icon-light" data-astro-cid-smhvfpqh="true" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;" data-astro-cid-hkc32dio><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg class="sl-theme-icon-auto" data-astro-cid-smhvfpqh="true" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;" data-astro-cid-hkc32dio><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></span><select autocomplete="off" data-astro-cid-2z5xp7gb><option value="dark" data-astro-cid-2z5xp7gb>Dark</option><option value="light" data-astro-cid-2z5xp7gb>Light</option><option value="auto" selected data-astro-cid-2z5xp7gb>Auto</option></select><svg class="icon caret" data-astro-cid-2z5xp7gb="true" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;" data-astro-cid-hkc32dio><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>(() => {
+		const theme = (typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme'));
+		if (theme) document.querySelectorAll('starlight-theme-select select').forEach((s) => { s.value = theme; });
+	})();</script><script type="module">var e=`starlight-theme`,t=e=>e===`auto`||e===`dark`||e===`light`?e:`auto`,n=()=>t(typeof localStorage<`u`&&localStorage.getItem(e));function r(t){typeof localStorage<`u`&&localStorage.setItem(e,t===`light`||t===`dark`?t:``)}var i=()=>matchMedia(`(prefers-color-scheme: light)`).matches?`light`:`dark`;function a(e){document.querySelectorAll(`starlight-theme-select select`).forEach(t=>{t.value=e}),document.documentElement.dataset.theme=e===`auto`?i():e,r(e)}matchMedia(`(prefers-color-scheme: light)`).addEventListener(`change`,()=>{n()===`auto`&&a(`auto`)});var o=class extends HTMLElement{constructor(){super(),a(n()),this.querySelector(`select`)?.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&a(t(e.currentTarget.value))})}};customElements.define(`starlight-theme-select`,o);</script><starlight-lang-select><label style="--sl-select-width: 7em" data-astro-cid-2z5xp7gb><span class="sr-only" data-astro-cid-2z5xp7gb>Select language</span><span class="icon label-icon" data-astro-cid-2z5xp7gb><svg data-astro-cid-2z5xp7gb="true" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;" data-astro-cid-hkc32dio><path fill-rule="evenodd" d="M8.516 3a.94.94 0 0 0-.941.94v1.15H2.94a.94.94 0 1 0 0 1.882h7.362a7.422 7.422 0 0 1-1.787 3.958 7.42 7.42 0 0 1-1.422-2.425.94.94 0 1 0-1.774.627 9.303 9.303 0 0 0 1.785 3.043 7.422 7.422 0 0 1-4.164 1.278.94.94 0 1 0 0 1.881 9.303 9.303 0 0 0 5.575-1.855 9.303 9.303 0 0 0 4.11 1.74l-.763 1.525a.968.968 0 0 0-.016.034l-1.385 2.77a.94.94 0 1 0 1.683.841l1.133-2.267h5.806l1.134 2.267a.94.94 0 0 0 1.683-.841l-1.385-2.769a.95.95 0 0 0-.018-.036l-3.476-6.951a.94.94 0 0 0-1.682 0l-1.82 3.639a7.423 7.423 0 0 1-3.593-1.256 9.303 9.303 0 0 0 2.27-5.203h1.894a.94.94 0 0 0 0-1.881H9.456V3.94A.94.94 0 0 0 8.516 3Zm6.426 11.794a1.068 1.068 0 0 1-.02.039l-.703 1.407h3.924l-1.962-3.924-1.24 2.478Z" clip-rule="evenodd"/></svg></span><select autocomplete="off" data-astro-cid-2z5xp7gb><option value="/AI-Learning/en/10-llms-from-scratch/14-open-models-architecture-walkthroughs/" selected data-astro-cid-2z5xp7gb>English</option><option value="/AI-Learning/th/10-llms-from-scratch/14-open-models-architecture-walkthroughs/" data-astro-cid-2z5xp7gb>ไทย</option></select><svg class="icon caret" data-astro-cid-2z5xp7gb="true" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;" data-astro-cid-hkc32dio><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-lang-select><script type="module">var e=class extends HTMLElement{constructor(){super();let e=this.querySelector(`select`);e&&(e.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=e.currentTarget.value)}),window.addEventListener(`pageshow`,t=>{if(!t.persisted)return;let n=e.querySelector(`option[selected]`)?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}};customElements.define(`starlight-lang-select`,e);</script></div></div></header><nav class="sidebar print:hidden" aria-label="Main" data-astro-cid-yntsjkba><button popovertarget="starlight__sidebar" class="sl-menu-button sl-flex md:sl-hidden print:hidden" data-astro-cid-r2osgdlg><svg class="open-menu" data-astro-cid-r2osgdlg="true" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;" data-astro-cid-hkc32dio><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg><svg class="close-menu" data-astro-cid-r2osgdlg="true" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;" data-astro-cid-hkc32dio><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg><span class="sr-only" data-astro-cid-r2osgdlg>Menu</span></button><script type="module">var e=class extends HTMLElement{constructor(){super();let e=matchMedia(`(min-width: 50em)`),t=()=>{this.popover=e.matches?null:`auto`};t(),e.addEventListener(`change`,()=>t()),this.addEventListener(`toggle`,({newState:e})=>this.trapFocus(e===`open`))}trapFocus(e){document.querySelectorAll(`.main-frame, .sl-skip-link`).forEach(t=>{t.toggleAttribute(`inert`,e)})}};customElements.define(`sl-sidebar-pane`,e);</script><sl-sidebar-pane popover id="starlight__sidebar" class="sidebar-pane" data-astro-cid-yntsjkba="true"><div class="sidebar-content sl-flex" data-astro-cid-yntsjkba><sl-sidebar-state-persist data-hash="03ho1f2" data-astro-cid-ipdry5cl="true"><script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script><ul class="top-level" data-astro-cid-rmhv4bp6><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/00-setup-and-tooling/01-dev-environment/" class="large" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>Phase 00 · Setup &amp; Tooling</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/01-math-foundations/01-linear-algebra-intuition/" class="large" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>Phase 01 · Math Foundations</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/02-ml-fundamentals/01-what-is-machine-learning/" class="large" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>Phase 02 · ML Fundamentals</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/03-deep-learning-core/01-the-perceptron/" class="large" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>Phase 03 · Deep Learning Core</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/04-computer-vision/01-image-fundamentals/" class="large" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>Phase 04 · Computer Vision</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/05-nlp-foundations-to-advanced/01-text-processing/" class="large" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>Phase 05 · NLP: Foundations to Advanced</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/06-speech-and-audio/01-audio-fundamentals/" class="large" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>Phase 06 · Speech &amp; Audio</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/07-transformers-deep-dive/01-why-transformers/" class="large" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>Phase 07 · Transformers Deep Dive</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/08-generative-ai/01-generative-models-taxonomy-history/" class="large" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>Phase 08 · Generative AI</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/09-reinforcement-learning/01-mdps-states-actions-rewards/" class="large" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>Phase 09 · Reinforcement Learning</span></a></li><li data-astro-cid-rmhv4bp6><details open data-astro-cid-rmhv4bp6><summary data-astro-cid-rmhv4bp6><span class="group-label" data-astro-cid-rmhv4bp6><span class="large" data-astro-cid-rmhv4bp6>Phase 10 · LLMs from Scratch</span></span><svg class="caret" data-astro-cid-rmhv4bp6="true" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;" data-astro-cid-hkc32dio><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="0"></sl-sidebar-restore><ul data-astro-cid-rmhv4bp6><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/10-llms-from-scratch/01-tokenizers/" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>01 · Tokenizers: BPE, WordPiece, SentencePiece</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/10-llms-from-scratch/02-building-a-tokenizer/" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>02 · Building a Tokenizer from Scratch</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/10-llms-from-scratch/03-data-pipelines/" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>03 · Data Pipelines for Pre-Training</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/10-llms-from-scratch/04-pre-training-mini-gpt/" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>04 · Pre-Training a Mini GPT (124M Parameters)</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/10-llms-from-scratch/05-scaling-distributed/" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>05 · Scaling: Distributed Training, FSDP, DeepSpeed</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/10-llms-from-scratch/06-instruction-tuning-sft/" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>06 · Instruction Tuning (SFT)</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/10-llms-from-scratch/07-rlhf/" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>07 · RLHF: Reward Model + PPO</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/10-llms-from-scratch/08-dpo/" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>08 · DPO: Direct Preference Optimization</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/10-llms-from-scratch/09-constitutional-ai-self-improvement/" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>09 · Constitutional AI and Self-Improvement</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/10-llms-from-scratch/10-evaluation/" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>10 · Evaluation: Benchmarks, Evals, LM Harness</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/10-llms-from-scratch/11-quantization/" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>11 · Quantization: Making Models Fit</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/10-llms-from-scratch/12-inference-optimization/" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>12 · Inference Optimization</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/10-llms-from-scratch/13-building-complete-llm-pipeline/" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>13 · Building a Complete LLM Pipeline</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/10-llms-from-scratch/14-open-models-architecture-walkthroughs/" aria-current="page" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>14 · Open Models: Architecture Walkthroughs</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/10-llms-from-scratch/15-speculative-decoding-eagle3/" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>15 · Speculative Decoding and EAGLE-3</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/10-llms-from-scratch/16-differential-attention-v2/" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>16 · Differential Attention (V2)</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/10-llms-from-scratch/17-native-sparse-attention/" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>17 · Native Sparse Attention (DeepSeek NSA)</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/10-llms-from-scratch/18-multi-token-prediction/" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>18 · Multi-Token Prediction (MTP)</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/10-llms-from-scratch/19-dualpipe-parallelism/" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>19 · DualPipe Parallelism</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/10-llms-from-scratch/20-deepseek-v3-walkthrough/" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>20 · DeepSeek-V3 Architecture Walkthrough</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/10-llms-from-scratch/21-jamba-hybrid-ssm-transformer/" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>21 · Jamba — Hybrid SSM-Transformer</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/10-llms-from-scratch/22-async-hogwild-inference/" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>22 · Async and Hogwild! Inference</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/10-llms-from-scratch/25-speculative-decoding/" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>25 · Speculative Decoding and EAGLE</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/10-llms-from-scratch/34-gradient-checkpointing/" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>34 · Gradient Checkpointing and Activation Recomputation</span></a></li></ul></details></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/11-llm-engineering/01-prompt-engineering/" class="large" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>Phase 11 · LLM Engineering</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/12-multimodal-ai/01-vision-transformer-patch-tokens/" class="large" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>Phase 12 · Multimodal AI</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/13-tools-and-protocols/01-the-tool-interface/" class="large" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>Phase 13 · Tools &amp; Protocols</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/14-agent-engineering/01-the-agent-loop/" class="large" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>Phase 14 · Agent Engineering</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/15-autonomous-systems/01-long-horizon-agents/" class="large" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>Phase 15 · Autonomous Systems</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/16-multi-agent-and-swarms/01-why-multi-agent/" class="large" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>Phase 16 · Multi-Agent &amp; Swarms</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/17-infrastructure-and-production/01-managed-llm-platforms/" class="large" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>Phase 17 · Infrastructure &amp; Production</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/18-ethics-safety-alignment/01-instruction-following-alignment-signal/" class="large" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>Phase 18 · Ethics, Safety &amp; Alignment</span></a></li><li data-astro-cid-rmhv4bp6><a href="/AI-Learning/en/19-capstone-projects/01-terminal-native-coding-agent/" class="large" data-astro-cid-rmhv4bp6><span data-astro-cid-rmhv4bp6>Phase 19 · Capstone Projects</span></a></li></ul><script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script></sl-sidebar-state-persist><div class="md:sl-hidden"><div class="mobile-preferences sl-flex" data-astro-cid-p4azlveh><div class="social-icons" data-astro-cid-p4azlveh></div><starlight-theme-select data-astro-cid-smhvfpqh="true"><label style="--sl-select-width: 6.25em" data-astro-cid-2z5xp7gb><span class="sr-only" data-astro-cid-2z5xp7gb>Select theme</span><span class="icon label-icon" data-astro-cid-2z5xp7gb><svg class="sl-theme-icon-dark" data-astro-cid-smhvfpqh="true" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;" data-astro-cid-hkc32dio><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg class="sl-theme-icon-light" data-astro-cid-smhvfpqh="true" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;" data-astro-cid-hkc32dio><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg class="sl-theme-icon-auto" data-astro-cid-smhvfpqh="true" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;" data-astro-cid-hkc32dio><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></span><select autocomplete="off" data-astro-cid-2z5xp7gb><option value="dark" data-astro-cid-2z5xp7gb>Dark</option><option value="light" data-astro-cid-2z5xp7gb>Light</option><option value="auto" selected data-astro-cid-2z5xp7gb>Auto</option></select><svg class="icon caret" data-astro-cid-2z5xp7gb="true" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;" data-astro-cid-hkc32dio><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>(() => {
+		const theme = (typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme'));
+		if (theme) document.querySelectorAll('starlight-theme-select select').forEach((s) => { s.value = theme; });
+	})();</script><starlight-lang-select><label style="--sl-select-width: 7em" data-astro-cid-2z5xp7gb><span class="sr-only" data-astro-cid-2z5xp7gb>Select language</span><span class="icon label-icon" data-astro-cid-2z5xp7gb><svg data-astro-cid-2z5xp7gb="true" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;" data-astro-cid-hkc32dio><path fill-rule="evenodd" d="M8.516 3a.94.94 0 0 0-.941.94v1.15H2.94a.94.94 0 1 0 0 1.882h7.362a7.422 7.422 0 0 1-1.787 3.958 7.42 7.42 0 0 1-1.422-2.425.94.94 0 1 0-1.774.627 9.303 9.303 0 0 0 1.785 3.043 7.422 7.422 0 0 1-4.164 1.278.94.94 0 1 0 0 1.881 9.303 9.303 0 0 0 5.575-1.855 9.303 9.303 0 0 0 4.11 1.74l-.763 1.525a.968.968 0 0 0-.016.034l-1.385 2.77a.94.94 0 1 0 1.683.841l1.133-2.267h5.806l1.134 2.267a.94.94 0 0 0 1.683-.841l-1.385-2.769a.95.95 0 0 0-.018-.036l-3.476-6.951a.94.94 0 0 0-1.682 0l-1.82 3.639a7.423 7.423 0 0 1-3.593-1.256 9.303 9.303 0 0 0 2.27-5.203h1.894a.94.94 0 0 0 0-1.881H9.456V3.94A.94.94 0 0 0 8.516 3Zm6.426 11.794a1.068 1.068 0 0 1-.02.039l-.703 1.407h3.924l-1.962-3.924-1.24 2.478Z" clip-rule="evenodd"/></svg></span><select autocomplete="off" data-astro-cid-2z5xp7gb><option value="/AI-Learning/en/10-llms-from-scratch/14-open-models-architecture-walkthroughs/" selected data-astro-cid-2z5xp7gb>English</option><option value="/AI-Learning/th/10-llms-from-scratch/14-open-models-architecture-walkthroughs/" data-astro-cid-2z5xp7gb>ไทย</option></select><svg class="icon caret" data-astro-cid-2z5xp7gb="true" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;" data-astro-cid-hkc32dio><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-lang-select></div></div></div></sl-sidebar-pane></nav><div class="main-frame" data-astro-cid-yntsjkba><script type="module">var e=document.getElementById(`starlight__sidebar`),t=e?.querySelector(`sl-sidebar-state-persist`),n=`sl-sidebar-state`,r=()=>{let r=[],i=t?.dataset.hash||``;try{let e=sessionStorage.getItem(n),t=JSON.parse(e||`{}`);Array.isArray(t.open)&&t.hash===i&&(r=t.open)}catch{}return{hash:i,open:r,scroll:e?.scrollTop||0}},i=e=>{try{sessionStorage.setItem(n,JSON.stringify(e))}catch{}},a=()=>i(r()),o=(e,t)=>{let n=r();n.open[t]=e,i(n)};t?.addEventListener(`click`,e=>{if(!(e.target instanceof Element))return;let t=e.target.closest(`summary`)?.closest(`details`);if(!t)return;let n=t.querySelector(`sl-sidebar-restore`),r=parseInt(n?.dataset.index||``);isNaN(r)||o(!t.open,r)}),addEventListener(`visibilitychange`,()=>{document.visibilityState===`hidden`&&a()});</script><div class="lg:sl-flex" data-astro-cid-lrzkfocr><aside class="right-sidebar-container print:hidden" data-astro-cid-lrzkfocr><div class="right-sidebar" data-astro-cid-lrzkfocr><div class="lg:sl-hidden" data-astro-cid-qok35upx><mobile-starlight-toc data-min-h="2" data-max-h="3" data-astro-cid-66cqc7ze="true"><nav aria-labelledby="starlight__on-this-page--mobile" data-astro-cid-66cqc7ze><details id="starlight__mobile-toc" data-astro-cid-66cqc7ze><summary id="starlight__on-this-page--mobile" class="sl-flex" data-astro-cid-66cqc7ze><span class="toggle sl-flex" data-astro-cid-66cqc7ze>On this page<svg class="caret" data-astro-cid-66cqc7ze="true" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;" data-astro-cid-hkc32dio><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current" data-astro-cid-66cqc7ze></span></summary><div class="dropdown" data-astro-cid-66cqc7ze><ul class="isMobile" style="--depth: 0;" data-astro-cid-jugkfwgx><li style="--depth: 0;" data-astro-cid-jugkfwgx><a href="#_top" style="--depth: 0;" data-astro-cid-jugkfwgx><span style="--depth: 0;" data-astro-cid-jugkfwgx>Overview</span></a></li><li style="--depth: 0;" data-astro-cid-jugkfwgx><a href="#learning-objectives" style="--depth: 0;" data-astro-cid-jugkfwgx><span style="--depth: 0;" data-astro-cid-jugkfwgx>Learning Objectives</span></a></li><li style="--depth: 0;" data-astro-cid-jugkfwgx><a href="#the-problem" style="--depth: 0;" data-astro-cid-jugkfwgx><span style="--depth: 0;" data-astro-cid-jugkfwgx>The Problem</span></a></li><li style="--depth: 0;" data-astro-cid-jugkfwgx><a href="#the-concept" style="--depth: 0;" data-astro-cid-jugkfwgx><span style="--depth: 0;" data-astro-cid-jugkfwgx>The Concept</span></a><ul class="isMobile" style="--depth: 1;" data-astro-cid-jugkfwgx><li style="--depth: 1;" data-astro-cid-jugkfwgx><a href="#the-invariant-core" style="--depth: 1;" data-astro-cid-jugkfwgx><span style="--depth: 1;" data-astro-cid-jugkfwgx>The Invariant Core</span></a></li><li style="--depth: 1;" data-astro-cid-jugkfwgx><a href="#the-six-knobs-that-actually-move" style="--depth: 1;" data-astro-cid-jugkfwgx><span style="--depth: 1;" data-astro-cid-jugkfwgx>The Six Knobs That Actually Move</span></a></li><li style="--depth: 1;" data-astro-cid-jugkfwgx><a href="#knob-1-rmsnorm" style="--depth: 1;" data-astro-cid-jugkfwgx><span style="--depth: 1;" data-astro-cid-jugkfwgx>Knob 1: RMSNorm</span></a></li><li style="--depth: 1;" data-astro-cid-jugkfwgx><a href="#knob-2-rope" style="--depth: 1;" data-astro-cid-jugkfwgx><span style="--depth: 1;" data-astro-cid-jugkfwgx>Knob 2: RoPE</span></a></li><li style="--depth: 1;" data-astro-cid-jugkfwgx><a href="#knob-3-swiglu" style="--depth: 1;" data-astro-cid-jugkfwgx><span style="--depth: 1;" data-astro-cid-jugkfwgx>Knob 3: SwiGLU</span></a></li><li style="--depth: 1;" data-astro-cid-jugkfwgx><a href="#knob-4-attention-head-sharing" style="--depth: 1;" data-astro-cid-jugkfwgx><span style="--depth: 1;" data-astro-cid-jugkfwgx>Knob 4: Attention Head Sharing</span></a></li><li style="--depth: 1;" data-astro-cid-jugkfwgx><a href="#knob-5-mixture-of-experts" style="--depth: 1;" data-astro-cid-jugkfwgx><span style="--depth: 1;" data-astro-cid-jugkfwgx>Knob 5: Mixture of Experts</span></a></li><li style="--depth: 1;" data-astro-cid-jugkfwgx><a href="#knob-6-pre-norm-stays" style="--depth: 1;" data-astro-cid-jugkfwgx><span style="--depth: 1;" data-astro-cid-jugkfwgx>Knob 6: Pre-norm stays</span></a></li><li style="--depth: 1;" data-astro-cid-jugkfwgx><a href="#model-by-model-diff" style="--depth: 1;" data-astro-cid-jugkfwgx><span style="--depth: 1;" data-astro-cid-jugkfwgx>Model-by-Model Diff</span></a></li><li style="--depth: 1;" data-astro-cid-jugkfwgx><a href="#reading-a-configjson" style="--depth: 1;" data-astro-cid-jugkfwgx><span style="--depth: 1;" data-astro-cid-jugkfwgx>Reading a config.json</span></a></li><li style="--depth: 1;" data-astro-cid-jugkfwgx><a href="#activation-memory-budget" style="--depth: 1;" data-astro-cid-jugkfwgx><span style="--depth: 1;" data-astro-cid-jugkfwgx>Activation memory budget</span></a></li><li style="--depth: 1;" data-astro-cid-jugkfwgx><a href="#kv-cache-budget" style="--depth: 1;" data-astro-cid-jugkfwgx><span style="--depth: 1;" data-astro-cid-jugkfwgx>KV Cache budget</span></a></li><li style="--depth: 1;" data-astro-cid-jugkfwgx><a href="#when-each-model-wins" style="--depth: 1;" data-astro-cid-jugkfwgx><span style="--depth: 1;" data-astro-cid-jugkfwgx>When Each Model Wins</span></a></li></ul></li><li style="--depth: 0;" data-astro-cid-jugkfwgx><a href="#build-it" style="--depth: 0;" data-astro-cid-jugkfwgx><span style="--depth: 0;" data-astro-cid-jugkfwgx>Build It</span></a></li><li style="--depth: 0;" data-astro-cid-jugkfwgx><a href="#use-it" style="--depth: 0;" data-astro-cid-jugkfwgx><span style="--depth: 0;" data-astro-cid-jugkfwgx>Use It</span></a></li><li style="--depth: 0;" data-astro-cid-jugkfwgx><a href="#ship-it" style="--depth: 0;" data-astro-cid-jugkfwgx><span style="--depth: 0;" data-astro-cid-jugkfwgx>Ship It</span></a></li><li style="--depth: 0;" data-astro-cid-jugkfwgx><a href="#exercises" style="--depth: 0;" data-astro-cid-jugkfwgx><span style="--depth: 0;" data-astro-cid-jugkfwgx>Exercises</span></a></li><li style="--depth: 0;" data-astro-cid-jugkfwgx><a href="#key-terms" style="--depth: 0;" data-astro-cid-jugkfwgx><span style="--depth: 0;" data-astro-cid-jugkfwgx>Key Terms</span></a></li><li style="--depth: 0;" data-astro-cid-jugkfwgx><a href="#further-reading" style="--depth: 0;" data-astro-cid-jugkfwgx><span style="--depth: 0;" data-astro-cid-jugkfwgx>Further Reading</span></a></li></ul></div></details></nav></mobile-starlight-toc><script type="module" src="/AI-Learning/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C3fM4Kra.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block" data-astro-cid-qok35upx><div class="sl-container" data-astro-cid-qok35upx><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul style="--depth: 0;" data-astro-cid-jugkfwgx><li style="--depth: 0;" data-astro-cid-jugkfwgx><a href="#_top" style="--depth: 0;" data-astro-cid-jugkfwgx><span style="--depth: 0;" data-astro-cid-jugkfwgx>Overview</span></a></li><li style="--depth: 0;" data-astro-cid-jugkfwgx><a href="#learning-objectives" style="--depth: 0;" data-astro-cid-jugkfwgx><span style="--depth: 0;" data-astro-cid-jugkfwgx>Learning Objectives</span></a></li><li style="--depth: 0;" data-astro-cid-jugkfwgx><a href="#the-problem" style="--depth: 0;" data-astro-cid-jugkfwgx><span style="--depth: 0;" data-astro-cid-jugkfwgx>The Problem</span></a></li><li style="--depth: 0;" data-astro-cid-jugkfwgx><a href="#the-concept" style="--depth: 0;" data-astro-cid-jugkfwgx><span style="--depth: 0;" data-astro-cid-jugkfwgx>The Concept</span></a><ul style="--depth: 1;" data-astro-cid-jugkfwgx><li style="--depth: 1;" data-astro-cid-jugkfwgx><a href="#the-invariant-core" style="--depth: 1;" data-astro-cid-jugkfwgx><span style="--depth: 1;" data-astro-cid-jugkfwgx>The Invariant Core</span></a></li><li style="--depth: 1;" data-astro-cid-jugkfwgx><a href="#the-six-knobs-that-actually-move" style="--depth: 1;" data-astro-cid-jugkfwgx><span style="--depth: 1;" data-astro-cid-jugkfwgx>The Six Knobs That Actually Move</span></a></li><li style="--depth: 1;" data-astro-cid-jugkfwgx><a href="#knob-1-rmsnorm" style="--depth: 1;" data-astro-cid-jugkfwgx><span style="--depth: 1;" data-astro-cid-jugkfwgx>Knob 1: RMSNorm</span></a></li><li style="--depth: 1;" data-astro-cid-jugkfwgx><a href="#knob-2-rope" style="--depth: 1;" data-astro-cid-jugkfwgx><span style="--depth: 1;" data-astro-cid-jugkfwgx>Knob 2: RoPE</span></a></li><li style="--depth: 1;" data-astro-cid-jugkfwgx><a href="#knob-3-swiglu" style="--depth: 1;" data-astro-cid-jugkfwgx><span style="--depth: 1;" data-astro-cid-jugkfwgx>Knob 3: SwiGLU</span></a></li><li style="--depth: 1;" data-astro-cid-jugkfwgx><a href="#knob-4-attention-head-sharing" style="--depth: 1;" data-astro-cid-jugkfwgx><span style="--depth: 1;" data-astro-cid-jugkfwgx>Knob 4: Attention Head Sharing</span></a></li><li style="--depth: 1;" data-astro-cid-jugkfwgx><a href="#knob-5-mixture-of-experts" style="--depth: 1;" data-astro-cid-jugkfwgx><span style="--depth: 1;" data-astro-cid-jugkfwgx>Knob 5: Mixture of Experts</span></a></li><li style="--depth: 1;" data-astro-cid-jugkfwgx><a href="#knob-6-pre-norm-stays" style="--depth: 1;" data-astro-cid-jugkfwgx><span style="--depth: 1;" data-astro-cid-jugkfwgx>Knob 6: Pre-norm stays</span></a></li><li style="--depth: 1;" data-astro-cid-jugkfwgx><a href="#model-by-model-diff" style="--depth: 1;" data-astro-cid-jugkfwgx><span style="--depth: 1;" data-astro-cid-jugkfwgx>Model-by-Model Diff</span></a></li><li style="--depth: 1;" data-astro-cid-jugkfwgx><a href="#reading-a-configjson" style="--depth: 1;" data-astro-cid-jugkfwgx><span style="--depth: 1;" data-astro-cid-jugkfwgx>Reading a config.json</span></a></li><li style="--depth: 1;" data-astro-cid-jugkfwgx><a href="#activation-memory-budget" style="--depth: 1;" data-astro-cid-jugkfwgx><span style="--depth: 1;" data-astro-cid-jugkfwgx>Activation memory budget</span></a></li><li style="--depth: 1;" data-astro-cid-jugkfwgx><a href="#kv-cache-budget" style="--depth: 1;" data-astro-cid-jugkfwgx><span style="--depth: 1;" data-astro-cid-jugkfwgx>KV Cache budget</span></a></li><li style="--depth: 1;" data-astro-cid-jugkfwgx><a href="#when-each-model-wins" style="--depth: 1;" data-astro-cid-jugkfwgx><span style="--depth: 1;" data-astro-cid-jugkfwgx>When Each Model Wins</span></a></li></ul></li><li style="--depth: 0;" data-astro-cid-jugkfwgx><a href="#build-it" style="--depth: 0;" data-astro-cid-jugkfwgx><span style="--depth: 0;" data-astro-cid-jugkfwgx>Build It</span></a></li><li style="--depth: 0;" data-astro-cid-jugkfwgx><a href="#use-it" style="--depth: 0;" data-astro-cid-jugkfwgx><span style="--depth: 0;" data-astro-cid-jugkfwgx>Use It</span></a></li><li style="--depth: 0;" data-astro-cid-jugkfwgx><a href="#ship-it" style="--depth: 0;" data-astro-cid-jugkfwgx><span style="--depth: 0;" data-astro-cid-jugkfwgx>Ship It</span></a></li><li style="--depth: 0;" data-astro-cid-jugkfwgx><a href="#exercises" style="--depth: 0;" data-astro-cid-jugkfwgx><span style="--depth: 0;" data-astro-cid-jugkfwgx>Exercises</span></a></li><li style="--depth: 0;" data-astro-cid-jugkfwgx><a href="#key-terms" style="--depth: 0;" data-astro-cid-jugkfwgx><span style="--depth: 0;" data-astro-cid-jugkfwgx>Key Terms</span></a></li><li style="--depth: 0;" data-astro-cid-jugkfwgx><a href="#further-reading" style="--depth: 0;" data-astro-cid-jugkfwgx><span style="--depth: 0;" data-astro-cid-jugkfwgx>Further Reading</span></a></li></ul></nav></starlight-toc><script type="module" src="/AI-Learning/_astro/TableOfContents.astro_astro_type_script_index_0_lang.BpJaGz7G.js"></script></div></div></div></aside><div class="main-pane" data-astro-cid-lrzkfocr><main data-pagefind-body lang="en" dir="ltr" data-astro-cid-g5ptsecz><div class="content-panel" data-astro-cid-a7po4psb><div class="sl-container" data-astro-cid-a7po4psb><h1 id="_top" data-astro-cid-bebwqqxs>Open Models: Architecture Walkthroughs</h1></div></div><div class="content-panel" data-astro-cid-a7po4psb><div class="sl-container" data-astro-cid-a7po4psb><div class="sl-markdown-content"><div class="ail-banner not-content" data-pagefind-ignore="all"><span><strong>Original lesson</strong> · from AI Engineering from Scratch (MIT)</span><a href="https://github.com/rohitg00/ai-engineering-from-scratch/tree/6a63ddb066207fca854ece311da0289295c2a313/phases/10-llms-from-scratch/14-open-models-architecture-walkthroughs">Lesson source on GitHub</a></div><blockquote>
+<p>You built a GPT-2 Small from scratch in Lesson 04. Frontier open models in 2026 are the same family with five or six concrete changes. RMSNorm instead of LayerNorm. SwiGLU instead of GELU. RoPE instead of learned positions. GQA or MLA instead of full MHA. Mixture-of-Experts at scale. The math you already know covers 95% of them. This lesson reads Llama 3, DeepSeek-V3, Mixtral, Qwen, and Gemma side by side and names the exact line where each architecture diverges.</p>
+</blockquote>
+<p><strong>Type:</strong> Learn
+<strong>Languages:</strong> Python (stdlib), Rust
+<strong>Prerequisites:</strong> Phase 10, Lessons 04, 05, 12 (Pre-training, Scaling, Inference)
+<strong>Time:</strong> ~45 minutes</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="learning-objectives">Learning Objectives</h2><a class="sl-anchor-link" href="#learning-objectives"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Learning Objectives”</span></a></div>
+<ul>
+<li>Read the config.json of Llama 3, Mistral, Mixtral, Gemma 2, Qwen 2.5, and DeepSeek-V3 and explain every field</li>
+<li>Name the specific architectural change each model made versus GPT-2 Small and justify it from first principles</li>
+<li>Compute parameter count, KV cache size, and activation memory for any open model from its config alone</li>
+<li>Pick the right open model for a deployment target given latency, memory, and capability constraints</li>
+</ul>
+<div class="sl-heading-wrapper level-h2"><h2 id="the-problem">The Problem</h2><a class="sl-anchor-link" href="#the-problem"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “The Problem”</span></a></div>
+<p>In Lesson 04 you wrote 350 lines of numpy and had a GPT-2-shaped model. Llama 3 405B has a 200-page technical report. Your instinct is that these are different beasts. They are not. The 200 pages describe the same object with five or six well-motivated modifications, plus a thousand implementation details about scaling. The skeleton — embedding, transformer blocks, attention, MLP, norm, head — is unchanged.</p>
+<p>This lesson is a diff. For each major open model family, we list exactly what changed from GPT-2, why, and what it cost. When you are done you can read a fresh model card and mentally translate it back to the GPT-2 baseline.</p>
+<p>The practical payoff is that when Meta releases Llama 5 or DeepSeek releases V4, you will not need a new mental model. You will look at the config, see which of the well-known knobs moved, and know what the downstream implications are. The 2026 architectures are a finite toolbox. Each new model picks a different subset.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="the-concept">The Concept</h2><a class="sl-anchor-link" href="#the-concept"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “The Concept”</span></a></div>
+<div class="sl-heading-wrapper level-h3"><h3 id="the-invariant-core">The Invariant Core</h3><a class="sl-anchor-link" href="#the-invariant-core"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “The Invariant Core”</span></a></div>
+<p>All autoregressive open models share:</p>
+<ul>
+<li>Token embedding matrix (vocab_size x hidden_dim).</li>
+<li>Stack of N decoder blocks: norm, self-attention, residual, norm, MLP, residual.</li>
+<li>Final norm and linear head projecting to vocab_size (often weight-tied with embeddings).</li>
+<li>Causal mask, next-token cross-entropy loss.</li>
+</ul>
+<p>That is the shape. The rest is knobs.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="the-six-knobs-that-actually-move">The Six Knobs That Actually Move</h3><a class="sl-anchor-link" href="#the-six-knobs-that-actually-move"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “The Six Knobs That Actually Move”</span></a></div>
+<p>Across every 2024-2026 frontier open model, the same six design choices get picked over and over:</p>
+<ol>
+<li><strong>Normalization.</strong> LayerNorm -> RMSNorm.</li>
+<li><strong>Positional encoding.</strong> Learned absolute -> RoPE (plus variants: YaRN, NTK).</li>
+<li><strong>Activation.</strong> GELU -> SwiGLU (or GeGLU).</li>
+<li><strong>Attention head sharing.</strong> MHA -> GQA -> MQA -> MLA.</li>
+<li><strong>Dense vs sparse MLP.</strong> Dense -> Mixture-of-Experts.</li>
+<li><strong>Pre-norm placement.</strong> Pre-norm stays. Post-norm is gone.</li>
+</ol>
+<p>Everything else (learning rate schedule, data mix, batch size, context length) lives in the training config, not the architecture. Six knobs.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="knob-1-rmsnorm">Knob 1: RMSNorm</h3><a class="sl-anchor-link" href="#knob-1-rmsnorm"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Knob 1: RMSNorm”</span></a></div>
+<p>LayerNorm subtracts mean, divides by std, scales, and shifts. RMSNorm keeps only the scale:</p>
+<div class="math-display"><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop"><span class="mord"><span class="mord mathrm">RMSNorm</span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:2.2376em;vertical-align:-1.13em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1076em;"><span style="top:-2.175em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.935em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mop"><span class="mord"><span class="mord mathrm">mean</span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">ϵ</span></span></span><span style="top:-2.895em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.28em" viewBox="0 0 400000 1296" preserveAspectRatio="xMinYMin slice"><path d="M263,681c0.7,0,18,39.7,52,119
+c34,79.3,68.167,158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120
+c340,-704.7,510.7,-1060.3,512,-1067
+l0 -0
+c4.7,-7.3,11,-11,19,-11
+H40000v40H1012.3
+s-271.3,567,-271.3,567c-38.7,80.7,-84,175,-136,283c-52,108,-89.167,185.3,-111.5,232
+c-22.3,46.7,-33.8,70.3,-34.5,71c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1
+s-109,-253,-109,-253c-72.7,-168,-109.3,-252,-110,-252c-10.7,8,-22,16.7,-34,26
+c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26s76,-59,76,-59s76,-60,76,-60z
+M1001 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.305em;"><span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.13em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0556em;">γ</span></span></span></span></span></div>
+<p>No mean subtraction. No bias. One matmul fewer per token. Zhang and Sennrich (2019) argued it matched LayerNorm on machine translation while being 10% faster. Every modern open model runs it.</p>
+<p>Cost: none. Benefit: small throughput win, simpler code.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="knob-2-rope">Knob 2: RoPE</h3><a class="sl-anchor-link" href="#knob-2-rope"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Knob 2: RoPE”</span></a></div>
+<p>Learned position embeddings were a 1024-slot lookup table in GPT-2. Context 1025 is off the end of the table. Models cannot extrapolate beyond their training length.</p>
+<p>Rotary Position Embedding (RoPE, Su et al. 2021) injects position by rotating each Q and K vector in pairs before the attention dot product. The angle of rotation is a deterministic function of position, so there is nothing learned and nothing to run out of. With scaling tricks (NTK-aware interpolation, YaRN), a model trained on 8k context can stretch to 128k at inference with modest accuracy loss.</p>
+<div class="expressive-code"><link rel="stylesheet" href="/AI-Learning/_astro/ec.u7h2x.css"><script type="module" src="/AI-Learning/_astro/ec.0vx5m.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#abb2bf">q_rotated = rotate(q, angle(pos))</span></div></div><div class="ec-line"><div class="code"><span style="--0:#abb2bf">k_rotated = rotate(k, angle(pos))</span></div></div><div class="ec-line"><div class="code"><span style="--0:#abb2bf">score = q_rotated . k_rotated</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="q_rotated = rotate(q, angle(pos))k_rotated = rotate(k, angle(pos))score = q_rotated . k_rotated"><div></div></button></div></figure></div>
+<p>Every Llama, Mistral, Qwen, DeepSeek, and Gemma uses RoPE. Gemma 2 uses a hybrid (RoPE on most layers, local sliding-window attention on others).</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="knob-3-swiglu">Knob 3: SwiGLU</h3><a class="sl-anchor-link" href="#knob-3-swiglu"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Knob 3: SwiGLU”</span></a></div>
+<p>GPT-2’s MLP is <code dir="auto">x -> gelu(xW1 + b1) -> (...)W2 + b2</code>. SwiGLU (Shazeer 2020) replaces the activation with a gated product:</p>
+<div class="math-display"><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop"><span class="mord"><span class="mord mathrm">SwiGLU</span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop"><span class="mord"><span class="mord mathrm">sigmoid</span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1389em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="katex-sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal">x</span><span class="mord mathnormal" style="margin-right:0.2222em;">V</span></span></span></span></span></div>
+<p>Two projections in parallel instead of one, gated by the Swish activation. Empirically stronger on perplexity per parameter. Llama 2 adopted it, everyone followed. The MLP’s hidden size is usually set so that total parameter count matches the original dense MLP: if GPT-2 used <code dir="auto">ff_dim = 4 * hidden</code>, SwiGLU uses <code dir="auto">ff_dim = (2/3) * 4 * hidden = 8/3 * hidden</code>.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="knob-4-attention-head-sharing">Knob 4: Attention Head Sharing</h3><a class="sl-anchor-link" href="#knob-4-attention-head-sharing"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Knob 4: Attention Head Sharing”</span></a></div>
+<p>GPT-2 used <strong>Multi-Head Attention (MHA)</strong>: every head has its own Q, K, V projection.</p>
+<p><strong>Multi-Query Attention (MQA, Shazeer 2019)</strong> shares one K and one V across all heads. Cuts the KV cache by num_heads, which is a 12x to 32x reduction on a typical model. Accuracy drops slightly on hard benchmarks.</p>
+<p><strong>Grouped-Query Attention (GQA, Ainslie et al. 2023)</strong> is the middle ground: <span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal">G</span></span></span></span> groups of Q heads share one K and one V. Llama 3 8B uses GQA with 32 Q heads and 8 KV heads (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal">G</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">8</span></span></span></span>), so the KV cache shrinks 4x versus full MHA.</p>
+<p><strong>Multi-Head Latent Attention (MLA, DeepSeek 2024)</strong> compresses K and V into a shared low-rank latent, projecting them back up per head. Further reduces KV cache while preserving per-head expressiveness. DeepSeek-V2 and V3 rely on this for their long-context performance.</p>
+<table>
+<thead>
+<tr>
+<th>Scheme</th>
+<th>KV Heads</th>
+<th>KV Cache</th>
+<th>Accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MHA</td>
+<td>num_heads</td>
+<td>full</td>
+<td>best</td>
+</tr>
+<tr>
+<td>GQA</td>
+<td>num_groups (G &#x3C; num_heads)</td>
+<td>num_heads / G reduction</td>
+<td>near-MHA</td>
+</tr>
+<tr>
+<td>MQA</td>
+<td>1</td>
+<td>num_heads reduction</td>
+<td>small hit</td>
+</tr>
+<tr>
+<td>MLA</td>
+<td>latent, per-head decompression</td>
+<td>smaller than MQA</td>
+<td>near-MHA</td>
+</tr>
+</tbody>
+</table>
+<p>For any model above ~13B parameters, GQA or MLA is effectively mandatory. Full MHA at scale is a KV cache disaster.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="knob-5-mixture-of-experts">Knob 5: Mixture of Experts</h3><a class="sl-anchor-link" href="#knob-5-mixture-of-experts"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Knob 5: Mixture of Experts”</span></a></div>
+<p>A dense MLP activates all its parameters for every token. An MoE MLP has K experts per block and a router that picks the top-k experts per token (typically top-2). Only those experts’ weights see a forward pass for that token.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#abb2bf">router_logits = xW_r</span></div></div><div class="ec-line"><div class="code"><span style="--0:#abb2bf">indices, weights = top_k(router_logits, k=2)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#abb2bf">output = sum_i weights[i] * expert[indices[i]](x)</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="router_logits = xW_rindices, weights = top_k(router_logits, k=2)output = sum_i weights[i] * expert[indices[i]](x)"><div></div></button></div></figure></div>
+<p>The appeal: you can have 64 experts of size 7B each (so total param count is huge) while only running 2 of them per token (so per-token compute matches a dense 7B model). Mixtral 8x7B has 47B total parameters but activates only 13B per token. DeepSeek-V3 has 671B total parameters but activates only 37B per token.</p>
+<div class="mermaid-wrap"><pre class="mermaid" data-src="graph LR
+    I[&#x22;Token hidden state&#x22;] --> R[&#x22;Router\n(linear -> softmax)&#x22;]
+    R --> T[&#x22;Top-k selection&#x22;]
+    T --> E1[&#x22;Expert 1\n(MLP)&#x22;]
+    T --> E2[&#x22;Expert 2\n(MLP)&#x22;]
+    T --> EN[&#x22;Expert 64\n(MLP, unused)&#x22;]
+    E1 --> S[&#x22;Weighted sum&#x22;]
+    E2 --> S
+    S --> O[&#x22;Output&#x22;]
+
+    style EN fill:#eeeeee,stroke:#999,color:#999
+    style E1 fill:#1a1a2e,stroke:#51cf66,color:#fff
+    style E2 fill:#1a1a2e,stroke:#51cf66,color:#fff
+    style R fill:#1a1a2e,stroke:#e94560,color:#fff">graph LR
+    I["Token hidden state"] --> R["Router\n(linear -> softmax)"]
+    R --> T["Top-k selection"]
+    T --> E1["Expert 1\n(MLP)"]
+    T --> E2["Expert 2\n(MLP)"]
+    T --> EN["Expert 64\n(MLP, unused)"]
+    E1 --> S["Weighted sum"]
+    E2 --> S
+    S --> O["Output"]
+
+    style EN fill:#eeeeee,stroke:#999,color:#999
+    style E1 fill:#1a1a2e,stroke:#51cf66,color:#fff
+    style E2 fill:#1a1a2e,stroke:#51cf66,color:#fff
+    style R fill:#1a1a2e,stroke:#e94560,color:#fff</pre></div>
+<p>Pros: same compute, more parameters, better capacity. Cons: the expert memory still has to live somewhere (so serving needs more VRAM than a dense equivalent), load-balancing the router is hard, and fine-tuning the router during alignment is its own research area.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="knob-6-pre-norm-stays">Knob 6: Pre-norm stays</h3><a class="sl-anchor-link" href="#knob-6-pre-norm-stays"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Knob 6: Pre-norm stays”</span></a></div>
+<p>The original transformer applied layer norm after each sublayer. Every open model since GPT-2 puts it <em>before</em> each sublayer. Pre-norm is strictly easier to train at depth. Nothing to argue about.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="model-by-model-diff">Model-by-Model Diff</h3><a class="sl-anchor-link" href="#model-by-model-diff"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Model-by-Model Diff”</span></a></div>
+<p>Here is the table that makes all of this concrete.</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Year</th>
+<th>Total Params</th>
+<th>Active Params</th>
+<th>Norm</th>
+<th>Activation</th>
+<th>Position</th>
+<th>Attention</th>
+<th>MoE</th>
+<th>Context</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPT-2 Small</td>
+<td>2019</td>
+<td>124M</td>
+<td>124M</td>
+<td>LayerNorm</td>
+<td>GELU</td>
+<td>Learned</td>
+<td>MHA (12 heads)</td>
+<td>no</td>
+<td>1k</td>
+</tr>
+<tr>
+<td>Llama 3 8B</td>
+<td>2024</td>
+<td>8B</td>
+<td>8B</td>
+<td>RMSNorm</td>
+<td>SwiGLU</td>
+<td>RoPE</td>
+<td>GQA (32/8)</td>
+<td>no</td>
+<td>128k</td>
+</tr>
+<tr>
+<td>Llama 3 70B</td>
+<td>2024</td>
+<td>70B</td>
+<td>70B</td>
+<td>RMSNorm</td>
+<td>SwiGLU</td>
+<td>RoPE</td>
+<td>GQA (64/8)</td>
+<td>no</td>
+<td>128k</td>
+</tr>
+<tr>
+<td>Llama 3 405B</td>
+<td>2024</td>
+<td>405B</td>
+<td>405B</td>
+<td>RMSNorm</td>
+<td>SwiGLU</td>
+<td>RoPE</td>
+<td>GQA (128/16)</td>
+<td>no</td>
+<td>128k</td>
+</tr>
+<tr>
+<td>Mistral 7B</td>
+<td>2023</td>
+<td>7.2B</td>
+<td>7.2B</td>
+<td>RMSNorm</td>
+<td>SwiGLU</td>
+<td>RoPE</td>
+<td>GQA</td>
+<td>no</td>
+<td>32k</td>
+</tr>
+<tr>
+<td>Mixtral 8x7B</td>
+<td>2023</td>
+<td>47B</td>
+<td>13B</td>
+<td>RMSNorm</td>
+<td>SwiGLU</td>
+<td>RoPE</td>
+<td>GQA</td>
+<td>yes (8 experts, top-2)</td>
+<td>32k</td>
+</tr>
+<tr>
+<td>Gemma 2 9B</td>
+<td>2024</td>
+<td>9B</td>
+<td>9B</td>
+<td>RMSNorm (pre+post)</td>
+<td>GeGLU</td>
+<td>RoPE + sliding</td>
+<td>GQA</td>
+<td>no</td>
+<td>8k</td>
+</tr>
+<tr>
+<td>Qwen 2.5 72B</td>
+<td>2024</td>
+<td>72B</td>
+<td>72B</td>
+<td>RMSNorm</td>
+<td>SwiGLU</td>
+<td>RoPE (YaRN)</td>
+<td>GQA (64/8)</td>
+<td>no</td>
+<td>128k</td>
+</tr>
+<tr>
+<td>DeepSeek V2 236B</td>
+<td>2024</td>
+<td>236B</td>
+<td>21B</td>
+<td>RMSNorm</td>
+<td>SwiGLU</td>
+<td>RoPE</td>
+<td>MLA</td>
+<td>yes (160 experts, top-6)</td>
+<td>128k</td>
+</tr>
+<tr>
+<td>DeepSeek V3</td>
+<td>2024</td>
+<td>671B</td>
+<td>37B</td>
+<td>RMSNorm</td>
+<td>SwiGLU</td>
+<td>RoPE</td>
+<td>MLA</td>
+<td>yes (256 experts, top-8)</td>
+<td>128k</td>
+</tr>
+<tr>
+<td>Spark-X2.5 4B</td>
+<td>2026</td>
+<td>4.1B</td>
+<td>4.1B</td>
+<td>RMSNorm</td>
+<td>GeGLU</td>
+<td>RoPE + sliding (3:1)</td>
+<td>GQA (16/4), gated output</td>
+<td>no</td>
+<td>1M</td>
+</tr>
+</tbody>
+</table>
+<p>Scan the columns. RMSNorm is universal. SwiGLU or its GeGLU cousin is universal. RoPE is universal. GQA is universal above 7B except when replaced by MLA. MoE is the differentiator at the top end.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="reading-a-configjson">Reading a config.json</h3><a class="sl-anchor-link" href="#reading-a-configjson"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Reading a config.json”</span></a></div>
+<p>Llama 3 8B config:</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#abb2bf">{</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#abb2bf">  </span></span><span style="--0:#abb2bf">"hidden_size": 4096,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#abb2bf">  </span></span><span style="--0:#abb2bf">"intermediate_size": 14336,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#abb2bf">  </span></span><span style="--0:#abb2bf">"num_hidden_layers": 32,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#abb2bf">  </span></span><span style="--0:#abb2bf">"num_attention_heads": 32,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#abb2bf">  </span></span><span style="--0:#abb2bf">"num_key_value_heads": 8,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#abb2bf">  </span></span><span style="--0:#abb2bf">"max_position_embeddings": 131072,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#abb2bf">  </span></span><span style="--0:#abb2bf">"rope_theta": 500000.0,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#abb2bf">  </span></span><span style="--0:#abb2bf">"rms_norm_eps": 1e-5,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#abb2bf">  </span></span><span style="--0:#abb2bf">"vocab_size": 128256</span></div></div><div class="ec-line"><div class="code"><span style="--0:#abb2bf">}</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="{  &#x22;hidden_size&#x22;: 4096,  &#x22;intermediate_size&#x22;: 14336,  &#x22;num_hidden_layers&#x22;: 32,  &#x22;num_attention_heads&#x22;: 32,  &#x22;num_key_value_heads&#x22;: 8,  &#x22;max_position_embeddings&#x22;: 131072,  &#x22;rope_theta&#x22;: 500000.0,  &#x22;rms_norm_eps&#x22;: 1e-5,  &#x22;vocab_size&#x22;: 128256}"><div></div></button></div></figure></div>
+<p>Every field corresponds to something you have already implemented.
+Newer configs add a few fields that change the arithmetic, so the calculator
+reads them when they are present:</p>
+<ul>
+<li>
+<p><code dir="auto">head_dim</code>: set explicitly when it is not <code dir="auto">hidden_size / num_attention_heads</code>. Gemma 2 9B has hidden 3584 and 16 heads but <code dir="auto">head_dim</code> 256, so its Q projection is 3584 x 4096, not square.</p>
+</li>
+<li>
+<p><code dir="auto">tie_word_embeddings</code>: whether the LM head reuses the embedding matrix. Llama 3 8B does not tie, which is 525M parameters you miss if you only count the embedding once.</p>
+</li>
+<li>
+<p><code dir="auto">layer_types</code> and <code dir="auto">sliding_window</code>: which layers attend to the full context and which only to the last W tokens.</p>
+</li>
+<li>
+<p><code dir="auto">hidden_size</code>: embedding dimension.</p>
+</li>
+<li>
+<p><code dir="auto">intermediate_size</code>: MLP hidden size (3.5x hidden — SwiGLU math).</p>
+</li>
+<li>
+<p><code dir="auto">num_hidden_layers</code>: stack depth.</p>
+</li>
+<li>
+<p><code dir="auto">num_attention_heads</code>: Q heads.</p>
+</li>
+<li>
+<p><code dir="auto">num_key_value_heads</code>: KV heads (GQA).</p>
+</li>
+<li>
+<p><code dir="auto">max_position_embeddings</code>: training context length.</p>
+</li>
+<li>
+<p><code dir="auto">rope_theta</code>: RoPE base frequency. Meta scaled it from the default 10k to 500k for long-context extrapolation.</p>
+</li>
+<li>
+<p><code dir="auto">rms_norm_eps</code>: numerical stability.</p>
+</li>
+<li>
+<p><code dir="auto">vocab_size</code>: tokens.</p>
+</li>
+</ul>
+<p>From these alone you compute total parameters, KV cache, and peak activation memory. See <code dir="auto">code/main.py</code> for the exact formulas.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="activation-memory-budget">Activation memory budget</h3><a class="sl-anchor-link" href="#activation-memory-budget"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Activation memory budget”</span></a></div>
+<p>Activations dominate training memory above a few billion parameters. The rule of thumb for pre-training (with gradient checkpointing):</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#abb2bf">activation_mem ~ batch_size * seq_len * hidden_size * num_layers * bytes_per_element</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="activation_mem ~ batch_size * seq_len * hidden_size * num_layers * bytes_per_element"><div></div></button></div></figure></div>
+<p>For Llama 3 8B at batch 1, seq 8192, BF16, 32 layers, hidden 4096: roughly 8 GB just for activations with checkpointing, 40 GB without. This is why flash-attention and ring-attention matter — they rewrite the attention computation so activations fit.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="kv-cache-budget">KV Cache budget</h3><a class="sl-anchor-link" href="#kv-cache-budget"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “KV Cache budget”</span></a></div>
+<p>For inference at max context:</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#abb2bf">kv_cache = 2 * num_layers * num_kv_heads * head_dim * max_seq_len * bytes_per_element</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="kv_cache = 2 * num_layers * num_kv_heads * head_dim * max_seq_len * bytes_per_element"><div></div></button></div></figure></div>
+<p>Llama 3 8B at 128k context, BF16, head_dim = hidden / num_heads = 128:
+<code dir="auto">2 * 32 * 8 * 128 * 131072 * 2 = 17.2 GB</code> per sequence.</p>
+<p>The 8B weights are 16 GB in BF16. The KV cache for a single 128k sequence is larger than the weights. This is the memory pressure driving GQA, MLA, and KV cache quantization research.</p>
+<p>The formula assumes every layer caches the whole sequence. A sliding-window layer only ever needs the last W tokens, so for hybrid models the sum runs per layer:</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#abb2bf">kv_cache = 2 * num_kv_heads * head_dim * bytes_per_element</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#abb2bf">           </span></span><span style="--0:#abb2bf">* (full_layers * max_seq_len + sliding_layers * min(W, max_seq_len))</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="kv_cache = 2 * num_kv_heads * head_dim * bytes_per_element           * (full_layers * max_seq_len + sliding_layers * min(W, max_seq_len))"><div></div></button></div></figure></div>
+<p>Spark-X2.5 4B runs three sliding-window layers (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">W</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="katex-base"><span class="katex-strut" style="height:0.6444em;"></span><span class="mord">512</span></span></span></span>) for every full-attention layer: 9 full and 27 sliding out of 36. At its 1M-token context that is about 38.7 GB (36 GiB) per sequence in BF16. If all 36 layers cached the full context it would be 154.6 GB (144 GiB). The full layers carry nearly the whole cost, which is why the ratio of full to sliding layers is the number to read first on a long-context model.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="when-each-model-wins">When Each Model Wins</h3><a class="sl-anchor-link" href="#when-each-model-wins"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “When Each Model Wins”</span></a></div>
+<ul>
+<li><strong>Single 80GB GPU, no MoE</strong>: Llama 3 8B, Mistral 7B, Gemma 2 9B. Easy to serve, wide tooling.</li>
+<li><strong>Single node (8x80GB), big capacity</strong>: Llama 3 70B, Qwen 2.5 72B. Highest dense open capability.</li>
+<li><strong>Biggest open capability, accept MoE complexity</strong>: DeepSeek V3, Mixtral 8x22B. Best capability per active FLOP.</li>
+<li><strong>Long-context needs</strong>: Llama 3 (128k with RoPE scaling), DeepSeek (MLA advantage).</li>
+<li><strong>Low-latency serving</strong>: Gemma 2 9B (sliding window cuts long-context compute).</li>
+<li><strong>Long context on a small memory budget</strong>: hybrid sliding-window models such as Spark-X2.5 4B, where only a quarter of the layers pay for the full context.</li>
+</ul>
+<div class="lesson-figure" data-figure="rmsnorm-vs-layernorm" data-figure-id="rmsnorm-vs-layernorm"></div>
+<div class="sl-heading-wrapper level-h2"><h2 id="build-it">Build It</h2><a class="sl-anchor-link" href="#build-it"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Build It”</span></a></div>
+<p>The lesson’s code is a calculator. Given any config.json, it prints parameter count by component, KV cache at max context, SwiGLU MLP ratio, and a short verdict on the architecture (dense / GQA / MLA / MoE).</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="python"><code><div class="ec-line"><div class="code"><span style="--0:#ABB2BF">config </span><span style="--0:#56B6C2">=</span><span style="--0:#ABB2BF"> {</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#98C379">"hidden_size"</span><span style="--0:#ABB2BF">: </span><span style="--0:#D19A66">4096</span><span style="--0:#ABB2BF">, </span><span style="--0:#98C379">"intermediate_size"</span><span style="--0:#ABB2BF">: </span><span style="--0:#D19A66">14336</span><span style="--0:#ABB2BF">,</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#98C379">"num_hidden_layers"</span><span style="--0:#ABB2BF">: </span><span style="--0:#D19A66">32</span><span style="--0:#ABB2BF">, </span><span style="--0:#98C379">"num_attention_heads"</span><span style="--0:#ABB2BF">: </span><span style="--0:#D19A66">32</span><span style="--0:#ABB2BF">,</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#98C379">"num_key_value_heads"</span><span style="--0:#ABB2BF">: </span><span style="--0:#D19A66">8</span><span style="--0:#ABB2BF">, </span><span style="--0:#98C379">"vocab_size"</span><span style="--0:#ABB2BF">: </span><span style="--0:#D19A66">128256</span><span style="--0:#ABB2BF">,</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#98C379">"max_position_embeddings"</span><span style="--0:#ABB2BF">: </span><span style="--0:#D19A66">131072</span><span style="--0:#ABB2BF">,</span></div></div><div class="ec-line"><div class="code"><span style="--0:#ABB2BF">}</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="config = {    &#x22;hidden_size&#x22;: 4096, &#x22;intermediate_size&#x22;: 14336,    &#x22;num_hidden_layers&#x22;: 32, &#x22;num_attention_heads&#x22;: 32,    &#x22;num_key_value_heads&#x22;: 8, &#x22;vocab_size&#x22;: 128256,    &#x22;max_position_embeddings&#x22;: 131072,}"><div></div></button></div></figure></div>
+<p>The script walks the architecture field by field, computes param counts for embedding, attention (with GQA reduction and an explicit <code dir="auto">head_dim</code> when the config sets one), MLP (with SwiGLU or GeGLU expansion), layernorms, and the LM head when it is not tied to the embedding. It then computes the KV cache at the stated context length, layer by layer so sliding-window layers are capped at their window, and prints a summary.</p>
+<p>For the dense models the totals match the published parameter counts exactly: Llama 3 8B comes out at 8,030,261,248, Gemma 2 9B at 9,241,705,984, and Spark-X2.5 4B at 4,112,079,360. Qwen 2.5 72B is off by 819,200, which is Exercise 1.</p>
+<p>See <code dir="auto">code/main.py</code> for the implementation.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="use-it">Use It</h2><a class="sl-anchor-link" href="#use-it"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Use It”</span></a></div>
+<p>Run the calculator on Llama 3 8B, Mistral 7B, Mixtral 8x7B, and DeepSeek V3 configs bundled in the script. Compare the parameter breakdowns. Notice that the MoE models have a total param count that dwarfs the dense models but an active param count that is often smaller. Notice that DeepSeek V3’s KV cache is smaller than Llama 3 405B’s despite having more total parameters — that is MLA in action.</p>
+<p>Then compare Gemma 2 9B and Spark-X2.5 4B. For both, the script prints the KV cache it actually needs and the KV cache it would need if every layer were full attention. Gemma 2 alternates 1:1 at an 8k context, so the saving is modest. Spark-X2.5 goes 3:1 with a 512-token window at 1M, so the saving is 4x.</p>
+<p>Then plug in a config for any model you have locally, read the summary, and decide whether it fits your GPU.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="ship-it">Ship It</h2><a class="sl-anchor-link" href="#ship-it"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Ship It”</span></a></div>
+<p>This lesson produces <code dir="auto">outputs/skill-open-model-picker.md</code>. Given a deployment target (GPU type, VRAM, context length, latency budget) and a task profile (chat, code, reasoning, long-context), it recommends an open model, a quantization scheme from Lesson 11, and an inference stack from Lesson 12, with explicit reasoning about the six architectural knobs.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="exercises">Exercises</h2><a class="sl-anchor-link" href="#exercises"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Exercises”</span></a></div>
+<ol>
+<li>
+<p>Read the Qwen 2.5 72B config from HuggingFace. Compute total parameters from scratch. Compare to the HF-reported value and identify where any delta comes from (head dim rounding, KV sharing factor, etc.).</p>
+</li>
+<li>
+<p>DeepSeek V3 uses 256 experts with top-8 routing. Compute the ratio of activated experts to total experts and compare to Mixtral 8x7B’s top-2 of 8. What does the shift from sparse (25%) to denser sparse (3%) imply about capacity per FLOP?</p>
+</li>
+<li>
+<p>Compute the KV cache for Llama 3 405B at 128k context in FP8 and BF16. At FP8 it is half the BF16 number. How many parallel sequences can you serve on a single 8xH100 node (80GB each = 640GB total, minus weight memory)?</p>
+</li>
+<li>
+<p>Gemma 2 alternates full-attention and sliding-window-attention layers. Write the math for the KV cache when half the layers use a 4096-token sliding window instead of full context. How much memory does that save at 8k total context?</p>
+</li>
+<li>
+<p>Find a recent frontier open model that was released after this lesson was written. Identify which of the six knobs it picked and whether it introduced a seventh knob. The curriculum will feel out of date the moment a new architecture ships — the goal is to update your table without rebuilding your mental model.</p>
+</li>
+</ol>
+<div class="sl-heading-wrapper level-h2"><h2 id="key-terms">Key Terms</h2><a class="sl-anchor-link" href="#key-terms"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Key Terms”</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>What people say</th>
+<th>What it actually means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RMSNorm</td>
+<td>“LayerNorm without the mean”</td>
+<td>Normalize by root mean square only, with a learned scale — cheaper and comparable to LayerNorm</td>
+</tr>
+<tr>
+<td>RoPE</td>
+<td>“Rotary positions”</td>
+<td>Rotate each Q and K vector in 2D pairs by an angle that depends on position — extrapolates beyond training length with scaling tricks</td>
+</tr>
+<tr>
+<td>SwiGLU</td>
+<td>“The new MLP activation”</td>
+<td>Gated linear unit with Swish: <code dir="auto">(xW1) * sigmoid(xW1) * xV</code> — standard in every 2024+ open model</td>
+</tr>
+<tr>
+<td>GQA</td>
+<td>“Middle ground attention”</td>
+<td>Grouped-Query Attention: G groups of Q heads share one K and one V head — shrinks KV cache without MQA’s accuracy hit</td>
+</tr>
+<tr>
+<td>MLA</td>
+<td>“DeepSeek’s attention”</td>
+<td>Multi-Head Latent Attention: compress K/V into a shared low-rank latent, decompress per head — smallest KV cache for large models</td>
+</tr>
+<tr>
+<td>MoE</td>
+<td>“Sparse experts”</td>
+<td>Mixture of Experts: N MLPs per block, router picks top-k per token — huge total params, small active params</td>
+</tr>
+<tr>
+<td>Top-k routing</td>
+<td>“Pick k experts per token”</td>
+<td>The router computes a score per expert and activates the k highest — typical k is 2 (Mixtral) to 8 (DeepSeek)</td>
+</tr>
+<tr>
+<td>YaRN</td>
+<td>“Stretch RoPE”</td>
+<td>Yet another RoPE extension — interpolates rotary angles to extend context from 8k to 128k+ at inference time</td>
+</tr>
+<tr>
+<td>Sliding-window attention</td>
+<td>“Don’t attend to everything”</td>
+<td>Each token attends only to the last <span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.1389em;">W</span></span></span></span> tokens — caps attention cost at <span class="katex"><span class="katex-html" aria-hidden="true"><span class="katex-base"><span class="katex-strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.1389em;">W</span><span class="mclose">)</span></span></span></span> per token, used in Gemma 2 and early Mistral</td>
+</tr>
+<tr>
+<td>Active params</td>
+<td>“What runs per token”</td>
+<td>For MoE models, the parameter count that sees a forward pass per token (much smaller than total params) — governs per-token FLOPs</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h2"><h2 id="further-reading">Further Reading</h2><a class="sl-anchor-link" href="#further-reading"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Further Reading”</span></a></div>
+<ul>
+<li><a href="https://arxiv.org/abs/2407.21783">Dubey et al., 2024 — “The Llama 3 Herd of Models”</a> — the architectural and training reference for the dense Llama 3 family</li>
+<li><a href="https://arxiv.org/abs/2412.19437">DeepSeek-AI, 2024 — “DeepSeek-V3 Technical Report”</a> — MLA plus auxiliary-loss-free load balancing plus 671B MoE</li>
+<li><a href="https://arxiv.org/abs/2401.04088">Jiang et al., 2024 — “Mixtral of Experts”</a> — the canonical MoE open model paper</li>
+<li><a href="https://arxiv.org/abs/2104.09864">Su et al., 2021 — “RoFormer: Enhanced Transformer with Rotary Position Embedding”</a> — the RoPE paper</li>
+<li><a href="https://arxiv.org/abs/2002.05202">Shazeer, 2020 — “GLU Variants Improve Transformer”</a> — SwiGLU, GeGLU, and friends</li>
+<li><a href="https://arxiv.org/abs/2305.13245">Ainslie et al., 2023 — “GQA: Training Generalized Multi-Query Transformer Models”</a> — the GQA paper</li>
+<li><a href="https://arxiv.org/abs/2408.00118">Gemma 2 Team, 2024 — “Gemma 2: Improving Open Language Models at a Practical Size”</a> — hybrid full+sliding attention, pre+post-norm</li>
+<li><a href="https://arxiv.org/abs/2412.15115">Qwen Team, 2024 — “Qwen 2.5 Technical Report”</a> — YaRN context extension and long-context training recipes</li>
+</ul><script type="module" src="/AI-Learning/_astro/LessonAssessment.astro_astro_type_script_index_0_lang.BvQcpjLa.js"></script></div><script id="ail-ui" type="application/json">{"run":"Run","runAgain":"Run again","running":"Running…","loadingPython":"Loading Python for the first time (works offline)…","runNote":"Runs in your browser, after the earlier code on this page","runNeedsLocal":"This code needs {lib}, which cannot run in the browser. Run it on your own machine.","noOutput":"(no printed output)","timeout":"Timed out: the code ran longer than {s} seconds","output":"Output","assessTitle":"Check your understanding","assessSub":"Pick a format and a difficulty level. Scores are saved in your browser.","tabQuiz":"Multiple choice","tabCode":"Hands-on","level":"Level","levels":{"easy":"Easy","medium":"Medium","hard":"Hard","mixed":"Mixed"},"questionOf":"Question {i} of {n}","best":"Best","correct":"Correct!","wrong":"Not quite","next":"Next question","finish":"See your score","resultTitle":"Your score","passed":"Level passed","notPassed":"Not passed yet. You need at least 70%.","retry":"Try again","fromUpstream":"original","letters":["A","B","C","D","E"],"exEditable":"edit the code here","exCheck":"Check answer","exChecking":"Checking…","exHint":"Get a hint","exHintN":"Hint {i}/{n}:","exReset":"Reset","exSolution":"Show solution","exSolutionLocked":"Solution (unlocks on pass or after 3 tries)","exAllPass":"All checks pass! Solution unlocked.","exSomeFail":"{ok} of {n} checks pass. Read the failing one and fix your code.","exHidden":"Hidden tests: {ok} of {n} pass","exHiddenWait":"{n} hidden tests run once every visible check passes","exError":"Your code raised an error","exMinutes":"~{m} min","exDone":"Passed","solutionTitle":"Solution","bannerTranslated":"Original lesson","bannerCurrent":"from AI Engineering from Scratch (MIT)","bannerStale":"","bannerViewEn":"Read in Thai","bannerSource":"Lesson source on GitHub","downloads":"Lesson files"}</script><script src="/AI-Learning/vendor/figures/lesson-figures.js"></script><script src="/AI-Learning/vendor/figures/figure-manifest.js"></script><script type="module" src="/AI-Learning/_astro/MarkdownContent.astro_astro_type_script_index_0_lang.DvzMgOB0.js"></script><footer class="sl-flex" data-astro-cid-ddtxxk7k><div class="meta sl-flex" data-astro-cid-ddtxxk7k></div><div class="pagination-links print:hidden" dir="ltr" data-astro-cid-b5raizh3><a href="/AI-Learning/en/10-llms-from-scratch/13-building-complete-llm-pipeline/" rel="prev" data-astro-cid-b5raizh3><svg data-astro-cid-b5raizh3="true" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;" data-astro-cid-hkc32dio><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg><span data-astro-cid-b5raizh3>Previous<br data-astro-cid-b5raizh3><span class="link-title" data-astro-cid-b5raizh3>13 · Building a Complete LLM Pipeline</span></span></a><a href="/AI-Learning/en/10-llms-from-scratch/15-speculative-decoding-eagle3/" rel="next" data-astro-cid-b5raizh3><svg data-astro-cid-b5raizh3="true" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;" data-astro-cid-hkc32dio><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg><span data-astro-cid-b5raizh3>Next<br data-astro-cid-b5raizh3><span class="link-title" data-astro-cid-b5raizh3>15 · Speculative Decoding and EAGLE-3</span></span></a></div></footer></div></div></main></div></div></div></div></body></html>
