@@ -1794,6 +1794,82 @@
     {
       "en": "deterministic",
       "th": "กำหนดผลแน่นอน (deterministic)"
+    },
+    {
+      "en": "norm",
+      "th": "นอร์ม",
+      "first": "นอร์ม (norm)"
+    },
+    {
+      "en": "L1 norm / Manhattan distance",
+      "th": "นอร์ม L1 / ระยะทางแบบแมนฮัตตัน"
+    },
+    {
+      "en": "L2 norm / Euclidean distance",
+      "th": "นอร์ม L2 / ระยะทางแบบยุคลิด"
+    },
+    {
+      "en": "L-infinity norm / Chebyshev distance",
+      "th": "นอร์ม L-infinity / ระยะทางแบบเชบีเชฟ"
+    },
+    {
+      "en": "Lp norm",
+      "th": "นอร์ม Lp"
+    },
+    {
+      "en": "unit ball",
+      "th": "ลูกบอลหนึ่งหน่วย",
+      "first": "ลูกบอลหนึ่งหน่วย (unit ball)"
+    },
+    {
+      "en": "cosine distance",
+      "th": "cosine distance"
+    },
+    {
+      "en": "Mahalanobis distance",
+      "th": "ระยะทางแบบ Mahalanobis"
+    },
+    {
+      "en": "whitening",
+      "th": "whitening"
+    },
+    {
+      "en": "Jaccard similarity",
+      "th": "Jaccard similarity"
+    },
+    {
+      "en": "edit distance (Levenshtein)",
+      "th": "edit distance (ระยะ Levenshtein)"
+    },
+    {
+      "en": "Wasserstein distance (Earth mover's distance)",
+      "th": "ระยะทางแบบ Wasserstein (Earth mover's distance)"
+    },
+    {
+      "en": "triangle inequality",
+      "th": "อสมการสามเหลี่ยม",
+      "first": "อสมการสามเหลี่ยม (triangle inequality)"
+    },
+    {
+      "en": "Lasso / Ridge / Elastic Net",
+      "th": "Lasso / Ridge / Elastic Net"
+    },
+    {
+      "en": "sparsity / sparse",
+      "th": "ความเบาบาง / เบาบาง (sparse)"
+    },
+    {
+      "en": "approximate nearest neighbor (ANN)",
+      "th": "การค้นหาเพื่อนบ้านใกล้สุดโดยประมาณ (ANN)"
+    },
+    {
+      "en": "HNSW",
+      "th": "HNSW"
+    },
+    {
+      "en": "dynamic programming",
+      "th": "การโปรแกรมแบบพลวัต",
+      "first": "การโปรแกรมแบบพลวัต (dynamic programming)"
     }
   ]
 }

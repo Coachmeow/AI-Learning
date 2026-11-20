@@ -1,0 +1,13 @@
+{
+  "minutes": 15,
+  "title": {"th": "Edit distance ด้วยการโปรแกรมแบบพลวัต", "en": "Edit distance by dynamic programming"},
+  "prompt": {
+    "th": "เขียน `edit_distance(a, b)` ที่คืนจำนวนการแทรก ลบ และแทนที่ตัวอักษรที่น้อยที่สุดเพื่อเปลี่ยนสตริง `a` เป็น `b` (ระยะ Levenshtein)\n\n- สร้างตาราง `d` ขนาด (len(a) + 1) x (len(b) + 1) โดย `d[i][j]` คือระยะระหว่าง `a[:i]` กับ `b[:j]`\n- แถวแรกและคอลัมน์แรก: `d[i][0] = i` และ `d[0][j] = j` (สตริงว่างต้องแทรกหรือลบทุกตัว)\n- ช่องอื่น: ค่าน้อยที่สุดของ ลบ `d[i-1][j] + 1`, แทรก `d[i][j-1] + 1` และแทนที่ `d[i-1][j-1] + (0 ถ้าตัวอักษรเหมือนกัน ไม่อย่างนั้น 1)`\n\nมี test ซ่อนอยู่บางส่วน",
+    "en": "Write `edit_distance(a, b)`. It returns the minimum number of single-character insertions, deletions and substitutions that turn string `a` into `b` (the Levenshtein distance).\n\n- Build a table `d` of size (len(a) + 1) x (len(b) + 1), where `d[i][j]` is the distance between `a[:i]` and `b[:j]`.\n- First row and column: `d[i][0] = i` and `d[0][j] = j` (from an empty string you insert or delete every character).\n- Other cells: the minimum of delete `d[i-1][j] + 1`, insert `d[i][j-1] + 1`, and substitute `d[i-1][j-1] + (0 if the characters match, else 1)`.\n\nSome tests are hidden."
+  },
+  "hints": [
+    {"th": "ตัวอักษรที่เทียบในช่อง (i, j) คือ `a[i - 1]` กับ `b[j - 1]` เพราะแถว 0 และคอลัมน์ 0 แทนสตริงว่าง", "en": "Cell (i, j) compares `a[i - 1]` with `b[j - 1]`, because row 0 and column 0 stand for the empty string."},
+    {"th": "อย่าเริ่มแถวแรกและคอลัมน์แรกเป็น 0: เปลี่ยน \"abc\" เป็นสตริงว่างต้องลบ 3 ครั้ง", "en": "Don't start the first row and column at 0: turning \"abc\" into the empty string takes 3 deletions."},
+    {"th": "ต้องมีครบทั้งสามทาง ถ้าขาดทางลบหรือแทรก \"flaw\" กับ \"lawn\" จะได้มากกว่า 2", "en": "All three moves are needed; without deletion or insertion, \"flaw\" and \"lawn\" come out above 2."}
+  ]
+}

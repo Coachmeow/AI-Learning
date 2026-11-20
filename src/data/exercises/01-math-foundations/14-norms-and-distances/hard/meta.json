@@ -1,0 +1,13 @@
+{
+  "minutes": 35,
+  "title": {"th": "ระยะ Mahalanobis จากข้อมูล", "en": "Mahalanobis distance from data"},
+  "prompt": {
+    "th": "เขียน `mahalanobis(x, y, data)` ที่คืนระยะ Mahalanobis ระหว่างจุด `x` กับ `y` โดยใช้เมทริกซ์ความแปรปรวนร่วม `S` ที่ประมาณจาก `data` (list ของแถว n แถว x d คอลัมน์) ไม่ใช้ NumPy\n\n- `S` คือความแปรปรวนร่วมแบบตัวอย่างของคอลัมน์ (จัดกึ่งกลาง แล้วหารด้วย n - 1)\n- ระยะคือ `sqrt(diff · z)` โดย `diff = x - y` และ `z` คือคำตอบของ `S z = diff` **แก้ระบบสมการด้วยการกำจัดแบบเกาส์และ partial pivoting** แทนการหาเมทริกซ์ผกผัน\n- ถ้า pivot ใดมีค่าสัมบูรณ์ต่ำกว่า `1e-12` แปลว่า `S` เป็นเอกฐาน (เช่น คอลัมน์หนึ่งเป็นผลคูณของอีกคอลัมน์) ให้ `raise ValueError`\n\nมี test ซ่อนอยู่บางส่วน",
+    "en": "Write `mahalanobis(x, y, data)`. It returns the Mahalanobis distance between points `x` and `y`, using the covariance matrix `S` estimated from `data` (a list of n rows x d columns), without NumPy.\n\n- `S` is the sample covariance of the columns (center, then divide by n - 1).\n- The distance is `sqrt(diff · z)`, where `diff = x - y` and `z` solves `S z = diff`. **Solve the system by Gaussian elimination with partial pivoting** instead of computing an inverse.\n- If any pivot has absolute value below `1e-12`, `S` is singular (for example, one column is a multiple of another): `raise ValueError`.\n\nSome tests are hidden."
+  },
+  "hints": [
+    {"th": "เขียนสองฟังก์ชันช่วย: `covariance(data)` (แบบบทที่ 10) และ `solve(S, b)` ที่ทำการกำจัดบนเมทริกซ์แต่งเติม [S | b] แล้วแทนค่าย้อนกลับ", "en": "Write two helpers: `covariance(data)` (as in lesson 10) and `solve(S, b)`, which eliminates on the augmented matrix [S | b] and then back-substitutes."},
+    {"th": "ในแต่ละคอลัมน์ c เลือกแถว p ≥ c ที่ `abs(M[p][c])` มากที่สุด สลับขึ้นมา แล้วลบแถว c ที่คูณด้วย `M[r][c] / M[c][c]` ออกจากทุกแถว r > c", "en": "In each column c, pick the row p ≥ c with the largest `abs(M[p][c])`, swap it up, then subtract row c times `M[r][c] / M[c][c]` from every row r > c."},
+    {"th": "ใช้ทั้งเมทริกซ์ S รวมช่องนอกเส้นทแยงมุม: ถ้าใช้แค่เส้นทแยงมุม (หารด้วยความแปรปรวนของแต่ละตัว) จะไม่คิดถึงสหสัมพันธ์ และตอบผิดกับข้อมูลส่วนสูง-น้ำหนัก", "en": "Use all of S, including the off-diagonal entries: dividing by each variance alone ignores the correlation and gets the height-weight data wrong."}
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "minutes": 6,
+  "title": {"th": "เติมโค้ด: cosine similarity", "en": "Fill in: cosine similarity"},
+  "prompt": {
+    "th": "เติม `cosine_similarity(a, b)` ให้คืน dot product ของ `a` กับ `b` หารด้วยผลคูณของนอร์ม L2 ของทั้งสอง ค่าที่ได้อยู่ระหว่าง -1 ถึง 1 และไม่ขึ้นกับความยาวของเวกเตอร์ dot product และนอร์มคำนวณไว้ให้แล้ว เติมบรรทัดที่มี `# TODO`",
+    "en": "Complete `cosine_similarity(a, b)` so it returns the dot product of `a` and `b` divided by the product of their L2 norms. The result lies between -1 and 1 and doesn't depend on the vectors' lengths. The dot product and norms are already computed. Fill in the `# TODO` line."
+  },
+  "hints": [
+    {"th": "หารด้วยผลคูณของนอร์มทั้งสอง `norm_a * norm_b` ไม่ใช่ผลบวก", "en": "Divide by the product of both norms, `norm_a * norm_b`, not their sum."},
+    {"th": "ฟังก์ชันนี้คืน similarity ไม่ใช่ distance จึงไม่ต้องลบออกจาก 1", "en": "This returns the similarity, not the distance, so don't subtract it from 1."},
+    {"th": "`return dot / (norm_a * norm_b)`", "en": "`return dot / (norm_a * norm_b)`"}
+  ]
+}

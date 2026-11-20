@@ -1,0 +1,486 @@
+{
+  "lesson": "01-math-foundations/14-norms-and-distances",
+  "source_hash": "b680d4daed465667166c76e5cc1b4e2a1b2ab2332ee584b2562d495e8adeb7d7",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What does cosine similarity measure between two vectors?",
+        "th": "Cosine similarity วัดอะไรระหว่างเวกเตอร์สองตัว?"
+      },
+      "options": [
+        {
+          "en": "The angle between them, ignoring their magnitudes",
+          "th": "มุมระหว่างเวกเตอร์ โดยไม่สนขนาดของมัน"
+        },
+        {
+          "en": "The Euclidean distance between them",
+          "th": "ระยะทางแบบยุคลิดระหว่างเวกเตอร์"
+        },
+        {
+          "en": "The maximum difference in any single dimension",
+          "th": "ผลต่างที่มากที่สุดในมิติใดมิติหนึ่ง"
+        },
+        {
+          "en": "The sum of their element-wise products",
+          "th": "ผลรวมของผลคูณทีละสมาชิก"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Cosine similarity measures the cosine of the angle between two vectors, normalized by their magnitudes. It ranges from -1 (opposite) to +1 (same direction) and ignores vector length, which is why it dominates in NLP where document length is noise.",
+        "th": "Cosine similarity วัดค่า cosine ของมุมระหว่างเวกเตอร์สองตัว โดยหารด้วยขนาดของมัน ค่าอยู่ระหว่าง -1 (ตรงข้าม) ถึง +1 (ทิศเดียวกัน) และไม่สนความยาวของเวกเตอร์ นี่คือเหตุผลที่มันครองงาน NLP ซึ่งความยาวของเอกสารเป็นสัญญาณรบกวน"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "Why is L1 distance called 'Manhattan distance'?",
+        "th": "ทำไมระยะ L1 จึงเรียกว่า 'ระยะทางแบบแมนฮัตตัน'?"
+      },
+      "options": [
+        {
+          "en": "It only works in exactly two dimensions",
+          "th": "ใช้ได้เฉพาะสองมิติพอดี"
+        },
+        {
+          "en": "It computes the maximum difference across all dimensions",
+          "th": "คำนวณผลต่างที่มากที่สุดในทุกมิติ"
+        },
+        {
+          "en": "It was invented in Manhattan",
+          "th": "ถูกคิดค้นที่แมนฮัตตัน"
+        },
+        {
+          "en": "It measures distance along a grid, as if walking on city blocks",
+          "th": "วัดระยะทางตามตาราง เหมือนเดินตามช่วงตึกในเมือง"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "L1 distance sums the absolute differences along each axis, which corresponds to the shortest path on a grid where you can only move along axes (no diagonals) — like walking on a city street grid.",
+        "th": "ระยะ L1 รวมผลต่างสัมบูรณ์ตามแต่ละแกน ซึ่งตรงกับทางที่สั้นที่สุดบนตารางที่เดินได้แค่ตามแกน (ไม่มีทแยง) เหมือนเดินบนถนนที่เป็นตารางในเมือง"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "What is the L1 distance between (1, 1) and (4, 5)?",
+        "th": "ระยะ L1 ระหว่าง (1, 1) กับ (4, 5) คือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "5",
+          "th": "5"
+        },
+        {
+          "en": "7",
+          "th": "7"
+        },
+        {
+          "en": "4",
+          "th": "4"
+        },
+        {
+          "en": "25",
+          "th": "25"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "L1 adds the absolute differences: |4 - 1| + |5 - 1| = 3 + 4 = 7. The straight-line L2 distance is 5, and the L-infinity distance is 4.",
+        "th": "L1 รวมผลต่างสัมบูรณ์: |4 - 1| + |5 - 1| = 3 + 4 = 7 ส่วนระยะ L2 แบบเส้นตรงคือ 5 และระยะ L-infinity คือ 4"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "What is the Jaccard similarity of {a, b, c} and {b, c, d}?",
+        "th": "Jaccard similarity ของ {a, b, c} กับ {b, c, d} คือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "0.5",
+          "th": "0.5"
+        },
+        {
+          "en": "2/3",
+          "th": "2/3"
+        },
+        {
+          "en": "0.75",
+          "th": "0.75"
+        },
+        {
+          "en": "2",
+          "th": "2"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The intersection {b, c} has 2 elements and the union {a, b, c, d} has 4, so J = 2/4 = 0.5. Dividing by one set's size (3) would give 2/3, which is not Jaccard.",
+        "th": "ส่วนร่วม {b, c} มี 2 สมาชิก และผลรวม {a, b, c, d} มี 4 สมาชิก J จึงเป็น 2/4 = 0.5 การหารด้วยขนาดของเซตเดียว (3) จะได้ 2/3 ซึ่งไม่ใช่ Jaccard"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "What is the edit distance between \"cat\" and \"cut\"?",
+        "th": "Edit distance ระหว่าง \"cat\" กับ \"cut\" คือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "0",
+          "th": "0"
+        },
+        {
+          "en": "1",
+          "th": "1"
+        },
+        {
+          "en": "2",
+          "th": "2"
+        },
+        {
+          "en": "3",
+          "th": "3"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "One substitution (a to u) turns \"cat\" into \"cut\", so the edit distance is 1.",
+        "th": "การแทนที่หนึ่งครั้ง (a เป็น u) เปลี่ยน \"cat\" เป็น \"cut\" ได้ edit distance จึงเป็น 1"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "Why does L1 regularization (Lasso) produce sparse weights while L2 regularization (Ridge) does not?",
+        "th": "ทำไม L1 regularization (Lasso) จึงให้น้ำหนักที่เบาบาง แต่ L2 regularization (Ridge) ไม่ให้?"
+      },
+      "options": [
+        {
+          "en": "L1 uses a larger penalty constant than L2",
+          "th": "L1 ใช้ค่าคงที่ของบทลงโทษที่ใหญ่กว่า L2"
+        },
+        {
+          "en": "The L1 diamond constraint has corners on the axes where weights are zero; loss contours are likely to touch at corners",
+          "th": "ข้อจำกัดรูปข้าวหลามตัดของ L1 มีมุมอยู่บนแกนซึ่งน้ำหนักเป็นศูนย์ และเส้นชั้นของ loss มีแนวโน้มสัมผัสที่มุม"
+        },
+        {
+          "en": "L2 regularization only applies to the bias terms",
+          "th": "L2 regularization ใช้กับพจน์ bias เท่านั้น"
+        },
+        {
+          "en": "L1 regularization clips weights below a threshold to zero",
+          "th": "L1 regularization ตัดน้ำหนักที่ต่ำกว่าเกณฑ์ให้เป็นศูนย์"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The L1 constraint region is a diamond shape with corners aligned with the axes. The loss function's contour ellipses are most likely to first touch the diamond at a corner, where one or more weights are exactly zero. The L2 constraint is a circle with no corners, so the touch point has all weights nonzero.",
+        "th": "บริเวณข้อจำกัดของ L1 เป็นรูปข้าวหลามตัดที่มุมอยู่ตามแนวแกน วงรีเส้นชั้นของฟังก์ชันความสูญเสียมีแนวโน้มสัมผัสข้าวหลามตัดเป็นครั้งแรกที่มุม ซึ่งน้ำหนักหนึ่งตัวหรือมากกว่าเป็นศูนย์พอดี ข้อจำกัดของ L2 เป็นวงกลมที่ไม่มีมุม จุดที่สัมผัสจึงมีน้ำหนักไม่เป็นศูนย์ทุกตัว"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "When would you use Mahalanobis distance instead of Euclidean distance?",
+        "th": "เมื่อไรควรใช้ระยะทางแบบ Mahalanobis แทนระยะทางแบบยุคลิด?"
+      },
+      "options": [
+        {
+          "en": "When features have different scales and are correlated with each other",
+          "th": "เมื่อคุณลักษณะมีสเกลต่างกันและสัมพันธ์กัน"
+        },
+        {
+          "en": "When you need a faster computation than L2",
+          "th": "เมื่อต้องการการคำนวณที่เร็วกว่า L2"
+        },
+        {
+          "en": "When features are all binary (0 or 1)",
+          "th": "เมื่อคุณลักษณะทุกตัวเป็นฐานสอง (0 หรือ 1)"
+        },
+        {
+          "en": "When you are comparing strings instead of vectors",
+          "th": "เมื่อเทียบสตริงแทนเวกเตอร์"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Mahalanobis distance accounts for the covariance structure of the data, decorrelating and normalizing features before computing L2 distance. It correctly handles features at different scales and with correlations, whereas Euclidean distance treats all dimensions equally.",
+        "th": "ระยะทางแบบ Mahalanobis คิดถึงโครงสร้างความแปรปรวนร่วมของข้อมูล โดยขจัดสหสัมพันธ์และปรับสเกลคุณลักษณะก่อนคำนวณระยะ L2 จึงรับมือคุณลักษณะที่สเกลต่างกันและสัมพันธ์กันได้ถูกต้อง ขณะที่ระยะทางแบบยุคลิดมองทุกมิติเท่ากัน"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "Compare a = (1, 2) and b = (2, 4). Which statement is true?",
+        "th": "เทียบ a = (1, 2) กับ b = (2, 4) ข้อใดถูกต้อง?"
+      },
+      "options": [
+        {
+          "en": "Cosine similarity is 1.0 but the L2 distance is √5 ≈ 2.24",
+          "th": "Cosine similarity เป็น 1.0 แต่ระยะ L2 คือ √5 ≈ 2.24"
+        },
+        {
+          "en": "Cosine similarity is 0.5 because b is twice as long",
+          "th": "Cosine similarity เป็น 0.5 เพราะ b ยาวเป็นสองเท่า"
+        },
+        {
+          "en": "Both say they are identical",
+          "th": "ทั้งสองบอกว่าเหมือนกันทุกประการ"
+        },
+        {
+          "en": "The L2 distance is 0 because they point the same way",
+          "th": "ระยะ L2 เป็น 0 เพราะชี้ไปทางเดียวกัน"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "b = 2a, so they point in exactly the same direction: cosine similarity 1.0. Cosine ignores length, but L2 does not: the difference (1, 2) has length √5.",
+        "th": "b = 2a จึงชี้ไปทางเดียวกันพอดี: cosine similarity เป็น 1.0 cosine ไม่สนความยาว แต่ L2 สน: ผลต่าง (1, 2) ยาว √5"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "For (1, 2, 3) and (4, 0, 6), what are the L1, L2 and L-infinity distances?",
+        "th": "สำหรับ (1, 2, 3) กับ (4, 0, 6) ระยะ L1, L2 และ L-infinity คือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "8, about 4.69, and 3",
+          "th": "8, ประมาณ 4.69 และ 3"
+        },
+        {
+          "en": "8, 22, and 3",
+          "th": "8, 22 และ 3"
+        },
+        {
+          "en": "3, about 4.69, and 8",
+          "th": "3, ประมาณ 4.69 และ 8"
+        },
+        {
+          "en": "6, about 4.69, and 3",
+          "th": "6, ประมาณ 4.69 และ 3"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The difference is (-3, 2, -3). L1 = 3 + 2 + 3 = 8, L2 = √(9 + 4 + 9) = √22 ≈ 4.69, L-infinity = 3. As always, L∞ ≤ L2 ≤ L1.",
+        "th": "ผลต่างคือ (-3, 2, -3) L1 = 3 + 2 + 3 = 8, L2 = √(9 + 4 + 9) = √22 ≈ 4.69, L-infinity = 3 และเป็นไปตาม L∞ ≤ L2 ≤ L1 เสมอ"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "What is the 1D Wasserstein distance between [0.5, 0.5, 0, 0] and [0, 0, 0.5, 0.5] (bins one unit apart)?",
+        "th": "ระยะ Wasserstein 1 มิติระหว่าง [0.5, 0.5, 0, 0] กับ [0, 0, 0.5, 0.5] (ช่องห่างกันช่องละหนึ่งหน่วย) คือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "0.5",
+          "th": "0.5"
+        },
+        {
+          "en": "1",
+          "th": "1"
+        },
+        {
+          "en": "2",
+          "th": "2"
+        },
+        {
+          "en": "4",
+          "th": "4"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "The CDFs are [0.5, 1, 1, 1] and [0, 0, 0.5, 1]; the absolute differences 0.5 + 1 + 0.5 + 0 add up to 2. Equivalently, all the mass moves 2 bins.",
+        "th": "CDF คือ [0.5, 1, 1, 1] และ [0, 0, 0.5, 1] ผลต่างสัมบูรณ์ 0.5 + 1 + 0.5 + 0 รวมได้ 2 พูดอีกแบบคือมวลทั้งหมดเคลื่อนไป 2 ช่อง"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Now compare the uniform [0.25, 0.25, 0.25, 0.25] with [0, 0, 0.5, 0.5]. What is the Wasserstein distance, and how does it compare with the previous pair's 2?",
+        "th": "เทียบการแจกแจงสม่ำเสมอ [0.25, 0.25, 0.25, 0.25] กับ [0, 0, 0.5, 0.5] ระยะ Wasserstein คือเท่าไร และเทียบกับค่า 2 ของคู่ก่อนหน้าอย่างไร?"
+      },
+      "options": [
+        {
+          "en": "2, the same, because both targets are [0, 0, 0.5, 0.5]",
+          "th": "2 เท่ากัน เพราะเป้าหมายเป็น [0, 0, 0.5, 0.5] ทั้งคู่"
+        },
+        {
+          "en": "1, smaller, because half of the uniform mass already sits in the last two bins",
+          "th": "1 เล็กกว่า เพราะมวลครึ่งหนึ่งของการแจกแจงสม่ำเสมออยู่ในสองช่องท้ายอยู่แล้ว"
+        },
+        {
+          "en": "Infinity, because the supports differ",
+          "th": "อนันต์ เพราะส่วนที่ไม่เป็นศูนย์ต่างกัน"
+        },
+        {
+          "en": "0.5",
+          "th": "0.5"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The CDFs are [0.25, 0.5, 0.75, 1] and [0, 0, 0.5, 1]; the differences 0.25 + 0.5 + 0.25 + 0 add up to 1. Less mass has to travel, and it travels less far, so the distance is half the previous one.",
+        "th": "CDF คือ [0.25, 0.5, 0.75, 1] และ [0, 0, 0.5, 1] ผลต่าง 0.25 + 0.5 + 0.25 + 0 รวมได้ 1 มวลที่ต้องเคลื่อนน้อยกว่าและเคลื่อนไม่ไกลเท่า ระยะจึงเป็นครึ่งหนึ่งของคู่ก่อนหน้า"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "The features have covariance S = diag(4, 1) (feature 1 varies more). What is the Mahalanobis distance between (0, 0) and (2, 1)?",
+        "th": "คุณลักษณะมีความแปรปรวนร่วม S = diag(4, 1) (คุณลักษณะที่ 1 แปรผันมากกว่า) ระยะ Mahalanobis ระหว่าง (0, 0) กับ (2, 1) คือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "√5 ≈ 2.24, the same as Euclidean",
+          "th": "√5 ≈ 2.24 เท่ากับแบบยุคลิด"
+        },
+        {
+          "en": "√2 ≈ 1.41",
+          "th": "√2 ≈ 1.41"
+        },
+        {
+          "en": "√17 ≈ 4.12",
+          "th": "√17 ≈ 4.12"
+        },
+        {
+          "en": "3",
+          "th": "3"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "d² = (x - y)ᵀ S⁻¹ (x - y) = 2²/4 + 1²/1 = 1 + 1 = 2, so d = √2. A step of 2 along the high-variance feature counts only as much as a step of 1 along the other: each axis is measured in its own standard deviations.",
+        "th": "d² = (x - y)ᵀ S⁻¹ (x - y) = 2²/4 + 1²/1 = 1 + 1 = 2 จึงได้ d = √2 การขยับ 2 ตามคุณลักษณะที่แปรผันมากนับเท่ากับการขยับ 1 ตามอีกตัว: แต่ละแกนวัดเป็นจำนวนเท่าของส่วนเบี่ยงเบนมาตรฐานของมันเอง"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "For any vector x in n dimensions, which chain of inequalities always holds?",
+        "th": "สำหรับเวกเตอร์ x ใด ๆ ใน n มิติ อสมการชุดใดเป็นจริงเสมอ?"
+      },
+      "options": [
+        {
+          "en": "‖x‖₁ ≤ ‖x‖₂ ≤ ‖x‖∞",
+          "th": "‖x‖₁ ≤ ‖x‖₂ ≤ ‖x‖∞"
+        },
+        {
+          "en": "‖x‖∞ ≤ ‖x‖₂ ≤ ‖x‖₁ ≤ √n · ‖x‖₂",
+          "th": "‖x‖∞ ≤ ‖x‖₂ ≤ ‖x‖₁ ≤ √n · ‖x‖₂"
+        },
+        {
+          "en": "‖x‖₂ = ‖x‖₁ when n = 2",
+          "th": "‖x‖₂ = ‖x‖₁ เมื่อ n = 2"
+        },
+        {
+          "en": "‖x‖₁ ≤ ‖x‖∞",
+          "th": "‖x‖₁ ≤ ‖x‖∞"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The largest |xᵢ| squared is at most the sum of squares, so ‖x‖∞ ≤ ‖x‖₂. Expanding (Σ|xᵢ|)² gives the squares plus non-negative cross terms, so ‖x‖₂ ≤ ‖x‖₁. Cauchy-Schwarz with the all-ones vector gives ‖x‖₁ ≤ √n · ‖x‖₂.",
+        "th": "|xᵢ| ที่มากที่สุดยกกำลังสองไม่เกินผลรวมกำลังสอง จึงได้ ‖x‖∞ ≤ ‖x‖₂ การกระจาย (Σ|xᵢ|)² ได้พจน์กำลังสองบวกพจน์ไขว้ที่ไม่ติดลบ จึงได้ ‖x‖₂ ≤ ‖x‖₁ และอสมการ Cauchy-Schwarz กับเวกเตอร์ที่เป็น 1 ทุกตัวให้ ‖x‖₁ ≤ √n · ‖x‖₂"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "A query q = (1, 0) is compared with a = (10, 5) and b = (1, 0). Which item ranks first under cosine similarity, and which under dot product?",
+        "th": "query q = (1, 0) ถูกเทียบกับ a = (10, 5) และ b = (1, 0) ตามด้วย cosine similarity ตัวไหนอยู่อันดับแรก และตามด้วย dot product ตัวไหนอยู่อันดับแรก?"
+      },
+      "options": [
+        {
+          "en": "a under both",
+          "th": "a ทั้งสองแบบ"
+        },
+        {
+          "en": "b under both",
+          "th": "b ทั้งสองแบบ"
+        },
+        {
+          "en": "b under cosine (1.0 vs 0.89), a under dot product (10 vs 1)",
+          "th": "b ตาม cosine (1.0 เทียบกับ 0.89) และ a ตาม dot product (10 เทียบกับ 1)"
+        },
+        {
+          "en": "a under cosine, b under dot product",
+          "th": "a ตาม cosine และ b ตาม dot product"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "b points exactly along q, so its cosine is 1.0, while a's is 10/√125 ≈ 0.89. The dot product also rewards length: q·a = 10 against q·b = 1. That is why the choice matters unless the vectors are normalized.",
+        "th": "b ชี้ไปตาม q พอดี cosine จึงเป็น 1.0 ขณะที่ของ a คือ 10/√125 ≈ 0.89 ส่วน dot product ให้รางวัลกับความยาวด้วย: q·a = 10 เทียบกับ q·b = 1 นี่คือเหตุผลที่การเลือกมีผล เว้นแต่เวกเตอร์ถูกทำให้ยาว 1 แล้ว"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "What is the edit distance between \"flaw\" and \"lawn\"?",
+        "th": "Edit distance ระหว่าง \"flaw\" กับ \"lawn\" คือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "4, one substitution per letter",
+          "th": "4 แทนที่ทีละตัวอักษร"
+        },
+        {
+          "en": "1",
+          "th": "1"
+        },
+        {
+          "en": "3",
+          "th": "3"
+        },
+        {
+          "en": "2: delete the f and append an n",
+          "th": "2: ลบ f แล้วเติม n ต่อท้าย"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "\"flaw\" → \"law\" (delete f) → \"lawn\" (insert n): 2 operations. Substituting position by position would take 4; the dynamic-programming table finds the shift that lines up \"law\".",
+        "th": "\"flaw\" → \"law\" (ลบ f) → \"lawn\" (แทรก n): 2 การดำเนินการ การแทนที่ทีละตำแหน่งจะใช้ 4 ตารางการโปรแกรมแบบพลวัตหาการเลื่อนที่ทำให้ \"law\" ตรงกันได้"
+      }
+    }
+  ]
+}
