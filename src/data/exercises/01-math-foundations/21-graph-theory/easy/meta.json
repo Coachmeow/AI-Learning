@@ -1,0 +1,13 @@
+{
+  "minutes": 6,
+  "title": {"th": "เติมโค้ด: ระยะทางด้วย BFS", "en": "Fill in: distances with BFS"},
+  "prompt": {
+    "th": "เติม `bfs_distances(adj, start)` ที่คืน dict ของระยะ (จำนวนขั้น) จาก `start` ไปยังทุกโหนดที่ไปถึงได้ `adj` เป็น dict ที่จับคู่โหนดกับ list ของเพื่อนบ้าน คิวและลูปเขียนไว้ให้แล้ว เติมบรรทัดที่มี `# TODO`",
+    "en": "Complete `bfs_distances(adj, start)`, which returns a dict of hop distances from `start` to every reachable node. `adj` maps each node to a list of its neighbors. The queue and the loop are written; fill in the `# TODO` line."
+  },
+  "hints": [
+    {"th": "v ถูกพบครั้งแรกจาก u ดังนั้นมันอยู่ไกลกว่า u หนึ่งขั้น", "en": "v is first discovered from u, so it is one hop further away than u."},
+    {"th": "ระยะของ u อยู่ใน `dist[u]` แล้ว เพราะ u ออกจากคิวหลังจากถูกบันทึกระยะ", "en": "u's distance is already in `dist[u]`, because u left the queue after its distance was recorded."},
+    {"th": "`dist[v] = dist[u] + 1`", "en": "`dist[v] = dist[u] + 1`"}
+  ]
+}

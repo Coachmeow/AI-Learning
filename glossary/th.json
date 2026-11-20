@@ -2273,6 +2273,81 @@
     {
       "en": "mel-spectrogram",
       "th": "mel-spectrogram"
+    },
+    {
+      "en": "graph / node (vertex) / edge",
+      "th": "กราฟ / โหนด (จุดยอด) / เส้นเชื่อม"
+    },
+    {
+      "en": "directed / undirected graph",
+      "th": "กราฟมีทิศ / ไม่มีทิศ"
+    },
+    {
+      "en": "adjacency list",
+      "th": "รายการประชิด",
+      "first": "รายการประชิด (adjacency list)"
+    },
+    {
+      "en": "degree / degree matrix",
+      "th": "ดีกรี / เมทริกซ์ดีกรี"
+    },
+    {
+      "en": "breadth-first search (BFS)",
+      "th": "การค้นหาตามแนวกว้าง (BFS)"
+    },
+    {
+      "en": "depth-first search (DFS)",
+      "th": "การค้นหาตามแนวลึก (DFS)"
+    },
+    {
+      "en": "graph Laplacian",
+      "th": "ลาปลาเซียนของกราฟ",
+      "first": "ลาปลาเซียนของกราฟ (graph Laplacian)"
+    },
+    {
+      "en": "connected component",
+      "th": "ส่วนประกอบเชื่อมโยง",
+      "first": "ส่วนประกอบเชื่อมโยง (connected component)"
+    },
+    {
+      "en": "Fiedler value / Fiedler vector",
+      "th": "ค่า Fiedler / เวกเตอร์ Fiedler"
+    },
+    {
+      "en": "spectral clustering",
+      "th": "การจัดกลุ่มเชิงสเปกตรัม",
+      "first": "การจัดกลุ่มเชิงสเปกตรัม (spectral clustering)"
+    },
+    {
+      "en": "spectral gap",
+      "th": "ช่องว่างสเปกตรัม",
+      "first": "ช่องว่างสเปกตรัม (spectral gap)"
+    },
+    {
+      "en": "message passing",
+      "th": "การส่งผ่านข้อความ",
+      "first": "การส่งผ่านข้อความ (message passing)"
+    },
+    {
+      "en": "graph neural network (GNN)",
+      "th": "GNN (graph neural network)"
+    },
+    {
+      "en": "graph convolutional network (GCN)",
+      "th": "GCN (graph convolutional network)"
+    },
+    {
+      "en": "self-loop",
+      "th": "self-loop"
+    },
+    {
+      "en": "PageRank",
+      "th": "PageRank"
+    },
+    {
+      "en": "random walk",
+      "th": "การเดินสุ่ม",
+      "first": "การเดินสุ่ม (random walk)"
     }
   ]
 }

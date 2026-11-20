@@ -1,0 +1,486 @@
+{
+  "lesson": "01-math-foundations/21-graph-theory",
+  "source_hash": "15e51474d311beb51cbda6d860b9b14ec3e83ea6d244fc2bcc5521d6dc9b5b7b",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What does the adjacency matrix A[i][j] = 1 represent?",
+        "th": "เมทริกซ์ประชิดที่ A[i][j] = 1 แทนอะไร?"
+      },
+      "options": [
+        {
+          "en": "Node i has degree j",
+          "th": "โหนด i มีดีกรีเท่ากับ j"
+        },
+        {
+          "en": "Node i and node j have the same label",
+          "th": "โหนด i และโหนด j มีป้ายเดียวกัน"
+        },
+        {
+          "en": "The shortest path from i to j has length 1",
+          "th": "เส้นทางที่สั้นที่สุดจาก i ไป j ยาว 1"
+        },
+        {
+          "en": "There is an edge from node i to node j",
+          "th": "มีเส้นเชื่อมจากโหนด i ไปโหนด j"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "The adjacency matrix is the core representation of a graph. A[i][j] = 1 means there is an edge connecting node i to node j. For undirected graphs, the matrix is symmetric (A[i][j] = A[j][i]).",
+        "th": "เมทริกซ์ประชิดคือการแทนกราฟแบบหลัก A[i][j] = 1 หมายความว่ามีเส้นเชื่อมจากโหนด i ไปโหนด j สำหรับกราฟไม่มีทิศ เมทริกซ์สมมาตร (A[i][j] = A[j][i])"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What data structure does BFS use and what does it find?",
+        "th": "BFS ใช้โครงสร้างข้อมูลอะไร และหาอะไรได้?"
+      },
+      "options": [
+        {
+          "en": "Stack; finds connected components",
+          "th": "สแตก หาส่วนประกอบเชื่อมโยง"
+        },
+        {
+          "en": "Queue; finds shortest paths in unweighted graphs",
+          "th": "คิว หาเส้นทางที่สั้นที่สุดในกราฟไม่มีน้ำหนัก"
+        },
+        {
+          "en": "Priority queue; finds minimum spanning tree",
+          "th": "คิวลำดับความสำคัญ หาต้นไม้แผ่ทั่วที่น้อยที่สุด"
+        },
+        {
+          "en": "Hash map; finds duplicate nodes",
+          "th": "hash map หาโหนดที่ซ้ำกัน"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "BFS uses a queue (FIFO) to explore all neighbors at distance k before moving to distance k+1. This guarantees that the first time a node is discovered, it is via a shortest path from the source.",
+        "th": "BFS ใช้คิว (FIFO) สำรวจเพื่อนบ้านทั้งหมดที่ระยะ k ก่อนไปที่ระยะ k+1 ซึ่งรับประกันว่าครั้งแรกที่พบโหนดใด ๆ จะเป็นผ่านเส้นทางที่สั้นที่สุดจากจุดเริ่มต้น"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "An undirected graph has 7 edges. What is the sum of all node degrees?",
+        "th": "กราฟไม่มีทิศมีเส้นเชื่อม 7 เส้น ผลรวมดีกรีของทุกโหนดเท่ากับเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "7",
+          "th": "7"
+        },
+        {
+          "en": "14",
+          "th": "14"
+        },
+        {
+          "en": "49",
+          "th": "49"
+        },
+        {
+          "en": "It depends on the number of nodes",
+          "th": "ขึ้นกับจำนวนโหนด"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Every edge touches two nodes and adds 1 to each of their degrees, so the degrees sum to 2·7 = 14 whatever the number of nodes. This is the handshake lemma; it is also the trace of D, and so of L.",
+        "th": "เส้นเชื่อมทุกเส้นแตะสองโหนดและเพิ่มดีกรีของแต่ละโหนดอย่างละ 1 ผลรวมดีกรีจึงเป็น 2·7 = 14 ไม่ว่าจะมีกี่โหนด นี่คือ handshake lemma และยังเป็น trace ของ D ซึ่งก็คือ trace ของ L ด้วย"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Which property does the adjacency matrix of every undirected graph have?",
+        "th": "เมทริกซ์ประชิดของกราฟไม่มีทิศทุกกราฟมีคุณสมบัติใด?"
+      },
+      "options": [
+        {
+          "en": "It is diagonal",
+          "th": "เป็นเมทริกซ์ทแยงมุม"
+        },
+        {
+          "en": "Its rows sum to 1",
+          "th": "ผลรวมแต่ละแถวเท่ากับ 1"
+        },
+        {
+          "en": "It is symmetric: A[i][j] = A[j][i]",
+          "th": "สมมาตร: A[i][j] = A[j][i]"
+        },
+        {
+          "en": "It is invertible",
+          "th": "หาตัวผกผันได้"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "An undirected edge (i, j) is also (j, i), so A[i][j] = A[j][i]. Row sums are the degrees, not 1 (that is the row-normalized A used in message passing), and A is often singular.",
+        "th": "เส้นเชื่อมไม่มีทิศ (i, j) ก็คือ (j, i) ด้วย ดังนั้น A[i][j] = A[j][i] ผลรวมแต่ละแถวคือดีกรี ไม่ใช่ 1 (นั่นคือ A ที่ normalize ตามแถวซึ่งใช้ในการส่งผ่านข้อความ) และ A มักหาตัวผกผันไม่ได้"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "What is the Laplacian L = D - A of the path 0 – 1 – 2?",
+        "th": "ลาปลาเซียน L = D - A ของเส้นทาง 0 – 1 – 2 คืออะไร?"
+      },
+      "options": [
+        {
+          "en": "[[0, 1, 0], [1, 0, 1], [0, 1, 0]]",
+          "th": "[[0, 1, 0], [1, 0, 1], [0, 1, 0]]"
+        },
+        {
+          "en": "[[1, 0, 0], [0, 2, 0], [0, 0, 1]]",
+          "th": "[[1, 0, 0], [0, 2, 0], [0, 0, 1]]"
+        },
+        {
+          "en": "[[2, -1, -1], [-1, 2, -1], [-1, -1, 2]]",
+          "th": "[[2, -1, -1], [-1, 2, -1], [-1, -1, 2]]"
+        },
+        {
+          "en": "[[1, -1, 0], [-1, 2, -1], [0, -1, 1]]",
+          "th": "[[1, -1, 0], [-1, 2, -1], [0, -1, 1]]"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "The degrees are 1, 2, 1 on the diagonal, and each edge puts a -1 in two symmetric places. Every row of L sums to 0, which is why the all-ones vector has eigenvalue 0. The other options are A, D, and the triangle's Laplacian.",
+        "th": "ดีกรี 1, 2, 1 อยู่บนเส้นทแยงมุม และเส้นเชื่อมแต่ละเส้นใส่ -1 ในสองตำแหน่งที่สมมาตรกัน ทุกแถวของ L รวมได้ 0 นี่คือเหตุผลที่เวกเตอร์ที่มีค่า 1 ทุกช่องมีค่าลักษณะเฉพาะ 0 ตัวเลือกอื่นคือ A, D และลาปลาเซียนของสามเหลี่ยม"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "The graph Laplacian L = D - A of a connected graph has how many zero eigenvalues?",
+        "th": "ลาปลาเซียนของกราฟ L = D - A ของกราฟที่เชื่อมต่อกันมีค่าลักษณะเฉพาะที่เป็นศูนย์กี่ตัว?"
+      },
+      "options": [
+        {
+          "en": "Zero",
+          "th": "ไม่มีเลย"
+        },
+        {
+          "en": "Equal to the number of nodes",
+          "th": "เท่ากับจำนวนโหนด"
+        },
+        {
+          "en": "Equal to the number of edges",
+          "th": "เท่ากับจำนวนเส้นเชื่อม"
+        },
+        {
+          "en": "Exactly one",
+          "th": "หนึ่งตัวพอดี"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "The number of zero eigenvalues of the Laplacian equals the number of connected components. A connected graph has exactly one connected component, so exactly one zero eigenvalue. A graph with k disconnected pieces has k zero eigenvalues.",
+        "th": "จำนวนค่าลักษณะเฉพาะที่เป็นศูนย์ของลาปลาเซียนเท่ากับจำนวนส่วนประกอบเชื่อมโยง กราฟที่เชื่อมต่อกันมีส่วนประกอบเชื่อมโยงเดียว จึงมีค่าลักษณะเฉพาะที่เป็นศูนย์หนึ่งตัวพอดี กราฟที่แยกเป็น k ชิ้นมีค่าลักษณะเฉพาะที่เป็นศูนย์ k ตัว"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "In GNN message passing, what does h_v^(k+1) = sigma(W * mean({h_u^(k) : u in neighbors(v)})) compute?",
+        "th": "ในการส่งผ่านข้อความของ GNN สูตร h_v^(k+1) = sigma(W * mean({h_u^(k) : u in neighbors(v)})) คำนวณอะไร?"
+      },
+      "options": [
+        {
+          "en": "The PageRank score of node v",
+          "th": "คะแนน PageRank ของโหนด v"
+        },
+        {
+          "en": "The shortest path from v to all other nodes",
+          "th": "เส้นทางที่สั้นที่สุดจาก v ไปทุกโหนด"
+        },
+        {
+          "en": "A new feature vector for node v by aggregating neighbor features, transforming with learned weights, and applying a nonlinearity",
+          "th": "เวกเตอร์คุณลักษณะใหม่ของโหนด v โดยรวบรวมคุณลักษณะของเพื่อนบ้าน แปลงด้วยน้ำหนักที่เรียนรู้ แล้วใส่ฟังก์ชันไม่เชิงเส้น"
+        },
+        {
+          "en": "The degree of node v at layer k+1",
+          "th": "ดีกรีของโหนด v ที่ชั้น k+1"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Each node collects features from its neighbors (mean aggregation), multiplies by a learned weight matrix W, and applies an activation function sigma. After k rounds, each node has information from its k-hop neighborhood.",
+        "th": "แต่ละโหนดเก็บคุณลักษณะจากเพื่อนบ้าน (รวบรวมด้วยค่าเฉลี่ย) คูณด้วยเมทริกซ์น้ำหนัก W ที่เรียนรู้ และใส่ activation sigma หลัง k รอบ แต่ละโหนดมีข้อมูลจากละแวก k ขั้นของมัน"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "How does spectral clustering use the Fiedler vector (eigenvector of the second-smallest eigenvalue of L)?",
+        "th": "การจัดกลุ่มเชิงสเปกตรัมใช้เวกเตอร์ Fiedler (เวกเตอร์ลักษณะเฉพาะของค่าลักษณะเฉพาะที่เล็กเป็นอันดับสองของ L) อย่างไร?"
+      },
+      "options": [
+        {
+          "en": "Nodes with the largest Fiedler vector entries form one cluster",
+          "th": "โหนดที่มีค่าในเวกเตอร์ Fiedler มากที่สุดรวมกันเป็นกลุ่มหนึ่ง"
+        },
+        {
+          "en": "The Fiedler vector is used as edge weights",
+          "th": "ใช้เวกเตอร์ Fiedler เป็นน้ำหนักของเส้นเชื่อม"
+        },
+        {
+          "en": "Nodes with positive Fiedler vector values go in one group, nodes with negative values go in the other",
+          "th": "โหนดที่มีค่าในเวกเตอร์ Fiedler เป็นบวกอยู่กลุ่มหนึ่ง โหนดที่มีค่าเป็นลบอยู่อีกกลุ่ม"
+        },
+        {
+          "en": "The Fiedler vector determines the number of clusters",
+          "th": "เวกเตอร์ Fiedler กำหนดจำนวนกลุ่ม"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "The Fiedler vector encodes the smoothest non-trivial function on the graph. Nodes in the same tightly-connected cluster get similar values, while nodes separated by a bottleneck get values with opposite signs. The sign split partitions the graph into two clusters.",
+        "th": "เวกเตอร์ Fiedler เข้ารหัสฟังก์ชันที่เรียบที่สุดที่ไม่ใช่ค่าคงที่บนกราฟ โหนดในกลุ่มที่เชื่อมกันแน่นได้ค่าใกล้กัน ส่วนโหนดที่ถูกแยกด้วยคอขวดได้ค่าที่มีเครื่องหมายตรงข้ามกัน การแบ่งตามเครื่องหมายจึงแบ่งกราฟเป็นสองกลุ่ม"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "A graph is two separate triangles (6 nodes, no edge between them). How many eigenvalues of its Laplacian are 0?",
+        "th": "กราฟหนึ่งเป็นสามเหลี่ยมสองรูปที่แยกกัน (6 โหนด ไม่มีเส้นเชื่อมระหว่างกัน) ลาปลาเซียนของมันมีค่าลักษณะเฉพาะเป็น 0 กี่ตัว?"
+      },
+      "options": [
+        {
+          "en": "2, one per connected component",
+          "th": "2 ตัว ส่วนประกอบเชื่อมโยงละตัว"
+        },
+        {
+          "en": "1",
+          "th": "1 ตัว"
+        },
+        {
+          "en": "6",
+          "th": "6 ตัว"
+        },
+        {
+          "en": "0",
+          "th": "ไม่มีเลย"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The spectrum is 0, 0, 3, 3, 3, 3: each triangle contributes 0, 3, 3. The indicator vector of each triangle (1 on its nodes, 0 elsewhere) satisfies Lv = 0, so the zero eigenvalue appears once per component.",
+        "th": "สเปกตรัมคือ 0, 0, 3, 3, 3, 3 สามเหลี่ยมแต่ละรูปให้ 0, 3, 3 เวกเตอร์บ่งชี้ของแต่ละสามเหลี่ยม (1 บนโหนดของมัน 0 ที่อื่น) ทำให้ Lv = 0 ค่าลักษณะเฉพาะศูนย์จึงปรากฏหนึ่งครั้งต่อส่วนประกอบ"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "Path A – B – C with features A = [1, 0], B = [0, 1], C = [1, 1]. After one round of mean aggregation over neighbors (no self-loops), what is B's feature?",
+        "th": "เส้นทาง A – B – C มีคุณลักษณะ A = [1, 0], B = [0, 1], C = [1, 1] หลังรวบรวมด้วยค่าเฉลี่ยของเพื่อนบ้านหนึ่งรอบ (ไม่มี self-loop) คุณลักษณะของ B คืออะไร?"
+      },
+      "options": [
+        {
+          "en": "[0, 1], unchanged",
+          "th": "[0, 1] ไม่เปลี่ยน"
+        },
+        {
+          "en": "[2, 1]",
+          "th": "[2, 1]"
+        },
+        {
+          "en": "[1, 0.5]",
+          "th": "[1, 0.5]"
+        },
+        {
+          "en": "[0.67, 0.67]",
+          "th": "[0.67, 0.67]"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "B's neighbors are A and C, so its new feature is ([1, 0] + [1, 1]) / 2 = [1, 0.5]. Without self-loops B's own [0, 1] is left out; [0.67, 0.67] would be the mean over A, B and C, which needs a self-loop.",
+        "th": "เพื่อนบ้านของ B คือ A และ C คุณลักษณะใหม่จึงเป็น ([1, 0] + [1, 1]) / 2 = [1, 0.5] เมื่อไม่มี self-loop ค่า [0, 1] ของ B เองไม่ถูกนับ ส่วน [0.67, 0.67] คือค่าเฉลี่ยของ A, B และ C ซึ่งต้องมี self-loop"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "What are the eigenvalues of the Laplacian of the path 0 – 1 – 2?",
+        "th": "ค่าลักษณะเฉพาะของลาปลาเซียนของเส้นทาง 0 – 1 – 2 คืออะไร?"
+      },
+      "options": [
+        {
+          "en": "1, 2, 1",
+          "th": "1, 2, 1"
+        },
+        {
+          "en": "0, 1, 3",
+          "th": "0, 1, 3"
+        },
+        {
+          "en": "0, 3, 3",
+          "th": "0, 3, 3"
+        },
+        {
+          "en": "-1, 0, 1",
+          "th": "-1, 0, 1"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "L = [[1, -1, 0], [-1, 2, -1], [0, -1, 1]]. The vectors (1, 1, 1), (1, 0, -1) and (1, -2, 1) give Lv = 0, 1·v and 3·v. The single 0 means connected, the Fiedler value is 1, and the trace 0 + 1 + 3 = 4 matches the degree sum. 0, 3, 3 belongs to the triangle, and a Laplacian has no negative eigenvalues.",
+        "th": "L = [[1, -1, 0], [-1, 2, -1], [0, -1, 1]] เวกเตอร์ (1, 1, 1), (1, 0, -1) และ (1, -2, 1) ให้ Lv = 0, 1·v และ 3·v ศูนย์ตัวเดียวแปลว่าเชื่อมต่อกัน ค่า Fiedler คือ 1 และ trace 0 + 1 + 3 = 4 ตรงกับผลรวมดีกรี ส่วน 0, 3, 3 เป็นของสามเหลี่ยม และลาปลาเซียนไม่มีค่าลักษณะเฉพาะที่เป็นลบ"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Same path A – B – C with A = [1, 0], B = [0, 1], C = [1, 1] and mean aggregation without self-loops. What is A's feature after two rounds?",
+        "th": "เส้นทาง A – B – C เดิม A = [1, 0], B = [0, 1], C = [1, 1] รวบรวมด้วยค่าเฉลี่ยโดยไม่มี self-loop คุณลักษณะของ A หลังสองรอบคืออะไร?"
+      },
+      "options": [
+        {
+          "en": "[0, 1]",
+          "th": "[0, 1]"
+        },
+        {
+          "en": "[1, 0]",
+          "th": "[1, 0]"
+        },
+        {
+          "en": "[0.5, 0.5]",
+          "th": "[0.5, 0.5]"
+        },
+        {
+          "en": "[1, 0.5], the mean of A's and C's original features",
+          "th": "[1, 0.5] ซึ่งเป็นค่าเฉลี่ยของคุณลักษณะเดิมของ A และ C"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "After round 1, A holds B's old feature [0, 1] and B holds [1, 0.5]. After round 2, A takes B's round-1 value [1, 0.5] = mean(A₀, C₀). Two rounds reach the 2-hop node C, and A's own original feature comes back through B.",
+        "th": "หลังรอบที่ 1 A ถือคุณลักษณะเดิมของ B คือ [0, 1] และ B ถือ [1, 0.5] หลังรอบที่ 2 A รับค่ารอบที่ 1 ของ B คือ [1, 0.5] = mean(A₀, C₀) สองรอบไปถึงโหนด C ที่อยู่ห่างสองขั้น และคุณลักษณะเดิมของ A เองก็ย้อนกลับมาผ่าน B"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "PageRank with d = 0.85 on three nodes: A → B, B → A, C → A. C has no incoming links. What is C's score?",
+        "th": "PageRank ด้วย d = 0.85 บนสามโหนด: A → B, B → A, C → A โหนด C ไม่มีลิงก์เข้า คะแนนของ C คือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "0",
+          "th": "0"
+        },
+        {
+          "en": "1/3",
+          "th": "1/3"
+        },
+        {
+          "en": "0.05",
+          "th": "0.05"
+        },
+        {
+          "en": "0.15",
+          "th": "0.15"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "With no incoming links, C only gets the teleport term (1 - d)/n = 0.15/3 = 0.05. The power iteration gives A ≈ 0.4865, B ≈ 0.4635, C = 0.05, which sum to 1. The (1 - d)/n term is what keeps C above zero.",
+        "th": "เมื่อไม่มีลิงก์เข้า C ได้แค่พจน์ teleport (1 - d)/n = 0.15/3 = 0.05 การวนซ้ำแบบ power iteration ให้ A ≈ 0.4865, B ≈ 0.4635, C = 0.05 ซึ่งรวมกันได้ 1 พจน์ (1 - d)/n คือสิ่งที่ทำให้ C ไม่เป็นศูนย์"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Two triangles {0, 1, 2} and {3, 4, 5} are joined by the single edge 2 – 3. What does the Laplacian's second eigenpair show?",
+        "th": "สามเหลี่ยม {0, 1, 2} และ {3, 4, 5} เชื่อมกันด้วยเส้นเชื่อมเส้นเดียว 2 – 3 คู่ค่าลักษณะเฉพาะลำดับที่สองของลาปลาเซียนบอกอะไร?"
+      },
+      "options": [
+        {
+          "en": "λ₂ ≈ 0.44, much smaller than 6 for the complete graph K₆, and the Fiedler vector's signs split {0, 1, 2} from {3, 4, 5}",
+          "th": "λ₂ ≈ 0.44 เล็กกว่า 6 ของกราฟบริบูรณ์ K₆ มาก และเครื่องหมายของเวกเตอร์ Fiedler แยก {0, 1, 2} ออกจาก {3, 4, 5}"
+        },
+        {
+          "en": "λ₂ = 0, because the graph is barely connected",
+          "th": "λ₂ = 0 เพราะกราฟเกือบไม่เชื่อมกัน"
+        },
+        {
+          "en": "λ₂ = 6, and the Fiedler vector isolates nodes 2 and 3",
+          "th": "λ₂ = 6 และเวกเตอร์ Fiedler แยกโหนด 2 และ 3 ออกมา"
+        },
+        {
+          "en": "λ₂ = 3, and the Fiedler vector is constant",
+          "th": "λ₂ = 3 และเวกเตอร์ Fiedler เป็นค่าคงที่"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "NumPy gives eigenvalues 0, 0.438, 3, 3, 3, 4.562 and a Fiedler vector ≈ (-0.47, -0.47, -0.26, 0.26, 0.47, 0.47). The single bridge makes λ₂ small (a bottleneck) but not zero (still connected), and the sign split recovers the two triangles.",
+        "th": "NumPy ให้ค่าลักษณะเฉพาะ 0, 0.438, 3, 3, 3, 4.562 และเวกเตอร์ Fiedler ≈ (-0.47, -0.47, -0.26, 0.26, 0.47, 0.47) สะพานเส้นเดียวทำให้ λ₂ เล็ก (คอขวด) แต่ไม่เป็นศูนย์ (ยังเชื่อมกันอยู่) และการแบ่งตามเครื่องหมายได้สามเหลี่ยมสองรูปกลับมา"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "In GCN, Â = A + I and the propagation matrix is D̂^(-1/2) Â D̂^(-1/2). For the path A – B – C, what is its (A, B) entry?",
+        "th": "ใน GCN Â = A + I และเมทริกซ์ส่งต่อคือ D̂^(-1/2) Â D̂^(-1/2) สำหรับเส้นทาง A – B – C ช่อง (A, B) ของมันคือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "0.5",
+          "th": "0.5"
+        },
+        {
+          "en": "1/3",
+          "th": "1/3"
+        },
+        {
+          "en": "1",
+          "th": "1"
+        },
+        {
+          "en": "1/√6 ≈ 0.408",
+          "th": "1/√6 ≈ 0.408"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "With self-loops the degrees are 2 for A and C and 3 for B, so the entry is 1/√(2·3) = 1/√6 ≈ 0.408. The diagonal entries are 1/2 for A and 1/3 for B. Unlike row normalization, symmetric normalization keeps the matrix symmetric.",
+        "th": "เมื่อมี self-loop ดีกรีของ A และ C เป็น 2 และของ B เป็น 3 ช่องนั้นจึงเป็น 1/√(2·3) = 1/√6 ≈ 0.408 ส่วนช่องทแยงมุมเป็น 1/2 สำหรับ A และ 1/3 สำหรับ B ต่างจากการ normalize ตามแถว การ normalize แบบสมมาตรรักษาความสมมาตรของเมทริกซ์ไว้"
+      }
+    }
+  ]
+}
