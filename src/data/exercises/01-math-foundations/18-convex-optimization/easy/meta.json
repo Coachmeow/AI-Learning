@@ -1,0 +1,13 @@
+{
+  "minutes": 6,
+  "title": {"th": "เติมโค้ด: ก้าวของวิธีของนิวตัน", "en": "Fill in: the Newton step"},
+  "prompt": {
+    "th": "เติม `newton_1d(df, d2f, x0, steps)` ที่หาจุดต่ำสุดของฟังก์ชัน 1 มิติด้วยวิธีของนิวตัน โดย `df` คืออนุพันธ์อันดับหนึ่ง และ `d2f` คืออนุพันธ์อันดับสอง ฟังก์ชันคืนรายการ `[x0, x1, ..., x_steps]` ลูปเขียนไว้ให้แล้ว เติมบรรทัดที่มี `# TODO` ให้เป็นก้าวของนิวตัน",
+    "en": "Complete `newton_1d(df, d2f, x0, steps)`, which minimizes a 1D function with Newton's method; `df` is the first derivative and `d2f` the second. It returns `[x0, x1, ..., x_steps]`. The loop is written; fill in the `# TODO` line with the Newton step."
+  },
+  "hints": [
+    {"th": "วิธีของนิวตันแทน learning rate ด้วยเมทริกซ์ผกผันของ Hessian ใน 1 มิติ Hessian คือ f''(x)", "en": "Newton's method replaces the learning rate with the inverse Hessian; in 1D the Hessian is f''(x)."},
+    {"th": "เพื่อหาจุดต่ำสุดต้องลบ ไม่ใช่บวก: ก้าวไปทางตรงข้ามกับเกรเดียนต์", "en": "To minimize, subtract rather than add: step against the gradient."},
+    {"th": "`x = x - df(x) / d2f(x)`", "en": "`x = x - df(x) / d2f(x)`"}
+  ]
+}

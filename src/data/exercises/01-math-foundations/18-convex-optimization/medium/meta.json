@@ -1,0 +1,13 @@
+{
+  "minutes": 15,
+  "title": {"th": "ตัวคูณลากรองจ์: จุดที่ใกล้ที่สุดบนไฮเปอร์เพลน", "en": "Lagrange multipliers: the closest point on a hyperplane"},
+  "prompt": {
+    "th": "เขียน `closest_point(c, a, b)` ที่แก้ปัญหา: หาค่าต่ำสุดของ `||x - c||²` ภายใต้ `a · x = b` แล้วคืน `(x, lam)`\n\n- `x` คือคำตอบ (list) และ `lam` คือตัวคูณลากรองจ์ใน `L = ||x - c||² + lam * (a · x - b)`\n- ตั้ง ∇L = 0: `2(x - c) + lam * a = 0` และ `a · x = b` แล้วแก้หา `lam` ก่อน จากนั้นจึงหา `x`\n- ถ้า `a` เป็นศูนย์ทุกตัว ข้อจำกัดไม่มีความหมาย ให้ `raise ValueError`\n- ห้ามแก้ไข `c` หรือ `a` ที่รับเข้ามา\n\nตัวอย่างจากบทเรียน: `closest_point([0, 0], [1, 1], 1)` ได้ `([0.5, 0.5], -1.0)`",
+    "en": "Write `closest_point(c, a, b)`, which solves: minimize `||x - c||²` subject to `a · x = b`, and returns `(x, lam)`.\n\n- `x` is the solution (a list) and `lam` is the Lagrange multiplier in `L = ||x - c||² + lam * (a · x - b)`.\n- Set ∇L = 0: `2(x - c) + lam * a = 0` and `a · x = b`; solve for `lam` first, then for `x`.\n- If `a` is all zeros the constraint means nothing: `raise ValueError`.\n- Don't modify the `c` or `a` you were given.\n\nThe lesson's example: `closest_point([0, 0], [1, 1], 1)` gives `([0.5, 0.5], -1.0)`."
+  },
+  "hints": [
+    {"th": "จากสมการแรก x = c - (lam / 2)·a แทนลงใน a · x = b แล้วจะได้สมการที่มี lam ตัวเดียว", "en": "The first equation gives x = c - (lam / 2)·a. Substitute it into a · x = b and you get one equation in lam."},
+    {"th": "a · c - (lam / 2)(a · a) = b ดังนั้น lam = 2(a · c - b) / (a · a) ตัวส่วนคือ a · a ไม่ใช่ ||a||", "en": "a · c - (lam / 2)(a · a) = b, so lam = 2(a · c - b) / (a · a). The denominator is a · a, not ||a||."},
+    {"th": "ตรวจด้วยแบบฝึกหัดที่ 3 ของบทเรียน: c = (3, 3), a = (1, 2), b = 4 ต้องได้ x = (2, 1) และ lam = 2", "en": "Check against the lesson's exercise 3: c = (3, 3), a = (1, 2), b = 4 must give x = (2, 1) and lam = 2."}
+  ]
+}

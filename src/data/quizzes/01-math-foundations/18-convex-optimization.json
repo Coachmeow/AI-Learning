@@ -1,0 +1,486 @@
+{
+  "lesson": "01-math-foundations/18-convex-optimization",
+  "source_hash": "b85edfa04ef99dc140cfdece3fccae676a13b7d2d9fbbc900d3f94c29430f804",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What is the defining property of a convex function?",
+        "th": "คุณสมบัติที่ใช้นิยามฟังก์ชันนูนคืออะไร?"
+      },
+      "options": [
+        {
+          "en": "It has exactly one critical point",
+          "th": "มันมีจุดวิกฤตเพียงจุดเดียวพอดี"
+        },
+        {
+          "en": "The line segment between any two points on its graph lies above or on the graph",
+          "th": "ส่วนของเส้นตรงระหว่างสองจุดใด ๆ บนกราฟอยู่เหนือหรือบนกราฟ"
+        },
+        {
+          "en": "Its derivative is always positive",
+          "th": "อนุพันธ์ของมันเป็นบวกเสมอ"
+        },
+        {
+          "en": "It can only be defined on positive real numbers",
+          "th": "มันนิยามได้เฉพาะบนจำนวนจริงบวก"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "A function is convex if for any two points x, y and any t in [0,1]: f(tx + (1-t)y) <= t*f(x) + (1-t)*f(y). Geometrically, the chord between any two points on the graph never dips below the graph itself.",
+        "th": "ฟังก์ชันนูนถ้าสำหรับสองจุด x, y ใด ๆ และ t ใด ๆ ใน [0,1]: f(tx + (1-t)y) <= t*f(x) + (1-t)*f(y) ในเชิงเรขาคณิต คอร์ดระหว่างสองจุดใด ๆ บนกราฟไม่เคยจุ่มลงใต้กราฟ"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "Which of these ML problems has a convex loss landscape?",
+        "th": "ปัญหา ML ข้อใดมีภูมิประเทศของ loss ที่นูน?"
+      },
+      "options": [
+        {
+          "en": "Training a 3-layer neural network with ReLU activations",
+          "th": "การฝึกโครงข่ายประสาทเทียม 3 ชั้นที่ใช้ activation ReLU"
+        },
+        {
+          "en": "Matrix factorization for recommendation",
+          "th": "การแยกตัวประกอบเมทริกซ์สำหรับระบบแนะนำ"
+        },
+        {
+          "en": "k-means clustering",
+          "th": "การจัดกลุ่ม k-means"
+        },
+        {
+          "en": "Logistic regression with cross-entropy loss",
+          "th": "Logistic regression ที่ใช้ cross-entropy loss"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Logistic regression has a convex loss (log-loss is convex in the weights). Neural networks, k-means, and matrix factorization are all non-convex. For convex problems, any local minimum is the global minimum.",
+        "th": "Logistic regression มี loss นูน (log-loss นูนในน้ำหนัก) ส่วนโครงข่ายประสาทเทียม k-means และการแยกตัวประกอบเมทริกซ์ไม่นูนทั้งหมด สำหรับปัญหานูน จุดต่ำสุดเฉพาะที่ใด ๆ คือจุดต่ำสุดสัมบูรณ์"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Which of these functions is NOT convex on the whole real line?",
+        "th": "ฟังก์ชันใดต่อไปนี้ไม่นูนบนเส้นจำนวนจริงทั้งเส้น?"
+      },
+      "options": [
+        {
+          "en": "f(x) = x²",
+          "th": "f(x) = x²"
+        },
+        {
+          "en": "f(x) = |x|",
+          "th": "f(x) = |x|"
+        },
+        {
+          "en": "f(x) = eˣ",
+          "th": "f(x) = eˣ"
+        },
+        {
+          "en": "f(x) = x³",
+          "th": "f(x) = x³"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "f''(x) = 6x is negative for x < 0, so x³ curves downward there. x² has f'' = 2, eˣ has f'' = eˣ > 0, and |x| passes the chord test even though it has a corner.",
+        "th": "f''(x) = 6x เป็นลบเมื่อ x < 0 ดังนั้น x³ โค้งลงในช่วงนั้น ส่วน x² มี f'' = 2, eˣ มี f'' = eˣ > 0 และ |x| ผ่านการทดสอบด้วยคอร์ดแม้จะมีมุมแหลม"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Which of these sets is convex?",
+        "th": "เซตใดต่อไปนี้นูน?"
+      },
+      "options": [
+        {
+          "en": "A donut (annulus)",
+          "th": "โดนัท (วงแหวน)"
+        },
+        {
+          "en": "Two separate circles",
+          "th": "วงกลมสองวงที่แยกกัน"
+        },
+        {
+          "en": "A halfspace {x : aᵀx ≤ b}",
+          "th": "ครึ่งปริภูมิ {x : aᵀx ≤ b}"
+        },
+        {
+          "en": "A five-pointed star",
+          "th": "รูปดาวห้าแฉก"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "If aᵀx ≤ b and aᵀy ≤ b, then aᵀ(tx + (1-t)y) = t·aᵀx + (1-t)·aᵀy ≤ b, so every segment stays inside. The donut's hole, the gap between the circles and the star's notches all let some segments leave the set.",
+        "th": "ถ้า aᵀx ≤ b และ aᵀy ≤ b แล้ว aᵀ(tx + (1-t)y) = t·aᵀx + (1-t)·aᵀy ≤ b ส่วนของเส้นตรงทุกเส้นจึงอยู่ข้างใน ส่วนรูของโดนัท ช่องว่างระหว่างวงกลม และรอยเว้าของดาว ทำให้ส่วนของเส้นตรงบางเส้นออกนอกเซต"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Which regularization tends to set some weights exactly to zero, and why?",
+        "th": "regularization แบบไหนมักทำให้น้ำหนักบางตัวเป็นศูนย์พอดี และเพราะอะไร?"
+      },
+      "options": [
+        {
+          "en": "L1, because its diamond-shaped constraint has corners on the axes",
+          "th": "L1 เพราะข้อจำกัดรูปข้าวหลามตัดมีมุมอยู่บนแกน"
+        },
+        {
+          "en": "L2, because its circular constraint is smooth",
+          "th": "L2 เพราะข้อจำกัดรูปวงกลมเรียบ"
+        },
+        {
+          "en": "Both, equally often",
+          "th": "ทั้งสองแบบ บ่อยพอ ๆ กัน"
+        },
+        {
+          "en": "Neither; only dropout does that",
+          "th": "ไม่มีเลย มีแต่ dropout ที่ทำได้"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The loss contours usually first touch the L1 diamond at a corner, where one or more coordinates are zero; that is feature selection. The L2 ball has no corners, so its weights shrink but stay nonzero.",
+        "th": "เส้นชั้นความสูงของ loss มักแตะข้าวหลามตัด L1 ครั้งแรกที่มุม ซึ่งมีพิกัดหนึ่งตัวหรือมากกว่าเป็นศูนย์ นั่นคือการคัดเลือกคุณลักษณะ ลูกบอล L2 ไม่มีมุม น้ำหนักจึงหดลงแต่ไม่เป็นศูนย์"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "Newton's method converges to the minimum of f(x) = 5x^2 + 3x + 1 in how many steps?",
+        "th": "วิธีของนิวตันลู่เข้าสู่จุดต่ำสุดของ f(x) = 5x^2 + 3x + 1 ในกี่ก้าว?"
+      },
+      "options": [
+        {
+          "en": "About 100 steps",
+          "th": "ประมาณ 100 ก้าว"
+        },
+        {
+          "en": "1 step (it is exact for quadratic functions)",
+          "th": "1 ก้าว (มันแม่นยำพอดีสำหรับฟังก์ชันกำลังสอง)"
+        },
+        {
+          "en": "About 10 steps",
+          "th": "ประมาณ 10 ก้าว"
+        },
+        {
+          "en": "It depends on the learning rate",
+          "th": "ขึ้นกับ learning rate"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Newton's method fits a local quadratic approximation and jumps to its minimum. For an actual quadratic function, the approximation is exact, so Newton's method converges in a single step regardless of the starting point.",
+        "th": "วิธีของนิวตัน fit การประมาณกำลังสองเฉพาะที่แล้วกระโดดไปที่จุดต่ำสุดของมัน สำหรับฟังก์ชันกำลังสองจริง ๆ การประมาณนั้นแม่นยำพอดี วิธีของนิวตันจึงลู่เข้าในก้าวเดียวไม่ว่าจะเริ่มที่จุดใด"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "In the KKT conditions, what does 'complementary slackness' (lambda_i * g_i(x) = 0) mean?",
+        "th": "ในเงื่อนไข KKT ความหย่อนเติมเต็ม (complementary slackness) lambda_i * g_i(x) = 0 หมายความว่าอะไร?"
+      },
+      "options": [
+        {
+          "en": "All constraints must be active at the optimum",
+          "th": "ข้อจำกัดทุกข้อต้องทำงานอยู่ที่จุดเหมาะที่สุด"
+        },
+        {
+          "en": "Either a constraint is active (g_i = 0) or its multiplier is zero (lambda_i = 0) — an inactive constraint has no effect",
+          "th": "ไม่ข้อจำกัดทำงานอยู่ (g_i = 0) ก็ตัวคูณเป็นศูนย์ (lambda_i = 0) ข้อจำกัดที่ไม่ทำงานไม่มีผล"
+        },
+        {
+          "en": "The gradients of all constraints must be orthogonal",
+          "th": "เกรเดียนต์ของข้อจำกัดทุกข้อต้องตั้งฉากกัน"
+        },
+        {
+          "en": "The Lagrangian is always zero at the optimum",
+          "th": "ฟังก์ชันลากรองจ์เป็นศูนย์เสมอที่จุดเหมาะที่สุด"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Complementary slackness means each constraint is either binding (g_i = 0, sitting on the boundary) or irrelevant (lambda_i = 0, not affecting the solution). In SVMs, this is why only support vectors (active constraints with lambda_i > 0) determine the decision boundary.",
+        "th": "ความหย่อนเติมเต็มหมายความว่าข้อจำกัดแต่ละข้อไม่ผูกมัดอยู่ (g_i = 0 อยู่บนขอบ) ก็ไม่เกี่ยวข้อง (lambda_i = 0 ไม่มีผลต่อคำตอบ) ใน SVM นี่คือเหตุผลที่มีแค่ support vector (ข้อจำกัดที่ทำงานอยู่และมี lambda_i > 0) ที่กำหนดเส้นแบ่ง"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "Why does SGD find good solutions in non-convex neural network landscapes despite the lack of convexity guarantees?",
+        "th": "ทำไม SGD จึงหาคำตอบที่ดีได้บนภูมิประเทศที่ไม่นูนของโครงข่ายประสาทเทียม ทั้งที่ไม่มีการรับประกันจากความนูน?"
+      },
+      "options": [
+        {
+          "en": "SGD always finds the global minimum",
+          "th": "SGD หาจุดต่ำสุดสัมบูรณ์ได้เสมอ"
+        },
+        {
+          "en": "The loss function is irrelevant to model performance",
+          "th": "ฟังก์ชัน loss ไม่เกี่ยวกับประสิทธิภาพของโมเดล"
+        },
+        {
+          "en": "In high dimensions, most critical points are saddle points (not bad local minima), and SGD noise helps escape them",
+          "th": "ในมิติสูง จุดวิกฤตส่วนใหญ่เป็นจุดอานม้า (ไม่ใช่จุดต่ำสุดเฉพาะที่ที่แย่) และสัญญาณรบกวนของ SGD ช่วยให้หนีออกมาได้"
+        },
+        {
+          "en": "Neural networks are secretly convex in high dimensions",
+          "th": "โครงข่ายประสาทเทียมนูนแบบแอบแฝงในมิติสูง"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "In high-dimensional parameter spaces, random critical points are overwhelmingly saddle points. The few local minima that exist tend to have loss values close to the global minimum. SGD's stochastic noise helps escape saddle points, and overparameterization smooths the landscape.",
+        "th": "ในปริภูมิพารามิเตอร์มิติสูง จุดวิกฤตแบบสุ่มเกือบทั้งหมดเป็นจุดอานม้า จุดต่ำสุดเฉพาะที่ไม่กี่จุดที่มีอยู่มักมีค่า loss ใกล้จุดต่ำสุดสัมบูรณ์ สัญญาณรบกวนแบบสุ่มของ SGD ช่วยให้หนีจากจุดอานม้า และ overparameterization ทำให้ภูมิประเทศเรียบขึ้น"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "Is f(x, y) = x² + 3xy + y² convex? Its Hessian is [[2, 3], [3, 2]].",
+        "th": "f(x, y) = x² + 3xy + y² นูนหรือไม่? Hessian ของมันคือ [[2, 3], [3, 2]]"
+      },
+      "options": [
+        {
+          "en": "Yes, because the diagonal entries are positive",
+          "th": "นูน เพราะสมาชิกบนเส้นทแยงมุมเป็นบวก"
+        },
+        {
+          "en": "No: the Hessian's eigenvalues are 5 and -1, so the origin is a saddle point",
+          "th": "ไม่นูน: ค่าลักษณะเฉพาะของ Hessian คือ 5 และ -1 จุดกำเนิดจึงเป็นจุดอานม้า"
+        },
+        {
+          "en": "Yes, because every coefficient is positive",
+          "th": "นูน เพราะสัมประสิทธิ์ทุกตัวเป็นบวก"
+        },
+        {
+          "en": "Only where x > 0",
+          "th": "นูนเฉพาะที่ x > 0"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The eigenvalues of [[2, 3], [3, 2]] are 2 + 3 = 5 and 2 - 3 = -1. A negative eigenvalue means the function curves down along (1, -1): f(1, -1) = 1 - 3 + 1 = -1 < 0 = f(0, 0). Positive diagonal entries are not enough.",
+        "th": "ค่าลักษณะเฉพาะของ [[2, 3], [3, 2]] คือ 2 + 3 = 5 และ 2 - 3 = -1 ค่าลักษณะเฉพาะที่เป็นลบหมายความว่าฟังก์ชันโค้งลงตามทิศ (1, -1): f(1, -1) = 1 - 3 + 1 = -1 < 0 = f(0, 0) สมาชิกบนเส้นทแยงมุมที่เป็นบวกยังไม่พอ"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "Minimize x² + y² subject to x + 2y = 5. Where is the minimum?",
+        "th": "หาค่าต่ำสุดของ x² + y² ภายใต้ x + 2y = 5 จุดต่ำสุดอยู่ที่ไหน?"
+      },
+      "options": [
+        {
+          "en": "(1, 2)",
+          "th": "(1, 2)"
+        },
+        {
+          "en": "(5, 0)",
+          "th": "(5, 0)"
+        },
+        {
+          "en": "(2.5, 1.25)",
+          "th": "(2.5, 1.25)"
+        },
+        {
+          "en": "(0, 2.5)",
+          "th": "(0, 2.5)"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "L = x² + y² + λ(x + 2y - 5) gives 2x + λ = 0 and 2y + 2λ = 0, so y = 2x. Then x + 4x = 5, x = 1, y = 2, λ = -2. The answer is parallel to the constraint's normal (1, 2), as the geometry predicts. (5, 0) and (0, 2.5) are on the line but farther from the origin.",
+        "th": "L = x² + y² + λ(x + 2y - 5) ให้ 2x + λ = 0 และ 2y + 2λ = 0 ดังนั้น y = 2x แล้ว x + 4x = 5 ได้ x = 1, y = 2, λ = -2 คำตอบขนานกับเวกเตอร์ตั้งฉาก (1, 2) ของข้อจำกัดตามที่เรขาคณิตบอก ส่วน (5, 0) และ (0, 2.5) อยู่บนเส้นแต่ไกลจุดกำเนิดกว่า"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Lesson exercise 3: minimize (x - 3)² + (y - 3)² subject to x + 2y = 4. What are the solution and the multiplier λ in L = f + λ(x + 2y - 4)?",
+        "th": "แบบฝึกหัดที่ 3 ของบทเรียน: หาค่าต่ำสุดของ (x - 3)² + (y - 3)² ภายใต้ x + 2y = 4 คำตอบและตัวคูณ λ ใน L = f + λ(x + 2y - 4) คืออะไร?"
+      },
+      "options": [
+        {
+          "en": "(3, 0.5), λ = 0",
+          "th": "(3, 0.5), λ = 0"
+        },
+        {
+          "en": "(2, 1), λ = -2",
+          "th": "(2, 1), λ = -2"
+        },
+        {
+          "en": "(2, 1), λ = 2",
+          "th": "(2, 1), λ = 2"
+        },
+        {
+          "en": "(0, 2), λ = 6",
+          "th": "(0, 2), λ = 6"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Projecting (3, 3) onto the line: (3, 3) - ((3 + 6 - 4) / 5)·(1, 2) = (2, 1), and 2 + 2·1 = 4. There ∇f = (2(2 - 3), 2(1 - 3)) = (-2, -4) = -2·(1, 2), and stationarity ∇f + λ∇g = 0 gives λ = 2.",
+        "th": "ฉาย (3, 3) ลงบนเส้น: (3, 3) - ((3 + 6 - 4) / 5)·(1, 2) = (2, 1) และ 2 + 2·1 = 4 ที่จุดนั้น ∇f = (2(2 - 3), 2(1 - 3)) = (-2, -4) = -2·(1, 2) และเงื่อนไข stationarity ∇f + λ∇g = 0 ให้ λ = 2"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Lesson exercise 4: minimize (x - 3)² + (y - 2)² subject to |x| + |y| ≤ 1. Where is the minimum?",
+        "th": "แบบฝึกหัดที่ 4 ของบทเรียน: หาค่าต่ำสุดของ (x - 3)² + (y - 2)² ภายใต้ |x| + |y| ≤ 1 จุดต่ำสุดอยู่ที่ไหน?"
+      },
+      "options": [
+        {
+          "en": "(1, 0), a corner of the diamond",
+          "th": "(1, 0) ซึ่งเป็นมุมของข้าวหลามตัด"
+        },
+        {
+          "en": "(0.6, 0.4)",
+          "th": "(0.6, 0.4)"
+        },
+        {
+          "en": "(0.5, 0.5)",
+          "th": "(0.5, 0.5)"
+        },
+        {
+          "en": "(3, 2), since the constraint is inactive",
+          "th": "(3, 2) เพราะข้อจำกัดไม่ทำงาน"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "(3, 2) violates the constraint, so the answer lies on the edge x + y = 1. Projecting (3, 2) onto that line gives (3, 2) - ((5 - 1) / 2)·(1, 1) = (1, 0), which is still on the edge, at the corner. f(1, 0) = 8, while f(0.6, 0.4) = 8.32 and f(0.5, 0.5) = 8.5. One coordinate is exactly zero: L1 sparsity.",
+        "th": "(3, 2) ละเมิดข้อจำกัด คำตอบจึงอยู่บนขอบ x + y = 1 ฉาย (3, 2) ลงบนเส้นนั้นได้ (3, 2) - ((5 - 1) / 2)·(1, 1) = (1, 0) ซึ่งยังอยู่บนขอบ ตรงมุมพอดี f(1, 0) = 8 ขณะที่ f(0.6, 0.4) = 8.32 และ f(0.5, 0.5) = 8.5 พิกัดหนึ่งเป็นศูนย์พอดี นี่คือความเบาบางของ L1"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Gradient descent on f(x, y) = 50x² + y² updates x ← (1 - 100·lr)·x. For which learning rates does it converge?",
+        "th": "gradient descent บน f(x, y) = 50x² + y² ปรับ x ← (1 - 100·lr)·x ค่า learning rate แบบไหนที่ทำให้มันลู่เข้า?"
+      },
+      "options": [
+        {
+          "en": "Any lr < 1",
+          "th": "lr < 1 ใดก็ได้"
+        },
+        {
+          "en": "0 < lr < 0.02",
+          "th": "0 < lr < 0.02"
+        },
+        {
+          "en": "0 < lr ≤ 0.02",
+          "th": "0 < lr ≤ 0.02"
+        },
+        {
+          "en": "Any lr, since the function is convex",
+          "th": "lr ใดก็ได้ เพราะฟังก์ชันนูน"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "It converges when |1 - 100·lr| < 1, i.e. 0 < lr < 2/100 = 0.02. At exactly 0.02 the factor is -1 and x flips sign forever; above it, x blows up. With lr < 0.02 the y factor 1 - 2·lr is at least 0.96, which is why the y direction crawls. Convexity alone does not save a bad step size.",
+        "th": "มันลู่เข้าเมื่อ |1 - 100·lr| < 1 คือ 0 < lr < 2/100 = 0.02 ที่ 0.02 พอดี ตัวคูณเป็น -1 และ x สลับเครื่องหมายไปเรื่อย ๆ เกินกว่านั้น x ระเบิด เมื่อ lr < 0.02 ตัวคูณของ y คือ 1 - 2·lr ซึ่งอย่างน้อย 0.96 ทิศ y จึงขยับช้ามาก ความนูนอย่างเดียวช่วยขนาดก้าวที่แย่ไม่ได้"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "One Newton step on f(x) = x⁴ from x = 1 lands where?",
+        "th": "ก้าวของวิธีของนิวตันหนึ่งก้าวบน f(x) = x⁴ จาก x = 1 ไปตกที่ไหน?"
+      },
+      "options": [
+        {
+          "en": "x = 0, the exact minimum",
+          "th": "x = 0 ซึ่งเป็นจุดต่ำสุดพอดี"
+        },
+        {
+          "en": "x = 1/2",
+          "th": "x = 1/2"
+        },
+        {
+          "en": "x = 3/4",
+          "th": "x = 3/4"
+        },
+        {
+          "en": "x = 2/3",
+          "th": "x = 2/3"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "x - f'(x)/f''(x) = 1 - 4/12 = 2/3. In general the step multiplies x by 2/3, so Newton converges only linearly here: f''(0) = 0, and the quadratic-convergence guarantee needs a positive curvature at the minimum. One-step convergence holds only for quadratics.",
+        "th": "x - f'(x)/f''(x) = 1 - 4/12 = 2/3 โดยทั่วไปแต่ละก้าวคูณ x ด้วย 2/3 วิธีของนิวตันจึงลู่เข้าแค่แบบเชิงเส้นในกรณีนี้ เพราะ f''(0) = 0 และการรับประกันการลู่เข้าแบบกำลังสองต้องการความโค้งที่เป็นบวกที่จุดต่ำสุด การลู่เข้าในก้าวเดียวเป็นจริงเฉพาะฟังก์ชันกำลังสอง"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Minimize x² subject to x ≥ 1, written as g(x) = 1 - x ≤ 0. What do the KKT conditions give?",
+        "th": "หาค่าต่ำสุดของ x² ภายใต้ x ≥ 1 เขียนเป็น g(x) = 1 - x ≤ 0 เงื่อนไข KKT ให้อะไร?"
+      },
+      "options": [
+        {
+          "en": "x* = 1, λ* = 2; the constraint is active",
+          "th": "x* = 1, λ* = 2 ข้อจำกัดทำงานอยู่"
+        },
+        {
+          "en": "x* = 0, λ* = 0",
+          "th": "x* = 0, λ* = 0"
+        },
+        {
+          "en": "x* = 1, λ* = 0",
+          "th": "x* = 1, λ* = 0"
+        },
+        {
+          "en": "x* = 1, λ* = -2",
+          "th": "x* = 1, λ* = -2"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "x = 0 is infeasible, so the constraint binds at x = 1. Stationarity: 2x + λ·(-1) = 0 gives λ = 2 ≥ 0 (dual feasibility), and λ·g(1) = 2·0 = 0 (complementary slackness). λ = -2 breaks dual feasibility. With the constraint x ≥ -1 instead, x* = 0 and λ* = 0: an inactive constraint gets a zero multiplier.",
+        "th": "x = 0 อยู่นอกบริเวณที่เป็นไปได้ ข้อจำกัดจึงผูกมัดที่ x = 1 stationarity: 2x + λ·(-1) = 0 ให้ λ = 2 ≥ 0 (dual feasibility) และ λ·g(1) = 2·0 = 0 (ความหย่อนเติมเต็ม) λ = -2 ละเมิด dual feasibility ถ้าข้อจำกัดเป็น x ≥ -1 แทน จะได้ x* = 0 และ λ* = 0 ข้อจำกัดที่ไม่ทำงานได้ตัวคูณเป็นศูนย์"
+      }
+    }
+  ]
+}

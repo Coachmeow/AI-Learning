@@ -1,0 +1,13 @@
+{
+  "minutes": 30,
+  "title": {"th": "ฉายลงบนลูกบอล L1: ที่มาของความเบาบาง", "en": "Projecting onto the L1 ball: where sparsity comes from"},
+  "prompt": {
+    "th": "เขียน `project_l1(v, radius)` ที่คืนจุด `w` ในลูกบอล L1 `{w : sum(|w_i|) <= radius}` ที่ใกล้ `v` ที่สุด (ระยะแบบยุคลิด) นี่คือขั้น \"ฉายกลับ\" ของ projected gradient descent ในแบบฝึกหัดที่ 4 ของบทเรียน\n\n- ถ้า `sum(|v_i|) <= radius` อยู่แล้ว คืนสำเนาของ `v`\n- ไม่อย่างนั้น คำตอบมีรูป `w_i = sign(v_i) * max(|v_i| - theta, 0)` ด้วย `theta > 0` ตัวเดียวที่ทำให้ `sum(|w_i|) = radius` พอดี\n- หา `theta` แบบแม่นยำ (ไม่ใช่วนซ้ำประมาณ): เรียง `|v|` จากมากไปน้อยเป็น `u` แล้วหา `k` ที่ใหญ่ที่สุดที่ `u[k-1] > (u[0] + ... + u[k-1] - radius) / k` จากนั้น `theta = (u[0] + ... + u[k-1] - radius) / k`\n- ถ้า `radius <= 0` ให้ `raise ValueError` และห้ามแก้ไข `v` ที่รับเข้ามา\n\nตัวอย่าง: `project_l1([3, 2], 1)` ได้ `[1.0, 0.0]` ตรงมุมของข้าวหลามตัด มี test ซ่อนอยู่บางส่วน",
+    "en": "Write `project_l1(v, radius)`, which returns the point `w` of the L1 ball `{w : sum(|w_i|) <= radius}` closest to `v` (in Euclidean distance). This is the \"project back\" step of projected gradient descent in the lesson's exercise 4.\n\n- If `sum(|v_i|) <= radius` already, return a copy of `v`.\n- Otherwise the answer has the form `w_i = sign(v_i) * max(|v_i| - theta, 0)` for the single `theta > 0` that makes `sum(|w_i|) = radius` exactly.\n- Find `theta` exactly (not by approximate iteration): sort `|v|` in descending order into `u`, find the largest `k` with `u[k-1] > (u[0] + ... + u[k-1] - radius) / k`, then `theta = (u[0] + ... + u[k-1] - radius) / k`.\n- If `radius <= 0`, `raise ValueError`; don't modify the `v` you were given.\n\nExample: `project_l1([3, 2], 1)` gives `[1.0, 0.0]`, a corner of the diamond. Some tests are hidden."
+  },
+  "hints": [
+    {"th": "ทำงานกับ |v| ก่อนแล้วค่อยคืนเครื่องหมายตอนท้าย: เครื่องหมายของ w_i ต้องตรงกับ v_i เสมอ", "en": "Work with |v| and restore the signs at the end: w_i always has the sign of v_i."},
+    {"th": "เก็บผลรวมสะสมขณะไล่ k = 1, 2, ..., n แล้วจำ k ตัวสุดท้ายที่เงื่อนไขเป็นจริง อย่าใช้ k = n เสมอ: [3, 1, 0.5] กับ radius 1 ต้องได้ k = 1 และ theta = 2", "en": "Keep a running sum as k goes 1, 2, ..., n and remember the last k where the condition holds. Don't just use k = n: [3, 1, 0.5] with radius 1 needs k = 1 and theta = 2."},
+    {"th": "ตรวจกรณีที่อยู่ในลูกบอลแล้วก่อน ถ้าไม่ตรวจ theta จะติดลบและทำให้ทุกค่าใหญ่ขึ้น", "en": "Handle the already-inside case first. Without it theta goes negative and every entry grows."}
+  ]
+}

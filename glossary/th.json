@@ -2092,6 +2092,62 @@
     {
       "en": "direct vs iterative solver",
       "th": "ตัวแก้แบบตรง / แบบวนซ้ำ"
+    },
+    {
+      "en": "convex set",
+      "th": "เซตนูน"
+    },
+    {
+      "en": "convex function",
+      "th": "ฟังก์ชันนูน"
+    },
+    {
+      "en": "convex optimization",
+      "th": "การหาค่าเหมาะที่สุดแบบนูน"
+    },
+    {
+      "en": "Lagrange multiplier",
+      "th": "ตัวคูณลากรองจ์",
+      "first": "ตัวคูณลากรองจ์ (Lagrange multiplier)"
+    },
+    {
+      "en": "KKT conditions (Karush-Kuhn-Tucker)",
+      "th": "เงื่อนไข KKT"
+    },
+    {
+      "en": "complementary slackness",
+      "th": "ความหย่อนเติมเต็ม",
+      "first": "ความหย่อนเติมเต็ม (complementary slackness)"
+    },
+    {
+      "en": "constrained / unconstrained optimization",
+      "th": "การหาค่าเหมาะที่สุดที่มีข้อจำกัด / ไม่มีข้อจำกัด"
+    },
+    {
+      "en": "duality / primal / dual problem",
+      "th": "ภาวะคู่ / ปัญหาปฐม / ปัญหาคู่"
+    },
+    {
+      "en": "strong duality",
+      "th": "ภาวะคู่แบบเข้ม",
+      "first": "ภาวะคู่แบบเข้ม (strong duality)"
+    },
+    {
+      "en": "L-BFGS",
+      "th": "L-BFGS"
+    },
+    {
+      "en": "halfspace",
+      "th": "ครึ่งปริภูมิ",
+      "first": "ครึ่งปริภูมิ (halfspace)"
+    },
+    {
+      "en": "overparameterization",
+      "th": "overparameterization"
+    },
+    {
+      "en": "projected gradient descent",
+      "th": "projected gradient descent"
     }
   ]
 }
