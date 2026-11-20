@@ -1,0 +1,486 @@
+{
+  "lesson": "01-math-foundations/20-fourier-transform",
+  "source_hash": "85708528263fd9c85a699ec1967dc4c03c5b1456fa60f846753026703b386883",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What does the Fourier transform do to a signal?",
+        "th": "การแปลงฟูเรียร์ทำอะไรกับสัญญาณ?"
+      },
+      "options": [
+        {
+          "en": "Decomposes the signal into sine waves of different frequencies, amplitudes, and phases",
+          "th": "แยกสัญญาณเป็นคลื่นไซน์ที่มีความถี่ แอมพลิจูด และเฟสต่าง ๆ"
+        },
+        {
+          "en": "Removes noise from the signal",
+          "th": "กำจัดสัญญาณรบกวนออกจากสัญญาณ"
+        },
+        {
+          "en": "Converts the signal from analog to digital",
+          "th": "แปลงสัญญาณจากแอนะล็อกเป็นดิจิทัล"
+        },
+        {
+          "en": "Compresses the signal to use less storage",
+          "th": "บีบอัดสัญญาณให้ใช้พื้นที่เก็บน้อยลง"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The Fourier transform converts a signal from the time domain to the frequency domain. Each frequency coefficient X[k] tells you the amplitude and phase of a sine wave at frequency k. The signal is re-expressed as a sum of these sine waves.",
+        "th": "การแปลงฟูเรียร์แปลงสัญญาณจากโดเมนเวลาไปเป็นโดเมนความถี่ สัมประสิทธิ์ความถี่ X[k] แต่ละตัวบอกแอมพลิจูดและเฟสของคลื่นไซน์ที่ความถี่ k สัญญาณถูกเขียนใหม่เป็นผลรวมของคลื่นไซน์เหล่านี้"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What is the time complexity of the Fast Fourier Transform (FFT) compared to the direct DFT?",
+        "th": "ความซับซ้อนเชิงเวลาของ FFT เทียบกับ DFT แบบตรงคืออะไร?"
+      },
+      "options": [
+        {
+          "en": "FFT is O(log N), DFT is O(N)",
+          "th": "FFT เป็น O(log N) ส่วน DFT เป็น O(N)"
+        },
+        {
+          "en": "FFT is O(N), DFT is O(N log N)",
+          "th": "FFT เป็น O(N) ส่วน DFT เป็น O(N log N)"
+        },
+        {
+          "en": "Both are O(N^2)",
+          "th": "ทั้งคู่เป็น O(N^2)"
+        },
+        {
+          "en": "FFT is O(N log N), DFT is O(N^2)",
+          "th": "FFT เป็น O(N log N) ส่วน DFT เป็น O(N^2)"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "The direct DFT computes N outputs, each summing over N inputs: O(N^2). The Cooley-Tukey FFT splits the signal into even/odd halves recursively, doing O(N) work at each of log2(N) levels, giving O(N log N). For N = 1 million, this is 20 million vs 1 trillion operations.",
+        "th": "DFT แบบตรงคำนวณขาออก N ตัว แต่ละตัวบวกขาเข้า N ตัว จึงเป็น O(N^2) FFT แบบ Cooley-Tukey แยกสัญญาณเป็นครึ่งคู่/คี่แบบเวียนเกิด ทำงาน O(N) ในแต่ละระดับจาก log2(N) ระดับ ได้ O(N log N) เมื่อ N = 1 ล้าน นั่นคือ 20 ล้านเทียบกับหนึ่งล้านล้านการดำเนินการ"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "What is X[0], the DC component, of x = [2, 4, 6, 8]?",
+        "th": "X[0] หรือองค์ประกอบ DC ของ x = [2, 4, 6, 8] คือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "5, the mean",
+          "th": "5 ซึ่งเป็นค่าเฉลี่ย"
+        },
+        {
+          "en": "0",
+          "th": "0"
+        },
+        {
+          "en": "2, the first sample",
+          "th": "2 ซึ่งเป็นค่าตัวอย่างแรก"
+        },
+        {
+          "en": "20, the sum of the samples",
+          "th": "20 ซึ่งเป็นผลรวมของค่าตัวอย่าง"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "At k = 0 every factor e^0 is 1, so X[0] = 2 + 4 + 6 + 8 = 20. That is N times the mean (4 · 5), which is why the DC component is proportional to the mean rather than equal to it.",
+        "th": "ที่ k = 0 ตัวคูณ e^0 ทุกตัวเป็น 1 ดังนั้น X[0] = 2 + 4 + 6 + 8 = 20 ซึ่งเท่ากับ N คูณค่าเฉลี่ย (4 · 5) นี่คือเหตุผลที่องค์ประกอบ DC แปรผันตามค่าเฉลี่ย แต่ไม่เท่ากับค่าเฉลี่ย"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "A signal is sampled at fs = 100 Hz. What is the highest frequency it can represent?",
+        "th": "สัญญาณถูกสุ่มตัวอย่างที่ fs = 100 Hz ความถี่สูงสุดที่แทนได้คือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "100 Hz",
+          "th": "100 Hz"
+        },
+        {
+          "en": "50 Hz, the Nyquist frequency",
+          "th": "50 Hz ซึ่งเป็นความถี่ไนควิสต์"
+        },
+        {
+          "en": "200 Hz",
+          "th": "200 Hz"
+        },
+        {
+          "en": "Any frequency, given enough samples",
+          "th": "ความถี่ใดก็ได้ ถ้ามีค่าตัวอย่างมากพอ"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The Nyquist frequency is fs / 2 = 50 Hz. Anything above it aliases onto a lower frequency, however many samples you take; more samples improve resolution, not the maximum frequency.",
+        "th": "ความถี่ไนควิสต์คือ fs / 2 = 50 Hz ความถี่ที่สูงกว่านั้นจะ alias ไปเป็นความถี่ต่ำกว่า ไม่ว่าจะเก็บค่าตัวอย่างมากแค่ไหน ค่าตัวอย่างที่มากขึ้นช่วยเรื่องความละเอียด ไม่ใช่ความถี่สูงสุด"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "fs = 1000 Hz and N = 500 samples. Which frequency does bin k = 25 represent?",
+        "th": "fs = 1000 Hz และ N = 500 ค่าตัวอย่าง bin k = 25 แทนความถี่เท่าไร?"
+      },
+      "options": [
+        {
+          "en": "25 Hz",
+          "th": "25 Hz"
+        },
+        {
+          "en": "12.5 Hz",
+          "th": "12.5 Hz"
+        },
+        {
+          "en": "50 Hz",
+          "th": "50 Hz"
+        },
+        {
+          "en": "500 Hz",
+          "th": "500 Hz"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "f_k = k · fs / N = 25 · 1000 / 500 = 50 Hz. The bins are fs / N = 2 Hz apart, so bin 25 sits at 50 Hz. Bin index equals hertz only when N = fs (one second of data).",
+        "th": "f_k = k · fs / N = 25 · 1000 / 500 = 50 Hz bin ห่างกัน fs / N = 2 Hz ดังนั้น bin 25 อยู่ที่ 50 Hz ดัชนี bin เท่ากับเฮิรตซ์ก็ต่อเมื่อ N = fs (ข้อมูลหนึ่งวินาที)"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "What does the convolution theorem state?",
+        "th": "ทฤษฎีบทคอนโวลูชันกล่าวว่าอะไร?"
+      },
+      "options": [
+        {
+          "en": "Convolution in the time domain equals addition in the frequency domain",
+          "th": "คอนโวลูชันในโดเมนเวลาเท่ากับการบวกในโดเมนความถี่"
+        },
+        {
+          "en": "Convolution always increases the length of a signal",
+          "th": "คอนโวลูชันทำให้สัญญาณยาวขึ้นเสมอ"
+        },
+        {
+          "en": "Convolution and correlation are identical operations",
+          "th": "คอนโวลูชันกับสหสัมพันธ์เป็นการดำเนินการเดียวกัน"
+        },
+        {
+          "en": "Convolution in the time domain equals pointwise multiplication in the frequency domain",
+          "th": "คอนโวลูชันในโดเมนเวลาเท่ากับการคูณทีละจุดในโดเมนความถี่"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "The convolution theorem states that convolution in the time domain equals pointwise multiplication in the frequency domain: x * h = IFFT(FFT(x) . FFT(h)). This is why FFT-based convolution is O(N log N) instead of O(N*M) for large kernels.",
+        "th": "ทฤษฎีบทคอนโวลูชันกล่าวว่าคอนโวลูชันในโดเมนเวลาเท่ากับการคูณทีละจุดในโดเมนความถี่: x * h = IFFT(FFT(x) . FFT(h)) นี่คือเหตุผลที่คอนโวลูชันผ่าน FFT เป็น O(N log N) แทน O(N*M) สำหรับ kernel ขนาดใหญ่"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "Why does zero-padding a signal before FFT NOT increase the true frequency resolution?",
+        "th": "ทำไมการเติมศูนย์ให้สัญญาณก่อนทำ FFT จึงไม่เพิ่มความละเอียดเชิงความถี่ที่แท้จริง?"
+      },
+      "options": [
+        {
+          "en": "Zero-padding interpolates between existing frequency bins but cannot reveal frequency detail absent from the original samples",
+          "th": "การเติมศูนย์ประมาณค่าระหว่าง bin ความถี่ที่มีอยู่ แต่เผยรายละเอียดความถี่ที่ไม่มีในค่าตัวอย่างเดิมไม่ได้"
+        },
+        {
+          "en": "Zero-padding introduces noise that cancels the improvement",
+          "th": "การเติมศูนย์เพิ่มสัญญาณรบกวนที่หักล้างการปรับปรุง"
+        },
+        {
+          "en": "Zero-padding only works for power-of-2 signal lengths",
+          "th": "การเติมศูนย์ใช้ได้กับสัญญาณที่ยาวเป็นกำลังของ 2 เท่านั้น"
+        },
+        {
+          "en": "The FFT algorithm ignores zero-padded samples",
+          "th": "อัลกอริทึม FFT ข้ามค่าตัวอย่างที่เติมศูนย์"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "True frequency resolution depends on the observation time T = N/fs. Zero-padding adds more frequency bins (finer grid) but only interpolates the existing spectrum — it gives a smoother-looking result without resolving frequencies closer than 1/T Hz apart.",
+        "th": "ความละเอียดเชิงความถี่ที่แท้จริงขึ้นกับเวลาที่สังเกต T = N/fs การเติมศูนย์เพิ่มจำนวน bin ความถี่ (ตารางละเอียดขึ้น) แต่แค่ประมาณค่าสเปกตรัมเดิม ได้ผลที่ดูเรียบขึ้นโดยไม่ได้แยกความถี่ที่ห่างกันน้อยกว่า 1/T Hz ได้"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "In the original Transformer's sinusoidal positional encodings, why are different dimension pairs assigned geometrically spaced frequencies?",
+        "th": "ใน positional encoding แบบไซน์ของ Transformer ฉบับแรก ทำไมมิติแต่ละคู่จึงได้ความถี่ที่ห่างกันแบบเรขาคณิต?"
+      },
+      "options": [
+        {
+          "en": "It ensures all encoding values are between 0 and 1",
+          "th": "เพื่อให้ค่าของ encoding ทั้งหมดอยู่ระหว่าง 0 ถึง 1"
+        },
+        {
+          "en": "Each frequency provides a different resolution — high frequencies encode fine position, low frequencies encode coarse position, giving each position a unique fingerprint",
+          "th": "แต่ละความถี่ให้ความละเอียดต่างกัน ความถี่สูงเข้ารหัสตำแหน่งแบบละเอียด ความถี่ต่ำเข้ารหัสตำแหน่งแบบหยาบ ทำให้แต่ละตำแหน่งมีลายนิ้วมือไม่ซ้ำกัน"
+        },
+        {
+          "en": "Geometric spacing is required by the FFT algorithm",
+          "th": "อัลกอริทึม FFT ต้องการระยะห่างแบบเรขาคณิต"
+        },
+        {
+          "en": "It reduces the computational cost of attention",
+          "th": "มันลดต้นทุนการคำนวณของ attention"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "High-frequency dimensions change rapidly with position (fine resolution), while low-frequency dimensions change slowly (coarse resolution). Together, the multi-frequency encoding gives every position a unique pattern — similar to how Fourier coefficients uniquely identify a signal.",
+        "th": "มิติความถี่สูงเปลี่ยนเร็วตามตำแหน่ง (ความละเอียดสูง) ส่วนมิติความถี่ต่ำเปลี่ยนช้า (ความละเอียดหยาบ) เมื่อรวมกัน encoding หลายความถี่ทำให้ทุกตำแหน่งมีรูปแบบไม่ซ้ำกัน คล้ายกับที่สัมประสิทธิ์ฟูเรียร์ระบุสัญญาณได้อย่างเฉพาะตัว"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "A 70 Hz sine is sampled at 100 Hz. At which frequency does it appear?",
+        "th": "ไซน์ 70 Hz ถูกสุ่มตัวอย่างที่ 100 Hz มันปรากฏที่ความถี่เท่าไร?"
+      },
+      "options": [
+        {
+          "en": "70 Hz",
+          "th": "70 Hz"
+        },
+        {
+          "en": "30 Hz",
+          "th": "30 Hz"
+        },
+        {
+          "en": "50 Hz",
+          "th": "50 Hz"
+        },
+        {
+          "en": "170 Hz",
+          "th": "170 Hz"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "70 Hz is above the Nyquist frequency of 50 Hz, so it folds back to 100 - 70 = 30 Hz. The samples of sin(2π·70t) equal those of -sin(2π·30t) exactly, so the spectrum shows a peak at 30 Hz.",
+        "th": "70 Hz สูงกว่าความถี่ไนควิสต์ 50 Hz มันจึงพับกลับมาที่ 100 - 70 = 30 Hz ค่าตัวอย่างของ sin(2π·70t) เท่ากับของ -sin(2π·30t) ทุกประการ สเปกตรัมจึงแสดงยอดที่ 30 Hz"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "Lesson exercise 3: the circular convolution of x = [1, 2, 3, 4, 0, 0, 0, 0] with h = [1, 1, 1, 0, 0, 0, 0, 0] is?",
+        "th": "แบบฝึกหัดที่ 3 ของบทเรียน: คอนโวลูชันแบบวงกลมของ x = [1, 2, 3, 4, 0, 0, 0, 0] กับ h = [1, 1, 1, 0, 0, 0, 0, 0] คืออะไร?"
+      },
+      "options": [
+        {
+          "en": "[1, 3, 6, 9, 7, 4, 0, 0]",
+          "th": "[1, 3, 6, 9, 7, 4, 0, 0]"
+        },
+        {
+          "en": "[1, 2, 3, 4, 0, 0, 0, 0]",
+          "th": "[1, 2, 3, 4, 0, 0, 0, 0]"
+        },
+        {
+          "en": "[6, 9, 7, 4, 0, 0, 1, 3]",
+          "th": "[6, 9, 7, 4, 0, 0, 1, 3]"
+        },
+        {
+          "en": "[1, 2, 3, 0, 0, 0, 0, 0]",
+          "th": "[1, 2, 3, 0, 0, 0, 0, 0]"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "Each output is a sum of three neighboring samples: y[0] = 1, y[1] = 1 + 2, y[2] = 1 + 2 + 3, y[3] = 2 + 3 + 4 = 9, y[4] = 3 + 4, y[5] = 4. The linear convolution has length 4 + 3 - 1 = 6 ≤ 8, so nothing wraps around and it equals the linear one with two zeros after it.",
+        "th": "ขาออกแต่ละตัวคือผลรวมของค่าตัวอย่างสามตัวที่อยู่ติดกัน: y[0] = 1, y[1] = 1 + 2, y[2] = 1 + 2 + 3, y[3] = 2 + 3 + 4 = 9, y[4] = 3 + 4, y[5] = 4 คอนโวลูชันเชิงเส้นยาว 4 + 3 - 1 = 6 ≤ 8 จึงไม่มีอะไรวนรอบ และได้ผลเท่ากับแบบเชิงเส้นตามด้วยศูนย์สองตัว"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "For x = [1, 2, 3, 4], Σ|x[n]|² = 30. By Parseval's theorem, what is Σ|X[k]|²?",
+        "th": "สำหรับ x = [1, 2, 3, 4] ได้ Σ|x[n]|² = 30 ตามทฤษฎีบทของพาร์เซวาล Σ|X[k]|² คือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "30",
+          "th": "30"
+        },
+        {
+          "en": "7.5",
+          "th": "7.5"
+        },
+        {
+          "en": "900",
+          "th": "900"
+        },
+        {
+          "en": "120",
+          "th": "120"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Σ|x|² = (1/N)·Σ|X|², so Σ|X|² = N · 30 = 120. Check with X = [10, -2+2i, -2, -2-2i]: 100 + 8 + 4 + 8 = 120. With this unnormalized DFT the factor N matters; a 1/√N-normalized DFT would give 30.",
+        "th": "Σ|x|² = (1/N)·Σ|X|² ดังนั้น Σ|X|² = N · 30 = 120 ตรวจด้วย X = [10, -2+2i, -2, -2-2i]: 100 + 8 + 4 + 8 = 120 ใน DFT ที่ไม่ normalize ตัวประกอบ N มีผล ส่วน DFT ที่ normalize ด้วย 1/√N จะได้ 30"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "x[n] = 3·sin(2π·5n/64) for n = 0..63. What is |X[5]|?",
+        "th": "x[n] = 3·sin(2π·5n/64) สำหรับ n = 0..63 ค่า |X[5]| คือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "3",
+          "th": "3"
+        },
+        {
+          "en": "96",
+          "th": "96"
+        },
+        {
+          "en": "192",
+          "th": "192"
+        },
+        {
+          "en": "1.5",
+          "th": "1.5"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "A real sine of amplitude A exactly on bin k gives |X[k]| = A·N/2 = 3 · 64 / 2 = 96; the other half of its energy sits at bin 64 - 5 = 59. Divide by N/2 to read the amplitude 3 back.",
+        "th": "ไซน์จริงที่มีแอมพลิจูด A และตกบน bin k พอดีให้ |X[k]| = A·N/2 = 3 · 64 / 2 = 96 พลังงานอีกครึ่งอยู่ที่ bin 64 - 5 = 59 หารด้วย N/2 เพื่ออ่านแอมพลิจูด 3 กลับมา"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "A length-16 signal is shifted circularly by 3 samples. What happens to its DFT?",
+        "th": "สัญญาณยาว 16 ถูกเลื่อนแบบวงกลมไป 3 ค่าตัวอย่าง เกิดอะไรขึ้นกับ DFT ของมัน?"
+      },
+      "options": [
+        {
+          "en": "Every coefficient moves 3 bins to the right",
+          "th": "สัมประสิทธิ์ทุกตัวเลื่อนไปทางขวา 3 bin"
+        },
+        {
+          "en": "The magnitudes shrink by a factor 3/16",
+          "th": "ขนาดหดลงด้วยตัวประกอบ 3/16"
+        },
+        {
+          "en": "Each |X[k]| stays the same; X[k] is multiplied by e^(-2πi·3k/16)",
+          "th": "|X[k]| แต่ละตัวเท่าเดิม และ X[k] ถูกคูณด้วย e^(-2πi·3k/16)"
+        },
+        {
+          "en": "Nothing changes at all",
+          "th": "ไม่มีอะไรเปลี่ยนเลย"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "The time-shift property: x[n - 3] ↔ X[k]·e^(-2πi·3k/N). The factor has magnitude 1, so the power spectrum is unchanged and only the phases rotate, more for higher k. Moving bins is what a frequency shift does.",
+        "th": "คุณสมบัติการเลื่อนเวลา: x[n - 3] ↔ X[k]·e^(-2πi·3k/N) ตัวคูณมีขนาด 1 สเปกตรัมกำลังจึงไม่เปลี่ยน มีแค่เฟสที่หมุน และหมุนมากขึ้นเมื่อ k สูงขึ้น การเลื่อน bin คือสิ่งที่การเลื่อนความถี่ทำ"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "What is the Hann window w[n] = 0.5(1 - cos(2πn/(N - 1))) for N = 5?",
+        "th": "Hann window w[n] = 0.5(1 - cos(2πn/(N - 1))) สำหรับ N = 5 คืออะไร?"
+      },
+      "options": [
+        {
+          "en": "[0.08, 0.54, 1, 0.54, 0.08]",
+          "th": "[0.08, 0.54, 1, 0.54, 0.08]"
+        },
+        {
+          "en": "[1, 1, 1, 1, 1]",
+          "th": "[1, 1, 1, 1, 1]"
+        },
+        {
+          "en": "[0.5, 1, 0.5, 0, 0.5]",
+          "th": "[0.5, 1, 0.5, 0, 0.5]"
+        },
+        {
+          "en": "[0, 0.5, 1, 0.5, 0]",
+          "th": "[0, 0.5, 1, 0.5, 0]"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "With N - 1 = 4 the angles are 0, π/2, π, 3π/2, 2π, so the cosines are 1, 0, -1, 0, 1 and w = [0, 0.5, 1, 0.5, 0]. The Hann window reaches zero at both ends; [0.08, 0.54, 1, 0.54, 0.08] is the Hamming window, which stops at 0.08.",
+        "th": "เมื่อ N - 1 = 4 มุมคือ 0, π/2, π, 3π/2, 2π โคไซน์จึงเป็น 1, 0, -1, 0, 1 และ w = [0, 0.5, 1, 0.5, 0] Hann window ลงไปถึงศูนย์ที่ปลายทั้งสอง ส่วน [0.08, 0.54, 1, 0.54, 0.08] คือ Hamming window ซึ่งหยุดที่ 0.08"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "You need separate peaks for tones at 10 Hz and 10.25 Hz. At least how long must you record?",
+        "th": "คุณต้องการยอดที่แยกกันของเสียงที่ 10 Hz และ 10.25 Hz ต้องบันทึกนานอย่างน้อยเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "0.25 s",
+          "th": "0.25 วินาที"
+        },
+        {
+          "en": "1 s, then zero-pad to 4 s",
+          "th": "1 วินาที แล้วเติมศูนย์ให้ยาว 4 วินาที"
+        },
+        {
+          "en": "4 s, because Δf = 1/T",
+          "th": "4 วินาที เพราะ Δf = 1/T"
+        },
+        {
+          "en": "Any length, if the sampling rate is high enough",
+          "th": "ยาวเท่าไรก็ได้ ถ้าอัตราการสุ่มตัวอย่างสูงพอ"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Resolution Δf = 1/T, so 0.25 Hz needs T ≥ 1/0.25 = 4 s. In a check at 64 Hz, 2 s of data gives bins 0.5 Hz apart and the two tones merge, while 4 s gives two equal peaks at 10 and 10.25 Hz. Zero-padding and a higher sampling rate do not change T.",
+        "th": "ความละเอียด Δf = 1/T ดังนั้น 0.25 Hz ต้องการ T ≥ 1/0.25 = 4 วินาที ในการทดลองที่ 64 Hz ข้อมูล 2 วินาทีให้ bin ห่างกัน 0.5 Hz และเสียงทั้งสองรวมกัน ส่วน 4 วินาทีให้ยอดสองยอดที่สูงเท่ากันที่ 10 และ 10.25 Hz การเติมศูนย์และอัตราการสุ่มตัวอย่างที่สูงขึ้นไม่ได้เปลี่ยน T"
+      }
+    }
+  ]
+}

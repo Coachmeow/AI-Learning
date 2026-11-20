@@ -1,0 +1,13 @@
+{
+  "minutes": 15,
+  "title": {"th": "คอนโวลูชันแบบวงกลมและแบบเชิงเส้น", "en": "Circular and linear convolution"},
+  "prompt": {
+    "th": "เขียนสองฟังก์ชันแบบตรง (ลูปซ้อน ไม่ใช้ FFT):\n\n- `circular_convolution(x, h)`: `y[n] = sum(h[k] * x[(n - k) % N] for k in range(N))` เมื่อ x และ h ยาว N เท่ากัน ถ้ายาวไม่เท่ากัน ให้ `raise ValueError`\n- `linear_convolution(x, h)`: คอนโวลูชันแบบไม่วนรอบ ยาว `len(x) + len(h) - 1` ทำโดยเติมศูนย์ให้ทั้งสองยาวเท่านั้นแล้วเรียก `circular_convolution`\n\nนี่คือแบบฝึกหัดที่ 3 ของบทเรียน: ผลของทั้งสองแบบจะตรงกันก็ต่อเมื่อความยาวที่เติมแล้วพอให้ไม่มีอะไรวนรอบ",
+    "en": "Write two direct functions (nested loops, no FFT):\n\n- `circular_convolution(x, h)`: `y[n] = sum(h[k] * x[(n - k) % N] for k in range(N))` when x and h have the same length N. If the lengths differ, `raise ValueError`.\n- `linear_convolution(x, h)`: convolution without wraparound, of length `len(x) + len(h) - 1`, done by zero-padding both to that length and calling `circular_convolution`.\n\nThis is the lesson's exercise 3: the two agree only when the padded length is enough for nothing to wrap around."
+  },
+  "hints": [
+    {"th": "ใช้ `(n - k) % N` ไม่ใช่ `(n + k) % N`: แบบหลังคือสหสัมพันธ์ ซึ่งให้ผลต่างกันเมื่อ h ไม่สมมาตร", "en": "Use `(n - k) % N`, not `(n + k) % N`: the latter is correlation, which differs whenever h is not symmetric."},
+    {"th": "ตัวดำเนินการ % ของ Python คืนค่าไม่ติดลบเสมอ (-1 % 8 = 7) นี่คือการวนรอบที่ต้องการพอดี", "en": "Python's % always returns a non-negative value (-1 % 8 = 7), which is exactly the wraparound you want."},
+    {"th": "`L = len(x) + len(h) - 1` แล้ว `circular_convolution(list(x) + [0] * (L - len(x)), list(h) + [0] * (L - len(h)))`", "en": "`L = len(x) + len(h) - 1`, then `circular_convolution(list(x) + [0] * (L - len(x)), list(h) + [0] * (L - len(h)))`."}
+  ]
+}

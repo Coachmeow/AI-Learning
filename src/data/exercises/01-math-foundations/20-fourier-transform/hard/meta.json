@@ -1,0 +1,13 @@
+{
+  "minutes": 30,
+  "title": {"th": "FFT แบบ Cooley-Tukey ที่เร็วจริง", "en": "A Cooley-Tukey FFT that is actually fast"},
+  "prompt": {
+    "th": "เขียน `fft(x)` แบบ radix-2 Cooley-Tukey ที่ให้ผลเท่ากับ DFT แต่ใช้เวลา O(N log N):\n\n- `x` เป็น list ของจำนวนจริงหรือจำนวนเชิงซ้อน ความยาวต้องเป็นกำลังของ 2 (1, 2, 4, 8, ...) ไม่อย่างนั้น (รวมถึง list ว่าง) ให้ `raise ValueError`\n- คืน list ของ `complex` ที่ `X[k] = sum(x[n] * exp(-2πi·k·n/N))`\n- แยกเป็นดัชนีคู่และคี่ เรียกตัวเองซ้ำ แล้วรวมด้วย twiddle factor: `X[k] = E[k] + w·O[k]` และ `X[k + N/2] = E[k] - w·O[k]` โดย `w = exp(-2πi·k/N)`\n- ห้ามแก้ไข `x` ที่รับเข้ามา\n\nมี test ซ่อนที่จับเวลา: DFT แบบ O(N²) ที่ให้ผลถูกต้องจะไม่ผ่าน",
+    "en": "Write a radix-2 Cooley-Tukey `fft(x)` that gives the same result as the DFT in O(N log N) time:\n\n- `x` is a list of real or complex numbers whose length must be a power of 2 (1, 2, 4, 8, ...); otherwise (an empty list included) `raise ValueError`.\n- Return a list of `complex` with `X[k] = sum(x[n] * exp(-2πi·k·n/N))`.\n- Split into even and odd indices, recurse, and combine with twiddle factors: `X[k] = E[k] + w·O[k]` and `X[k + N/2] = E[k] - w·O[k]`, where `w = exp(-2πi·k/N)`.\n- Don't modify the `x` you were given.\n\nA hidden test measures time: an O(N²) DFT that gives correct results will not pass."
+  },
+  "hints": [
+    {"th": "ตรวจกำลังของ 2 ได้ด้วย `N > 0 and N & (N - 1) == 0` ตรวจครั้งเดียวที่ระดับบนสุด แล้วให้ฟังก์ชันช่วยภายในทำการเวียนเกิด", "en": "Check for a power of 2 with `N > 0 and N & (N - 1) == 0`. Check once at the top level and let an inner helper do the recursion."},
+    {"th": "กรณีฐานคือ N = 1: DFT ของค่าตัวอย่างเดียวคือตัวมันเอง คืน `[complex(x[0])]`", "en": "The base case is N = 1: the DFT of a single sample is the sample itself, so return `[complex(x[0])]`."},
+    {"th": "`x[0::2]` และ `x[1::2]` สร้าง list ใหม่ จึงไม่แก้ x และคำนวณ `t = w * O[k]` ครั้งเดียวแล้วใช้ทั้ง E[k] + t และ E[k] - t", "en": "`x[0::2]` and `x[1::2]` build new lists, so x is left alone. Compute `t = w * O[k]` once and use it for both E[k] + t and E[k] - t."}
+  ]
+}

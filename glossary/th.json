@@ -2204,6 +2204,75 @@
     {
       "en": "Rotary Position Embedding (RoPE)",
       "th": "RoPE (Rotary Position Embedding)"
+    },
+    {
+      "en": "Fourier transform",
+      "th": "การแปลงฟูเรียร์",
+      "first": "การแปลงฟูเรียร์ (Fourier transform)"
+    },
+    {
+      "en": "time domain / frequency domain",
+      "th": "โดเมนเวลา / โดเมนความถี่"
+    },
+    {
+      "en": "frequency bin",
+      "th": "frequency bin"
+    },
+    {
+      "en": "DC component",
+      "th": "องค์ประกอบ DC"
+    },
+    {
+      "en": "Nyquist frequency",
+      "th": "ความถี่ไนควิสต์",
+      "first": "ความถี่ไนควิสต์ (Nyquist frequency)"
+    },
+    {
+      "en": "aliasing",
+      "th": "aliasing"
+    },
+    {
+      "en": "power spectrum / phase spectrum",
+      "th": "สเปกตรัมกำลัง / สเปกตรัมเฟส"
+    },
+    {
+      "en": "spectral leakage",
+      "th": "การรั่วของสเปกตรัม",
+      "first": "การรั่วของสเปกตรัม (spectral leakage)"
+    },
+    {
+      "en": "window function (Hann, Hamming)",
+      "th": "window function (Hann, Hamming)"
+    },
+    {
+      "en": "twiddle factor",
+      "th": "twiddle factor"
+    },
+    {
+      "en": "convolution theorem",
+      "th": "ทฤษฎีบทคอนโวลูชัน",
+      "first": "ทฤษฎีบทคอนโวลูชัน (convolution theorem)"
+    },
+    {
+      "en": "circular / linear convolution",
+      "th": "คอนโวลูชันแบบวงกลม / เชิงเส้น"
+    },
+    {
+      "en": "zero-padding",
+      "th": "การเติมศูนย์ (zero-padding)"
+    },
+    {
+      "en": "Parseval's theorem",
+      "th": "ทฤษฎีบทของพาร์เซวาล",
+      "first": "ทฤษฎีบทของพาร์เซวาล (Parseval's theorem)"
+    },
+    {
+      "en": "spectrogram / STFT",
+      "th": "สเปกโทรแกรม / STFT"
+    },
+    {
+      "en": "mel-spectrogram",
+      "th": "mel-spectrogram"
     }
   ]
 }

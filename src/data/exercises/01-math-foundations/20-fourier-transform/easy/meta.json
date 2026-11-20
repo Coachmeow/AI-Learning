@@ -1,0 +1,13 @@
+{
+  "minutes": 6,
+  "title": {"th": "เติมโค้ด: Hann window", "en": "Fill in: the Hann window"},
+  "prompt": {
+    "th": "เติม `hann_window(N)` ที่คืน list ยาว N ตามสูตร w[n] = 0.5 (1 - cos(2πn / (N - 1))) กรณี N = 1 เขียนไว้ให้แล้ว (คืน [1.0]) เติมบรรทัดที่มี `# TODO`",
+    "en": "Complete `hann_window(N)`, which returns a list of length N following w[n] = 0.5 (1 - cos(2πn / (N - 1))). The N = 1 case is written (it returns [1.0]). Fill in the `# TODO` line."
+  },
+  "hints": [
+    {"th": "ตัวหารคือ N - 1 ไม่ใช่ N: window ต้องเป็นศูนย์พอดีที่ทั้ง n = 0 และ n = N - 1", "en": "The denominator is N - 1, not N: the window must be exactly zero at both n = 0 and n = N - 1."},
+    {"th": "ตรงกลางต้องได้ 1 พอดี: 0.5 (1 - cos π) = 0.5 · 2 = 1", "en": "The middle must be exactly 1: 0.5 (1 - cos π) = 0.5 · 2 = 1."},
+    {"th": "`return [0.5 * (1 - math.cos(2 * math.pi * n / (N - 1))) for n in range(N)]`", "en": "`return [0.5 * (1 - math.cos(2 * math.pi * n / (N - 1))) for n in range(N)]`"}
+  ]
+}
