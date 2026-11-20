@@ -1,0 +1,13 @@
+{
+  "minutes": 6,
+  "title": {"th": "เติมโค้ด: มัธยฐาน", "en": "Fill in: the median"},
+  "prompt": {
+    "th": "เติม `median(xs)` ให้คืนมัธยฐาน: เรียงข้อมูลก่อน ถ้าจำนวนเป็นเลขคี่คือค่าตรงกลาง ถ้าเป็นเลขคู่คือค่าเฉลี่ยของสองค่าตรงกลาง กรณีเลขคี่เขียนไว้ให้แล้ว เติมบรรทัดที่มี `# TODO` สำหรับกรณีเลขคู่",
+    "en": "Complete `median(xs)` so it returns the median: sort the data first; with an odd count it is the middle value, with an even count it is the mean of the two middle values. The odd case is already written; fill in the `# TODO` line for the even case."
+  },
+  "hints": [
+    {"th": "เมื่อ n เป็นเลขคู่ ค่าตรงกลางสองค่าอยู่ที่ดัชนี `mid - 1` และ `mid` โดย `mid = n // 2`", "en": "With an even n, the two middle values are at indices `mid - 1` and `mid`, where `mid = n // 2`."},
+    {"th": "ใช้ `s` ที่เรียงแล้ว ไม่ใช่ `xs`", "en": "Use the sorted `s`, not `xs`."},
+    {"th": "`return (s[mid - 1] + s[mid]) / 2`", "en": "`return (s[mid - 1] + s[mid]) / 2`"}
+  ]
+}

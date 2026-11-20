@@ -1,0 +1,13 @@
+{
+  "minutes": 15,
+  "title": {"th": "สหสัมพันธ์แบบสเปียร์แมนที่มีค่าซ้ำ", "en": "Spearman correlation with ties"},
+  "prompt": {
+    "th": "เขียน `spearman(x, y)` ที่คืนสหสัมพันธ์อันดับแบบสเปียร์แมน: แทนแต่ละค่าด้วยอันดับ (เริ่มที่ 1 ค่าน้อยสุดได้อันดับ 1) แล้วคำนวณสหสัมพันธ์แบบเพียร์สันบนอันดับ\n\n- ค่าที่ซ้ำกันได้**อันดับเฉลี่ย**: ใน `[10, 20, 20, 30]` อันดับคือ `[1, 2.5, 2.5, 4]`\n- ถ้า `x` กับ `y` ยาวไม่เท่ากัน หรือตัวใดตัวหนึ่งมีค่าเท่ากันทั้งหมด (ความแปรปรวนเป็นศูนย์) ให้ `raise ValueError`\n\nมี test ซ่อนอยู่บางส่วน",
+    "en": "Write `spearman(x, y)`. It returns Spearman's rank correlation: replace each value by its rank (starting at 1, the smallest gets rank 1), then compute the Pearson correlation of the ranks.\n\n- Tied values get the **average rank**: in `[10, 20, 20, 30]` the ranks are `[1, 2.5, 2.5, 4]`.\n- If `x` and `y` differ in length, or either one is constant (zero variance), `raise ValueError`.\n\nSome tests are hidden."
+  },
+  "hints": [
+    {"th": "เรียงดัชนีตามค่า แล้วเดินเป็นกลุ่มของค่าที่เท่ากัน กลุ่มที่ครอบตำแหน่ง i ถึง j (นับจาก 0) ได้อันดับ `(i + j) / 2 + 1` ทุกตัว", "en": "Sort the indices by value and walk through runs of equal values; a run covering positions i to j (from 0) gives every member rank `(i + j) / 2 + 1`."},
+    {"th": "เพียร์สันบนอันดับ: `sum((rx - mx) * (ry - my)) / sqrt(sum((rx - mx)²) * sum((ry - my)²))`", "en": "Pearson on the ranks: `sum((rx - mx) * (ry - my)) / sqrt(sum((rx - mx)²) * sum((ry - my)²))`."},
+    {"th": "ถ้าตัวส่วนเป็นศูนย์แปลว่ามีตัวแปรที่คงที่ ให้ raise ValueError แทนการหารด้วยศูนย์", "en": "A zero denominator means one variable is constant: raise ValueError instead of dividing by zero."}
+  ]
+}

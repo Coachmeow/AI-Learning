@@ -1870,6 +1870,95 @@
       "en": "dynamic programming",
       "th": "การโปรแกรมแบบพลวัต",
       "first": "การโปรแกรมแบบพลวัต (dynamic programming)"
+    },
+    {
+      "en": "descriptive statistics",
+      "th": "สถิติเชิงพรรณนา",
+      "first": "สถิติเชิงพรรณนา (descriptive statistics)"
+    },
+    {
+      "en": "mean / median / mode",
+      "th": "ค่าเฉลี่ย / มัธยฐาน / ฐานนิยม"
+    },
+    {
+      "en": "percentile / quartile / IQR",
+      "th": "เปอร์เซ็นไทล์ / ควอร์ไทล์ / IQR"
+    },
+    {
+      "en": "Bessel's correction",
+      "th": "การแก้ของเบสเซล",
+      "first": "การแก้ของเบสเซล (Bessel's correction)"
+    },
+    {
+      "en": "unbiased estimator",
+      "th": "ตัวประมาณที่ไม่เอนเอียง"
+    },
+    {
+      "en": "Spearman rank correlation",
+      "th": "สหสัมพันธ์อันดับแบบสเปียร์แมน"
+    },
+    {
+      "en": "hypothesis testing",
+      "th": "การทดสอบสมมติฐาน",
+      "first": "การทดสอบสมมติฐาน (hypothesis testing)"
+    },
+    {
+      "en": "null hypothesis / alternative hypothesis",
+      "th": "สมมติฐานว่าง / สมมติฐานทางเลือก"
+    },
+    {
+      "en": "p-value",
+      "th": "p-value"
+    },
+    {
+      "en": "statistical significance / practical significance",
+      "th": "นัยสำคัญทางสถิติ / นัยสำคัญในทางปฏิบัติ"
+    },
+    {
+      "en": "t-test (one-sample, Welch, paired)",
+      "th": "t-test (หนึ่งกลุ่ม, Welch, แบบจับคู่)"
+    },
+    {
+      "en": "chi-squared test",
+      "th": "chi-squared test"
+    },
+    {
+      "en": "degrees of freedom",
+      "th": "องศาเสรี",
+      "first": "องศาเสรี (degrees of freedom)"
+    },
+    {
+      "en": "effect size / Cohen's d",
+      "th": "ขนาดผล / Cohen's d"
+    },
+    {
+      "en": "multiple comparison problem / Bonferroni correction",
+      "th": "ปัญหาการเปรียบเทียบหลายครั้ง / การแก้ของ Bonferroni"
+    },
+    {
+      "en": "bootstrap",
+      "th": "bootstrap"
+    },
+    {
+      "en": "Type I error / Type II error",
+      "th": "ความผิดพลาดแบบที่ 1 / แบบที่ 2"
+    },
+    {
+      "en": "statistical power",
+      "th": "อำนาจทางสถิติ",
+      "first": "อำนาจทางสถิติ (statistical power)"
+    },
+    {
+      "en": "parametric / non-parametric test",
+      "th": "การทดสอบแบบอิงพารามิเตอร์ / ไม่อิงพารามิเตอร์"
+    },
+    {
+      "en": "permutation test",
+      "th": "permutation test"
+    },
+    {
+      "en": "cross-validation fold",
+      "th": "fold ของ cross-validation"
     }
   ]
 }

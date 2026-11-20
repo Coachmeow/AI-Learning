@@ -1,0 +1,486 @@
+{
+  "lesson": "01-math-foundations/15-statistics-for-ml",
+  "source_hash": "03f4ef8f81f9ed57a1ea5e452d55a6ad7d8d80c136410a4c0acf437032d2504a",
+  "questions": [
+    {
+      "id": "e1",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "What does a p-value of 0.03 mean in a hypothesis test?",
+        "th": "p-value เท่ากับ 0.03 ในการทดสอบสมมติฐานหมายความว่าอะไร?"
+      },
+      "options": [
+        {
+          "en": "There is a 3% probability of seeing data this extreme if the null hypothesis were true",
+          "th": "มีความน่าจะเป็น 3% ที่จะเห็นข้อมูลสุดโต่งขนาดนี้ ถ้าสมมติฐานว่างเป็นจริง"
+        },
+        {
+          "en": "The model improved by 3%",
+          "th": "โมเดลดีขึ้น 3%"
+        },
+        {
+          "en": "There is a 3% probability the null hypothesis is true",
+          "th": "มีความน่าจะเป็น 3% ที่สมมติฐานว่างเป็นจริง"
+        },
+        {
+          "en": "97% of the data supports the alternative hypothesis",
+          "th": "ข้อมูล 97% สนับสนุนสมมติฐานทางเลือก"
+        }
+      ],
+      "answer": 0,
+      "explanation": {
+        "en": "The p-value is the probability of observing data as extreme as what you got, assuming the null hypothesis is true. It is NOT the probability that H0 is true — this is the single most common misunderstanding in statistics.",
+        "th": "p-value คือความน่าจะเป็นที่จะสังเกตข้อมูลสุดโต่งเท่ากับที่ได้หรือมากกว่า โดยสมมติว่าสมมติฐานว่างเป็นจริง มันไม่ใช่ความน่าจะเป็นที่ H0 เป็นจริง นี่คือความเข้าใจผิดที่พบบ่อยที่สุดในสถิติ"
+      }
+    },
+    {
+      "id": "e2",
+      "difficulty": "easy",
+      "origin": "upstream",
+      "question": {
+        "en": "Why do you divide by (n-1) instead of n when computing sample variance?",
+        "th": "ทำไมจึงหารด้วย (n-1) แทน n เมื่อคำนวณความแปรปรวนของตัวอย่าง?"
+      },
+      "options": [
+        {
+          "en": "It converts the variance to standard deviation",
+          "th": "เพื่อแปลงความแปรปรวนเป็นส่วนเบี่ยงเบนมาตรฐาน"
+        },
+        {
+          "en": "It only applies when the sample size is odd",
+          "th": "ใช้เฉพาะเมื่อขนาดตัวอย่างเป็นเลขคี่"
+        },
+        {
+          "en": "It makes the computation faster",
+          "th": "เพื่อให้คำนวณเร็วขึ้น"
+        },
+        {
+          "en": "It accounts for the fact that the sample mean is not the true population mean (Bessel's correction)",
+          "th": "เพื่อชดเชยข้อเท็จจริงที่ค่าเฉลี่ยของตัวอย่างไม่ใช่ค่าเฉลี่ยจริงของประชากร (การแก้ของเบสเซล)"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "Bessel's correction (dividing by n-1) compensates for the bias introduced by using the sample mean instead of the true population mean. Without it, sample variance systematically underestimates the true population variance.",
+        "th": "การแก้ของเบสเซล (หารด้วย n-1) ชดเชยความเอนเอียงที่เกิดจากการใช้ค่าเฉลี่ยของตัวอย่างแทนค่าเฉลี่ยจริงของประชากร ถ้าไม่แก้ ความแปรปรวนของตัวอย่างจะประมาณความแปรปรวนจริงของประชากรต่ำเกินไปอย่างเป็นระบบ"
+      }
+    },
+    {
+      "id": "e3",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "For the data [1, 2, 3, 4, 1000], what are the mean and the median?",
+        "th": "สำหรับข้อมูล [1, 2, 3, 4, 1000] ค่าเฉลี่ยและมัธยฐานคือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "Mean 3, median 202",
+          "th": "ค่าเฉลี่ย 3 มัธยฐาน 202"
+        },
+        {
+          "en": "Mean 202, median 3",
+          "th": "ค่าเฉลี่ย 202 มัธยฐาน 3"
+        },
+        {
+          "en": "Both 202",
+          "th": "ทั้งคู่ 202"
+        },
+        {
+          "en": "Both 3",
+          "th": "ทั้งคู่ 3"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "The mean is 1010 / 5 = 202, pulled up by the outlier. The median is the middle sorted value, 3, which the outlier doesn't move.",
+        "th": "ค่าเฉลี่ยคือ 1010 / 5 = 202 ซึ่งถูกค่าผิดปกติดึงขึ้นไป มัธยฐานคือค่าตรงกลางเมื่อเรียงแล้วคือ 3 ซึ่งค่าผิดปกติไม่ได้ทำให้ขยับ"
+      }
+    },
+    {
+      "id": "e4",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "Two variables have Pearson r = 0. What can you conclude?",
+        "th": "ตัวแปรสองตัวมี Pearson r = 0 สรุปอะไรได้?"
+      },
+      "options": [
+        {
+          "en": "They are independent",
+          "th": "เป็นอิสระต่อกัน"
+        },
+        {
+          "en": "There is no linear relationship, but there could still be a non-linear one",
+          "th": "ไม่มีความสัมพันธ์เชิงเส้น แต่อาจยังมีความสัมพันธ์แบบไม่เชิงเส้น"
+        },
+        {
+          "en": "One causes the other",
+          "th": "ตัวหนึ่งเป็นเหตุของอีกตัว"
+        },
+        {
+          "en": "They have the same mean",
+          "th": "มีค่าเฉลี่ยเท่ากัน"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Pearson only measures linear association. y = x² on x from -2 to 2 has r = 0 while y is completely determined by x.",
+        "th": "เพียร์สันวัดได้แค่ความสัมพันธ์เชิงเส้น y = x² บน x ตั้งแต่ -2 ถึง 2 มี r = 0 ทั้งที่ y ถูกกำหนดโดย x ทั้งหมด"
+      }
+    },
+    {
+      "id": "e5",
+      "difficulty": "easy",
+      "origin": "new",
+      "question": {
+        "en": "What is a Type I error?",
+        "th": "ความผิดพลาดแบบที่ 1 (Type I error) คืออะไร?"
+      },
+      "options": [
+        {
+          "en": "Failing to reject H0 when it is false",
+          "th": "ไม่ปฏิเสธ H0 ทั้งที่มันเป็นเท็จ"
+        },
+        {
+          "en": "A false positive: rejecting H0 when it is actually true",
+          "th": "ผลบวกลวง: ปฏิเสธ H0 ทั้งที่มันเป็นจริง"
+        },
+        {
+          "en": "Using the wrong test",
+          "th": "ใช้การทดสอบผิดแบบ"
+        },
+        {
+          "en": "A bug in the code",
+          "th": "บั๊กในโค้ด"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "A Type I error declares an effect that isn't there. Its rate is α. Missing a real effect is a Type II error.",
+        "th": "ความผิดพลาดแบบที่ 1 คือการประกาศว่ามีผลทั้งที่ไม่มี อัตราของมันคือ α ส่วนการพลาดผลที่มีจริงคือความผิดพลาดแบบที่ 2"
+      }
+    },
+    {
+      "id": "m1",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "You test 20 different model configurations at alpha = 0.05. What is the approximate probability of at least one false positive?",
+        "th": "คุณทดสอบการตั้งค่าโมเดล 20 แบบที่ alpha = 0.05 ความน่าจะเป็นโดยประมาณที่จะได้ผลบวกลวงอย่างน้อยหนึ่งครั้งคือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "5%",
+          "th": "5%"
+        },
+        {
+          "en": "25%",
+          "th": "25%"
+        },
+        {
+          "en": "95%",
+          "th": "95%"
+        },
+        {
+          "en": "64%",
+          "th": "64%"
+        }
+      ],
+      "answer": 3,
+      "explanation": {
+        "en": "P(at least one false positive) = 1 - (1 - 0.05)^20 = 1 - 0.95^20 ≈ 0.64 (64%). This is the multiple comparison problem. Bonferroni correction addresses it by testing each at alpha/20 = 0.0025.",
+        "th": "P(ผลบวกลวงอย่างน้อยหนึ่งครั้ง) = 1 - (1 - 0.05)^20 = 1 - 0.95^20 ≈ 0.64 (64%) นี่คือปัญหาการเปรียบเทียบหลายครั้ง การแก้ของ Bonferroni แก้ปัญหานี้โดยทดสอบแต่ละข้อที่ alpha/20 = 0.0025"
+      }
+    },
+    {
+      "id": "m2",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "Model A scores 0.9234 and Model B scores 0.9237 on 1 million test samples with p-value = 0.001. What should you conclude?",
+        "th": "โมเดล A ได้ 0.9234 และโมเดล B ได้ 0.9237 บนตัวอย่างทดสอบ 1 ล้านตัว โดย p-value = 0.001 ควรสรุปอย่างไร?"
+      },
+      "options": [
+        {
+          "en": "Model A is better because it was tested first",
+          "th": "โมเดล A ดีกว่าเพราะถูกทดสอบก่อน"
+        },
+        {
+          "en": "Model B is significantly better and should be deployed immediately",
+          "th": "โมเดล B ดีกว่าอย่างมีนัยสำคัญ และควร deploy ทันที"
+        },
+        {
+          "en": "The difference is statistically significant but a 0.03% improvement may not be practically significant",
+          "th": "ผลต่างมีนัยสำคัญทางสถิติ แต่การปรับปรุง 0.03% อาจไม่มีนัยสำคัญในทางปฏิบัติ"
+        },
+        {
+          "en": "The test is invalid because the sample size is too large",
+          "th": "การทดสอบใช้ไม่ได้เพราะขนาดตัวอย่างใหญ่เกินไป"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "With 1 million samples, even trivially small differences become statistically significant. The p-value confirms the difference is real, but the effect size (0.03% accuracy gain) may not justify the engineering cost of deployment. Always report both p-value and effect size.",
+        "th": "เมื่อมีตัวอย่าง 1 ล้านตัว แม้ผลต่างเล็กน้อยมากก็มีนัยสำคัญทางสถิติ p-value ยืนยันว่าผลต่างเป็นของจริง แต่ขนาดผล (ความแม่นยำเพิ่ม 0.03%) อาจไม่คุ้มกับต้นทุนทางวิศวกรรมในการ deploy รายงานทั้ง p-value และขนาดผลเสมอ"
+      }
+    },
+    {
+      "id": "m3",
+      "difficulty": "medium",
+      "origin": "upstream",
+      "question": {
+        "en": "What advantage does bootstrap have over the paired t-test for comparing two ML models?",
+        "th": "Bootstrap มีข้อได้เปรียบอะไรเหนือ paired t-test ในการเปรียบเทียบโมเดล ML สองตัว?"
+      },
+      "options": [
+        {
+          "en": "Bootstrap can only be used with neural networks",
+          "th": "Bootstrap ใช้ได้กับโครงข่ายประสาทเทียมเท่านั้น"
+        },
+        {
+          "en": "Bootstrap always produces smaller p-values",
+          "th": "Bootstrap ให้ p-value ที่เล็กกว่าเสมอ"
+        },
+        {
+          "en": "Bootstrap requires no distributional assumptions and works for any metric (AUC, F1, median)",
+          "th": "Bootstrap ไม่ต้องสมมติเรื่องการแจกแจง และใช้ได้กับทุกตัวชี้วัด (AUC, F1, มัธยฐาน)"
+        },
+        {
+          "en": "Bootstrap needs fewer samples to reach significance",
+          "th": "Bootstrap ต้องการตัวอย่างน้อยกว่าในการไปถึงนัยสำคัญ"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Bootstrap resampling estimates the sampling distribution of any statistic by resampling with replacement. Unlike the t-test, it does not assume normality. It works for any metric — AUC, F1, precision@k, median — without needing a closed-form formula.",
+        "th": "Bootstrap resampling ประมาณการแจกแจงการสุ่มตัวอย่างของสถิติใดก็ได้ด้วยการสุ่มซ้ำแบบใส่คืน ต่างจาก t-test ตรงที่ไม่สมมติความเป็นปกติ มันใช้ได้กับทุกตัวชี้วัด เช่น AUC, F1, precision@k, มัธยฐาน โดยไม่ต้องมีสูตรแบบปิด"
+      }
+    },
+    {
+      "id": "m4",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "You expect 100 positive and 100 negative outputs but observe 130 and 70. What is the chi-squared statistic?",
+        "th": "คุณคาดว่าจะได้ผลลัพธ์บวก 100 และลบ 100 แต่สังเกตได้ 130 และ 70 ค่า chi-squared คือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "0.6",
+          "th": "0.6"
+        },
+        {
+          "en": "9",
+          "th": "9"
+        },
+        {
+          "en": "18",
+          "th": "18"
+        },
+        {
+          "en": "60",
+          "th": "60"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "chi² = (130 - 100)² / 100 + (70 - 100)² / 100 = 9 + 9 = 18, far beyond what chance gives at 1 degree of freedom.",
+        "th": "chi² = (130 - 100)² / 100 + (70 - 100)² / 100 = 9 + 9 = 18 เกินกว่าที่ความบังเอิญให้ได้มากที่ 1 องศาเสรี"
+      }
+    },
+    {
+      "id": "m5",
+      "difficulty": "medium",
+      "origin": "new",
+      "question": {
+        "en": "You run 10 tests and use the Bonferroni correction with α = 0.05. What threshold does each p-value have to beat?",
+        "th": "คุณทดสอบ 10 ครั้งและใช้การแก้ของ Bonferroni ที่ α = 0.05 p-value แต่ละตัวต้องต่ำกว่าเกณฑ์เท่าไร?"
+      },
+      "options": [
+        {
+          "en": "0.05",
+          "th": "0.05"
+        },
+        {
+          "en": "0.5",
+          "th": "0.5"
+        },
+        {
+          "en": "0.005",
+          "th": "0.005"
+        },
+        {
+          "en": "0.0005",
+          "th": "0.0005"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "Bonferroni divides α by the number of tests: 0.05 / 10 = 0.005. Without it, the chance of at least one false positive in 10 tests is 1 - 0.95^10 ≈ 40%.",
+        "th": "Bonferroni หาร α ด้วยจำนวนการทดสอบ: 0.05 / 10 = 0.005 ถ้าไม่แก้ โอกาสได้ผลบวกลวงอย่างน้อยหนึ่งครั้งใน 10 การทดสอบคือ 1 - 0.95^10 ≈ 40%"
+      }
+    },
+    {
+      "id": "h1",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "For x = [1, 2, 3, 4, 5] and y = x³, what are the Pearson and Spearman correlations?",
+        "th": "สำหรับ x = [1, 2, 3, 4, 5] และ y = x³ สหสัมพันธ์แบบเพียร์สันและแบบสเปียร์แมนคือเท่าไร?"
+      },
+      "options": [
+        {
+          "en": "Both exactly 1",
+          "th": "ทั้งคู่เป็น 1 พอดี"
+        },
+        {
+          "en": "Pearson about 0.94, Spearman exactly 1",
+          "th": "เพียร์สันประมาณ 0.94 สเปียร์แมน 1 พอดี"
+        },
+        {
+          "en": "Pearson 1, Spearman about 0.94",
+          "th": "เพียร์สัน 1 สเปียร์แมนประมาณ 0.94"
+        },
+        {
+          "en": "Both about 0.94",
+          "th": "ทั้งคู่ประมาณ 0.94"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "y rises whenever x rises, so the ranks match exactly and Spearman is 1. The points don't lie on a straight line, so Pearson is below 1 (about 0.943).",
+        "th": "y เพิ่มทุกครั้งที่ x เพิ่ม อันดับจึงตรงกันพอดีและสเปียร์แมนเป็น 1 แต่จุดไม่ได้อยู่บนเส้นตรง เพียร์สันจึงต่ำกว่า 1 (ประมาณ 0.943)"
+      }
+    },
+    {
+      "id": "h2",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "A metric has mean 0.85 and sample standard deviation 0.05 over n = 100. What is the approximate 95% confidence interval for the mean?",
+        "th": "ตัวชี้วัดหนึ่งมีค่าเฉลี่ย 0.85 และส่วนเบี่ยงเบนมาตรฐานของตัวอย่าง 0.05 จาก n = 100 ช่วงความเชื่อมั่น 95% ของค่าเฉลี่ยโดยประมาณคืออะไร?"
+      },
+      "options": [
+        {
+          "en": "[0.75, 0.95]",
+          "th": "[0.75, 0.95]"
+        },
+        {
+          "en": "[0.80, 0.90]",
+          "th": "[0.80, 0.90]"
+        },
+        {
+          "en": "[0.840, 0.860]",
+          "th": "[0.840, 0.860]"
+        },
+        {
+          "en": "[0.849, 0.851]",
+          "th": "[0.849, 0.851]"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "The standard error is s / √n = 0.05 / 10 = 0.005, and 1.96 * 0.005 ≈ 0.0098, so the interval is about [0.840, 0.860]. [0.75, 0.95] would use the spread of individual values, not of the mean.",
+        "th": "ความคลาดเคลื่อนมาตรฐานคือ s / √n = 0.05 / 10 = 0.005 และ 1.96 * 0.005 ≈ 0.0098 ช่วงจึงประมาณ [0.840, 0.860] ส่วน [0.75, 0.95] ใช้การกระจายของค่าแต่ละตัว ไม่ใช่ของค่าเฉลี่ย"
+      }
+    },
+    {
+      "id": "h3",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "Model B's mean score is 0.88, model A's is 0.86, and the pooled standard deviation is 0.04. What is Cohen's d, and how big is the effect?",
+        "th": "คะแนนเฉลี่ยของโมเดล B คือ 0.88 ของโมเดล A คือ 0.86 และส่วนเบี่ยงเบนมาตรฐานรวมคือ 0.04 Cohen's d เป็นเท่าไร และผลใหญ่แค่ไหน?"
+      },
+      "options": [
+        {
+          "en": "0.02, tiny",
+          "th": "0.02 เล็กมาก"
+        },
+        {
+          "en": "0.5, a medium effect",
+          "th": "0.5 ผลปานกลาง"
+        },
+        {
+          "en": "2.0, huge",
+          "th": "2.0 ใหญ่มาก"
+        },
+        {
+          "en": "0.04, small",
+          "th": "0.04 เล็ก"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "d = (0.88 - 0.86) / 0.04 = 0.5, a medium effect. The raw difference 0.02 only means something relative to how much scores vary.",
+        "th": "d = (0.88 - 0.86) / 0.04 = 0.5 คือผลปานกลาง ผลต่างดิบ 0.02 มีความหมายก็ต่อเมื่อเทียบกับว่าคะแนนแปรผันแค่ไหน"
+      }
+    },
+    {
+      "id": "h4",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "On 5 cross-validation folds, model B beats model A on every fold by 0.008 to 0.012, while fold scores range from 0.80 to 0.90. Why does a paired t-test find this significant when Welch's independent test doesn't?",
+        "th": "บน cross-validation 5 fold โมเดล B ชนะโมเดล A ทุก fold ด้วยผลต่าง 0.008 ถึง 0.012 ขณะที่คะแนนของแต่ละ fold อยู่ระหว่าง 0.80 ถึง 0.90 ทำไม paired t-test จึงพบนัยสำคัญ แต่ t-test แบบอิสระของ Welch ไม่พบ?"
+      },
+      "options": [
+        {
+          "en": "The paired test uses more data",
+          "th": "การทดสอบแบบคู่ใช้ข้อมูลมากกว่า"
+        },
+        {
+          "en": "The paired test works on the per-fold differences, which barely vary (t ≈ 14), while the independent test compares the 0.01 gap with the large fold-to-fold spread (t ≈ 0.4)",
+          "th": "การทดสอบแบบคู่ใช้ผลต่างของแต่ละ fold ซึ่งแทบไม่แปรผัน (t ≈ 14) ขณะที่การทดสอบแบบอิสระเทียบช่องว่าง 0.01 กับการกระจายระหว่าง fold ที่ใหญ่ (t ≈ 0.4)"
+        },
+        {
+          "en": "Welch's test is always wrong for ML",
+          "th": "t-test ของ Welch ผิดเสมอสำหรับ ML"
+        },
+        {
+          "en": "The paired test assumes larger effects",
+          "th": "การทดสอบแบบคู่สมมติว่าผลใหญ่กว่า"
+        }
+      ],
+      "answer": 1,
+      "explanation": {
+        "en": "Both models see the same folds, so the fold difficulty cancels in d_i = b_i - a_i. The differences have mean 0.01 and standard deviation about 0.0016, giving t ≈ 14. Treated as independent groups, the 0.01 gap is lost in the 0.04 spread between folds.",
+        "th": "ทั้งสองโมเดลเจอ fold เดียวกัน ความยากของแต่ละ fold จึงหักล้างกันใน d_i = b_i - a_i ผลต่างมีค่าเฉลี่ย 0.01 และส่วนเบี่ยงเบนมาตรฐานราว 0.0016 ได้ t ≈ 14 ถ้ามองเป็นกลุ่มอิสระ ช่องว่าง 0.01 จะจมหายในการกระจาย 0.04 ระหว่าง fold"
+      }
+    },
+    {
+      "id": "h5",
+      "difficulty": "hard",
+      "origin": "new",
+      "question": {
+        "en": "You draw a bootstrap sample of size n from n = 1000 points. About what fraction of the original points appear in it at least once?",
+        "th": "คุณสุ่มตัวอย่าง bootstrap ขนาด n จากข้อมูล n = 1000 จุด จุดเดิมประมาณกี่สัดส่วนที่ปรากฏในตัวอย่างนั้นอย่างน้อยหนึ่งครั้ง?"
+      },
+      "options": [
+        {
+          "en": "100%",
+          "th": "100%"
+        },
+        {
+          "en": "About 50%",
+          "th": "ประมาณ 50%"
+        },
+        {
+          "en": "About 63%",
+          "th": "ประมาณ 63%"
+        },
+        {
+          "en": "About 37%",
+          "th": "ประมาณ 37%"
+        }
+      ],
+      "answer": 2,
+      "explanation": {
+        "en": "A given point is missed by all n draws with probability (1 - 1/n)^n ≈ 1/e ≈ 0.368, so about 63.2% of the points appear. The other ~37% are the 'out-of-bag' points random forests use for validation.",
+        "th": "จุดหนึ่งจะไม่ถูกสุ่มเลยใน n ครั้งด้วยความน่าจะเป็น (1 - 1/n)^n ≈ 1/e ≈ 0.368 จุดราว 63.2% จึงปรากฏ ส่วนอีกราว 37% คือจุด 'out-of-bag' ที่ random forest ใช้ตรวจสอบ"
+      }
+    }
+  ]
+}

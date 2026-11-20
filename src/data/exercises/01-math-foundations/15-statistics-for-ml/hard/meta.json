@@ -1,0 +1,13 @@
+{
+  "minutes": 30,
+  "title": {"th": "Permutation test แบบจับคู่ที่แม่นยำ", "en": "An exact paired permutation test"},
+  "prompt": {
+    "th": "เปรียบเทียบโมเดลสองตัวบน cross-validation fold เดียวกันโดยไม่สมมติเรื่องการแจกแจง เขียน `paired_permutation_test(a, b)` ที่คืน p-value แบบสองทางที่แม่นยำ\n\n- ผลต่าง `d_i = b_i - a_i` ภายใต้ H0 (ไม่มีความต่าง) เครื่องหมายของแต่ละ `d_i` สลับได้เท่า ๆ กัน\n- ลองครบทั้ง 2^k แบบของการกลับเครื่องหมาย (`itertools.product([1, -1], repeat=k)`) แล้วนับแบบที่ `abs(ผลรวม) >= abs(ผลรวมที่สังเกตได้) - 1e-12` (ค่าเผื่อสำหรับผลรวมที่เท่ากันทางคณิตศาสตร์แต่ต่างกันจากการปัดเศษ)\n- p-value = จำนวนที่นับได้ / 2^k (แบบที่สังเกตได้ถูกนับด้วย p จึงไม่เคยเป็น 0)\n- ถ้า `a` กับ `b` ยาวไม่เท่ากัน ว่าง หรือยาวเกิน 16 ให้ `raise ValueError`\n\nสังเกตว่า 5 fold ที่ B ชนะทุก fold ยังให้ p ต่ำสุดแค่ 2/32 = 0.0625 มี test ซ่อนอยู่บางส่วน",
+    "en": "Compare two models on the same cross-validation folds without assuming any distribution. Write `paired_permutation_test(a, b)`, which returns an exact two-sided p-value.\n\n- The differences are `d_i = b_i - a_i`. Under H0 (no difference), each `d_i`'s sign is equally likely to be flipped.\n- Try all 2^k sign patterns (`itertools.product([1, -1], repeat=k)`) and count those with `abs(sum) >= abs(observed sum) - 1e-12` (a tolerance for sums that are mathematically equal but differ by rounding).\n- p-value = count / 2^k (the observed pattern is counted too, so p is never 0).\n- If `a` and `b` differ in length, are empty, or are longer than 16, `raise ValueError`.\n\nNote that with 5 folds, even B winning every fold gives at best p = 2/32 = 0.0625. Some tests are hidden."
+  },
+  "hints": [
+    {"th": "`observed = abs(sum(d))` แล้ววน `for signs in product([1, -1], repeat=k):` คำนวณ `abs(sum(s * x for s, x in zip(signs, d)))`", "en": "`observed = abs(sum(d))`, then loop `for signs in product([1, -1], repeat=k):` and compute `abs(sum(s * x for s, x in zip(signs, d)))`."},
+    {"th": "สองทาง: เทียบค่าสัมบูรณ์ ไม่อย่างนั้นการกลับเครื่องหมายทั้งหมดที่สุดโต่งพอ ๆ กันในทิศตรงข้ามจะไม่ถูกนับ", "en": "Two-sided: compare absolute values; otherwise the all-flipped pattern, just as extreme in the other direction, isn't counted."},
+    {"th": "ใน `[-0.4, -0.8, 0.6, 0.2]` ผลรวมที่สังเกตได้คือ -0.4000000000000001 แต่การกลับเครื่องหมายตัวแรกให้ -0.39999999999999997 ซึ่งเท่ากันทางคณิตศาสตร์ (ทั้งคู่คือ -0.4) ค่าเผื่อ `1e-12` ทำให้นับได้", "en": "In `[-0.4, -0.8, 0.6, 0.2]` the observed sum is -0.4000000000000001, but flipping the first value gives -0.39999999999999997; both are -0.4 mathematically, and the `1e-12` tolerance counts it."}
+  ]
+}
